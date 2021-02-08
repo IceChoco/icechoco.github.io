@@ -1,6 +1,6 @@
 {
   "name": "hydejack",
-  "version": "9.1.0",
+  "version": "9.1.1",
   "description": "The best Jekyll theme by a mile",
   "scripts": {
     "clean": "rm -f assets/js/hydejack-*.js",
@@ -14,8 +14,7 @@
     "watch": "npm run watch:js & npm run watch:css",
     "watch:js": "webpack --watch --mode development --progress --color",
     "watch:css": "npm run build:css && onchange '_sass/**/*.scss' -e '_sass/**/__*/*' -- npm run build:css '{{changed}}'",
-    "serve": "bundle exec jekyll serve --port=$npm_package_config_port --host=0.0.0.0",
-    "dev": "npm run watch & npm run serve",
+    "dev": "npm run watch",
     "preversion": "npm run preversion:js && npm run preversion:css",
     "preversion:js": "sed -i '' 's:/assets/js/\\*hydejack-\\*:#<removed/js>:' .gitignore",
     "preversion:css": "sed -i '' 's:/_sass/\\*/__\\*__/\\*:#<removed/css>:' .gitignore",
@@ -73,6 +72,8 @@
     "lit-html": "^1.3.0",
     "minisearch": "^3.0.2",
     "rxjs": "^7.0.0-beta.9",
+    "scroll-into-view-if-needed": "^2.2.26",
+    "tippy.js": "^6.2.7",
     "web-animations-js": "^2.3.2",
     "whatwg-fetch": "^3.5.0"
   },
