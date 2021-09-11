@@ -1,5 +1,5 @@
 lang:                  en
-title:                 Hydejack
+title:                 IceChoco
 copyright:             © 2021. All rights reserved.
 
 accent_image:          /assets/img/sidebar-bg.jpg
@@ -72,3 +72,6 @@ compress_html:
 
 sass:
   style:               compressed
+  
+plugins:
+  - jekyll-include-cache
