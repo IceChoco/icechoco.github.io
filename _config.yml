@@ -72,6 +72,18 @@ compress_html:
 
 sass:
   style:               compressed
-  
+
 plugins:
   - jekyll-include-cache
+
+menu:
+  - title: About
+    url:   /About/
+  - title: GIT
+    url:   /GIT/
+  - title: Jekyll
+    url:   /Jekyll/   
+  - title: React
+    url:   /React/    
+  - title: Resume
+    url:   /resume/
