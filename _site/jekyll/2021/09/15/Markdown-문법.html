@@ -30,10 +30,10 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   
     
 
-<title>IceChoco</title>
-<meta name="description" content="IceChoco의 DevLog
+<title>Markdown 문법 | IceChoco</title>
+<meta name="description" content="Github 블로그를 만들기 위해 꼭 필요한 Markdown 문법에 대해 소개해드리겠습니다.
 ">
-<link rel="canonical" href="/">
+<link rel="canonical" href="/jekyll/2021/09/15/Markdown-%EB%AC%B8%EB%B2%95.html">
 
   
 
@@ -58,7 +58,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="/" hreflang="en">
+<link rel="alternate" href="/jekyll/2021/09/15/Markdown-%EB%AC%B8%EB%B2%95.html" hreflang="en">
 
 
 
@@ -157,19 +157,65 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
 
   <main
   id="_main"
-  class="content layout-blog"
+  class="content layout-post"
   role="main"
 >
   <nav id="breadcrumbs" class="screen-only"><ul>
   
   
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/jekyll/">jekyll</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/jekyll/2021/">2021</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/jekyll/2021/09/">09</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/jekyll/2021/09/15/">15</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>Markdown-%EB%AC%B8%EB%B2%95.html</span>
+      
+      </li>
+    
+  
 </ul></nav>
   
 
 
-  
 
-  
+
+
 
 
 
@@ -178,9 +224,9 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
 <article id="post-jekyll-2021-09-15-Markdown-문법" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
-      <a href="/jekyll/2021/09/15/Markdown-%EB%AC%B8%EB%B2%95.html" class="flip-title">
+      
         Markdown 문법
-      </a>
+      
     </h1>
 
     <div class="post-date">
@@ -208,70 +254,246 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
   
     <p>Github 블로그를 만들기 위해 꼭 필요한 Markdown 문법에 대해 소개해드리겠습니다.</p>
 
+<h2 id="개행new-line">개행(New Line)</h2>
+<p>Markdown에서 개행은 두가지 방식이 있습니다.</p>
+<ul>
+  <li>강제개행: 문장의 마지막에 공백(  )을 두 번 입력</li>
+  <li>단락바꿈: Enter키를 두번 입력</li>
+</ul>
 
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/jekyll/2021/09/15/Markdown-%EB%AC%B8%EB%B2%95.html">Markdown 문법</a>
-      </p>
-    </footer>
-  
-</article>
+<p>아래는 문법 예제입니다.</p>
 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>강제개행 문법입니다.  
+문장끝의 공백을 통해 개행이 적용됩니다.  
 
-  
+단락바꿈 문법입니다.
 
+Enter키를 통해 개행이 적용됩니다. 
+</code></pre></div></div>
 
+<h2 id="제목heading">제목(Heading)</h2>
+<h3 id="문서제목">문서제목</h3>
+<ul>
+  <li>마크다운 작성 시
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문서제목 결과입니다.
+======
+</code></pre></div>    </div>
+  </li>
+  <li>결과</li>
+</ul>
 
+<h1 id="문서제목-결과입니다">문서제목 결과입니다.</h1>
+<hr />
 
+<h3 id="문서부제목">문서부제목</h3>
+<ul>
+  <li>마크다운 작성 시
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>문서 부제목 결과입니다.
+------
+</code></pre></div>    </div>
+  </li>
+</ul>
 
-<article id="post-git-2021-09-15-Git-사용법" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/git/2021/09/15/Git-%EC%82%AC%EC%9A%A9%EB%B2%95.html" class="flip-title">
-        Git 사용법
-      </a>
-    </h1>
+<h2 id="문서-부제목-결과입니다">문서 부제목 결과입니다.</h2>
+<hr />
 
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time> in <span>Git</span> on <span>Git</span>, <span>Web</span>, <a href="/tag/jekyll/" class="flip-title">Jekyll</a>
-      </span>
-      
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>안녕하세요. 아이스초코입니다. 오늘은 Github 블로그 만들기에 필요한 Git 사용법에 대해 소개해드리겠습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/git/2021/09/15/Git-%EC%82%AC%EC%9A%A9%EB%B2%95.html">Git 사용법</a>
-      </p>
-    </footer>
   
 </article>
 
 
 
+  <clap-button class="mb6" ></clap-button>
+  
+  
+    <p class="message centered border-radius" >
+      <span style="display:block;margin-bottom:.5rem;">This is a preview of <a href="https://getclaps.app">Clap Button</a>, a new feedback and analytics tools for Hydejack, built by yours truly.</span>
+      <span style="display:block;margin-bottom:.5rem;">You can try it out on <code>localhost</code> for free, but it will be removed (together with this message) when building with <code>JEKYLL_ENV=production</code>.</span>
+      <span style="display:block;margin-bottom:.5rem;">To use Clap Button on your site, get a <a href="https://getclaps.app#pricing">subscription</a><br/>and set <code>clap_button: true</code> in your config file.</span>
+    </p>
+  
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>프론트엔드 엔지니어를 꿈꾸는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="ara.cho.10420" title="facebook" class="no-mark-external">
+      <span class="icon-link"></span>
+      <span class="sr-only">facebook</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="/feed.xml" title="rss" class="no-mark-external">
+      <span class="icon-link"></span>
+      <span class="sr-only">rss</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/git/2021/09/15/Git-%EC%82%AC%EC%9A%A9%EB%B2%95.html" class="flip-title"><span>Git 사용법</span></a>  <time class="faded fine" datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+
+</aside>
+
+
+  
 
 
   

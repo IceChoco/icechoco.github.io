@@ -76,14 +76,30 @@ sass:
 plugins:
   - jekyll-include-cache
 
+# Collections
+# ========================================================================================
+collections:
+  featured_categories:
+    permalink:         /category/:name/
+    output:            true
+
+  featured_tags:
+    permalink:         /tag/:name/
+    output:            true
+
 menu:
-  - title: About
-    url:   /About/
-  - title: GIT
-    url:   /GIT/
-  - title: Jekyll
-    url:   /Jekyll/   
-  - title: React
-    url:   /React/    
-  - title: Resume
-    url:   /resume/
+ - title: About
+   url:   /About/
+ - title: GIT
+   url:   /GIT/
+ - title: Jekyll
+   url:   /Jekyll/   
+ - title: React
+   url:   /React/    
+ - title: Resume
+   url:   /Resume/
+ # When connecting to an external link
+ # - title: "@blog"
+ #   url:   https://blog.naver.com/dkfk2685
+
+
