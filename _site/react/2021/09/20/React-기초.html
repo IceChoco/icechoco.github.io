@@ -30,10 +30,10 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   
     
 
-<title>Git 사용법 | IceChoco</title>
-<meta name="description" content="안녕하세요. 아이스초코입니다. 오늘은 Github 블로그 만들기에 필요한 Git 사용법에 대해 소개해드리겠습니다.
+<title>React 기초 | IceChoco</title>
+<meta name="description" content="오늘은 첫 개인 프로젝트를 시작하기 전 필요한 기초 지식을 공유드리겠습니다.
 ">
-<link rel="canonical" href="/git/2021/09/15/Git-%EC%82%AC%EC%9A%A9%EB%B2%95.html">
+<link rel="canonical" href="/react/2021/09/20/React-%EA%B8%B0%EC%B4%88.html">
 
   
 
@@ -58,7 +58,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="/git/2021/09/15/Git-%EC%82%AC%EC%9A%A9%EB%B2%95.html" hreflang="en">
+<link rel="alternate" href="/react/2021/09/20/React-%EA%B8%B0%EC%B4%88.html" hreflang="en">
 
 
 
@@ -170,7 +170,7 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
         <span>/</span>
         
         
-        <a href="/git/">git</a>
+        <a href="/react/">react</a>
       
       </li>
     
@@ -179,7 +179,7 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
         <span>/</span>
         
         
-        <a href="/git/2021/">2021</a>
+        <a href="/react/2021/">2021</a>
       
       </li>
     
@@ -188,7 +188,7 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
         <span>/</span>
         
         
-        <a href="/git/2021/09/">09</a>
+        <a href="/react/2021/09/">09</a>
       
       </li>
     
@@ -197,14 +197,14 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
         <span>/</span>
         
         
-        <a href="/git/2021/09/15/">15</a>
+        <a href="/react/2021/09/20/">20</a>
       
       </li>
     
       <li>
       
         <span>/</span>
-        <span>Git-%EC%82%AC%EC%9A%A9%EB%B2%95.html</span>
+        <span>React-%EA%B8%B0%EC%B4%88.html</span>
       
       </li>
     
@@ -221,18 +221,18 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
 
 
 
-<article id="post-git-2021-09-15-Git-사용법" class="page post mb6" role="article">
+<article id="post-react-2021-09-20-React-기초" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
       
-        Git 사용법
+        React 기초
       
     </h1>
 
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time> in <span>Git</span> on <span>Git</span>, <span>Web</span>, <a href="/tag/jekyll/" class="flip-title">Jekyll</a>
+        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time> in <span>React</span> on <span>Web</span>, <a href="/tag/react/" class="flip-title">React</a>
       </span>
       
         
@@ -252,32 +252,25 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
   </header>
 
   
-    <p>안녕하세요. 아이스초코입니다. 오늘은 Github 블로그 만들기에 필요한 Git 사용법에 대해 소개해드리겠습니다.</p>
+    <p>오늘은 첫 개인 프로젝트를 시작하기 전 필요한 기초 지식을 공유드리겠습니다.</p>
 
-<h2 id="기본용어"><strong>기본용어</strong></h2>
-<p>local repository: 내 로컬 PC에 위치한 repository<br />
-remote repository: github에 위치한 repository</p>
-<hr />
+<h2 id="nodejs">node.js</h2>
+<p>우선, node.js가 무엇인지 알아야겠죠? 이전에 자바스크립트는 크롬이나, IE와 같은 익스플로러 상에서만 사용이 가능했습니다. 그런데 node.js가 등장하고 나서 부터 자바스크립트를 서버사이드에서도 자바스크립트 사용이 가능해졌습니다.</p>
 
-<h2 id="git-파일-추적track과-커밋commit"><strong>Git 파일 추적(Track)과 커밋(Commit)</strong></h2>
-<p>Git에서 파일 버전을 관리하기 위해서는 해당 파일을 <strong>추적(Track)</strong>해야 합니다.<br />
-Git에서 추적한다는 의미는 그 파일을 관리한다는 의미입니다.</p>
-<ul>
-  <li>Track한다 = staging area에 올라갔다</li>
-</ul>
+<h2 id="expressjs">express.js</h2>
+<p>node.js를 이용해서 웹사이트나 어플리케이션을 쉽게 만들 수 있도록 도와주는 프레임워크입니다.
+터미널을 실행하여 아래 명렁어를 실행하면 설치할 수 있습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install express --save
+</code></pre></div></div>
+<p><img src="/assets\img/download-express-js.png" alt="download-express-js" /></p>
 
-<p>프로젝트 작업 폴더에는 Tracked 파일과 Untracked 파일이 존재합니다.</p>
-<ol>
-  <li>Tracked(관리대상이 된 파일, 추적되고 있는 상태)
-    <ul>
-      <li>Unmodified: 파일 내용 수정이 안된 상태</li>
-      <li>Modified : 파일 내용이 수정된 상태</li>
-      <li>Staged : 커밋으로 Git 저장소에 기록될 준비가 된 상태</li>
-    </ul>
-  </li>
-  <li>Untracked(관리대상이 아닌 파일, 즉 추적이 안 된 상태)</li>
-  <li>Commit(커밋): 파일을 Git 저장소에 기록하는 것, 어떤 작업인지에 대한 메시지를 기록</li>
-</ol>
+<p>npm install 명령어 맨 뒤에 –save 명령어를 입력함으로써 package.json 파일의 dependencies 안에 express 버전이 추가된 것을 확인할 수 있습니다. 이렇게 추가를 해둠으로써 다른 사람이 봤을 때 쓰고있구나 하고 알 수 있게 해주는 역할을 합니다.</p>
+
+<h2 id="indexjs">index.js</h2>
+<p>백엔드 서버를 시작하면 index.js 파일에서 시작합니다.</p>
+
+<h2 id="node_modules">node_modules</h2>
+<p>다운받은 dependencies들 즉 라이브러리들이 이 폴더안에 들어가 있습니다.</p>
 
   
 </article>
@@ -458,7 +451,7 @@ Git에서 추적한다는 의미는 그 파일을 관리한다는 의미입니�
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/react/2021/09/20/React-%EA%B8%B0%EC%B4%88.html" class="flip-title"><span>React 기초</span></a>  <time class="faded fine" datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time></li>                        <li class="h4">  <a href="/react/2021/09/19/React-%EA%B4%80%EB%A0%A8-%EC%98%A4%EB%A5%98.html" class="flip-title"><span>React 관련 오류</span></a>  <time class="faded fine" datetime="2021-09-19T00:00:00+09:00">19 Sep 2021</time></li>                        <li class="h4">  <a href="/jekyll/2021/09/15/Markdown-%EB%AC%B8%EB%B2%95.html" class="flip-title"><span>Markdown 문법</span></a>  <time class="faded fine" datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/react/2021/09/19/React-%EA%B4%80%EB%A0%A8-%EC%98%A4%EB%A5%98.html" class="flip-title"><span>React 관련 오류</span></a>  <time class="faded fine" datetime="2021-09-19T00:00:00+09:00">19 Sep 2021</time></li>                        <li class="h4">  <a href="/jekyll/2021/09/15/Markdown-%EB%AC%B8%EB%B2%95.html" class="flip-title"><span>Markdown 문법</span></a>  <time class="faded fine" datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time></li>                        <li class="h4">  <a href="/git/2021/09/15/Git-%EC%82%AC%EC%9A%A9%EB%B2%95.html" class="flip-title"><span>Git 사용법</span></a>  <time class="faded fine" datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time></li>            </ul></aside>
 
   
 
