@@ -78,6 +78,14 @@ plugins:
 
 # Collections
 # ========================================================================================
+# collections:
+#   featured_categories:
+#     permalink:         /category/:name/
+#     output:            true
+
+#   featured_tags:
+#     permalink:         /tag/:name/
+#     output:            true
 collections:
   featured_categories:
     permalink:         /:name/
@@ -88,18 +96,15 @@ collections:
 
 menu:
  - title: About
-   url:   /About/   
- - title: Resume
-   url:   /Resume/
+   url:   /About/
  - title: GIT
    url:   /GIT/
  - title: Jekyll
    url:   /Jekyll/   
  - title: React
-   url:   /React/ 
- - title: Database
-   url:   /Database/ 
-
+   url:   /React/    
+ - title: Resume
+   url:   /Resume/
  # When connecting to an external link
  # - title: "@blog"
  #   url:   https://blog.naver.com/dkfk2685

@@ -30,10 +30,13 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   
     
 
-<title>IceChoco</title>
-<meta name="description" content="IceChoco의 DevLog
+<title>Mongo DB란? | IceChoco</title>
+<meta name="description" content="Mongo DB의 인기
+Mongo DB는 가장 유명한 No SQL DB입니다. 
+
+스택오버플로우의 설문조사에 의하면, MongoDB는 DB 기술 중 5위로 인기가 좋습니다. 또한, 4위까지는 RDBMS인 점을 감안하면 MongoDB는 No SQL 중 가장 인기가 좋습니다.
 ">
-<link rel="canonical" href="/">
+<link rel="canonical" href="/database/2021/09/20/Mongo-db%EB%9E%80.html">
 
   
 
@@ -58,7 +61,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="/" hreflang="en">
+<link rel="alternate" href="/database/2021/09/20/Mongo-db%EB%9E%80.html" hreflang="en">
 
 
 
@@ -140,13 +143,362 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
   hashchange
 >
   
+  
+  <div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+      <div class="nav-span"></div>
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/database/">database</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/database/2021/">2021</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/database/2021/09/">09</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/database/2021/09/20/">20</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>Mongo-db%EB%9E%80.html</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-database-2021-09-20-Mongo-db란" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        Mongo DB란?
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time>  <a href="/database/" class="flip-title">Database</a>  <span>Database</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <h2 id="mongo-db의-인기">Mongo DB의 인기</h2>
+<p>Mongo DB는 가장 유명한 No SQL DB입니다. 
+<img src="/assets\img/mongodb-survery.png" alt="mongodb-survery" />
+스택오버플로우의 설문조사에 의하면, MongoDB는 DB 기술 중 5위로 인기가 좋습니다. 또한, 4위까지는 RDBMS인 점을 감안하면 MongoDB는 No SQL 중 가장 인기가 좋습니다.</p>
+
+<p><img src="/assets\img/mongodb-survery-most.png" alt="mongodb-survery-most" />
+가장 원하는 DB 설문조사에서는 Mongo DB가 1위를 차지하였습니다. 앞으로 Mongo DB를 배우고자 하는 사람이 많은 것을 알 수 있습니다.</p>
+
+<h2 id="mongoose">Mongoose</h2>
+<p>Mongo DB를 편하게 사용할 수 있게 해주는 툴입니다. 설치방법은 터미널에 아래 명령어를 입력하면 됩니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install mongoose --save
+</code></pre></div></div>
+<p><img src="/assets\img/mongoose-package-json.png" alt="mongoose-package-json" /><br />
+위 명령어를 입력함으로써 package.json 파일의 dependencies 안에 mongoose 버전이 추가된 것을 확인할 수 있습니다.</p>
+
+<h2 id="mongodb-model이란">MongoDB Model이란?</h2>
+<p>Model은 <strong>스키마를 감싸주는 역할</strong>을 합니다. 여기서 스키마는 하나하나의 정보들을 지정해주는 역할을 합니다.<br />
+예를 들어 상품 판매 사이트의 경우 글의 작성자, 제목, 상세 설명이 필요할 것입니다.<br />
+그럼 제목과 상세설명의 타입은 String이다, 제목의 최대값은 50이다와 같이 구조를 지정해줄 수 있는데 이것이 바로 스키마입니다.<br />
+→ 업무에서 사용하는 데이터셋인 DVO(Data Value Object)와 비슷해보인다.</p>
+
+<!--author-->
+
+  
+</article>
+
+
+
+  <clap-button class="mb6" ></clap-button>
+  
+  
+    <p class="message centered border-radius" >
+      <span style="display:block;margin-bottom:.5rem;">This is a preview of <a href="https://getclaps.app">Clap Button</a>, a new feedback and analytics tools for Hydejack, built by yours truly.</span>
+      <span style="display:block;margin-bottom:.5rem;">You can try it out on <code>localhost</code> for free, but it will be removed (together with this message) when building with <code>JEKYLL_ENV=production</code>.</span>
+      <span style="display:block;margin-bottom:.5rem;">To use Clap Button on your site, get a <a href="https://getclaps.app#pricing">subscription</a><br/>and set <code>clap_button: true</code> in your config file.</span>
+    </p>
+  
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About the Author
+  </h2>
+
+  <p>꾸준히 성장하는 프론트엔드 엔지니어 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="ara.cho.10420" title="facebook" class="no-mark-external">
+      <span class="icon-link"></span>
+      <span class="sr-only">facebook</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="/feed.xml" title="rss" class="no-mark-external">
+      <span class="icon-link"></span>
+      <span class="sr-only">rss</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/react/2021/09/20/React-%EA%B8%B0%EC%B4%88.html" class="flip-title"><span>React 기초</span></a>  <time class="faded fine" datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time></li>                        <li class="h4">  <a href="/database/2021/09/20/Mongo-db-%EA%B4%80%EB%A0%A8-%EC%98%A4%EB%A5%98.html" class="flip-title"><span>Mongo DB 관련 오류</span></a>  <time class="faded fine" datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time></li>                        <li class="h4">  <a href="/jekyll/2021/09/20/Hydejack-%ED%85%8C%EB%A7%88-Custmomization.html" class="flip-title"><span>Hydejack 테마 Custmomization</span></a>  <time class="faded fine" datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
   <hy-drawer
   id="_drawer"
-  class="cover"
+  class=""
   side="left"
   threshold="10"
   noscroll
-  opened
+  
 >
   <header id="_sidebar" class="sidebar" role="banner">
     
@@ -357,422 +709,6 @@ html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);
 </hy-drawer>
 <hr class="sr-only" hidden />
 
-  <div id="_navbar" class="navbar fixed-top">
-  <div class="content">
-    <span class="sr-only">Jump to:</span>
-    <div class="nav-btn-bar">
-      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
-        <span class="sr-only">Navigation</span>
-        <span class="icon-menu"></span>
-      </a>
-      <div class="nav-span"></div>
-    </div>
-  </div>
-</div>
-<hr class="sr-only" hidden />
-
-  <main
-  id="_main"
-  class="content layout-blog"
-  role="main"
->
-  <nav id="breadcrumbs" class="screen-only"><ul>
-  
-  
-</ul></nav>
-  
-
-
-  
-
-  
-
-
-
-
-
-<article id="post-react-2021-09-20-React-기초" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/react/2021/09/20/React-%EA%B8%B0%EC%B4%88.html" class="flip-title">
-        React 기초
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time>  <span>React</span>  <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>오늘은 첫 개인 프로젝트를 시작하기 전 필요한 기초 지식을 공유드리겠습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/react/2021/09/20/React-%EA%B8%B0%EC%B4%88.html">React 기초</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-database-2021-09-20-Mongo-db란" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/database/2021/09/20/Mongo-db%EB%9E%80.html" class="flip-title">
-        Mongo DB란?
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time>  <a href="/database/" class="flip-title">Database</a>  <span>Database</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <h2 id="mongo-db의-인기">Mongo DB의 인기</h2>
-<p>Mongo DB는 가장 유명한 No SQL DB입니다. 
-<img src="/assets\img/mongodb-survery.png" alt="mongodb-survery" />
-스택오버플로우의 설문조사에 의하면, MongoDB는 DB 기술 중 5위로 인기가 좋습니다. 또한, 4위까지는 RDBMS인 점을 감안하면 MongoDB는 No SQL 중 가장 인기가 좋습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/database/2021/09/20/Mongo-db%EB%9E%80.html">Mongo DB란?</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-database-2021-09-20-Mongo-db-관련-오류" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/database/2021/09/20/Mongo-db-%EA%B4%80%EB%A0%A8-%EC%98%A4%EB%A5%98.html" class="flip-title">
-        Mongo DB 관련 오류
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time>  <a href="/database/" class="flip-title">Database</a>  <span>Database</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>MongoDB 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/database/2021/09/20/Mongo-db-%EA%B4%80%EB%A0%A8-%EC%98%A4%EB%A5%98.html">Mongo DB 관련 오류</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-jekyll-2021-09-20-Hydejack-테마-Custmomization" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/jekyll/2021/09/20/Hydejack-%ED%85%8C%EB%A7%88-Custmomization.html" class="flip-title">
-        Hydejack 테마 Custmomization
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time>  <span>Jekyll</span>  <span>Web</span>, <a href="/tag-jekyll/" class="flip-title">Jekyll</a>
-      </span>
-      
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <h2 id="사용자-지정-css-추가">사용자 지정 CSS 추가</h2>
-<h3 id="above-the-fold-contents">above-the-fold contents?</h3>
-<p>아무런 행동을 하지 않은 기본 화면을 UX 업계에서는 <strong>‘Above the Fold’</strong>라고 지칭합니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/jekyll/2021/09/20/Hydejack-%ED%85%8C%EB%A7%88-Custmomization.html">Hydejack 테마 Custmomization</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-react-2021-09-19-React-관련-오류" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/react/2021/09/19/React-%EA%B4%80%EB%A0%A8-%EC%98%A4%EB%A5%98.html" class="flip-title">
-        React 관련 오류
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-19T00:00:00+09:00">19 Sep 2021</time>  <span>React</span>  <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>React 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/react/2021/09/19/React-%EA%B4%80%EB%A0%A8-%EC%98%A4%EB%A5%98.html">React 관련 오류</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-jekyll-2021-09-15-Markdown-문법" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/jekyll/2021/09/15/Markdown-%EB%AC%B8%EB%B2%95.html" class="flip-title">
-        Markdown 문법
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time>  <span>Jekyll</span>  <span>Web</span>, <span>Markdown</span>
-      </span>
-      
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>Github 블로그를 만들기 위해 꼭 필요한 Markdown 문법에 대해 소개해드리겠습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/jekyll/2021/09/15/Markdown-%EB%AC%B8%EB%B2%95.html">Markdown 문법</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-git-2021-09-15-Git-사용법" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/git/2021/09/15/Git-%EC%82%AC%EC%9A%A9%EB%B2%95.html" class="flip-title">
-        Git 사용법
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time>  <span>Git</span>  <span>Git</span>, <span>Web</span>, <a href="/tag-jekyll/" class="flip-title">Jekyll</a>
-      </span>
-      
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>안녕하세요. 아이스초코입니다. 오늘은 Github 블로그 만들기에 필요한 Git 사용법에 대해 소개해드리겠습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/git/2021/09/15/Git-%EC%82%AC%EC%9A%A9%EB%B2%95.html">Git 사용법</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-
-
-
-  
-<footer class="content" role="contentinfo">
-  <hr/>
-  
-    <p><small class="copyright">© 2021. All rights reserved.
-</small></p>
-  
-  
-    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
-  <hr class="sr-only"/>
-</footer>
-
-
-</main>
-
-  
 </hy-push-state>
 
 
