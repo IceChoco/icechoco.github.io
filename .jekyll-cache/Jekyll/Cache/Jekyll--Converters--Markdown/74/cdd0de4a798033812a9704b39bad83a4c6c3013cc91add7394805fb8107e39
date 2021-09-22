@@ -1,4 +1,0 @@
-I"�<p>안녕하세요. 아이스초코입니다. 오늘은 Github 블로그 만들기에 필요한 Git 사용법에 대해 소개해드리겠습니다.</p>
-
-<p>git이 이미 설치되어있는지 확인하기 위해서는 터미널에서 <code class="language-plaintext highlighter-rouge">git --version</code>을 치면됩니다. 버전이 나오는 경우 이미 설치되어있는 것이고, 안나오는 경우 설치되어 있지 않은 것 입니다.</p>
-:ET
