@@ -22,10 +22,10 @@ author1:
   # Comment/uncommet to show/hide
   # Rearrange to change the order in which they appear
   social:
-    facebook:        ara.cho.10420
+    #facebook:        ara.cho.10420
     github:          IceChoco
     email:           dkfk2685@naver.com
-    rss:             https://icechoco.github.io/feed.xml
+    #rss:             https://icechoco.github.io/feed.xml
     #twitter:         <username>
     # google:          <number>
     # vk:              <username>
@@ -35,7 +35,7 @@ author1:
     # spotify:         <user>/<number>
     # soundcloud:      <username>
     # lastfm:          <username>
-    # instagram:       <username>
+    instagram:       arajjyeoing
     # flickr:          <string@string>
     # 500px:           <username>
     # dribbble:        <username>
@@ -55,7 +55,7 @@ author1:
     # trello:          <firstnamelastname>
     # linkedin:        <firstname-lastname-string>
     # xing:            <firstname_lastname_counter>
-    # blogger:         <number>
+    blogger:         https://blog.naver.com/dkfk2685
     # delicious:       <username>
     # stumbleupon:     <username>
     # paypal:          <username>
