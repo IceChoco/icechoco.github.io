@@ -1,0 +1,63 @@
+I"
+
+
+
+
+
+<article id="post-git-Connecting-to-GITHUB-Using-SSH" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/git/2021-09-15-Connecting-to-GITHUB-Using-SSH/" class="flip-title">
+        SSH를 이용해 GITHUB 연결하기
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time> in <a href="/git/" class="flip-title">GIT</a> on <span>Git</span>, <span>Web</span>, <a href="/tag-jekyll/" class="flip-title">Jekyll</a>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-09-22T22:01:23+09:00">2021-09-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>지금까지 github에서 소스를 클로닝(Cloning) 할 때, HTTP 연결을 통해 하였다. Cloning 하는데에 별문제 없이 잘 처리되었지만, 비번을 바꾸거나 할 때 처럼 인증 정보가 변경 되면, 재로그인을 하거나 Windows 자격 증명에서 Github 자격 증명을 갱신해주어야 한다. 비밀번호가 변경되더라도 인증정보를 갱신해야하는 번거로움 없는 SSH키를 이용한 Github와 연동하기를 시도해보았다.</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/git/2021-09-15-Connecting-to-GITHUB-Using-SSH/">SSH를 이용해 GITHUB 연결하기</a>
+
+      </p>
+    </footer>
+  
+</article>
+:ET

@@ -1,0 +1,57 @@
+I"g
+
+
+
+
+
+<article id="post-react-Create-member-registration-function" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        회원가입기능 만들기
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-09-22T00:00:00+09:00">22 Sep 2021</time> in <a href="/react/" class="flip-title">React</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+          
+          
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>client에서 이름, e-maile, PW 등을 입력 후 서버에 보내주면 서버에서 그 데이터를 받아야 합니다. 서버에서 클라이언트로 부터 데이터를 받을 때 bodyParser라는 dependencies가 필요합니다. 이 dependencies를 이용하여 Client에서 보내주는 자료들을 이름, e-maile, PW를 받을 수 있습니다.</p>
+
+<h2 id="bodyparser-다운받기">bodyParser 다운받기</h2>
+<p>아래 명렁어를 터미널에 입력하여 다운받습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install body-parser --save
+</code></pre></div></div>
+
+<p>지금은 로그인을 하거나, 회원가입할 때 만들어준 클라이언트가 없습니다. 그러므로 데이터를 클라이언트에 보내줄 수가 없으므로 대처하기 위해 postman을 다운받을 수 있습니다.</p>
+
+<h2 id="postman-다운받기">postman 다운받기</h2>
+
+<!--author-->
+
+  
+</article>
+:ET

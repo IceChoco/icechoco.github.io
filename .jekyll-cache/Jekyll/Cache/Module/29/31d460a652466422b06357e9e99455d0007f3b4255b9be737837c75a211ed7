@@ -1,0 +1,83 @@
+I"�
+
+
+
+
+
+
+<article id="post-database-Mongo-DB-related-errors" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        Mongo DB 관련 오류
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time> in <a href="/database/" class="flip-title">Database</a> on <span>Database</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-09-22T22:01:23+09:00">2021-09-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>MongoDB 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.</p>
+
+<h2 id="1-mongoservererror-bad-auth--authentication-failed">1. MongoServerError: bad auth : Authentication failed.</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS C:\Ara\react-project\to-do-list&gt; npm run start
+
+&gt; to-do-list@0.1.0 start C:\Ara\react-project\to-do-list
+&gt; node index.js
+
+MongoServerError: bad auth : Authentication failed.
+    at MessageStream.messageHandler (C:\Ara\react-project\to-do-list\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:400:28)
+    at processIncomingData (C:\Ara\react-project\to-do-list\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (C:\Ara\react-project\to-do-list\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:726:22)
+    at TLSSocket.emit (events.js:400:28)
+    at addChunk (internal/streams/readable.js:290:12)
+    at readableAddChunk (internal/streams/readable.js:265:9) {
+  ok: 0,
+  code: 8000,
+  codeName: 'AtlasError'
+}
+</code></pre></div></div>
+
+<p>저의 경우는 index.js 파일 내 MongoDB 설정 시 패스워드 양 옆에 &lt;&gt;를 제거하지 않아 발생한 에러였습니다.<br />
+설정을 <code class="language-plaintext highlighter-rouge">my_login_id:&lt;my_password&gt;</code>로 했었으나, <code class="language-plaintext highlighter-rouge">my_login_id:my_password</code>와 같이 &lt;&gt;를 제거해야 합니다.</p>
+
+<!--author-->
+
+  
+</article>
+:ET
