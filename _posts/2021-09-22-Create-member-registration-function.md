@@ -6,9 +6,18 @@ tags: Web React
 comments: true
 ---
 
-client에서 ID, PW를 입력 후 서버에 보내주면 서버에서 그 데이터를 받아야 합니다. 서버에서 클라이언트로 부터 데이터를 받을 때 bodyParser라는 dependencies가 필요합니다.
+client에서 이름, e-maile, PW 등을 입력 후 서버에 보내주면 서버에서 그 데이터를 받아야 합니다. 서버에서 클라이언트로 부터 데이터를 받을 때 bodyParser라는 dependencies가 필요합니다. 이 dependencies를 이용하여 Client에서 보내주는 자료들을 이름, e-maile, PW를 받을 수 있습니다.
 
-## node.js
+## bodyParser 다운받기
+아래 명렁어를 터미널에 입력하여 다운받습니다.
+```
+npm install body-parser --save
+```
+
+지금은 로그인을 하거나, 회원가입할 때 만들어준 클라이언트가 없습니다. 그러므로 데이터를 클라이언트에 보내줄 수가 없으므로 대처하기 위해 postman을 다운받을 수 있습니다.
+
+## postman 다운받기
+
 
 
 <!--author-->
