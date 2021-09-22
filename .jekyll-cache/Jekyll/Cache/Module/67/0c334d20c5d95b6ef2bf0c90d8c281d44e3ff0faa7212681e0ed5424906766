@@ -1,0 +1,236 @@
+I"3<hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar invert" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg " style="background:url('/assets/img/blog/jj-ying.jpg') center/cover"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <span class="sr-only">Navigation:</span>
+<ul>
+  
+    
+    
+    
+
+    
+      
+        <li>
+          <a
+            id="_navigation"
+            href="/about/"
+            class="sidebar-nav-item"
+            
+            >
+            About
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a
+            
+            href="/resume/"
+            class="sidebar-nav-item"
+            
+            >
+            Resume
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a
+            
+            href="/git/"
+            class="sidebar-nav-item"
+            
+            >
+            GIT
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a
+            
+            href="/jekyll/"
+            class="sidebar-nav-item"
+            
+            >
+            Jekyll
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a
+            
+            href="/react/"
+            class="sidebar-nav-item"
+            
+            >
+            React
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a
+            
+            href="/database/"
+            class="sidebar-nav-item"
+            
+            >
+            Database
+          </a>
+        </li>
+      
+    
+  
+</ul>
+
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+:ET

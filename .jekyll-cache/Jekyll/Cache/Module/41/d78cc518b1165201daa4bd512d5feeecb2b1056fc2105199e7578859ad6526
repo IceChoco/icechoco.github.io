@@ -1,0 +1,84 @@
+I"�
+
+
+
+
+
+<article id="post-react-React-기초" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        React 기초
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time> in <a href="/react/" class="flip-title">React</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-09-22T23:51:08+09:00">2021-09-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>오늘은 첫 개인 프로젝트를 시작하기 전 필요한 기초 지식을 공유드리겠습니다.</p>
+
+<h2 id="nodejs">node.js</h2>
+<p>우선, node.js가 무엇인지 알아야겠죠? 이전에 자바스크립트는 크롬이나, IE와 같은 익스플로러 상에서만 사용이 가능했습니다. 그런데 node.js가 등장하고 나서 부터 자바스크립트를 서버사이드에서도 자바스크립트 사용이 가능해졌습니다.</p>
+
+<h2 id="expressjs">express.js</h2>
+<p>node.js를 이용해서 웹사이트나 어플리케이션을 쉽게 만들 수 있도록 도와주는 프레임워크입니다.
+터미널을 실행하여 아래 명렁어를 실행하면 설치할 수 있습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install express --save
+</code></pre></div></div>
+<p><img src="/assets\img/download-express-js.png" alt="download-express-js" /></p>
+
+<p>npm install 명령어 맨 뒤에 –save 명령어를 입력함으로써 package.json 파일의 dependencies 안에 express 버전이 추가된 것을 확인할 수 있습니다. 이렇게 추가를 해둠으로써 다른 사람이 봤을 때 쓰고있구나 하고 알 수 있게 해주는 역할을 합니다.</p>
+
+<h2 id="indexjs">index.js</h2>
+<p>백엔드 서버를 시작하면 index.js 파일에서 시작합니다.</p>
+
+<h2 id="node_modules">node_modules</h2>
+<p>다운받은 dependencies들 즉 라이브러리들이 이 폴더안에 들어가 있습니다.</p>
+
+<h2 id="npm-run-scripts">npm run {scripts}</h2>
+<p>npm run {scripts} 수행 시 package.json 파일 안에 있는 scripts에 적혀있는 대로 수행된다. 예를 들어 package.json 파일의 scripts 부분이 아래와 같이 명시되어 있는 상태에서 npm run start를 수행한 경우 루트 경로에 있는 index.js가 수행된다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  "scripts": {
+    "start": "node index.js",       //npm run start
+    "build": "react-scripts build", //npm run build
+    "test": "react-scripts test",   //npm run test
+    "eject": "react-scripts eject"  //npm run eject
+  },
+</code></pre></div></div>
+
+<!--author-->
+
+  
+</article>
+:ET

@@ -1,0 +1,76 @@
+I"<
+
+
+
+
+
+<article id="post-jekyll-Hydejack-theme-Custmomization" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        Hydejack 테마 Custmomization
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time> in <a href="/jekyll/" class="flip-title">Jekyll</a> on <span>Web</span>, <a href="/tag-jekyll/" class="flip-title">Jekyll</a>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-09-22T23:51:08+09:00">2021-09-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Hydejack 테마 Custmomization에 관한 내용입니다.</p>
+
+<h2 id="사용자-지정-css-추가">사용자 지정 CSS 추가</h2>
+<h3 id="above-the-fold-contents">above-the-fold contents?</h3>
+<p>아무런 행동을 하지 않은 기본 화면을 UX 업계에서는 <strong>‘Above the Fold’</strong>라고 지칭합니다.</p>
+
+<p>지금 우리의 사회와 생활에 크게 밀접해 있는 웹이 사용자들에게 효율적으로 전달되기를 연구하는 것처럼, 과거 신문이 미디어 산업을 주도할 때 신문이 사용자들에게 어떻게 하면 관심을 끌고 잘 전달됨으로써 구매로 이어질 수 있을지에 대한 많은 에디터들의 고민이 있었습니다.</p>
+
+<p>그때 가판대에 접혀져 놓인 신문이 소비자에게 제일 먼저 보이는 영역을 ‘Above the Fold’라고 일컬었고, 지금 <strong>웹 사이트에서 스크롤로 가려지지 않은 채 사용자에게 제일 먼저 보이는 영역</strong> 또한 ‘Above the Fold’라 불리고 있으며 반대 의미인 스크롤로 가려진 아래 영역은 ‘Below the Fold’라 합니다.</p>
+
+<ul>
+  <li>관련사이트 - <a href="https://www.beusable.net/blog/?p=1724">Above The Fold란?</a></li>
+</ul>
+
+<h3 id="css-추가-방법">CSS 추가 방법</h3>
+<p>Hydejack 테마에 CSS를 커스텀하는 가장 빠르고 안전한 방법은 _sass/my-inline.scss 파일과 _sass/my-style.scss 파일을 통한 방법입니다. 만약 해당 폴더 및 파일이 없다면 생성하시면 됩니다.</p>
+
+<p>above the fold 영역에 대한 css 규칙은 my-inline.scss에 기술합니다. 그 외 영역에 대한 css 규칙은 my-style.scss에 기술합니다.
+단, 이 구분은 no_inline_css가 활성화된 경우 효과가 없습니다.</p>
+
+<p><img src="/assets\img/custom-css-file-path.png" alt="custom-css-file-path" /></p>
+
+<!--author-->
+
+  
+</article>
+:ET
