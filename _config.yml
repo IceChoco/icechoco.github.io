@@ -19,6 +19,8 @@ baseurl:               ''
 # You may also provide a location, e.g.: en-us, de_AT.
 lang:                  en
 
+encoding:              UTF-8
+
 # The title of your blog. Used in the sidebar and the browser tab.
 title:                 IceChoco
 
