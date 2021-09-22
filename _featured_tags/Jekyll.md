@@ -2,7 +2,7 @@
 layout: list
 title: Jekyll
 slug: Jekyll
-menu: true
+menu: false
 order: 3
 description: >
 #  GIT study to manage my sources in GitHub

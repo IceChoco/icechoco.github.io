@@ -2,7 +2,7 @@
 layout: list
 title: GIT
 slug: GIT
-menu: true
+menu: false
 order: 2
 description: >
   GIT study to manage my sources in GitHub

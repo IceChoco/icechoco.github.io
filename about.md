@@ -1,8 +1,10 @@
 ---
 layout: about
 title: About
-menu: true
-order: 1
+menu : true
+image: /assets/img/blog/hydejack-9.jpg
+redirect_from:
+  - /download/
 ---
 
 ## Blog
