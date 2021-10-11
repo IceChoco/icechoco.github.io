@@ -3,8 +3,6 @@ layout: list
 title: React
 slug: react
 description: >
-  React는 웹 프레임워크로, 자바스크립트 라이브러리의 하나로서 사용자 인터페이스를 만들기 위해 사용됩니다.
-  React는 facebook에서 제공해주는 프론트엔드 라이브러리라고 볼 수 있습니다.
   이 카테고리에서는 React 관련 정보를 공유하는 카테고리입니다.
 menu : true
 submenu: false

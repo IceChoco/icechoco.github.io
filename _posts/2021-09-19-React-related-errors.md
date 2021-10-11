@@ -1,14 +1,10 @@
 ---
-title: 'React 관련 오류'
+title: 'React 스크립트 실행 오류'
 layout: post
 categories: react
 tags: Web React
 comments: true
 ---
-
-React 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.
-
-## 1. 스크립트 실행 오류
 ```
 create-react-app : 이 시스템에서 스크립트를 실행할 수 없으므로 ~\AppData\Roaming\npm\creat
 e-react-app.ps1 파일을 로드할 수 없습니다. 자세한 내용은 about_Execution_Policies(https://go.microsoft.
