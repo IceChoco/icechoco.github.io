@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Mongo DB 관련 오류" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"Mongo DB 관련 오류","dateModified":"2021-09-23T00:02:45+09:00","datePublished":"2021-09-20T00:00:00+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/database/2021-09-20-Mongo-DB-related-errors/"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/database/2021-09-20-Mongo-DB-related-errors/","description":"MongoDB 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Mongo DB 관련 오류","dateModified":"2021-09-27T11:14:17+09:00","datePublished":"2021-09-20T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/database/2021-09-20-Mongo-DB-related-errors/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/database/2021-09-20-Mongo-DB-related-errors/","description":"MongoDB 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-09-23T00:08:06+09:00',
+    INDEX_KEY: 'index--2021-10-11T23:45:43+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -293,10 +293,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-23">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-27">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-09-23T00:02:45+09:00">2021-09-23</time>
+              <time datetime="2021-09-27T11:14:17+09:00">2021-09-27</time>
             </span>
           
         
@@ -343,6 +343,50 @@ MongoServerError: bad auth : Authentication failed.
 
 <p>저의 경우는 index.js 파일 내 MongoDB 설정 시 패스워드 양 옆에 &lt;&gt;를 제거하지 않아 발생한 에러였습니다.<br />
 설정을 <code class="language-plaintext highlighter-rouge">my_login_id:&lt;my_password&gt;</code>로 했었으나, <code class="language-plaintext highlighter-rouge">my_login_id:my_password</code>와 같이 &lt;&gt;를 제거해야 합니다.</p>
+
+<h2 id="2-mongooseserverselectionerror-could-not-connect-to-any-servers-in-your-mongodb-atlas-cluster">2. MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster.</h2>
+<p>본가에서 몽고DB를 mongoose를 이용해서 연결 후 정상 확인까지 했으나, 집에와서 run을 해줬더니</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PS C:\Ara\react-project\to-do-list&gt; npm run start
+
+&gt; to-do-list@0.1.0 start C:\Ara\react-project\to-do-list
+&gt; node index.js
+
+MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+    at NativeConnection.Connection.openUri (C:\Ara\react-project\to-do-list\node_modules\mongoose\lib\connection.js:796:32)
+    at C:\Ara\react-project\to-do-list\node_modules\mongoose\lib\index.js:330:10
+    at C:\Ara\react-project\to-do-list\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (&lt;anonymous&gt;)
+    at promiseOrCallback (C:\Ara\react-project\to-do-list\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at Mongoose._promiseOrCallback (C:\Ara\react-project\to-do-list\node_modules\mongoose\lib\index.js:1151:10)
+    at Mongoose.connect (C:\Ara\react-project\to-do-list\node_modules\mongoose\lib\index.js:329:20)
+    at Object.&lt;anonymous&gt; (C:\Ara\react-project\to-do-list\index.js:17:10)
+    at Module._compile (internal/modules/cjs/loader.js:1072:14)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1101:10) {
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'todolist-shard-00-00.hunw7.mongodb.net:27017' =&gt; [ServerDescription],
+      'todolist-shard-00-01.hunw7.mongodb.net:27017' =&gt; [ServerDescription],
+      'todolist-shard-00-02.hunw7.mongodb.net:27017' =&gt; [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-5hich8-shard-0',
+    logicalSessionTimeoutMinutes: undefined
+  }
+}
+</code></pre></div></div>
+<p>이러한 에러가 발생했습니다. 구글링을 해보니 IP address가 제대로 할당이 안된 경우 발생할 수 있다는 글을 발견했습니다. 그래서 mongoDB사이트에서 ‘Network Access’로 들어가서 ADD IP ADDRESS - ADD CURRENT IP ADDRESS 버튼을 눌러 저의 현재 IP를 등록하게 하고 Confirm 버튼을 눌러줬습니다.<br />
+confirm 버튼을 누르게 되면 pending 표시가 뜨고, 작업 완료 후 Active 상태로 변경됩니다. 그럼 이때 다시 터미널로 와서 기존 서버를 종료한 뒤 다시 run을 수행해봤습니다.
+<img src="/assets\img/mongodb-connected.png" alt="mongodb-connected" /><br />
+그랬더니 연결이 성공했을 때 제가 출력하도록 해놓은 메시지인 ‘MongoDB connected…‘를 정상 출력하였습니다.</p>
+
+<h3 id="참고">참고</h3>
+<ul>
+  <li><a href="https://velog.io/@kjy5947/mongoose%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-mongoDB%EC%97%B0%EA%B2%B0%EC%8B%9C-%EC%97%90%EB%9F%AC">mongoose이용하여 mongoDB연결시 에러</a></li>
+</ul>
 
 <!--author-->
 
@@ -525,7 +569,7 @@ MongoServerError: bad auth : Authentication failed.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/react/2021-09-22-Create-member-registration-function/" class="flip-title"><span>회원가입기능 만들기</span></a>  <time class="faded fine" datetime="2021-09-22T00:00:00+09:00">22 Sep 2021</time></li>                        <li class="h4">  <a href="/git/2021-09-21-Solve-git-bash-problem-when-running-ssh-agent-in-windows/" class="flip-title"><span>window 환경에서 ssh-agent 실행 시 git bash 무반응 문제</span></a>  <time class="faded fine" datetime="2021-09-21T00:00:00+09:00">21 Sep 2021</time></li>                        <li class="h4">  <a href="/database/2021-09-20-What-is-Mongo-db/" class="flip-title"><span>Mongo DB란?</span></a>  <time class="faded fine" datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/" class="flip-title"><span>node.js 기초</span></a>  <time class="faded fine" datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-11-Settint-Up-Redux/" class="flip-title"><span>Redux 설치하기</span></a>  <time class="faded fine" datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-11-Screen-development-using-ant-design/" class="flip-title"><span>CSS Framework, Ant Design을 활용한 효율적인 화면개발하기</span></a>  <time class="faded fine" datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time></li>            </ul></aside>
 
   
 
@@ -692,6 +736,19 @@ MongoServerError: bad auth : Authentication failed.
             
             >
             Database
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a
+            
+            href="/server/"
+            class="sidebar-nav-item"
+            
+            >
+            Server
           </a>
         </li>
       

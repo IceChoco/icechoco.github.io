@@ -1,5 +1,268 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-09-23T00:08:06+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
-</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">회원가입기능 만들기</title><link href="https://icechoco.github.io/react/2021-09-22-Create-member-registration-function/" rel="alternate" type="text/html" title="회원가입기능 만들기" /><published>2021-09-22T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/react/Create-member-registration-function</id><content type="html" xml:base="https://icechoco.github.io/react/2021-09-22-Create-member-registration-function/">&lt;p&gt;client에서 이름, e-maile, PW 등을 입력 후 서버에 보내주면 서버에서 그 데이터를 받아야 합니다. 서버에서 클라이언트로 부터 데이터를 받을 때 bodyParser라는 dependencies가 필요합니다. 이 dependencies를 이용하여 Client에서 보내주는 자료들을 이름, e-maile, PW를 받을 수 있습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-10-11T23:45:43+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">node.js 기초</title><link href="https://icechoco.github.io/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/" rel="alternate" type="text/html" title="node.js 기초" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-11T20:27:09+09:00</updated><id>https://icechoco.github.io/server/node-js-%EA%B8%B0%EC%B4%88</id><content type="html" xml:base="https://icechoco.github.io/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/">&lt;p&gt;node.js를 활용한 서버 구축에 있어 필요한 기본 지식들을 기록해보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;nodejs&quot;&gt;node.js&lt;/h2&gt;
+&lt;p&gt;우선, node.js가 무엇인지 알아야겠죠? 이전에 자바스크립트는 크롬이나, IE와 같은 익스플로러 상에서만 사용이 가능했습니다. 그런데 node.js가 등장하고 나서 부터 자바스크립트를 서버사이드에서도 자바스크립트 사용이 가능해졌습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;expressjs&quot;&gt;express.js&lt;/h2&gt;
+&lt;p&gt;node.js를 이용해서 웹사이트나 어플리케이션을 쉽게 만들 수 있도록 도와주는 프레임워크입니다.
+터미널을 실행하여 아래 명렁어를 실행하면 설치할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install express --save
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/assets\img/download-express-js.png&quot; alt=&quot;download-express-js&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;npm install 명령어 맨 뒤에 –save 명령어를 입력함으로써 package.json 파일의 dependencies 안에 express 버전이 추가된 것을 확인할 수 있습니다. 이렇게 추가를 해둠으로써 다른 사람이 봤을 때 쓰고있구나 하고 알 수 있게 해주는 역할을 합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;indexjs&quot;&gt;index.js&lt;/h2&gt;
+&lt;p&gt;백엔드 서버를 시작하면 index.js 파일에서 시작합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;node_modules&quot;&gt;node_modules&lt;/h2&gt;
+&lt;p&gt;다운받은 dependencies들 즉 라이브러리들이 이 폴더안에 들어가 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;npm-run-scripts&quot;&gt;npm run {scripts}&lt;/h2&gt;
+&lt;p&gt;npm run {scripts} 수행 시 package.json 파일 안에 있는 scripts에 적혀있는 대로 수행됩니다. 예를 들어 package.json 파일의 scripts 부분이 아래와 같이 명시되어 있는 상태에서 npm run start를 수행한 경우 루트 경로에 있는 index.js가 수행됩니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;node index.js&quot;,       //npm run start
+    &quot;build&quot;: &quot;react-scripts build&quot;, //npm run build
+    &quot;test&quot;: &quot;react-scripts test&quot;,   //npm run test
+    &quot;eject&quot;: &quot;react-scripts eject&quot;  //npm run eject
+  },
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="server" /><category term="server" /><summary type="html">node.js를 활용한 서버 구축에 있어 필요한 기본 지식들을 기록해보겠습니다.</summary></entry><entry><title type="html">Redux 설치하기</title><link href="https://icechoco.github.io/react/2021-10-11-Settint-Up-Redux/" rel="alternate" type="text/html" title="Redux 설치하기" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-11T20:18:26+09:00</updated><id>https://icechoco.github.io/react/Settint-Up-Redux</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-11-Settint-Up-Redux/">&lt;p&gt;Redux를 자신이 개발할 어플리케이션에 설치하고 설정하는 방법을 기록하겠습니다. 우선 다운 받아야 할 dependency들이 redux, react-redux, redux-promise, redux-thunk까지 총 4개가 있습니다. 이 중에서 redux-promis, redux-thunk는 redux의 미들웨어입니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install redux react-redux redux-promise redux-thunk --save
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;redux-promise-redux-thunk가-필요한-이유&quot;&gt;redux-promise, redux-thunk가 필요한 이유&lt;/h2&gt;
+&lt;p&gt;redux-promise, redux-thunk는 redux를 잘 쓸 수 있게 도와주는 역할을 하는 미들웨어입니다. redux는 redux store 안에 모든 state를 관리하고 있습니다. 이 store 안에 있는 state를 변경하기 위해서는 dispatch를 이용해서 action을 통해 변경시킬 수 있습니다. 이렇게 store가 데이터를 받을 때 항상 객체 형식으로 데이터를 받는 것이 아니라 때에 따라 promise, functions 형식으로 받기도 합니다. 그런데, redux 기초편에서 봤듯 우리는 reudx store는 객체 형식으로만 데이터를 받을 수 있다고 배웠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;redux-thunk&lt;/strong&gt;는 dispatch한테 어떻게 function 형식을 받는지 그 방법을 알려주고, &lt;strong&gt;redux-promise&lt;/strong&gt;는 dispatch한테 promise가 왔을 때 어떻게 해야하는지 store에게 알려주는 역할을 합니다. 즉 이 2가지를 다운받지 않고 promise, functions 형식을 받아 redux를 사용하면 에러가 발생합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;combinereducers가-하는-역할&quot;&gt;combineReducers가 하는 역할&lt;/h2&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets\img/combine-reducer.PNG&quot; height=&quot;300px&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;store에는 reducer가 여러가지 있을 수 있습니다.이 reducer는 어떻게 state가 변하는 지를 보여준 다음, 변한 마지막 값을 리턴해주는 일을 합니다.
+state는 유저, 구독 등 여러가지에 대한 state가 있을 수 있으므로 각각의 state에 따라 reducer도 나눠져 있습니다. redux에 내장되어 있는 combineReducer는 여러개의 reducer들을 Root Reducer에서 하나로 합쳐주는 역할을 합니다.&lt;/p&gt;
+
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><category term="Redux" /><summary type="html">Redux를 자신이 개발할 어플리케이션에 설치하고 설정하는 방법을 기록하겠습니다. 우선 다운 받아야 할 dependency들이 redux, react-redux, redux-promise, redux-thunk까지 총 4개가 있습니다. 이 중에서 redux-promis, redux-thunk는 redux의 미들웨어입니다. npm install redux react-redux redux-promise redux-thunk --save redux-promise, redux-thunk가 필요한 이유 redux-promise, redux-thunk는 redux를 잘 쓸 수 있게 도와주는 역할을 하는 미들웨어입니다. redux는 redux store 안에 모든 state를 관리하고 있습니다. 이 store 안에 있는 state를 변경하기 위해서는 dispatch를 이용해서 action을 통해 변경시킬 수 있습니다. 이렇게 store가 데이터를 받을 때 항상 객체 형식으로 데이터를 받는 것이 아니라 때에 따라 promise, functions 형식으로 받기도 합니다. 그런데, redux 기초편에서 봤듯 우리는 reudx store는 객체 형식으로만 데이터를 받을 수 있다고 배웠습니다.</summary></entry><entry><title type="html">CSS Framework, Ant Design을 활용한 효율적인 화면개발하기</title><link href="https://icechoco.github.io/react/2021-10-11-Screen-development-using-ant-design/" rel="alternate" type="text/html" title="CSS Framework, Ant Design을 활용한 효율적인 화면개발하기" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-11T16:08:09+09:00</updated><id>https://icechoco.github.io/react/Screen-development-using-ant-design</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-11-Screen-development-using-ant-design/">&lt;p&gt;원래는 모든 것을 CSS를 활용해서 하나하나 만들 수 있지만, 그렇게 되면 기능을 신경 쓰는 것 이외에 너무 많은 시간을 CSS에 투자해야합니다. 그래서 기능 개발에 초점을 맞추기 위해 CSS 프레임 워크를 사용해보도록 하겠습니다. 요즘 많은 기업들이 실무에서도 CSS 프레임워크가 잘 되어 있어 많이 사용하고 있습니다.&lt;/p&gt;
+
+&lt;p&gt;가장 유명한 프레임워크는 Mateiral UI, React Bootstrap, Semantic UI, Ant Design, Materialize가 있습니다. 저는 그 중 Ant Design을 활용해서 개발해보도록 하겠습니다. Ant Design은 중국에서 개발되었으며 많은 기능들이 들어있기 때문에 사이즈가 큰 편입니다. 하지만 스타일이 굉장히 깔끔하고 엔터프라이즈 환경에서도 어울리는 디자인 생성이 가능합니다. 가장 큰 장점은 사용하기가 굉장히 편합니다. Material UI도 좋은 프레임워크지만 처음 사용할 때 어려움이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;가장먼저 npm을 사용하여 Ant Design을 설치합니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install antd --save
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;그 다음 사용할 곳에 아래 import문을 추가하면 ant Design을 사용할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://ant.design/&quot;&gt;Ant Design 공식 홈페이지&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">원래는 모든 것을 CSS를 활용해서 하나하나 만들 수 있지만, 그렇게 되면 기능을 신경 쓰는 것 이외에 너무 많은 시간을 CSS에 투자해야합니다. 그래서 기능 개발에 초점을 맞추기 위해 CSS 프레임 워크를 사용해보도록 하겠습니다. 요즘 많은 기업들이 실무에서도 CSS 프레임워크가 잘 되어 있어 많이 사용하고 있습니다.</summary></entry><entry><title type="html">Concurrently를 이용한 백서버와 클라이언트서버 동시 실행시키기</title><link href="https://icechoco.github.io/server/2021-10-11-Running-server-and-client-at-the-same-time/" rel="alternate" type="text/html" title="Concurrently를 이용한 백서버와 클라이언트서버 동시 실행시키기" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-11T15:34:45+09:00</updated><id>https://icechoco.github.io/server/Running-server-and-client-at-the-same-time</id><content type="html" xml:base="https://icechoco.github.io/server/2021-10-11-Running-server-and-client-at-the-same-time/">&lt;p&gt;개발하면서 매번 터미널 두개 켜서 하나는 server run 시키고, 다른 하나는 react run 시키고 두 번 해줘야 하는게 정말 불편했습니다. 그러던 와중에 알게된 것은 바로 &lt;strong&gt;Concurrently&lt;/strong&gt;를 이용해서 백서버와 클라이언트서버를 동시에 실행시키는 것! 그래서 이번 글에서는 어떻게 Concurrently를 활용해서 동시에 실행시킬 수 있는지 알려드리겠습니다. 우선 사용을 위해서는 Concurrently 라이브러리를 다운받으셔야합니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install concurrently --save
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;설치 후 사용방법은 package.json 파일 내 “scripts” 부분에 실행할 명령어를 넣고 concurrenlty를 적은 뒤 켜고 싶은 것들을 차례대로 적어주시면 됩니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;dev&quot;: &quot;concurrently   \&quot;npm run backend\&quot; \&quot;npm run start --prefix client\&quot;&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;참고&quot;&gt;참고&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/concurrently&quot;&gt;concurrently-npm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="server" /><category term="server" /><summary type="html">개발하면서 매번 터미널 두개 켜서 하나는 server run 시키고, 다른 하나는 react run 시키고 두 번 해줘야 하는게 정말 불편했습니다. 그러던 와중에 알게된 것은 바로 Concurrently를 이용해서 백서버와 클라이언트서버를 동시에 실행시키는 것! 그래서 이번 글에서는 어떻게 Concurrently를 활용해서 동시에 실행시킬 수 있는지 알려드리겠습니다. 우선 사용을 위해서는 Concurrently 라이브러리를 다운받으셔야합니다. npm install concurrently --save 설치 후 사용방법은 package.json 파일 내 “scripts” 부분에 실행할 명령어를 넣고 concurrenlty를 적은 뒤 켜고 싶은 것들을 차례대로 적어주시면 됩니다. &quot;dev&quot;: &quot;concurrently \&quot;npm run backend\&quot; \&quot;npm run start --prefix client\&quot;&quot;</summary></entry><entry><title type="html">Redux 기초</title><link href="https://icechoco.github.io/react/2021-10-11-Redux-Basics/" rel="alternate" type="text/html" title="Redux 기초" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-11T19:21:59+09:00</updated><id>https://icechoco.github.io/react/Redux-Basics</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-11-Redux-Basics/">&lt;p&gt;Redux는 상태관리 라이브러리(predictable state container) 입니다. 그렇다면 여기서 말하는 state가 뭘까요? React에서는 Props와 State가 있습니다. 이 두가지를 비교하면서 state에 대해 알아보겠습니다.&lt;/p&gt;
+&lt;h2 id=&quot;props-vs-state&quot;&gt;Props VS State&lt;/h2&gt;
+&lt;h3 id=&quot;props&quot;&gt;Props&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Props는 Properties의 줄임말입니다.&lt;/li&gt;
+  &lt;li&gt;부모 컴포넌트와 자식 컴포넌트가 있는 경우 데이터를 서로 주고 받아야겠죠? 두 컴포넌트간의 데이터를 주고 받을 때는 Props를 이용해야 합니다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;단방향 데이터 흐름&lt;/strong&gt;: child component에 전달되는 값 또는 method. 부모 컴포넌트에서 자식 컴포넌트로 즉 위에서 아래로만 데이터 전달이 가능합니다. 반대로 child component에서 parent component로 전달은 불가능합니다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;read donly&lt;/strong&gt;: child component로 전달받은 props 값은 변하지 않습니다다. 만약 부모로부터 받은 값을 수정하고 싶다면 수정된 값으로 부모 컴포넌트에게서 다시 받아야 합니다.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;소스코드 예시&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;parent component&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  import React, {component} from 'react';
+  import Hello from './Hello';
+
+  class App extends Component{
+      rendor(){
+          return(
+              &amp;lt;Hello name=&quot;홍길동&quot;&amp;gt; //Hello라는 자식 컴포넌트에게 name이라는 변수를 전달한다.
+          );
+      }
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;ul&gt;
+      &lt;li&gt;child component&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  import React, {component} from 'react';
+
+  class Hello extends Component{
+      rendor(){
+          return(
+              &amp;lt;div&amp;gt;
+                  안녕하세요. {this.props.name}님!!
+              &amp;lt;/div&amp;gt;
+          );
+      }
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;state&quot;&gt;State&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;컴포넌트가 가지고 있는 값&lt;/strong&gt;: parent component에서 child component로 보내는게 아닌 그 component 자체 안에서 데이터를 전달할 수 있습니다.&lt;/li&gt;
+  &lt;li&gt;state는 변할 수 있습니다.&lt;/li&gt;
+  &lt;li&gt;state가 변경되면, component가 re-rendering 됩니다. (즉, update 라이프 사이클이 수행됩니다)&lt;/li&gt;
+  &lt;li&gt;&lt;span style=&quot;color:red&quot;&gt;state의 변경은 반드시 setState()함수를 이용&lt;/span&gt;해줘야 합니다. 절대 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;this.state.term = '검색어'&lt;/code&gt;와 같이 직접 할당할 수 없습니다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;소스코드 예시&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import React, {Component} from 'react';
+
+class App extends Component{
+    constructor(props){
+        super(props);
+
+        this.state = { //초기화
+            term: &quot;&quot;,
+        }
+    }
+
+    rendor(){
+        return(
+            &amp;lt;div&amp;gt;
+                &amp;lt;input
+                    onchange={(e) =&amp;gt; this.setState({term: e.target.value})} //수정
+                &amp;gt;
+                &amp;lt;/input&amp;gt;
+                &amp;lt;div&amp;gt;InputText1 {this.state.term}&amp;lt;/div&amp;gt; //읽기
+            &amp;lt;/div&amp;gt;
+        );
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets\img/without-redux.PNG&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;그래서 Redux는 이러한 state를 관리해주는 툴입니다. 만약 아래처럼 Comments 라는 컴포넌트 안에 A라는 컴포넌트가 있고, 또 그 안에 B라는 컴포넌트가 있다고 해봅시다.&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets\img/redux-exam.PNG&quot; height=&quot;200px&quot; width=&quot;600px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;B 컴포넌트에서 Action이 발생했다면 commments 컴포넌트에 어떤 액션이 일어났는지 알려줘야합니다. 이때 Redux가 없다면 B컴포넌트 → A컴포넌트 → Comments 컴포넌트로 하나하나 단계적으로 타고 올라가야합니다.&lt;/p&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets\img/redux-store.PNG&quot; height=&quot;200px&quot; width=&quot;600px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;그런데 이때 상위 컴포넌트로 이동하는게 아니라 Redux 스토어에 저장을 해놓게되면 여러 컴포넌트를 거쳐 올라가지 않아도 B컴포넌트 → Store로 직접 접근이 가능하며, 반대로 store → B컴포넌트로도 직접 접근이 가능합니다. 여러개의 컴포넌트를 왔다갔다 해야하는 과정이 빠지니 훨씬 편하게 State관리를 할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;redux-데이터-flow&quot;&gt;Redux 데이터 Flow&lt;/h2&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets\img/redux-data-flow.PNG&quot; height=&quot;200px&quot; width=&quot;600px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Redux는 철저하게 한뱡향 데이터 플로우를 가집니다(strict unidirectional data flow). 리액트 컴포넌트에서 시작되어 Action → Reduecer → Store를 거쳐 다시 리액트 컴포넌트로 돌아옵니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;action&quot;&gt;Action&lt;/h3&gt;
+&lt;p&gt;Action은 무엇이 일어났는지 설명하는 객체입니다. 형식이 객체여야만 redux store가 내용을 받을 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{type: 'LIKE_ARTICLE', articleId: 42} //articleId 42번을 좋아요 했다.
+{type: 'FETCH_USER_SUCCESS', response: {id:3, name: 'Mary'}} //이름이 Mary이고 id가 3번인 유저를 가져오는 것을 성공했다.
+{type: 'ADD_TODO', text: 'Read the Redux docs.'} //이 텍스트를 todo List에 add했다.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;reducer&quot;&gt;REDUCER&lt;/h3&gt;
+&lt;p&gt;이 액션을 함으로 인해서 A였던 값이 B로 변했다는 것을 설명해줍니다. 자세하게는 이전 State와 action object를 받은 후에 next state를 return 해주는 역할을 합니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{previousState, action} =&amp;gt; nextState
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;store&quot;&gt;STORE&lt;/h3&gt;
+&lt;p&gt;Application의 state을 감싸주는 역할을 합니다. 이 Store안에는 여러가지의 많은 메소드가 있습니다. 이 메소드를 이용하여 State를 관리할 수 있습니다.&lt;/p&gt;
+
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><category term="Redux" /><summary type="html">Redux는 상태관리 라이브러리(predictable state container) 입니다. 그렇다면 여기서 말하는 state가 뭘까요? React에서는 Props와 State가 있습니다. 이 두가지를 비교하면서 state에 대해 알아보겠습니다. Props VS State Props Props는 Properties의 줄임말입니다. 부모 컴포넌트와 자식 컴포넌트가 있는 경우 데이터를 서로 주고 받아야겠죠? 두 컴포넌트간의 데이터를 주고 받을 때는 Props를 이용해야 합니다. 단방향 데이터 흐름: child component에 전달되는 값 또는 method. 부모 컴포넌트에서 자식 컴포넌트로 즉 위에서 아래로만 데이터 전달이 가능합니다. 반대로 child component에서 parent component로 전달은 불가능합니다. read donly: child component로 전달받은 props 값은 변하지 않습니다다. 만약 부모로부터 받은 값을 수정하고 싶다면 수정된 값으로 부모 컴포넌트에게서 다시 받아야 합니다. 소스코드 예시 parent component</summary></entry><entry><title type="html">함수형 컴포넌트 vs 클래스 컴포넌트</title><link href="https://icechoco.github.io/react/2021-10-11-Class-Component-vs-Functional-Component/" rel="alternate" type="text/html" title="함수형 컴포넌트 vs 클래스 컴포넌트" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-11T22:25:33+09:00</updated><id>https://icechoco.github.io/react/Class-Component-vs-Functional-Component</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-11-Class-Component-vs-Functional-Component/">&lt;p&gt;안녕하세요. 오늘은 React Component의 두 종류인 함수형 컴포넌트와 클래스 컴포넌트에 대해서 포스팅하겠습니다.&lt;/p&gt;
+&lt;h2 id=&quot;class-component&quot;&gt;Class Component&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets\img/class-component.PNG&quot; alt=&quot;class-component&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;state와 Lifecyle method와 같은 더 많은 기능들을 사용 할 수 있습니다. 다만 코드가 좀 더 길어지고, 복잡해지며, 성능적인 면에서 느립니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;functional-component&quot;&gt;Functional Component&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets\img/functional-component.PNG&quot; alt=&quot;functional-component&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;state와 Lifecyle method를 사용할 수 없어 제공하는 기능들이 한정됩니다. 하지만 v16.8 이후 Hook를 이용하여 보완되었습니다.&lt;/li&gt;
+  &lt;li&gt;코드가 짧아지고 간단해져 선언하기가 편합니다.&lt;/li&gt;
+  &lt;li&gt;메모리를 클래스 컴포넌트보다 덜 사용해서 성능이 좋고 빠릅니다.&lt;/li&gt;
+  &lt;li&gt;배포시, 결과물의 파일크기가 클래스 컴포넌트보다 작습니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Class component에서 사용 가능하고 functional Component에서 사용할 수 없는(v16.8 전) 기능에 대해 자세히 알아보기 위해 우선 아래 라이프 사이클 다이어그램을 보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;lifecycle&quot;&gt;Lifecycle&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets\img/React-lifecycle-methods-diagram.PNG&quot; alt=&quot;React-lifecycle-methods-diagram&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;class 컴포넌트를 이용하여 구현한 경우, 리액트에서 처음에 페이지를 킬 때 어떤 순서로 시작이 되는지 알려주는 다이어그램입니다. 하지만 functional 컴포넌트의 경우 위 라이프 사이클의 어느 기능도 사용할 수가 없습니다. 그러다보니 functional 컴포넌트는 빠르긴 하지만 너무 많은 기능이 안되다 보니 대부분 class형 컴포넌트를 사용했습니다. 그러다가 리액트 16.8 버전에서 Hook를 발표했습니다. 이 이후부터는 functional 컴포넌트에서도 라이프사이클과 state를 사용할 수 있게 되었습니다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Class component VS Hook를 활용한 Functional Component&lt;/strong&gt;
+&lt;img src=&quot;/assets\img/class-component-vs-functional-component.PNG&quot; alt=&quot;class-component-vs-functional-component&quot; /&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Constructor: Constructor를 이용하여 state를 부여해줍니다.&lt;/li&gt;
+      &lt;li&gt;rendor: Dom에 알맞게 넣어 화면에 렌더링해줍니다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/&quot;&gt;React lifecycle methods diagram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">안녕하세요. 오늘은 React Component의 두 종류인 함수형 컴포넌트와 클래스 컴포넌트에 대해서 포스팅하겠습니다. Class Component state와 Lifecyle method와 같은 더 많은 기능들을 사용 할 수 있습니다. 다만 코드가 좀 더 길어지고, 복잡해지며, 성능적인 면에서 느립니다.</summary></entry><entry><title type="html">Create-React-App으로 React 시작하기</title><link href="https://icechoco.github.io/react/2021-09-28-Starting-with-Create-React-App/" rel="alternate" type="text/html" title="Create-React-App으로 React 시작하기" /><published>2021-09-28T00:00:00+09:00</published><updated>2021-10-10T23:24:55+09:00</updated><id>https://icechoco.github.io/react/Starting-with-Create-React-App</id><content type="html" xml:base="https://icechoco.github.io/react/2021-09-28-Starting-with-Create-React-App/">&lt;p&gt;기존에는 리액트 앱을 처음 실행하기 위해서는 webpack이나 babel 같은 것들을 설정하기 위해서 굉장히 많은 시간이 소요되었습니다. 하지만 지금은 따로 설정하지 않아도 Create-React-App이라는 Command를 이용하여 react, webpack 등을 바로 설정할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;babel&quot;&gt;babel&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;babel&lt;/strong&gt;이란 자바스크립트 ES6, ES7 등 해마다 새로운 메소드를 추가한 버전이 있습니다. 추가한 메소드들이 최신 브라우저에서는 잘 수행되나 오래된 브라우저에서 수행이 되지 않는 경우가 있습니다. 최신 자바스크립트 문법을 사용하여도 구형 브라우저에서도 수행될 수 있게 ES6문법을 ES5로 바꿔주는 역할을 하는 것이 babel의 역할입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;webpack&quot;&gt;webpack&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;webpack&lt;/strong&gt;이란 예전에 웹사이트를 만들 때에는 js파일, css, html과 같이 간단하게 만들었으나 점점 웹사이트의 사이즈가 커졌습니다. 그러면서 js, html 파일 뿐만 아니라 라이브러리 및 프레임워크를 많이 사용하면서 구조가 복잡해졌습니다. 복잡해진 구조들을 webpack을 이용해서 bundle(묶어주는) 시켜주는 것이 webpack의 역할입니다.&lt;/p&gt;
+
+&lt;p&gt;webpack은 src 폴더 안의 영역만 관리를 해주며, public 폴더 안의 소스까지 관리를 해주지 않습니다. 그래서 이미지 파일과 같은 특정 파일을 webpack에 넣고 싶을 때는 src 폴더 안에 넣어 webpack이 모아주는 역할을 할 수 있도록 해주면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;터미널에 아래 스크립트를 수행하여 다운을 받을 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npx create-react-app .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;.의 의미는 내가 있는 디렉토리 안에다가 react를 설치하겠다는 의미입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-react-app&quot;&gt;Create-React-app&lt;/h2&gt;
+&lt;p&gt;저희는 react를 설치하고자 하는 client 경로에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npx create-react-app .&lt;/code&gt; 명령어를 통해 다운 받았습니다. 하지만 이전에는 아래와 같은 명령어를 통해 컴퓨터 안에 다운을 받았습니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install -g create-react-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;그래서 컴퓨터 안에 받은 것을 활용해서 react를 실행했었습니다. 하지만 이제는 global로 다운을 받을 필요가 없이 npx를 이용해서 다운을 받지 않고 노드 레지스트리에 있는 react-creat-app을 가져와서 이용할 수 있습니다. 그럼 npm과 npx의 차이가 뭘까요?&lt;/p&gt;
+&lt;h3 id=&quot;npm-node-package-manager&quot;&gt;NPM: node package manager&lt;/h3&gt;
+&lt;p&gt;(1) 레지스트리와 같은 저장소 역할을 한다. 라이브러리를 담고 있는 곳이 레지스트리이다.&lt;br /&gt;
+(2) npm에 관한 것은 ‘package.json’ 파일에 정의되어 있다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;ex) dependencies는 어떤걸쓰고, 버전은 몇을 쓰고 있는지, script는 어떤 것을 써야하는지 등&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;(3) local vs Global&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;npm install을 사용하여 다운받으면 자동적으로 로컬에 다운을 받게 되고, node_modules 폴더에 저장된다.
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  npm install create-react-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-g&lt;/code&gt;라는 플래그를 함께 사용하면 Global로 다운받게 되고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bin/&lt;/code&gt; 폴더에 저장된다. 리눅스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local/bin&lt;/code&gt; 폴더 안에, Windows는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%AppData%/npm&lt;/code&gt;에 저장된다
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  npm install -g create-react-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;h3 id=&quot;npx&quot;&gt;NPX&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;장점
+    &lt;ol&gt;
+      &lt;li&gt;Disk Space를 낭비하지 않을 수 있다.&lt;/li&gt;
+      &lt;li&gt;항상 최신 버전을 사용할 수 있다.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;참고&quot;&gt;참고&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=P4gXaWZz30Q&quot;&gt;노드 리액트 기초 강의 #16 Create-React-App&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">기존에는 리액트 앱을 처음 실행하기 위해서는 webpack이나 babel 같은 것들을 설정하기 위해서 굉장히 많은 시간이 소요되었습니다. 하지만 지금은 따로 설정하지 않아도 Create-React-App이라는 Command를 이용하여 react, webpack 등을 바로 설정할 수 있습니다.</summary></entry><entry><title type="html">회원가입기능 만들기</title><link href="https://icechoco.github.io/react/2021-09-22-Create-member-registration-function/" rel="alternate" type="text/html" title="회원가입기능 만들기" /><published>2021-09-22T00:00:00+09:00</published><updated>2021-10-11T15:06:40+09:00</updated><id>https://icechoco.github.io/react/Create-member-registration-function</id><content type="html" xml:base="https://icechoco.github.io/react/2021-09-22-Create-member-registration-function/">&lt;p&gt;client에서 이름, e-maile, PW 등을 입력 후 서버에 보내주면 서버에서 그 데이터를 받아야 합니다. 서버에서 클라이언트로 부터 데이터를 받을 때 bodyParser라는 dependencies가 필요합니다. 이 dependencies를 이용하여 Client에서 보내주는 자료들을 이름, e-maile, PW를 받을 수 있습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;bodyparser-다운받기&quot;&gt;bodyParser 다운받기&lt;/h2&gt;
 &lt;p&gt;아래 명렁어를 터미널에 입력하여 다운받습니다.&lt;/p&gt;
@@ -8,7 +271,74 @@
 
 &lt;p&gt;지금은 로그인을 하거나, 회원가입할 때 만들어준 클라이언트가 없습니다. 그러므로 데이터를 클라이언트에 보내줄 수가 없으므로 대처하기 위해 postman을 다운받을 수 있습니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;postman-다운받기&quot;&gt;postman 다운받기&lt;/h2&gt;
+&lt;h2 id=&quot;cra-살펴보기---디렉토리-구조&quot;&gt;CRA 살펴보기 - 디렉토리 구조&lt;/h2&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;client  
+├─ node_modules //NPM또는 Yarn을 통해 설치된 여러가지 라이브러리  
+├─ public  
+├─── src  
+│ ├── _actions   //_actions, _reducer: Redux를 위한 폴더 
+│ ├── _reducer  
+│ ├── components  
+│ │ ├─── views     //페이지를 넣을 폴더 
+│ │   ├─── LandingPage //처음 홈페이지 접속 시 최초 보여지는 페이지
+│ │   ├─── LoginPage   //로그인 페이지
+│ │   ├─── NavBar      //사이드바랑 상단바
+│ │   ├─── RegisterPage
+│ ├── App.js //Routing 관련 일을 처리(로딩페이지에 가고 싶다면 로딩페이지에 가도록 분류해주고, 랜딩페이지에 가고 싶다면 랜딩페이지에 갈 수 있는 분류를 해줌)
+│ └── Config.js //환경변수를 정하는 곳
+├─ hoc //Higher Order Component의 약자  
+├─ utils //여러군데에서 쓰일 수 있는 것들을 이곳에 넣어둬서 어디서든 쓸수 있게 해줌
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;utils&lt;/strong&gt;: Landing 페이지에서 사용하는 소스를 loginPage, RegisterPage에서 쓴다고 하면 loginPage, RegisterPage에 똑같은 소스를 복사하는게 아니라 utils에 넣어두고 Landing, loginPage, RegisterPage 세 군데에서 사용할 수 있게 해줍니다.
+    &lt;h3 id=&quot;hoc&quot;&gt;hoc&lt;/h3&gt;
+    &lt;p&gt;hoc는 다른 컴포넌트를 갖는 펑션입니다. 예를들어 여러가지 컴포넌트를 넣어 놓고 로직에 의해 해당 컴포넌트에 들어갈 자격이 있는지 판단을 한 후 다음 액션을 취할 수 있도록 해주는 Auth라는 HOC가 있다고 해봅시다. Auth 안에 로그인이 된 사람만 들어갈 수 있는 페이지가 있는 경우, Auth는 해당 유저가 해당 페이지에 들어갈 자격이 되는지를 알아낸 후에 자격이 된다면 Logged IN COMPONENT에 가게 해주고 아니라면 다른 페이지로 보내버립니다. 예시로 든 자격이 아니더라도 다른 기능을 hoc에 넣어놓은 후 많은 컴포넌트들이 이용할 수 있게 된다고 생각하면 됩니다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cra-살펴보기---srcappjs&quot;&gt;CRA 살펴보기 - src/App.js&lt;/h2&gt;
+&lt;p&gt;React에서는 페이지 간의 이동을 할 떄 React Router Dom이라는 것을 사용합니다. 우선 react-router-dom을 설치합니다. 설치 완료 후 App.js 안에서 페이지 이동을 할 수 있도록 라우팅을 구현해줍니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install react-router-dom --save
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;지금까지는 Client를 구현하지 않았기 때문에 postman을 이용해서 backend가 잘 구축되어 있는지 여러 기능들을 테스트해봤습니다. 지금부터는 React.js를 사용해서 Server에 req.를 보내보도록 하겠습니다. 이때 사용할 것이 AXOIS 입니다. AXOIS는 jQuery 사용할 때 AJAX와 같은 개념입니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install axios --save
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;proxy-server가-뭐에요&quot;&gt;Proxy Server가 뭐에요?&lt;/h2&gt;
+&lt;p&gt;클라이언트와 서버가 둘이서 요청을 주고 응답을 받는데 이 안에 프록시 서버가 들어갈 수 있습니다. 만약에 유저가 있고 인터넷이 있다고 생각했을 때, 유저가 무언가를 보낸 경우 프록시 서버에서 많은 일들을 할 수 있습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;요청받은 IP를 Proxy Server에서 임의 변경 가능
+      &lt;ul&gt;
+        &lt;li&gt;만약에 유저의 아이피가 ‘111.111.111.111’이라고 가정해보죠. 그럼 이때 프록시 서버에서 유저의 아이피를 임의로 변경 할 수 있습니다. 그럼 인터넷에서는 접근하는 사람의 IP를 모르게 되는거죠.&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;요청받은 데이터 임의 변경 가능
+      &lt;ul&gt;
+        &lt;li&gt;IP 뿐만이 아니라 유저에서 보내는 데이터도 중간에서 임의로 바꿀 수 있습니다.&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;방화벽 기능&lt;/li&gt;
+    &lt;li&gt;웹필터 기능&lt;/li&gt;
+    &lt;li&gt;캐쉬 데이터, 공유 데이터 제공 기능
+      &lt;ul&gt;
+        &lt;li&gt;어떤 서버에 들어갔을 때 static한 이미지들을 프록시 서버에 저장 가능합니다. 유저가 무언가를 보고 싶을 떄 인터넷까지 가지않아도 프록시 서버에서 가져와 빠르게 데이터를 볼 수 있습니다.&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이처럼 프록시 서버는 다양한 기능들을 수행하고 있습니다. Proxy Serve를 쓰는 이유를 정리해보자면&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;회사에서 직원들이나 집안에서 아이들 인터넷 사이트 접근 제어&lt;/li&gt;
+    &lt;li&gt;캐쉬를 이용해 더 빠른 인터넷 제공&lt;/li&gt;
+    &lt;li&gt;더 나은 보안 제공&lt;/li&gt;
+    &lt;li&gt;이용 제한된 사이트 접근 가능&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;정도가 있습니다.&lt;/p&gt;
 
 &lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">client에서 이름, e-maile, PW 등을 입력 후 서버에 보내주면 서버에서 그 데이터를 받아야 합니다. 서버에서 클라이언트로 부터 데이터를 받을 때 bodyParser라는 dependencies가 필요합니다. 이 dependencies를 이용하여 Client에서 보내주는 자료들을 이름, e-maile, PW를 받을 수 있습니다.</summary></entry><entry><title type="html">window 환경에서 ssh-agent 실행 시 git bash 무반응 문제</title><link href="https://icechoco.github.io/git/2021-09-21-Solve-git-bash-problem-when-running-ssh-agent-in-windows/" rel="alternate" type="text/html" title="window 환경에서 ssh-agent 실행 시 git bash 무반응 문제" /><published>2021-09-21T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/git/Solve-git-bash-problem-when-running-ssh-agent-in-windows</id><content type="html" xml:base="https://icechoco.github.io/git/2021-09-21-Solve-git-bash-problem-when-running-ssh-agent-in-windows/">&lt;p&gt;오늘의 삽질 하나 추가&lt;/p&gt;
 
@@ -54,29 +384,7 @@
   &lt;li&gt;&lt;a href=&quot;https://ohgyun.com/483&quot;&gt;꿀벌개발일지::ssh-add 에서 authentication agent 문제&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;!-- author --&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="git" /><category term="Git" /><category term="ssh-agent" /><category term="git-bash" /><summary type="html">오늘의 삽질 하나 추가</summary></entry><entry><title type="html">Hydejack 테마 Custmomization</title><link href="https://icechoco.github.io/jekyll/2021-09-20-Hydejack-theme-Custmomization/" rel="alternate" type="text/html" title="Hydejack 테마 Custmomization" /><published>2021-09-20T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/jekyll/Hydejack-theme-Custmomization</id><content type="html" xml:base="https://icechoco.github.io/jekyll/2021-09-20-Hydejack-theme-Custmomization/">&lt;p&gt;Hydejack 테마 Custmomization에 관한 내용입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;사용자-지정-css-추가&quot;&gt;사용자 지정 CSS 추가&lt;/h2&gt;
-&lt;h3 id=&quot;above-the-fold-contents&quot;&gt;above-the-fold contents?&lt;/h3&gt;
-&lt;p&gt;아무런 행동을 하지 않은 기본 화면을 UX 업계에서는 &lt;strong&gt;‘Above the Fold’&lt;/strong&gt;라고 지칭합니다.&lt;/p&gt;
-
-&lt;p&gt;지금 우리의 사회와 생활에 크게 밀접해 있는 웹이 사용자들에게 효율적으로 전달되기를 연구하는 것처럼, 과거 신문이 미디어 산업을 주도할 때 신문이 사용자들에게 어떻게 하면 관심을 끌고 잘 전달됨으로써 구매로 이어질 수 있을지에 대한 많은 에디터들의 고민이 있었습니다.&lt;/p&gt;
-
-&lt;p&gt;그때 가판대에 접혀져 놓인 신문이 소비자에게 제일 먼저 보이는 영역을 ‘Above the Fold’라고 일컬었고, 지금 &lt;strong&gt;웹 사이트에서 스크롤로 가려지지 않은 채 사용자에게 제일 먼저 보이는 영역&lt;/strong&gt; 또한 ‘Above the Fold’라 불리고 있으며 반대 의미인 스크롤로 가려진 아래 영역은 ‘Below the Fold’라 합니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;관련사이트 - &lt;a href=&quot;https://www.beusable.net/blog/?p=1724&quot;&gt;Above The Fold란?&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;css-추가-방법&quot;&gt;CSS 추가 방법&lt;/h3&gt;
-&lt;p&gt;Hydejack 테마에 CSS를 커스텀하는 가장 빠르고 안전한 방법은 _sass/my-inline.scss 파일과 _sass/my-style.scss 파일을 통한 방법입니다. 만약 해당 폴더 및 파일이 없다면 생성하시면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;above the fold 영역에 대한 css 규칙은 my-inline.scss에 기술합니다. 그 외 영역에 대한 css 규칙은 my-style.scss에 기술합니다.
-단, 이 구분은 no_inline_css가 활성화된 경우 효과가 없습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets\img/custom-css-file-path.png&quot; alt=&quot;custom-css-file-path&quot; /&gt;&lt;/p&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="jekyll" /><category term="Web" /><category term="Jekyll" /><summary type="html">Hydejack 테마 Custmomization에 관한 내용입니다.</summary></entry><entry><title type="html">Mongo DB란?</title><link href="https://icechoco.github.io/database/2021-09-20-What-is-Mongo-db/" rel="alternate" type="text/html" title="Mongo DB란?" /><published>2021-09-20T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/database/What-is-Mongo-db</id><content type="html" xml:base="https://icechoco.github.io/database/2021-09-20-What-is-Mongo-db/">&lt;p&gt;회사에서는 주로 oracle을 많이 사용하고, 다른 SQL을 사용할 기회가 오면 PostgreSQL를 잠깐 사용하고 있습니다. 그런데 RDBMS의 경우 저장할 데이터가 정형화되어있어 많은 양, 다양한 종류의 데이터를 저장하기에는 적합하지 않습니다. 그러다보니 네이버와 카카오, NHN 등 국내 140여 기업이 몽고DB 데이터베이스관리시스템(DBMS)을 사용하고 있습니다.&lt;/p&gt;
+&lt;!-- author --&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="git" /><category term="Git" /><category term="ssh-agent" /><category term="git-bash" /><summary type="html">오늘의 삽질 하나 추가</summary></entry><entry><title type="html">Mongo DB란?</title><link href="https://icechoco.github.io/database/2021-09-20-What-is-Mongo-db/" rel="alternate" type="text/html" title="Mongo DB란?" /><published>2021-09-20T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/database/What-is-Mongo-db</id><content type="html" xml:base="https://icechoco.github.io/database/2021-09-20-What-is-Mongo-db/">&lt;p&gt;회사에서는 주로 oracle을 많이 사용하고, 다른 SQL을 사용할 기회가 오면 PostgreSQL를 잠깐 사용하고 있습니다. 그런데 RDBMS의 경우 저장할 데이터가 정형화되어있어 많은 양, 다양한 종류의 데이터를 저장하기에는 적합하지 않습니다. 그러다보니 네이버와 카카오, NHN 등 국내 140여 기업이 몽고DB 데이터베이스관리시스템(DBMS)을 사용하고 있습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;mongo-db의-인기&quot;&gt;Mongo DB의 인기&lt;/h2&gt;
 &lt;p&gt;Mongo DB는 가장 유명한 No SQL DB입니다. 
@@ -99,265 +407,4 @@
 그럼 제목과 상세설명의 타입은 String이다, 제목의 최대값은 50이다와 같이 구조를 지정해줄 수 있는데 이것이 바로 스키마입니다.&lt;br /&gt;
 → 업무에서 사용하는 데이터셋인 DVO(Data Value Object)와 비슷해보인다.&lt;/p&gt;
 
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="database" /><category term="database" /><category term="React" /><summary type="html">회사에서는 주로 oracle을 많이 사용하고, 다른 SQL을 사용할 기회가 오면 PostgreSQL를 잠깐 사용하고 있습니다. 그런데 RDBMS의 경우 저장할 데이터가 정형화되어있어 많은 양, 다양한 종류의 데이터를 저장하기에는 적합하지 않습니다. 그러다보니 네이버와 카카오, NHN 등 국내 140여 기업이 몽고DB 데이터베이스관리시스템(DBMS)을 사용하고 있습니다.</summary></entry><entry><title type="html">React 기초</title><link href="https://icechoco.github.io/react/2021-09-20-React-%EA%B8%B0%EC%B4%88/" rel="alternate" type="text/html" title="React 기초" /><published>2021-09-20T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/react/React-%EA%B8%B0%EC%B4%88</id><content type="html" xml:base="https://icechoco.github.io/react/2021-09-20-React-%EA%B8%B0%EC%B4%88/">&lt;p&gt;오늘은 첫 개인 프로젝트를 시작하기 전 필요한 기초 지식을 공유드리겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;nodejs&quot;&gt;node.js&lt;/h2&gt;
-&lt;p&gt;우선, node.js가 무엇인지 알아야겠죠? 이전에 자바스크립트는 크롬이나, IE와 같은 익스플로러 상에서만 사용이 가능했습니다. 그런데 node.js가 등장하고 나서 부터 자바스크립트를 서버사이드에서도 자바스크립트 사용이 가능해졌습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;expressjs&quot;&gt;express.js&lt;/h2&gt;
-&lt;p&gt;node.js를 이용해서 웹사이트나 어플리케이션을 쉽게 만들 수 있도록 도와주는 프레임워크입니다.
-터미널을 실행하여 아래 명렁어를 실행하면 설치할 수 있습니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install express --save
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/assets\img/download-express-js.png&quot; alt=&quot;download-express-js&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;npm install 명령어 맨 뒤에 –save 명령어를 입력함으로써 package.json 파일의 dependencies 안에 express 버전이 추가된 것을 확인할 수 있습니다. 이렇게 추가를 해둠으로써 다른 사람이 봤을 때 쓰고있구나 하고 알 수 있게 해주는 역할을 합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;indexjs&quot;&gt;index.js&lt;/h2&gt;
-&lt;p&gt;백엔드 서버를 시작하면 index.js 파일에서 시작합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;node_modules&quot;&gt;node_modules&lt;/h2&gt;
-&lt;p&gt;다운받은 dependencies들 즉 라이브러리들이 이 폴더안에 들어가 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;npm-run-scripts&quot;&gt;npm run {scripts}&lt;/h2&gt;
-&lt;p&gt;npm run {scripts} 수행 시 package.json 파일 안에 있는 scripts에 적혀있는 대로 수행된다. 예를 들어 package.json 파일의 scripts 부분이 아래와 같이 명시되어 있는 상태에서 npm run start를 수행한 경우 루트 경로에 있는 index.js가 수행된다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;node index.js&quot;,       //npm run start
-    &quot;build&quot;: &quot;react-scripts build&quot;, //npm run build
-    &quot;test&quot;: &quot;react-scripts test&quot;,   //npm run test
-    &quot;eject&quot;: &quot;react-scripts eject&quot;  //npm run eject
-  },
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">오늘은 첫 개인 프로젝트를 시작하기 전 필요한 기초 지식을 공유드리겠습니다.</summary></entry><entry><title type="html">Mongo DB 관련 오류</title><link href="https://icechoco.github.io/database/2021-09-20-Mongo-DB-related-errors/" rel="alternate" type="text/html" title="Mongo DB 관련 오류" /><published>2021-09-20T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/database/Mongo-DB-related-errors</id><content type="html" xml:base="https://icechoco.github.io/database/2021-09-20-Mongo-DB-related-errors/">&lt;p&gt;MongoDB 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-mongoservererror-bad-auth--authentication-failed&quot;&gt;1. MongoServerError: bad auth : Authentication failed.&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PS C:\Ara\react-project\to-do-list&amp;gt; npm run start
-
-&amp;gt; to-do-list@0.1.0 start C:\Ara\react-project\to-do-list
-&amp;gt; node index.js
-
-MongoServerError: bad auth : Authentication failed.
-    at MessageStream.messageHandler (C:\Ara\react-project\to-do-list\node_modules\mongodb\lib\cmap\connection.js:467:30)
-    at MessageStream.emit (events.js:400:28)
-    at processIncomingData (C:\Ara\react-project\to-do-list\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
-    at MessageStream._write (C:\Ara\react-project\to-do-list\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
-    at writeOrBuffer (internal/streams/writable.js:358:12)
-    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
-    at TLSSocket.ondata (internal/streams/readable.js:726:22)
-    at TLSSocket.emit (events.js:400:28)
-    at addChunk (internal/streams/readable.js:290:12)
-    at readableAddChunk (internal/streams/readable.js:265:9) {
-  ok: 0,
-  code: 8000,
-  codeName: 'AtlasError'
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;저의 경우는 index.js 파일 내 MongoDB 설정 시 패스워드 양 옆에 &amp;lt;&amp;gt;를 제거하지 않아 발생한 에러였습니다.&lt;br /&gt;
-설정을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;my_login_id:&amp;lt;my_password&amp;gt;&lt;/code&gt;로 했었으나, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;my_login_id:my_password&lt;/code&gt;와 같이 &amp;lt;&amp;gt;를 제거해야 합니다.&lt;/p&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="database" /><category term="database" /><category term="React" /><summary type="html">MongoDB 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.</summary></entry><entry><title type="html">React 관련 오류</title><link href="https://icechoco.github.io/react/2021-09-19-React-related-errors/" rel="alternate" type="text/html" title="React 관련 오류" /><published>2021-09-19T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/react/React-related-errors</id><content type="html" xml:base="https://icechoco.github.io/react/2021-09-19-React-related-errors/">&lt;p&gt;React 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-스크립트-실행-오류&quot;&gt;1. 스크립트 실행 오류&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;create-react-app : 이 시스템에서 스크립트를 실행할 수 없으므로 ~\AppData\Roaming\npm\creat
-e-react-app.ps1 파일을 로드할 수 없습니다. 자세한 내용은 about_Execution_Policies(https://go.microsoft.
-com/fwlink/?LinkID=135170)를 참조하십시오.
-위치 줄:1 문자:1
-+ create-react-app my-app
-+ ~~~~~~~~~~~~~~~~
-    + CategoryInfo          : 보안 오류: (:) [], PSSecurityException
-    + FullyQualifiedErrorId : UnauthorizedAccess
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;1) windows PowerShell 프로그램을 관리자 권한으로 실행합니다.&lt;br /&gt;
-2) 아래와 같은 명령어를 작성하면 컴퓨터의 실행정책이 어떻게 설정되어 있는지 확인할 수 있습니다.&lt;br /&gt;
-    &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;
-    Get-ExecutionPolicy
-   &lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;별다른 설정 변경을 하지 않았다면, Windows 10 PC에서는 Restricted로 보입니다. 저도 Get-ExecutionPolicy에 아무런 argument를 입력하지 않았기 떄문에 아래처럼 기본값이 보이고 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets\img/script-excution-error-now.png&quot; alt=&quot;script-excution-error-now&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;3) 권한이 RemoteSigned 가 아니라면 Set-ExecutionPolicy RemoteSigned 를 입력합니다.&lt;br /&gt;
-    &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;
-    Set-ExecutionPolicy RemoteSigned
-   &lt;/code&gt;
-    &lt;img src=&quot;/assets\img/script-excution-error-now2.png&quot; alt=&quot;script-excution-error-now2&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;remoteSigned란?&lt;/strong&gt;&lt;br /&gt;
-  이 값은 최신 Windows Server 버전(Windows Server 2012 R2 이후)의 Powershell 실행정책 기본값입니다.&lt;br /&gt;
-  해당 로컬 컴퓨터에서 에서 작성된 모든 스크립트는 실행이 가능하며, 인터넷에서 다운로드(IE, 크롬, 파이어폭스, 아웃룩 등)한 스크립트는 인증기관이 발행한 코드로 서명되어야만 실행이 가능합니다. 인터넷 이외의 소스로부터 다운로드 받거나 서명은 되었지만 악의적인 목적이 있는 스크립트는 위험이 있을 수도 있습니다.&lt;br /&gt;
-  Microsoft Windows PowerShell 팀에서 권장할 만큼 가장 많이 설정되는 값이며, 보안과 편리함의 균형을 어느정도 확보할 수 있습니다. 하지만 스크립트가 &lt;strong&gt;반드시 실행되어야 하는 컴퓨터에서만 사용하는 것이 바람직&lt;/strong&gt;합니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">React 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.</summary></entry><entry><title type="html">Markdown 문법</title><link href="https://icechoco.github.io/jekyll/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/" rel="alternate" type="text/html" title="Markdown 문법" /><published>2021-09-15T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/jekyll/Markdown-%EB%AC%B8%EB%B2%95</id><content type="html" xml:base="https://icechoco.github.io/jekyll/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/">&lt;!-- 여기에 목차넣으면 좋을듯,,,, --&gt;
-&lt;p&gt;🔔 Github 블로그를 만들기 위해 꼭 필요한 Markdown 문법에 대해 소개해드리겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;개행new-line&quot;&gt;개행(New Line)&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;Markdown에서 개행은 두가지 방식이 있습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;강제개행: 문장의 마지막에 공백(  )을 두 번 입력&lt;/li&gt;
-  &lt;li&gt;단락바꿈: Enter키를 두번 입력&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;아래는 문법 예제입니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;강제개행 문법입니다.  
-문장끝의 공백을 통해 개행이 적용됩니다.  
-
-단락바꿈 문법입니다.
-
-Enter키를 통해 개행이 적용됩니다. 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;제목heading&quot;&gt;제목(Heading)&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;h3 id=&quot;문서제목&quot;&gt;문서제목&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;마크다운 작성 시
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;문서제목 결과입니다.
-======
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;결과&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;문서제목-결과입니다&quot;&gt;문서제목 결과입니다.&lt;/h1&gt;
-
-&lt;h3 id=&quot;문서부제목&quot;&gt;문서부제목&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;마크다운 작성 시
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;문서 부제목 결과입니다.
-------
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;문서-부제목-결과입니다&quot;&gt;문서 부제목 결과입니다.&lt;/h2&gt;
-
-&lt;h3 id=&quot;글머리&quot;&gt;글머리&lt;/h3&gt;
-&lt;p&gt;HTML의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;~&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; 태그와 유사하며 1~6까지만 지원합니다. #의 개수에 따라 글자의 크기가 달라집니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;###&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h3&amp;gt;&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;######&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h6&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;h1&quot;&gt;H1&lt;/h1&gt;
-&lt;h2 id=&quot;h2&quot;&gt;H2&lt;/h2&gt;
-&lt;h3 id=&quot;h3&quot;&gt;H3&lt;/h3&gt;
-&lt;h4 id=&quot;h4&quot;&gt;H4&lt;/h4&gt;
-&lt;h5 id=&quot;h5&quot;&gt;H5&lt;/h5&gt;
-&lt;h6 id=&quot;h6&quot;&gt;H6&lt;/h6&gt;
-
-&lt;h2 id=&quot;텍스트&quot;&gt;텍스트&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;h3 id=&quot;글씨색&quot;&gt;글씨색&lt;/h3&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;span style=&quot;color:yellow&quot;&amp;gt;노란 글씨입니다.&amp;lt;/span&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;span style=&quot;color:yellow&quot;&gt;노란 글씨입니다.&lt;/span&gt;&lt;/p&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="jekyll" /><category term="Blog" /><category term="Jekyll" /><category term="Web" /><category term="Markdown" /><category term="HTML" /><summary type="html">🔔 Github 블로그를 만들기 위해 꼭 필요한 Markdown 문법에 대해 소개해드리겠습니다.</summary></entry><entry><title type="html">Git 사용법</title><link href="https://icechoco.github.io/git/2021-09-15-How-to-use-git/" rel="alternate" type="text/html" title="Git 사용법" /><published>2021-09-15T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/git/How-to-use-git</id><content type="html" xml:base="https://icechoco.github.io/git/2021-09-15-How-to-use-git/">&lt;p&gt;안녕하세요. 아이스초코입니다. 오늘은 Github 블로그 만들기에 필요한 Git 사용법에 대해 소개해드리겠습니다.&lt;/p&gt;
-
-&lt;p&gt;git이 이미 설치되어있는지 확인하기 위해서는 터미널에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git --version&lt;/code&gt;을 치면됩니다. 버전이 나오는 경우 이미 설치되어있는 것이고, 안나오는 경우 설치되어 있지 않은 것 입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;용어&quot;&gt;&lt;strong&gt;용어&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Working Directory: 로컬PC에서 작업한 그대로의 상태&lt;br /&gt;
-Staging Area: git add 후 커밋 대기중인 상태&lt;br /&gt;
-git local repository: 내 로컬 PC에 위치한 repository&lt;br /&gt;
-git remote repository: github에 위치한 repository&lt;br /&gt;
-SSH: Secure Shell&lt;/p&gt;
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;git과-github의-차이&quot;&gt;&lt;strong&gt;Git과 GitHub의 차이&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Git: 소스코드를 관리할 수 있는 툴&lt;br /&gt;
-GitHub: Git으로 관리하고 있는 소스들을 올릴 수 있는 클라우드 서비스&lt;/p&gt;
-
-&lt;h2 id=&quot;git-파일-추적track과-커밋commit&quot;&gt;&lt;strong&gt;Git 파일 추적(Track)과 커밋(Commit)&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Git에서 파일 버전을 관리하기 위해서는 해당 파일을 &lt;span style=&quot;color:red&quot;&gt;&lt;strong&gt;추적(Track)&lt;/strong&gt;&lt;/span&gt;해야 합니다.&lt;br /&gt;
-Git에서 추적한다는 의미는 그 파일을 관리한다는 의미입니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Track한다 = staging area에 올라갔다&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;프로젝트 작업 폴더에는 Tracked 파일과 Untracked 파일이 존재합니다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Tracked(관리대상이 된 파일, 추적되고 있는 상태)
-    &lt;ul&gt;
-      &lt;li&gt;Unmodified: 파일 내용 수정이 안된 상태&lt;/li&gt;
-      &lt;li&gt;Modified : 파일 내용이 수정된 상태&lt;/li&gt;
-      &lt;li&gt;Staged : 커밋으로 Git 저장소에 기록될 준비가 된 상태&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Untracked(관리대상이 아닌 파일, 즉 추적이 안 된 상태)&lt;/li&gt;
-  &lt;li&gt;Commit(커밋): 파일을 Git 저장소에 기록하는 것, 어떤 작업인지에 대한 메시지를 기록&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="git" /><category term="Git" /><category term="Web" /><category term="Jekyll" /><summary type="html">안녕하세요. 아이스초코입니다. 오늘은 Github 블로그 만들기에 필요한 Git 사용법에 대해 소개해드리겠습니다. git이 이미 설치되어있는지 확인하기 위해서는 터미널에서 git --version을 치면됩니다. 버전이 나오는 경우 이미 설치되어있는 것이고, 안나오는 경우 설치되어 있지 않은 것 입니다.</summary></entry><entry><title type="html">SSH를 이용해 GITHUB 연결하기</title><link href="https://icechoco.github.io/git/2021-09-15-Connecting-to-GITHUB-Using-SSH/" rel="alternate" type="text/html" title="SSH를 이용해 GITHUB 연결하기" /><published>2021-09-15T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/git/Connecting-to-GITHUB-Using-SSH</id><content type="html" xml:base="https://icechoco.github.io/git/2021-09-15-Connecting-to-GITHUB-Using-SSH/">&lt;p&gt;지금까지 github에서 소스를 클로닝(Cloning) 할 때, HTTP 연결을 통해 하였다. Cloning 하는데에 별문제 없이 잘 처리되었지만, 비번을 바꾸거나 할 때 처럼 인증 정보가 변경 되면, 재로그인을 하거나 Windows 자격 증명에서 Github 자격 증명을 갱신해주어야 한다. 비밀번호가 변경되더라도 인증정보를 갱신해야하는 번거로움 없는 SSH키를 이용한 Github와 연동하기를 시도해보았다.&lt;/p&gt;
-
-&lt;h2 id=&quot;ssh-key-생성하기&quot;&gt;SSH KEY 생성하기&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;CMD창을 연다&lt;/li&gt;
-  &lt;li&gt;아래 텍스트에서 이메일 주소를 바꾼 뒤 붙여넣기 한다
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ssh-keygen -t ed25519 -C &quot;dkfk2685@naver.com&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Enter file in which to save the key (경로):&lt;/code&gt;라는 메시지가 뜬다. 확인 후 엔터를 쳐주고 다음 메시지가 나와도 계속 엔터를 쳐주면 key 생성이 완료된다.
-&lt;img src=&quot;/assets\img/generate-new-ssh-key.png&quot; alt=&quot;generate-new-ssh-key&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;자신의 홈 디렉토리 아래 .ssh 폴더 내 id_ed25519, id_ed25519.pub 2개의 파일이 생성되어 있다.
-    &lt;ul&gt;
-      &lt;li&gt;홈디렉토리 예시 C:\Users\dkfk2.ssh&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;나의-ssh-key를-sssh-agent에-추가하기&quot;&gt;나의 SSH Key를 SSSH Agent에 추가하기&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;git bash에 아래 텍스트를 붙여넣기하여 백그라운드에서 ssh-agent를 실행한다.
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; eval &quot;$(ssh-agent -s)&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;SSH Private Key를 SSH-AGENT에 넣는다.&lt;br /&gt;
- 아까 생성된 Key 2개 중 id_ed25519는 Private Key, id_ed25519.pub는 public Key 이다.
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ssh-add ~/.ssh/id_ed25519
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;&lt;img src=&quot;/assets\img/ssh-agent-add.png&quot; alt=&quot;ssh-agent-add&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;public-ssh-key를-github에-추가하기&quot;&gt;public SSH Key를 gitHub에 추가하기&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;git bash에 아래 텍스트를 붙여넣기하여 public SSH Key를 클립보드로 복사한다.
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; clip &amp;lt; ~/.ssh/id_ed25519.pub
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;github에 들어가서 우측 상단 계정 버튼 클릭 - Settings 클릭한다.&lt;/li&gt;
-  &lt;li&gt;좌측 목록에서 SSH and SPG Keys를 클릭한다.&lt;/li&gt;
-  &lt;li&gt;초록색 버튼의 New SSH Key를 클릭한다.&lt;/li&gt;
-  &lt;li&gt;key 영역에 클립보드에 복사된 SSH public key를 붙여넣기한다.&lt;/li&gt;
-  &lt;li&gt;자신이 원하는 title을 입력하고 Add SSH Key를 클릭한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;SSH Key가 정상적으로 등록되어 컴퓨터와 gitHub 서버가 안전하게 통신할 수 있게 되었다.&lt;/p&gt;
-
-&lt;h2 id=&quot;로컬에서-remote-repository로-push하기&quot;&gt;로컬에서 remote repository로 push하기&lt;/h2&gt;
-&lt;p&gt;로컬 터미널에서 아래 명령어를 순차적으로 입력하면 to-do-list remote 레파지토리에 push가 정상적으로 완료된다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  echo &quot;# to-do-list&quot; &amp;gt;&amp;gt; README.md
-  git remote add origin https://github.com/IceChoco/to-do-list.git  
-  git branch -M main  
-  git push -u origin main
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;추천문서&quot;&gt;추천문서&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent&quot;&gt;Generating a new SSH key and adding it to the ssh-agent - GitHub Docs&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.lainyzine.com/ko/article/creating-ssh-key-for-github/#%EA%B3%B5%EA%B0%9C%ED%82%A4%EB%A5%BC-github-%EA%B3%84%EC%A0%95%EC%97%90-%EB%93%B1%EB%A1%9D%ED%95%98%EA%B8%B0&quot;&gt;GitHub 접속 용 SSH 키 만드는 방법 - LainyZine&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://kindtis.tistory.com/606&quot;&gt;SSH 키로 깃헙에 연동하기 (Connecting to GitHub with SSH)- Game Programmer Life&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="git" /><category term="Git" /><category term="Web" /><category term="Jekyll" /><summary type="html">지금까지 github에서 소스를 클로닝(Cloning) 할 때, HTTP 연결을 통해 하였다. Cloning 하는데에 별문제 없이 잘 처리되었지만, 비번을 바꾸거나 할 때 처럼 인증 정보가 변경 되면, 재로그인을 하거나 Windows 자격 증명에서 Github 자격 증명을 갱신해주어야 한다. 비밀번호가 변경되더라도 인증정보를 갱신해야하는 번거로움 없는 SSH키를 이용한 Github와 연동하기를 시도해보았다.</summary></entry></feed>
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="database" /><category term="database" /><category term="React" /><summary type="html">회사에서는 주로 oracle을 많이 사용하고, 다른 SQL을 사용할 기회가 오면 PostgreSQL를 잠깐 사용하고 있습니다. 그런데 RDBMS의 경우 저장할 데이터가 정형화되어있어 많은 양, 다양한 종류의 데이터를 저장하기에는 적합하지 않습니다. 그러다보니 네이버와 카카오, NHN 등 국내 140여 기업이 몽고DB 데이터베이스관리시스템(DBMS)을 사용하고 있습니다.</summary></entry></feed>
