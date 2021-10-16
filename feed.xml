@@ -1,5 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-10-12T13:38:12+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
-</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">node.js 기초</title><link href="https://icechoco.github.io/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/" rel="alternate" type="text/html" title="node.js 기초" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-11T20:27:09+09:00</updated><id>https://icechoco.github.io/server/node-js-%EA%B8%B0%EC%B4%88</id><content type="html" xml:base="https://icechoco.github.io/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/">&lt;p&gt;node.js를 활용한 서버 구축에 있어 필요한 기본 지식들을 기록해보겠습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-10-16T23:28:52+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[React] Attempted import error</title><link href="https://icechoco.github.io/react/2021-10-12-Attempted-import-error/" rel="alternate" type="text/html" title="[React] Attempted import error" /><published>2021-10-12T00:00:00+09:00</published><updated>2021-10-12T14:12:48+09:00</updated><id>https://icechoco.github.io/react/Attempted-import-error</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-12-Attempted-import-error/">&lt;p&gt;client 폴더 내 index.js 파일에서 하위폴더인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_reducers&lt;/code&gt;에서 데이터를 가져올려고 하자 Attempted import error가 발생했다.
+&lt;img src=&quot;/assets\img/attempt-import-error.PNG&quot; alt=&quot;attempt-import-error&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./src/index.js
+Attempted import error: 'Reducer' is not exported from './_reducers'.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;프론트엔드 서버의 index.js 파일에서 ‘./_reducers’ 경로에 있는 index.js 파일을 import 하는데에 실패했다는 내용의 에러이다. 에러 발생 원인은 reducers 폴더 내 index.js 파일에서 export 시 default를 붙였기 때문이다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;reducers 폴더 내 index.js파일
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  import { combineReducers } from &quot;redux&quot;;
+
+  export default rootReducer; //다른 파일에서 리듀서를 쓸 수 있도록 익스포트
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;변경 전 프론트엔드 서버의 index.js
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  import { Reducer } from './_reducers';
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;위와 같은 import 구분을 중괄호를 제거하고 아래와 같이 변경하였더니 정상적으로 import 되었다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import Reducer from './_reducers';
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;그럼 어떤 경우에 import 할 때 중괄호를 써야하고, 어떤 경우에는 중괄호를 없이 써줘야할까? &lt;strong&gt;이유는 바로 export 방식의 차이이다.&lt;/strong&gt;
+export 방식에 따라 {}중괄호를 사용하고, 안하고가 다른데 export 시 default를 붙인 경우 import에 중괄호 없이 써줘야한다. 반대로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;export rootReducer;&lt;/code&gt;와 같이 default 없이 export한 경우 import에 중괄호를 제거한 후 써줘야한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://mesonia.tistory.com/135&quot;&gt;react에서 import할때 {}중괄호 유무의 의미&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">client 폴더 내 index.js 파일에서 하위폴더인 _reducers에서 데이터를 가져올려고 하자 Attempted import error가 발생했다. ./src/index.js Attempted import error: 'Reducer' is not exported from './_reducers'. 프론트엔드 서버의 index.js 파일에서 ‘./_reducers’ 경로에 있는 index.js 파일을 import 하는데에 실패했다는 내용의 에러이다. 에러 발생 원인은 reducers 폴더 내 index.js 파일에서 export 시 default를 붙였기 때문이다. reducers 폴더 내 index.js파일 ``` import { combineReducers } from “redux”;</summary></entry><entry><title type="html">[React] TypeError: Cannot read properties of undefined (reading getState)</title><link href="https://icechoco.github.io/react/2021-10-12-cannot-read-properties-of-undefined-error/" rel="alternate" type="text/html" title="[React] TypeError: Cannot read properties of undefined (reading getState)" /><published>2021-10-12T00:00:00+09:00</published><updated>2021-10-12T14:43:50+09:00</updated><id>https://icechoco.github.io/react/cannot-read-properties-of-undefined-error</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-12-cannot-read-properties-of-undefined-error/">&lt;p&gt;리액트 프론트엔드 서버의 index.js 파일에서 Redux 확장 프로그램인 DevTools extension을 연결하고, 리액트 앱에 store를 연동해주기위해 provider 컴포넌트를 사용하여 설정해줬다. 그랬더니 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TypeError: Cannot read properties of undefined (reading 'getState')&lt;/code&gt;에러가 발생했다.
+&lt;img src=&quot;/assets\img/typeerror.PNG&quot; alt=&quot;typeerror&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;원인이 뭐지? 하고 구글 디버깅을 해봤더니 index.js 파일 내에 오타가 있는 경우 발생하는 에러라는 글을 찾았다. 아래는 변경 전 index.js 파일 소스이다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;변경 전 프론트엔드 서버의 index.js&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets\img/typeerror-source.PNG&quot; alt=&quot;typeerror-source&quot; /&gt;&lt;br /&gt;
+위 ReactDOM.render의 provider 컴포넌트의 태그 부분을 자세히 보니 provider 시작 태그를 닫기 전에 store를 적어줘야하는데, 태그를 닫은 후 store를 적으면서 발생한 에러였다. store 위치를 procvider 시작 태그 닫기 전에 넣자 에러 없이 수행되었다.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;변경 후&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets\img/ok-typeerror-source.PNG&quot; alt=&quot;ok-typeerror-source&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;오늘도 구글신이 날 도왔다!&lt;/p&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://velog.io/@eve1s/react%EC%97%90%EB%9F%ACCannot-read-property-getState-of-undefined&quot;&gt;[react에러]Cannot read property ‘getState’ of undefined&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://redux.vlpt.us/1-8-provider.html&quot;&gt;1-8. Provider 컴포넌트를 사용하여 리액트 앱에 store 연동하기&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">리액트 프론트엔드 서버의 index.js 파일에서 Redux 확장 프로그램인 DevTools extension을 연결하고, 리액트 앱에 store를 연동해주기위해 provider 컴포넌트를 사용하여 설정해줬다. 그랬더니 TypeError: Cannot read properties of undefined (reading 'getState')에러가 발생했다.</summary></entry><entry><title type="html">node.js 기초</title><link href="https://icechoco.github.io/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/" rel="alternate" type="text/html" title="node.js 기초" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-11T20:27:09+09:00</updated><id>https://icechoco.github.io/server/node-js-%EA%B8%B0%EC%B4%88</id><content type="html" xml:base="https://icechoco.github.io/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/">&lt;p&gt;node.js를 활용한 서버 구축에 있어 필요한 기본 지식들을 기록해보겠습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;nodejs&quot;&gt;node.js&lt;/h2&gt;
 &lt;p&gt;우선, node.js가 무엇인지 알아야겠죠? 이전에 자바스크립트는 크롬이나, IE와 같은 익스플로러 상에서만 사용이 가능했습니다. 그런데 node.js가 등장하고 나서 부터 자바스크립트를 서버사이드에서도 자바스크립트 사용이 가능해졌습니다.&lt;/p&gt;
@@ -340,71 +388,4 @@ class App extends Component{
 
 &lt;p&gt;정도가 있습니다.&lt;/p&gt;
 
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">client에서 이름, e-maile, PW 등을 입력 후 서버에 보내주면 서버에서 그 데이터를 받아야 합니다. 서버에서 클라이언트로 부터 데이터를 받을 때 bodyParser라는 dependencies가 필요합니다. 이 dependencies를 이용하여 Client에서 보내주는 자료들을 이름, e-maile, PW를 받을 수 있습니다.</summary></entry><entry><title type="html">window 환경에서 ssh-agent 실행 시 git bash 무반응 문제</title><link href="https://icechoco.github.io/git/2021-09-21-Solve-git-bash-problem-when-running-ssh-agent-in-windows/" rel="alternate" type="text/html" title="window 환경에서 ssh-agent 실행 시 git bash 무반응 문제" /><published>2021-09-21T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/git/Solve-git-bash-problem-when-running-ssh-agent-in-windows</id><content type="html" xml:base="https://icechoco.github.io/git/2021-09-21-Solve-git-bash-problem-when-running-ssh-agent-in-windows/">&lt;p&gt;오늘의 삽질 하나 추가&lt;/p&gt;
-
-&lt;h2 id=&quot;문제&quot;&gt;문제&lt;/h2&gt;
-&lt;p&gt;SSH Agent를 Background에 실행시키기위해 아래 명령어를 입력하였다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;eval &quot;$(ssh-agent -s)&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;그런데 명렁어를 입력한 다음 줄에 커서가 깜빡이면서 아무런 반응이 일어나지 않았다.&lt;/p&gt;
-
-&lt;h2 id=&quot;시도해본-것들&quot;&gt;시도해본 것들&lt;/h2&gt;
-&lt;h3 id=&quot;1-창-종료-후-재시도&quot;&gt;1. 창 종료 후 재시도&lt;/h3&gt;
-&lt;p&gt;Git Bash 창 강제 종료 후 새로운 Git Bash 관리자 권한으로 실행 후 다시 입력해보고 계속 반복하였으나 현상은 똑같았다.&lt;/p&gt;
-
-&lt;h3 id=&quot;2-구글링&quot;&gt;2. 구글링&lt;/h3&gt;
-&lt;p&gt;그래서 구글에 Gib Bash 멈춤, 무반응, 커서 깜빡임 등 다양하게 쳐보면서 구글링을 계속 이어갔지만 마땅한 해결책을 찾을 수 없었다. 흐아 너무 스트레스,,,,&lt;/p&gt;
-
-&lt;p&gt;그러던 와중에 갑자기 컴퓨터가 너무 느려지다 못해 구글이 강제로 꺼지는 등 이상한 현상을 발견했다. 작업관리자를 켜봤더니 백그라운드에서 ssh-agent 여러개가 이미 실행되고 있었고 CPU가 99%와 100%를 왔다갔다했다ㄷㄷ&lt;/p&gt;
-
-&lt;h3 id=&quot;3-ssh-add-하기&quot;&gt;3. ssh-add 하기&lt;/h3&gt;
-&lt;p&gt;이상함을 감지하고 명령어는 정상 실행됐으나 Git bash가 결과를 출력하지 못하는구나 라는 생각이 들면서 다음 스텝인 ssh-add를 실행했다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh-add ~/.ssh/id_ed25519
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;위 명령어를 사용하던 중에 아래 오류를 만났다.&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Could not open a connection to your authentication agent.&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;위 메시지의 발생 원인은 어떤 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh-agent&lt;/code&gt;를 사용해야 할 지 모르기 때문이다. 머신에서 한 번도 설정하지 않은 경우에 발생할 수 있다. 그럼 SSH Agent가 Background에서 정상 실행되지 않은거네,,,,? 그럼 이건 패스&lt;/p&gt;
-
-&lt;h2 id=&quot;해결책&quot;&gt;해결책&lt;/h2&gt;
-&lt;p&gt;진짜 얻어걸린 해결책,,,&lt;/p&gt;
-
-&lt;p&gt;백그라운드에서 ssh-agent가 1개도 수행되고 있지 않은 클린한 상태에서&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;Git Bash에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;eval &quot;$(ssh-agent -s)&quot;&lt;/code&gt; 입력하기&lt;/li&gt;
-  &lt;li&gt;작업관리자에서 실행중인 ssh-agent 우클릭 후 작업 끝내기&lt;/li&gt;
-  &lt;li&gt;Git Bash로 돌아가면 무반응상태에서 나의 ssh-agent pid가 출력된다.&lt;br /&gt;
-&lt;img src=&quot;/assets\img/ssh-agent-pid.png&quot; alt=&quot;ssh-agent-pid&quot; /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;^^,,,, 이것 때문에 내 소중한 시간을 펑펑썼다니,,, 행복하다^^,,,,&lt;/p&gt;
-
-&lt;h2 id=&quot;참고&quot;&gt;참고&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ohgyun.com/483&quot;&gt;꿀벌개발일지::ssh-add 에서 authentication agent 문제&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!-- author --&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="git" /><category term="Git" /><category term="ssh-agent" /><category term="git-bash" /><summary type="html">오늘의 삽질 하나 추가</summary></entry><entry><title type="html">Mongo DB란?</title><link href="https://icechoco.github.io/database/2021-09-20-What-is-Mongo-db/" rel="alternate" type="text/html" title="Mongo DB란?" /><published>2021-09-20T00:00:00+09:00</published><updated>2021-09-23T00:02:45+09:00</updated><id>https://icechoco.github.io/database/What-is-Mongo-db</id><content type="html" xml:base="https://icechoco.github.io/database/2021-09-20-What-is-Mongo-db/">&lt;p&gt;회사에서는 주로 oracle을 많이 사용하고, 다른 SQL을 사용할 기회가 오면 PostgreSQL를 잠깐 사용하고 있습니다. 그런데 RDBMS의 경우 저장할 데이터가 정형화되어있어 많은 양, 다양한 종류의 데이터를 저장하기에는 적합하지 않습니다. 그러다보니 네이버와 카카오, NHN 등 국내 140여 기업이 몽고DB 데이터베이스관리시스템(DBMS)을 사용하고 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;mongo-db의-인기&quot;&gt;Mongo DB의 인기&lt;/h2&gt;
-&lt;p&gt;Mongo DB는 가장 유명한 No SQL DB입니다. 
-&lt;img src=&quot;/assets\img/mongodb-survery.png&quot; alt=&quot;mongodb-survery&quot; /&gt;
-스택오버플로우의 설문조사에 의하면, MongoDB는 DB 기술 중 5위로 인기가 좋습니다. 또한, 4위까지는 RDBMS인 점을 감안하면 MongoDB는 No SQL 중 가장 인기가 좋습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets\img/mongodb-survery-most.png&quot; alt=&quot;mongodb-survery-most&quot; /&gt;
-가장 원하는 DB 설문조사에서는 Mongo DB가 1위를 차지하였습니다. 앞으로 Mongo DB를 배우고자 하는 사람이 많은 것을 알 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;mongoose&quot;&gt;Mongoose&lt;/h2&gt;
-&lt;p&gt;Mongo DB를 편하게 사용할 수 있게 해주는 툴입니다. 설치방법은 터미널에 아래 명령어를 입력하면 됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install mongoose --save
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/assets\img/mongoose-package-json.png&quot; alt=&quot;mongoose-package-json&quot; /&gt;&lt;br /&gt;
-위 명령어를 입력함으로써 package.json 파일의 dependencies 안에 mongoose 버전이 추가된 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;mongodb-model이란&quot;&gt;MongoDB Model이란?&lt;/h2&gt;
-&lt;p&gt;Model은 &lt;strong&gt;스키마를 감싸주는 역할&lt;/strong&gt;을 합니다. 여기서 스키마는 하나하나의 정보들을 지정해주는 역할을 합니다.&lt;br /&gt;
-예를 들어 상품 판매 사이트의 경우 글의 작성자, 제목, 상세 설명이 필요할 것입니다.&lt;br /&gt;
-그럼 제목과 상세설명의 타입은 String이다, 제목의 최대값은 50이다와 같이 구조를 지정해줄 수 있는데 이것이 바로 스키마입니다.&lt;br /&gt;
-→ 업무에서 사용하는 데이터셋인 DVO(Data Value Object)와 비슷해보인다.&lt;/p&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="database" /><category term="database" /><category term="React" /><summary type="html">회사에서는 주로 oracle을 많이 사용하고, 다른 SQL을 사용할 기회가 오면 PostgreSQL를 잠깐 사용하고 있습니다. 그런데 RDBMS의 경우 저장할 데이터가 정형화되어있어 많은 양, 다양한 종류의 데이터를 저장하기에는 적합하지 않습니다. 그러다보니 네이버와 카카오, NHN 등 국내 140여 기업이 몽고DB 데이터베이스관리시스템(DBMS)을 사용하고 있습니다.</summary></entry></feed>
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">client에서 이름, e-maile, PW 등을 입력 후 서버에 보내주면 서버에서 그 데이터를 받아야 합니다. 서버에서 클라이언트로 부터 데이터를 받을 때 bodyParser라는 dependencies가 필요합니다. 이 dependencies를 이용하여 Client에서 보내주는 자료들을 이름, e-maile, PW를 받을 수 있습니다.</summary></entry></feed>

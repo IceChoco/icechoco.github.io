@@ -44,7 +44,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="welcome to IceChoco’s devLog" />
 <script type="application/ld+json">
-{"headline":"welcome to IceChoco’s devLog","dateModified":"2021-09-23T00:02:45+09:00","@type":"WebSite","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/","name":"IceChoco","description":"IceChoco의 DevLog","@context":"https://schema.org"}</script>
+{"@type":"WebSite","headline":"welcome to IceChoco’s devLog","dateModified":"2021-09-23T00:02:45+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/","name":"IceChoco","description":"IceChoco의 DevLog","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -106,7 +106,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-10-12T13:38:12+09:00',
+    INDEX_KEY: 'index--2021-10-16T23:28:52+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -494,6 +494,129 @@ Left here for reference, feel free to delete.
 
 
   
+
+  
+
+
+
+
+
+<article id="post-react-cannot-read-properties-of-undefined-error" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/react/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title">
+        [React] TypeError: Cannot read properties of undefined (reading getState)
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time> in <a href="/react/" class="flip-title">React</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+          
+          
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>리액트 프론트엔드 서버의 index.js 파일에서 Redux 확장 프로그램인 DevTools extension을 연결하고, 리액트 앱에 store를 연동해주기위해 provider 컴포넌트를 사용하여 설정해줬다. 그랬더니 <code class="language-plaintext highlighter-rouge">TypeError: Cannot read properties of undefined (reading 'getState')</code>에러가 발생했다.
+<img src="/assets\img/typeerror.PNG" alt="typeerror" /></p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/react/2021-10-12-cannot-read-properties-of-undefined-error/">[React] TypeError: Cannot read properties of undefined (reading getState)</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-react-Attempted-import-error" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/react/2021-10-12-Attempted-import-error/" class="flip-title">
+        [React] Attempted import error
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time> in <a href="/react/" class="flip-title">React</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+          
+          
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>client 폴더 내 index.js 파일에서 하위폴더인 <code class="language-plaintext highlighter-rouge">_reducers</code>에서 데이터를 가져올려고 하자 Attempted import error가 발생했다.
+<img src="/assets\img/attempt-import-error.PNG" alt="attempt-import-error" /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./src/index.js
+Attempted import error: 'Reducer' is not exported from './_reducers'.
+</code></pre></div></div>
+<p>프론트엔드 서버의 index.js 파일에서 ‘./_reducers’ 경로에 있는 index.js 파일을 import 하는데에 실패했다는 내용의 에러이다. 에러 발생 원인은 reducers 폴더 내 index.js 파일에서 export 시 default를 붙였기 때문이다.</p>
+<ul>
+  <li>reducers 폴더 내 index.js파일
+  ```
+  import { combineReducers } from “redux”;</li>
+</ul>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/react/2021-10-12-Attempted-import-error/">[React] Attempted import error</a>
+
+      </p>
+    </footer>
+  
+</article>
+
 
   
 
@@ -981,134 +1104,6 @@ Left here for reference, feel free to delete.
     <footer>
       <p class="read-more">
         Continue reading <a class="heading flip-title" href="/react/2021-09-22-Create-member-registration-function/">회원가입기능 만들기</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-git-Solve-git-bash-problem-when-running-ssh-agent-in-windows" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/git/2021-09-21-Solve-git-bash-problem-when-running-ssh-agent-in-windows/" class="flip-title">
-        window 환경에서 ssh-agent 실행 시 git bash 무반응 문제
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-21T00:00:00+09:00">21 Sep 2021</time> in <a href="/git/" class="flip-title">GIT</a> on <span>Git</span>, <span>Ssh-agent</span>, <span>Git-bash</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-23">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-09-23T00:02:45+09:00">2021-09-23</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>오늘의 삽질 하나 추가</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/git/2021-09-21-Solve-git-bash-problem-when-running-ssh-agent-in-windows/">window 환경에서 ssh-agent 실행 시 git bash 무반응 문제</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-database-What-is-Mongo-db" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/database/2021-09-20-What-is-Mongo-db/" class="flip-title">
-        Mongo DB란?
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time> in <a href="/database/" class="flip-title">Database</a> on <span>Database</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-23">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-09-23T00:02:45+09:00">2021-09-23</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>회사에서는 주로 oracle을 많이 사용하고, 다른 SQL을 사용할 기회가 오면 PostgreSQL를 잠깐 사용하고 있습니다. 그런데 RDBMS의 경우 저장할 데이터가 정형화되어있어 많은 양, 다양한 종류의 데이터를 저장하기에는 적합하지 않습니다. 그러다보니 네이버와 카카오, NHN 등 국내 140여 기업이 몽고DB 데이터베이스관리시스템(DBMS)을 사용하고 있습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/database/2021-09-20-What-is-Mongo-db/">Mongo DB란?</a>
 
       </p>
     </footer>
