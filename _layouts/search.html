@@ -1,0 +1,106 @@
+---
+layout: default
+---
+
+<div class="common-header search">
+  <div class="search">
+    <i class="fas fa-search fa-fw"></i>
+    <input id="search-input" 
+      type="search" 
+      tabindex="1" 
+      spellcheck="false" 
+      placeholder="Search"
+    >
+  </div>
+</div>
+
+<ul id="results-container"></ul>
+
+<script src="{{ site.baseurl }}/assets/js/simple-jekyll-search.min.js"></script>
+
+<script>
+  window.simpleJekyllSearch = new SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'), //입력부분에 해당하는 요소
+  resultsContainer: document.getElementById('results-container'), //출력부분에 해당하는 요소
+  json: '{{ site.baseurl }}/assets/json/search.json', //검색 대상이 되는 검색 데이터가 있는 json 파일
+  //searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a></li>', //검색된 항목이 출력 부분에 표시되는 레이아웃. {}안에 JSON 객체의 Key를 입력해 검색된 데이터를 맵핑한다.
+  searchResultTemplate: `
+      <li>
+        <div>
+          <i class="fas fa-folder fa-fw"></i>
+          <a href="{url}">{categories}</a>
+        </div>
+        <div>
+          <i class="fas fa-book fa-fw"></i>
+          <a href="{url}">{title}</a>
+        </div>
+        <div>
+          <i class="fas fa-tags fa-fw"></i>
+          <a href="{url}">{tags}</a>
+        </div>
+        <div>
+          <i class="fas fa-calendar-alt fa-fw"></i>
+          <a href="{url}">{date}</a>
+        </div>
+        <div>
+          <i class="fas fa-link fa-fw"></i>
+          <a href="{url}" style="font-size: 1rem;">{urlString}</a>
+        </div>
+      </li>
+    `,
+  // templateMiddleware: function(prop, value, template) {
+  //   if (prop === 'url') {
+  //     return value;
+  //   }
+
+  //   const queries = document.getElementById('search-input').value
+  //     .split(' ').filter(Boolean)
+  //     .map(s => s.toLowerCase())
+  //     .reduce((a, b) => {
+  //       if (a.indexOf(b) < 0) a.push(b);
+  //       return a;
+  //     }, []);
+
+  //   const lowerCaseValue = value.toLowerCase();
+  //   let ranges = [];
+  //   for (const query of queries) {
+  //     let index = 0;
+  //     while ((index = lowerCaseValue.indexOf(query, index)) > -1) {
+  //       ranges.push([index, index + query.length]);
+  //       index += query.length;
+  //     }
+  //   }
+
+  //   if (queries.length > ranges.length) {
+  //     return value
+  //   }
+
+  //   ranges.sort((a, b) => a[0] - b[0] || b[1] - a[1])
+  //   ranges = ranges.reduce((a, b) => {
+  //     const last = a[a.length - 1];
+  //     if (a.length == 0 || last[1] < b[0]) {
+  //       a.push(b);
+  //     } else if (last[1] < b[1]) {
+  //       a[a.length - 1][1] = b[1];
+  //     }
+  //     return a;
+  //   }, []);
+
+  //   for (let i = 0; i < ranges.length; i++) {
+  //     ranges[i][0] += i * 7;
+  //     ranges[i][1] += i * 7 + 3;
+  //   }
+  //   for (const range of ranges) {
+  //     value = value.insert('<b>', range[0]).insert('</b>', range[1]);
+  //   }
+  //   return value;
+  // },
+  noResultsText: 'No results found',
+  limit: 10,
+  fuzzy: false,
+  exclude: ['Welcome']
+})
+  window.onload = function() {
+    window.simpleJekyllSearch.search(document.getElementById('search-input').value);
+  };
+</script>

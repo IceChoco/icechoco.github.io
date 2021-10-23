@@ -1,0 +1,10 @@
+---
+title: '[React] useSelector, useDispatch를 사용하여 state에 접근하기'
+layout: post
+categories: jekyll
+tags: Blog Jekyll Web Markdown HTML
+comments: true
+---
+
+아래는 내가 하고 싶었던 서치바 스타일이 적용된 블로그
+https://jamesu.dev/search
