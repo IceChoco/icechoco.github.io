@@ -13,6 +13,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+// Colors
+$default-color: #555;
+$default-tint: #aaa;
 $gray: #777;
 $gray-bg: rgba(0,0,0,.025);
 $gray-text: #666;
@@ -20,3 +23,6 @@ $menu-text: #bbb;
 $body-color: #333;
 $body-bg: #fff;
 $border-color: #ebebeb;
+
+// Fonts
+$sans-serif: 'Noto Sans KR', 'Noto Sans', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;

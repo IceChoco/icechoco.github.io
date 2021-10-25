@@ -12,3 +12,15 @@
     margin: 1rem 0;
   }
 }
+
+/* for top-menu */
+//네비게이션 버튼 높이
+.nav-btn, .nav-btn-bar{
+  height: 3rem;
+}
+.top-menu.nav-btn{
+  border: none;
+  display: inline-flex;
+  width: 6rem;
+  margin-left: -1px;
+}

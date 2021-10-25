@@ -17,13 +17,11 @@ layout: default
 <ul id="results-container"></ul>
 
 <script src="{{ site.baseurl }}/assets/js/simple-jekyll-search.min.js"></script>
-
 <script>
   window.simpleJekyllSearch = new SimpleJekyllSearch({
   searchInput: document.getElementById('search-input'), //입력부분에 해당하는 요소
   resultsContainer: document.getElementById('results-container'), //출력부분에 해당하는 요소
   json: '{{ site.baseurl }}/assets/json/search.json', //검색 대상이 되는 검색 데이터가 있는 json 파일
-  //searchResultTemplate: '<li><a href="{url}?query={query}" title="{desc}">{title}</a></li>', //검색된 항목이 출력 부분에 표시되는 레이아웃. {}안에 JSON 객체의 Key를 입력해 검색된 데이터를 맵핑한다.
   searchResultTemplate: `
       <li>
         <div>
