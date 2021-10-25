@@ -31,7 +31,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
     
 <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Markdown 문법 | IceChoco</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Markdown 문법" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="en" />
@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Markdown 문법" />
 <script type="application/ld+json">
-{"headline":"Markdown 문법","dateModified":"2021-10-11T18:29:58+09:00","datePublished":"2021-09-15T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/jekyll/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/jekyll/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/","description":"🔔 Github 블로그를 만들기 위해 꼭 필요한 Markdown 문법에 대해 소개해드리겠습니다.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Markdown 문법","dateModified":"2021-10-25T22:37:52+09:00","datePublished":"2021-09-15T00:00:00+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/jekyll/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/jekyll/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/","description":"🔔 Github 블로그를 만들기 위해 꼭 필요한 Markdown 문법에 대해 소개해드리겠습니다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-10-23T19:41:45+09:00',
+    INDEX_KEY: 'index--2021-10-25T22:46:39+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -220,7 +220,13 @@ Left here for reference, feel free to delete.
 >
   
   
-  <div id="_navbar" class="navbar fixed-top">
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
   <div class="content">
     <span class="sr-only">Jump to:</span>
     <div class="nav-btn-bar">
@@ -228,8 +234,15 @@ Left here for reference, feel free to delete.
         <span class="sr-only">Navigation</span>
         <span class="icon-menu"></span>
       </a>
-      <div class="nav-span"></div>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
     </div>
+  </div>
   </div>
 </div>
 <hr class="sr-only" hidden />
@@ -293,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-11">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-25">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-10-11T18:29:58+09:00">2021-10-11</time>
+              <time datetime="2021-10-25T22:37:52+09:00">2021-10-25</time>
             </span>
           
         
@@ -397,16 +410,27 @@ Enter키를 통해 개행이 적용됩니다.
 </code></pre></div></div>
 
 <h2 id="이미지">이미지</h2>
+<hr />
 <h3 id="이미지-크기-조정하기">이미지 크기 조정하기</h3>
 <p><img /> 태그로 이미지를 첨부하고, width, height 속성을 줍니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;img src="/assets\img/developing-frog.png" height="50px" width="150px"&gt;
 </code></pre></div></div>
 
 <h3 id="이미지-정렬하기">이미지 정렬하기</h3>
-<hr />
 <p>텍스트 정렬하기와 마찬가지로 <code class="language-plaintext highlighter-rouge">&lt;img&gt;</code> 태그로 이미지를 첨부하고, 이미지 태그를 p태그로 감쌉니다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;p align="center"&gt;&lt;img src="/assets\img/developing-frog.png" height="50px" width="150px"&gt;  
 </code></pre></div></div>
+
+<h2 id="소스코드">소스코드</h2>
+<hr />
+<p>소스코드 블럭 안에 넣어도 리퀴드 태그는 인식을 해버리는데, 이 리퀴드 태그를 그대로 보여주고 싶을 때는 다음과 같이 liquid 문법의 <strong>raw tag</strong>를 사용하면 된다.</p>
+
+<p>{{ example }}<br />
+{% example %}</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% raw %} {{ example }} {% endraw %}
+{% raw %} {% example %} {% endraw %}
+</code></pre></div></div>
+
 <!--author-->
 
   
@@ -588,7 +612,7 @@ Enter키를 통해 개행이 적용됩니다.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/react/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title"><span>[React] TypeError: Cannot read properties of undefined (reading getState)</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-12-Attempted-import-error/" class="flip-title"><span>[React] Attempted import error</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>                        <li class="h4">  <a href="/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/" class="flip-title"><span>node.js 기초</span></a>  <time class="faded fine" datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/jekyll/2021-10-23-Creat-a-serach-bar/" class="flip-title"><span>[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</span></a>  <time class="faded fine" datetime="2021-10-23T00:00:00+09:00">23 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-17-About-useSelector-and-useDispatch/" class="flip-title"><span>react-redux</span></a>  <time class="faded fine" datetime="2021-10-17T00:00:00+09:00">17 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title"><span>[React] TypeError: Cannot read properties of undefined (reading getState)</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>            </ul></aside>
 
   
 

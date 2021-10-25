@@ -31,7 +31,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
     
 <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Create-React-App으로 React 시작하기 | IceChoco</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="Create-React-App으로 React 시작하기" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="en" />
@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Create-React-App으로 React 시작하기" />
 <script type="application/ld+json">
-{"headline":"Create-React-App으로 React 시작하기","dateModified":"2021-10-10T23:24:55+09:00","datePublished":"2021-09-28T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/react/2021-09-28-Starting-with-Create-React-App/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/react/2021-09-28-Starting-with-Create-React-App/","description":"기존에는 리액트 앱을 처음 실행하기 위해서는 webpack이나 babel 같은 것들을 설정하기 위해서 굉장히 많은 시간이 소요되었습니다. 하지만 지금은 따로 설정하지 않아도 Create-React-App이라는 Command를 이용하여 react, webpack 등을 바로 설정할 수 있습니다.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Create-React-App으로 React 시작하기","dateModified":"2021-10-10T23:24:55+09:00","datePublished":"2021-09-28T00:00:00+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/react/2021-09-28-Starting-with-Create-React-App/"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/react/2021-09-28-Starting-with-Create-React-App/","description":"기존에는 리액트 앱을 처음 실행하기 위해서는 webpack이나 babel 같은 것들을 설정하기 위해서 굉장히 많은 시간이 소요되었습니다. 하지만 지금은 따로 설정하지 않아도 Create-React-App이라는 Command를 이용하여 react, webpack 등을 바로 설정할 수 있습니다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-10-23T19:41:45+09:00',
+    INDEX_KEY: 'index--2021-10-25T22:46:39+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -220,7 +220,13 @@ Left here for reference, feel free to delete.
 >
   
   
-  <div id="_navbar" class="navbar fixed-top">
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
   <div class="content">
     <span class="sr-only">Jump to:</span>
     <div class="nav-btn-bar">
@@ -228,8 +234,15 @@ Left here for reference, feel free to delete.
         <span class="sr-only">Navigation</span>
         <span class="icon-menu"></span>
       </a>
-      <div class="nav-span"></div>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
     </div>
+  </div>
   </div>
 </div>
 <hr class="sr-only" hidden />
@@ -548,7 +561,7 @@ Left here for reference, feel free to delete.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/react/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title"><span>[React] TypeError: Cannot read properties of undefined (reading getState)</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-12-Attempted-import-error/" class="flip-title"><span>[React] Attempted import error</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>                        <li class="h4">  <a href="/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/" class="flip-title"><span>node.js 기초</span></a>  <time class="faded fine" datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/jekyll/2021-10-23-Creat-a-serach-bar/" class="flip-title"><span>[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</span></a>  <time class="faded fine" datetime="2021-10-23T00:00:00+09:00">23 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-17-About-useSelector-and-useDispatch/" class="flip-title"><span>react-redux</span></a>  <time class="faded fine" datetime="2021-10-17T00:00:00+09:00">17 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title"><span>[React] TypeError: Cannot read properties of undefined (reading getState)</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>            </ul></aside>
 
   
 

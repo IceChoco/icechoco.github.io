@@ -25,27 +25,27 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 
 
 
-  <meta name="robots" content="noindex">
-
 
 
   
     
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Install | IceChoco</title>
+<title>react-redux | IceChoco</title>
 <meta name="generator" content="Jekyll v4.2.1" />
-<meta property="og:title" content="Install" />
+<meta property="og:title" content="react-redux" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="How you install Hydejack depends on whether you start a new site, or change the theme of an existing site." />
-<meta property="og:description" content="How you install Hydejack depends on whether you start a new site, or change the theme of an existing site." />
-<link rel="canonical" href="https://icechoco.github.io/docs/install/" />
-<meta property="og:url" content="https://icechoco.github.io/docs/install/" />
+<meta name="description" content="설치방법 및 redux에 관한 내용은 Redux 기초 | IceChoco글을 참조하세요. state 조회하기: useSelector 사용 action 발생시키기: useDispatch 사용" />
+<meta property="og:description" content="설치방법 및 redux에 관한 내용은 Redux 기초 | IceChoco글을 참조하세요. state 조회하기: useSelector 사용 action 발생시키기: useDispatch 사용" />
+<link rel="canonical" href="https://icechoco.github.io/react/2021-10-17-About-useSelector-and-useDispatch/" />
+<meta property="og:url" content="https://icechoco.github.io/react/2021-10-17-About-useSelector-and-useDispatch/" />
 <meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-10-17T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Install" />
+<meta property="twitter:title" content="react-redux" />
 <script type="application/ld+json">
-{"@type":"WebPage","headline":"Install","dateModified":"2021-09-23T00:02:45+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/docs/install/","description":"How you install Hydejack depends on whether you start a new site, or change the theme of an existing site.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"react-redux","dateModified":"2021-10-23T23:35:10+09:00","datePublished":"2021-10-17T00:00:00+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/react/2021-10-17-About-useSelector-and-useDispatch/"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/react/2021-10-17-About-useSelector-and-useDispatch/","description":"설치방법 및 redux에 관한 내용은 Redux 기초 | IceChoco글을 참조하세요. state 조회하기: useSelector 사용 action 발생시키기: useDispatch 사용","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,7 +72,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="https://icechoco.github.io/docs/install/" hreflang="en">
+<link rel="alternate" href="https://icechoco.github.io/react/2021-10-17-About-useSelector-and-useDispatch/" hreflang="en">
 
 <link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
 
@@ -249,7 +249,7 @@ Left here for reference, feel free to delete.
 
   <main
   id="_main"
-  class="content layout-page"
+  class="content layout-post"
   role="main"
 >
   <nav id="breadcrumbs" class="screen-only"><ul>
@@ -262,150 +262,109 @@ Left here for reference, feel free to delete.
         <span>/</span>
         
         
-        <a href="/docs/">docs</a>
+        <a href="/react/">react</a>
       
       </li>
     
       <li>
       
         <span>/</span>
-        <span>install</span>
+        <span>2021-10-17-About-useSelector-and-useDispatch</span>
       
       </li>
     
   
 </ul></nav>
-  <article class="page mb6" role="article">
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-react-About-useSelector-and-useDispatch" class="page post mb6" role="article">
   <header>
-    <h1 class="page-title">Install</h1>
+    <h1 class="post-title flip-project-title">
+      
+        react-redux
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-17T00:00:00+09:00">17 Oct 2021</time> in <a href="/react/" class="flip-title">React</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-23">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-10-23T23:35:10+09:00">2021-10-23</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
     
 
 
 
-  
-    <div class="hr pb0"></div>
-  
+  <div class="hr pb0"></div>
 
 
   </header>
 
-  <p>How you install Hydejack depends on whether you <a href="#new-sites">start a new site</a>, 
-or change the theme of <a href="#existing-sites">an existing site</a>.</p>
-
-<ol id="markdown-toc">
-  <li><a href="#new-sites" id="markdown-toc-new-sites">New sites</a></li>
-  <li><a href="#existing-sites" id="markdown-toc-existing-sites">Existing sites</a>    <ol>
-      <li><a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a></li>
-    </ol>
-  </li>
-  <li><a href="#github-pages" id="markdown-toc-github-pages">GitHub Pages</a></li>
-  <li><a href="#running-locally" id="markdown-toc-running-locally">Running locally</a></li>
-</ol>
-
-<h2 id="new-sites">New sites</h2>
-<p>For new sites, the best way to get started with Hydejack is via the Starter Kit. 
-It comes with a documented config file and example content that gets you started quickly.</p>
-
-<p>If you have a GitHub account, fork the <a href="https://github.com/hydecorp/hydejack-starter-kit">Hydejack Starter Kit</a> repository. 
-Otherwise <a href="https://github.com/hydecorp/hydejack-starter-kit/archive/v9.1.4.zip">download the Starter Kit</a> and unzip them somewhere on your machine.</p>
-
-<p>If you bought the <strong>PRO Version</strong> of Hydejack, use the contents of the <code class="language-plaintext highlighter-rouge">starter-kit</code> folder instead.</p>
-
-<p class="note">In addition to the docs here, you can follow the quick start guide in the Starter Kit.</p>
-
-<p>You can now jump to <a href="#running-locally">running locally</a>.</p>
-
-<p class="note">You can now also <a href="https://app.netlify.com/start/deploy?repository=https://github.com/hydecorp/hydejack-starter-kit" class="no-mark-external"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" /></a> directly.</p>
-
-<h2 id="existing-sites">Existing sites</h2>
-<p>If you have an existing site that you’d like to upgrade to Hydejack you can install the theme via bundler.
-Add the following to your <code class="language-plaintext highlighter-rouge">Gemfile</code>:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># file: `Gemfile`</span>
-<span class="n">gem</span> <span class="s2">"jekyll-theme-hydejack"</span>
-</code></pre></div></div>
-
-<p>If you bought the <strong>PRO Version</strong> of Hydejack, copy the <code class="language-plaintext highlighter-rouge">#jekyll-theme-hydejack</code> folder into the root folder of your site,
-and add the following to your <code class="language-plaintext highlighter-rouge">Gemfile</code> instead:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># file: `Gemfile`</span>
-<span class="n">gem</span> <span class="s2">"jekyll-theme-hydejack"</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"./#jekyll-theme-hydejack"</span>
-</code></pre></div></div>
-
-<p class="note">The folder is prefixed with a <code class="language-plaintext highlighter-rouge">#</code> to indicate that this folder is different from regular Jekyll content. 
-The <code class="language-plaintext highlighter-rouge">#</code> char was choosen specifically because it is on of the four characters ignored by Jekyll by default (<code class="language-plaintext highlighter-rouge">.</code>, <code class="language-plaintext highlighter-rouge">_</code> , <code class="language-plaintext highlighter-rouge">#</code>, <code class="language-plaintext highlighter-rouge">~</code>).</p>
-
-<p>In your config file, change the <code class="language-plaintext highlighter-rouge">theme</code> to Hydejack:</p>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># file: `_config.yml`</span>
-<span class="na">theme</span><span class="pi">:</span> <span class="s">jekyll-theme-hydejack</span>
-</code></pre></div></div>
-
-<p>Hydejack comes with a default configuration file that takes care most of the configuration,
-but it pays off to check out the example config file in the Starter Kit to see what’s available.</p>
-
-<p>You can now jump to <a href="#running-locally">running locally</a>.</p>
-
-<h3 id="troubleshooting">Troubleshooting</h3>
-<p>If your existing site combines theme files with your content (as did previous verisons of Hydejack/PRO),
-make sure to delete the following folders:</p>
-
+  
+    <p>설치방법 및 redux에 관한 내용은 <a href="https://icechoco.github.io/react/2021-10-11-Redux-Basics/">Redux 기초 | IceChoco</a>글을 참조하세요.</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">_layouts</code></li>
-  <li><code class="language-plaintext highlighter-rouge">_includes</code></li>
-  <li><code class="language-plaintext highlighter-rouge">_sass</code></li>
-  <li><code class="language-plaintext highlighter-rouge">assets</code></li>
+  <li>state 조회하기: useSelector 사용</li>
+  <li>action 발생시키기: useDispatch 사용</li>
 </ul>
 
-<p>The <code class="language-plaintext highlighter-rouge">assets</code> folder most likely includes theme files as well as your personal/content files. 
-Make sure to only delete files that belong to the old theme!</p>
+<h2 id="useselector">useSelector</h2>
+<ul>
+  <li>connect 함수를 이용하지 않고 리덕스의 state를 조회할 수 있다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  import { useSelector } from "react-redux";
+  const user = useSelector(state =&gt; state.user)
+</code></pre></div>    </div>
+  </li>
+</ul>
 
-<h2 id="github-pages">GitHub Pages</h2>
-<p>If you want to build your site on <a href="https://jekyllrb.com/docs/github-pages/">GitHub Pages</a>, check out the <a href="https://github.com/hydecorp/hydejack-starter-kit/tree/gh-pages"><code class="language-plaintext highlighter-rouge">gh-pages</code> branch</a> in the Hydejack Starter Kit repo.</p>
+<h2 id="usedispatch">useDispatch</h2>
+<ul>
+  <li>생성한 action을 useDispatch를 통해 발생시킬 수 있다.</li>
+  <li>만들어둔 액션생성 함수를 import 한다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> import { change_user } from '../modules/user' import { useDispatch } from 'react-redux' const User = () =&gt; { ... const dispatch = useDispatch(); dispatch(change_user(user)); ... }
+</code></pre></div>    </div>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> // 위에서 dispatch한 change_user는 아래와 같이 정의된 액션 생성 함수이다. export const change_user = createAction(CHANGE_USER, user =&gt; user);
+</code></pre></div>    </div>
+  </li>
+</ul>
 
-<p>For existing sites, you can instead set the <code class="language-plaintext highlighter-rouge">remote_theme</code> key as follows:</p>
+<h3 id="참고">참고</h3>
+<ul>
+  <li><a href="https://juhi.tistory.com/23">[React] useSelector, useDispatch로 state에 접근하기</a></li>
+</ul>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># file: `_config.yml`</span>
-<span class="na">remote_theme</span><span class="pi">:</span> <span class="s">hydecorp/hydejack@v9.1.4</span>
-</code></pre></div></div>
+<!--author-->
 
-<p class="note" title="Important">Make sure the <code class="language-plaintext highlighter-rouge">plugins</code> list contains <code class="language-plaintext highlighter-rouge">jekyll-include-cache</code> (create if it doesn’t exist):</p>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># file: `_config.yml`</span>
-<span class="na">plugins</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">jekyll-include-cache</span>
-</code></pre></div></div>
-
-<p>To run this configuration locally, make sure the following is part of your <code class="language-plaintext highlighter-rouge">Gemfile</code>:</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># file: `Gemfile`</span>
-<span class="n">gem</span> <span class="s2">"github-pages"</span><span class="p">,</span> <span class="ss">group: :jekyll_plugins</span>
-<span class="n">gem</span> <span class="s2">"jekyll-include-cache"</span><span class="p">,</span> <span class="ss">group: :jekyll_plugins</span>
-</code></pre></div></div>
-
-<p class="note">Note that Hydejack has a reduced feature set when built on GitHub Pages. 
-Specifically, using KaTeX math formulas doesn’t work when built in this way.</p>
-
-<h2 id="running-locally">Running locally</h2>
-<p>Make sure you’ve <code class="language-plaintext highlighter-rouge">cd</code>ed into the directory where <code class="language-plaintext highlighter-rouge">_config.yml</code> is located.
-Before running for the first time, dependencies need to be fetched from <a href="https://rubygems.org/">RubyGems</a>:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">install</span>
-</code></pre></div></div>
-
-<p class="note">If you are missing the <code class="language-plaintext highlighter-rouge">bundle</code> command, you can install Bundler by running <code class="language-plaintext highlighter-rouge">gem install bundler</code>.</p>
-
-<p>Now you can run Jekyll on your local machine:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div>
-
-<p>and point your browser to <a href="http://localhost:4000">http://localhost:4000</a> to see Hydejack in action.</p>
-
-<p class="read-more">Continue with <a href="/docs/config/" class="heading flip-title">Config</a></p>
-
-
+  
 </article>
+
 
 
   <clap-button class="mb6" ></clap-button>
@@ -420,6 +379,186 @@ Before running for the first time, dependencies need to be fetched from <a href=
 
 
 
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>꾸준히 성장하는 프론트엔드 엔지니어 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/jekyll/2021-10-23-Creat-a-serach-bar/" class="flip-title"><span>[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</span></a>  <time class="faded fine" datetime="2021-10-23T00:00:00+09:00">23 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title"><span>[React] TypeError: Cannot read properties of undefined (reading getState)</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-12-Attempted-import-error/" class="flip-title"><span>[React] Attempted import error</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+
+</aside>
+
+
+  
 
 
   

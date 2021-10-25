@@ -31,7 +31,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
     
 <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>함수형 컴포넌트 vs 클래스 컴포넌트 | IceChoco</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.2.1" />
 <meta property="og:title" content="함수형 컴포넌트 vs 클래스 컴포넌트" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="en" />
@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="함수형 컴포넌트 vs 클래스 컴포넌트" />
 <script type="application/ld+json">
-{"headline":"함수형 컴포넌트 vs 클래스 컴포넌트","dateModified":"2021-10-11T22:25:33+09:00","datePublished":"2021-10-11T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/react/2021-10-11-Class-Component-vs-Functional-Component/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/react/2021-10-11-Class-Component-vs-Functional-Component/","description":"안녕하세요. 오늘은 React Component의 두 종류인 함수형 컴포넌트와 클래스 컴포넌트에 대해서 포스팅하겠습니다. Class Component state와 Lifecyle method와 같은 더 많은 기능들을 사용 할 수 있습니다. 다만 코드가 좀 더 길어지고, 복잡해지며, 성능적인 면에서 느립니다.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"함수형 컴포넌트 vs 클래스 컴포넌트","dateModified":"2021-10-11T22:25:33+09:00","datePublished":"2021-10-11T00:00:00+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/react/2021-10-11-Class-Component-vs-Functional-Component/"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/react/2021-10-11-Class-Component-vs-Functional-Component/","description":"안녕하세요. 오늘은 React Component의 두 종류인 함수형 컴포넌트와 클래스 컴포넌트에 대해서 포스팅하겠습니다. Class Component state와 Lifecyle method와 같은 더 많은 기능들을 사용 할 수 있습니다. 다만 코드가 좀 더 길어지고, 복잡해지며, 성능적인 면에서 느립니다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-10-23T19:41:45+09:00',
+    INDEX_KEY: 'index--2021-10-25T22:46:39+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -220,7 +220,13 @@ Left here for reference, feel free to delete.
 >
   
   
-  <div id="_navbar" class="navbar fixed-top">
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
   <div class="content">
     <span class="sr-only">Jump to:</span>
     <div class="nav-btn-bar">
@@ -228,8 +234,15 @@ Left here for reference, feel free to delete.
         <span class="sr-only">Navigation</span>
         <span class="icon-menu"></span>
       </a>
-      <div class="nav-span"></div>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
     </div>
+  </div>
   </div>
 </div>
 <hr class="sr-only" hidden />
@@ -528,7 +541,7 @@ Left here for reference, feel free to delete.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/react/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title"><span>[React] TypeError: Cannot read properties of undefined (reading getState)</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-12-Attempted-import-error/" class="flip-title"><span>[React] Attempted import error</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>                        <li class="h4">  <a href="/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/" class="flip-title"><span>node.js 기초</span></a>  <time class="faded fine" datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/jekyll/2021-10-23-Creat-a-serach-bar/" class="flip-title"><span>[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</span></a>  <time class="faded fine" datetime="2021-10-23T00:00:00+09:00">23 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-17-About-useSelector-and-useDispatch/" class="flip-title"><span>react-redux</span></a>  <time class="faded fine" datetime="2021-10-17T00:00:00+09:00">17 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title"><span>[React] TypeError: Cannot read properties of undefined (reading getState)</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>            </ul></aside>
 
   
 

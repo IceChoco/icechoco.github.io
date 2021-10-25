@@ -1,5 +1,112 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-10-23T19:41:45+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
-</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[React] Attempted import error</title><link href="https://icechoco.github.io/react/2021-10-12-Attempted-import-error/" rel="alternate" type="text/html" title="[React] Attempted import error" /><published>2021-10-12T00:00:00+09:00</published><updated>2021-10-12T14:12:48+09:00</updated><id>https://icechoco.github.io/react/Attempted-import-error</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-12-Attempted-import-error/">&lt;p&gt;client 폴더 내 index.js 파일에서 하위폴더인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_reducers&lt;/code&gt;에서 데이터를 가져올려고 하자 Attempted import error가 발생했다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-10-25T22:46:39+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</title><link href="https://icechoco.github.io/jekyll/2021-10-23-Creat-a-serach-bar/" rel="alternate" type="text/html" title="[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-25T22:37:52+09:00</updated><id>https://icechoco.github.io/jekyll/Creat-a-serach-bar</id><content type="html" xml:base="https://icechoco.github.io/jekyll/2021-10-23-Creat-a-serach-bar/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Hydejack 테마를 사용한 블로그 환경에서 Jekyll SimpleJekyllSearch를 사용하여 서치바(Search Bar)를 구현할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;깃헙 블로그를 시작하기 전에는 엑셀을 통해 개발공부와 관련된 내용들을 기록했었다. 그래서 엑셀을 사용할 때는 Ctrl + F하면 간단하게 찾기를 할 수 있으니 그렇게 썼었다. 그런데 데스크탑, 노트북, 본가 PC를 번갈아서 쓰면서 컴퓨터를 바꿀때마다 가장 최신버전의 엑셀을 옮겨줘야 하는 작업이 불편해졌고, 요즘 개발자들은 GitHub Pages를 통한 개인 블로그 또는 다른 사이트 운영을 통해 자신의 포트폴리오를 생성하는 것은 기본이라는 것을 알게 되었다. 그래서 나는 올 하반기부터 GitHub 블로그를 시작했고 점점 익숙해지고있다!(익숙해진거 맞지?ㅎ)&lt;/p&gt;
+
+&lt;p&gt;무튼… 본론으로 돌아가자면 GitHub 블로그를 시작한지 이제 2달이 막 지났는데 포스트의 양이 늘어나면서 내가 적었던 글을 주변 개발자 친구들한테 공유해줄 때 글 찾기가 힘들어서 매번 “아 이거썼었는데;; 잠깐만 기다려봐!”하고 글을 계속 찾는 내 자신을 발견했다. 아니 서치바 없는 블로그라니 이게 무슨 블로그야! 서치바를 추가해야겠어라고 다짐하고 본격적인 서치바 생성에 들어갔다.&lt;/p&gt;
+
+&lt;p&gt;회사 선배와 개발관련 얘기를 나누다 글을 계속 찾는 나를 보고 SearchBar 추가에 좋은 라이브러리인 &lt;a href=&quot;https://github.com/christian-fei/Simple-Jekyll-Search&quot;&gt;SimpleJekyllSearch&lt;/a&gt;를 추천해주셨다. 정말 너무 좋은 선배님이다^_^ 설치는 라이브러리 제공 사이트 내 &lt;a href=&quot;https://github.com/christian-fei/Simple-Jekyll-Search&quot;&gt;가이드&lt;/a&gt; 파일과 &lt;a href=&quot;https://jamesu.dev/posts/2021/01/03/adding-search-page-on-jekyll/&quot;&gt;Jekyll에 검색 페이지 추가하기&lt;/a&gt; 글을 참조하면서 진행했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;simplejekyllsearch-연동하기&quot;&gt;SimpleJekyllSearch 연동하기&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1. 연동에 필요한 파일은 총 2개&lt;/strong&gt;&lt;br /&gt;
+SimpleJekyllSearch를 블로그에 연동하기 위해 가장 중요한 파일은 아래 2개 파일이다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;simple-jekyll-search.min.js&lt;/code&gt; 또는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;simple-jekyll-search.js&lt;/code&gt; &lt;a href=&quot;https://github.com/christian-fei/Simple-Jekyll-Search/tree/master/example/js&quot;&gt;링크&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;search.json&lt;/code&gt; &lt;a href=&quot;https://github.com/christian-fei/Simple-Jekyll-Search/blob/master/example/search.json&quot;&gt;링크&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;첫번째 파일인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;simple-jekyll-search.min.js&lt;/code&gt; 파일은 검색 데이터로부터 &lt;strong&gt;검색 기능&lt;/strong&gt;을 사용하기 위한 라이브러리 파일이고, 두번째 파일인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;search.json&lt;/code&gt; 파일은 검색 데이터를 &lt;strong&gt;준비&lt;/strong&gt;하기 위한 파일이다.
+그렇다면 첫번째 파일인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*.min.js&lt;/code&gt; 파일과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*.js&lt;/code&gt; 파일의 차이점이 뭘까? &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*.min.js&lt;/code&gt;가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*.js&lt;/code&gt; 파일의 압축버전이라고 생각하면 된다.&lt;/p&gt;
+
+&lt;p&gt;두 파일의 생성 위치는 개발자 나름인데, 사용하는 블로그 테마에 따라서 어느정도의 폴더 역할에 따라 위치는 지켜야 하므로 자신이 생각하는 적당한 곳에 생성하면된다. 나같은 경우는 hydejack 테마를 사용하고 있으며 두 파일을 아래의 경로에 생성했다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;simple-jekyll-search.min.js&lt;/code&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assets/js&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;search.json&lt;/code&gt;:&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assets/json&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. 검색 데이터 준비를 위한 json 파일 만들기&lt;/strong&gt;&lt;br /&gt;
+Jekyll로 만든 블로그는 별도의 서버를 갖고 있지 않은 정적 사이트이기 때문에 검색을 하기 위해서는 미리 생성된 데이터가 필요하다. 이 역할을 수행하는 파일이 바로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;search.json&lt;/code&gt; 파일이다.&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;---&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;layout:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;---&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;site.posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post.title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;jsonify&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;categories&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.categories | join: ' &amp;gt; ' }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;tags&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;       &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.tags | join: ', ' }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;       &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.date | date: '%Y.%m.%d' }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;urlString&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.url }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.url | prepend: site.baseurl }}&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;unless&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;forloop.last&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;endunless&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;위 파일을 보면 &lt;strong&gt;Jekyll의 Liquid 문법으로 json 데이터를 생성&lt;/strong&gt;하고 있다. 뜻은 전체 포스트를 순회하면서 제목, 카테고리, 태그, url, 날짜 등을 객체로 구성하여 배열로 만든다. 파일 생성 후 데이터가 정상적으로 생성되었는지 확인하기 위해 search.json이 저장된 경로로 접속해보자. 예를 들어 나의 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:4000/assets/json/search.json&lt;/code&gt;로 접속해서 데이터 정상 생성을 확인할 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3.검색 레이아웃 만들기&lt;/strong&gt;&lt;br /&gt;
+나는 Nav Bar에 있는 Search버튼을 누르면 서치 홈페이지로 이동 후, 그 홈페이지 내에서 검색기능을 구현하는 페이지를 만들고 싶었다. 그래서 가장 먼저 검색 레이아웃을 만들었다. 경로는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; 폴더 아래에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;search.html&lt;/code&gt;이라는 이름으로 만들었다.&lt;/p&gt;
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;common-header search&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;search&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fas fa-search fa-fw&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;search-input&quot;&lt;/span&gt; 
+      &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;search&quot;&lt;/span&gt; 
+      &lt;span class=&quot;na&quot;&gt;tabindex=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1&quot;&lt;/span&gt; 
+      &lt;span class=&quot;na&quot;&gt;spellcheck=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt; 
+      &lt;span class=&quot;na&quot;&gt;placeholder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Search&quot;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;results-container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;기본적인 소스는 &lt;a href=&quot;https://github.com/christian-fei/Simple-Jekyll-Search/blob/master/example/_layouts/default.html&quot;&gt;라이브러리 예시&lt;/a&gt;에서 볼 수 있다. 하지만 진짜 못생김ㅎ&lt;br /&gt;
+&lt;img src=&quot;/assets\img/simple-jekyll-search-ex.PNG&quot; alt=&quot;simple-jekyll-search-ex&quot; /&gt;&lt;br /&gt;
+예시 소스의 기본 레이아웃이다. 입력하는 부분과 그 출력값을 나타내주는 두 부분이 큰 틀인데, 예시에서는 레이아웃이 꾸밈이 없이 최소한으로 되어있다. 그래서 나는 jamesu님의 레이아웃 디자인을 가져왔다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3.검색 레이아웃 만들기&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jamesu.dev/posts/2021/01/03/adding-search-page-on-jekyll/&quot;&gt;Jekyll에 검색 페이지 추가하기&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/christian-fei/Simple-Jekyll-Search&quot;&gt;SimpleJekyllSearch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://khw11044.github.io/blog/githubpages/2020-12-26-making-blog-05/&quot;&gt;[GithubPages] 하루만에 만드는 깃허브 블로그 05.게시물 검색기능 추가하기&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="jekyll" /><category term="Blog" /><category term="Jekyll" /><category term="Web" /><category term="Markdown" /><category term="HTML" /><summary type="html">이 글의 목적 Hydejack 테마를 사용한 블로그 환경에서 Jekyll SimpleJekyllSearch를 사용하여 서치바(Search Bar)를 구현할 수 있다.</summary></entry><entry><title type="html">react-redux</title><link href="https://icechoco.github.io/react/2021-10-17-About-useSelector-and-useDispatch/" rel="alternate" type="text/html" title="react-redux" /><published>2021-10-17T00:00:00+09:00</published><updated>2021-10-23T23:35:10+09:00</updated><id>https://icechoco.github.io/react/About-useSelector-and-useDispatch</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-17-About-useSelector-and-useDispatch/">&lt;p&gt;설치방법 및 redux에 관한 내용은 &lt;a href=&quot;https://icechoco.github.io/react/2021-10-11-Redux-Basics/&quot;&gt;Redux 기초 | IceChoco&lt;/a&gt;글을 참조하세요.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;state 조회하기: useSelector 사용&lt;/li&gt;
+  &lt;li&gt;action 발생시키기: useDispatch 사용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;useselector&quot;&gt;useSelector&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;connect 함수를 이용하지 않고 리덕스의 state를 조회할 수 있다.
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  import { useSelector } from &quot;react-redux&quot;;
+  const user = useSelector(state =&amp;gt; state.user)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;usedispatch&quot;&gt;useDispatch&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;생성한 action을 useDispatch를 통해 발생시킬 수 있다.&lt;/li&gt;
+  &lt;li&gt;만들어둔 액션생성 함수를 import 한다.
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; import { change_user } from '../modules/user' import { useDispatch } from 'react-redux' const User = () =&amp;gt; { ... const dispatch = useDispatch(); dispatch(change_user(user)); ... }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; // 위에서 dispatch한 change_user는 아래와 같이 정의된 액션 생성 함수이다. export const change_user = createAction(CHANGE_USER, user =&amp;gt; user);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://juhi.tistory.com/23&quot;&gt;[React] useSelector, useDispatch로 state에 접근하기&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">설치방법 및 redux에 관한 내용은 Redux 기초 | IceChoco글을 참조하세요. state 조회하기: useSelector 사용 action 발생시키기: useDispatch 사용</summary></entry><entry><title type="html">[React] Attempted import error</title><link href="https://icechoco.github.io/react/2021-10-12-Attempted-import-error/" rel="alternate" type="text/html" title="[React] Attempted import error" /><published>2021-10-12T00:00:00+09:00</published><updated>2021-10-12T14:12:48+09:00</updated><id>https://icechoco.github.io/react/Attempted-import-error</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-12-Attempted-import-error/">&lt;p&gt;client 폴더 내 index.js 파일에서 하위폴더인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_reducers&lt;/code&gt;에서 데이터를 가져올려고 하자 Attempted import error가 발생했다.
 &lt;img src=&quot;/assets\img/attempt-import-error.PNG&quot; alt=&quot;attempt-import-error&quot; /&gt;&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./src/index.js
 Attempted import error: 'Reducer' is not exported from './_reducers'.
@@ -259,133 +366,4 @@ class App extends Component{
   &lt;li&gt;&lt;a href=&quot;https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/&quot;&gt;React lifecycle methods diagram&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">안녕하세요. 오늘은 React Component의 두 종류인 함수형 컴포넌트와 클래스 컴포넌트에 대해서 포스팅하겠습니다. Class Component state와 Lifecyle method와 같은 더 많은 기능들을 사용 할 수 있습니다. 다만 코드가 좀 더 길어지고, 복잡해지며, 성능적인 면에서 느립니다.</summary></entry><entry><title type="html">Create-React-App으로 React 시작하기</title><link href="https://icechoco.github.io/react/2021-09-28-Starting-with-Create-React-App/" rel="alternate" type="text/html" title="Create-React-App으로 React 시작하기" /><published>2021-09-28T00:00:00+09:00</published><updated>2021-10-10T23:24:55+09:00</updated><id>https://icechoco.github.io/react/Starting-with-Create-React-App</id><content type="html" xml:base="https://icechoco.github.io/react/2021-09-28-Starting-with-Create-React-App/">&lt;p&gt;기존에는 리액트 앱을 처음 실행하기 위해서는 webpack이나 babel 같은 것들을 설정하기 위해서 굉장히 많은 시간이 소요되었습니다. 하지만 지금은 따로 설정하지 않아도 Create-React-App이라는 Command를 이용하여 react, webpack 등을 바로 설정할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;babel&quot;&gt;babel&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;babel&lt;/strong&gt;이란 자바스크립트 ES6, ES7 등 해마다 새로운 메소드를 추가한 버전이 있습니다. 추가한 메소드들이 최신 브라우저에서는 잘 수행되나 오래된 브라우저에서 수행이 되지 않는 경우가 있습니다. 최신 자바스크립트 문법을 사용하여도 구형 브라우저에서도 수행될 수 있게 ES6문법을 ES5로 바꿔주는 역할을 하는 것이 babel의 역할입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;webpack&quot;&gt;webpack&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;webpack&lt;/strong&gt;이란 예전에 웹사이트를 만들 때에는 js파일, css, html과 같이 간단하게 만들었으나 점점 웹사이트의 사이즈가 커졌습니다. 그러면서 js, html 파일 뿐만 아니라 라이브러리 및 프레임워크를 많이 사용하면서 구조가 복잡해졌습니다. 복잡해진 구조들을 webpack을 이용해서 bundle(묶어주는) 시켜주는 것이 webpack의 역할입니다.&lt;/p&gt;
-
-&lt;p&gt;webpack은 src 폴더 안의 영역만 관리를 해주며, public 폴더 안의 소스까지 관리를 해주지 않습니다. 그래서 이미지 파일과 같은 특정 파일을 webpack에 넣고 싶을 때는 src 폴더 안에 넣어 webpack이 모아주는 역할을 할 수 있도록 해주면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;터미널에 아래 스크립트를 수행하여 다운을 받을 수 있습니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npx create-react-app .
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;.의 의미는 내가 있는 디렉토리 안에다가 react를 설치하겠다는 의미입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;create-react-app&quot;&gt;Create-React-app&lt;/h2&gt;
-&lt;p&gt;저희는 react를 설치하고자 하는 client 경로에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npx create-react-app .&lt;/code&gt; 명령어를 통해 다운 받았습니다. 하지만 이전에는 아래와 같은 명령어를 통해 컴퓨터 안에 다운을 받았습니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install -g create-react-app
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;그래서 컴퓨터 안에 받은 것을 활용해서 react를 실행했었습니다. 하지만 이제는 global로 다운을 받을 필요가 없이 npx를 이용해서 다운을 받지 않고 노드 레지스트리에 있는 react-creat-app을 가져와서 이용할 수 있습니다. 그럼 npm과 npx의 차이가 뭘까요?&lt;/p&gt;
-&lt;h3 id=&quot;npm-node-package-manager&quot;&gt;NPM: node package manager&lt;/h3&gt;
-&lt;p&gt;(1) 레지스트리와 같은 저장소 역할을 한다. 라이브러리를 담고 있는 곳이 레지스트리이다.&lt;br /&gt;
-(2) npm에 관한 것은 ‘package.json’ 파일에 정의되어 있다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;ex) dependencies는 어떤걸쓰고, 버전은 몇을 쓰고 있는지, script는 어떤 것을 써야하는지 등&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;(3) local vs Global&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;npm install을 사용하여 다운받으면 자동적으로 로컬에 다운을 받게 되고, node_modules 폴더에 저장된다.
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  npm install create-react-app
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-g&lt;/code&gt;라는 플래그를 함께 사용하면 Global로 다운받게 되고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bin/&lt;/code&gt; 폴더에 저장된다. 리눅스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local/bin&lt;/code&gt; 폴더 안에, Windows는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%AppData%/npm&lt;/code&gt;에 저장된다
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  npm install -g create-react-app
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;h3 id=&quot;npx&quot;&gt;NPX&lt;/h3&gt;
-  &lt;/li&gt;
-  &lt;li&gt;장점
-    &lt;ol&gt;
-      &lt;li&gt;Disk Space를 낭비하지 않을 수 있다.&lt;/li&gt;
-      &lt;li&gt;항상 최신 버전을 사용할 수 있다.&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;참고&quot;&gt;참고&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=P4gXaWZz30Q&quot;&gt;노드 리액트 기초 강의 #16 Create-React-App&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">기존에는 리액트 앱을 처음 실행하기 위해서는 webpack이나 babel 같은 것들을 설정하기 위해서 굉장히 많은 시간이 소요되었습니다. 하지만 지금은 따로 설정하지 않아도 Create-React-App이라는 Command를 이용하여 react, webpack 등을 바로 설정할 수 있습니다.</summary></entry><entry><title type="html">회원가입기능 만들기</title><link href="https://icechoco.github.io/react/2021-09-22-Create-member-registration-function/" rel="alternate" type="text/html" title="회원가입기능 만들기" /><published>2021-09-22T00:00:00+09:00</published><updated>2021-10-11T15:06:40+09:00</updated><id>https://icechoco.github.io/react/Create-member-registration-function</id><content type="html" xml:base="https://icechoco.github.io/react/2021-09-22-Create-member-registration-function/">&lt;p&gt;client에서 이름, e-maile, PW 등을 입력 후 서버에 보내주면 서버에서 그 데이터를 받아야 합니다. 서버에서 클라이언트로 부터 데이터를 받을 때 bodyParser라는 dependencies가 필요합니다. 이 dependencies를 이용하여 Client에서 보내주는 자료들을 이름, e-maile, PW를 받을 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;bodyparser-다운받기&quot;&gt;bodyParser 다운받기&lt;/h2&gt;
-&lt;p&gt;아래 명렁어를 터미널에 입력하여 다운받습니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install body-parser --save
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;지금은 로그인을 하거나, 회원가입할 때 만들어준 클라이언트가 없습니다. 그러므로 데이터를 클라이언트에 보내줄 수가 없으므로 대처하기 위해 postman을 다운받을 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;cra-살펴보기---디렉토리-구조&quot;&gt;CRA 살펴보기 - 디렉토리 구조&lt;/h2&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;client  
-├─ node_modules //NPM또는 Yarn을 통해 설치된 여러가지 라이브러리  
-├─ public  
-├─── src  
-│ ├── _actions   //_actions, _reducer: Redux를 위한 폴더 
-│ ├── _reducer  
-│ ├── components  
-│ │ ├─── views     //페이지를 넣을 폴더 
-│ │   ├─── LandingPage //처음 홈페이지 접속 시 최초 보여지는 페이지
-│ │   ├─── LoginPage   //로그인 페이지
-│ │   ├─── NavBar      //사이드바랑 상단바
-│ │   ├─── RegisterPage
-│ ├── App.js //Routing 관련 일을 처리(로딩페이지에 가고 싶다면 로딩페이지에 가도록 분류해주고, 랜딩페이지에 가고 싶다면 랜딩페이지에 갈 수 있는 분류를 해줌)
-│ └── Config.js //환경변수를 정하는 곳
-├─ hoc //Higher Order Component의 약자  
-├─ utils //여러군데에서 쓰일 수 있는 것들을 이곳에 넣어둬서 어디서든 쓸수 있게 해줌
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;utils&lt;/strong&gt;: Landing 페이지에서 사용하는 소스를 loginPage, RegisterPage에서 쓴다고 하면 loginPage, RegisterPage에 똑같은 소스를 복사하는게 아니라 utils에 넣어두고 Landing, loginPage, RegisterPage 세 군데에서 사용할 수 있게 해줍니다.
-    &lt;h3 id=&quot;hoc&quot;&gt;hoc&lt;/h3&gt;
-    &lt;p&gt;hoc는 다른 컴포넌트를 갖는 펑션입니다. 예를들어 여러가지 컴포넌트를 넣어 놓고 로직에 의해 해당 컴포넌트에 들어갈 자격이 있는지 판단을 한 후 다음 액션을 취할 수 있도록 해주는 Auth라는 HOC가 있다고 해봅시다. Auth 안에 로그인이 된 사람만 들어갈 수 있는 페이지가 있는 경우, Auth는 해당 유저가 해당 페이지에 들어갈 자격이 되는지를 알아낸 후에 자격이 된다면 Logged IN COMPONENT에 가게 해주고 아니라면 다른 페이지로 보내버립니다. 예시로 든 자격이 아니더라도 다른 기능을 hoc에 넣어놓은 후 많은 컴포넌트들이 이용할 수 있게 된다고 생각하면 됩니다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;cra-살펴보기---srcappjs&quot;&gt;CRA 살펴보기 - src/App.js&lt;/h2&gt;
-&lt;p&gt;React에서는 페이지 간의 이동을 할 떄 React Router Dom이라는 것을 사용합니다. 우선 react-router-dom을 설치합니다. 설치 완료 후 App.js 안에서 페이지 이동을 할 수 있도록 라우팅을 구현해줍니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install react-router-dom --save
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;지금까지는 Client를 구현하지 않았기 때문에 postman을 이용해서 backend가 잘 구축되어 있는지 여러 기능들을 테스트해봤습니다. 지금부터는 React.js를 사용해서 Server에 req.를 보내보도록 하겠습니다. 이때 사용할 것이 AXOIS 입니다. AXOIS는 jQuery 사용할 때 AJAX와 같은 개념입니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install axios --save
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;proxy-server가-뭐에요&quot;&gt;Proxy Server가 뭐에요?&lt;/h2&gt;
-&lt;p&gt;클라이언트와 서버가 둘이서 요청을 주고 응답을 받는데 이 안에 프록시 서버가 들어갈 수 있습니다. 만약에 유저가 있고 인터넷이 있다고 생각했을 때, 유저가 무언가를 보낸 경우 프록시 서버에서 많은 일들을 할 수 있습니다.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;요청받은 IP를 Proxy Server에서 임의 변경 가능
-      &lt;ul&gt;
-        &lt;li&gt;만약에 유저의 아이피가 ‘111.111.111.111’이라고 가정해보죠. 그럼 이때 프록시 서버에서 유저의 아이피를 임의로 변경 할 수 있습니다. 그럼 인터넷에서는 접근하는 사람의 IP를 모르게 되는거죠.&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;요청받은 데이터 임의 변경 가능
-      &lt;ul&gt;
-        &lt;li&gt;IP 뿐만이 아니라 유저에서 보내는 데이터도 중간에서 임의로 바꿀 수 있습니다.&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;방화벽 기능&lt;/li&gt;
-    &lt;li&gt;웹필터 기능&lt;/li&gt;
-    &lt;li&gt;캐쉬 데이터, 공유 데이터 제공 기능
-      &lt;ul&gt;
-        &lt;li&gt;어떤 서버에 들어갔을 때 static한 이미지들을 프록시 서버에 저장 가능합니다. 유저가 무언가를 보고 싶을 떄 인터넷까지 가지않아도 프록시 서버에서 가져와 빠르게 데이터를 볼 수 있습니다.&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이처럼 프록시 서버는 다양한 기능들을 수행하고 있습니다. Proxy Serve를 쓰는 이유를 정리해보자면&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;회사에서 직원들이나 집안에서 아이들 인터넷 사이트 접근 제어&lt;/li&gt;
-    &lt;li&gt;캐쉬를 이용해 더 빠른 인터넷 제공&lt;/li&gt;
-    &lt;li&gt;더 나은 보안 제공&lt;/li&gt;
-    &lt;li&gt;이용 제한된 사이트 접근 가능&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;정도가 있습니다.&lt;/p&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">client에서 이름, e-maile, PW 등을 입력 후 서버에 보내주면 서버에서 그 데이터를 받아야 합니다. 서버에서 클라이언트로 부터 데이터를 받을 때 bodyParser라는 dependencies가 필요합니다. 이 dependencies를 이용하여 Client에서 보내주는 자료들을 이름, e-maile, PW를 받을 수 있습니다.</summary></entry></feed>
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">안녕하세요. 오늘은 React Component의 두 종류인 함수형 컴포넌트와 클래스 컴포넌트에 대해서 포스팅하겠습니다. Class Component state와 Lifecyle method와 같은 더 많은 기능들을 사용 할 수 있습니다. 다만 코드가 좀 더 길어지고, 복잡해지며, 성능적인 면에서 느립니다.</summary></entry></feed>
