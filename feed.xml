@@ -1,5 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-10-25T22:46:39+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
-</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</title><link href="https://icechoco.github.io/jekyll/2021-10-23-Creat-a-serach-bar/" rel="alternate" type="text/html" title="[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-25T22:37:52+09:00</updated><id>https://icechoco.github.io/jekyll/Creat-a-serach-bar</id><content type="html" xml:base="https://icechoco.github.io/jekyll/2021-10-23-Creat-a-serach-bar/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-11-12T18:29:43+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?</title><link href="https://icechoco.github.io/javascript/2021-11-12-Why-should-we-study-Javascript/" rel="alternate" type="text/html" title="[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?" /><published>2021-11-12T00:00:00+09:00</published><updated>2021-11-12T18:29:34+09:00</updated><id>https://icechoco.github.io/javascript/Why-should-we-study-Javascript</id><content type="html" xml:base="https://icechoco.github.io/javascript/2021-11-12-Why-should-we-study-Javascript/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Javascript에 대한 이론에 대해 공부하고 우리가 왜 Javascript에 대해서 공부해야 하는지 그 목적을 알 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;개요&quot;&gt;개요&lt;/h2&gt;
+&lt;p&gt;Java script는 1995년 12월 브렌던 아이크라는 미국의 프로그래머에 의해 개발되어졌다. 브랜던 아이크는 자바스크립트를 넷스케이프를 위해 10일만에 만들었다. 2000년대에 인터넷의 대명사가 익스플로러였다면, 1990년대는 넷스케이프가 그 위치에 있었다. 넷스케이프는 그 당시 굉장히 훌륭한 네비게이터였다. 넷스케이프란 브라우저고, 사람들은 웹사이트들이 좀 더 상호보환적이길 원했다. 왜냐하면 그 당시에는 웹사이트에 HTML과 CSS밖에 없었기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets\img/netscape.png&quot; alt=&quot;SimpleJekyllSearch&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;우리가-javascript를-공부해야하는-이유&quot;&gt;우리가 JavaScript를 공부해야하는 이유&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1. 자바스크립트는 프론트엔드에 쓸 수 있는 유일한 프로그래밍 언어이다.&lt;/strong&gt;&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="javascript" /><category term="javascript" /><summary type="html">이 글의 목적 Javascript에 대한 이론에 대해 공부하고 우리가 왜 Javascript에 대해서 공부해야 하는지 그 목적을 알 수 있다.</summary></entry><entry><title type="html">[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</title><link href="https://icechoco.github.io/jekyll/2021-10-23-Creat-a-serach-bar/" rel="alternate" type="text/html" title="[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-25T22:37:52+09:00</updated><id>https://icechoco.github.io/jekyll/Creat-a-serach-bar</id><content type="html" xml:base="https://icechoco.github.io/jekyll/2021-10-23-Creat-a-serach-bar/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Hydejack 테마를 사용한 블로그 환경에서 Jekyll SimpleJekyllSearch를 사용하여 서치바(Search Bar)를 구현할 수 있다.&lt;/li&gt;
 &lt;/ul&gt;
@@ -327,43 +338,4 @@ class App extends Component{
 &lt;h3 id=&quot;store&quot;&gt;STORE&lt;/h3&gt;
 &lt;p&gt;Application의 state을 감싸주는 역할을 합니다. 이 Store안에는 여러가지의 많은 메소드가 있습니다. 이 메소드를 이용하여 State를 관리할 수 있습니다.&lt;/p&gt;
 
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><category term="Redux" /><summary type="html">Redux는 상태관리 라이브러리(predictable state container) 입니다. 그렇다면 여기서 말하는 state가 뭘까요? React에서는 Props와 State가 있습니다. 이 두가지를 비교하면서 state에 대해 알아보겠습니다. Props VS State Props Props는 Properties의 줄임말입니다. 부모 컴포넌트와 자식 컴포넌트가 있는 경우 데이터를 서로 주고 받아야겠죠? 두 컴포넌트간의 데이터를 주고 받을 때는 Props를 이용해야 합니다. 단방향 데이터 흐름: child component에 전달되는 값 또는 method. 부모 컴포넌트에서 자식 컴포넌트로 즉 위에서 아래로만 데이터 전달이 가능합니다. 반대로 child component에서 parent component로 전달은 불가능합니다. read donly: child component로 전달받은 props 값은 변하지 않습니다다. 만약 부모로부터 받은 값을 수정하고 싶다면 수정된 값으로 부모 컴포넌트에게서 다시 받아야 합니다. 소스코드 예시 parent component</summary></entry><entry><title type="html">함수형 컴포넌트 vs 클래스 컴포넌트</title><link href="https://icechoco.github.io/react/2021-10-11-Class-Component-vs-Functional-Component/" rel="alternate" type="text/html" title="함수형 컴포넌트 vs 클래스 컴포넌트" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-11T22:25:33+09:00</updated><id>https://icechoco.github.io/react/Class-Component-vs-Functional-Component</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-11-Class-Component-vs-Functional-Component/">&lt;p&gt;안녕하세요. 오늘은 React Component의 두 종류인 함수형 컴포넌트와 클래스 컴포넌트에 대해서 포스팅하겠습니다.&lt;/p&gt;
-&lt;h2 id=&quot;class-component&quot;&gt;Class Component&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets\img/class-component.PNG&quot; alt=&quot;class-component&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;state와 Lifecyle method와 같은 더 많은 기능들을 사용 할 수 있습니다. 다만 코드가 좀 더 길어지고, 복잡해지며, 성능적인 면에서 느립니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;functional-component&quot;&gt;Functional Component&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets\img/functional-component.PNG&quot; alt=&quot;functional-component&quot; /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;state와 Lifecyle method를 사용할 수 없어 제공하는 기능들이 한정됩니다. 하지만 v16.8 이후 Hook를 이용하여 보완되었습니다.&lt;/li&gt;
-  &lt;li&gt;코드가 짧아지고 간단해져 선언하기가 편합니다.&lt;/li&gt;
-  &lt;li&gt;메모리를 클래스 컴포넌트보다 덜 사용해서 성능이 좋고 빠릅니다.&lt;/li&gt;
-  &lt;li&gt;배포시, 결과물의 파일크기가 클래스 컴포넌트보다 작습니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Class component에서 사용 가능하고 functional Component에서 사용할 수 없는(v16.8 전) 기능에 대해 자세히 알아보기 위해 우선 아래 라이프 사이클 다이어그램을 보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;lifecycle&quot;&gt;Lifecycle&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;/assets\img/React-lifecycle-methods-diagram.PNG&quot; alt=&quot;React-lifecycle-methods-diagram&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;class 컴포넌트를 이용하여 구현한 경우, 리액트에서 처음에 페이지를 킬 때 어떤 순서로 시작이 되는지 알려주는 다이어그램입니다. 하지만 functional 컴포넌트의 경우 위 라이프 사이클의 어느 기능도 사용할 수가 없습니다. 그러다보니 functional 컴포넌트는 빠르긴 하지만 너무 많은 기능이 안되다 보니 대부분 class형 컴포넌트를 사용했습니다. 그러다가 리액트 16.8 버전에서 Hook를 발표했습니다. 이 이후부터는 functional 컴포넌트에서도 라이프사이클과 state를 사용할 수 있게 되었습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Class component VS Hook를 활용한 Functional Component&lt;/strong&gt;
-&lt;img src=&quot;/assets\img/class-component-vs-functional-component.PNG&quot; alt=&quot;class-component-vs-functional-component&quot; /&gt;&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;Constructor: Constructor를 이용하여 state를 부여해줍니다.&lt;/li&gt;
-      &lt;li&gt;rendor: Dom에 알맞게 넣어 화면에 렌더링해줍니다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/&quot;&gt;React lifecycle methods diagram&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">안녕하세요. 오늘은 React Component의 두 종류인 함수형 컴포넌트와 클래스 컴포넌트에 대해서 포스팅하겠습니다. Class Component state와 Lifecyle method와 같은 더 많은 기능들을 사용 할 수 있습니다. 다만 코드가 좀 더 길어지고, 복잡해지며, 성능적인 면에서 느립니다.</summary></entry></feed>
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><category term="Redux" /><summary type="html">Redux는 상태관리 라이브러리(predictable state container) 입니다. 그렇다면 여기서 말하는 state가 뭘까요? React에서는 Props와 State가 있습니다. 이 두가지를 비교하면서 state에 대해 알아보겠습니다. Props VS State Props Props는 Properties의 줄임말입니다. 부모 컴포넌트와 자식 컴포넌트가 있는 경우 데이터를 서로 주고 받아야겠죠? 두 컴포넌트간의 데이터를 주고 받을 때는 Props를 이용해야 합니다. 단방향 데이터 흐름: child component에 전달되는 값 또는 method. 부모 컴포넌트에서 자식 컴포넌트로 즉 위에서 아래로만 데이터 전달이 가능합니다. 반대로 child component에서 parent component로 전달은 불가능합니다. read donly: child component로 전달받은 props 값은 변하지 않습니다다. 만약 부모로부터 받은 값을 수정하고 싶다면 수정된 값으로 부모 컴포넌트에게서 다시 받아야 합니다. 소스코드 예시 parent component</summary></entry></feed>

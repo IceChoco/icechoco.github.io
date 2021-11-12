@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://icechoco.github.io/javascript/2021-11-12-Why-should-we-study-Javascript/</loc>
+        
+        <lastmod>2021-11-12T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://icechoco.github.io/jekyll/2021-10-23-Creat-a-serach-bar/</loc>
         
         <lastmod>2021-10-23T00:00:00+09:00</lastmod>

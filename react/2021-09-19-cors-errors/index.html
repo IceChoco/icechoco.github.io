@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="CORS(Cross-Origin Resource Sharing) 에러" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"CORS(Cross-Origin Resource Sharing) 에러","dateModified":"2021-10-11T23:17:15+09:00","datePublished":"2021-09-19T00:00:00+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/react/2021-09-19-cors-errors/"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/react/2021-09-19-cors-errors/","description":"Access to XMLHttpRequest at &#39;http://localhost:5000/api/hello&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. 제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다. 임의로 proxy 설정하기 첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다. npm install http-proxy-middleware --save 그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다. ``` const { createProxyMiddleware } = require(‘http-proxy-middleware’);","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"CORS(Cross-Origin Resource Sharing) 에러","dateModified":"2021-10-11T23:17:15+09:00","datePublished":"2021-09-19T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/react/2021-09-19-cors-errors/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/react/2021-09-19-cors-errors/","description":"Access to XMLHttpRequest at &#39;http://localhost:5000/api/hello&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. 제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다. 임의로 proxy 설정하기 첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다. npm install http-proxy-middleware --save 그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다. ``` const { createProxyMiddleware } = require(‘http-proxy-middleware’);","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-10-25T22:46:39+09:00',
+    INDEX_KEY: 'index--2021-11-12T18:29:43+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -540,7 +540,7 @@ module.exports = function (app) {
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/jekyll/2021-10-23-Creat-a-serach-bar/" class="flip-title"><span>[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</span></a>  <time class="faded fine" datetime="2021-10-23T00:00:00+09:00">23 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-17-About-useSelector-and-useDispatch/" class="flip-title"><span>react-redux</span></a>  <time class="faded fine" datetime="2021-10-17T00:00:00+09:00">17 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title"><span>[React] TypeError: Cannot read properties of undefined (reading getState)</span></a>  <time class="faded fine" datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/javascript/2021-11-12-Why-should-we-study-Javascript/" class="flip-title"><span>[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?</span></a>  <time class="faded fine" datetime="2021-11-12T00:00:00+09:00">12 Nov 2021</time></li>                        <li class="h4">  <a href="/jekyll/2021-10-23-Creat-a-serach-bar/" class="flip-title"><span>[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</span></a>  <time class="faded fine" datetime="2021-10-23T00:00:00+09:00">23 Oct 2021</time></li>                        <li class="h4">  <a href="/react/2021-10-17-About-useSelector-and-useDispatch/" class="flip-title"><span>react-redux</span></a>  <time class="faded fine" datetime="2021-10-17T00:00:00+09:00">17 Oct 2021</time></li>            </ul></aside>
 
   
 
@@ -668,6 +668,19 @@ module.exports = function (app) {
             
             >
             GIT
+          </a>
+        </li>
+      
+    
+      
+        <li>
+          <a
+            
+            href="/javascript/"
+            class="sidebar-nav-item"
+            
+            >
+            Javascript
           </a>
         </li>
       

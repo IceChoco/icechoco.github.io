@@ -1,6 +1,15 @@
 [
   
     {
+      "title"      : "[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?",
+      "categories" : "javascript",
+      "tags"       : "javascript",
+      "date"       : "2021.11.12",
+      "urlString"  : "/javascript/2021-11-12-Why-should-we-study-Javascript/",
+      "url"        : "/javascript/2021-11-12-Why-should-we-study-Javascript/"
+    },
+  
+    {
       "title"      : "[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기",
       "categories" : "jekyll",
       "tags"       : "Blog, Jekyll, Web, Markdown, HTML",
