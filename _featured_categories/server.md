@@ -10,7 +10,7 @@ description: >
   server와 관련된 정보를 기록하는 곳입니다.
 menu : true
 submenu: false
-order: 7
+order: 8
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
 ---

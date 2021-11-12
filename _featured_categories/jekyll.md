@@ -7,5 +7,5 @@ description: >
   Github를 이용한 블로그 운영에 사용됩니다. 이 카테고리에서는 jekyll 관련 정보를 공유드리겠습니다.
 menu : true
 submenu: false
-order: 4
+order: 5
 ---
