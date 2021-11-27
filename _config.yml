@@ -198,10 +198,10 @@ comments:
 # https://giscus.vercel.app/
 giscus:
   repo:                "IceChoco/icechoco.github.io"
-  repo-id:             "R_kgDOGGPhNA="
+  repo-id:             "R_kgDOGGPhNA"
   category:            "Comments"
-  category: "Comments"
-  category-id: "DIC_kwDOEHDTNc4B-MIg"
+  category-id: "DIC_kwDOGGPhNM4CAC4O"
+  mapping: "pathname"
   reaction-enabled:    "1"
   theme:               "light"
   crossorigin:         "anonymous"
