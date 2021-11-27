@@ -17,7 +17,7 @@ baseurl:               ''
 
 # Language of your content in 2-letter code, e.g.: en, de.
 # You may also provide a location, e.g.: en-us, de_AT.
-lang:                  en
+lang: ko-KR, en-US
 
 encoding:              UTF-8
 
@@ -82,7 +82,7 @@ permalink:             /:categories/:year-:month-:day-:title/
 
 # Pagination configuration (used by the `blog` layout)
 paginate:              10
-paginate_path:         /:num/
+paginate_path: /page-:num/
 
 
 # Theme
@@ -96,7 +96,7 @@ theme: jekyll-theme-hydejack
 # ----------------------------------------------------------------------------------------
  
 # Sidebar image and theme color of the site.
-accent_image:          /assets/img/sidebar-bg.jpg
+accent_image:          /assets/img/sidebar-bg2.png
 accent_color:          rgb(79,177,186)
 
 # This is used for the `theme-color` meta tag,
@@ -131,23 +131,25 @@ defaults:
         background:    rgb(32,32,32)
         overlay:       false
 
-  # Don't include documents in assets in the sitemap
+  # Don't include site verification file(for google) in the sitemap
   - scope:
-      path:            assets/
+      path: google93abcae935f31b7d.html
     values:
-      sitemap:         false
+      sitemap: false
 
+  # Don't include site verification file(for naver) in the sitemap
   - scope:
-      path:            licenses/
+      path: naver38ec7105e3396e6eb497b549362e0f42.html
     values:
-      layout:          plain
-      sitemap:         false
+      sitemap: false
 
   # # You can use the following to enable comments on all posts.
-  # - scope:
-  #     type:            posts
-  #   values:
-  #     comments:        true
+  - scope:
+      type: posts
+    values:
+      comments: true
+      # https://applause-button.com/
+      applause_button: true
 
   # `jekyll-seo-tag` will mark collection outputs as `BlogPosting`,
   # but we want them to be `WebPage`s:
@@ -182,14 +184,31 @@ kramdown:
 # To remove Google Anaylics from your page, remove the line below.
 # google_analytics:      UA-XXXXXXXX-X
 
+# Set which comment system to use
+comments:
+  # 'disqus' / 'giscus' / 'utterances' are available
+  provider:            giscus
+
 # Setting a disqus shortname will enable the comment section on
 # pages with `comments: true` in the front matter.
 # disqus:                <username>
 
+# You must install giscus github app before use.(https://github.com/apps/giscus)
+# Make sure all variables are set properly. Check below link for detail.
+# https://giscus.vercel.app/
+giscus:
+  repo:                "IceChoco/icechoco.github.io"
+  repo-id:             "R_kgDOGGPhNA="
+  category:            "Comments"
+  category: "Comments"
+  category-id: "DIC_kwDOEHDTNc4B-MIg"
+  reaction-enabled:    "1"
+  theme:               "dark_dimmed"
+  crossorigin:         "anonymous"
+
 # Setting a tinyletter username will enable the newsletter subscription box.
 # PRO version only!
 # tinyletter:            <username>
-
 
 # Hydejack Settings
 # ----------------------------------------------------------------------------------------
