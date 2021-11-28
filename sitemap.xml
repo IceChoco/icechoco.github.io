@@ -4,6 +4,38 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://icechoco.github.io/java/2021-11-27-Effective-java-Day2/</loc>
+        
+        <lastmod>2021-11-27T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/</loc>
+        
+        <lastmod>2021-11-27T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://icechoco.github.io/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/</loc>
         
         <lastmod>2021-11-26T00:00:00+09:00</lastmod>
@@ -36,7 +68,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/javascript/2021-11-12-Why-should-we-study-Javascript/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-11-12-Why-should-we-study-Javascript/</loc>
         
         <lastmod>2021-11-12T00:00:00+09:00</lastmod>
         
@@ -52,7 +84,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/jekyll/2021-10-23-Creat-a-serach-bar/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-10-23-Creat-a-serach-bar/</loc>
         
         <lastmod>2021-10-23T00:00:00+09:00</lastmod>
         
@@ -68,7 +100,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-10-17-About-useSelector-and-useDispatch/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-10-17-About-useSelector-and-useDispatch/</loc>
         
         <lastmod>2021-10-17T00:00:00+09:00</lastmod>
         
@@ -84,7 +116,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-10-12-cannot-read-properties-of-undefined-error/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-10-12-cannot-read-properties-of-undefined-error/</loc>
         
         <lastmod>2021-10-12T00:00:00+09:00</lastmod>
         
@@ -100,7 +132,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-10-12-Attempted-import-error/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-10-12-Attempted-import-error/</loc>
         
         <lastmod>2021-10-12T00:00:00+09:00</lastmod>
         
@@ -132,7 +164,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-10-11-Settint-Up-Redux/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-10-11-Settint-Up-Redux/</loc>
         
         <lastmod>2021-10-11T00:00:00+09:00</lastmod>
         
@@ -148,7 +180,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-10-11-Screen-development-using-ant-design/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-10-11-Screen-development-using-ant-design/</loc>
         
         <lastmod>2021-10-11T00:00:00+09:00</lastmod>
         
@@ -180,7 +212,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-10-11-Redux-Basics/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-10-11-Redux-Basics/</loc>
         
         <lastmod>2021-10-11T00:00:00+09:00</lastmod>
         
@@ -196,7 +228,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-10-11-Class-Component-vs-Functional-Component/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-10-11-Class-Component-vs-Functional-Component/</loc>
         
         <lastmod>2021-10-11T00:00:00+09:00</lastmod>
         
@@ -212,7 +244,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-09-28-Starting-with-Create-React-App/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-09-28-Starting-with-Create-React-App/</loc>
         
         <lastmod>2021-09-28T00:00:00+09:00</lastmod>
         
@@ -228,7 +260,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-09-22-Create-member-registration-function/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-09-22-Create-member-registration-function/</loc>
         
         <lastmod>2021-09-22T00:00:00+09:00</lastmod>
         
@@ -276,7 +308,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-09-20-React-%EA%B0%9C%EC%9A%94/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-09-20-React-%EA%B0%9C%EC%9A%94/</loc>
         
         <lastmod>2021-09-20T00:00:00+09:00</lastmod>
         
@@ -308,7 +340,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/jekyll/2021-09-20-Hydejack-theme-Custmomization/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-09-20-Hydejack-theme-Custmomization/</loc>
         
         <lastmod>2021-09-20T00:00:00+09:00</lastmod>
         
@@ -324,7 +356,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-09-19-cors-errors/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-09-19-cors-errors/</loc>
         
         <lastmod>2021-09-19T00:00:00+09:00</lastmod>
         
@@ -340,7 +372,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/react/2021-09-19-React-related-errors/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-09-19-React-related-errors/</loc>
         
         <lastmod>2021-09-19T00:00:00+09:00</lastmod>
         
@@ -356,7 +388,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/jekyll/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/</loc>
+        <loc>https://icechoco.github.io/frontend/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/</loc>
         
         <lastmod>2021-09-15T00:00:00+09:00</lastmod>
         

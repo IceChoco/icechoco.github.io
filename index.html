@@ -106,7 +106,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-11-27T12:01:11+09:00',
+    INDEX_KEY: 'index--2021-11-28T23:32:17+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -252,134 +252,166 @@ Left here for reference, feel free to delete.
   </div>
 
   <nav class="sidebar-nav heading" role="navigation">
-    <span class="sr-only">Navigation:</span>
+    <!-- file: "/_layouts/tag-list.html" -->
 <ul>
   
-    
-    
-    
-
+  
+  
     
       
+    
+  
+    
+      
+        
+        
         <li>
-          <a
-            id="_navigation"
-            href="/about/"
-            class="sidebar-nav-item"
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
             
-            >
-            About
-          </a>
+          </div>
+          
         </li>
       
     
+  
+    
       
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
             
-            href="/resume/"
-            class="sidebar-nav-item"
-            
-            >
-            Resume
-          </a>
+          </div>
+          
         </li>
       
     
+  
+    
       
+    
+  
+    
+      
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
             
-            href="/git/"
-            class="sidebar-nav-item"
-            
-            >
-            GIT
-          </a>
+          </div>
+          
         </li>
       
     
+  
+    
       
+    
+  
+    
+      
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
             
-            href="/javascript/"
-            class="sidebar-nav-item"
-            
-            >
-            Javascript
-          </a>
+          </div>
+          
         </li>
       
     
+  
+    
       
+        
+        
         <li>
-          <a
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
             
-            href="/jekyll/"
-            class="sidebar-nav-item"
+              <label class="folder" for="list-item-13">▾</label>
             
-            >
-            Jekyll
-          </a>
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
         </li>
       
     
+  
+    
       
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
             
-            href="/react/"
-            class="sidebar-nav-item"
-            
-            >
-            React
-          </a>
+          </div>
+          
         </li>
       
     
+  
+    
       
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
             
-            href="/database/"
-            class="sidebar-nav-item"
-            
-            >
-            Database
-          </a>
+          </div>
+          
         </li>
       
     
-      
-        <li>
-          <a
-            
-            href="/server/"
-            class="sidebar-nav-item"
-            
-            >
-            Server
-          </a>
-        </li>
-      
+  
     
       
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
             
-            href="/cs/"
-            class="sidebar-nav-item"
-            
-            >
-            CS
-          </a>
+          </div>
+          
         </li>
       
     
   
 </ul>
-
   </nav>
 
   
@@ -540,6 +572,140 @@ Left here for reference, feel free to delete.
 
 
 
+<article id="post-java-Effective-java-Day2" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/java/2021-11-27-Effective-java-Day2/" class="flip-title">
+        [Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-11-27T00:00:00+09:00">27 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-28">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-11-28T23:31:34+09:00">2021-11-28</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>어제인 Day 1에서는 프로그래밍의 기본 원칙과 자바가 지원하는 타입에 대해서 공부했다. ‘1장 들어가기’에서는 책에서 사용하는 기술 용어를 명확히 하고 주로 넘어가는데, 그 용어에 대해서 기본적인 개념을 미리 한 번 정리하고 들어가면 좋겠다 싶어 정리하는 시간을 가졌다. 이번 포스팅도 책을 읽으면서 관련된 개념을 정리하는 식으로 기록하려한다. 공부하면서 지금까지 너무 기본기에대해서 간과한 것 같아 좀 앞으로가 두렵기도 하고, 잘 할 수 있을까 걱정되기도 하지만 좋은 스트레스를 받고 있는 것 같아 설레기도 하다. 오늘도 책상에 앉은 나 칭찬해! 그럼 Day 2 기록 시작!</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/java/2021-11-27-Effective-java-Day2/">[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-java-Effective-java-Day1" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/java/2021-11-27-Effective-java-Day1/" class="flip-title">
+        [Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-11-27T00:00:00+09:00">27 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-28">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-11-28T12:18:15+09:00">2021-11-28</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>다음주 수요일부터 Joshua Bloch의 고전 명저인 Effective Java 3판의 내용을 같이 공부하고 토의하는 자바 스터디를 시작하게 되었다. 스터디 참여가 확정되고 난 후 바로 교보문고를 통해 책을 주문하였다. 오늘부터 약 두 달간 이 책과 함께 열심히 나를 불태워버리겠다. 책을 다 읽었을 때 쯤 JAVA 기본기가 지금보다 한층 더 레벨업 되어있을 나를 기대하며… Day 1 기록 시작!</p>
+<h3 id="ⅰ-공부-시-참고하면-좋을-사이트">Ⅰ. 공부 시 참고하면 좋을 사이트</h3>
+<ol>
+  <li><a href="https://docs.google.com/document/u/0/d/1Nw-_FJKre9x7Uy6DZ0NuAFyYUCjBPCpINxqrP0JFuXk/mobilebasic#h.vim3vsbh8avu">이펙티브 자바 3판 번역 용어 해설</a></li>
+  <li><a href="https://m.youtube.com/watch?v=X7RXP6EI-5E&amp;list=PLfI752FpVCS8e5ACdi5dpwLdlVkn0QgJJ">백기선님 동영상 강의</a></li>
+  <li><a href="https://github.com/WegraLee/effective-java-3e-source-code">깃헙 예제소스</a></li>
+</ol>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/java/2021-11-27-Effective-java-Day1/">[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
 <article id="post-server-What-is-Apache-NginX-or-Tomcat" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
@@ -563,7 +729,7 @@ Left here for reference, feel free to delete.
             <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-11-27T02:59:07+09:00">2021-11-27</time>
+              <time datetime="2021-11-27T20:34:22+09:00">2021-11-27</time>
             </span>
           
         
@@ -672,10 +838,10 @@ Left here for reference, feel free to delete.
 
 
 
-<article id="post-javascript-Why-should-we-study-Javascript" class="page post mb6" role="article">
+<article id="post-frontend-Why-should-we-study-Javascript" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
-      <a href="/javascript/2021-11-12-Why-should-we-study-Javascript/" class="flip-title">
+      <a href="/frontend/2021-11-12-Why-should-we-study-Javascript/" class="flip-title">
         [JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?
       </a>
     </h1>
@@ -683,12 +849,20 @@ Left here for reference, feel free to delete.
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-11-12T00:00:00+09:00">12 Nov 2021</time> in <a href="/javascript/" class="flip-title">Javascript</a> on <span>Javascript</span>
+        <time datetime="2021-11-12T00:00:00+09:00">12 Nov 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <a href="/tag-javascript/" class="flip-title">Javascript</a>
       </span>
       
         
           
           
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-11-27T21:40:47+09:00">2021-11-27</time>
+            </span>
           
         
       
@@ -717,7 +891,7 @@ Left here for reference, feel free to delete.
     
     <footer>
       <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/javascript/2021-11-12-Why-should-we-study-Javascript/">[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?</a>
+        Continue reading <a class="heading flip-title" href="/frontend/2021-11-12-Why-should-we-study-Javascript/">[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?</a>
 
       </p>
     </footer>
@@ -731,10 +905,10 @@ Left here for reference, feel free to delete.
 
 
 
-<article id="post-jekyll-Creat-a-serach-bar" class="page post mb6" role="article">
+<article id="post-frontend-Creat-a-serach-bar" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
-      <a href="/jekyll/2021-10-23-Creat-a-serach-bar/" class="flip-title">
+      <a href="/frontend/2021-10-23-Creat-a-serach-bar/" class="flip-title">
         [Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기
       </a>
     </h1>
@@ -742,7 +916,7 @@ Left here for reference, feel free to delete.
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-10-23T00:00:00+09:00">23 Oct 2021</time> in <a href="/jekyll/" class="flip-title">Jekyll</a> on <span>Blog</span>, <a href="/tag-jekyll/" class="flip-title">Jekyll</a>, <span>Web</span>, <span>Markdown</span>, <span>Html</span>
+        <time datetime="2021-10-23T00:00:00+09:00">23 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Blog</span>, <a href="/tag-jekyll/" class="flip-title">Jekyll</a>, <span>Web</span>, <span>Markdown</span>, <span>Html</span>
       </span>
       
         
@@ -751,10 +925,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-25">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-10-25T22:24:56+09:00">2021-10-25</time>
+              <time datetime="2021-11-27T21:46:07+09:00">2021-11-27</time>
             </span>
           
         
@@ -784,7 +958,7 @@ Left here for reference, feel free to delete.
     
     <footer>
       <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/jekyll/2021-10-23-Creat-a-serach-bar/">[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</a>
+        Continue reading <a class="heading flip-title" href="/frontend/2021-10-23-Creat-a-serach-bar/">[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</a>
 
       </p>
     </footer>
@@ -798,23 +972,31 @@ Left here for reference, feel free to delete.
 
 
 
-<article id="post-react-About-useSelector-and-useDispatch" class="page post mb6" role="article">
+<article id="post-frontend-About-useSelector-and-useDispatch" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
-      <a href="/react/2021-10-17-About-useSelector-and-useDispatch/" class="flip-title">
-        react-redux
+      <a href="/frontend/2021-10-17-About-useSelector-and-useDispatch/" class="flip-title">
+        [React] useSelector, useDispatch를 사용하여 state에 접근하기
       </a>
     </h1>
 
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-10-17T00:00:00+09:00">17 Oct 2021</time> in <a href="/react/" class="flip-title">React</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+        <time datetime="2021-10-17T00:00:00+09:00">17 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
       </span>
       
         
           
           
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-11-27T22:00:42+09:00">2021-11-27</time>
+            </span>
           
         
       
@@ -833,10 +1015,9 @@ Left here for reference, feel free to delete.
   </header>
 
   
-    <p>설치방법 및 redux에 관한 내용은 <a href="https://icechoco.github.io/react/2021-10-11-Redux-Basics/">Redux 기초 | IceChoco</a>글을 참조하세요.</p>
+    <p><strong>이 글의 목적</strong></p>
 <ul>
-  <li>state 조회하기: useSelector 사용</li>
-  <li>action 발생시키기: useDispatch 사용</li>
+  <li>useSelector, useDispatch를 사용하여 state에 접근할 수 있다.</li>
 </ul>
 
 
@@ -844,7 +1025,7 @@ Left here for reference, feel free to delete.
     
     <footer>
       <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/react/2021-10-17-About-useSelector-and-useDispatch/">react-redux</a>
+        Continue reading <a class="heading flip-title" href="/frontend/2021-10-17-About-useSelector-and-useDispatch/">[React] useSelector, useDispatch를 사용하여 state에 접근하기</a>
 
       </p>
     </footer>
@@ -858,10 +1039,10 @@ Left here for reference, feel free to delete.
 
 
 
-<article id="post-react-cannot-read-properties-of-undefined-error" class="page post mb6" role="article">
+<article id="post-frontend-cannot-read-properties-of-undefined-error" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
-      <a href="/react/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title">
+      <a href="/frontend/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title">
         [React] TypeError: Cannot read properties of undefined (reading getState)
       </a>
     </h1>
@@ -869,7 +1050,7 @@ Left here for reference, feel free to delete.
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time> in <a href="/react/" class="flip-title">React</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+        <time datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
       </span>
       
         
@@ -878,10 +1059,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-16">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-10-16T23:35:53+09:00">2021-10-16</time>
+              <time datetime="2021-11-27T21:59:05+09:00">2021-11-27</time>
             </span>
           
         
@@ -909,7 +1090,7 @@ Left here for reference, feel free to delete.
     
     <footer>
       <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/react/2021-10-12-cannot-read-properties-of-undefined-error/">[React] TypeError: Cannot read properties of undefined (reading getState)</a>
+        Continue reading <a class="heading flip-title" href="/frontend/2021-10-12-cannot-read-properties-of-undefined-error/">[React] TypeError: Cannot read properties of undefined (reading getState)</a>
 
       </p>
     </footer>
@@ -923,10 +1104,10 @@ Left here for reference, feel free to delete.
 
 
 
-<article id="post-react-Attempted-import-error" class="page post mb6" role="article">
+<article id="post-frontend-Attempted-import-error" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
-      <a href="/react/2021-10-12-Attempted-import-error/" class="flip-title">
+      <a href="/frontend/2021-10-12-Attempted-import-error/" class="flip-title">
         [React] Attempted import error
       </a>
     </h1>
@@ -934,7 +1115,7 @@ Left here for reference, feel free to delete.
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time> in <a href="/react/" class="flip-title">React</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+        <time datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
       </span>
       
         
@@ -943,10 +1124,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-16">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-10-16T23:35:53+09:00">2021-10-16</time>
+              <time datetime="2021-11-27T21:57:11+09:00">2021-11-27</time>
             </span>
           
         
@@ -983,7 +1164,7 @@ Attempted import error: 'Reducer' is not exported from './_reducers'.
     
     <footer>
       <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/react/2021-10-12-Attempted-import-error/">[React] Attempted import error</a>
+        Continue reading <a class="heading flip-title" href="/frontend/2021-10-12-Attempted-import-error/">[React] Attempted import error</a>
 
       </p>
     </footer>
@@ -1048,138 +1229,6 @@ Attempted import error: 'Reducer' is not exported from './_reducers'.
     <footer>
       <p class="read-more">
         Continue reading <a class="heading flip-title" href="/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/">node.js 기초</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-react-Settint-Up-Redux" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/react/2021-10-11-Settint-Up-Redux/" class="flip-title">
-        Redux 설치하기
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/react/" class="flip-title">React</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>, <span>Redux</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-16">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-10-16T23:35:53+09:00">2021-10-16</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>Redux를 자신이 개발할 어플리케이션에 설치하고 설정하는 방법을 기록하겠습니다. 우선 다운 받아야 할 dependency들이 redux, react-redux, redux-promise, redux-thunk까지 총 4개가 있습니다. 이 중에서 redux-promis, redux-thunk는 redux의 미들웨어입니다.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install redux react-redux redux-promise redux-thunk --save
-</code></pre></div></div>
-<h2 id="redux-promise-redux-thunk가-필요한-이유">redux-promise, redux-thunk가 필요한 이유</h2>
-<p>redux-promise, redux-thunk는 redux를 잘 쓸 수 있게 도와주는 역할을 하는 미들웨어입니다. redux는 redux store 안에 모든 state를 관리하고 있습니다. 이 store 안에 있는 state를 변경하기 위해서는 dispatch를 이용해서 action을 통해 변경시킬 수 있습니다. 이렇게 store가 데이터를 받을 때 항상 객체 형식으로 데이터를 받는 것이 아니라 때에 따라 promise, functions 형식으로 받기도 합니다. 그런데, redux 기초편에서 봤듯 우리는 reudx store는 객체 형식으로만 데이터를 받을 수 있다고 배웠습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/react/2021-10-11-Settint-Up-Redux/">Redux 설치하기</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-react-Screen-development-using-ant-design" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/react/2021-10-11-Screen-development-using-ant-design/" class="flip-title">
-        CSS Framework, Ant Design을 활용한 효율적인 화면개발하기
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/react/" class="flip-title">React</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-16">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-10-16T23:35:53+09:00">2021-10-16</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>원래는 모든 것을 CSS를 활용해서 하나하나 만들 수 있지만, 그렇게 되면 기능을 신경 쓰는 것 이외에 너무 많은 시간을 CSS에 투자해야합니다. 그래서 기능 개발에 초점을 맞추기 위해 CSS 프레임 워크를 사용해보도록 하겠습니다. 요즘 많은 기업들이 실무에서도 CSS 프레임워크가 잘 되어 있어 많이 사용하고 있습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/react/2021-10-11-Screen-development-using-ant-design/">CSS Framework, Ant Design을 활용한 효율적인 화면개발하기</a>
 
       </p>
     </footer>

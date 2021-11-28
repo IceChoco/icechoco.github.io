@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입 | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="다음주 수요일부터 Joshua Bloch의 고전 명저인 Effective Java 3판의 내용을 같이 공부하고 토의하는 자바 스터디를 시작하게 되었다. 스터디 참여가 확정되고 난 후 바로 교보문고를 통해 책을 주문하였다. 오늘부터 약 두 달간 이 책과 함께 열심히 나를 불태워버리겠다. 책을 다 읽었을 때 쯤 JAVA 기본기가 지금보다 한층 더 레벨업 되어있을 나를 기대하며… Day 1 기록 시작! Ⅰ. 공부 시 참고하면 좋을 사이트 이펙티브 자바 3판 번역 용어 해설 백기선님 동영상 강의 깃헙 예제소스" />
+<meta property="og:description" content="다음주 수요일부터 Joshua Bloch의 고전 명저인 Effective Java 3판의 내용을 같이 공부하고 토의하는 자바 스터디를 시작하게 되었다. 스터디 참여가 확정되고 난 후 바로 교보문고를 통해 책을 주문하였다. 오늘부터 약 두 달간 이 책과 함께 열심히 나를 불태워버리겠다. 책을 다 읽었을 때 쯤 JAVA 기본기가 지금보다 한층 더 레벨업 되어있을 나를 기대하며… Day 1 기록 시작! Ⅰ. 공부 시 참고하면 좋을 사이트 이펙티브 자바 3판 번역 용어 해설 백기선님 동영상 강의 깃헙 예제소스" />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-27T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입" />
+<script type="application/ld+json">
+{"headline":"[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입","dateModified":"2021-11-28T12:18:15+09:00","datePublished":"2021-11-27T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/"},"url":"https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"다음주 수요일부터 Joshua Bloch의 고전 명저인 Effective Java 3판의 내용을 같이 공부하고 토의하는 자바 스터디를 시작하게 되었다. 스터디 참여가 확정되고 난 후 바로 교보문고를 통해 책을 주문하였다. 오늘부터 약 두 달간 이 책과 함께 열심히 나를 불태워버리겠다. 책을 다 읽었을 때 쯤 JAVA 기본기가 지금보다 한층 더 레벨업 되어있을 나를 기대하며… Day 1 기록 시작! Ⅰ. 공부 시 참고하면 좋을 사이트 이펙티브 자바 3판 번역 용어 해설 백기선님 동영상 강의 깃헙 예제소스","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2021-11-28T23:32:17+09:00',
+  };
+  w._clapButton = true;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2021-11-27-Effective-java-Day1</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day1" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-11-27T00:00:00+09:00">27 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-28">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-11-28T12:18:15+09:00">2021-11-28</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>다음주 수요일부터 Joshua Bloch의 고전 명저인 Effective Java 3판의 내용을 같이 공부하고 토의하는 자바 스터디를 시작하게 되었다. 스터디 참여가 확정되고 난 후 바로 교보문고를 통해 책을 주문하였다. 오늘부터 약 두 달간 이 책과 함께 열심히 나를 불태워버리겠다. 책을 다 읽었을 때 쯤 JAVA 기본기가 지금보다 한층 더 레벨업 되어있을 나를 기대하며… Day 1 기록 시작!</p>
+<h3 id="ⅰ-공부-시-참고하면-좋을-사이트">Ⅰ. 공부 시 참고하면 좋을 사이트</h3>
+<ol>
+  <li><a href="https://docs.google.com/document/u/0/d/1Nw-_FJKre9x7Uy6DZ0NuAFyYUCjBPCpINxqrP0JFuXk/mobilebasic#h.vim3vsbh8avu">이펙티브 자바 3판 번역 용어 해설</a></li>
+  <li><a href="https://m.youtube.com/watch?v=X7RXP6EI-5E&amp;list=PLfI752FpVCS8e5ACdi5dpwLdlVkn0QgJJ">백기선님 동영상 강의</a></li>
+  <li><a href="https://github.com/WegraLee/effective-java-3e-source-code">깃헙 예제소스</a></li>
+</ol>
+
+<h3 id="ⅱ들어가기">Ⅱ.들어가기</h3>
+<p>자신이 공부한 외국어를 실전에서 활용해 보았다면 세 가지를 통달해야 한다는 사실을 알고 있을 것이다.</p>
+<ol>
+  <li>언어의 구조(문법)</li>
+  <li>말할 대상의 이름(어휘)</li>
+  <li>일상의 이야기를 풀어내는 관례적이고 효과적인 방법(용법)</li>
+</ol>
+
+<p><strong>프로그래밍 언어를 공부할 때</strong>도 이와 똑같다.</p>
+<ol>
+  <li>언어의 핵심(절차적이냐 함수형이냐 객체 지향이냐)을 이해하고</li>
+  <li>어휘(자료구조, 연산자, 표준 라이브러리의 기능)를 알고</li>
+  <li>코드를 구성하는 관례적이고 효과적인 방법에 숙달해야 한다.</li>
+</ol>
+
+<p>입으로 내뱉어 버린 말, 종이에 인쇄되어 출간된 책, 잡지와는 달리 프로그램은 계속 수정할 수 있다. 그래서 코드는 <strong>구조가 수정하기 쉬워야한다.</strong> 이때 이왕이면 다음 버전에서 기능 T가 어떻게 개선될지까지 고려해, 처음부터 개선된 T와 비슷한(즉, T’로 수정하기 편한) 구현 방식을 선택하는 것이 좋다.</p>
+
+<h4 id="프로그래밍의-아주-핵심적인-기본-원칙">프로그래밍의 아주 핵심적인 기본 원칙</h4>
+<ol>
+  <li><strong>명료성(clarity)</strong>
+    <ul>
+      <li>컴포넌트는 사용자를 놀라게 하는 동작을 해서는 절대 안된다.</li>
+      <li>정해진 동작이나 예측할 수 있는 동작만 수행해야 한다.</li>
+    </ul>
+  </li>
+  <li><strong>단순성(simplicity)</strong>
+    <ul>
+      <li>컴포넌트는 가능한 한 작되, 그렇다고 너무 작아서도 안된다 (이 책에서 컴포넌트란 개별 메서드부터 여러 패키지로 이뤄진 복잡한 프레임워크까지 재사용 가능한 모든 SW 요소를 뜻함)</li>
+      <li>코드는 복사되는 게 아니라 재사용되어야 한다.</li>
+      <li>컴포넌트의 의존성은 최소로 유지해야 한다.</li>
+      <li>오류는 만들어지자마자 가능한 한 빨리(되도록 컴파일타임에) 잡아야 한다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="주요-기술용어">주요 기술용어</h4>
+<p>자바가 지원하는 타입은 총 4가지 이다.</p>
+<ol>
+  <li><strong>인터페이스(interface)</strong>
+    <ul>
+      <li>에너테이션(Annotaion): 주석에 포함되면서 프로그래밍 언어에 영향을 미치지 않으면서 설정 정보와 같은 유용한 정보를 특정 프로그램에게 제공
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nd">@test</span> <span class="c1">//이 메서드가 테스트 대상임을 테스트 프로그램에게 알린다.</span>
+ <span class="kd">public</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">(){</span>
+  <span class="o">...</span>
+ <span class="o">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>클래스(class)</strong>
+    <ul>
+      <li>열거타입(enum)
+        <ul>
+          <li>관련된 상수들을 같이 묶어 놓은 것. Java는 비교 시 값과 타입을 모두 체크함.</li>
+          <li>모든 열거형은 java.lang.Enum이라는 클래스의 자손. 즉, 열거형의 조상은 enum.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="c1">//           0      1        2       3</span>
+     <span class="kd">enum</span> <span class="nc">Kind</span> <span class="o">{</span><span class="no">CLOVER</span><span class="o">,</span> <span class="no">HEART</span><span class="o">,</span> <span class="no">DIAMOND</span><span class="o">,</span> <span class="no">SPADE</span><span class="o">}</span> <span class="c1">//열거형 Kind를 정의</span>
+     <span class="kd">enum</span> <span class="nc">Value</span> <span class="o">{</span><span class="no">TWO</span><span class="o">,</span> <span class="no">THREE</span><span class="o">,</span> <span class="no">FOUR</span><span class="o">}</span> <span class="c1">//열거형 Value를 정의</span>
+            
+     <span class="kd">public</span> <span class="kd">class</span> <span class="nc">enumExam</span> <span class="o">{</span>
+            
+         <span class="kd">static</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>	
+            
+         <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+             <span class="nc">Kind</span> <span class="n">kind</span> <span class="o">=</span> <span class="nc">Kind</span><span class="o">.</span><span class="na">CLOVER</span><span class="o">;</span>
+             <span class="nc">Kind</span> <span class="n">kind2</span> <span class="o">=</span> <span class="nc">Kind</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">"HEART"</span><span class="o">);</span>
+             <span class="nc">Kind</span> <span class="n">kind3</span> <span class="o">=</span> <span class="nc">Enum</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="nc">Kind</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">"CLOVER"</span><span class="o">);</span>
+                
+         <span class="c1">//	  //컴파일 에러 발생. 타입이 달라 비교 불가(Incompatible operand types Kind and Value)</span>
+         <span class="c1">//      if(kind.CLOVER == Value.TWO){</span>
+         <span class="c1">//          System.out.println("같아용");</span>
+         <span class="c1">//      }</span>
+                
+             <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">kind</span><span class="o">==</span><span class="n">kind2</span><span class="o">);</span> <span class="c1">//false</span>
+             <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">kind</span><span class="o">==</span><span class="n">kind3</span><span class="o">);</span> <span class="c1">//true</span>
+             <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">kind</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">kind3</span><span class="o">));</span> <span class="c1">//true</span>
+             <span class="c1">//System.out.println(kind &gt; kind3);//에러. 객체라서 비교 연산자 사용 불가</span>
+             <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">kind</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">kind3</span><span class="o">));</span><span class="c1">//0</span>
+             <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">kind</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">kind2</span><span class="o">));</span><span class="c1">//-1</span>
+                
+             <span class="c1">//열거형의 모든 상수를 배열로 반환</span>
+             <span class="nc">Kind</span><span class="o">[]</span> <span class="n">kindArr</span> <span class="o">=</span> <span class="nc">Kind</span><span class="o">.</span><span class="na">values</span><span class="o">();</span>
+             <span class="k">for</span><span class="o">(</span><span class="nc">Kind</span> <span class="n">d</span> <span class="o">:</span> <span class="n">kindArr</span><span class="o">)</span>
+                 <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">d</span><span class="o">.</span><span class="na">name</span><span class="o">()+</span><span class="s">"="</span><span class="o">+</span><span class="n">d</span><span class="o">.</span><span class="na">ordinal</span><span class="o">());</span><span class="c1">//이름과 순서</span>
+                
+         <span class="o">}</span>	
+
+         <span class="c1">//primitive type</span>
+         <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">CLOVER</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+         <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">HEART</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+         <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">DIAMOND</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+         <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">SPADE</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+
+         <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">TWO</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+         <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">THREE</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+         <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">FOUR</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+     <span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>배열(array)</strong></li>
+  <li><strong>기본타입(primitive)</strong></li>
+</ol>
+
+<p>이 4가지의 타입 중 인터페이스, 클래스, 배열은 <strong>참조타입(reference type)</strong>이라 한다.
+즉, 클래스의 인스턴스와 배열은 객체인 반면, 기본타입은 그렇지 않다.</p>
+
+  
+</article>
+
+
+
+  <clap-button class="mb6" ></clap-button>
+  
+  
+    <p class="message centered border-radius" >
+      <span style="display:block;margin-bottom:.5rem;">This is a preview of <a href="https://getclaps.app">Clap Button</a>, a new feedback and analytics tools for Hydejack, built by yours truly.</span>
+      <span style="display:block;margin-bottom:.5rem;">You can try it out on <code>localhost</code> for free, but it will be removed (together with this message) when building with <code>JEKYLL_ENV=production</code>.</span>
+      <span style="display:block;margin-bottom:.5rem;">To use Clap Button on your site, get a <a href="https://getclaps.app#pricing">subscription</a><br/>and set <code>clap_button: true</code> in your config file.</span>
+    </p>
+  
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-11-27-Effective-java-Day2/" class="flip-title"><span>[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1</span></a>  <time class="faded fine" datetime="2021-11-27T00:00:00+09:00">27 Nov 2021</time></li>                        <li class="h4">  <a href="/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/" class="flip-title"><span>[Server] 아파치, NginX, 톰캣이 뭔가요?</span></a>  <time class="faded fine" datetime="2021-11-26T00:00:00+09:00">26 Nov 2021</time></li>                        <li class="h4">  <a href="/cs/2021-11-25-Github-related-to-CS-interview-preparation/" class="flip-title"><span>[CS] CS 면접 준비 관련 사이트 모음</span></a>  <time class="faded fine" datetime="2021-11-25T00:00:00+09:00">25 Nov 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

@@ -1,5 +1,378 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2021-11-27T12:01:11+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
-</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[Server] 아파치, NginX, 톰캣이 뭔가요?</title><link href="https://icechoco.github.io/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/" rel="alternate" type="text/html" title="[Server] 아파치, NginX, 톰캣이 뭔가요?" /><published>2021-11-26T00:00:00+09:00</published><updated>2021-11-27T02:59:07+09:00</updated><id>https://icechoco.github.io/server/What-is-Apache-NginX-or-Tomcat</id><content type="html" xml:base="https://icechoco.github.io/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2021-11-28T23:32:17+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입</title><link href="https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/" rel="alternate" type="text/html" title="[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입" /><published>2021-11-27T00:00:00+09:00</published><updated>2021-11-28T12:18:15+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day1</id><content type="html" xml:base="https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/">&lt;p&gt;다음주 수요일부터 Joshua Bloch의 고전 명저인 Effective Java 3판의 내용을 같이 공부하고 토의하는 자바 스터디를 시작하게 되었다. 스터디 참여가 확정되고 난 후 바로 교보문고를 통해 책을 주문하였다. 오늘부터 약 두 달간 이 책과 함께 열심히 나를 불태워버리겠다. 책을 다 읽었을 때 쯤 JAVA 기본기가 지금보다 한층 더 레벨업 되어있을 나를 기대하며… Day 1 기록 시작!&lt;/p&gt;
+&lt;h3 id=&quot;ⅰ-공부-시-참고하면-좋을-사이트&quot;&gt;Ⅰ. 공부 시 참고하면 좋을 사이트&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.google.com/document/u/0/d/1Nw-_FJKre9x7Uy6DZ0NuAFyYUCjBPCpINxqrP0JFuXk/mobilebasic#h.vim3vsbh8avu&quot;&gt;이펙티브 자바 3판 번역 용어 해설&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://m.youtube.com/watch?v=X7RXP6EI-5E&amp;amp;list=PLfI752FpVCS8e5ACdi5dpwLdlVkn0QgJJ&quot;&gt;백기선님 동영상 강의&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/WegraLee/effective-java-3e-source-code&quot;&gt;깃헙 예제소스&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;ⅱ들어가기&quot;&gt;Ⅱ.들어가기&lt;/h3&gt;
+&lt;p&gt;자신이 공부한 외국어를 실전에서 활용해 보았다면 세 가지를 통달해야 한다는 사실을 알고 있을 것이다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;언어의 구조(문법)&lt;/li&gt;
+  &lt;li&gt;말할 대상의 이름(어휘)&lt;/li&gt;
+  &lt;li&gt;일상의 이야기를 풀어내는 관례적이고 효과적인 방법(용법)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;프로그래밍 언어를 공부할 때&lt;/strong&gt;도 이와 똑같다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;언어의 핵심(절차적이냐 함수형이냐 객체 지향이냐)을 이해하고&lt;/li&gt;
+  &lt;li&gt;어휘(자료구조, 연산자, 표준 라이브러리의 기능)를 알고&lt;/li&gt;
+  &lt;li&gt;코드를 구성하는 관례적이고 효과적인 방법에 숙달해야 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;입으로 내뱉어 버린 말, 종이에 인쇄되어 출간된 책, 잡지와는 달리 프로그램은 계속 수정할 수 있다. 그래서 코드는 &lt;strong&gt;구조가 수정하기 쉬워야한다.&lt;/strong&gt; 이때 이왕이면 다음 버전에서 기능 T가 어떻게 개선될지까지 고려해, 처음부터 개선된 T와 비슷한(즉, T’로 수정하기 편한) 구현 방식을 선택하는 것이 좋다.&lt;/p&gt;
+
+&lt;h4 id=&quot;프로그래밍의-아주-핵심적인-기본-원칙&quot;&gt;프로그래밍의 아주 핵심적인 기본 원칙&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;명료성(clarity)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;컴포넌트는 사용자를 놀라게 하는 동작을 해서는 절대 안된다.&lt;/li&gt;
+      &lt;li&gt;정해진 동작이나 예측할 수 있는 동작만 수행해야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;단순성(simplicity)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;컴포넌트는 가능한 한 작되, 그렇다고 너무 작아서도 안된다 (이 책에서 컴포넌트란 개별 메서드부터 여러 패키지로 이뤄진 복잡한 프레임워크까지 재사용 가능한 모든 SW 요소를 뜻함)&lt;/li&gt;
+      &lt;li&gt;코드는 복사되는 게 아니라 재사용되어야 한다.&lt;/li&gt;
+      &lt;li&gt;컴포넌트의 의존성은 최소로 유지해야 한다.&lt;/li&gt;
+      &lt;li&gt;오류는 만들어지자마자 가능한 한 빨리(되도록 컴파일타임에) 잡아야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;주요-기술용어&quot;&gt;주요 기술용어&lt;/h4&gt;
+&lt;p&gt;자바가 지원하는 타입은 총 4가지 이다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;인터페이스(interface)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;에너테이션(Annotaion): 주석에 포함되면서 프로그래밍 언어에 영향을 미치지 않으면서 설정 정보와 같은 유용한 정보를 특정 프로그램에게 제공
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nd&quot;&gt;@test&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//이 메서드가 테스트 대상임을 테스트 프로그램에게 알린다.&lt;/span&gt;
+ &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;클래스(class)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;열거타입(enum)
+        &lt;ul&gt;
+          &lt;li&gt;관련된 상수들을 같이 묶어 놓은 것. Java는 비교 시 값과 타입을 모두 체크함.&lt;/li&gt;
+          &lt;li&gt;모든 열거형은 java.lang.Enum이라는 클래스의 자손. 즉, 열거형의 조상은 enum.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     &lt;span class=&quot;c1&quot;&gt;//           0      1        2       3&lt;/span&gt;
+     &lt;span class=&quot;kd&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;CLOVER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HEART&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DIAMOND&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SPADE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//열거형 Kind를 정의&lt;/span&gt;
+     &lt;span class=&quot;kd&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TWO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;THREE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FOUR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//열거형 Value를 정의&lt;/span&gt;
+            
+     &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;enumExam&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;	
+            
+         &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;CLOVER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kind2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HEART&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;CLOVER&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                
+         &lt;span class=&quot;c1&quot;&gt;//	  //컴파일 에러 발생. 타입이 달라 비교 불가(Incompatible operand types Kind and Value)&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;//      if(kind.CLOVER == Value.TWO){&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;//          System.out.println(&quot;같아용&quot;);&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;//      }&lt;/span&gt;
+                
+             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//false&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
+             &lt;span class=&quot;c1&quot;&gt;//System.out.println(kind &amp;gt; kind3);//에러. 객체라서 비교 연산자 사용 불가&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;compareTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//0&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;compareTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//-1&lt;/span&gt;
+                
+             &lt;span class=&quot;c1&quot;&gt;//열거형의 모든 상수를 배열로 반환&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kindArr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kindArr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                 &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ordinal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//이름과 순서&lt;/span&gt;
+                
+         &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;	
+
+         &lt;span class=&quot;c1&quot;&gt;//primitive type&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CLOVER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HEART&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DIAMOND&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SPADE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TWO&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;THREE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FOUR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;배열(array)&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;기본타입(primitive)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이 4가지의 타입 중 인터페이스, 클래스, 배열은 &lt;strong&gt;참조타입(reference type)&lt;/strong&gt;이라 한다.
+즉, 클래스의 인스턴스와 배열은 객체인 반면, 기본타입은 그렇지 않다.&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">다음주 수요일부터 Joshua Bloch의 고전 명저인 Effective Java 3판의 내용을 같이 공부하고 토의하는 자바 스터디를 시작하게 되었다. 스터디 참여가 확정되고 난 후 바로 교보문고를 통해 책을 주문하였다. 오늘부터 약 두 달간 이 책과 함께 열심히 나를 불태워버리겠다. 책을 다 읽었을 때 쯤 JAVA 기본기가 지금보다 한층 더 레벨업 되어있을 나를 기대하며… Day 1 기록 시작! Ⅰ. 공부 시 참고하면 좋을 사이트 이펙티브 자바 3판 번역 용어 해설 백기선님 동영상 강의 깃헙 예제소스</summary></entry><entry><title type="html">[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1</title><link href="https://icechoco.github.io/java/2021-11-27-Effective-java-Day2/" rel="alternate" type="text/html" title="[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1" /><published>2021-11-27T00:00:00+09:00</published><updated>2021-11-28T23:31:34+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day2</id><content type="html" xml:base="https://icechoco.github.io/java/2021-11-27-Effective-java-Day2/">&lt;p&gt;어제인 Day 1에서는 프로그래밍의 기본 원칙과 자바가 지원하는 타입에 대해서 공부했다. ‘1장 들어가기’에서는 책에서 사용하는 기술 용어를 명확히 하고 주로 넘어가는데, 그 용어에 대해서 기본적인 개념을 미리 한 번 정리하고 들어가면 좋겠다 싶어 정리하는 시간을 가졌다. 이번 포스팅도 책을 읽으면서 관련된 개념을 정리하는 식으로 기록하려한다. 공부하면서 지금까지 너무 기본기에대해서 간과한 것 같아 좀 앞으로가 두렵기도 하고, 잘 할 수 있을까 걱정되기도 하지만 좋은 스트레스를 받고 있는 것 같아 설레기도 하다. 오늘도 책상에 앉은 나 칭찬해! 그럼 Day 2 기록 시작!&lt;/p&gt;
+
+&lt;h3 id=&quot;ⅰ들어가기&quot;&gt;Ⅰ.들어가기&lt;/h3&gt;
+&lt;h4 id=&quot;클래스의-멤버member&quot;&gt;클래스의 멤버(Member)&lt;/h4&gt;
+&lt;p&gt;멤버는 한국어로 구성원이라는 뜻이다. 비유하면 클래스의 멤버라는 뜻은 클래스라는 설계도의 구성원이라고 생각하면 된다. 간단하게 멤버 == 구성요소로 생각하면 쉽다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Calculator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//필드(속성, 변수)&lt;/span&gt;
+        
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setOperands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//메서드&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//setOperands에 입력값으로 전달한 left를 인스턴스의 변수로 지정&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;avg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;memberExam&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;Calculator&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Calculator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//c1이라는 인스턴스를 만듦&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOperands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//메서드를 호출하여 10과 20을 인자로 전달&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;avg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            
+            &lt;span class=&quot;nc&quot;&gt;Calculator&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Calculator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//c2라는 두번째 인스턴스&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOperands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;avg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            
+            &lt;span class=&quot;c1&quot;&gt;//인스턴스&quot;의&quot; 변수로 지정 → 인스턴스 마다 서로다른 값의 변수를 소유할 수 있다.&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;//같은 left여도 c1은 값이 10이고, c2는 값이 20이니까!&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;필드(field)&lt;/strong&gt;: 클래스 내 전역에서 접근할 수 있는 변수&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;메서드(method)&lt;/strong&gt;: 어떤 특정 작업을 수행하기위한 명령문의 집합&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;멤버 클래스&lt;/strong&gt;: 클래스 내 선언된 클래스&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;멤버 인터페이스&lt;/strong&gt;: 클래스 내 선언된 인터페이스&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;메서드-시그니처&quot;&gt;메서드 시그니처&lt;/h4&gt;
+&lt;p&gt;메서드 시그니처란 &lt;strong&gt;메서드의 이름과 입력 매개변수(parameter)의 타입들&lt;/strong&gt;로 이루어진 조합을 말한다. 메서드 &lt;u&gt;반환값의 타입은 시그니처에 포함되지 않는다&lt;/u&gt;. 아래 코드에서 메서드 시그니처는 &lt;strong&gt;&lt;span style=&quot;color:green&quot;&gt;setOperands(int left, int right)&lt;/span&gt;&lt;/strong&gt; 이다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setOperands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//메서드&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//setOperands에 입력값으로 전달한 left를 인스턴스의 변수로 지정&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;아래 두 메서드는 다른 시그니처를 가진다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;setOperands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;setOperands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;아래 메서드들은 모두 같은 시그니처를 가진다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setOperands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setOperands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setOperands&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;이-책에서-자바언어-명세와-다르게-사용하는-기술용어&quot;&gt;이 책에서 자바언어 명세와 다르게 사용하는 기술용어&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;1.&lt;/strong&gt; 상속(inheritance)을 서브클래싱(subclassing)과 동의어로 쓴다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;상속&lt;/strong&gt;&lt;br /&gt;
+  다른 클래스가 가지고 있는 정보를 자신이 포함하겠다는 의미. 즉, 다른 클래스에 대한 정보를 상속받아 자신이 그대로 사용할 수 있도록 한다. 상속을 적절히 활용할 때 불필요한 코드의 수를 줄일 수 있어서 상당히 효율적인 개발이 이루어질 수 있다.&lt;br /&gt;
+  아래는 person을 상속한 Studnet 클래스의 예시이다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Student&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        
+        &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sudentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getSudentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sudentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setSudentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sudentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sudentID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sudentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getGrade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setGrade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;grade&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getGPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setGPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;no&quot;&gt;GPA&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sudentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//자신의 부모가 가지고 있는 생성자를 실행하겠다.&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sudentID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sudentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;grade&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;no&quot;&gt;GPA&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;------------------------------------------------------&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;학생 이름:&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;학생 나이:&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getAge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;학생 키:&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getHeight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;학생 몸무게:&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getWeight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;학번:&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getSudentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;학년:&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getGrade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;학점:&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getGPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;서브클래싱과 서브타이핑&lt;/strong&gt;&lt;br /&gt;
+  상속을 사용하는 목적에 의해서 서브클래싱과 서브타이핑으로 나뉜다.
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;서브클래싱(subclassing) == 구현상속(implementation inheritance), 클래스 상속(class inheritance)&lt;/strong&gt;&lt;br /&gt;
+다른 클래스 코드 재사용을 목적으로 함. 행동이 호환되지 않으므로 자신이 부모의 인스턴스를 대체할 수 없다&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;서브타이핑(subtyping) == 인터페이스 상속(interface inheritance)&lt;/strong&gt;&lt;br /&gt;
+타입 계층을 구성하기 위한 목적. 행동이 호환되기 때문에 자식 클래스의 인스턴스가 부모클래스 인스턴스를 대체할 수 있다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2.&lt;/strong&gt; 인터페이스 상속 대신 “클래스가 인터페이스를 &lt;strong&gt;구현한다&lt;/strong&gt;” or “인터페이스가 다른 인터페이스를 &lt;strong&gt;확장한다&lt;/strong&gt;“라고 표현한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;인터페이스&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;인터페이스에서는 반드시 &lt;strong&gt;사전에 정의된 추상 메소드와 상수만을 가질 수 있다&lt;/strong&gt;. 추상클래스는 추상 메소드 외에 멤버 변수나 일반 메소드를 가질 수 있지만 인터페이스는 가질 수 없다.&lt;/li&gt;
+      &lt;li&gt;인터페이스는 하나의 클래스에서 &lt;strong&gt;2개 이상의 인터페이스를 상속&lt;/strong&gt;받을 수 있으나, 추상클래스는 다중 상속이 불가능하다.&lt;/li&gt;
+      &lt;li&gt;조금 더 추상화의 정도가 높아서 완전히 설계의 목적으로서 사용이 되는 하나의 자바 특징이다.&lt;br /&gt;
+ex) Dog, Cat이라는 인터페이스를 다중 상속받은 Main 클래스의 예시&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;interface_exam&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Main&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Dog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Cat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//implements: 인터페이스를 상속 받는다.&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;Main&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;crying&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;one&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;two&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;crying&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;월! 월!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;one&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;One!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt; 
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;two&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// TODO Auto-generated method stub&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;two!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;strong&gt;3.&lt;/strong&gt; 아무것도 명시하지 않은 접근 수준을 얘기할 때는 ‘패키지 접근’이라는 용어 대신 전통적인 &lt;strong&gt;패키지-프라이빗&lt;/strong&gt;을 쓴다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;접근수준(access level)&lt;/strong&gt;&lt;br /&gt;
+ 자바의 access level은 public, protected, (package-private), private 로 4개가 있다.
+ 그중에 (package-private)을 이 책에서 사용하겠다는건데 아래 예제를 보자.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AccessModifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+	&lt;span class=&quot;c1&quot;&gt;// public&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;publicMethod&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;publicMethod() is called&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    
+	&lt;span class=&quot;c1&quot;&gt;// protected&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;protectedMethod&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;protectedMethod() is called&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	
+        &lt;span class=&quot;c1&quot;&gt;// package-private&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;packagePrivateMethod&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;packagePrivateMethod() is called&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	
+        &lt;span class=&quot;c1&quot;&gt;// private&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;privateMethod&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;privateMethod() is called&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;package-private 를 제외한 나머지 access level은 함수의 반환타입 앞에 명시적으로 적어주었는데
+package-private는 access level을 적어주지않는것을 말한다.
+적어주지않는다는 말은 access level이 없다는 말은 아니며, &lt;strong&gt;해당클래스와 같은 패키지 안에서 접근이 가능&lt;/strong&gt;한 제어자 이다.&lt;/p&gt;
+
+&lt;h4 id=&quot;공개-apiexported-api--apiapplication-programming-interface&quot;&gt;공개 API(exported API) / API(application programming interface)&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;프로그래머가 클래스, 인터페이스, 패키지를 통해 접근할 수 있는 모든 클래스, 인터페이스, 생성자, 멤버, 직렬화된 형태&lt;/li&gt;
+  &lt;li&gt;언어 구성요소 중 하나인 인터페이스와 헷갈리지 않게 하기 위해 흔히 쓰는 인터페이스 대신 API를 쓴다.&lt;/li&gt;
+  &lt;li&gt;API를 사용하는 프로그램 작성자(사람)를 그 API의 &lt;strong&gt;사용자(user)&lt;/strong&gt;라 하고, API를 사용하는 클래스(코드)는 그 API의 &lt;strong&gt;클라이언트(Client)&lt;/strong&gt;라 한다.&lt;/li&gt;
+  &lt;li&gt;공개 API는 그 API를 정의한 패키지 밖에서 접근할 수 있는 API 요소로 이뤄진다. 즉, 모든 클라이언트가 접근할 수 있고, API 작성자가 지원하기로 약속한 API요소들이다.
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;API 요소&lt;/strong&gt;:  클래스, 인터페이스, 생성자, 멤버, &lt;u&gt;직렬화된 형태&lt;/u&gt;를 총칭함.
+        &lt;ul&gt;
+          &lt;li&gt;직렬화된 형태 (Serialized form)
+            &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  Serialization is a mechanism of converting the state of an object into a byte stream.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;            &lt;/div&gt;
+            &lt;p&gt;이를 해석해 보면 직렬화는 &lt;strong&gt;byte stream으로 객체의 상태를 변환하는 메커니즘&lt;/strong&gt;이라고 할수있는데&lt;br /&gt;
+  이때 byte stream이란 데이터를 Byte단위로 주고받는 것을 말한다. 대표적으로 자바에서의 Byte Stream은 &lt;strong&gt;InputStream&lt;/strong&gt;과 &lt;strong&gt;OutputStream&lt;/strong&gt;이 있다. 이 클래스를 통과하는 단위는 당연히 Byte로 이루어져 있다.&lt;br /&gt;
+  그림, 텍스트, zip, jar 등과 같은 모든 데이터는 원래 Byte로 되어있다. 이 Byte들을 적절하게 변환하면 데이터가 되는 것이며 Byte Stream을 사용하는것은 원시 Byte를 그대로 주고 받겠다는 의미가 담겨져 있다.&lt;/p&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;javadoc 유틸리티를 기본모드로 실행하면 이 API 요소들만 담긴 문서가 만들어진다.&lt;/li&gt;
+  &lt;li&gt;패키지의 공개 API는 그 패키지의 모든 public 클래스와 인터페이스의 public 혹은 protected 멤버와 생성자로 구성된다.&lt;/li&gt;
+  &lt;li&gt;자바 9에서 등장한 모듈 시스템 개념을 적용하면 공개할 패키지를 선택할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ⅱ-생성자-대신-정적-팩터리-메서드를-고려하라item-1&quot;&gt;Ⅱ. 생성자 대신 정적 팩터리 메서드를 고려하라(Item 1)&lt;/h3&gt;
+&lt;p&gt;클래스는 생성자와 별도로 정적 팩터리 메서드(static factory method)를 제공할 수 있다. 정적 팩터리 메서드란 클래스의 인스턴스를 반환하는 단순한 정적 메서드를 말한다.&lt;br /&gt;
+다음 코드는 boolean 기본 타입의 박싱 클래스인 Boolean에서 발췌한 간단한 예이다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;item1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	
+	
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;박싱(boxing)&lt;/strong&gt;:  기본 자료형의 데이터를 대응되는 래퍼 클래스의 객체로 만드는 동작을 의미.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=iYW83DF6MHk&quot;&gt;자바 기초 프로그래밍 강좌 16강 - 상속 ① (Java Programming Tutorial 2017 #16)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://godtaehee.tistory.com/m/2?category=970294&quot;&gt;[Effective Java] 들어가기&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">어제인 Day 1에서는 프로그래밍의 기본 원칙과 자바가 지원하는 타입에 대해서 공부했다. ‘1장 들어가기’에서는 책에서 사용하는 기술 용어를 명확히 하고 주로 넘어가는데, 그 용어에 대해서 기본적인 개념을 미리 한 번 정리하고 들어가면 좋겠다 싶어 정리하는 시간을 가졌다. 이번 포스팅도 책을 읽으면서 관련된 개념을 정리하는 식으로 기록하려한다. 공부하면서 지금까지 너무 기본기에대해서 간과한 것 같아 좀 앞으로가 두렵기도 하고, 잘 할 수 있을까 걱정되기도 하지만 좋은 스트레스를 받고 있는 것 같아 설레기도 하다. 오늘도 책상에 앉은 나 칭찬해! 그럼 Day 2 기록 시작!</summary></entry><entry><title type="html">[Server] 아파치, NginX, 톰캣이 뭔가요?</title><link href="https://icechoco.github.io/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/" rel="alternate" type="text/html" title="[Server] 아파치, NginX, 톰캣이 뭔가요?" /><published>2021-11-26T00:00:00+09:00</published><updated>2021-11-27T20:34:22+09:00</updated><id>https://icechoco.github.io/server/What-is-Apache-NginX-or-Tomcat</id><content type="html" xml:base="https://icechoco.github.io/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;웹서버 관련 아파치, NginX, 톰캣 등에 관한 정확한 개념 및 필요성에 대해서 설명할 수 있다.&lt;/li&gt;
   &lt;li&gt;&lt;span style=&quot;color:grey&quot;&gt;&lt;em&gt;얄팍한 코딩사전님이 올려주신 &lt;a href=&quot;https://www.youtube.com/watch?v=Zimhvf2B7Es&quot;&gt;아파치, NginX, 톰캣이 뭔가요?&lt;/a&gt;를 보고 정리한 글입니다.&lt;/em&gt; &lt;/span&gt;&lt;/li&gt;
@@ -40,7 +413,20 @@ ex) 요리사가 바로바로 음식을 만들어주는 &lt;u&gt;식당&lt;/u&gt
 
 &lt;p&gt;위와 같은 동적 웹은 웹서버의 고유 역할이라고 하기는 애매하나 아파치나 NginX의 모듈로 가능하다. 예를들어 아파치 + PHP + MySQL을 연동시켜서 동적인 웹사이트를 제공할 수 있다. 이 조합은 줄여서 APM이라고 부른다. 쉽게말해 아파치에 PHP를 해석할 수 있는 모듈을 셋팅해놓으면 웹 접근이 있을 때 마다 PHP 코드에 적힌 레시피대로 MySQL에 있는 식재료들을 가져와서 아파치가 요리를 해줄 수 있다.&lt;/p&gt;
 
-&lt;p&gt;즉, 웹서버는 동적웹과 정적웹 모두 구현이 가능하다.&lt;/p&gt;
+&lt;p&gt;즉, 웹서버는 동적웹과 정적웹 모두 구현이 가능하다. 또는 톰캣, Node.js, Django 내장 서버 등의 전문 요리사들과 손님들 사이에서 서빙이나 매니지먼트를 담당하는 식당 매니저처럼 일하기도 한다&lt;/p&gt;
+
+&lt;h2 id=&quot;톰캣&quot;&gt;톰캣&lt;/h2&gt;
+&lt;p&gt;요즘은 Spring Boot에 톰캣이 내장되기 때문에 직접은 많이 안 접하게 되지만, 자바랑 JSP로 만든 웹 또는 API 어플리케이션을 실행할 때 Tomcat과 같은 &lt;strong&gt;Web Applicaion Server(WAS)&lt;/strong&gt;가 사용된다. WAS는 Web과 Server 사이에 Application이라는 말이 들어가면서 생긴 합성어이다. 단순히 웹과 서버 사이에서 무언가를 가져다 주는 역할만 하는 것이 아니라 &lt;strong&gt;동적 사이트를 전문적으로 처리해주는것과 같은 프로그래밍&lt;/strong&gt;을 해준다. 아파치와 NginX같은 웹서버도 PHP같은 분식 종류는 요리할 수 있지만 스프링같은 고급 한정식이나 일식으로 넘어가면 톰캣 같은 전문 요리사, WAS의 힘을 빌려야한다. *&lt;u&gt;자바 바이트 코드&lt;/u&gt;로 컴파일되는 언어들에 쓰이는 걸로 가장 흔히 사용되는 톰캣이나 Jetty, Undertow 등이 있다.&lt;/p&gt;
+
+&lt;p&gt;*자바 바이트 코드(Java bytecode): &lt;strong&gt;자바 가상 머신이 이해할 수 있는 언어로 변환된 자바 소스 코드&lt;/strong&gt;를 의미한다. 자바 컴파일러에 의해 변환되는 코드의 명령어 크기가 1바이트라서 자바 바이트 코드라고 불린다. 이러한 자바 바이트 코드의 확장자는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.class&lt;/code&gt;이다. 자바 바이트 코드는 자바 가상머신만 설치되어 있으면, 어떤 운영체제에서라도 실행 될 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;톰캣을-사용하는-방법&quot;&gt;톰캣을 사용하는 방법&lt;/h3&gt;
+&lt;p&gt;톰캣을 다운받아보면 여러 폴더들과 파일들이 들어있는 하나의 폴더로 되어 있다. 그 중 &lt;strong&gt;특정 폴더에 war 파일을 넣고 명령어를 실행하면 스프링 서비스가 톰캣을 사용하여 돌게 된다&lt;/strong&gt;. war 파일은 스프링으로 코딩한 웹앱을 빌드하면 생기는 파일이며 그 안에 .class 파일들, jsp, 이미지, CSS, Javascript 파일 등이 압축되어 있다. 요즘은 반대로 스프링을 톰캣이 들어있는 jar 파일로 빌드해서 배포하곤 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;java-외에서의-was는&quot;&gt;JAVA 외에서의 WAS는?&lt;/h2&gt;
+&lt;p&gt;WAS를 검색해보면 주로 JAVA 관련 정보가 제일 많은데 그럼 파이선의 Django나 C#의 닷넷과 같은 경우는 어떻게 되는걸까? JAVA가 아닌 진영에서는 사실 이게 다 정의하기 나름이고 진영마다 배포 구조들도 다 다르기 때문에 딱히 어떤 것이 WAS의 역할인지 구분해서 용어를 쓰지는 않는다.&lt;/p&gt;
+
+&lt;p&gt;파이썬의 경우 Gunicorn이 WAS와 비슷할 수 있으나 정확히는 WSGI라는 다른 개념으로 정의가 된다. 그리고 Node.js의 경우 어플리케이션이 WAS 역할까지 한다고 볼 수도 있으나 이것도 관점에 따라 다르게 해석할 수 있기 때문에 자바 외의 진영에서는 WAS 관련하여 쓰는 말이 조금 다르다고 보면 된다.&lt;/p&gt;
 
 &lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
 &lt;ul&gt;
@@ -57,7 +443,7 @@ ex) 요리사가 바로바로 음식을 만들어주는 &lt;u&gt;식당&lt;/u&gt
 
 &lt;p&gt;&lt;strong&gt;# 면접 후기&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://frogand.tistory.com/70&quot;&gt;[2020년 하반기 면접 후기] 네이버 공채 면접 후기 ! (1차/2차 면접)&lt;/a&gt;&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="cs" /><category term="cs" /><summary type="html"># CS 면접 준비 관련 깃허브</summary></entry><entry><title type="html">[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?</title><link href="https://icechoco.github.io/javascript/2021-11-12-Why-should-we-study-Javascript/" rel="alternate" type="text/html" title="[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?" /><published>2021-11-12T00:00:00+09:00</published><updated>2021-11-12T18:16:51+09:00</updated><id>https://icechoco.github.io/javascript/Why-should-we-study-Javascript</id><content type="html" xml:base="https://icechoco.github.io/javascript/2021-11-12-Why-should-we-study-Javascript/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://frogand.tistory.com/70&quot;&gt;[2020년 하반기 면접 후기] 네이버 공채 면접 후기 ! (1차/2차 면접)&lt;/a&gt;&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="cs" /><category term="cs" /><summary type="html"># CS 면접 준비 관련 깃허브</summary></entry><entry><title type="html">[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?</title><link href="https://icechoco.github.io/frontend/2021-11-12-Why-should-we-study-Javascript/" rel="alternate" type="text/html" title="[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?" /><published>2021-11-12T00:00:00+09:00</published><updated>2021-11-27T21:40:47+09:00</updated><id>https://icechoco.github.io/frontend/Why-should-we-study-Javascript</id><content type="html" xml:base="https://icechoco.github.io/frontend/2021-11-12-Why-should-we-study-Javascript/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Javascript에 대한 이론에 대해 공부하고 우리가 왜 Javascript에 대해서 공부해야 하는지 그 목적을 알 수 있다.&lt;/li&gt;
 &lt;/ul&gt;
@@ -68,7 +454,7 @@ ex) 요리사가 바로바로 음식을 만들어주는 &lt;u&gt;식당&lt;/u&gt
 &lt;p&gt;&lt;img src=&quot;/assets\img/netscape.png&quot; alt=&quot;SimpleJekyllSearch&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;우리가-javascript를-공부해야하는-이유&quot;&gt;우리가 JavaScript를 공부해야하는 이유&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;1. 자바스크립트는 프론트엔드에 쓸 수 있는 유일한 프로그래밍 언어이다.&lt;/strong&gt;&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="javascript" /><category term="javascript" /><summary type="html">이 글의 목적 Javascript에 대한 이론에 대해 공부하고 우리가 왜 Javascript에 대해서 공부해야 하는지 그 목적을 알 수 있다.</summary></entry><entry><title type="html">[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</title><link href="https://icechoco.github.io/jekyll/2021-10-23-Creat-a-serach-bar/" rel="alternate" type="text/html" title="[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-10-25T22:24:56+09:00</updated><id>https://icechoco.github.io/jekyll/Creat-a-serach-bar</id><content type="html" xml:base="https://icechoco.github.io/jekyll/2021-10-23-Creat-a-serach-bar/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 자바스크립트는 프론트엔드에 쓸 수 있는 유일한 프로그래밍 언어이다.&lt;/strong&gt;&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="frontEnd" /><category term="javascript" /><summary type="html">이 글의 목적 Javascript에 대한 이론에 대해 공부하고 우리가 왜 Javascript에 대해서 공부해야 하는지 그 목적을 알 수 있다.</summary></entry><entry><title type="html">[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</title><link href="https://icechoco.github.io/frontend/2021-10-23-Creat-a-serach-bar/" rel="alternate" type="text/html" title="[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기" /><published>2021-10-23T00:00:00+09:00</published><updated>2021-11-27T21:46:07+09:00</updated><id>https://icechoco.github.io/frontend/Creat-a-serach-bar</id><content type="html" xml:base="https://icechoco.github.io/frontend/2021-10-23-Creat-a-serach-bar/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Hydejack 테마를 사용한 블로그 환경에서 Jekyll SimpleJekyllSearch를 사용하여 서치바(Search Bar)를 구현할 수 있다.&lt;/li&gt;
 &lt;/ul&gt;
@@ -144,7 +530,13 @@ Jekyll로 만든 블로그는 별도의 서버를 갖고 있지 않은 정적 �
   &lt;li&gt;&lt;a href=&quot;https://jamesu.dev/posts/2021/01/03/adding-search-page-on-jekyll/&quot;&gt;Jekyll에 검색 페이지 추가하기&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/christian-fei/Simple-Jekyll-Search&quot;&gt;SimpleJekyllSearch&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://khw11044.github.io/blog/githubpages/2020-12-26-making-blog-05/&quot;&gt;[GithubPages] 하루만에 만드는 깃허브 블로그 05.게시물 검색기능 추가하기&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="jekyll" /><category term="Blog" /><category term="Jekyll" /><category term="Web" /><category term="Markdown" /><category term="HTML" /><summary type="html">이 글의 목적 Hydejack 테마를 사용한 블로그 환경에서 Jekyll SimpleJekyllSearch를 사용하여 서치바(Search Bar)를 구현할 수 있다.</summary></entry><entry><title type="html">react-redux</title><link href="https://icechoco.github.io/react/2021-10-17-About-useSelector-and-useDispatch/" rel="alternate" type="text/html" title="react-redux" /><published>2021-10-17T00:00:00+09:00</published><updated>2021-10-17T21:18:49+09:00</updated><id>https://icechoco.github.io/react/About-useSelector-and-useDispatch</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-17-About-useSelector-and-useDispatch/">&lt;p&gt;설치방법 및 redux에 관한 내용은 &lt;a href=&quot;https://icechoco.github.io/react/2021-10-11-Redux-Basics/&quot;&gt;Redux 기초 | IceChoco&lt;/a&gt;글을 참조하세요.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="frontEnd" /><category term="Blog" /><category term="jekyll" /><category term="Web" /><category term="Markdown" /><category term="HTML" /><summary type="html">이 글의 목적 Hydejack 테마를 사용한 블로그 환경에서 Jekyll SimpleJekyllSearch를 사용하여 서치바(Search Bar)를 구현할 수 있다.</summary></entry><entry><title type="html">[React] useSelector, useDispatch를 사용하여 state에 접근하기</title><link href="https://icechoco.github.io/frontend/2021-10-17-About-useSelector-and-useDispatch/" rel="alternate" type="text/html" title="[React] useSelector, useDispatch를 사용하여 state에 접근하기" /><published>2021-10-17T00:00:00+09:00</published><updated>2021-11-27T22:00:42+09:00</updated><id>https://icechoco.github.io/frontend/About-useSelector-and-useDispatch</id><content type="html" xml:base="https://icechoco.github.io/frontend/2021-10-17-About-useSelector-and-useDispatch/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;useSelector, useDispatch를 사용하여 state에 접근할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;react-redux&quot;&gt;react-redux&lt;/h2&gt;
+&lt;p&gt;설치방법 및 redux에 관한 내용은 &lt;a href=&quot;https://icechoco.github.io/react/2021-10-11-Redux-Basics/&quot;&gt;Redux 기초 | IceChoco&lt;/a&gt;글을 참조하세요.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;state 조회하기: useSelector 사용&lt;/li&gt;
   &lt;li&gt;action 발생시키기: useDispatch 사용&lt;/li&gt;
@@ -175,7 +567,7 @@ Jekyll로 만든 블로그는 별도의 서버를 갖고 있지 않은 정적 �
   &lt;li&gt;&lt;a href=&quot;https://juhi.tistory.com/23&quot;&gt;[React] useSelector, useDispatch로 state에 접근하기&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">설치방법 및 redux에 관한 내용은 Redux 기초 | IceChoco글을 참조하세요. state 조회하기: useSelector 사용 action 발생시키기: useDispatch 사용</summary></entry><entry><title type="html">[React] Attempted import error</title><link href="https://icechoco.github.io/react/2021-10-12-Attempted-import-error/" rel="alternate" type="text/html" title="[React] Attempted import error" /><published>2021-10-12T00:00:00+09:00</published><updated>2021-10-16T23:35:53+09:00</updated><id>https://icechoco.github.io/react/Attempted-import-error</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-12-Attempted-import-error/">&lt;p&gt;client 폴더 내 index.js 파일에서 하위폴더인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_reducers&lt;/code&gt;에서 데이터를 가져올려고 하자 Attempted import error가 발생했다.
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="frontEnd" /><category term="Web" /><category term="react" /><summary type="html">이 글의 목적 useSelector, useDispatch를 사용하여 state에 접근할 수 있다.</summary></entry><entry><title type="html">[React] Attempted import error</title><link href="https://icechoco.github.io/frontend/2021-10-12-Attempted-import-error/" rel="alternate" type="text/html" title="[React] Attempted import error" /><published>2021-10-12T00:00:00+09:00</published><updated>2021-11-27T21:57:11+09:00</updated><id>https://icechoco.github.io/frontend/Attempted-import-error</id><content type="html" xml:base="https://icechoco.github.io/frontend/2021-10-12-Attempted-import-error/">&lt;p&gt;client 폴더 내 index.js 파일에서 하위폴더인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_reducers&lt;/code&gt;에서 데이터를 가져올려고 하자 Attempted import error가 발생했다.
 &lt;img src=&quot;/assets\img/attempt-import-error.PNG&quot; alt=&quot;attempt-import-error&quot; /&gt;&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./src/index.js
 Attempted import error: 'Reducer' is not exported from './_reducers'.
@@ -203,7 +595,7 @@ export 방식에 따라 {}중괄호를 사용하고, 안하고가 다른데 expo
 &lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://mesonia.tistory.com/135&quot;&gt;react에서 import할때 {}중괄호 유무의 의미&lt;/a&gt;&lt;/p&gt;
 
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">client 폴더 내 index.js 파일에서 하위폴더인 _reducers에서 데이터를 가져올려고 하자 Attempted import error가 발생했다. ./src/index.js Attempted import error: 'Reducer' is not exported from './_reducers'. 프론트엔드 서버의 index.js 파일에서 ‘./_reducers’ 경로에 있는 index.js 파일을 import 하는데에 실패했다는 내용의 에러이다. 에러 발생 원인은 reducers 폴더 내 index.js 파일에서 export 시 default를 붙였기 때문이다. reducers 폴더 내 index.js파일 ``` import { combineReducers } from “redux”;</summary></entry><entry><title type="html">[React] TypeError: Cannot read properties of undefined (reading getState)</title><link href="https://icechoco.github.io/react/2021-10-12-cannot-read-properties-of-undefined-error/" rel="alternate" type="text/html" title="[React] TypeError: Cannot read properties of undefined (reading getState)" /><published>2021-10-12T00:00:00+09:00</published><updated>2021-10-16T23:35:53+09:00</updated><id>https://icechoco.github.io/react/cannot-read-properties-of-undefined-error</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-12-cannot-read-properties-of-undefined-error/">&lt;p&gt;리액트 프론트엔드 서버의 index.js 파일에서 Redux 확장 프로그램인 DevTools extension을 연결하고, 리액트 앱에 store를 연동해주기위해 provider 컴포넌트를 사용하여 설정해줬다. 그랬더니 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TypeError: Cannot read properties of undefined (reading 'getState')&lt;/code&gt;에러가 발생했다.
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="frontEnd" /><category term="Web" /><category term="react" /><summary type="html">client 폴더 내 index.js 파일에서 하위폴더인 _reducers에서 데이터를 가져올려고 하자 Attempted import error가 발생했다. ./src/index.js Attempted import error: 'Reducer' is not exported from './_reducers'. 프론트엔드 서버의 index.js 파일에서 ‘./_reducers’ 경로에 있는 index.js 파일을 import 하는데에 실패했다는 내용의 에러이다. 에러 발생 원인은 reducers 폴더 내 index.js 파일에서 export 시 default를 붙였기 때문이다. reducers 폴더 내 index.js파일 ``` import { combineReducers } from “redux”;</summary></entry><entry><title type="html">[React] TypeError: Cannot read properties of undefined (reading getState)</title><link href="https://icechoco.github.io/frontend/2021-10-12-cannot-read-properties-of-undefined-error/" rel="alternate" type="text/html" title="[React] TypeError: Cannot read properties of undefined (reading getState)" /><published>2021-10-12T00:00:00+09:00</published><updated>2021-11-27T21:59:05+09:00</updated><id>https://icechoco.github.io/frontend/cannot-read-properties-of-undefined-error</id><content type="html" xml:base="https://icechoco.github.io/frontend/2021-10-12-cannot-read-properties-of-undefined-error/">&lt;p&gt;리액트 프론트엔드 서버의 index.js 파일에서 Redux 확장 프로그램인 DevTools extension을 연결하고, 리액트 앱에 store를 연동해주기위해 provider 컴포넌트를 사용하여 설정해줬다. 그랬더니 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TypeError: Cannot read properties of undefined (reading 'getState')&lt;/code&gt;에러가 발생했다.
 &lt;img src=&quot;/assets\img/typeerror.PNG&quot; alt=&quot;typeerror&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;원인이 뭐지? 하고 구글 디버깅을 해봤더니 index.js 파일 내에 오타가 있는 경우 발생하는 에러라는 글을 찾았다. 아래는 변경 전 index.js 파일 소스이다.&lt;/p&gt;
@@ -223,60 +615,17 @@ export 방식에 따라 {}중괄호를 사용하고, 안하고가 다른데 expo
   &lt;li&gt;&lt;a href=&quot;https://redux.vlpt.us/1-8-provider.html&quot;&gt;1-8. Provider 컴포넌트를 사용하여 리액트 앱에 store 연동하기&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">리액트 프론트엔드 서버의 index.js 파일에서 Redux 확장 프로그램인 DevTools extension을 연결하고, 리액트 앱에 store를 연동해주기위해 provider 컴포넌트를 사용하여 설정해줬다. 그랬더니 TypeError: Cannot read properties of undefined (reading 'getState')에러가 발생했다.</summary></entry><entry><title type="html">CSS Framework, Ant Design을 활용한 효율적인 화면개발하기</title><link href="https://icechoco.github.io/react/2021-10-11-Screen-development-using-ant-design/" rel="alternate" type="text/html" title="CSS Framework, Ant Design을 활용한 효율적인 화면개발하기" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-16T23:35:53+09:00</updated><id>https://icechoco.github.io/react/Screen-development-using-ant-design</id><content type="html" xml:base="https://icechoco.github.io/react/2021-10-11-Screen-development-using-ant-design/">&lt;p&gt;원래는 모든 것을 CSS를 활용해서 하나하나 만들 수 있지만, 그렇게 되면 기능을 신경 쓰는 것 이외에 너무 많은 시간을 CSS에 투자해야합니다. 그래서 기능 개발에 초점을 맞추기 위해 CSS 프레임 워크를 사용해보도록 하겠습니다. 요즘 많은 기업들이 실무에서도 CSS 프레임워크가 잘 되어 있어 많이 사용하고 있습니다.&lt;/p&gt;
-
-&lt;p&gt;가장 유명한 프레임워크는 Mateiral UI, React Bootstrap, Semantic UI, Ant Design, Materialize가 있습니다. 저는 그 중 Ant Design을 활용해서 개발해보도록 하겠습니다. Ant Design은 중국에서 개발되었으며 많은 기능들이 들어있기 때문에 사이즈가 큰 편입니다. 하지만 스타일이 굉장히 깔끔하고 엔터프라이즈 환경에서도 어울리는 디자인 생성이 가능합니다. 가장 큰 장점은 사용하기가 굉장히 편합니다. Material UI도 좋은 프레임워크지만 처음 사용할 때 어려움이 있습니다.&lt;/p&gt;
-
-&lt;p&gt;가장먼저 npm을 사용하여 Ant Design을 설치합니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install antd --save
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="frontEnd" /><category term="Web" /><category term="react" /><summary type="html">리액트 프론트엔드 서버의 index.js 파일에서 Redux 확장 프로그램인 DevTools extension을 연결하고, 리액트 앱에 store를 연동해주기위해 provider 컴포넌트를 사용하여 설정해줬다. 그랬더니 TypeError: Cannot read properties of undefined (reading 'getState')에러가 발생했다.</summary></entry><entry><title type="html">Redux 설치하기</title><link href="https://icechoco.github.io/frontend/2021-10-11-Settint-Up-Redux/" rel="alternate" type="text/html" title="Redux 설치하기" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-11-27T21:56:21+09:00</updated><id>https://icechoco.github.io/frontend/Settint-Up-Redux</id><content type="html" xml:base="https://icechoco.github.io/frontend/2021-10-11-Settint-Up-Redux/">&lt;p&gt;Redux를 자신이 개발할 어플리케이션에 설치하고 설정하는 방법을 기록하겠습니다. 우선 다운 받아야 할 dependency들이 redux, react-redux, redux-promise, redux-thunk까지 총 4개가 있습니다. 이 중에서 redux-promis, redux-thunk는 redux의 미들웨어입니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install redux react-redux redux-promise redux-thunk --save
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;그 다음 사용할 곳에 아래 import문을 추가하면 ant Design을 사용할 수 있습니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;redux-promise-redux-thunk가-필요한-이유&quot;&gt;redux-promise, redux-thunk가 필요한 이유&lt;/h2&gt;
+&lt;p&gt;redux-promise, redux-thunk는 redux를 잘 쓸 수 있게 도와주는 역할을 하는 미들웨어입니다. redux는 redux store 안에 모든 state를 관리하고 있습니다. 이 store 안에 있는 state를 변경하기 위해서는 dispatch를 이용해서 action을 통해 변경시킬 수 있습니다. 이렇게 store가 데이터를 받을 때 항상 객체 형식으로 데이터를 받는 것이 아니라 때에 따라 promise, functions 형식으로 받기도 합니다. 그런데, redux 기초편에서 봤듯 우리는 reudx store는 객체 형식으로만 데이터를 받을 수 있다고 배웠습니다.&lt;/p&gt;
 
-&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://ant.design/&quot;&gt;Ant Design 공식 홈페이지&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;redux-thunk&lt;/strong&gt;는 dispatch한테 어떻게 function 형식을 받는지 그 방법을 알려주고, &lt;strong&gt;redux-promise&lt;/strong&gt;는 dispatch한테 promise가 왔을 때 어떻게 해야하는지 store에게 알려주는 역할을 합니다. 즉 이 2가지를 다운받지 않고 promise, functions 형식을 받아 redux를 사용하면 에러가 발생합니다.&lt;/p&gt;
 
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="react" /><category term="Web" /><category term="React" /><summary type="html">원래는 모든 것을 CSS를 활용해서 하나하나 만들 수 있지만, 그렇게 되면 기능을 신경 쓰는 것 이외에 너무 많은 시간을 CSS에 투자해야합니다. 그래서 기능 개발에 초점을 맞추기 위해 CSS 프레임 워크를 사용해보도록 하겠습니다. 요즘 많은 기업들이 실무에서도 CSS 프레임워크가 잘 되어 있어 많이 사용하고 있습니다.</summary></entry><entry><title type="html">node.js 기초</title><link href="https://icechoco.github.io/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/" rel="alternate" type="text/html" title="node.js 기초" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-16T23:35:53+09:00</updated><id>https://icechoco.github.io/server/node-js-%EA%B8%B0%EC%B4%88</id><content type="html" xml:base="https://icechoco.github.io/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/">&lt;p&gt;node.js를 활용한 서버 구축에 있어 필요한 기본 지식들을 기록해보겠습니다.&lt;/p&gt;
+&lt;h2 id=&quot;combinereducers가-하는-역할&quot;&gt;combineReducers가 하는 역할&lt;/h2&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets\img/combine-reducer.PNG&quot; height=&quot;300px&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;store에는 reducer가 여러가지 있을 수 있습니다.이 reducer는 어떻게 state가 변하는 지를 보여준 다음, 변한 마지막 값을 리턴해주는 일을 합니다.
+state는 유저, 구독 등 여러가지에 대한 state가 있을 수 있으므로 각각의 state에 따라 reducer도 나눠져 있습니다. redux에 내장되어 있는 combineReducer는 여러개의 reducer들을 Root Reducer에서 하나로 합쳐주는 역할을 합니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;nodejs&quot;&gt;node.js&lt;/h2&gt;
-&lt;p&gt;우선, node.js가 무엇인지 알아야겠죠? 이전에 자바스크립트는 크롬이나, IE와 같은 익스플로러 상에서만 사용이 가능했습니다. 그런데 node.js가 등장하고 나서 부터 자바스크립트를 서버사이드에서도 자바스크립트 사용이 가능해졌습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;expressjs&quot;&gt;express.js&lt;/h2&gt;
-&lt;p&gt;node.js를 이용해서 웹사이트나 어플리케이션을 쉽게 만들 수 있도록 도와주는 프레임워크입니다.
-터미널을 실행하여 아래 명렁어를 실행하면 설치할 수 있습니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install express --save
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/assets\img/download-express-js.png&quot; alt=&quot;download-express-js&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;npm install 명령어 맨 뒤에 –save 명령어를 입력함으로써 package.json 파일의 dependencies 안에 express 버전이 추가된 것을 확인할 수 있습니다. 이렇게 추가를 해둠으로써 다른 사람이 봤을 때 쓰고있구나 하고 알 수 있게 해주는 역할을 합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;indexjs&quot;&gt;index.js&lt;/h2&gt;
-&lt;p&gt;백엔드 서버를 시작하면 index.js 파일에서 시작합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;node_modules&quot;&gt;node_modules&lt;/h2&gt;
-&lt;p&gt;다운받은 dependencies들 즉 라이브러리들이 이 폴더안에 들어가 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;npm-run-scripts&quot;&gt;npm run {scripts}&lt;/h2&gt;
-&lt;p&gt;npm run {scripts} 수행 시 package.json 파일 안에 있는 scripts에 적혀있는 대로 수행됩니다. 예를 들어 package.json 파일의 scripts 부분이 아래와 같이 명시되어 있는 상태에서 npm run start를 수행한 경우 루트 경로에 있는 index.js가 수행됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;node index.js&quot;,       //npm run start
-    &quot;build&quot;: &quot;react-scripts build&quot;, //npm run build
-    &quot;test&quot;: &quot;react-scripts test&quot;,   //npm run test
-    &quot;eject&quot;: &quot;react-scripts eject&quot;  //npm run eject
-  },
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="server" /><category term="server" /><summary type="html">node.js를 활용한 서버 구축에 있어 필요한 기본 지식들을 기록해보겠습니다.</summary></entry><entry><title type="html">Concurrently를 이용한 백서버와 클라이언트서버 동시 실행시키기</title><link href="https://icechoco.github.io/server/2021-10-11-Running-server-and-client-at-the-same-time/" rel="alternate" type="text/html" title="Concurrently를 이용한 백서버와 클라이언트서버 동시 실행시키기" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-10-16T23:35:53+09:00</updated><id>https://icechoco.github.io/server/Running-server-and-client-at-the-same-time</id><content type="html" xml:base="https://icechoco.github.io/server/2021-10-11-Running-server-and-client-at-the-same-time/">&lt;p&gt;개발하면서 매번 터미널 두개 켜서 하나는 server run 시키고, 다른 하나는 react run 시키고 두 번 해줘야 하는게 정말 불편했습니다. 그러던 와중에 알게된 것은 바로 &lt;strong&gt;Concurrently&lt;/strong&gt;를 이용해서 백서버와 클라이언트서버를 동시에 실행시키는 것! 그래서 이번 글에서는 어떻게 Concurrently를 활용해서 동시에 실행시킬 수 있는지 알려드리겠습니다. 우선 사용을 위해서는 Concurrently 라이브러리를 다운받으셔야합니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install concurrently --save
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;설치 후 사용방법은 package.json 파일 내 “scripts” 부분에 실행할 명령어를 넣고 concurrenlty를 적은 뒤 켜고 싶은 것들을 차례대로 적어주시면 됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;dev&quot;: &quot;concurrently   \&quot;npm run backend\&quot; \&quot;npm run start --prefix client\&quot;&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;참고&quot;&gt;참고&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/concurrently&quot;&gt;concurrently-npm&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="server" /><category term="server" /><summary type="html">개발하면서 매번 터미널 두개 켜서 하나는 server run 시키고, 다른 하나는 react run 시키고 두 번 해줘야 하는게 정말 불편했습니다. 그러던 와중에 알게된 것은 바로 Concurrently를 이용해서 백서버와 클라이언트서버를 동시에 실행시키는 것! 그래서 이번 글에서는 어떻게 Concurrently를 활용해서 동시에 실행시킬 수 있는지 알려드리겠습니다. 우선 사용을 위해서는 Concurrently 라이브러리를 다운받으셔야합니다. npm install concurrently --save 설치 후 사용방법은 package.json 파일 내 “scripts” 부분에 실행할 명령어를 넣고 concurrenlty를 적은 뒤 켜고 싶은 것들을 차례대로 적어주시면 됩니다. &quot;dev&quot;: &quot;concurrently \&quot;npm run backend\&quot; \&quot;npm run start --prefix client\&quot;&quot;</summary></entry></feed>
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="frontEnd" /><category term="Web" /><category term="react" /><category term="Redux" /><summary type="html">Redux를 자신이 개발할 어플리케이션에 설치하고 설정하는 방법을 기록하겠습니다. 우선 다운 받아야 할 dependency들이 redux, react-redux, redux-promise, redux-thunk까지 총 4개가 있습니다. 이 중에서 redux-promis, redux-thunk는 redux의 미들웨어입니다. npm install redux react-redux redux-promise redux-thunk --save redux-promise, redux-thunk가 필요한 이유 redux-promise, redux-thunk는 redux를 잘 쓸 수 있게 도와주는 역할을 하는 미들웨어입니다. redux는 redux store 안에 모든 state를 관리하고 있습니다. 이 store 안에 있는 state를 변경하기 위해서는 dispatch를 이용해서 action을 통해 변경시킬 수 있습니다. 이렇게 store가 데이터를 받을 때 항상 객체 형식으로 데이터를 받는 것이 아니라 때에 따라 promise, functions 형식으로 받기도 합니다. 그런데, redux 기초편에서 봤듯 우리는 reudx store는 객체 형식으로만 데이터를 받을 수 있다고 배웠습니다.</summary></entry></feed>

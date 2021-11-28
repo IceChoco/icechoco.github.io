@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-11-27T12:01:11+09:00',
+    INDEX_KEY: 'index--2021-11-28T23:32:17+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -297,7 +297,7 @@ Left here for reference, feel free to delete.
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time> in <a href="/git/" class="flip-title">GIT</a> on <span>Git</span>, <span>Web</span>, <a href="/tag-jekyll/" class="flip-title">Jekyll</a>
+        <time datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time> in <a href="/git/" class="flip-title">GIT</a> on <span>Git</span>, <span>Web</span>, <span>Jekyll</span>
       </span>
       
         
@@ -572,7 +572,7 @@ Left here for reference, feel free to delete.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/" class="flip-title"><span>[Server] 아파치, NginX, 톰캣이 뭔가요?</span></a>  <time class="faded fine" datetime="2021-11-26T00:00:00+09:00">26 Nov 2021</time></li>                        <li class="h4">  <a href="/cs/2021-11-25-Github-related-to-CS-interview-preparation/" class="flip-title"><span>[CS] CS 면접 준비 관련 사이트 모음</span></a>  <time class="faded fine" datetime="2021-11-25T00:00:00+09:00">25 Nov 2021</time></li>                        <li class="h4">  <a href="/javascript/2021-11-12-Why-should-we-study-Javascript/" class="flip-title"><span>[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?</span></a>  <time class="faded fine" datetime="2021-11-12T00:00:00+09:00">12 Nov 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-11-27-Effective-java-Day2/" class="flip-title"><span>[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1</span></a>  <time class="faded fine" datetime="2021-11-27T00:00:00+09:00">27 Nov 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-27-Effective-java-Day1/" class="flip-title"><span>[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입</span></a>  <time class="faded fine" datetime="2021-11-27T00:00:00+09:00">27 Nov 2021</time></li>                        <li class="h4">  <a href="/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/" class="flip-title"><span>[Server] 아파치, NginX, 톰캣이 뭔가요?</span></a>  <time class="faded fine" datetime="2021-11-26T00:00:00+09:00">26 Nov 2021</time></li>            </ul></aside>
 
   
 
@@ -672,134 +672,166 @@ Left here for reference, feel free to delete.
   </div>
 
   <nav class="sidebar-nav heading" role="navigation">
-    <span class="sr-only">Navigation:</span>
+    <!-- file: "/_layouts/tag-list.html" -->
 <ul>
   
-    
-    
-    
-
+  
+  
     
       
+    
+  
+    
+      
+        
+        
         <li>
-          <a
-            id="_navigation"
-            href="/about/"
-            class="sidebar-nav-item"
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
             
-            >
-            About
-          </a>
+          </div>
+          
         </li>
       
     
+  
+    
       
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
             
-            href="/resume/"
-            class="sidebar-nav-item"
-            
-            >
-            Resume
-          </a>
+          </div>
+          
         </li>
       
     
+  
+    
       
+    
+  
+    
+      
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
             
-            href="/git/"
-            class="sidebar-nav-item"
-            
-            >
-            GIT
-          </a>
+          </div>
+          
         </li>
       
     
+  
+    
       
+    
+  
+    
+      
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
             
-            href="/javascript/"
-            class="sidebar-nav-item"
-            
-            >
-            Javascript
-          </a>
+          </div>
+          
         </li>
       
     
+  
+    
       
+        
+        
         <li>
-          <a
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
             
-            href="/jekyll/"
-            class="sidebar-nav-item"
+              <label class="folder" for="list-item-13">▾</label>
             
-            >
-            Jekyll
-          </a>
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
         </li>
       
     
+  
+    
       
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
             
-            href="/react/"
-            class="sidebar-nav-item"
-            
-            >
-            React
-          </a>
+          </div>
+          
         </li>
       
     
+  
+    
       
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
             
-            href="/database/"
-            class="sidebar-nav-item"
-            
-            >
-            Database
-          </a>
+          </div>
+          
         </li>
       
     
-      
-        <li>
-          <a
-            
-            href="/server/"
-            class="sidebar-nav-item"
-            
-            >
-            Server
-          </a>
-        </li>
-      
+  
     
       
+        
+        
         <li>
-          <a
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
             
-            href="/cs/"
-            class="sidebar-nav-item"
-            
-            >
-            CS
-          </a>
+          </div>
+          
         </li>
       
     
   
 </ul>
-
   </nav>
 
   

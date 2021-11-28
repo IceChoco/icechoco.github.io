@@ -1,6 +1,24 @@
 [
   
     {
+      "title"      : "[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2021.11.27",
+      "urlString"  : "/java/2021-11-27-Effective-java-Day2/",
+      "url"        : "/java/2021-11-27-Effective-java-Day2/"
+    },
+  
+    {
+      "title"      : "[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2021.11.27",
+      "urlString"  : "/java/2021-11-27-Effective-java-Day1/",
+      "url"        : "/java/2021-11-27-Effective-java-Day1/"
+    },
+  
+    {
       "title"      : "[Server] 아파치, NginX, 톰캣이 뭔가요?",
       "categories" : "server",
       "tags"       : "server",
@@ -20,47 +38,47 @@
   
     {
       "title"      : "[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?",
-      "categories" : "javascript",
+      "categories" : "frontEnd",
       "tags"       : "javascript",
       "date"       : "2021.11.12",
-      "urlString"  : "/javascript/2021-11-12-Why-should-we-study-Javascript/",
-      "url"        : "/javascript/2021-11-12-Why-should-we-study-Javascript/"
+      "urlString"  : "/frontend/2021-11-12-Why-should-we-study-Javascript/",
+      "url"        : "/frontend/2021-11-12-Why-should-we-study-Javascript/"
     },
   
     {
       "title"      : "[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기",
-      "categories" : "jekyll",
-      "tags"       : "Blog, Jekyll, Web, Markdown, HTML",
+      "categories" : "frontEnd",
+      "tags"       : "Blog, jekyll, Web, Markdown, HTML",
       "date"       : "2021.10.23",
-      "urlString"  : "/jekyll/2021-10-23-Creat-a-serach-bar/",
-      "url"        : "/jekyll/2021-10-23-Creat-a-serach-bar/"
+      "urlString"  : "/frontend/2021-10-23-Creat-a-serach-bar/",
+      "url"        : "/frontend/2021-10-23-Creat-a-serach-bar/"
     },
   
     {
-      "title"      : "react-redux",
-      "categories" : "react",
-      "tags"       : "Web, React",
+      "title"      : "[React] useSelector, useDispatch를 사용하여 state에 접근하기",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react",
       "date"       : "2021.10.17",
-      "urlString"  : "/react/2021-10-17-About-useSelector-and-useDispatch/",
-      "url"        : "/react/2021-10-17-About-useSelector-and-useDispatch/"
+      "urlString"  : "/frontend/2021-10-17-About-useSelector-and-useDispatch/",
+      "url"        : "/frontend/2021-10-17-About-useSelector-and-useDispatch/"
     },
   
     {
       "title"      : "[React] TypeError: Cannot read properties of undefined (reading getState)",
-      "categories" : "react",
-      "tags"       : "Web, React",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react",
       "date"       : "2021.10.12",
-      "urlString"  : "/react/2021-10-12-cannot-read-properties-of-undefined-error/",
-      "url"        : "/react/2021-10-12-cannot-read-properties-of-undefined-error/"
+      "urlString"  : "/frontend/2021-10-12-cannot-read-properties-of-undefined-error/",
+      "url"        : "/frontend/2021-10-12-cannot-read-properties-of-undefined-error/"
     },
   
     {
       "title"      : "[React] Attempted import error",
-      "categories" : "react",
-      "tags"       : "Web, React",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react",
       "date"       : "2021.10.12",
-      "urlString"  : "/react/2021-10-12-Attempted-import-error/",
-      "url"        : "/react/2021-10-12-Attempted-import-error/"
+      "urlString"  : "/frontend/2021-10-12-Attempted-import-error/",
+      "url"        : "/frontend/2021-10-12-Attempted-import-error/"
     },
   
     {
@@ -74,20 +92,20 @@
   
     {
       "title"      : "Redux 설치하기",
-      "categories" : "react",
-      "tags"       : "Web, React, Redux",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react, Redux",
       "date"       : "2021.10.11",
-      "urlString"  : "/react/2021-10-11-Settint-Up-Redux/",
-      "url"        : "/react/2021-10-11-Settint-Up-Redux/"
+      "urlString"  : "/frontend/2021-10-11-Settint-Up-Redux/",
+      "url"        : "/frontend/2021-10-11-Settint-Up-Redux/"
     },
   
     {
       "title"      : "CSS Framework, Ant Design을 활용한 효율적인 화면개발하기",
-      "categories" : "react",
-      "tags"       : "Web, React",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react",
       "date"       : "2021.10.11",
-      "urlString"  : "/react/2021-10-11-Screen-development-using-ant-design/",
-      "url"        : "/react/2021-10-11-Screen-development-using-ant-design/"
+      "urlString"  : "/frontend/2021-10-11-Screen-development-using-ant-design/",
+      "url"        : "/frontend/2021-10-11-Screen-development-using-ant-design/"
     },
   
     {
@@ -101,38 +119,38 @@
   
     {
       "title"      : "Redux 기초",
-      "categories" : "react",
-      "tags"       : "Web, React, Redux",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react, Redux",
       "date"       : "2021.10.11",
-      "urlString"  : "/react/2021-10-11-Redux-Basics/",
-      "url"        : "/react/2021-10-11-Redux-Basics/"
+      "urlString"  : "/frontend/2021-10-11-Redux-Basics/",
+      "url"        : "/frontend/2021-10-11-Redux-Basics/"
     },
   
     {
       "title"      : "함수형 컴포넌트 vs 클래스 컴포넌트",
-      "categories" : "react",
-      "tags"       : "Web, React",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react",
       "date"       : "2021.10.11",
-      "urlString"  : "/react/2021-10-11-Class-Component-vs-Functional-Component/",
-      "url"        : "/react/2021-10-11-Class-Component-vs-Functional-Component/"
+      "urlString"  : "/frontend/2021-10-11-Class-Component-vs-Functional-Component/",
+      "url"        : "/frontend/2021-10-11-Class-Component-vs-Functional-Component/"
     },
   
     {
       "title"      : "Create-React-App으로 React 시작하기",
-      "categories" : "react",
-      "tags"       : "Web, React",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react",
       "date"       : "2021.09.28",
-      "urlString"  : "/react/2021-09-28-Starting-with-Create-React-App/",
-      "url"        : "/react/2021-09-28-Starting-with-Create-React-App/"
+      "urlString"  : "/frontend/2021-09-28-Starting-with-Create-React-App/",
+      "url"        : "/frontend/2021-09-28-Starting-with-Create-React-App/"
     },
   
     {
       "title"      : "회원가입기능 만들기",
-      "categories" : "react",
-      "tags"       : "Web, React",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react",
       "date"       : "2021.09.22",
-      "urlString"  : "/react/2021-09-22-Create-member-registration-function/",
-      "url"        : "/react/2021-09-22-Create-member-registration-function/"
+      "urlString"  : "/frontend/2021-09-22-Create-member-registration-function/",
+      "url"        : "/frontend/2021-09-22-Create-member-registration-function/"
     },
   
     {
@@ -155,11 +173,11 @@
   
     {
       "title"      : "React 개요",
-      "categories" : "react",
-      "tags"       : "Web, React",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react",
       "date"       : "2021.09.20",
-      "urlString"  : "/react/2021-09-20-React-%EA%B0%9C%EC%9A%94/",
-      "url"        : "/react/2021-09-20-React-%EA%B0%9C%EC%9A%94/"
+      "urlString"  : "/frontend/2021-09-20-React-%EA%B0%9C%EC%9A%94/",
+      "url"        : "/frontend/2021-09-20-React-%EA%B0%9C%EC%9A%94/"
     },
   
     {
@@ -173,38 +191,38 @@
   
     {
       "title"      : "Hydejack 테마 Custmomization",
-      "categories" : "jekyll",
-      "tags"       : "Web, Jekyll",
+      "categories" : "frontEnd",
+      "tags"       : "Web, jekyll",
       "date"       : "2021.09.20",
-      "urlString"  : "/jekyll/2021-09-20-Hydejack-theme-Custmomization/",
-      "url"        : "/jekyll/2021-09-20-Hydejack-theme-Custmomization/"
+      "urlString"  : "/frontend/2021-09-20-Hydejack-theme-Custmomization/",
+      "url"        : "/frontend/2021-09-20-Hydejack-theme-Custmomization/"
     },
   
     {
       "title"      : "CORS(Cross-Origin Resource Sharing) 에러",
-      "categories" : "react",
-      "tags"       : "Web, React",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react",
       "date"       : "2021.09.19",
-      "urlString"  : "/react/2021-09-19-cors-errors/",
-      "url"        : "/react/2021-09-19-cors-errors/"
+      "urlString"  : "/frontend/2021-09-19-cors-errors/",
+      "url"        : "/frontend/2021-09-19-cors-errors/"
     },
   
     {
       "title"      : "React 스크립트 실행 오류",
-      "categories" : "react",
-      "tags"       : "Web, React",
+      "categories" : "frontEnd",
+      "tags"       : "Web, react",
       "date"       : "2021.09.19",
-      "urlString"  : "/react/2021-09-19-React-related-errors/",
-      "url"        : "/react/2021-09-19-React-related-errors/"
+      "urlString"  : "/frontend/2021-09-19-React-related-errors/",
+      "url"        : "/frontend/2021-09-19-React-related-errors/"
     },
   
     {
       "title"      : "Markdown 문법",
-      "categories" : "jekyll",
-      "tags"       : "Blog, Jekyll, Web, Markdown, HTML",
+      "categories" : "frontEnd",
+      "tags"       : "Blog, jekyll, Web, Markdown, HTML",
       "date"       : "2021.09.15",
-      "urlString"  : "/jekyll/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/",
-      "url"        : "/jekyll/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/"
+      "urlString"  : "/frontend/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/",
+      "url"        : "/frontend/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/"
     },
   
     {
