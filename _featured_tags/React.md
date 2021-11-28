@@ -1,13 +1,11 @@
 ---
-layout: list
+layout: tag-list
+type: tag
+category: frontEnd
 title: React
-slug: React
-menu: false
+slug: react
+sidebar: true
 order: 3
 description: >
-#  GIT study to manage my sources in GitHub
-accent_color: '#268bd2'
-accent_image:
-  background: '#202020'
-  overlay:    false
+  이 카테고리에서는 React 관련 정보를 공유하는 카테고리입니다.
 ---

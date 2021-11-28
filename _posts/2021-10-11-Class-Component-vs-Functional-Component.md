@@ -1,8 +1,8 @@
 ---
 title: '함수형 컴포넌트 vs 클래스 컴포넌트'
 layout: post
-categories: react
-tags: Web React
+categories: frontEnd
+tags: Web react
 comments: true
 ---
 

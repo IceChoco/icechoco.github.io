@@ -1,8 +1,8 @@
 ---
 title: 'React 스크립트 실행 오류'
 layout: post
-categories: react
-tags: Web React
+categories: frontEnd
+tags: Web react
 comments: true
 ---
 ```

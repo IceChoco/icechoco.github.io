@@ -1,8 +1,8 @@
 ---
 title: 'Create-React-App으로 React 시작하기'
 layout: post
-categories: react
-tags: Web React
+categories: frontEnd
+tags: Web react
 comments: true
 ---
 

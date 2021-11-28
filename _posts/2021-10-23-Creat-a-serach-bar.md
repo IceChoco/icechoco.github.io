@@ -1,8 +1,8 @@
 ---
 title: '[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기'
 layout: post
-categories: jekyll
-tags: Blog Jekyll Web Markdown HTML
+categories: frontEnd
+tags: Blog jekyll Web Markdown HTML
 comments: true
 ---
 

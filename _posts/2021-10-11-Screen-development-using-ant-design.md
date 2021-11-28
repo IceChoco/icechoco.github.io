@@ -1,8 +1,8 @@
 ---
 title: 'CSS Framework, Ant Design을 활용한 효율적인 화면개발하기'
 layout: post
-categories: react
-tags: Web React
+categories: frontEnd
+tags: Web react
 comments: true
 ---
 

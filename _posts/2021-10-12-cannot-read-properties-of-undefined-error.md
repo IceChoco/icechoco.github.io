@@ -1,8 +1,8 @@
 ---
 title: '[React] TypeError: Cannot read properties of undefined (reading getState)'
 layout: post
-categories: react
-tags: Web React
+categories: frontEnd
+tags: Web react
 comments: true
 ---
 

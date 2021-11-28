@@ -1,8 +1,8 @@
 ---
 title: 'Redux 설치하기'
 layout: post
-categories: react
-tags: Web React Redux
+categories: frontEnd
+tags: Web react Redux
 comments: true
 ---
 

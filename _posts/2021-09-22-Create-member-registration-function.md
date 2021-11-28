@@ -1,8 +1,8 @@
 ---
 title: '회원가입기능 만들기'
 layout: post
-categories: react
-tags: Web React
+categories: frontEnd
+tags: Web react
 comments: true
 ---
 

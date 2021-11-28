@@ -1,8 +1,8 @@
 ---
 title: 'Hydejack 테마 Custmomization'
 layout: post
-categories: jekyll
-tags: Web Jekyll
+categories: frontEnd
+tags: Web jekyll
 comments: true
 ---
 

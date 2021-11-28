@@ -1,10 +1,13 @@
 ---
 title: '[React] useSelector, useDispatch를 사용하여 state에 접근하기'
 layout: post
-categories: react
-tags: Web React
+categories: frontEnd
+tags: Web react
 comments: true
 ---
+
+**이 글의 목적**
+- useSelector, useDispatch를 사용하여 state에 접근할 수 있다.
 
 ## react-redux
 설치방법 및 redux에 관한 내용은 [Redux 기초 | IceChoco](https://icechoco.github.io/react/2021-10-11-Redux-Basics/)글을 참조하세요.

@@ -1,7 +1,7 @@
 ---
 title: '[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?'
 layout: post
-categories: javascript
+categories: frontEnd
 tags: javascript
 comments: true
 ---

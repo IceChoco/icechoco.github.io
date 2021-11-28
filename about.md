@@ -1,10 +1,10 @@
 ---
 layout: about
 title: About
-menu : true
-image: /assets/img/blog/hydejack-9.jpg
-redirect_from:
-  - /download/
+permalink: /about/
+more_posts: posts.md
+sidebar: true
+order: 1
 ---
 
 ## Blog

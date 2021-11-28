@@ -1,8 +1,8 @@
 ---
 title: '[React] Attempted import error'
 layout: post
-categories: react
-tags: Web React
+categories: frontEnd
+tags: Web react
 comments: true
 ---
 client 폴더 내 index.js 파일에서 하위폴더인 `_reducers`에서 데이터를 가져올려고 하자 Attempted import error가 발생했다.

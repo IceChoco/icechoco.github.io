@@ -1,8 +1,8 @@
 ---
 title: 'CORS(Cross-Origin Resource Sharing) 에러'
 layout: post
-categories: react
-tags: Web React
+categories: frontEnd
+tags: Web react
 comments: true
 ---
 ```
