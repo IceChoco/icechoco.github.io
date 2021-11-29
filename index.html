@@ -106,7 +106,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-11-28T23:32:17+09:00',
+    INDEX_KEY: 'index--2021-11-30T00:36:12+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -572,18 +572,18 @@ Left here for reference, feel free to delete.
 
 
 
-<article id="post-java-Effective-java-Day2" class="page post mb6" role="article">
+<article id="post-java-Effective-java-Day3" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
-      <a href="/java/2021-11-27-Effective-java-Day2/" class="flip-title">
-        [Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1
+      <a href="/java/2021-11-29-Effective-java-Day3/" class="flip-title">
+        [Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라
       </a>
     </h1>
 
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-11-27T00:00:00+09:00">27 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+        <time datetime="2021-11-29T00:00:00+09:00">29 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
       </span>
       
         
@@ -592,10 +592,74 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-28">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-30">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-11-28T23:31:34+09:00">2021-11-28</time>
+              <time datetime="2021-11-30T00:34:57+09:00">2021-11-30</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>어제인 Day 2에서는 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, 그리고 ‘Item 1 - 생성자 대신 정적 팩터리 메서드를 고려하라’의 앞부분에 대해서 공부했다. 확실히 평일에 늦게 퇴근하는 날은 시간적인 여유가 좀 적은 것 같다. 아무리 늦퇴하는 날이라고 하더라도 기록은 멈추지 말아야지. 그 어떤 사정도 결국은 핑계고 내 미래를 책임져주지 않으니T_T 그럼 Day 3 기록 시작!</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/java/2021-11-29-Effective-java-Day3/">[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-java-Effective-java-Day2" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/java/2021-11-28-Effective-java-Day2/" class="flip-title">
+        [Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-11-28T00:00:00+09:00">28 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-29">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-11-29T22:33:44+09:00">2021-11-29</time>
             </span>
           
         
@@ -622,7 +686,7 @@ Left here for reference, feel free to delete.
     
     <footer>
       <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/java/2021-11-27-Effective-java-Day2/">[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1</a>
+        Continue reading <a class="heading flip-title" href="/java/2021-11-28-Effective-java-Day2/">[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1</a>
 
       </p>
     </footer>
@@ -1165,70 +1229,6 @@ Attempted import error: 'Reducer' is not exported from './_reducers'.
     <footer>
       <p class="read-more">
         Continue reading <a class="heading flip-title" href="/frontend/2021-10-12-Attempted-import-error/">[React] Attempted import error</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-server-node-js-기초" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/" class="flip-title">
-        node.js 기초
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/server/" class="flip-title">Server</a> on <span>Server</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-16">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-10-16T23:35:53+09:00">2021-10-16</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>node.js를 활용한 서버 구축에 있어 필요한 기본 지식들을 기록해보겠습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/">node.js 기초</a>
 
       </p>
     </footer>

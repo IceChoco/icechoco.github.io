@@ -1,12 +1,21 @@
 [
   
     {
+      "title"      : "[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2021.11.29",
+      "urlString"  : "/java/2021-11-29-Effective-java-Day3/",
+      "url"        : "/java/2021-11-29-Effective-java-Day3/"
+    },
+  
+    {
       "title"      : "[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1",
       "categories" : "java",
       "tags"       : "java",
-      "date"       : "2021.11.27",
-      "urlString"  : "/java/2021-11-27-Effective-java-Day2/",
-      "url"        : "/java/2021-11-27-Effective-java-Day2/"
+      "date"       : "2021.11.28",
+      "urlString"  : "/java/2021-11-28-Effective-java-Day2/",
+      "url"        : "/java/2021-11-28-Effective-java-Day2/"
     },
   
     {

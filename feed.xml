@@ -1,121 +1,224 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2021-11-28T23:32:17+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
-</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입</title><link href="https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/" rel="alternate" type="text/html" title="[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입" /><published>2021-11-27T00:00:00+09:00</published><updated>2021-11-28T12:18:15+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day1</id><content type="html" xml:base="https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/">&lt;p&gt;다음주 수요일부터 Joshua Bloch의 고전 명저인 Effective Java 3판의 내용을 같이 공부하고 토의하는 자바 스터디를 시작하게 되었다. 스터디 참여가 확정되고 난 후 바로 교보문고를 통해 책을 주문하였다. 오늘부터 약 두 달간 이 책과 함께 열심히 나를 불태워버리겠다. 책을 다 읽었을 때 쯤 JAVA 기본기가 지금보다 한층 더 레벨업 되어있을 나를 기대하며… Day 1 기록 시작!&lt;/p&gt;
-&lt;h3 id=&quot;ⅰ-공부-시-참고하면-좋을-사이트&quot;&gt;Ⅰ. 공부 시 참고하면 좋을 사이트&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.google.com/document/u/0/d/1Nw-_FJKre9x7Uy6DZ0NuAFyYUCjBPCpINxqrP0JFuXk/mobilebasic#h.vim3vsbh8avu&quot;&gt;이펙티브 자바 3판 번역 용어 해설&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://m.youtube.com/watch?v=X7RXP6EI-5E&amp;amp;list=PLfI752FpVCS8e5ACdi5dpwLdlVkn0QgJJ&quot;&gt;백기선님 동영상 강의&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/WegraLee/effective-java-3e-source-code&quot;&gt;깃헙 예제소스&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2021-11-30T00:36:12+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라</title><link href="https://icechoco.github.io/java/2021-11-29-Effective-java-Day3/" rel="alternate" type="text/html" title="[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라" /><published>2021-11-29T00:00:00+09:00</published><updated>2021-11-30T00:34:57+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day3</id><content type="html" xml:base="https://icechoco.github.io/java/2021-11-29-Effective-java-Day3/">&lt;p&gt;어제인 Day 2에서는 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, 그리고 ‘Item 1 - 생성자 대신 정적 팩터리 메서드를 고려하라’의 앞부분에 대해서 공부했다. 확실히 평일에 늦게 퇴근하는 날은 시간적인 여유가 좀 적은 것 같다. 아무리 늦퇴하는 날이라고 하더라도 기록은 멈추지 말아야지. 그 어떤 사정도 결국은 핑계고 내 미래를 책임져주지 않으니T_T 그럼 Day 3 기록 시작!&lt;/p&gt;
 
-&lt;h3 id=&quot;ⅱ들어가기&quot;&gt;Ⅱ.들어가기&lt;/h3&gt;
-&lt;p&gt;자신이 공부한 외국어를 실전에서 활용해 보았다면 세 가지를 통달해야 한다는 사실을 알고 있을 것이다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;언어의 구조(문법)&lt;/li&gt;
-  &lt;li&gt;말할 대상의 이름(어휘)&lt;/li&gt;
-  &lt;li&gt;일상의 이야기를 풀어내는 관례적이고 효과적인 방법(용법)&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&quot;정적-팩터리-메서드의-장점&quot;&gt;정적 팩터리 메서드의 장점&lt;/h3&gt;
+&lt;h4 id=&quot;1-이름을-가질-수-있다&quot;&gt;1. 이름을 가질 수 있다.&lt;/h4&gt;
+&lt;p&gt;정적 팩터리 메서드는 생성자보다 읽기 편하다.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;프로그래밍 언어를 공부할 때&lt;/strong&gt;도 이와 똑같다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;언어의 핵심(절차적이냐 함수형이냐 객체 지향이냐)을 이해하고&lt;/li&gt;
-  &lt;li&gt;어휘(자료구조, 연산자, 표준 라이브러리의 기능)를 알고&lt;/li&gt;
-  &lt;li&gt;코드를 구성하는 관례적이고 효과적인 방법에 숙달해야 한다.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;하나의 시그니처로는 생성자를 하나만 만들 수 있다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;studentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//가 생성된 상태에서&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;studentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;//이렇게 생성이 불가능. 컴파일 에러 발생!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;입으로 내뱉어 버린 말, 종이에 인쇄되어 출간된 책, 잡지와는 달리 프로그램은 계속 수정할 수 있다. 그래서 코드는 &lt;strong&gt;구조가 수정하기 쉬워야한다.&lt;/strong&gt; 이때 이왕이면 다음 버전에서 기능 T가 어떻게 개선될지까지 고려해, 처음부터 개선된 T와 비슷한(즉, T’로 수정하기 편한) 구현 방식을 선택하는 것이 좋다.&lt;/p&gt;
+&lt;p&gt;물론 입력 매개변수들의 순서를 다르게 한 생성자를 새로 추가하는 식으로 아래 소스 같이 제한을 피해볼 수도 있으나 아주 좋지 않은 발상이다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;studentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//가 생성된 상태에서&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;studentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;//이렇게 생성이 가능하며 에러 발생하지 않긴 하지만... 매우 비추천&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;프로그래밍의-아주-핵심적인-기본-원칙&quot;&gt;프로그래밍의 아주 핵심적인 기본 원칙&lt;/h4&gt;
+&lt;p&gt;하지만 정적 팩터리 메서드는 이러한 제약이 없다. 한 클래스에 시그니처가 같은 생성자가 여러개 필요할 것 같으면, 생성자를 정적 팩터리 메서드로 바꾼 다음 각각의 차이를 잘 드러내는 이름을 지어주면 된다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;studentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+   
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;studentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Student&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StudentWithIDandGrade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;studentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;studentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;grade&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Student&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StudentWithIDAndGPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;studentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;studentID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GPA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2-호출될-때마다-인스턴스를-새로-생성하지는-않아도-된다&quot;&gt;2. 호출될 때마다 인스턴스를 새로 생성하지는 않아도 된다.&lt;/h4&gt;
+&lt;p&gt;반드시 새로운 객체를 만들 필요가 없다. 플라이웨이트 패턴도 이와 비슷한 기법이다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;플라이웨이트 패턴(Flyweight pattern)&lt;/strong&gt;&lt;br /&gt;
+어떤 클래스의 인스턴스 한 개만 가지고 여러 개의 “가상 인스턴스”를 제공하고 싶을 때 사용하는 패턴.&lt;br /&gt;
+즉, 인스턴스를 가능한 대로 공유시켜 쓸데없이 new 연산자를 통한 메모리 낭비를 줄이는 방식&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;item1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+   
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+   
+    &lt;span class=&quot;c1&quot;&gt;//생성자&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+   
+    &lt;span class=&quot;c1&quot;&gt;//생성자 - 위의 생성자랑 시그니처가 같으므로 생성 불가&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//  public Foo(String address) {&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//      this.address = address;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//  }&lt;/span&gt;
+   
+    &lt;span class=&quot;c1&quot;&gt;// static 팩토리 메서드&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;withName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+   
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;withAddress&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+   
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GOOD_NIGHT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+   
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getFoo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GOOD_NIGHT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//객체를 아예 새로 생성하지 않고 미리 만들어놓은 것을 가져옴. 특히 생성비용이 큰 경우 성능을 상당히 끌어올려줌.&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+   
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//장점 1: foo 코드보다는 foo2 의미가 더 읽기 편하다. Ara가 무슨 의미인지 알 수 있으므로.&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Ara&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;withName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Ara&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+       
+        &lt;span class=&quot;c1&quot;&gt;//장점 2: 반드시 새로운 객체를 만들 필요가 없다. 플라이웨이트 패턴도 이와 비슷한 기법임.&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFoo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;반복되는 요청에 같은 객체를 반환하는 식으로 정적 팩터리 방식의 클래스는 언제 어느 인스턴스를 살아있게 할지를 철저히 통제할 수 있다. 이를 &lt;strong&gt;인스턴트 통제 클래스&lt;/strong&gt;라 한다. 즉, 값이 있으면 새로 만들지 않고 기존 객체를 재사용하는 클래스를 말한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;인스턴트 클래스를 통제하는 이유&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;명료성(clarity)&lt;/strong&gt;
+  &lt;li&gt;&lt;strong&gt;싱글턴(Singleton)&lt;/strong&gt;으로 만들 수 있다.
     &lt;ul&gt;
-      &lt;li&gt;컴포넌트는 사용자를 놀라게 하는 동작을 해서는 절대 안된다.&lt;/li&gt;
-      &lt;li&gt;정해진 동작이나 예측할 수 있는 동작만 수행해야 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;단순성(simplicity)&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;컴포넌트는 가능한 한 작되, 그렇다고 너무 작아서도 안된다 (이 책에서 컴포넌트란 개별 메서드부터 여러 패키지로 이뤄진 복잡한 프레임워크까지 재사용 가능한 모든 SW 요소를 뜻함)&lt;/li&gt;
-      &lt;li&gt;코드는 복사되는 게 아니라 재사용되어야 한다.&lt;/li&gt;
-      &lt;li&gt;컴포넌트의 의존성은 최소로 유지해야 한다.&lt;/li&gt;
-      &lt;li&gt;오류는 만들어지자마자 가능한 한 빨리(되도록 컴파일타임에) 잡아야 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;싱글턴&lt;/strong&gt;: 객체의 인스턴스가 오직 1개만 생성되는 패턴을 의미&lt;br /&gt;
+ 싱글턴이 사용되는 &lt;u&gt;예시&lt;/u&gt;로는 어플의 다크모드가 있다. 사용자가 어플의 설정에서 다크모드를 설정해놓으면 다른 페이지로 이동하더라도 이 다크모드가 그대로 유지되어야한다. 즉, 어떤 페이지에 있던 이 세팅을 관리하는 객체는 반드시 같은 것을 사용해야 한다. 그럼 이 객체의 인스턴스가 하나만 생성되어 있어야 하는 것이 좋은데 이럴 때 싱글턴 패턴을 사용한다.&lt;br /&gt;
+ 아래는 기본적인 싱글턴 코드이며 멀티 쓰레드 환경 등에서 오류가 발생할 소지가 있다. 그러므로 여기서는 싱글턴을 이해하는 용도로 소스코드를 참조하고, 실제 사용 시에는 싱글턴을 보다 안전하게 사용할 수 있는 방법들을 검색 후 사용하는 것을 권장한다.&lt;/p&gt;
 
-&lt;h4 id=&quot;주요-기술용어&quot;&gt;주요 기술용어&lt;/h4&gt;
-&lt;p&gt;자바가 지원하는 타입은 총 4가지 이다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;인터페이스(interface)&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;에너테이션(Annotaion): 주석에 포함되면서 프로그래밍 언어에 영향을 미치지 않으면서 설정 정보와 같은 유용한 정보를 특정 프로그램에게 제공
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nd&quot;&gt;@test&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//이 메서드가 테스트 대상임을 테스트 프로그램에게 알린다.&lt;/span&gt;
- &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
- &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Settings.java&lt;/strong&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Settings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+      &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{};&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//private: Settings 클래스에서만 사용 가능. 외부 클래스에서 사용하려고 하면 에러 발생.&lt;/span&gt;
+            
+      &lt;span class=&quot;cm&quot;&gt;/* static으로 선언된 것들(정적공간) : 객체가 얼마나 생성되든 메모리의 지정된 공간에 딱 하나만 존재한다. 
+      * 								컴파일 할 때 부터 이 요소가 차지할 메모리 용량을 이미 알 수 있도록 딱 정해져 있기 때문에
+      * 								동적요소들과 대비되는 개념으로 static, 정적이라고 불림
+      */&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Settings&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//★★★ 자기 자신인 Settings 타입의 객체를 static으로 생성. null로 초기화 ★★★&lt;/span&gt;
+
+      &lt;span class=&quot;c1&quot;&gt;// 정적 팩토리 메소드&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Settings&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;c1&quot;&gt;//1. 다른곳에서 getSettings를 실행하기 전이라면&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+              &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//Settings 객체를 선언해서 settings 변수에 넣어주고 아래에서 반환&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;c1&quot;&gt;//2. settings가 이미 만들어진 상태라면 settings를 그대로 반환&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            
+      &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;darkMode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fontSize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getDarkMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//public: 누구든지 이 클래스의 메소드를 호출 가능&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;darkMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getFontSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            
+      &lt;span class=&quot;cm&quot;&gt;/* static이 아닌 것들(동적공간) : 객체가 생성될 때마다 메모리의 공간을 새로 차지*/&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setDarkMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_darkMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;darkMode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_darkMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setFontsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_fontSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;fontSize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_fontSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;FirstPage.java&lt;/strong&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FirstPage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;//Settings객체의 static 메소드는 이미 메모리의 정적 공간에 자리를 차지하고 있는 상태이기 때문에&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;//해당 객체를 new로 생성하지 않고도 클래스에서 바로 불러낼 수 있음&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Settings&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setAndPrintSetting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setDarkMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//정적 settings 객체에 값을 넣음&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setFontsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                
+          &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getDarkMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFontSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//그 내용들을 출력함&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;SecondPage.java&lt;/strong&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SecondPage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;//Settings객체의 static 메소드는 이미 메모리의 정적 공간에 자리를 차지하고 있는 상태이기 때문에&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;//해당 객체를 new로 생성하지 않고도 클래스에서 바로 불러낼 수 있음&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Settings&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setAndPrintSetting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setDarkMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//정적 settings 객체에 값을 넣음&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setFontsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                
+          &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getDarkMode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFontSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//그 내용들을 출력함&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;MyProgram.java&lt;/strong&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyProgram&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+      &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;FirstPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setAndPrintSetting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SecondPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
+
+    &lt;p&gt;근데… 그냥 정적변수를 쓰지 왜 싱글턴을 쓸까? 그건 바로 interface의 사용, lazy loading 등 싱글턴으로 할 수 있는 것들이 더 많기 때문이다!&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;클래스(class)&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;열거타입(enum)
-        &lt;ul&gt;
-          &lt;li&gt;관련된 상수들을 같이 묶어 놓은 것. Java는 비교 시 값과 타입을 모두 체크함.&lt;/li&gt;
-          &lt;li&gt;모든 열거형은 java.lang.Enum이라는 클래스의 자손. 즉, 열거형의 조상은 enum.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     &lt;span class=&quot;c1&quot;&gt;//           0      1        2       3&lt;/span&gt;
-     &lt;span class=&quot;kd&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;CLOVER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HEART&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DIAMOND&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SPADE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//열거형 Kind를 정의&lt;/span&gt;
-     &lt;span class=&quot;kd&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TWO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;THREE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FOUR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//열거형 Value를 정의&lt;/span&gt;
-            
-     &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;enumExam&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            
-         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;	
-            
-         &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;CLOVER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kind2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HEART&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;CLOVER&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-                
-         &lt;span class=&quot;c1&quot;&gt;//	  //컴파일 에러 발생. 타입이 달라 비교 불가(Incompatible operand types Kind and Value)&lt;/span&gt;
-         &lt;span class=&quot;c1&quot;&gt;//      if(kind.CLOVER == Value.TWO){&lt;/span&gt;
-         &lt;span class=&quot;c1&quot;&gt;//          System.out.println(&quot;같아용&quot;);&lt;/span&gt;
-         &lt;span class=&quot;c1&quot;&gt;//      }&lt;/span&gt;
-                
-             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//false&lt;/span&gt;
-             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
-             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
-             &lt;span class=&quot;c1&quot;&gt;//System.out.println(kind &amp;gt; kind3);//에러. 객체라서 비교 연산자 사용 불가&lt;/span&gt;
-             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;compareTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//0&lt;/span&gt;
-             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;compareTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//-1&lt;/span&gt;
-                
-             &lt;span class=&quot;c1&quot;&gt;//열거형의 모든 상수를 배열로 반환&lt;/span&gt;
-             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kindArr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-             &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kindArr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-                 &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ordinal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//이름과 순서&lt;/span&gt;
-                
-         &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;	
-
-         &lt;span class=&quot;c1&quot;&gt;//primitive type&lt;/span&gt;
-         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CLOVER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HEART&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DIAMOND&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SPADE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TWO&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;THREE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FOUR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;배열(array)&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;기본타입(primitive)&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;인스턴스화 불가&lt;/strong&gt;로 만들 수 있다.&lt;br /&gt;
+ex) 위 소스코드의 FirstPage 클래스에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private Settings settings = new Settings();&lt;/code&gt;로 인스턴스화 불가&lt;/li&gt;
+  &lt;li&gt;불변 값 클래스에서 &lt;strong&gt;동치인 인스턴트가 하나임을 보장&lt;/strong&gt;할 수 있다. (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a==b&lt;/code&gt;일 때만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a.equlals(b)&lt;/code&gt;가 성립)&lt;br /&gt;
+인스턴트 통제는 플라이웨이트 패턴의 근간이 되며, 열거타입은 인스턴스가 하나만 만들어짐을 보장한다.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;이 4가지의 타입 중 인터페이스, 클래스, 배열은 &lt;strong&gt;참조타입(reference type)&lt;/strong&gt;이라 한다.
-즉, 클래스의 인스턴스와 배열은 객체인 반면, 기본타입은 그렇지 않다.&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">다음주 수요일부터 Joshua Bloch의 고전 명저인 Effective Java 3판의 내용을 같이 공부하고 토의하는 자바 스터디를 시작하게 되었다. 스터디 참여가 확정되고 난 후 바로 교보문고를 통해 책을 주문하였다. 오늘부터 약 두 달간 이 책과 함께 열심히 나를 불태워버리겠다. 책을 다 읽었을 때 쯤 JAVA 기본기가 지금보다 한층 더 레벨업 되어있을 나를 기대하며… Day 1 기록 시작! Ⅰ. 공부 시 참고하면 좋을 사이트 이펙티브 자바 3판 번역 용어 해설 백기선님 동영상 강의 깃헙 예제소스</summary></entry><entry><title type="html">[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1</title><link href="https://icechoco.github.io/java/2021-11-27-Effective-java-Day2/" rel="alternate" type="text/html" title="[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1" /><published>2021-11-27T00:00:00+09:00</published><updated>2021-11-28T23:31:34+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day2</id><content type="html" xml:base="https://icechoco.github.io/java/2021-11-27-Effective-java-Day2/">&lt;p&gt;어제인 Day 1에서는 프로그래밍의 기본 원칙과 자바가 지원하는 타입에 대해서 공부했다. ‘1장 들어가기’에서는 책에서 사용하는 기술 용어를 명확히 하고 주로 넘어가는데, 그 용어에 대해서 기본적인 개념을 미리 한 번 정리하고 들어가면 좋겠다 싶어 정리하는 시간을 가졌다. 이번 포스팅도 책을 읽으면서 관련된 개념을 정리하는 식으로 기록하려한다. 공부하면서 지금까지 너무 기본기에대해서 간과한 것 같아 좀 앞으로가 두렵기도 하고, 잘 할 수 있을까 걱정되기도 하지만 좋은 스트레스를 받고 있는 것 같아 설레기도 하다. 오늘도 책상에 앉은 나 칭찬해! 그럼 Day 2 기록 시작!&lt;/p&gt;
+&lt;h4 id=&quot;3-반환-타입의-하위-객체를-반환할-수-있는-능력이-있다&quot;&gt;3. 반환 타입의 하위 객체를 반환할 수 있는 능력이 있다.&lt;/h4&gt;
+&lt;p&gt;반환할 객체의 클래스를 자유롭게 선택할 수 있게하는 유연성이 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lee1535.tistory.com/106&quot;&gt;[디자인패턴/Design Pattern] Flyweight Pattern/플라이웨이트 패턴&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=lJES5TQTTWE&amp;amp;t=91s&quot;&gt;객체지향 디자인패턴 1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">어제인 Day 2에서는 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, 그리고 ‘Item 1 - 생성자 대신 정적 팩터리 메서드를 고려하라’의 앞부분에 대해서 공부했다. 확실히 평일에 늦게 퇴근하는 날은 시간적인 여유가 좀 적은 것 같다. 아무리 늦퇴하는 날이라고 하더라도 기록은 멈추지 말아야지. 그 어떤 사정도 결국은 핑계고 내 미래를 책임져주지 않으니T_T 그럼 Day 3 기록 시작!</summary></entry><entry><title type="html">[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1</title><link href="https://icechoco.github.io/java/2021-11-28-Effective-java-Day2/" rel="alternate" type="text/html" title="[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1" /><published>2021-11-28T00:00:00+09:00</published><updated>2021-11-29T22:33:44+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day2</id><content type="html" xml:base="https://icechoco.github.io/java/2021-11-28-Effective-java-Day2/">&lt;p&gt;어제인 Day 1에서는 프로그래밍의 기본 원칙과 자바가 지원하는 타입에 대해서 공부했다. ‘1장 들어가기’에서는 책에서 사용하는 기술 용어를 명확히 하고 주로 넘어가는데, 그 용어에 대해서 기본적인 개념을 미리 한 번 정리하고 들어가면 좋겠다 싶어 정리하는 시간을 가졌다. 이번 포스팅도 책을 읽으면서 관련된 개념을 정리하는 식으로 기록하려한다. 공부하면서 지금까지 너무 기본기에대해서 간과한 것 같아 좀 앞으로가 두렵기도 하고, 잘 할 수 있을까 걱정되기도 하지만 좋은 스트레스를 받고 있는 것 같아 설레기도 하다. 오늘도 책상에 앉은 나 칭찬해! 그럼 Day 2 기록 시작!&lt;/p&gt;
 
 &lt;h3 id=&quot;ⅰ들어가기&quot;&gt;Ⅰ.들어가기&lt;/h3&gt;
 &lt;h4 id=&quot;클래스의-멤버member&quot;&gt;클래스의 멤버(Member)&lt;/h4&gt;
@@ -372,7 +475,123 @@ package-private는 access level을 적어주지않는것을 말한다.
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=iYW83DF6MHk&quot;&gt;자바 기초 프로그래밍 강좌 16강 - 상속 ① (Java Programming Tutorial 2017 #16)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://godtaehee.tistory.com/m/2?category=970294&quot;&gt;[Effective Java] 들어가기&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">어제인 Day 1에서는 프로그래밍의 기본 원칙과 자바가 지원하는 타입에 대해서 공부했다. ‘1장 들어가기’에서는 책에서 사용하는 기술 용어를 명확히 하고 주로 넘어가는데, 그 용어에 대해서 기본적인 개념을 미리 한 번 정리하고 들어가면 좋겠다 싶어 정리하는 시간을 가졌다. 이번 포스팅도 책을 읽으면서 관련된 개념을 정리하는 식으로 기록하려한다. 공부하면서 지금까지 너무 기본기에대해서 간과한 것 같아 좀 앞으로가 두렵기도 하고, 잘 할 수 있을까 걱정되기도 하지만 좋은 스트레스를 받고 있는 것 같아 설레기도 하다. 오늘도 책상에 앉은 나 칭찬해! 그럼 Day 2 기록 시작!</summary></entry><entry><title type="html">[Server] 아파치, NginX, 톰캣이 뭔가요?</title><link href="https://icechoco.github.io/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/" rel="alternate" type="text/html" title="[Server] 아파치, NginX, 톰캣이 뭔가요?" /><published>2021-11-26T00:00:00+09:00</published><updated>2021-11-27T20:34:22+09:00</updated><id>https://icechoco.github.io/server/What-is-Apache-NginX-or-Tomcat</id><content type="html" xml:base="https://icechoco.github.io/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">어제인 Day 1에서는 프로그래밍의 기본 원칙과 자바가 지원하는 타입에 대해서 공부했다. ‘1장 들어가기’에서는 책에서 사용하는 기술 용어를 명확히 하고 주로 넘어가는데, 그 용어에 대해서 기본적인 개념을 미리 한 번 정리하고 들어가면 좋겠다 싶어 정리하는 시간을 가졌다. 이번 포스팅도 책을 읽으면서 관련된 개념을 정리하는 식으로 기록하려한다. 공부하면서 지금까지 너무 기본기에대해서 간과한 것 같아 좀 앞으로가 두렵기도 하고, 잘 할 수 있을까 걱정되기도 하지만 좋은 스트레스를 받고 있는 것 같아 설레기도 하다. 오늘도 책상에 앉은 나 칭찬해! 그럼 Day 2 기록 시작!</summary></entry><entry><title type="html">[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입</title><link href="https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/" rel="alternate" type="text/html" title="[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입" /><published>2021-11-27T00:00:00+09:00</published><updated>2021-11-28T12:18:15+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day1</id><content type="html" xml:base="https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/">&lt;p&gt;다음주 수요일부터 Joshua Bloch의 고전 명저인 Effective Java 3판의 내용을 같이 공부하고 토의하는 자바 스터디를 시작하게 되었다. 스터디 참여가 확정되고 난 후 바로 교보문고를 통해 책을 주문하였다. 오늘부터 약 두 달간 이 책과 함께 열심히 나를 불태워버리겠다. 책을 다 읽었을 때 쯤 JAVA 기본기가 지금보다 한층 더 레벨업 되어있을 나를 기대하며… Day 1 기록 시작!&lt;/p&gt;
+&lt;h3 id=&quot;ⅰ-공부-시-참고하면-좋을-사이트&quot;&gt;Ⅰ. 공부 시 참고하면 좋을 사이트&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.google.com/document/u/0/d/1Nw-_FJKre9x7Uy6DZ0NuAFyYUCjBPCpINxqrP0JFuXk/mobilebasic#h.vim3vsbh8avu&quot;&gt;이펙티브 자바 3판 번역 용어 해설&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://m.youtube.com/watch?v=X7RXP6EI-5E&amp;amp;list=PLfI752FpVCS8e5ACdi5dpwLdlVkn0QgJJ&quot;&gt;백기선님 동영상 강의&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/WegraLee/effective-java-3e-source-code&quot;&gt;깃헙 예제소스&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;ⅱ들어가기&quot;&gt;Ⅱ.들어가기&lt;/h3&gt;
+&lt;p&gt;자신이 공부한 외국어를 실전에서 활용해 보았다면 세 가지를 통달해야 한다는 사실을 알고 있을 것이다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;언어의 구조(문법)&lt;/li&gt;
+  &lt;li&gt;말할 대상의 이름(어휘)&lt;/li&gt;
+  &lt;li&gt;일상의 이야기를 풀어내는 관례적이고 효과적인 방법(용법)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;프로그래밍 언어를 공부할 때&lt;/strong&gt;도 이와 똑같다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;언어의 핵심(절차적이냐 함수형이냐 객체 지향이냐)을 이해하고&lt;/li&gt;
+  &lt;li&gt;어휘(자료구조, 연산자, 표준 라이브러리의 기능)를 알고&lt;/li&gt;
+  &lt;li&gt;코드를 구성하는 관례적이고 효과적인 방법에 숙달해야 한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;입으로 내뱉어 버린 말, 종이에 인쇄되어 출간된 책, 잡지와는 달리 프로그램은 계속 수정할 수 있다. 그래서 코드는 &lt;strong&gt;구조가 수정하기 쉬워야한다.&lt;/strong&gt; 이때 이왕이면 다음 버전에서 기능 T가 어떻게 개선될지까지 고려해, 처음부터 개선된 T와 비슷한(즉, T’로 수정하기 편한) 구현 방식을 선택하는 것이 좋다.&lt;/p&gt;
+
+&lt;h4 id=&quot;프로그래밍의-아주-핵심적인-기본-원칙&quot;&gt;프로그래밍의 아주 핵심적인 기본 원칙&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;명료성(clarity)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;컴포넌트는 사용자를 놀라게 하는 동작을 해서는 절대 안된다.&lt;/li&gt;
+      &lt;li&gt;정해진 동작이나 예측할 수 있는 동작만 수행해야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;단순성(simplicity)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;컴포넌트는 가능한 한 작되, 그렇다고 너무 작아서도 안된다 (이 책에서 컴포넌트란 개별 메서드부터 여러 패키지로 이뤄진 복잡한 프레임워크까지 재사용 가능한 모든 SW 요소를 뜻함)&lt;/li&gt;
+      &lt;li&gt;코드는 복사되는 게 아니라 재사용되어야 한다.&lt;/li&gt;
+      &lt;li&gt;컴포넌트의 의존성은 최소로 유지해야 한다.&lt;/li&gt;
+      &lt;li&gt;오류는 만들어지자마자 가능한 한 빨리(되도록 컴파일타임에) 잡아야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;주요-기술용어&quot;&gt;주요 기술용어&lt;/h4&gt;
+&lt;p&gt;자바가 지원하는 타입은 총 4가지 이다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;인터페이스(interface)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;에너테이션(Annotaion): 주석에 포함되면서 프로그래밍 언어에 영향을 미치지 않으면서 설정 정보와 같은 유용한 정보를 특정 프로그램에게 제공
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nd&quot;&gt;@test&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//이 메서드가 테스트 대상임을 테스트 프로그램에게 알린다.&lt;/span&gt;
+ &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;클래스(class)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;열거타입(enum)
+        &lt;ul&gt;
+          &lt;li&gt;관련된 상수들을 같이 묶어 놓은 것. Java는 비교 시 값과 타입을 모두 체크함.&lt;/li&gt;
+          &lt;li&gt;모든 열거형은 java.lang.Enum이라는 클래스의 자손. 즉, 열거형의 조상은 enum.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     &lt;span class=&quot;c1&quot;&gt;//           0      1        2       3&lt;/span&gt;
+     &lt;span class=&quot;kd&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;CLOVER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HEART&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DIAMOND&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SPADE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//열거형 Kind를 정의&lt;/span&gt;
+     &lt;span class=&quot;kd&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TWO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;THREE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FOUR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//열거형 Value를 정의&lt;/span&gt;
+            
+     &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;enumExam&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;	
+            
+         &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;CLOVER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kind2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HEART&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;CLOVER&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                
+         &lt;span class=&quot;c1&quot;&gt;//	  //컴파일 에러 발생. 타입이 달라 비교 불가(Incompatible operand types Kind and Value)&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;//      if(kind.CLOVER == Value.TWO){&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;//          System.out.println(&quot;같아용&quot;);&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;//      }&lt;/span&gt;
+                
+             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//false&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
+             &lt;span class=&quot;c1&quot;&gt;//System.out.println(kind &amp;gt; kind3);//에러. 객체라서 비교 연산자 사용 불가&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;compareTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//0&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;compareTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//-1&lt;/span&gt;
+                
+             &lt;span class=&quot;c1&quot;&gt;//열거형의 모든 상수를 배열로 반환&lt;/span&gt;
+             &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kindArr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+             &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Kind&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kindArr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                 &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ordinal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//이름과 순서&lt;/span&gt;
+                
+         &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;	
+
+         &lt;span class=&quot;c1&quot;&gt;//primitive type&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CLOVER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HEART&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DIAMOND&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SPADE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;TWO&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;THREE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+         &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FOUR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;배열(array)&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;기본타입(primitive)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이 4가지의 타입 중 인터페이스, 클래스, 배열은 &lt;strong&gt;참조타입(reference type)&lt;/strong&gt;이라 한다.
+즉, 클래스의 인스턴스와 배열은 객체인 반면, 기본타입은 그렇지 않다.&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">다음주 수요일부터 Joshua Bloch의 고전 명저인 Effective Java 3판의 내용을 같이 공부하고 토의하는 자바 스터디를 시작하게 되었다. 스터디 참여가 확정되고 난 후 바로 교보문고를 통해 책을 주문하였다. 오늘부터 약 두 달간 이 책과 함께 열심히 나를 불태워버리겠다. 책을 다 읽었을 때 쯤 JAVA 기본기가 지금보다 한층 더 레벨업 되어있을 나를 기대하며… Day 1 기록 시작! Ⅰ. 공부 시 참고하면 좋을 사이트 이펙티브 자바 3판 번역 용어 해설 백기선님 동영상 강의 깃헙 예제소스</summary></entry><entry><title type="html">[Server] 아파치, NginX, 톰캣이 뭔가요?</title><link href="https://icechoco.github.io/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/" rel="alternate" type="text/html" title="[Server] 아파치, NginX, 톰캣이 뭔가요?" /><published>2021-11-26T00:00:00+09:00</published><updated>2021-11-27T20:34:22+09:00</updated><id>https://icechoco.github.io/server/What-is-Apache-NginX-or-Tomcat</id><content type="html" xml:base="https://icechoco.github.io/server/2021-11-26-What-is-Apache-NginX-or-Tomcat/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;웹서버 관련 아파치, NginX, 톰캣 등에 관한 정확한 개념 및 필요성에 대해서 설명할 수 있다.&lt;/li&gt;
   &lt;li&gt;&lt;span style=&quot;color:grey&quot;&gt;&lt;em&gt;얄팍한 코딩사전님이 올려주신 &lt;a href=&quot;https://www.youtube.com/watch?v=Zimhvf2B7Es&quot;&gt;아파치, NginX, 톰캣이 뭔가요?&lt;/a&gt;를 보고 정리한 글입니다.&lt;/em&gt; &lt;/span&gt;&lt;/li&gt;
@@ -615,17 +834,4 @@ export 방식에 따라 {}중괄호를 사용하고, 안하고가 다른데 expo
   &lt;li&gt;&lt;a href=&quot;https://redux.vlpt.us/1-8-provider.html&quot;&gt;1-8. Provider 컴포넌트를 사용하여 리액트 앱에 store 연동하기&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="frontEnd" /><category term="Web" /><category term="react" /><summary type="html">리액트 프론트엔드 서버의 index.js 파일에서 Redux 확장 프로그램인 DevTools extension을 연결하고, 리액트 앱에 store를 연동해주기위해 provider 컴포넌트를 사용하여 설정해줬다. 그랬더니 TypeError: Cannot read properties of undefined (reading 'getState')에러가 발생했다.</summary></entry><entry><title type="html">Redux 설치하기</title><link href="https://icechoco.github.io/frontend/2021-10-11-Settint-Up-Redux/" rel="alternate" type="text/html" title="Redux 설치하기" /><published>2021-10-11T00:00:00+09:00</published><updated>2021-11-27T21:56:21+09:00</updated><id>https://icechoco.github.io/frontend/Settint-Up-Redux</id><content type="html" xml:base="https://icechoco.github.io/frontend/2021-10-11-Settint-Up-Redux/">&lt;p&gt;Redux를 자신이 개발할 어플리케이션에 설치하고 설정하는 방법을 기록하겠습니다. 우선 다운 받아야 할 dependency들이 redux, react-redux, redux-promise, redux-thunk까지 총 4개가 있습니다. 이 중에서 redux-promis, redux-thunk는 redux의 미들웨어입니다.&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install redux react-redux redux-promise redux-thunk --save
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h2 id=&quot;redux-promise-redux-thunk가-필요한-이유&quot;&gt;redux-promise, redux-thunk가 필요한 이유&lt;/h2&gt;
-&lt;p&gt;redux-promise, redux-thunk는 redux를 잘 쓸 수 있게 도와주는 역할을 하는 미들웨어입니다. redux는 redux store 안에 모든 state를 관리하고 있습니다. 이 store 안에 있는 state를 변경하기 위해서는 dispatch를 이용해서 action을 통해 변경시킬 수 있습니다. 이렇게 store가 데이터를 받을 때 항상 객체 형식으로 데이터를 받는 것이 아니라 때에 따라 promise, functions 형식으로 받기도 합니다. 그런데, redux 기초편에서 봤듯 우리는 reudx store는 객체 형식으로만 데이터를 받을 수 있다고 배웠습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;redux-thunk&lt;/strong&gt;는 dispatch한테 어떻게 function 형식을 받는지 그 방법을 알려주고, &lt;strong&gt;redux-promise&lt;/strong&gt;는 dispatch한테 promise가 왔을 때 어떻게 해야하는지 store에게 알려주는 역할을 합니다. 즉 이 2가지를 다운받지 않고 promise, functions 형식을 받아 redux를 사용하면 에러가 발생합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;combinereducers가-하는-역할&quot;&gt;combineReducers가 하는 역할&lt;/h2&gt;
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets\img/combine-reducer.PNG&quot; height=&quot;300px&quot; width=&quot;500px&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;store에는 reducer가 여러가지 있을 수 있습니다.이 reducer는 어떻게 state가 변하는 지를 보여준 다음, 변한 마지막 값을 리턴해주는 일을 합니다.
-state는 유저, 구독 등 여러가지에 대한 state가 있을 수 있으므로 각각의 state에 따라 reducer도 나눠져 있습니다. redux에 내장되어 있는 combineReducer는 여러개의 reducer들을 Root Reducer에서 하나로 합쳐주는 역할을 합니다.&lt;/p&gt;
-
-&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="frontEnd" /><category term="Web" /><category term="react" /><category term="Redux" /><summary type="html">Redux를 자신이 개발할 어플리케이션에 설치하고 설정하는 방법을 기록하겠습니다. 우선 다운 받아야 할 dependency들이 redux, react-redux, redux-promise, redux-thunk까지 총 4개가 있습니다. 이 중에서 redux-promis, redux-thunk는 redux의 미들웨어입니다. npm install redux react-redux redux-promise redux-thunk --save redux-promise, redux-thunk가 필요한 이유 redux-promise, redux-thunk는 redux를 잘 쓸 수 있게 도와주는 역할을 하는 미들웨어입니다. redux는 redux store 안에 모든 state를 관리하고 있습니다. 이 store 안에 있는 state를 변경하기 위해서는 dispatch를 이용해서 action을 통해 변경시킬 수 있습니다. 이렇게 store가 데이터를 받을 때 항상 객체 형식으로 데이터를 받는 것이 아니라 때에 따라 promise, functions 형식으로 받기도 합니다. 그런데, redux 기초편에서 봤듯 우리는 reudx store는 객체 형식으로만 데이터를 받을 수 있다고 배웠습니다.</summary></entry></feed>
+&lt;!--author--&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="frontEnd" /><category term="Web" /><category term="react" /><summary type="html">리액트 프론트엔드 서버의 index.js 파일에서 Redux 확장 프로그램인 DevTools extension을 연결하고, 리액트 앱에 store를 연동해주기위해 provider 컴포넌트를 사용하여 설정해줬다. 그랬더니 TypeError: Cannot read properties of undefined (reading 'getState')에러가 발생했다.</summary></entry></feed>
