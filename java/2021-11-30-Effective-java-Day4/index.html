@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="Day 4 기록 시작!" />
+<meta property="og:description" content="Day 4 기록 시작!" />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-11-30-Effective-java-Day4/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-11-30-Effective-java-Day4/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-30T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라" />
+<script type="application/ld+json">
+{"headline":"[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라","dateModified":"2021-11-30T23:48:42+09:00","datePublished":"2021-11-30T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-11-30-Effective-java-Day4/"},"url":"https://icechoco.github.io/java/2021-11-30-Effective-java-Day4/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day 4 기록 시작!","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2021-11-30-Effective-java-Day4/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2021-12-01T01:10:35+09:00',
+  };
+  w._clapButton = true;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2021-11-30-Effective-java-Day4</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day4" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-11-30T00:00:00+09:00">30 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day 4 기록 시작!</p>
+
+<h2 id="item-1--생성자-대신-정적-팩터리-메서드를-고려하라2">Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2)</h2>
+<h3 id="정적-팩터리-메서드의-장점">정적 팩터리 메서드의 장점</h3>
+<h4 id="3-반환-타입의-하위-객체를-반환할-수-있는-능력이-있다">3. 반환 타입의 하위 객체를 반환할 수 있는 능력이 있다.</h4>
+<p>반환할 객체의 클래스를 자유롭게 선택할 수 있게하는 유연성이 있다. 이는 인터페이스를 정적 팩터리 메서드의 반환타입으로 사용하는 <code class="language-plaintext highlighter-rouge">인터페이스 기반 프레임워크</code>의 핵심 기술이다.</p>
+
+<ol>
+  <li><strong>자바 8 이전</strong><br />
+인터페이스에 정적 메서드를 선언할 수 없었다. 그래서 A라는 인터페이스가 있고 그 안에 이름이 “Type”인 A 인터페이스를 반환하는 정적 메서드가 필요하다면, “Types”라는 인스턴스화 불가 동반 클래스를 만들어 그 안에 A객체를 반환하는 Type이라는 이름의 정적 메소드를 정의하는 것이 관례였다.</li>
+  <li><strong>자바 8 이후</strong><br />
+인터페이스도 정적 팩터리 메서드를 가질 수 있다.
+    <ul>
+      <li>인스턴스화 불가 동반 클래스를 쓰지 않고, 동반 클래스 내 public 정적 멤버를 인터페이스 자체에 둘 수 있게됨.</li>
+      <li>But, 자바 8에서도 인터페이스에는 public 정적 멤버만 허용함. 그러므로 정적 메서드를 구현하기 위한 코드 중 많은 부분은 여전히 별도의 <code class="language-plaintext highlighter-rouge">package-private</code> 클래스에 두어야 가능</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item1</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">FooInterface</span> <span class="o">{</span>
+   
+    <span class="c1">//자바 8부터는 인터페이스에도 정적 팩터리 메서드 추가 가능. private static은 자바 9부터 가능</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Foo</span> <span class="nf">getFoo</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Foo</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>그럼 private Static은 어떨 때 사용하는가?<br />
+보통 아래처럼 두개의 메소드(doSomething과 doSomethingTomorrow)에서 공통으로 겹치는 소스가 있는 경우 private 메소드를 생성하여 공통부분을 묶어 메소드 하나로 만든다. 예제 소스에서는 <code class="language-plaintext highlighter-rouge">Effecttive를공부하고잔다</code> 부분이다.<br />
+이때 public static 메소드에서 <code class="language-plaintext highlighter-rouge">Effecttive를공부하고잔다</code>를 호출할려는 경우 static 타입이 아니면 호출이 불가능하다. 왜냐? static 메서드에서는 static만 호출 및 사용이 가능하기 때문이다. 따라서 private static이 필요한 이유는 public static이 필요한 이유와 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WhyNeedPrivateStatic</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">doSomething</span><span class="o">()</span> <span class="o">{</span><span class="c1">//static 메서드에서는 static만 호출 및 사용이 가능하다.</span>
+        <span class="c1">//Todo 근무를 한다</span>
+        <span class="c1">//Todo 네이버 블로그 천지양꼬치를 포스팅한다</span>
+        <span class="c1">//Todo 설거지를 한다</span>
+        <span class="nc">Effecttive를공부하고잔다</span><span class="o">();</span>
+    <span class="o">}</span>
+   
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doSomethingTomorrow</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//강남역 토즈에가서 스터디에간다</span>
+        <span class="nc">Effecttive를공부하고잔다</span><span class="o">();</span>
+    <span class="o">}</span>
+   
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nc">Effecttive를공부하고잔다</span><span class="o">(){</span><span class="c1">//그러므로 private static이 필요한 이유는 pulbic static이 필요한 이유와 같음</span>
+        <span class="c1">//Todo Effective Java Item 1을 공부한다</span>
+        <span class="c1">//Todo 잔다</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p><strong>자바9</strong><br />
+ private 정적 메서드까지 허용. 하지만 정적 필드와 정적 멤버 클래스는 여전히 private이어야 함</p>
+
+    <p>자바 컬렉션 프레임 워크는 핵심 인터페이스들에 수정 불가나 동기화 등의 기능을 덧붙인 총 45개의 유틸리티 구현체를 제공한다. 이 구현체의 대부분을 <strong>단 햐냐의 인스턴스화 불가 클래스인 <code class="language-plaintext highlighter-rouge">java.util.Collections</code>에서 정적 팩터리 메서드를 통해 얻도록</strong> 했다.<br />
+ 프로그래머는 명시한 인터페이스대로 동작하는 객체를 얻을 것임을 알기에 굳이 별도 문서를 찾아가며 실제 구현 클래스가 무엇인지 알아보지 않아도 되며, 정적 팩터리 메서드를 사용하는 클라이언트는 얻은 객체를 인터페이스 만으로 다루게 된다. 이는 일반적으로 좋은 솝관이다.</p>
+  </li>
+</ol>
+
+<h4 id="4-입력-매개변수에-따라-매번-다른-클래스의-객체를-반환할-수-있다">4. 입력 매개변수에 따라 매번 다른 클래스의 객체를 반환할 수 있다.</h4>
+<p>반환 타입의 하위 타입이기만 하면 어떤 클래스의 객체를 반환하든 상관없다. 심지어 다음 릴리즈 에서는 또 다른 클래스의 객체 반환이 가능하다.</p>
+
+<p>예를 들어 아래 소스코드처럼 Foo 객체라고해서 Foo를 무조건 리턴하지 않고 flag에 따라 다른 객체를 반환하도록 할 수 있다. true인 경우 Foo 객체를 반환하고 fale인 경우 Foo의 하위 클래스인 Barfoo 객체를 반환한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">temp</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.EnumSet</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Foo</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
+   
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Foo</span> <span class="nf">getFoo</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">flag</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">flag</span> <span class="o">?</span> <span class="k">new</span> <span class="nc">Foo</span><span class="o">():</span> <span class="k">new</span> <span class="nc">Barfoo</span><span class="o">();</span>
+    <span class="o">}</span>
+   
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="c1">//장점 4: Foo객체라고해서 Foo를 무조건 리턴할 필요는 없다. flag에 따라 객체를 반환하게됨.</span>
+        <span class="nc">Foo</span> <span class="n">foo3</span> <span class="o">=</span> <span class="nc">Foo</span><span class="o">.</span><span class="na">getFoo</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+        <span class="nc">EnumSet</span><span class="o">&lt;</span><span class="nc">Color</span><span class="o">&gt;</span> <span class="n">colors</span> <span class="o">=</span> <span class="nc">EnumSet</span><span class="o">.</span><span class="na">allOf</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="nc">EnumSet</span><span class="o">&lt;</span><span class="nc">Color</span><span class="o">&gt;</span> <span class="n">colors2</span> <span class="o">=</span> <span class="nc">EnumSet</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">WHITE</span><span class="o">);</span><span class="c1">//실제 인스턴스는 enum의 갯수에 따라 달라진다. 몇 개 이하이면 ReugularEnumSet으로 나오고, 그 이상이면 JumboEnumSet으로 리턴하는 객체가 달라진다.</span>
+    <span class="o">}</span>
+   
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Barfoo</span> <span class="kd">extends</span> <span class="nc">Foo</span><span class="o">{</span>
+    <span class="o">}</span>
+   
+    <span class="kd">enum</span> <span class="nc">Color</span> <span class="o">{</span>
+        <span class="no">RED</span><span class="o">,</span> <span class="no">BLUE</span><span class="o">,</span> <span class="no">WHITE</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>실제로 EnumSet 클래스 선언 시 실제 인스턴스는 enum 원소의 갯수에 따라 달라진다. enum 원소가 64개 이하이면 ReugularEnumSet으로 나오고, 그 이상이면 JumboEnumSet 인스턴스가 반환된다. 하지만 클라이언트는 팩터리가 건네주는 객체가 어느 클래스의 인스턴스인지 알 수도 없고 알 필요도 없다.</p>
+
+<h4 id="5-정적-팩터리-메서드를-작성하는-시점에는-반환할-객체의-클래스가-존재하지-않아도-된다">5. 정적 팩터리 메서드를 작성하는 시점에는 반환할 객체의 클래스가 존재하지 않아도 된다.</h4>
+<p>대표적인 서비스 제공자 프레임워크인 JDBC(Java Database Connectivity)를 만드는 근간은 이런 유연함이다.</p>
+
+<p><img src="/assets\img/JDBC.gif" alt="JDBC" /></p>
+<ol>
+  <li><strong>제공자(Provider)</strong>: 서비스의 구현체</li>
+  <li>
+    <p><strong>프레임워크</strong>: 구현체를 클라이언트에 제공하는 역할 통제. 클라이언트와 구현체 분리.<br />
+ <strong>3개의 핵심 컴포넌트</strong><br />
+ 1) 서비스 인터페이스 ex) Connection<br />
+ 2) 제공자 등록 API ex) DriverManager.registerDriver<br />
+ 3) 서비스 접근 API ex) DriverManager.getConnection<br />
+     : 공급자가 제공하는 것보다 더 풍부한 서비스 인터페이스를 클라이언트에 반환 가능 → <strong>브리지 패턴</strong></p>
+
+    <p><strong>종종 사용되는 컴포넌트</strong><br />
+ 4) 서비스 제공자 인터페이스 ex) Driver<br />
+     : 서비스 인터페이스의 인스턴스를 생성하는 팩터리 객체를 설명해줌<br />
+       서비스 제공자 인터페이스가 없다면 각 구현체를 인스턴스로 만들 때 <strong>리플렉션</strong>을 사용해야 함</p>
+  </li>
+  <li><strong>Client</strong></li>
+</ol>
+
+<p>자바 6부터는 <code class="language-plaintext highlighter-rouge">java.util.ServiceLoader</code>라는 범용 서비스 제공자 프레임워크를 제공하지만, JDBC가 그 보다 이전에 만들어졌기 때문에 JDBC는 ServiceLoader를 사용하진 않는다.</p>
+
+<h3 id="정적-팩터리-메서드의-단점">정적 팩터리 메서드의 단점</h3>
+<h4 id="1-상속을-하려면-public이나-protected-생성자가-필요하니-정적-팩터리-메서드만-제공하면-하위-클래스를-만들-수-없다">1. 상속을 하려면 public이나 protected 생성자가 필요하니 정적 팩터리 메서드만 제공하면 하위 클래스를 만들 수 없다.</h4>
+<p>컬렉션 프레임워크의 유틸리티 구현 클래스들은 <strong>상속할 수 없다</strong>. 하지만 상속보다 컴포지션을 사용하도록 유도하고 불변 타입으로 만들려면 이 제약을 지켜야하기때문에 오히려 장점이 될 수 있다.</p>
+
+<h4 id="2-정적-팩터리-메서드는-프로그래머가-찾기-어렵다">2. 정적 팩터리 메서드는 프로그래머가 찾기 어렵다.</h4>
+<p>생성자는 Javadoc 상단에 모아서 보여주지만 static 팩토리 메소드는 API 문서에서 특별히 다뤄주지 않는다. 따라서 클래스나 인터페이스 문서 상단에 static 팩토리 메소드 방식 클래스를 인스턴스화 하는 방법 등의 내용을 담아 주석으로 표시하여 제공하는 것이 좋겠다.</p>
+
+<h3 id="결론">결론</h3>
+<p>정적 팩터리 메서드와 pulbic 생성자는 각자의 쓰임새가 있으니 무조건 정적 팩터리 메서드가 옳다고 할 순 없다. 각자의 상대적인 장단점이 있을 뿐! 그럼에도 불구하고 대게 정적 팩터리를 사용하는 것이 유리한 경우가 더 많으므로 무조건 pulbic 생성자만을 제공하던 습관이 있다면 고치는게 좋다 :)</p>
+
+<h2 id="item-2--생성자에-매개변수가-많다면-빌더를-고려하라">Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라</h2>
+<p>정적 팩터리와 생성자의 공통적인 제약은 선택적 매개변수가 많을 때 적절히 대응하기 어렵다. 책에서는 NutritionFacts라는 클래스를 예로 들고 있다.</p>
+<h3 id="1-점층적-생성자-패턴telescoping-constructor-pattern">1. 점층적 생성자 패턴(telescoping constructor pattern)</h3>
+<ul>
+  <li>매개 변수가 많을 때 프로그래머들이 주로 사용하는 패턴</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">effectivejava.chapter2.item2.telescopingconstructor</span><span class="o">;</span>
+
+<span class="c1">// 코드 2-1 점층적 생성자 패턴 - 확장하기 어렵다! (14~15쪽)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NutritionFacts</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">servingSize</span><span class="o">;</span>  <span class="c1">// (mL, 1회 제공량)     필수</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">servings</span><span class="o">;</span>     <span class="c1">// (회, 총 n회 제공량)  필수</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">calories</span><span class="o">;</span>     <span class="c1">// (1회 제공량당)       선택</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">fat</span><span class="o">;</span>          <span class="c1">// (g/1회 제공량)       선택</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">sodium</span><span class="o">;</span>       <span class="c1">// (mg/1회 제공량)      선택</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">carbohydrate</span><span class="o">;</span> <span class="c1">// (g/1회 제공량)       선택</span>
+
+    <span class="kd">public</span> <span class="nf">NutritionFacts</span><span class="o">(</span><span class="kt">int</span> <span class="n">servingSize</span><span class="o">,</span> <span class="kt">int</span> <span class="n">servings</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="n">servingSize</span><span class="o">,</span> <span class="n">servings</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">NutritionFacts</span><span class="o">(</span><span class="kt">int</span> <span class="n">servingSize</span><span class="o">,</span> <span class="kt">int</span> <span class="n">servings</span><span class="o">,</span>
+                          <span class="kt">int</span> <span class="n">calories</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="n">servingSize</span><span class="o">,</span> <span class="n">servings</span><span class="o">,</span> <span class="n">calories</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">NutritionFacts</span><span class="o">(</span><span class="kt">int</span> <span class="n">servingSize</span><span class="o">,</span> <span class="kt">int</span> <span class="n">servings</span><span class="o">,</span>
+                          <span class="kt">int</span> <span class="n">calories</span><span class="o">,</span> <span class="kt">int</span> <span class="n">fat</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="n">servingSize</span><span class="o">,</span> <span class="n">servings</span><span class="o">,</span> <span class="n">calories</span><span class="o">,</span> <span class="n">fat</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">NutritionFacts</span><span class="o">(</span><span class="kt">int</span> <span class="n">servingSize</span><span class="o">,</span> <span class="kt">int</span> <span class="n">servings</span><span class="o">,</span>
+                          <span class="kt">int</span> <span class="n">calories</span><span class="o">,</span> <span class="kt">int</span> <span class="n">fat</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sodium</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="n">servingSize</span><span class="o">,</span> <span class="n">servings</span><span class="o">,</span> <span class="n">calories</span><span class="o">,</span> <span class="n">fat</span><span class="o">,</span> <span class="n">sodium</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">NutritionFacts</span><span class="o">(</span><span class="kt">int</span> <span class="n">servingSize</span><span class="o">,</span> <span class="kt">int</span> <span class="n">servings</span><span class="o">,</span>
+                          <span class="kt">int</span> <span class="n">calories</span><span class="o">,</span> <span class="kt">int</span> <span class="n">fat</span><span class="o">,</span> <span class="kt">int</span> <span class="n">sodium</span><span class="o">,</span> <span class="kt">int</span> <span class="n">carbohydrate</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">servingSize</span>  <span class="o">=</span> <span class="n">servingSize</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">servings</span>     <span class="o">=</span> <span class="n">servings</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">calories</span>     <span class="o">=</span> <span class="n">calories</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">fat</span>          <span class="o">=</span> <span class="n">fat</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">sodium</span>       <span class="o">=</span> <span class="n">sodium</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">carbohydrate</span> <span class="o">=</span> <span class="n">carbohydrate</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//이 클래스의 인스턴스를 만들기 위한 클라이언트 코드</span>
+        <span class="nc">NutritionFacts</span> <span class="n">cocaCola</span> <span class="o">=</span>
+                <span class="k">new</span> <span class="nf">NutritionFacts</span><span class="o">(</span><span class="mi">240</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">35</span><span class="o">,</span> <span class="mi">27</span><span class="o">);</span>
+    <span class="o">}</span>
+   
+<span class="o">}</span>
+</code></pre></div></div>
+<p>이런 생성자를 쓰다보면 필요없는 매개변수도 넘겨야 하는 경우가 발생한다. 보통 0 같은 기본 값을 넘기는데 위 소스의 경우에도 이 클래스의 인스턴스를 만들기 위해 지방(fat)에 0을 넘겼다. 여기서는 매개변수가 겨우 6개뿐이라 괜찮아보일 수는 있지만, 매개변수의 수가 더 늘어나면 금세 겉잡을 수 없게 된다.<br />
+또 각각의 숫자가 무엇을 뜻하는지 알기가 어렵다.
+요약하면, 매개변수 개수가 많아지면 <strong>이런 코드는 작성하기도 어렵고 읽기도 어렵다.</strong></p>
+
+<h3 id="2-자바빈즈-패턴javabeans-pattern">2. 자바빈즈 패턴(JavaBeans pattern)</h3>
+<ul>
+  <li>매개변수가 없는 생성자로 객체를 만든 후, 세터 메서드를 호출해 원하는 매개변수의 값을 설정하는 방식</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">effectivejava.chapter2.item2.javabeans</span><span class="o">;</span>
+
+<span class="c1">// 코드 2-2 자바빈즈 패턴 - 일관성이 깨지고, 불변으로 만들 수 없다. (16쪽)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NutritionFacts</span> <span class="o">{</span>
+    <span class="c1">// 매개변수들은 (기본값이 있다면) 기본값으로 초기화된다.</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">servingSize</span>  <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="c1">// 필수; 기본값 없음</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">servings</span>     <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="c1">// 필수; 기본값 없음</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">calories</span>     <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">fat</span>          <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">sodium</span>       <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">carbohydrate</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">NutritionFacts</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span>
+    <span class="c1">// Setters</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setServingSize</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span>  <span class="o">{</span> <span class="n">servingSize</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setServings</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span>     <span class="o">{</span> <span class="n">servings</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCalories</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span>     <span class="o">{</span> <span class="n">calories</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setFat</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span>          <span class="o">{</span> <span class="n">fat</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSodium</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span>       <span class="o">{</span> <span class="n">sodium</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCarbohydrate</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span> <span class="n">carbohydrate</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span> <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//이 클래스의 인스턴스를 만들기 위한 클라이언트 코드</span>
+        <span class="nc">NutritionFacts</span> <span class="n">cocaCola</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NutritionFacts</span><span class="o">();</span>
+        <span class="n">cocaCola</span><span class="o">.</span><span class="na">setServingSize</span><span class="o">(</span><span class="mi">240</span><span class="o">);</span>
+        <span class="n">cocaCola</span><span class="o">.</span><span class="na">setServings</span><span class="o">(</span><span class="mi">8</span><span class="o">);</span>
+        <span class="n">cocaCola</span><span class="o">.</span><span class="na">setCalories</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+        <span class="n">cocaCola</span><span class="o">.</span><span class="na">setSodium</span><span class="o">(</span><span class="mi">35</span><span class="o">);</span>
+        <span class="n">cocaCola</span><span class="o">.</span><span class="na">setCarbohydrate</span><span class="o">(</span><span class="mi">27</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>이 클래스의 인스턴스를 만들기 위한 클라이언트 코드를 보면 코드가 조금 길어지긴 했지만 인스턴스를 만들기 쉽고, 그 결과 더 읽기 쉬운 코드가 되었다.<br />
+단, 자바빈즈 패턴에서는 객체 하나를 만들려면 메서드를 여러개 호출해야 하고, <strong>객체가 완전히 생성되기 전까지는 일관성이 무너진 상태</strong>에 놓이게 된다. 예를들어 <code class="language-plaintext highlighter-rouge">cocaCola.setCalories(100);</code>까지만 소스가 수행되었는데 객체가 사용될 여지가 있다.
+이처럼 일관성이 무너지는 문제 때문에 <strong>클래스를 불변으로 만들 수 없으며</strong> 스레드 안전성을 얻으려면 프로그래머가 locking과 같은 추가 작업을 해줘야한다.
+이런 단점을 완화하고자 생성이 끝난 객체를 수동으로 freezing할 수 있다. 다른 언어에는 freeze()라는 매서드를 제공하지만 Java는 따로 없어 구현을 직접 해야한다.</p>
+
+<h3 id="3-빌더-패턴javabeans-pattern">3. 빌더 패턴(JavaBeans pattern)</h3>
+<ul>
+  <li>점층적 생성자 패턴의 안전성과 자바빈즈 패턴의 가독성을 겸비한 패턴.
+    <ol>
+      <li>빌더 패턴에서 클라이언트는 필요한 객체를 직접 만들지 않고 <strong>필수 매개변수</strong>만으로 생성자(혹은 static 팩토리)를 호출해 빌더 <code class="language-plaintext highlighter-rouge">Builder</code>객체를 얻는다.</li>
+      <li>그런 다음 빌더 객체가 제공하는 일종의 세터 메서드들로 원하는 객체 <strong>선택 매개변수</strong>들을 설정한다.</li>
+      <li>매개변수가 없는 <code class="language-plaintext highlighter-rouge">build</code> 메소드를 호출해 만들려는 객체를 얻는다.</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">NutritionFacts</span> <span class="n">cocaCola</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NutritionFacts</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="mi">240</span><span class="o">,</span> <span class="mi">8</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">calories</span><span class="o">(</span><span class="mi">100</span><span class="o">).</span><span class="na">sodium</span><span class="o">(</span><span class="mi">35</span><span class="o">).</span><span class="na">carbohydrate</span><span class="o">(</span><span class="mi">27</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+</code></pre></div></div>
+<p>위 클라이언트 코드는 쓰기도 쉽고, 읽기도 쉽다. 빌더패턴은 파이썬과 스칼라에 있는 명명된 선택적 매개변수(<code class="language-plaintext highlighter-rouge">Named Optional Parameter</code>)를 흉내낸 것이다.</p>
+
+<p>잘못된 매개변수를 최대한 일찍 발견하려면 빌더의 생성자(아래소스코드 표시 참고 - 1)와 메서드(2)에서 입력 매개변수의 유효성을 검사하고, build 메서드가 호출하는 생성자(3의 <code class="language-plaintext highlighter-rouge">return new NutritionFacts(this);</code>)에서 여러 매개변수에 걸친 불변식을 검사하면 된다. 빌더로부터 매개변수를 복사한 후 해당 객체의 필드들을 검사하고, 검사를 실패하면 <code class="language-plaintext highlighter-rouge">IllegalArgumentException</code> 에러메시지를 통해 어떤 매개변수가 잘못되었는지를 알려줄 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">effectivejava.chapter2.item2.builder</span><span class="o">;</span>
+
+<span class="c1">// 코드 2-3 빌더 패턴 - 점층적 생성자 패턴과 자바빈즈 패턴의 장점만 취했다. (17~18쪽)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NutritionFacts</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">servingSize</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">servings</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">calories</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">fat</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">sodium</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">carbohydrate</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Builder</span> <span class="o">{</span>
+        <span class="c1">// 필수 매개변수</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">servingSize</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">servings</span><span class="o">;</span>
+
+        <span class="c1">// 선택 매개변수 - 기본값으로 초기화한다.</span>
+        <span class="kd">private</span> <span class="kt">int</span> <span class="n">calories</span>      <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">int</span> <span class="n">fat</span>           <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">int</span> <span class="n">sodium</span>        <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">int</span> <span class="n">carbohydrate</span>  <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="c1">//수행순서(1)</span>
+        <span class="kd">public</span> <span class="nf">Builder</span><span class="o">(</span><span class="kt">int</span> <span class="n">servingSize</span><span class="o">,</span> <span class="kt">int</span> <span class="n">servings</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">servingSize</span> <span class="o">=</span> <span class="n">servingSize</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">servings</span>    <span class="o">=</span> <span class="n">servings</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">//수행순서(2)</span>
+        <span class="kd">public</span> <span class="nc">Builder</span> <span class="nf">calories</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span>
+        <span class="o">{</span> <span class="n">calories</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span>      <span class="k">return</span> <span class="k">this</span><span class="o">;</span> <span class="o">}</span>
+        <span class="kd">public</span> <span class="nc">Builder</span> <span class="nf">fat</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span>
+        <span class="o">{</span> <span class="n">fat</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span>           <span class="k">return</span> <span class="k">this</span><span class="o">;</span> <span class="o">}</span>
+        <span class="kd">public</span> <span class="nc">Builder</span> <span class="nf">sodium</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span>
+        <span class="o">{</span> <span class="n">sodium</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span>        <span class="k">return</span> <span class="k">this</span><span class="o">;</span> <span class="o">}</span>
+        <span class="kd">public</span> <span class="nc">Builder</span> <span class="nf">carbohydrate</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">)</span>
+        <span class="o">{</span> <span class="n">carbohydrate</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span>  <span class="k">return</span> <span class="k">this</span><span class="o">;</span> <span class="o">}</span>
+
+        <span class="c1">//수행순서(3)</span>
+        <span class="kd">public</span> <span class="nc">NutritionFacts</span> <span class="nf">build</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">NutritionFacts</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="c1">//수행순서(4)</span>
+    <span class="kd">private</span> <span class="nf">NutritionFacts</span><span class="o">(</span><span class="nc">Builder</span> <span class="n">builder</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">servingSize</span>  <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">servingSize</span><span class="o">;</span>
+        <span class="n">servings</span>     <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">servings</span><span class="o">;</span>
+        <span class="n">calories</span>     <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">calories</span><span class="o">;</span>
+        <span class="n">fat</span>          <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">fat</span><span class="o">;</span>
+        <span class="n">sodium</span>       <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">sodium</span><span class="o">;</span>
+        <span class="n">carbohydrate</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">carbohydrate</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">NutritionFacts</span> <span class="n">cocaCola</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NutritionFacts</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="mi">240</span><span class="o">,</span> <span class="mi">8</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">calories</span><span class="o">(</span><span class="mi">100</span><span class="o">).</span><span class="na">sodium</span><span class="o">(</span><span class="mi">35</span><span class="o">).</span><span class="na">carbohydrate</span><span class="o">(</span><span class="mi">27</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>NutiriFacts 클래스는 불변이며, 모든 매개변수의 기본값들을 한 곳에 모아뒀다.</p>
+<ul>
+  <li><strong>플루언트 API(Fluent API) / 메서드 연쇄(method chaining)</strong><br />
+빌더의 세터 메서드들(2)은 빌더 자신을 반환하기 때문에 연쇄적으로 호출할 수 있다.<br />
+이런 방식을 메서드 호출이 흐르듯 연결된다는 뜻으로 플루언트 API혹은 메서드 연쇄라한다.</li>
+  <li>
+    <h4 id="불변과-불변식">불변과 불변식</h4>
+    <ul>
+      <li><strong>불변(immutable or immutability)</strong>: 어떠한 변경도 허용하지 않음<br />
+  ex) String 객체는 한번 만들어지면 절대 값을 바꿀 수 없는 불변 객체</li>
+      <li><strong>불변식(invariant)</strong>: 프로그램이 실행되는 동안, 혹은 정해진 기간 동안 반드시 만족해야하는 조건. 즉, 변경을 허용할 수는 있으나 주어진 조건 내에서만 허용<br />
+  ex)
+  리스트의 크기는 0 이상이어야 함 - 음수인경우 불변식이 깨짐.<br />
+  기간을 표현하는 Period 클래스에서 start 필드는 End 필드의 값보다 앞서야 함 - 두 값이 역전되는 경우 불변식이 깨짐</li>
+      <li>따라서 불변 객체에도 불변식은 존재할 수 있으며, 넓게 보면 불변은 불변식의 극단적인 예임.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>빌더패턴은 클래스 계층구조와 함께 쓰기에 좋다. 추상 빌더를 가지고 있는 추상클래스를 만들고 하위 클래스에서는 추상 클래스를 상속받으며 각 하위 클래스용 빌더도 추상 빌더를 상속받아 만들 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item02</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.EnumSet</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Objects</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Pizza</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Topping</span><span class="o">{</span>
+		<span class="no">HAM</span><span class="o">,</span> <span class="no">MUSHROOM</span><span class="o">,</span> <span class="no">ONION</span>
+	<span class="o">}</span>
+	
+	<span class="kd">final</span> <span class="nc">EnumSet</span><span class="o">&lt;</span><span class="nc">Topping</span><span class="o">&gt;</span> <span class="n">toppings</span><span class="o">;</span>
+	
+	<span class="c1">//Builder&lt;T extends Builder&lt;T&gt;&gt;: 자기자신의 하위타입을 받는 빌더. 재귀적인 타입 매개변수라고도 함.</span>
+	<span class="kd">abstract</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Builder</span><span class="o">&lt;</span><span class="no">T</span> <span class="kd">extends</span> <span class="nc">Builder</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;&gt;{</span>
+        <span class="nc">EnumSet</span><span class="o">&lt;</span><span class="nc">Topping</span><span class="o">&gt;</span> <span class="n">toppings</span> <span class="o">=</span> <span class="nc">EnumSet</span><span class="o">.</span><span class="na">noneOf</span><span class="o">(</span><span class="nc">Topping</span><span class="o">.</span><span class="na">class</span><span class="o">);</span> <span class="c1">//기본 인스턴스는 비어있는 EnumSet으로 셋팅</span>
+        
+        <span class="kd">public</span> <span class="no">T</span> <span class="nf">addTopping</span><span class="o">(</span><span class="nc">Topping</span> <span class="n">topping</span><span class="o">)</span> <span class="o">{</span><span class="c1">//addToping 메서드를 사용하여 토핑을 추가할 수 있음</span>
+            <span class="n">toppings</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">topping</span><span class="o">));</span>
+            <span class="k">return</span> <span class="nf">self</span><span class="o">();</span>
+        <span class="o">}</span>
+ 
+        <span class="kd">abstract</span> <span class="nc">Pizza</span> <span class="nf">build</span><span class="o">();</span><span class="c1">//여기서 실제 타입은 Pizza가 아님. Pizza는 abstract라서 new로 생성 불가</span>
+        					   <span class="c1">//Pizza의 하위 타입을 여기서 만들게 됨</span>
+        					   <span class="c1">//Convariant 리턴 타입을 위한 준비 작업(Convariant 리턴 타입: 메서드가 오버라이딩될 때 더 좁은 타입(서브클래스)으로 교체할 수 있다는 것)</span>
+
+        <span class="c1">// 하위 클래스는 이 메서드를 재정의(overriding)하여</span>
+        <span class="c1">// "this"를 반환하도록 해야 한다.</span>
+        <span class="kd">protected</span> <span class="kd">abstract</span> <span class="no">T</span> <span class="nf">self</span><span class="o">();</span>
+	<span class="o">}</span> 
+	
+	<span class="nc">Pizza</span><span class="o">(</span><span class="nc">Builder</span><span class="o">&lt;?&gt;</span> <span class="n">builder</span><span class="o">){</span>
+		 <span class="n">toppings</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">toppings</span><span class="o">;</span><span class="c1">//Pizaa가 가지고 있는 토핑을 빌더가 가지고 있는 토핑으로 바꿔줌</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item02</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Objects</span><span class="o">;</span>
+
+<span class="c1">// 코드 2-5 뉴욕 피자 - 계층적 빌더를 활용한 하위 클래스 (20쪽)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NyPizza</span> <span class="kd">extends</span> <span class="nc">Pizza</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Size</span> <span class="o">{</span> <span class="no">SMALL</span><span class="o">,</span> <span class="no">MEDIUM</span><span class="o">,</span> <span class="no">LARGE</span> <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Size</span> <span class="n">size</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Builder</span> <span class="kd">extends</span> <span class="nc">Pizza</span><span class="o">.</span><span class="na">Builder</span><span class="o">&lt;</span><span class="nc">Builder</span><span class="o">&gt;</span> <span class="o">{</span><span class="c1">//피자의 빌더를 상속하여 만든 하위 클래스</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Size</span> <span class="n">size</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">Builder</span><span class="o">(</span><span class="nc">Size</span> <span class="n">size</span><span class="o">)</span> <span class="o">{</span><span class="c1">//필수값으로 사이즈를 받아오게 함</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">size</span> <span class="o">=</span> <span class="nc">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">size</span><span class="o">);</span><span class="c1">//requireNonNull: null 인지 아닌지 체크를 한 후 셋팅해줌</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span> <span class="kd">public</span> <span class="nc">NyPizza</span> <span class="nf">build</span><span class="o">()</span> <span class="o">{</span><span class="c1">//리턴타입이 뉴욕 피자임. build 호출하는 클라이언트가 타입 캐스팅을 할 필요 없이 뉴욕피자로 바로 받을 수 있음</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">NyPizza</span><span class="o">(</span><span class="k">this</span><span class="o">);</span><span class="c1">//this라는 Builder 자체를 넘겨줌</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span> <span class="kd">protected</span> <span class="nc">Builder</span> <span class="nf">self</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="k">this</span><span class="o">;</span> <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="nf">NyPizza</span><span class="o">(</span><span class="nc">Builder</span> <span class="n">builder</span><span class="o">){</span><span class="c1">//매개변수 Builder는 10~22라인의 Builder임.</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span><span class="c1">//Pizza 클래스의 'Pizza(Builder&lt;?&gt; builder)'가 호출되어 토핑도 셋팅이됨</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">size</span><span class="o">;</span><span class="c1">//Builder에서 받은 size를 NyPizza에 셋팅할 수 있음</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">toppings</span> <span class="o">+</span> <span class="s">"로 토핑한 뉴욕 피자"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item02</span><span class="o">;</span>
+
+<span class="c1">//코드 2-6 칼초네 피자 - 계층적 빌더를 활용한 하위 클래스 (20~21쪽)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calzone</span> <span class="kd">extends</span> <span class="nc">Pizza</span> <span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">sauceInside</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Builder</span> <span class="kd">extends</span> <span class="nc">Pizza</span><span class="o">.</span><span class="na">Builder</span><span class="o">&lt;</span><span class="nc">Builder</span><span class="o">&gt;</span> <span class="o">{</span>
+		<span class="kd">private</span> <span class="kt">boolean</span> <span class="n">sauceInside</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">// 기본값</span>
+
+		<span class="kd">public</span> <span class="nc">Builder</span> <span class="nf">sauceInside</span><span class="o">()</span> <span class="o">{</span>
+			<span class="n">sauceInside</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+			<span class="k">return</span> <span class="k">this</span><span class="o">;</span><span class="c1">//Builder 객체를 넘김</span>
+		<span class="o">}</span>
+
+		<span class="nd">@Override</span>
+		<span class="kd">public</span> <span class="nc">Calzone</span> <span class="nf">build</span><span class="o">()</span> <span class="o">{</span><span class="c1">//빌드에서는 칼조네를 리턴</span>
+			<span class="k">return</span> <span class="k">new</span> <span class="nf">Calzone</span><span class="o">(</span><span class="k">this</span><span class="o">);</span><span class="c1">//Builder 자기 자신을 넘김</span>
+		<span class="o">}</span>
+
+		<span class="nd">@Override</span>
+		<span class="kd">protected</span> <span class="nc">Builder</span> <span class="nf">self</span><span class="o">()</span> <span class="o">{</span>
+			<span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">private</span> <span class="nf">Calzone</span><span class="o">(</span><span class="nc">Builder</span> <span class="n">builder</span><span class="o">)</span> <span class="o">{</span><span class="c1">//build에서 넘긴 Builder를 받음</span>
+		<span class="kd">super</span><span class="o">(</span><span class="n">builder</span><span class="o">);</span>
+		<span class="n">sauceInside</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">sauceInside</span><span class="o">;</span><span class="c1">//Builder에서 만들어진 sauceInside 플래그를 Calzone 클래스의 소스인사이드에 셋팅할 수 있음 </span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%s로 토핑한 칼초네 피자 (소스는 %s에)"</span><span class="o">,</span> <span class="n">toppings</span><span class="o">,</span> <span class="n">sauceInside</span> <span class="o">?</span> <span class="s">"안"</span> <span class="o">:</span> <span class="s">"바깥"</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="참고">참고</h3>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=X7RXP6EI-5E&amp;t=1173s">[이팩티브 자바] #1 생성자 대신 static 팩토리 메소드를 고려해 볼 것</a></li>
+  <li><a href="https://www.youtube.com/watch?v=OwkXMxCqWHM&amp;t=4s">[이팩티브 자바] #2 생성자 매개변수가 너무 많아? 빌더 패턴을 써 봐</a></li>
+</ul>
+
+  
+</article>
+
+
+
+  <clap-button class="mb6" ></clap-button>
+  
+  
+    <p class="message centered border-radius" >
+      <span style="display:block;margin-bottom:.5rem;">This is a preview of <a href="https://getclaps.app">Clap Button</a>, a new feedback and analytics tools for Hydejack, built by yours truly.</span>
+      <span style="display:block;margin-bottom:.5rem;">You can try it out on <code>localhost</code> for free, but it will be removed (together with this message) when building with <code>JEKYLL_ENV=production</code>.</span>
+      <span style="display:block;margin-bottom:.5rem;">To use Clap Button on your site, get a <a href="https://getclaps.app#pricing">subscription</a><br/>and set <code>clap_button: true</code> in your config file.</span>
+    </p>
+  
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-11-29-Effective-java-Day3/" class="flip-title"><span>[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라</span></a>  <time class="faded fine" datetime="2021-11-29T00:00:00+09:00">29 Nov 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-28-Effective-java-Day2/" class="flip-title"><span>[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1</span></a>  <time class="faded fine" datetime="2021-11-28T00:00:00+09:00">28 Nov 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-27-Effective-java-Day1/" class="flip-title"><span>[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입</span></a>  <time class="faded fine" datetime="2021-11-27T00:00:00+09:00">27 Nov 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

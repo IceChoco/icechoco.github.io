@@ -1,6 +1,15 @@
 [
   
     {
+      "title"      : "[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2021.11.30",
+      "urlString"  : "/java/2021-11-30-Effective-java-Day4/",
+      "url"        : "/java/2021-11-30-Effective-java-Day4/"
+    },
+  
+    {
       "title"      : "[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라",
       "categories" : "java",
       "tags"       : "java",

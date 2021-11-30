@@ -106,7 +106,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-11-30T00:36:12+09:00',
+    INDEX_KEY: 'index--2021-12-01T01:10:35+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -572,6 +572,62 @@ Left here for reference, feel free to delete.
 
 
 
+<article id="post-java-Effective-java-Day4" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/java/2021-11-30-Effective-java-Day4/" class="flip-title">
+        [Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-11-30T00:00:00+09:00">30 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day 4 기록 시작!</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/java/2021-11-30-Effective-java-Day4/">[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
 <article id="post-java-Effective-java-Day3" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
@@ -595,7 +651,7 @@ Left here for reference, feel free to delete.
             <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-30">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-11-30T00:34:57+09:00">2021-11-30</time>
+              <time datetime="2021-11-30T21:42:35+09:00">2021-11-30</time>
             </span>
           
         
@@ -656,10 +712,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-29">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-30">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-11-29T22:33:44+09:00">2021-11-29</time>
+              <time datetime="2021-11-30T21:42:48+09:00">2021-11-30</time>
             </span>
           
         
@@ -720,10 +776,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-28">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-30">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-11-28T12:18:15+09:00">2021-11-28</time>
+              <time datetime="2021-11-30T21:42:50+09:00">2021-11-30</time>
             </span>
           
         
@@ -1155,80 +1211,6 @@ Left here for reference, feel free to delete.
     <footer>
       <p class="read-more">
         Continue reading <a class="heading flip-title" href="/frontend/2021-10-12-cannot-read-properties-of-undefined-error/">[React] TypeError: Cannot read properties of undefined (reading getState)</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-frontend-Attempted-import-error" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/frontend/2021-10-12-Attempted-import-error/" class="flip-title">
-        [React] Attempted import error
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-11-27T21:57:11+09:00">2021-11-27</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>client 폴더 내 index.js 파일에서 하위폴더인 <code class="language-plaintext highlighter-rouge">_reducers</code>에서 데이터를 가져올려고 하자 Attempted import error가 발생했다.
-<img src="/assets\img/attempt-import-error.PNG" alt="attempt-import-error" /></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./src/index.js
-Attempted import error: 'Reducer' is not exported from './_reducers'.
-</code></pre></div></div>
-<p>프론트엔드 서버의 index.js 파일에서 ‘./_reducers’ 경로에 있는 index.js 파일을 import 하는데에 실패했다는 내용의 에러이다. 에러 발생 원인은 reducers 폴더 내 index.js 파일에서 export 시 default를 붙였기 때문이다.</p>
-<ul>
-  <li>reducers 폴더 내 index.js파일
-  ```
-  import { combineReducers } from “redux”;</li>
-</ul>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/frontend/2021-10-12-Attempted-import-error/">[React] Attempted import error</a>
 
       </p>
     </footer>
