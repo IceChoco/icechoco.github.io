@@ -4,8 +4,6 @@ layout: post
 categories: java
 tags: java
 comments: true
-related_posts:
-  - _posts/2021-11-28-Effective-java-Day2.md
 ---
 
 어제인 Day 2에서는 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, 그리고 'Item 1 - 생성자 대신 정적 팩터리 메서드를 고려하라'의 앞부분에 대해서 공부했다. 확실히 평일에 늦게 퇴근하는 날은 시간적인 여유가 좀 적은 것 같다. 아무리 늦퇴하는 날이라고 하더라도 기록은 멈추지 말아야지. 그 어떤 사정도 결국은 핑계고 내 미래를 책임져주지 않으니T_T 그럼 Day 3 기록 시작!
