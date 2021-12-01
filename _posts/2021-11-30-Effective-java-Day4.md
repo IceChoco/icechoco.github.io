@@ -131,6 +131,7 @@ public class Foo {
 정적 팩터리와 생성자의 공통적인 제약은 선택적 매개변수가 많을 때 적절히 대응하기 어렵다. 책에서는 NutritionFacts라는 클래스를 예로 들고 있다.
 ### 1. 점층적 생성자 패턴(telescoping constructor pattern)
 - 매개 변수가 많을 때 프로그래머들이 주로 사용하는 패턴
+- telescop는 망원경이라는 뜻. 변수가 늘어나면서 메서드가 추가된 모양이 망원경 같다고 해서 붙여졌다고 한다.
 
 ```java
 package effectivejava.chapter2.item2.telescopingconstructor;

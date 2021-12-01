@@ -229,15 +229,18 @@ package-private는 access level을 적어주지않는것을 말한다.
 다음 코드는 boolean 기본 타입의 박싱 클래스인 Boolean에서 발췌한 간단한 예이다. 
 ```java
 public class item1 {
+	
+	public static final Boolean TRUE = new Boolean(true);
+
+	public static final Boolean FALSE = new Boolean(false);
 
 	public static boolean valueOf(boolean b){
-		return b?Boolean.TRUE: Boolean.FALSE;
+		return b? TRUE: FALSE;
 	}
-	
-	
+
 	public static void main(String[] args) {
-		System.out.println(valueOf(true));
-		System.out.println(valueOf(false));
+		System.out.println(Boolean.valueOf(true));
+		System.out.println(Boolean.valueOf(false));
 	}
 }
 ```
