@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1","dateModified":"2021-11-30T21:42:48+09:00","datePublished":"2021-11-28T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-11-28-Effective-java-Day2/"},"url":"https://icechoco.github.io/java/2021-11-28-Effective-java-Day2/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"어제인 Day 1에서는 프로그래밍의 기본 원칙과 자바가 지원하는 타입에 대해서 공부했다. ‘1장 들어가기’에서는 책에서 사용하는 기술 용어를 명확히 하고 주로 넘어가는데, 그 용어에 대해서 기본적인 개념을 미리 한 번 정리하고 들어가면 좋겠다 싶어 정리하는 시간을 가졌다. 이번 포스팅도 책을 읽으면서 관련된 개념을 정리하는 식으로 기록하려한다. 공부하면서 지금까지 너무 기본기에대해서 간과한 것 같아 좀 앞으로가 두렵기도 하고, 잘 할 수 있을까 걱정되기도 하지만 좋은 스트레스를 받고 있는 것 같아 설레기도 하다. 오늘도 책상에 앉은 나 칭찬해! 그럼 Day 2 기록 시작!","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1","dateModified":"2021-12-02T01:30:22+09:00","datePublished":"2021-11-28T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-11-28-Effective-java-Day2/"},"url":"https://icechoco.github.io/java/2021-11-28-Effective-java-Day2/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"어제인 Day 1에서는 프로그래밍의 기본 원칙과 자바가 지원하는 타입에 대해서 공부했다. ‘1장 들어가기’에서는 책에서 사용하는 기술 용어를 명확히 하고 주로 넘어가는데, 그 용어에 대해서 기본적인 개념을 미리 한 번 정리하고 들어가면 좋겠다 싶어 정리하는 시간을 가졌다. 이번 포스팅도 책을 읽으면서 관련된 개념을 정리하는 식으로 기록하려한다. 공부하면서 지금까지 너무 기본기에대해서 간과한 것 같아 좀 앞으로가 두렵기도 하고, 잘 할 수 있을까 걱정되기도 하지만 좋은 스트레스를 받고 있는 것 같아 설레기도 하다. 오늘도 책상에 앉은 나 칭찬해! 그럼 Day 2 기록 시작!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-01T01:10:35+09:00',
+    INDEX_KEY: 'index--2021-12-02T01:46:21+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-30">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-02">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-11-30T21:42:48+09:00">2021-11-30</time>
+              <time datetime="2021-12-02T01:30:22+09:00">2021-12-02</time>
             </span>
           
         
@@ -566,15 +566,18 @@ package-private는 access level을 적어주지않는것을 말한다.
 <p>클래스는 생성자와 별도로 정적 팩터리 메서드(static factory method)를 제공할 수 있다. 정적 팩터리 메서드란 클래스의 인스턴스를 반환하는 단순한 정적 메서드를 말한다.<br />
 다음 코드는 boolean 기본 타입의 박싱 클래스인 Boolean에서 발췌한 간단한 예이다.</p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">item1</span> <span class="o">{</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Boolean</span> <span class="no">TRUE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Boolean</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Boolean</span> <span class="no">FALSE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Boolean</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
 
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">valueOf</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">b</span><span class="o">){</span>
-		<span class="k">return</span> <span class="n">b</span><span class="o">?</span><span class="nc">Boolean</span><span class="o">.</span><span class="na">TRUE</span><span class="o">:</span> <span class="nc">Boolean</span><span class="o">.</span><span class="na">FALSE</span><span class="o">;</span>
+		<span class="k">return</span> <span class="n">b</span><span class="o">?</span> <span class="nl">TRUE:</span> <span class="no">FALSE</span><span class="o">;</span>
 	<span class="o">}</span>
-	
-	
+
 	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">valueOf</span><span class="o">(</span><span class="kc">true</span><span class="o">));</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">valueOf</span><span class="o">(</span><span class="kc">false</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Boolean</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="kc">true</span><span class="o">));</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Boolean</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="kc">false</span><span class="o">));</span>
 	<span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
@@ -767,7 +770,7 @@ package-private는 access level을 적어주지않는것을 말한다.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-11-30-Effective-java-Day4/" class="flip-title"><span>[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라</span></a>  <time class="faded fine" datetime="2021-11-30T00:00:00+09:00">30 Nov 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-29-Effective-java-Day3/" class="flip-title"><span>[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라</span></a>  <time class="faded fine" datetime="2021-11-29T00:00:00+09:00">29 Nov 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-27-Effective-java-Day1/" class="flip-title"><span>[Effective Java] Day 1 - 프로그래밍의 기본 원칙과 자바가 지원하는 타입</span></a>  <time class="faded fine" datetime="2021-11-27T00:00:00+09:00">27 Nov 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-01-Effective-java-Day5/" class="flip-title"><span>[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</span></a>  <time class="faded fine" datetime="2021-12-01T00:00:00+09:00">01 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-30-Effective-java-Day4/" class="flip-title"><span>[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라</span></a>  <time class="faded fine" datetime="2021-11-30T00:00:00+09:00">30 Nov 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-29-Effective-java-Day3/" class="flip-title"><span>[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라</span></a>  <time class="faded fine" datetime="2021-11-29T00:00:00+09:00">29 Nov 2021</time></li>            </ul></aside>
 
   
 
