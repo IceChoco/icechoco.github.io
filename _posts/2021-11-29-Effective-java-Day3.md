@@ -46,9 +46,6 @@ class Student{
 
 #### 2. 호출될 때마다 인스턴스를 새로 생성하지는 않아도 된다.
 반드시 새로운 객체를 만들 필요가 없다. 플라이웨이트 패턴도 이와 비슷한 기법이다.
-  - **플라이웨이트 패턴(Flyweight pattern)**  
-    어떤 클래스의 인스턴스 한 개만 가지고 여러 개의 "가상 인스턴스"를 제공하고 싶을 때 사용하는 패턴.  
-    즉, 인스턴스를 가능한 대로 공유시켜 쓸데없이 new 연산자를 통한 메모리 낭비를 줄이는 방식
 
 ```java
 package item1;
@@ -207,8 +204,56 @@ public class Foo {
     근데... 그냥 정적변수를 쓰지 왜 싱글턴을 쓸까? 그건 바로 interface의 사용, lazy loading 등 싱글턴으로 할 수 있는 것들이 더 많기 때문이다!
 2. **인스턴스화 불가**로 만들 수 있다.  
    ex) 위 소스코드의 FirstPage 클래스에서 `private Settings settings = new Settings();`로 인스턴스화 불가
-3. 불변 값 클래스에서 **동치인 인스턴트가 하나임을 보장**할 수 있다. (`a==b`일 때만 `a.equlals(b)`가 성립)  
+3. 불변 값 클래스에서 **동치인 인스턴트가 하나임을 보장**할 수 있다. (`a==b`일 때, `a.equlals(b)`가 성립)  
    인스턴트 통제는 플라이웨이트 패턴의 근간이 되며, 열거타입은 인스턴스가 하나만 만들어짐을 보장한다.
+
+##### 플라이웨이트 패턴(Flyweight pattern) 
+어떤 클래스의 인스턴스 한 개만 가지고 여러 개의 "가상 인스턴스"를 제공하고 싶을 때 사용하는 패턴.  
+즉, 인스턴스를 가능한 대로 공유시켜 쓸데없이 new 연산자를 통한 메모리 낭비를 줄이는 방식.  
+디자인 패턴 GoF 중 `공유(Sharing)을 통하여 대량의 객체를 효과적으로 지원하는 방법`
+
+대표적인 예 - Java의 String Pool
+- 동일한 문자열에 대해서는 다시 사용될 때에 새로운 메모리를 할당하는 것이 아니라 String Pool에 있는지 검사해서 가져옴.
+- String을 생성할 때 new를 통해 String을 생성하면 Heap영역에 존재하게 되고 리터럴을 이용할 경우 String constant pool이라는 영역에 존재하게 된다.
+
+1.New 연산자를 이용한 방식
+
+```java
+public static void main(String[] args) {
+    String a = new String("A");
+    String b = new String("A");
+
+    System.out.println(a == b);      //주소값 비교
+    System.out.println(a.equals(b)); //주소 안에 들어 있는 값 비교
+}
+
+false
+true
+```
+**<span style="color:red">new 연산자</span>**를 사용하여 새로운 String 객체를 생성하면 JVM에서 **<span style="color:red">Heap영역</span>**에 String 객체를 생성하게 된다.
+그렇기 때문에 a를 Heap 메모리에 생성하고, b를 또 Heap 메모리에 생성하고 이 둘은 다른 객체가 된다.
+
+2.리터럴을 이용한 방식
+
+```java
+public static void main(String[] args) {
+    String a = "A";
+    String b = "A";
+
+    System.out.println(a == b);      //주소값 비교
+    System.out.println(a.equals(b)); //주소 안에 들어 있는 값 비교
+
+true
+true
+```
+new 연산자가 아닌 **<span style="color:red">리터럴("")</span>로 String 객체를 생성하면 JVM은 우선 <span style="color:red">String Contstrant Pool 영역</span>을 방문하게 됩니다. 거기서 같은 값을 가진 String 객체를 찾으면 그 객체의 주소 값을 반환하여 참조하게 됩니다. 찾지 못하면 String Constrant Pool에 해당 값을 가진 String 객체를 생성하고 그 주소 값을 반환하게 됩니다.** String constrant Pool 영역은 Heap 영역 내부에서 String 객체를 위해 별도로 관리하는 저장소입니다.  
+
+리터럴로 a를 생성할 때 String Constrant Pool에 "A"라는 값을 가진 String 객체가 생성되었고, b 또한 리터럴로 생성되었기 때문에 String Constrant Pool에 방문해보았더니 a를 생성할 때 만들어준 "A"라는 값을 가진 String 객체를 발견한 것 입니다.  
+결과적으로 a와 b는 같은 객체를 참조하고 있는 것 입니다.
+
+구글링 중 너무 이미지로 잘 정리해주신 [by hyeraan님의 글](https://hyeran-story.tistory.com/123)이 있어 공유합니다.
+
+![constrantPool](/assets\img/constrantPool.PNG)
 
 #### 3. 반환 타입의 하위 객체를 반환할 수 있는 능력이 있다.
 반환할 객체의 클래스를 자유롭게 선택할 수 있게하는 유연성이 있다.
@@ -216,3 +261,4 @@ public class Foo {
 ### 참고
 - [[디자인패턴/Design Pattern] Flyweight Pattern/플라이웨이트 패턴](https://lee1535.tistory.com/106)
 - [객체지향 디자인패턴 1](https://www.youtube.com/watch?v=lJES5TQTTWE&t=91s)
+- [[Java] equals()과 == 차이점, String Contrant Pool(상수풀)](https://hyeran-story.tistory.com/123)

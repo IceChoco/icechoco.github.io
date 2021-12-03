@@ -101,6 +101,7 @@ public class Foo {
 대표적인 서비스 제공자 프레임워크인 JDBC(Java Database Connectivity)를 만드는 근간은 이런 유연함이다.  
 
 ![JDBC](/assets\img/JDBC.gif)
+즉, `서비스 접근 API인 DriverManager.getConnection`를 작성하는 시점에는 `반환할 서비스 인터페이스인 Connection`의 하위 클래스가 아직 존재하지 않아도 동작이 가능하다
 1. **제공자(Provider)**: 서비스의 구현체
 2. **프레임워크**: 구현체를 클라이언트에 제공하는 역할 통제. 클라이언트와 구현체 분리.  
     **3개의 핵심 컴포넌트**  

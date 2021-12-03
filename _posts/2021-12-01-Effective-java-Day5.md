@@ -62,6 +62,38 @@ Calzone calzone = new Calzone.Builder()
 - 빌더 패턴은 매개변수가 많거나(한 4개 이상) 앞으로 늘어날 가능성이 있는 경우에 사용하는 것이 좋다.
     - API는 시간이 지날수록 매개변수가 많아지는 경향이 있으니 애초에 빌더로 시작하는 것을 추천
 
+### 참고: Lombok annotation을 추가하여 빌더패턴 사용하기
+```java
+package item02;
+
+import lombok.Builder;
+import lombok.Singular;
+
+import java.util.List;
+
+@Builder
+public class NutritionFactsLombok {
+	@Builder.Default private int servingSize = 10;
+	private int sodium;
+	private int carbohydrate;
+	private int servings;
+	@Singular private List<String> names;
+
+	public static void main(String[] args) {
+		NutritionFactsLombok nutritionFactsLombok = NutritionFactsLombok.builder()
+				.servings(10)
+				.carbohydrate(100)
+				.name("ara")
+				.name("minwoo")
+				.clearNames()
+				.build();
+
+//		NutritionFactsLombok facts = new NutritionFactsLombok();//기본 생성자가 안만들어짐. @NoArgsConstructor 사용해야함
+	}
+	
+}
+```
+
 ## Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라
 - **싱글턴**: 객체의 인스턴스가 오직 1개만 생성되는 패턴을 의미  
 ex) 함수와 같은 <u>stateless Object(무상태 객체)</u>, 설계상 유일해야 하는 시스템 컴포넌트  
