@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라","dateModified":"2021-11-30T21:42:35+09:00","datePublished":"2021-11-29T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-11-29-Effective-java-Day3/"},"url":"https://icechoco.github.io/java/2021-11-29-Effective-java-Day3/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"어제인 Day 2에서는 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, 그리고 ‘Item 1 - 생성자 대신 정적 팩터리 메서드를 고려하라’의 앞부분에 대해서 공부했다. 확실히 평일에 늦게 퇴근하는 날은 시간적인 여유가 좀 적은 것 같다. 아무리 늦퇴하는 날이라고 하더라도 기록은 멈추지 말아야지. 그 어떤 사정도 결국은 핑계고 내 미래를 책임져주지 않으니T_T 그럼 Day 3 기록 시작!","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라","dateModified":"2021-12-02T23:48:21+09:00","datePublished":"2021-11-29T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-11-29-Effective-java-Day3/"},"url":"https://icechoco.github.io/java/2021-11-29-Effective-java-Day3/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"어제인 Day 2에서는 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, 그리고 ‘Item 1 - 생성자 대신 정적 팩터리 메서드를 고려하라’의 앞부분에 대해서 공부했다. 확실히 평일에 늦게 퇴근하는 날은 시간적인 여유가 좀 적은 것 같다. 아무리 늦퇴하는 날이라고 하더라도 기록은 멈추지 말아야지. 그 어떤 사정도 결국은 핑계고 내 미래를 책임져주지 않으니T_T 그럼 Day 3 기록 시작!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-02T01:46:21+09:00',
+    INDEX_KEY: 'index--2021-12-03T16:25:38+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-30">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-02">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-11-30T21:42:35+09:00">2021-11-30</time>
+              <time datetime="2021-12-02T23:48:21+09:00">2021-12-02</time>
             </span>
           
         
@@ -365,11 +365,6 @@ Left here for reference, feel free to delete.
 
 <h4 id="2-호출될-때마다-인스턴스를-새로-생성하지는-않아도-된다">2. 호출될 때마다 인스턴스를 새로 생성하지는 않아도 된다.</h4>
 <p>반드시 새로운 객체를 만들 필요가 없다. 플라이웨이트 패턴도 이와 비슷한 기법이다.</p>
-<ul>
-  <li><strong>플라이웨이트 패턴(Flyweight pattern)</strong><br />
-어떤 클래스의 인스턴스 한 개만 가지고 여러 개의 “가상 인스턴스”를 제공하고 싶을 때 사용하는 패턴.<br />
-즉, 인스턴스를 가능한 대로 공유시켜 쓸데없이 new 연산자를 통한 메모리 낭비를 줄이는 방식</li>
-</ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item1</span><span class="o">;</span>
 
@@ -537,9 +532,57 @@ Left here for reference, feel free to delete.
   </li>
   <li><strong>인스턴스화 불가</strong>로 만들 수 있다.<br />
 ex) 위 소스코드의 FirstPage 클래스에서 <code class="language-plaintext highlighter-rouge">private Settings settings = new Settings();</code>로 인스턴스화 불가</li>
-  <li>불변 값 클래스에서 <strong>동치인 인스턴트가 하나임을 보장</strong>할 수 있다. (<code class="language-plaintext highlighter-rouge">a==b</code>일 때만 <code class="language-plaintext highlighter-rouge">a.equlals(b)</code>가 성립)<br />
+  <li>불변 값 클래스에서 <strong>동치인 인스턴트가 하나임을 보장</strong>할 수 있다. (<code class="language-plaintext highlighter-rouge">a==b</code>일 때, <code class="language-plaintext highlighter-rouge">a.equlals(b)</code>가 성립)<br />
 인스턴트 통제는 플라이웨이트 패턴의 근간이 되며, 열거타입은 인스턴스가 하나만 만들어짐을 보장한다.</li>
 </ol>
+
+<h5 id="플라이웨이트-패턴flyweight-pattern">플라이웨이트 패턴(Flyweight pattern)</h5>
+<p>어떤 클래스의 인스턴스 한 개만 가지고 여러 개의 “가상 인스턴스”를 제공하고 싶을 때 사용하는 패턴.<br />
+즉, 인스턴스를 가능한 대로 공유시켜 쓸데없이 new 연산자를 통한 메모리 낭비를 줄이는 방식.<br />
+디자인 패턴 GoF 중 <code class="language-plaintext highlighter-rouge">공유(Sharing)을 통하여 대량의 객체를 효과적으로 지원하는 방법</code></p>
+
+<p>대표적인 예 - Java의 String Pool</p>
+<ul>
+  <li>동일한 문자열에 대해서는 다시 사용될 때에 새로운 메모리를 할당하는 것이 아니라 String Pool에 있는지 검사해서 가져옴.</li>
+  <li>String을 생성할 때 new를 통해 String을 생성하면 Heap영역에 존재하게 되고 리터럴을 이용할 경우 String constant pool이라는 영역에 존재하게 된다.</li>
+</ul>
+
+<p>1.New 연산자를 이용한 방식</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"A"</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"A"</span><span class="o">);</span>
+
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="o">);</span>      <span class="c1">//주소값 비교</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">b</span><span class="o">));</span> <span class="c1">//주소 안에 들어 있는 값 비교</span>
+<span class="o">}</span>
+
+<span class="kc">false</span>
+<span class="kc">true</span>
+</code></pre></div></div>
+<p><strong><span style="color:red">new 연산자</span></strong>를 사용하여 새로운 String 객체를 생성하면 JVM에서 <strong><span style="color:red">Heap영역</span></strong>에 String 객체를 생성하게 된다.
+그렇기 때문에 a를 Heap 메모리에 생성하고, b를 또 Heap 메모리에 생성하고 이 둘은 다른 객체가 된다.</p>
+
+<p>2.리터럴을 이용한 방식</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">a</span> <span class="o">=</span> <span class="s">"A"</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">b</span> <span class="o">=</span> <span class="s">"A"</span><span class="o">;</span>
+
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="o">);</span>      <span class="c1">//주소값 비교</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">b</span><span class="o">));</span> <span class="c1">//주소 안에 들어 있는 값 비교</span>
+
+<span class="kc">true</span>
+<span class="kc">true</span>
+</code></pre></div></div>
+<p>new 연산자가 아닌 <strong><span style="color:red">리터럴(“”)</span>로 String 객체를 생성하면 JVM은 우선 <span style="color:red">String Contstrant Pool 영역</span>을 방문하게 됩니다. 거기서 같은 값을 가진 String 객체를 찾으면 그 객체의 주소 값을 반환하여 참조하게 됩니다. 찾지 못하면 String Constrant Pool에 해당 값을 가진 String 객체를 생성하고 그 주소 값을 반환하게 됩니다.</strong> String constrant Pool 영역은 Heap 영역 내부에서 String 객체를 위해 별도로 관리하는 저장소입니다.</p>
+
+<p>리터럴로 a를 생성할 때 String Constrant Pool에 “A”라는 값을 가진 String 객체가 생성되었고, b 또한 리터럴로 생성되었기 때문에 String Constrant Pool에 방문해보았더니 a를 생성할 때 만들어준 “A”라는 값을 가진 String 객체를 발견한 것 입니다.<br />
+결과적으로 a와 b는 같은 객체를 참조하고 있는 것 입니다.</p>
+
+<p>구글링 중 너무 이미지로 잘 정리해주신 <a href="https://hyeran-story.tistory.com/123">by hyeraan님의 글</a>이 있어 공유합니다.</p>
+
+<p><img src="/assets\img/constrantPool.PNG" alt="constrantPool" /></p>
 
 <h4 id="3-반환-타입의-하위-객체를-반환할-수-있는-능력이-있다">3. 반환 타입의 하위 객체를 반환할 수 있는 능력이 있다.</h4>
 <p>반환할 객체의 클래스를 자유롭게 선택할 수 있게하는 유연성이 있다.</p>
@@ -548,6 +591,7 @@ ex) 위 소스코드의 FirstPage 클래스에서 <code class="language-plaintex
 <ul>
   <li><a href="https://lee1535.tistory.com/106">[디자인패턴/Design Pattern] Flyweight Pattern/플라이웨이트 패턴</a></li>
   <li><a href="https://www.youtube.com/watch?v=lJES5TQTTWE&amp;t=91s">객체지향 디자인패턴 1</a></li>
+  <li><a href="https://hyeran-story.tistory.com/123">[Java] equals()과 == 차이점, String Contrant Pool(상수풀)</a></li>
 </ul>
 
   
@@ -729,7 +773,7 @@ ex) 위 소스코드의 FirstPage 클래스에서 <code class="language-plaintex
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-01-Effective-java-Day5/" class="flip-title"><span>[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</span></a>  <time class="faded fine" datetime="2021-12-01T00:00:00+09:00">01 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-30-Effective-java-Day4/" class="flip-title"><span>[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라</span></a>  <time class="faded fine" datetime="2021-11-30T00:00:00+09:00">30 Nov 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-28-Effective-java-Day2/" class="flip-title"><span>[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1</span></a>  <time class="faded fine" datetime="2021-11-28T00:00:00+09:00">28 Nov 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-03-Java-Generic/" class="flip-title"><span>[Java] 제너릭(Generic)의 사용 및 이해</span></a>  <time class="faded fine" datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-03-Effective-java-Day7/" class="flip-title"><span>[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)</span></a>  <time class="faded fine" datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-01-Effective-java-Day5/" class="flip-title"><span>[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</span></a>  <time class="faded fine" datetime="2021-12-01T00:00:00+09:00">01 Dec 2021</time></li>            </ul></aside>
 
   
 

@@ -1,6 +1,24 @@
 [
   
     {
+      "title"      : "[Java] 제너릭(Generic)의 사용 및 이해",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2021.12.03",
+      "urlString"  : "/java/2021-12-03-Java-Generic/",
+      "url"        : "/java/2021-12-03-Java-Generic/"
+    },
+  
+    {
+      "title"      : "[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2021.12.03",
+      "urlString"  : "/java/2021-12-03-Effective-java-Day7/",
+      "url"        : "/java/2021-12-03-Effective-java-Day7/"
+    },
+  
+    {
       "title"      : "[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라",
       "categories" : "java",
       "tags"       : "java",

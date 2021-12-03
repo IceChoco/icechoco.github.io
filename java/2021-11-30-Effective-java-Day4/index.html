@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라","dateModified":"2021-12-02T01:35:07+09:00","datePublished":"2021-11-30T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-11-30-Effective-java-Day4/"},"url":"https://icechoco.github.io/java/2021-11-30-Effective-java-Day4/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day 4 기록 시작!","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라","dateModified":"2021-12-03T01:14:32+09:00","datePublished":"2021-11-30T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-11-30-Effective-java-Day4/"},"url":"https://icechoco.github.io/java/2021-11-30-Effective-java-Day4/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day 4 기록 시작!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-02T01:46:21+09:00',
+    INDEX_KEY: 'index--2021-12-03T16:25:38+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-02">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-03">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-02T01:35:07+09:00">2021-12-02</time>
+              <time datetime="2021-12-03T01:14:32+09:00">2021-12-03</time>
             </span>
           
         
@@ -429,7 +429,8 @@ Left here for reference, feel free to delete.
 <h4 id="5-정적-팩터리-메서드를-작성하는-시점에는-반환할-객체의-클래스가-존재하지-않아도-된다">5. 정적 팩터리 메서드를 작성하는 시점에는 반환할 객체의 클래스가 존재하지 않아도 된다.</h4>
 <p>대표적인 서비스 제공자 프레임워크인 JDBC(Java Database Connectivity)를 만드는 근간은 이런 유연함이다.</p>
 
-<p><img src="/assets\img/JDBC.gif" alt="JDBC" /></p>
+<p><img src="/assets\img/JDBC.gif" alt="JDBC" />
+즉, <code class="language-plaintext highlighter-rouge">서비스 접근 API인 DriverManager.getConnection</code>를 작성하는 시점에는 <code class="language-plaintext highlighter-rouge">반환할 서비스 인터페이스인 Connection</code>의 하위 클래스가 아직 존재하지 않아도 동작이 가능하다</p>
 <ol>
   <li><strong>제공자(Provider)</strong>: 서비스의 구현체</li>
   <li>
@@ -950,7 +951,7 @@ Left here for reference, feel free to delete.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-01-Effective-java-Day5/" class="flip-title"><span>[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</span></a>  <time class="faded fine" datetime="2021-12-01T00:00:00+09:00">01 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-29-Effective-java-Day3/" class="flip-title"><span>[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라</span></a>  <time class="faded fine" datetime="2021-11-29T00:00:00+09:00">29 Nov 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-28-Effective-java-Day2/" class="flip-title"><span>[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1</span></a>  <time class="faded fine" datetime="2021-11-28T00:00:00+09:00">28 Nov 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-03-Java-Generic/" class="flip-title"><span>[Java] 제너릭(Generic)의 사용 및 이해</span></a>  <time class="faded fine" datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-03-Effective-java-Day7/" class="flip-title"><span>[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)</span></a>  <time class="faded fine" datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-01-Effective-java-Day5/" class="flip-title"><span>[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</span></a>  <time class="faded fine" datetime="2021-12-01T00:00:00+09:00">01 Dec 2021</time></li>            </ul></aside>
 
   
 

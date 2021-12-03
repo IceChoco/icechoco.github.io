@@ -25,27 +25,27 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 
 
 
-  <meta name="robots" content="noindex">
-
 
 
   
     
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Advanced | IceChoco</title>
+<title>[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2) | IceChoco</title>
 <meta name="generator" content="Jekyll v4.2.1" />
-<meta property="og:title" content="Advanced" />
+<meta property="og:title" content="[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="ko_KR, en_US" />
-<meta name="description" content="This chapter covers advanced topics, such as offline support and custom JS builds. Codings skills are recommended." />
-<meta property="og:description" content="This chapter covers advanced topics, such as offline support and custom JS builds. Codings skills are recommended." />
-<link rel="canonical" href="https://icechoco.github.io/docs/advanced/" />
-<meta property="og:url" content="https://icechoco.github.io/docs/advanced/" />
+<meta name="description" content="Day 6에서는 플라이웨이트 패턴(Flyweight pattern), Java의 String Pool, 예제 소스를 참조한 장점3,4,5 이해를 통해 내용을 보완하며 item1,2를 복습하였다 (게시글 수정으로 진행함). Day 7 기록 시작!" />
+<meta property="og:description" content="Day 6에서는 플라이웨이트 패턴(Flyweight pattern), Java의 String Pool, 예제 소스를 참조한 장점3,4,5 이해를 통해 내용을 보완하며 item1,2를 복습하였다 (게시글 수정으로 진행함). Day 7 기록 시작!" />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-03-Effective-java-Day7/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-03-Effective-java-Day7/" />
 <meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-03T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Advanced" />
+<meta property="twitter:title" content="[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)" />
 <script type="application/ld+json">
-{"headline":"Advanced","dateModified":"2021-10-16T23:35:53+09:00","@type":"WebPage","url":"https://icechoco.github.io/docs/advanced/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"This chapter covers advanced topics, such as offline support and custom JS builds. Codings skills are recommended.","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)","dateModified":"2021-12-03T14:37:04+09:00","datePublished":"2021-12-03T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-03-Effective-java-Day7/"},"url":"https://icechoco.github.io/java/2021-12-03-Effective-java-Day7/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day 6에서는 플라이웨이트 패턴(Flyweight pattern), Java의 String Pool, 예제 소스를 참조한 장점3,4,5 이해를 통해 내용을 보완하며 item1,2를 복습하였다 (게시글 수정으로 진행함). Day 7 기록 시작!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,7 +72,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="https://icechoco.github.io/docs/advanced/" hreflang="ko-kr, en-us">
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-03-Effective-java-Day7/" hreflang="ko-kr, en-us">
 
 <link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
 
@@ -249,7 +249,7 @@ Left here for reference, feel free to delete.
 
   <main
   id="_main"
-  class="content layout-page"
+  class="content layout-post"
   role="main"
 >
   <nav id="breadcrumbs" class="screen-only"><ul>
@@ -262,215 +262,166 @@ Left here for reference, feel free to delete.
         <span>/</span>
         
         
-        <a href="/docs/">docs</a>
+        <a href="/java/">java</a>
       
       </li>
     
       <li>
       
         <span>/</span>
-        <span>advanced</span>
+        <span>2021-12-03-Effective-java-Day7</span>
       
       </li>
     
   
 </ul></nav>
-  <article class="page mb6" role="article">
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day7" class="page post mb6" role="article">
   <header>
-    <h1 class="page-title">Advanced</h1>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+        
+      
+    </div>
+
+    
+    
+
     
 
 
 
-  
-    <div class="hr pb0"></div>
-  
+  <div class="hr pb0"></div>
 
 
   </header>
 
-  <p>This chapter covers advanced topics, such as offline support and custom JS builds. Codings skills are recommended.</p>
+  
+    <p>Day 6에서는 플라이웨이트 패턴(Flyweight pattern), Java의 String Pool, 예제 소스를 참조한 장점3,4,5 이해를 통해 내용을 보완하며 item1,2를 복습하였다 (게시글 수정으로 진행함).
+Day 7 기록 시작!</p>
 
-<ol id="markdown-toc">
-  <li><a href="#enabling-offline-support" id="markdown-toc-enabling-offline-support">Enabling offline support</a>    <ol>
-      <li><a href="#how-offline-storage-works" id="markdown-toc-how-offline-storage-works">How offline storage works</a></li>
-    </ol>
-  </li>
-  <li><a href="#adding-a-custom-social-media-icon" id="markdown-toc-adding-a-custom-social-media-icon">Adding a custom social media icon</a>    <ol>
-      <li><a href="#creating-the-icon-font" id="markdown-toc-creating-the-icon-font">Creating the icon font</a></li>
-      <li><a href="#adding-the-platforms-metadata" id="markdown-toc-adding-the-platforms-metadata">Adding the platform’s metadata</a></li>
-    </ol>
-  </li>
-  <li><a href="#how-css-is-organized-in-hydejack" id="markdown-toc-how-css-is-organized-in-hydejack">How CSS is organized in Hydejack</a></li>
+<h2 id="item-3--private-생성자나-열거-타입으로-싱글턴임을-보증하라-2">Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라 (2)</h2>
+<h3 id="1-public-static-final-필드-방식의-싱글턴">1. public static final 필드 방식의 싱글턴</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item03</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton1</span> <span class="o">{</span>
+
+    <span class="c1">//instance는 static이니까 클래스가 로딩될 시점에 한번만 초기화됨.</span>
+    <span class="c1">//초기화될 때 new를 사용하기 때문에 그때 처음 만들어진 instance가 계속해서 재사용하게됨</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Singleton1</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton1</span><span class="o">();</span>
+
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">cnt</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nf">Singleton1</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">cnt</span><span class="o">++;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">cnt</span> <span class="o">!=</span> <span class="mi">1</span><span class="o">){</span><span class="c1">//리플렉션을 막기 위한 방법</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalStateException</span><span class="o">(</span><span class="s">"this object should be singleton"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+<p>public static final 필드인 Singleton1.instance 초기화 할 때 private 생성자는 딱 한번만 호출되고 Singleton1은 싱글턴이 된다.<br />
+예외로는 리플렉션 API를 사용해 private 생성자를 호출할 수 있지만 생성자를 수정하여 두 번째 객체가 생성되려 할 때 예외를 던지면 이러한 공격에 대한 방어가 가능하다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item03</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Constructor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.InvocationTargetException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SingleTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">NoSuchMethodException</span><span class="o">,</span> <span class="nc">InvocationTargetException</span><span class="o">,</span> <span class="nc">InstantiationException</span><span class="o">,</span> <span class="nc">IllegalAccessException</span> <span class="o">{</span>
+        <span class="c1">//private이므로 Singleton1 밖에서 생성 불가</span>
+        <span class="c1">//Singleton1 singleton1 = new Singleton1();</span>
+        <span class="nc">Singleton1</span> <span class="n">singleton2</span> <span class="o">=</span> <span class="nc">Singleton1</span><span class="o">.</span><span class="na">instance</span><span class="o">;</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">singleton2</span><span class="o">);</span> <span class="c1">//item03.Singleton1@4eec7777 - 주소 잘 가져옴</span>
+
+        <span class="c1">//아래와 같은 방식으로 리플렉션 API를 이용하여 private 생성자 호출 가능. But</span>
+        <span class="nc">Constructor</span><span class="o">&lt;</span><span class="nc">Singleton1</span><span class="o">&gt;</span> <span class="n">constructor</span> <span class="o">=</span> <span class="nc">Singleton1</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getDeclaredConstructor</span><span class="o">();</span>
+        <span class="n">constructor</span><span class="o">.</span><span class="na">setAccessible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="nc">Singleton1</span> <span class="n">singleton3</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span> <span class="c1">//Caused by: java.lang.IllegalStateException: this object should be singleton - 에러발생</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">singleton3</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>public static final인 instance를 호출하는 singleton2는 정상적으로 객체를 잘 가져오지만,<br />
+리플렉션 API를 활용하여 private 생성자를 직접 호출 하는 singleton3는 private 생성자에 추가된 리플렉션 방어 로직에 의하여 <code class="language-plaintext highlighter-rouge">this object should be singleton</code>에러가 발생한다.</p>
+
+<h4 id="장점">장점</h4>
+<ol>
+  <li>static 팩토리 메소드를 사용하는 방식보다 간단하다.</li>
+  <li>해당 클래스가 싱글턴임이 API에 명백히 드러난다.</li>
 </ol>
 
-<h2 id="enabling-offline-support">Enabling offline support</h2>
-<p>Hydejack v8 introduces experimental “cache as you go” offline support. This is implemented via the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker API</a>, a new browser standard that is now supported in the latest versions of all major browsers. However, it is a very powerful feature and should be used with a lot of care.</p>
+<h3 id="2-static-팩토리-메소드-방식의-싱글턴">2. static 팩토리 메소드 방식의 싱글턴</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item03</span><span class="o">;</span>
 
-<p>Enabling this feature requires that your content meets the following criteria:</p>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton2</span> <span class="o">{</span>
 
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Singleton2</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton2</span><span class="o">();</span>
+
+    <span class="kd">private</span> <span class="nf">Singleton2</span><span class="o">(){</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Singleton2</span> <span class="nf">getInstance</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">instance</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+<h4 id="장점-1">장점</h4>
+<ol>
+  <li>public static factory 메소드를 호출하는 클라이언트 코드를 바꾸지 않고도 싱글턴이 아니게 변경할 수 있다.
+    <ul>
+      <li>처음엔 싱글턴을 쓰다가 나중에 호출하는 스레드별로 다른 인스턴스를 넘겨주게 할 수 있다.</li>
+    </ul>
+  </li>
+  <li>static factory를 Generic 싱글턴 팩토리로 만들 수 있다.</li>
+  <li>static factory method 참조를 <code class="language-plaintext highlighter-rouge">Supplier&lt;Singleton2&gt;</code>와 같이 공급자로 사용할 수 있다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">public static Singleton2 getInstance()</code> 자체가 Supplier 인터페이스의 구현체처럼 쓰일 수 있는 메소드다</li>
+    </ul>
+  </li>
+</ol>
+
+<h5 id="interface-supplier">interface Supplier<T></T></h5>
+<p>JAVA 8부터 등장한 개념인 Supplier란 메서드를 ‘get()’ 하나만 가지고 있고 아무타입이나 리턴하는(T) 인터페이스이다.</p>
+
+<h3 id="참고">참고</h3>
 <ul>
-  <li>Content doesn’t change between deploys (e.g. manually adding things to <code class="language-plaintext highlighter-rouge">_site</code> etc.)</li>
-  <li>All assets in <code class="language-plaintext highlighter-rouge">assets</code> are immutable, i.e. they never change (when changing a file in assets, it needs to have a new name and links need to point to the new file).</li>
-  <li>The site is mostly self-contained, i.e. assets are served from the same domain (offline support will not download assets form external sites by default)</li>
-  <li>The site is served via HTTPS (this is a Service Worker requirement)</li>
+  <li><a href="https://www.youtube.com/watch?v=xBVPChbtUhM&amp;t=534s">[이팩티브 자바] #3 싱글톤을 만드는 여러가지 방법 그중에 최선은?</a></li>
 </ul>
 
-<p>To enable this feature, create a <code class="language-plaintext highlighter-rouge">sw.js</code> file in the root of your project and add the following content:</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">---</span>
-<span class="o">---</span>
-<span class="nx">importScripts</span><span class="p">(</span><span class="dl">"</span><span class="s2">{{ '/assets/js/sw.js' | relative_url }}?t={{ site.time | date_to_xmlschema }}</span><span class="dl">"</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p>This will load the main service worker script from Hydejack’s assets. The <code class="language-plaintext highlighter-rouge">site.time</code> part is necessary to make the service worker “byte different” every time you create a new build of your site, which triggers an update.</p>
-
-<p>In your <code class="language-plaintext highlighter-rouge">config.yml</code> under the <code class="language-plaintext highlighter-rouge">hydejack</code> key, add the following:</p>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">offline</span><span class="pi">:</span>
-  <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span>
-  <span class="na">cache_version</span><span class="pi">:</span> <span class="m">1</span>
-</code></pre></div></div>
-
-<p>The current implementation does not cache resources from external domains. There is now way of knowing if external sites conform to the conditions mentioned above, hence caching can be problematic and result in unexpected behavior.</p>
-
-<p>For example, Google Analytics uses GET requests to send page views, each of which would be cached by the service worker without this policy. Frequently updating images, such as badges would never change.</p>
-
-<p><img src="https://badge.fury.io/rb/jekyll-theme-hydejack.svg" alt="Gem Version" /></p>
-
-<p>However, if you include resources that are hosted on another domain and don’t change, you can add the <code class="language-plaintext highlighter-rouge">sw-cache</code> query parameter to the URL, e.g.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://upload.wikimedia.org/wikipedia/commons/b/b1/57_Chevy_210.jpg?sw-cache
-</code></pre></div></div>
-
-<p>This will cause them to be cached like resources from the assets folder.</p>
-
-<p>If you want to serve a file from the <code class="language-plaintext highlighter-rouge">assets</code> folder but NOT cache it for offline use, add the <code class="language-plaintext highlighter-rouge">no-cache</code> query parameter instead:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/assets/lfs/download.bin?no-cache
-</code></pre></div></div>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/57_Chevy_210.jpg?sw-cache" alt="57 Chevy" /></p>
-
-<h3 id="how-offline-storage-works">How offline storage works</h3>
-
-<p>Hydejack’s custom service worker implementation stores files for offline use on three different levels:</p>
-
-<dl>
-  <dt>Shell</dt>
-  <dd>The shell files are the core Hydejack files (CSS, JS) that only change between version updates.
-If you made changes to any of these after enabling offline support, you must force an update by bumping the <code class="language-plaintext highlighter-rouge">cache_version</code> number in the config file.</dd>
-  <dt>Assets</dt>
-  <dd><em>These are presumed to be immutable.</em> In other words, every file is cached indefinitely. E.g.: If you want to update an image after enabling offline support, add the image under a different name and change the link in the content. Alternatively, you can bump the <code class="language-plaintext highlighter-rouge">cache_version</code>, but this will remove all other cached files from the asset cache.</dd>
-  <dt>Content</dt>
-  <dd>The content cache exploits the fact that your content can’t change between builds, so that it can be stored for offline use until you upload a new build. For now, the entire content cache is discarded every time you publish new content (future versions could cache them based on last modified dates).</dd>
-</dl>
-
-<p>Other things to note are that the implementation will always cache the pages listed under <code class="language-plaintext highlighter-rouge">legal</code>, as well as the <code class="language-plaintext highlighter-rouge">404.html</code> page, which will be shown when the user is offline.</p>
-
-<h2 id="adding-a-custom-social-media-icon">Adding a custom social media icon</h2>
-<p>Hydejack includes a number of social media icons by default (in fact, everything that is provided by <a href="https://icomoon.io/">IcoMoon</a>), but since the landscape is always changing, it is likely that a platform that is important to you will be missing at some point.</p>
-
-<p class="note">You can add any platform by simply providing a complete URL. However, a fallback icon <span class="icon-link"></span> will be used.</p>
-
-<h3 id="creating-the-icon-font">Creating the icon font</h3>
-<p>In order to add a custom social media icon you have to use the <a href="https://icomoon.io/app/">IcoMoon App</a> (free) to create a custom icon webfont. However, it is important that the generated font include all icons already in use by Hydejack. For this purpose, find the <code class="language-plaintext highlighter-rouge">selection.json</code> in <a href="https://github.com/hydecorp/hydejack/blob/v6/assets/icomoon/selection.json"><code class="language-plaintext highlighter-rouge">assets/icomoon/selection.json</code></a> and upload it to the app via “Import Icons”.
-Then, use the app to add your icon(s).
-Consult the <a href="https://icomoon.io/#docs">IcoMoon docs</a> for additional help.</p>
-
-<p>Once you’ve created and downloaded the icon font form IconMoon, replace the <code class="language-plaintext highlighter-rouge">icomoon</code> folder in <code class="language-plaintext highlighter-rouge">assets</code> in its entirety. Keep in mind that future updates of Hydejack will override this folder.</p>
-
-<h3 id="adding-the-platforms-metadata">Adding the platform’s metadata</h3>
-<p>For the second step it is necessary to add the network’s metadata to <code class="language-plaintext highlighter-rouge">_data/social.yml</code>.
-An entry looks like:</p>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">deviantart</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">DeviantArt</span>
-  <span class="na">icon</span><span class="pi">:</span> <span class="s">icon-deviantart</span>
-  <span class="na">prepend</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https://"</span>
-  <span class="na">append</span><span class="pi">:</span> <span class="s2">"</span><span class="s">.deviantart.com"</span>
-</code></pre></div></div>
-
-<dl>
-  <dt><code class="language-plaintext highlighter-rouge">name</code></dt>
-  <dd>The name of the network. Used for the title attribute and screen readers.</dd>
-  <dt><code class="language-plaintext highlighter-rouge">icon</code></dt>
-  <dd>The icon CSS class. Can be chosen during the IcoMoon creation process.</dd>
-  <dt><code class="language-plaintext highlighter-rouge">prepend</code></dt>
-  <dd>Optional. A string that is prepended to the username to form the link to the profile. If the final URL should be <code class="language-plaintext highlighter-rouge">https://&lt;username&gt;.deviantart.com</code>, this would be <code class="language-plaintext highlighter-rouge">https://</code></dd>
-  <dt><code class="language-plaintext highlighter-rouge">append</code></dt>
-  <dd>Optional. A string that is appended to the username to form the link to the profile. If the final URL should be <code class="language-plaintext highlighter-rouge">https://&lt;username&gt;.deviantart.com</code>, this would be <code class="language-plaintext highlighter-rouge">.deviantart.com</code>.</dd>
-</dl>
-
-<h2 id="how-css-is-organized-in-hydejack">How CSS is organized in Hydejack</h2>
-<p>Hydejack takes a quite unique approach to CSS, which is motivated by the ability to
-inline essential CSS rules in a <code class="language-plaintext highlighter-rouge">style</code> tag in the <code class="language-plaintext highlighter-rouge">&lt;head/&gt;</code> of a page (to increase the loading speed),
-while serving the rest in a separate file.</p>
-
-<p>The styles are written in SCSS and are located in the <code class="language-plaintext highlighter-rouge">_sass</code> folder, which looks like</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── hydejack
-│   ├── __inline__
-│   ├── __link__
-│   ├── _base.pre.scss
-│   ├── ...
-│   └── _social.pre.scss
-├── pooleparty
-│   ├── __inline__
-│   ├── __link__
-│   ├── _base.pre.scss
-│   ├── ...
-│   └── _type.pre.scss
-├── mixins.scss
-├── my-inline.scss
-├── my-style.scss
-├── syntax.scss
-└── variables.scss
-</code></pre></div></div>
-
-<p>The style rules are organized alongside components (or rather, topics) like “sidebar” and “footer”.
-Further, there are two separate frameworks, “pooleparty” and “hydejack”,
-which grew out of the original <a href="http://getpoole.com/">Poole</a> and <a href="http://hyde.getpoole.com/">Hyde</a> projects.
-Poole/party contains more general style rules, while Hyde/jack contains those that more are specific to the theme.
-However, this separation has blurred over time.</p>
-
-<p>Inside those folders, you will notice the <code class="language-plaintext highlighter-rouge">__inline__</code> and <code class="language-plaintext highlighter-rouge">__link__</code> folders.
-The unfriendly names are intentional, because their contents are generated by a script and shouldn’t be modified directly.
-The source files are located in the same folder and end with <code class="language-plaintext highlighter-rouge">.pre.scss</code>.
-They are fully valid SCSS files, but contain comments that mark which lines should be inlined and which should be fetched asynchronously.</p>
-
-<p>The rules are as follows:</p>
-<ul>
-  <li>Every line between <code class="language-plaintext highlighter-rouge">// &lt;&lt;&lt; inline </code> and <code class="language-plaintext highlighter-rouge">// &gt;&gt;&gt;</code> will be inlined</li>
-  <li>Every line between <code class="language-plaintext highlighter-rouge">// &lt;&lt;&lt; link </code> and <code class="language-plaintext highlighter-rouge">// &gt;&gt;&gt;</code> will be linked</li>
-  <li>Every line that isn’t contained in a block and ends with <code class="language-plaintext highlighter-rouge">// inline</code> will be inlined</li>
-  <li>Every line that isn’t contained in a block and ends with <code class="language-plaintext highlighter-rouge">// link</code> will be linked</li>
-  <li>Every line for which none of the above applies will be included in both.</li>
-</ul>
-
-<p>The actual splitting happen with the <code class="language-plaintext highlighter-rouge">.scripts/build-css.sh</code> script (requires node.js 8+).
-You can run the script once by using</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm run build:css
-</code></pre></div></div>
-
-<p>or rebuild the CSS on every file change</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm run watch:css
-</code></pre></div></div>
-
-<p>Note that <code class="language-plaintext highlighter-rouge">my-inline.scss</code> and <code class="language-plaintext highlighter-rouge">my-style.scss</code> are not affected by this.
-Also, since all files are valid SCSS, the splitting part is entirely optional.
-If you would like to build just one regular CSS file, add</p>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hydejack</span><span class="pi">:</span>
-  <span class="na">no_inline_css</span><span class="pi">:</span> <span class="no">true</span>
-</code></pre></div></div>
-
-<p>to your config file.</p>
-
-
+  
 </article>
+
 
 
   <clap-button class="mb6" ></clap-button>
@@ -485,6 +436,201 @@ If you would like to build just one regular CSS file, add</p>
 
 
 
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-03-Java-Generic/" class="flip-title"><span>[Java] 제너릭(Generic)의 사용 및 이해</span></a>  <time class="faded fine" datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-01-Effective-java-Day5/" class="flip-title"><span>[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</span></a>  <time class="faded fine" datetime="2021-12-01T00:00:00+09:00">01 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-30-Effective-java-Day4/" class="flip-title"><span>[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라</span></a>  <time class="faded fine" datetime="2021-11-30T00:00:00+09:00">30 Nov 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
 
 
   
