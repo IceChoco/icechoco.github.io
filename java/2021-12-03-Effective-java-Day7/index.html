@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)","dateModified":"2021-12-03T14:37:04+09:00","datePublished":"2021-12-03T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-03-Effective-java-Day7/"},"url":"https://icechoco.github.io/java/2021-12-03-Effective-java-Day7/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day 6에서는 플라이웨이트 패턴(Flyweight pattern), Java의 String Pool, 예제 소스를 참조한 장점3,4,5 이해를 통해 내용을 보완하며 item1,2를 복습하였다 (게시글 수정으로 진행함). Day 7 기록 시작!","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)","dateModified":"2021-12-04T15:09:53+09:00","datePublished":"2021-12-03T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-03-Effective-java-Day7/"},"url":"https://icechoco.github.io/java/2021-12-03-Effective-java-Day7/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day 6에서는 플라이웨이트 패턴(Flyweight pattern), Java의 String Pool, 예제 소스를 참조한 장점3,4,5 이해를 통해 내용을 보완하며 item1,2를 복습하였다 (게시글 수정으로 진행함). Day 7 기록 시작!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-03T16:25:38+09:00',
+    INDEX_KEY: 'index--2021-12-05T02:29:30+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -304,6 +304,14 @@ Left here for reference, feel free to delete.
           
           
           
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-04">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-04T15:09:53+09:00">2021-12-04</time>
+            </span>
+          
         
       
     </div>
@@ -413,6 +421,71 @@ Day 7 기록 시작!</p>
 
 <h5 id="interface-supplier">interface Supplier<T></T></h5>
 <p>JAVA 8부터 등장한 개념인 Supplier란 메서드를 ‘get()’ 하나만 가지고 있고 아무타입이나 리턴하는(T) 인터페이스이다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">supplierExam</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kd">final</span> <span class="nc">Supplier</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">helloSupplier</span> <span class="o">=</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="s">"Hello"</span><span class="o">;</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">helloSupplier</span><span class="o">.</span><span class="na">get</span><span class="o">()</span> <span class="o">+</span> <span class="s">"World!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위는 supplier 예제 소스코드이다. 스트링 타입의 Supplier를 helloSupplier라는 이름으로 생성하여 “Hello” 값을 담는다.<br />
+그리고 나중에 “Hello”라는 값을 얻고 싶을 때 <code class="language-plaintext highlighter-rouge">helloSupplier.get()</code>메소드를 사용하여 호출 할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item03</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.concurrent.TimeUnit</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.function.Supplier</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">supplierExam</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">printIfValidIndex</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="o">()-&gt;</span> <span class="n">getVeryExpensiveValue</span><span class="o">());</span><span class="c1">//3초</span>
+        <span class="n">printIfValidIndex</span><span class="o">(-</span><span class="mi">1</span><span class="o">,</span> <span class="o">()-&gt;</span> <span class="n">getVeryExpensiveValue</span><span class="o">());</span><span class="c1">//0초</span>
+        <span class="n">printIfValidIndex</span><span class="o">(-</span><span class="mi">2</span><span class="o">,</span> <span class="o">()-&gt;</span> <span class="n">getVeryExpensiveValue</span><span class="o">());</span><span class="c1">//0초</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It took "</span><span class="o">+((</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">()</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="o">)</span> <span class="o">+</span> <span class="s">" seconds."</span><span class="o">);</span> <span class="c1">//9초 -&gt; 3초</span>
+    <span class="o">}</span>
+
+    <span class="c1">//아래구문이 많은 CPU 연산을 필요로 한다고 가정해보자!</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">getVeryExpensiveValue</span><span class="o">(){</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="nc">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">){</span>
+           <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="s">"Kevin"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">printIfValidIndex</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">,</span> <span class="nc">Supplier</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">valueSupplier</span><span class="o">){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">number</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The Value is"</span><span class="o">+</span><span class="n">valueSupplier</span><span class="o">.</span><span class="na">get</span><span class="o">()+</span><span class="s">"."</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Invalid"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>getVeryExpensiveValue가 굉장히 많은 CPU 연산을 필요로 한다고 가정해보자.
+main에서 printIfValidIndex 메소드 호출 시 첫 번쨰 number가 0인 경우를 제외하고 -1, -2인 경우는 getVeryExpensiveValue를 수행할 필요가 없다.<br />
+왜냐? number가 0 이상일 때에만 valueSupplier 값이 필요하기 때문이다.</p>
+
+<p>getVeryExpensiveValue가 많은 연산을 필요로 하지 않는다면 불필요하게 호출된다해도 큰 차이는 없겠지만,
+그 반대의 경우 Supplier를 활용하여 매우 유용하게 쓸 수 있다.</p>
+
+<ol>
+  <li>int형의 number, valueSupplier는 빈 값을 주어 printIfValidIndex 호출 (Supplier는 입력 매개변수가 필요 없음)</li>
+  <li>printIfValidIndex 메소드 내부 로직 수행
+ 2-1. number가 0인 경우, valueSupplier.get()을 통해 getVeryExpensiveValue 수행됨.
+ 2-2. number가 0미만인 경우, 출력 후 종료 (getVeryExpensiveValue 수행하지 않음)</li>
+</ol>
+
+<p>흠, 매개변수가 null인데 쓰임새가 그렇게 있으려나? 했지만 이렇게 불필요한 메소드 호출이 일어나는 경우 꽤 유용하게 쓰일 수 있어보인다 :D</p>
+
+<h3 id="3-직렬화-serialization">3. 직렬화 (Serialization)</h3>
+<p><span style="color:grey"><em>추후 업데이트 예정입니다.</em></span></p>
 
 <h3 id="참고">참고</h3>
 <ul>
@@ -598,7 +671,7 @@ Day 7 기록 시작!</p>
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-03-Java-Generic/" class="flip-title"><span>[Java] 제너릭(Generic)의 사용 및 이해</span></a>  <time class="faded fine" datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-01-Effective-java-Day5/" class="flip-title"><span>[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</span></a>  <time class="faded fine" datetime="2021-12-01T00:00:00+09:00">01 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-11-30-Effective-java-Day4/" class="flip-title"><span>[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라</span></a>  <time class="faded fine" datetime="2021-11-30T00:00:00+09:00">30 Nov 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-04-Effective-java-Day8-item14/" class="flip-title"><span>[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라</span></a>  <time class="faded fine" datetime="2021-12-04T00:00:00+09:00">04 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-03-Java-Generic/" class="flip-title"><span>[Java] 제너릭(Generic)의 사용 및 이해</span></a>  <time class="faded fine" datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-01-Effective-java-Day5/" class="flip-title"><span>[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</span></a>  <time class="faded fine" datetime="2021-12-01T00:00:00+09:00">01 Dec 2021</time></li>            </ul></aside>
 
   
 

@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/</loc>
+        
+        <lastmod>2021-12-04T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://icechoco.github.io/java/2021-12-03-Java-Generic/</loc>
         
         <lastmod>2021-12-03T00:00:00+09:00</lastmod>

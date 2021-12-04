@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라 | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다." />
+<meta property="og:description" content="CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-04T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라" />
+<script type="application/ld+json">
+{"headline":"[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라","dateModified":"2021-12-05T02:18:21+09:00","datePublished":"2021-12-04T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/"},"url":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2021-12-05T02:29:30+09:00',
+  };
+  w._clapButton = true;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2021-12-04-Effective-java-Day8-item14</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day8-item14" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-04T00:00:00+09:00">04 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-05">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-05T02:18:21+09:00">2021-12-05</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다.</p>
+
+<h3 id="commpareto의-성격">CommpareTo의 성격</h3>
+<ol>
+  <li>단순히 같은지 비교하는 것에 더해 <strong>순서</strong>까지 비교할 수 있다.</li>
+  <li>제너릭하다</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="cm">/**
+     * 기준 값.compareTo( 비교대상 )
+     *
+     * @param   o – 비교대상 오브젝트
+     * @return 기준 값 &lt; 비교대상  : -1
+     *         기준 값 == 비교대상 : 0
+     *         기준 값 &gt; 비교대상  : 1
+     * @throws NullPointerException
+     * : 기준 값.compareTo(null)은 NullPointer를 발생시킴.
+     *   기준 값.equals(null)이 false를 번환하는 것과 차이가 있음.
+     * @throws ClassCastException
+     * : 이 객체와 비교할 수 없는 타입의 객체가 주어지면 발생
+     */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="no">T</span> <span class="n">o</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Comparable을 구현했다는 것은 그 클래스의 인스턴스들에는 자연스러운 순서가 있음을 뜻한다. 그렇기 때문에 Comparable을 구현한 객체들의 배열은 <code class="language-plaintext highlighter-rouge">Arrays.sort(a)</code>로 손쉽게 정렬할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WordList</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeSet</span><span class="o">&lt;&gt;();</span>
+        <span class="nc">Collections</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위는 입력값에 대해 중복 제거 후 알파벳순으로 출력하는 프로그램이다. String이 Comparable을 구현하였기 때문에 가능하다.</p>
+
+<ul>
+  <li>Comparable이 구현된 String
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">String</span>
+  <span class="kd">implements</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">Serializable</span><span class="o">,</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;,</span> <span class="nc">CharSequence</span> <span class="o">{</span>
+      <span class="o">...</span>
+      <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">String</span> <span class="n">anotherString</span><span class="o">)</span> <span class="o">{</span>
+          <span class="kt">int</span> <span class="n">len1</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+          <span class="kt">int</span> <span class="n">len2</span> <span class="o">=</span> <span class="n">anotherString</span><span class="o">.</span><span class="na">value</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+          <span class="kt">int</span> <span class="n">lim</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">len1</span><span class="o">,</span> <span class="n">len2</span><span class="o">);</span>
+          <span class="kt">char</span> <span class="n">v1</span><span class="o">[]</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+          <span class="kt">char</span> <span class="n">v2</span><span class="o">[]</span> <span class="o">=</span> <span class="n">anotherString</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+
+          <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+          <span class="k">while</span> <span class="o">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="n">lim</span><span class="o">)</span> <span class="o">{</span>
+              <span class="kt">char</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">v1</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>
+              <span class="kt">char</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">v2</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>
+              <span class="k">if</span> <span class="o">(</span><span class="n">c1</span> <span class="o">!=</span> <span class="n">c2</span><span class="o">)</span> <span class="o">{</span>
+                  <span class="k">return</span> <span class="n">c1</span> <span class="o">-</span> <span class="n">c2</span><span class="o">;</span>
+              <span class="o">}</span>
+              <span class="n">k</span><span class="o">++;</span>
+          <span class="o">}</span>
+          <span class="k">return</span> <span class="n">len1</span> <span class="o">-</span> <span class="n">len2</span><span class="o">;</span>
+      <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>사실상 자바 플랫폼 라이브러리의 모든 값 클래스와 열거타입이 Comparable을 구현했다.<br />
+알파벳, 숫자, 연대 같이 순서가 명확한 클래스를 작성하는 경우 반드시 Comparable을 구현하자.</p>
+
+<p>compareTo는 타입이 다른 객체 간의 비교도 허용한다. 그러나 대부분 비교할 객체들이 구현한 공통 인터페이스를 매개로 비교가 이루어지며, 타입이 다른 객체가 주어지면 간단히 ClassCastException을 던진다.</p>
+
+<h3 id="commpareto-메서드의-일반-규약">CommpareTo 메서드의 일반 규약</h3>
+<p>compareTo 규약을 지키지못하면 비교를 활용하는 클래스와 어울리지 못한다.<br />
+비교를 활용하는 클래스 ex)</p>
+<ul>
+  <li>TreeSet, TreeMap : 정렬된 컬렉션</li>
+  <li>Collecions, Arrays: 검색과 정렬알고리즘을 활용하는 유틸리티 클래스</li>
+</ul>
+
+<p><strong>참고</strong>: a.compareTo(b)에서 a &gt; b 는 1, a == b는 0, a &lt; b는 -1</p>
+<h4 id="1-대칭성---두-객체-참조의-순서를-바꿔-비교해도-예상한-결과가-나와야-한다">1. 대칭성 - 두 객체 참조의 순서를 바꿔 비교해도 예상한 결과가 나와야 한다.</h4>
+<p>1) a가 b보다 작으면 b는 a보다 커야한다. → a.compareTo(b)가 -1 이면 b.compareTo(a)는 1이어야 한다.<br />
+  2) Aa b와 같으면 b는 a와 같아야한다. → a.compareTo(b)가 0이면 b.compareTo(a)는 0이어야 한다.<br />
+  3) a가 b보다 크면 b는 a보다 작아야한다 → a.compareTo(b)가 1이면 b.compareTo(a)는 -1이어야 한다.</p>
+
+<h4 id="2-추이성---첫-번째가-두-번째보다-크고-두-번째가-세번째보다-크면-첫-번째는-세번째보다-커야한다">2. 추이성 - 첫 번째가 두 번째보다 크고, 두 번째가 세번째보다 크면 첫 번째는 세번째보다 커야한다</h4>
+<p>a.compareTo(b)가 1 이고 b.compareTo(c)가 1 이면 a.compareTo(c)는 1이어야 한다.</p>
+
+<h4 id="3-반사성---크기가-같은-객체들끼리는-어떤-객체와-비교하더라도-항상-같아야-한다">3. 반사성 - 크기가 같은 객체들끼리는 어떤 객체와 비교하더라도 항상 같아야 한다.</h4>
+<p>a.compareTo(b)가 0이고 a.compareTo(c)가 0이면 a.compareTo(c)도 0이다.</p>
+
+<p>이상의 세 규약은 <code class="language-plaintext highlighter-rouge">equals</code> 규약과 똑같이 <strong><span style="color:red">반사성, 대칭성, 추이성</span></strong>을 충족해야 함을 뜻한다.<br />
+그래서 주의사항도 똑같다.</p>
+
+<h4 id="권장-4-compareto-메서드로-수행한-동치성-테스트의-결과가-equals와-같아야-한다">(권장) 4. compareTo 메서드로 수행한 동치성 테스트의 결과가 equals와 같아야 한다.</h4>
+<p>이를 잘 지키면 compareTo로 줄지은 순서와 equals의 결과가 같게 된다. 같지 않아도 동작은 하지만 이 클래스의 객체를 정렬된 컬랙션에 넣으면 Collection, Set, Map 등 그 컬렉션이 구현한 인터페이스의 정의된 동작이 잘 이루어지지 않는다.</p>
+
+<h4 id="compareto-와-equals-결과-일관성을-지키지-않은-사례">compareTo 와 equals 결과 일관성을 지키지 않은 사례</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">argc</span><span class="o">){</span>
+        <span class="nc">Set</span> <span class="n">bigDecimalHashSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+        <span class="n">bigDecimalHashSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">BigDecimal</span><span class="o">(</span><span class="s">"1.0"</span><span class="o">));</span>
+        <span class="n">bigDecimalHashSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">BigDecimal</span><span class="o">(</span><span class="s">"1.00"</span><span class="o">));</span>
+
+        <span class="nc">Set</span> <span class="n">bigDecimalTreeSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeSet</span><span class="o">();</span>
+        <span class="n">bigDecimalTreeSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">BigDecimal</span><span class="o">(</span><span class="s">"1.0"</span><span class="o">));</span>
+        <span class="n">bigDecimalTreeSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">BigDecimal</span><span class="o">(</span><span class="s">"1.00"</span><span class="o">));</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bigDecimalHashSet</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>   <span class="c1">// 원소 2개 - equals 메소드로 비교하기 때문</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bigDecimalTreeSet</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>   <span class="c1">// 원소 1개 - compareTo 메소드로 비교하기 때문</span>
+
+
+    <span class="o">}</span>
+</code></pre></div></div>
+<p>동일한 객체를 삽입하였지만 HashSet과 TreeSet의 사이즈는 왜 다를까?<br />
+<strong>HashSet에서는 equals를 통한 동치비교</strong>를 진행하지만, <strong>TreeSet에서는 compareTo를 통한 동치비교</strong>를 진행하기 때문이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="nc">BigDecimal</span><span class="o">(</span><span class="s">"1.0"</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="k">new</span> <span class="nc">BigDecimal</span><span class="o">(</span><span class="s">"1.00"</span><span class="o">)));</span>    <span class="c1">// false</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="nc">BigDecimal</span><span class="o">(</span><span class="s">"1.0"</span><span class="o">).</span><span class="na">compareTo</span><span class="o">(</span><span class="k">new</span> <span class="nc">BigDecimal</span><span class="o">(</span><span class="s">"1.00"</span><span class="o">)));</span> <span class="c1">// 0 (true)</span>
+</code></pre></div></div>
+
+<p>BidDecimal 클래스에서는 equals에서는 둘을 서로 다른 객체로 인식하고, compareTo는 둘은 같은 객체(정수 1)로 인식한다는 것을 알 수 있다.</p>
+
+<h3 id="commpareto-주의해야할-점">CommpareTo 주의해야할 점</h3>
+<p>객체 지향적 추상화의 이점을 포기할 것이 아니라면, 기존 클래스를 확장한 구체 클래스에서 새로운 값 필드를 추가하여 CompareTo 규약을 만족시킬 수 있는 방법은 없다.
+단 이점을 포기한다면 compareTo 제약을 만족하면서 새로운 값 필드를 추가할 수 있는 방법이 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item14.composition</span><span class="o">;</span>
+
+<span class="c1">// 단순한 불변 2차원 정수 점(point) 클래스 (56쪽)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Point</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">Point</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">y</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Point</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">Point</span> <span class="n">point</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">point</span><span class="o">.</span><span class="na">x</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">y</span><span class="o">,</span> <span class="n">point</span><span class="o">.</span><span class="na">y</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ColorPoint</span> <span class="n">cp1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">(</span><span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">),</span><span class="mi">3</span><span class="o">);</span>
+        <span class="nc">ColorPoint</span> <span class="n">cp2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">(</span><span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">),</span><span class="mi">4</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cp1</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">cp2</span><span class="o">));</span> <span class="c1">//출력 -1. 즉, cp1 &lt; cp2</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">//View 메서드(asPoint)를 제공</span>
+<span class="kd">class</span> <span class="nc">ColorPoint</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">ColorPoint</span><span class="o">&gt;{</span>
+    <span class="kd">private</span> <span class="nc">Point</span> <span class="n">point</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">color</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">ColorPoint</span><span class="o">(</span><span class="nc">Point</span> <span class="n">point</span><span class="o">,</span> <span class="kt">int</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">point</span> <span class="o">=</span> <span class="n">point</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Point</span> <span class="nf">asPoint</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">point</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">ColorPoint</span> <span class="n">colorPoint</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">point</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">colorPoint</span><span class="o">.</span><span class="na">point</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">color</span><span class="o">,</span> <span class="n">colorPoint</span><span class="o">.</span><span class="na">color</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>따라서 이와같이 Point와 독립된 클래스를 만들고, ColorPoint 클래스에 Point 클래스의 인스턴스를 가리키는 필드를 둔 다음 내부 인스턴스를 반환하는 <strong>뷰 메서드</strong>를 제공하면 된다.<br />
+추상화의 이점을 포기하는 대신 compareTo의 일반 규약을 지킬 수 있다 (자세한 내용 item10 참고)</p>
+
+<h3 id="compareto-작성요령">CompareTo 작성요령</h3>
+<ol>
+  <li>comparable은 타입을 인수로 받는 제너릭 인터페이스 이다.
+    <ul>
+      <li>compareTo 메서드의 인수타입은 컴파일타임에 정해진다.</li>
+      <li>입력 인수의 타입을 확인하거나 형변환 할 필요가 없다.</li>
+      <li>인수의 타입이 잘못됐다면 컴파일 자체가 되지 않는다.</li>
+    </ul>
+  </li>
+  <li>null을 인수로 넣어 호출하면 NullPointerException을 던져야 한다.
+    <ul>
+      <li>실제로도 null이 멤버에 접근하려는 순간 이 예외가 던져진다.</li>
+    </ul>
+  </li>
+  <li>객체 참조 필드를 비교할 경우, compareTo를 재귀적으로 호출한다.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">ColorPoint</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">ColorPoint</span><span class="o">&gt;{</span>
+ <span class="kd">private</span> <span class="nc">Point</span> <span class="n">point</span><span class="o">;</span> <span class="c1">//객체참조필드 : 클래스 내 변수로 선언된 객체</span>
+ <span class="kd">private</span> <span class="kt">int</span> <span class="n">color</span><span class="o">;</span>
+ <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>아래 두 가지 경우는 Comparator 인터페이스를 사용한다.<br />
+  1) 클래스 내 변수 중 comparable을 구현하지 않은 필드가 있는 경우<br />
+  2) 표준이 아닌 순서로 비교해야하는 객체가 섞여 있는 경우</p>
+
+<p>Comparator 인터페이스 구현은 직접 해도되고 또는 자바가 제공하는 것 중 하나를 골라서 사용하면 된다. 아래는 자바에서 제공하는 Comparator 메서드를 사용한 예시이다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">CaseInsensitiveString</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">CaseInsensitiveString</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="c1">// 자바가 제공하는 비교자를 사용해 클래스를 비교한다.</span>
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">CaseInsensitiveString</span> <span class="n">cis</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">CASE_INSENSITIVE_ORDER</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">cis</span><span class="o">.</span><span class="na">s</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>CaseInsensitiveString 클래스가 <code class="language-plaintext highlighter-rouge">Comparable&lt;CaseInsensitiveString&gt;</code>를 구현했다.<br />
+CaseInsensitiveString의 참조는 CaseInsensitiveString 참조와만 비교할 수 있다는 뜻이며, Comparable을 구현할 때 일반적으로 쓰는 패턴이다.</p>
+
+<h3 id="compareto-메서드에서-와-를-사용하는-이전-방식은-쓰지-마라">compareTo 메서드에서 <code class="language-plaintext highlighter-rouge">&lt;</code>와 <code class="language-plaintext highlighter-rouge">&gt;</code>를 사용하는 이전 방식은 쓰지 마라</h3>
+<p>1) 자바 7 이전</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="nc">Float</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">);</span>
+    <span class="nc">Double</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">);</span>
+</code></pre></div></div>
+<p>2) 자바 7 이후 (권고사항)</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">);</span>
+   <span class="nc">Float</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">);</span>
+   <span class="nc">Double</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>compare를 이용한 것 보다 관계연산자를 이용한 방식이 소스가 길고 보기에 안좋다. 또 이 방식은 null 관련 오류를 일으킬 수 있다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyInteger</span> <span class="o">{</span>
+
+    <span class="c1">// 1. 자바 7 이전 : 관계연산자 &lt;, &gt; 사용</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">RelationalMyInteger</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">RelationalMyInteger</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="nc">Integer</span> <span class="n">integer</span><span class="o">;</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">RelationalMyInteger</span> <span class="n">relationalMyInteger</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">integer</span> <span class="o">==</span> <span class="n">relationalMyInteger</span><span class="o">.</span><span class="na">integer</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">integer</span> <span class="o">&gt;</span> <span class="n">relationalMyInteger</span><span class="o">.</span><span class="na">integer</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 2. 자바 7 이후 : compare 이용 비교</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">CompareMyInteger</span> <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">CompareMyInteger</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="nc">Integer</span> <span class="n">integer</span><span class="o">;</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">CompareMyInteger</span> <span class="n">compareMyInteger</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">integer</span><span class="o">,</span> <span class="n">compareMyInteger</span><span class="o">.</span><span class="na">integer</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+        <span class="nc">RelationalMyInteger</span> <span class="n">relationalMyInteger1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RelationalMyInteger</span><span class="o">();</span>
+        <span class="nc">RelationalMyInteger</span> <span class="n">relationalMyInteger2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RelationalMyInteger</span><span class="o">();</span>
+
+        <span class="c1">// 1. 자바 7 이전 : 관계연산자</span>
+        <span class="c1">// 출력: 0</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">relationalMyInteger1</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">relationalMyInteger2</span><span class="o">));</span>
+
+        <span class="nc">CompareMyInteger</span> <span class="n">compareMyInteger1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CompareMyInteger</span><span class="o">();</span>
+        <span class="nc">CompareMyInteger</span> <span class="n">compareMyInteger2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CompareMyInteger</span><span class="o">();</span>
+
+        <span class="c1">// 2. 자바 7 이후 : compare 이용 비교</span>
+        <span class="c1">// Exception in thread "main" java.lang.NullPointerException</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">compareMyInteger1</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">compareMyInteger2</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>정적 메서드 compare에 null 값이 사용되는 경우 정상적으로 NullPointerException이 던져지지만,<br />
+관계연산자 비교에서는 정상적으로 컴파일이 진행되고 서로 같다는 결과를 반환한다.</p>
+
+<h3 id="핵심필드가-여러개라면-가장-핵심적인-것부터-비교하자">핵심필드가 여러개라면 가장 핵심적인 것부터 비교하자</h3>
+<p>가장 핵심적인 것부터 비교하다가 비교 결과가 0이 아니라면 그 즉시 결과를 곧장 반환하자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span> <span class="o">(</span><span class="nc">PhoneNumber</span> <span class="n">pn</span><span class="o">){</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">Short</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">areaCode</span><span class="o">,</span> <span class="n">pn</span><span class="o">.</span><span class="na">areaCode</span><span class="o">);</span>  <span class="c1">//가장 중요한 필드</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>   <span class="c1">// 여기서 비교가 끝날 수도 있다.</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nc">Short</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">prefix</span><span class="o">,</span> <span class="n">pn</span><span class="o">.</span><span class="na">prefix</span><span class="o">);</span>      <span class="c1">//두 번째로 중요한 필드</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="nc">Short</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">lineNum</span><span class="o">,</span> <span class="n">pn</span><span class="o">.</span><span class="na">lineNum</span><span class="o">);</span><span class="c1">//세 번째로 중요한 필드</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="비교자-생성-메서드를-활용한-연쇄-비교자-생성">비교자 생성 메서드를 활용한 연쇄 비교자 생성</h3>
+<p>Comparator 생성 메서드 패턴을 이용한다면 보다 읽기 쉽고 간결한 코드가 될 수 있으나 약간의 성능저하가 뒤따르니 유의하자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Comparator</span><span class="o">&lt;</span><span class="nc">PhoneNumber</span><span class="o">&gt;</span> <span class="no">COMPARATOR</span> <span class="o">=</span>
+            <span class="n">comparingInt</span><span class="o">((</span><span class="nc">PhoneNumber</span> <span class="n">pn</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">pn</span><span class="o">.</span><span class="na">areaCode</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">thenComparingInt</span><span class="o">(</span><span class="n">pn</span> <span class="o">-&gt;</span> <span class="n">pn</span><span class="o">.</span><span class="na">prefix</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">thenComparingInt</span><span class="o">(</span><span class="n">pn</span> <span class="o">-&gt;</span> <span class="n">pn</span><span class="o">.</span><span class="na">lineNum</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="nc">PhoneNumber</span> <span class="n">pn</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="no">COMPARATOR</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">pn</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<h4 id="comparingintint-타입의-키-추출-함수">comparingInt(int 타입의 키 추출 함수)</h4>
+<p>객체 참조를 int 타입 키에 매핑하는 키 추출 함수를 인수로 받아서, 그 키를 기준으로 순서를 정하는 비교자를 반환하는 정적메서드</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">default</span> <span class="nc">Comparator</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nf">thenComparingInt</span><span class="o">(</span><span class="nc">ToIntFunction</span><span class="o">&lt;?</span> <span class="kd">super</span> <span class="no">T</span><span class="o">&gt;</span> <span class="n">keyExtractor</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">thenComparing</span><span class="o">(</span><span class="n">comparingInt</span><span class="o">(</span><span class="n">keyExtractor</span><span class="o">));</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<p>앞의 예에서 comparingInt는 람다를 인수로 받아 areaCode의 순서를 정하는 <code class="language-plaintext highlighter-rouge">Comparator&lt;PhoneNumber&gt;</code>를 반환한다.<br />
+이 때 Java 컴파일러의 타입 추론을 돕기 위해 입력 인수의 타입을 명시해줘야 한다.</p>
+
+<h4 id="thencomparingintint-타입의-추출자-함수">thenComparingInt(int 타입의 추출자 함수)</h4>
+<p>Comparator의 인스턴스 메서드로, int 키 추출자 함수를 입력받아 다시 비교자를 반환한다.<br />
+이때 첫 번쨰 비교자를 적용한 다음 새로 추출한 키로 추가 비교를 수행한다.</p>
+
+<p>원하는 만큼 연달아 호출이 가능하며, 입력인수의 타입을 명시하지 않는다.</p>
+
+<p>이 외에도 Comparator는 보조 생성 메서드가 많고 <strong>자바의 숫자용 기본 타입을 모두 커버</strong>한다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">.</span><span class="na">comparingInt</span><span class="o">(</span><span class="nc">ToIntFunction</span> <span class="n">keyExtractor</span><span class="o">);</span>                       <span class="c1">// int, short</span>
+<span class="o">.</span><span class="na">comparingLong</span><span class="o">(</span><span class="nc">ToLongFunction</span> <span class="n">keyExtractor</span><span class="o">);</span>                     <span class="c1">// long</span>
+<span class="o">.</span><span class="na">comparingDouble</span><span class="o">(</span><span class="nc">ToDoubleFunction</span> <span class="n">keyExtractor</span><span class="o">);</span>                 <span class="c1">// float, double</span>
+<span class="c1">// 객체 참조용 비교자 생성 메서드</span>
+<span class="o">.</span><span class="na">comparing</span><span class="o">(</span><span class="nc">Function</span> <span class="n">keyExtractor</span><span class="o">);</span>                               <span class="c1">// 키의 자연적 순서를 이용한 비교</span>
+<span class="o">.</span><span class="na">comparing</span><span class="o">(</span><span class="nc">Function</span> <span class="n">keyExtractor</span><span class="o">,</span> <span class="nc">Comparator</span> <span class="n">keyComparator</span><span class="o">);</span>     <span class="c1">// 비교자 추가</span>
+<span class="c1">// 객체 참조용 보조 비교자 생성 메서드</span>
+<span class="o">.</span><span class="na">thenComparing</span><span class="o">(</span><span class="nc">Comparator</span> <span class="n">keyComparator</span><span class="o">);</span>                        <span class="c1">// 원본 키에 보조 비교자 추가</span>
+<span class="o">.</span><span class="na">thenComparing</span><span class="o">(</span><span class="nc">Function</span> <span class="n">keyExtractor</span><span class="o">);</span>                           <span class="c1">// 키의 자연적 순서를 비용한 보조 비교</span>
+<span class="o">.</span><span class="na">thenComparing</span><span class="o">(</span><span class="nc">Function</span> <span class="n">keyExtractor</span><span class="o">,</span> <span class="nc">Comparator</span> <span class="n">keyComparator</span><span class="o">);</span> <span class="c1">// 키와 비교자 모두 추가</span>
+</code></pre></div></div>
+
+<h3 id="값의-차를-기준으로-반환하는-compareto--compare-메소드">‘값의 차’를 기준으로 반환하는 compareTo / compare 메소드</h3>
+<p>첫 번째 값이 두번째 값보다 작으면 음수를, 두 값이 같으면 0을, 첫 번째 값이 크면 양수를 반환하는 compareTo / compare 메소드를 마주할 수 있다.</p>
+<ul>
+  <li>해시코드 값의 차를 기준으로 하는 비교자
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="nc">Comparator</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="n">hashCodeOrder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Comparator</span><span class="o">&lt;&gt;()</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o1</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">o1</span><span class="o">.</span><span class="na">hashCode</span><span class="o">()</span> <span class="o">-</span> <span class="n">o2</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>위 방식은 첫 번째가 두 번째보다 크고, 두 번째가 세번째보다 크면 첫 번째는 세번째보다 커야하는 추이성을 위배한다. 이 방식은 사용하면 안되는 이유는 2가지 이다.</p>
+<ol>
+  <li>정수 overflow 가능성</li>
+  <li>IEEE 754 부동소수점 계산 방식에 따른 오류 가능성</li>
+</ol>
+
+<p>아래 두 방식 중 하나를 사용하자</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 정적 compare 메서드를 활용한 비교자</span>
+<span class="kd">static</span> <span class="nc">Comparator</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="n">hashCodeOrder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Comparator</span><span class="o">&lt;&gt;()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o1</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">o1</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(),</span> <span class="n">o2</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 비교자 생성 메서드를 활용한 비교자</span>
+<span class="kd">static</span> <span class="nc">Comparator</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="n">hashCodeOrder</span> <span class="o">=</span>
+        <span class="nc">Comparator</span><span class="o">.</span><span class="na">comparingInt</span><span class="o">(</span><span class="n">o</span> <span class="o">-&gt;</span> <span class="n">o</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
+</code></pre></div></div>
+
+<h3 id="결론">결론</h3>
+<ol>
+  <li><strong>순서를 고려해야하는 값 클래스를 작성한다면 꼭 Comparable 인터페이스를 구현하자</strong>
+    <ul>
+      <li>이를 통해 인스턴스들을 쉽게 정렬, 검색, 비교 기능을 제공하는 컬렉션과 어우러지게 사용 가능하다.</li>
+    </ul>
+  </li>
+  <li><strong>compareTo 메서드에서 필드 값 비교 시 <code class="language-plaintext highlighter-rouge">&lt;</code>와 <code class="language-plaintext highlighter-rouge">&gt;</code>연산자는 사용하지 말자</strong>
+    <ul>
+      <li>그 대안으로 아래 2가지 중 하나를 사용하자.
+        <ul>
+          <li>박싱된 기본 타입 클래스가 제공하는 compare 메서드</li>
+          <li>Comparator 인터페이스가 제공하는 비교자 생성 메서드</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+  
+</article>
+
+
+
+  <clap-button class="mb6" ></clap-button>
+  
+  
+    <p class="message centered border-radius" >
+      <span style="display:block;margin-bottom:.5rem;">This is a preview of <a href="https://getclaps.app">Clap Button</a>, a new feedback and analytics tools for Hydejack, built by yours truly.</span>
+      <span style="display:block;margin-bottom:.5rem;">You can try it out on <code>localhost</code> for free, but it will be removed (together with this message) when building with <code>JEKYLL_ENV=production</code>.</span>
+      <span style="display:block;margin-bottom:.5rem;">To use Clap Button on your site, get a <a href="https://getclaps.app#pricing">subscription</a><br/>and set <code>clap_button: true</code> in your config file.</span>
+    </p>
+  
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-03-Java-Generic/" class="flip-title"><span>[Java] 제너릭(Generic)의 사용 및 이해</span></a>  <time class="faded fine" datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-03-Effective-java-Day7/" class="flip-title"><span>[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)</span></a>  <time class="faded fine" datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-01-Effective-java-Day5/" class="flip-title"><span>[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</span></a>  <time class="faded fine" datetime="2021-12-01T00:00:00+09:00">01 Dec 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

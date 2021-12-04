@@ -1,6 +1,15 @@
 [
   
     {
+      "title"      : "[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2021.12.04",
+      "urlString"  : "/java/2021-12-04-Effective-java-Day8-item14/",
+      "url"        : "/java/2021-12-04-Effective-java-Day8-item14/"
+    },
+  
+    {
       "title"      : "[Java] 제너릭(Generic)의 사용 및 이해",
       "categories" : "java",
       "tags"       : "java",
