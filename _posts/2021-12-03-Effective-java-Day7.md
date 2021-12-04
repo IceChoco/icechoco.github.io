@@ -91,6 +91,71 @@ public class Singleton2 {
 
 ##### interface Supplier<T>
 JAVA 8부터 등장한 개념인 Supplier란 메서드를 'get()' 하나만 가지고 있고 아무타입이나 리턴하는(T) 인터페이스이다.
+```java
+public class supplierExam {
+    public static void main(String[] args){
+        final Supplier<String> helloSupplier = () -> "Hello";
+
+        System.out.println(helloSupplier.get() + "World!");
+    }
+}
+```
+
+위는 supplier 예제 소스코드이다. 스트링 타입의 Supplier를 helloSupplier라는 이름으로 생성하여 "Hello" 값을 담는다.  
+그리고 나중에 "Hello"라는 값을 얻고 싶을 때 `helloSupplier.get()`메소드를 사용하여 호출 할 수 있다.
+
+```java
+package item03;
+
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
+
+public class supplierExam {
+    public static void main(String[] args){
+        long start = System.currentTimeMillis();
+        printIfValidIndex(0, ()-> getVeryExpensiveValue());//3초
+        printIfValidIndex(-1, ()-> getVeryExpensiveValue());//0초
+        printIfValidIndex(-2, ()-> getVeryExpensiveValue());//0초
+        System.out.println("It took "+((System.currentTimeMillis() - start) / 1000) + " seconds."); //9초 -> 3초
+    }
+
+    //아래구문이 많은 CPU 연산을 필요로 한다고 가정해보자!
+    private static String getVeryExpensiveValue(){
+        try{
+            TimeUnit.SECONDS.sleep(3);
+        }catch (InterruptedException e){
+           e.printStackTrace();
+        }
+        return "Kevin";
+    }
+
+    private static void printIfValidIndex(int number, Supplier<String> valueSupplier){
+        if(number>=0){
+            System.out.println("The Value is"+valueSupplier.get()+".");
+        }else{
+            System.out.println("Invalid");
+        }
+    }
+
+}
+```
+
+getVeryExpensiveValue가 굉장히 많은 CPU 연산을 필요로 한다고 가정해보자.
+main에서 printIfValidIndex 메소드 호출 시 첫 번쨰 number가 0인 경우를 제외하고 -1, -2인 경우는 getVeryExpensiveValue를 수행할 필요가 없다.  
+왜냐? number가 0 이상일 때에만 valueSupplier 값이 필요하기 때문이다.
+
+getVeryExpensiveValue가 많은 연산을 필요로 하지 않는다면 불필요하게 호출된다해도 큰 차이는 없겠지만,
+그 반대의 경우 Supplier를 활용하여 매우 유용하게 쓸 수 있다.  
+
+1. int형의 number, valueSupplier는 빈 값을 주어 printIfValidIndex 호출 (Supplier는 입력 매개변수가 필요 없음)
+2. printIfValidIndex 메소드 내부 로직 수행
+    2-1. number가 0인 경우, valueSupplier.get()을 통해 getVeryExpensiveValue 수행됨.
+    2-2. number가 0미만인 경우, 출력 후 종료 (getVeryExpensiveValue 수행하지 않음)  
+
+흠, 매개변수가 null인데 쓰임새가 그렇게 있으려나? 했지만 이렇게 불필요한 메소드 호출이 일어나는 경우 꽤 유용하게 쓰일 수 있어보인다 :D
+
+### 3. 직렬화 (Serialization)
+<span style="color:grey">*추후 업데이트 예정입니다.*</span>
 
 ### 참고
 - [[이팩티브 자바] #3 싱글톤을 만드는 여러가지 방법 그중에 최선은?](https://www.youtube.com/watch?v=xBVPChbtUhM&t=534s)
