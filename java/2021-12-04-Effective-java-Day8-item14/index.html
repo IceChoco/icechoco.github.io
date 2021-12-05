@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라","dateModified":"2021-12-05T02:18:21+09:00","datePublished":"2021-12-04T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/"},"url":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다.","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라","dateModified":"2021-12-05T20:42:50+09:00","datePublished":"2021-12-04T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/"},"url":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-05T02:29:30+09:00',
+    INDEX_KEY: 'index--2021-12-05T23:27:15+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -309,7 +309,7 @@ Left here for reference, feel free to delete.
             <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-05">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-05T02:18:21+09:00">2021-12-05</time>
+              <time datetime="2021-12-05T20:42:50+09:00">2021-12-05</time>
             </span>
           
         
@@ -331,7 +331,7 @@ Left here for reference, feel free to delete.
   
     <p>CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다.</p>
 
-<h3 id="commpareto의-성격">CommpareTo의 성격</h3>
+<h3 id="compareto의-성격">compareTo의 성격</h3>
 <ol>
   <li>단순히 같은지 비교하는 것에 더해 <strong>순서</strong>까지 비교할 수 있다.</li>
   <li>제너릭하다</li>
@@ -342,9 +342,9 @@ Left here for reference, feel free to delete.
      * 기준 값.compareTo( 비교대상 )
      *
      * @param   o – 비교대상 오브젝트
-     * @return 기준 값 &lt; 비교대상  : -1
+     * @return 기준 값 &lt; 비교대상  : a negative integer
      *         기준 값 == 비교대상 : 0
-     *         기준 값 &gt; 비교대상  : 1
+     *         기준 값 &gt; 비교대상  : positive integer
      * @throws NullPointerException
      * : 기준 값.compareTo(null)은 NullPointer를 발생시킴.
      *   기준 값.equals(null)이 false를 번환하는 것과 차이가 있음.
@@ -401,7 +401,7 @@ Left here for reference, feel free to delete.
 
 <p>compareTo는 타입이 다른 객체 간의 비교도 허용한다. 그러나 대부분 비교할 객체들이 구현한 공통 인터페이스를 매개로 비교가 이루어지며, 타입이 다른 객체가 주어지면 간단히 ClassCastException을 던진다.</p>
 
-<h3 id="commpareto-메서드의-일반-규약">CommpareTo 메서드의 일반 규약</h3>
+<h3 id="compareto-메서드의-일반-규약">compareTo 메서드의 일반 규약</h3>
 <p>compareTo 규약을 지키지못하면 비교를 활용하는 클래스와 어울리지 못한다.<br />
 비교를 활용하는 클래스 ex)</p>
 <ul>
@@ -452,9 +452,10 @@ Left here for reference, feel free to delete.
 
 <p>BidDecimal 클래스에서는 equals에서는 둘을 서로 다른 객체로 인식하고, compareTo는 둘은 같은 객체(정수 1)로 인식한다는 것을 알 수 있다.</p>
 
-<h3 id="commpareto-주의해야할-점">CommpareTo 주의해야할 점</h3>
-<p>객체 지향적 추상화의 이점을 포기할 것이 아니라면, 기존 클래스를 확장한 구체 클래스에서 새로운 값 필드를 추가하여 CompareTo 규약을 만족시킬 수 있는 방법은 없다.
-단 이점을 포기한다면 compareTo 제약을 만족하면서 새로운 값 필드를 추가할 수 있는 방법이 있다.</p>
+<h3 id="compareto-주의해야할-점">compareTo 주의해야할 점</h3>
+
+<p>상속을 포기할 것이 아니라면, 기존 클래스를 확장한 구체 클래스에서 새로운 값 필드를 추가하여 CompareTo 규약을 만족시킬 수 있는 방법은 없다.
+단 포기한다면 compareTo 제약을 만족하면서 새로운 값 필드를 추가할 수 있는 방법이 있다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item14.composition</span><span class="o">;</span>
 
@@ -511,7 +512,7 @@ Left here for reference, feel free to delete.
 </code></pre></div></div>
 
 <p>따라서 이와같이 Point와 독립된 클래스를 만들고, ColorPoint 클래스에 Point 클래스의 인스턴스를 가리키는 필드를 둔 다음 내부 인스턴스를 반환하는 <strong>뷰 메서드</strong>를 제공하면 된다.<br />
-추상화의 이점을 포기하는 대신 compareTo의 일반 규약을 지킬 수 있다 (자세한 내용 item10 참고)</p>
+상속을 포기하는 대신 compareTo의 일반 규약을 지킬 수 있다 (자세한 내용 item10 참고)</p>
 
 <h3 id="compareto-작성요령">CompareTo 작성요령</h3>
 <ol>
@@ -571,7 +572,7 @@ CaseInsensitiveString의 참조는 CaseInsensitiveString 참조와만 비교할 
    <span class="nc">Double</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">);</span>
 </code></pre></div></div>
 
-<p>compare를 이용한 것 보다 관계연산자를 이용한 방식이 소스가 길고 보기에 안좋다. 또 이 방식은 null 관련 오류를 일으킬 수 있다.</p>
+<p>관계연산자를 이용한 방식은 휴먼에러를 발생 시킬 수 있고, null 관련 오류를 일으킬 수 있다.</p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyInteger</span> <span class="o">{</span>
 
     <span class="c1">// 1. 자바 7 이전 : 관계연산자 &lt;, &gt; 사용</span>
@@ -905,7 +906,7 @@ CaseInsensitiveString의 참조는 CaseInsensitiveString 참조와만 비교할 
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-03-Java-Generic/" class="flip-title"><span>[Java] 제너릭(Generic)의 사용 및 이해</span></a>  <time class="faded fine" datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-03-Effective-java-Day7/" class="flip-title"><span>[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)</span></a>  <time class="faded fine" datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-01-Effective-java-Day5/" class="flip-title"><span>[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</span></a>  <time class="faded fine" datetime="2021-12-01T00:00:00+09:00">01 Dec 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-05-Effective-java-Day9-item3-part2/" class="flip-title"><span>[Effective Java] Day 9 - Item 3, 4, 5 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(3), 인스턴스화를 막으려거든 private 생성자를 사용하라, 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라</span></a>  <time class="faded fine" datetime="2021-12-05T00:00:00+09:00">05 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-05-What-is-Serialization-of-Java/" class="flip-title"><span>[Java] 직렬화(Serialization)와 마커 인터페이스(Marker Interface)</span></a>  <time class="faded fine" datetime="2021-12-05T00:00:00+09:00">05 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-05-IntelliJ-Shortcut-keys/" class="flip-title"><span>[IntelliJ] 단축키 정리</span></a>  <time class="faded fine" datetime="2021-12-05T00:00:00+09:00">05 Dec 2021</time></li>            </ul></aside>
 
   
 

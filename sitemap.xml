@@ -4,9 +4,73 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://icechoco.github.io/java/2021-12-05-Effective-java-Day9-item3-part2/</loc>
+        
+        <lastmod>2021-12-05T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>https://icechoco.github.io/java/2021-12-05-What-is-Serialization-of-Java/</loc>
+        
+        <lastmod>2021-12-05T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>https://icechoco.github.io/java/2021-12-05-IntelliJ-Shortcut-keys/</loc>
+        
+        <lastmod>2021-12-05T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/</loc>
         
         <lastmod>2021-12-04T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>https://icechoco.github.io/java/2021-12-03-Effective-java-Day7-item3/</loc>
+        
+        <lastmod>2021-12-03T00:00:00+09:00</lastmod>
         
 
         
@@ -36,23 +100,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/java/2021-12-03-Effective-java-Day7/</loc>
-        
-        <lastmod>2021-12-03T00:00:00+09:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>https://icechoco.github.io/java/2021-12-01-Effective-java-Day5/</loc>
+        <loc>https://icechoco.github.io/java/2021-12-01-Effective-java-Day5-item2-and-item3/</loc>
         
         <lastmod>2021-12-01T00:00:00+09:00</lastmod>
         
@@ -68,7 +116,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/java/2021-11-30-Effective-java-Day4/</loc>
+        <loc>https://icechoco.github.io/java/2021-11-30-Effective-java-Day4-item1-and-item2/</loc>
         
         <lastmod>2021-11-30T00:00:00+09:00</lastmod>
         
@@ -84,7 +132,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/java/2021-11-29-Effective-java-Day3/</loc>
+        <loc>https://icechoco.github.io/java/2021-11-29-Effective-java-Day3-item1/</loc>
         
         <lastmod>2021-11-29T00:00:00+09:00</lastmod>
         
@@ -100,7 +148,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/java/2021-11-28-Effective-java-Day2/</loc>
+        <loc>https://icechoco.github.io/java/2021-11-28-Effective-java-Day2-Intro-and-item1/</loc>
         
         <lastmod>2021-11-28T00:00:00+09:00</lastmod>
         
@@ -116,7 +164,7 @@
     </url>
     
     <url>
-        <loc>https://icechoco.github.io/java/2021-11-27-Effective-java-Day1/</loc>
+        <loc>https://icechoco.github.io/java/2021-11-27-Effective-java-Day1-Intro/</loc>
         
         <lastmod>2021-11-27T00:00:00+09:00</lastmod>
         
