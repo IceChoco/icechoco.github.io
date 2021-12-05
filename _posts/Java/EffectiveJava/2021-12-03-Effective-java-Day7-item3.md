@@ -148,13 +148,18 @@ getVeryExpensiveValue가 많은 연산을 필요로 하지 않는다면 불필�
 그 반대의 경우 Supplier를 활용하여 매우 유용하게 쓸 수 있다.  
 
 1. int형의 number, valueSupplier는 빈 값을 주어 printIfValidIndex 호출 (Supplier는 입력 매개변수가 필요 없음)
-2. printIfValidIndex 메소드 내부 로직 수행
-    2-1. number가 0인 경우, valueSupplier.get()을 통해 getVeryExpensiveValue 수행됨.
+2. printIfValidIndex 메소드 내부 로직 수행  
+    2-1. number가 0인 경우, valueSupplier.get()을 통해 getVeryExpensiveValue 수행됨.  
     2-2. number가 0미만인 경우, 출력 후 종료 (getVeryExpensiveValue 수행하지 않음)  
 
 흠, 매개변수가 null인데 쓰임새가 그렇게 있으려나? 했지만 이렇게 불필요한 메소드 호출이 일어나는 경우 꽤 유용하게 쓰일 수 있어보인다 :D
 
 ### 3. 직렬화 (Serialization)
+위에서 살펴본 두 방식 모두 직렬화하려면 역 직렬화할 때 마다 새로운 인스턴스가 만들어진다. 이 문제를 해결하려면 모든 인스턴스 필드에 `transient`를 추가(직렬화 하지 않겠다)하고 `readResolve` 메소드를 다음과 같이 구현하면 된다.
+
+
+
+
 <span style="color:grey">*추후 업데이트 예정입니다.*</span>
 
 ### 참고

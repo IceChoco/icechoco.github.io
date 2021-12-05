@@ -8,7 +8,7 @@ comments: true
 
 CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다.
 
-### CommpareTo의 성격
+### compareTo의 성격
 1. 단순히 같은지 비교하는 것에 더해 **순서**까지 비교할 수 있다.
 2. 제너릭하다
 
@@ -18,9 +18,9 @@ public interface Comparable<T> {
      * 기준 값.compareTo( 비교대상 )
      *
      * @param   o – 비교대상 오브젝트
-     * @return 기준 값 < 비교대상  : -1
+     * @return 기준 값 < 비교대상  : a negative integer
      *         기준 값 == 비교대상 : 0
-     *         기준 값 > 비교대상  : 1
+     *         기준 값 > 비교대상  : positive integer
      * @throws NullPointerException
      * : 기준 값.compareTo(null)은 NullPointer를 발생시킴.
      *   기준 값.equals(null)이 false를 번환하는 것과 차이가 있음.
@@ -76,7 +76,7 @@ public final class String
  
 compareTo는 타입이 다른 객체 간의 비교도 허용한다. 그러나 대부분 비교할 객체들이 구현한 공통 인터페이스를 매개로 비교가 이루어지며, 타입이 다른 객체가 주어지면 간단히 ClassCastException을 던진다.
  
-### CommpareTo 메서드의 일반 규약
+### compareTo 메서드의 일반 규약
 compareTo 규약을 지키지못하면 비교를 활용하는 클래스와 어울리지 못한다.  
 비교를 활용하는 클래스 ex)  
 - TreeSet, TreeMap : 정렬된 컬렉션
@@ -127,9 +127,10 @@ a.compareTo(b)가 0이고 a.compareTo(c)가 0이면 a.compareTo(c)도 0이다.
 
 BidDecimal 클래스에서는 equals에서는 둘을 서로 다른 객체로 인식하고, compareTo는 둘은 같은 객체(정수 1)로 인식한다는 것을 알 수 있다.
 
-### CommpareTo 주의해야할 점
-객체 지향적 추상화의 이점을 포기할 것이 아니라면, 기존 클래스를 확장한 구체 클래스에서 새로운 값 필드를 추가하여 CompareTo 규약을 만족시킬 수 있는 방법은 없다.
-단 이점을 포기한다면 compareTo 제약을 만족하면서 새로운 값 필드를 추가할 수 있는 방법이 있다.
+### compareTo 주의해야할 점
+
+상속을 포기할 것이 아니라면, 기존 클래스를 확장한 구체 클래스에서 새로운 값 필드를 추가하여 CompareTo 규약을 만족시킬 수 있는 방법은 없다.
+단 포기한다면 compareTo 제약을 만족하면서 새로운 값 필드를 추가할 수 있는 방법이 있다.
 
 ```java
 package item14.composition;
@@ -187,7 +188,7 @@ class ColorPoint implements Comparable<ColorPoint>{
 ```
 
 따라서 이와같이 Point와 독립된 클래스를 만들고, ColorPoint 클래스에 Point 클래스의 인스턴스를 가리키는 필드를 둔 다음 내부 인스턴스를 반환하는 **뷰 메서드**를 제공하면 된다.  
-추상화의 이점을 포기하는 대신 compareTo의 일반 규약을 지킬 수 있다 (자세한 내용 item10 참고)
+상속을 포기하는 대신 compareTo의 일반 규약을 지킬 수 있다 (자세한 내용 item10 참고)
  
 ### CompareTo 작성요령
 1. comparable은 타입을 인수로 받는 제너릭 인터페이스 이다.
@@ -242,7 +243,7 @@ CaseInsensitiveString의 참조는 CaseInsensitiveString 참조와만 비교할 
    Double.compare(a,b);
 ```
 
-compare를 이용한 것 보다 관계연산자를 이용한 방식이 소스가 길고 보기에 안좋다. 또 이 방식은 null 관련 오류를 일으킬 수 있다.
+관계연산자를 이용한 방식은 휴먼에러를 발생 시킬 수 있고, null 관련 오류를 일으킬 수 있다.
 ```java
 public class MyInteger {
 
