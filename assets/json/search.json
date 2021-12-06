@@ -1,12 +1,21 @@
 [
   
     {
+      "title"      : "[Effective Java] Day 10 - Item 5 :: 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라 (2)",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2021.12.06",
+      "urlString"  : "/java/2021-12-06-Effective-java-Day10-item5/",
+      "url"        : "/java/2021-12-06-Effective-java-Day10-item5/"
+    },
+  
+    {
       "title"      : "[Effective Java] Day 9 - Item 3, 4, 5 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(3), 인스턴스화를 막으려거든 private 생성자를 사용하라, 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라",
       "categories" : "java",
       "tags"       : "java",
       "date"       : "2021.12.05",
-      "urlString"  : "/java/2021-12-05-Effective-java-Day9-item3-part2/",
-      "url"        : "/java/2021-12-05-Effective-java-Day9-item3-part2/"
+      "urlString"  : "/java/2021-12-05-Effective-java-Day9-item3-part2-item4-item5/",
+      "url"        : "/java/2021-12-05-Effective-java-Day9-item3-part2-item4-item5/"
     },
   
     {
