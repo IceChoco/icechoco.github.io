@@ -89,19 +89,26 @@ class KoreanDictionary implements Lexicon{}
 
 class testDictionary implements Lexicon{}
 ```
-
 의존 객체 주입이 유연성, 테스트 용이성을 개선해주긴하나 의존성이 수천 개나 되는 큰 프로젝트에서는 코드를 어지럽게 만들 수 있다. 그 점은 대거, 주스, 스프링 같은 의존 객체 주입 프레임워크를 사용해서 해결할 수 있다.
+
 
 ## Item 6 :: 불필요한 객체 생성을 피하라
 똑같은 기능의 객체를 매번 생성하기보다는 객체 하나를 재사용하는 편이 나을 때가 많다. 재사용은 빠르고 세련됐다. 특히 불변 객체(아이템 17)는 언제든 재사용할 수 있다.
 ### 문자열 객체 생성
 ```java
 String s = new String("Ara"); //따라하지 마세요!
+String d = new String("Ara"); //따라하지 마세요!
+
+System.out.println(s == d);//false
 ```
 자바의 문자열인 String을 new로 생성하면 항상 새로운 객체를 만들게 된다. 다음과 같이 String 객체를 생성하는 것이 좋다.
 ```java
-String s = "Ara";
+String name = "Ara";
+String name2 = "Ara";
+
+System.out.println(name == name2);//true
 ```
+문자열 리터럴을 재사용하기 때문에 같은 자바 가상 머신 안에서 이와 똑같은 문자열 리터럴이 존재한다면 같은 객체를 재사용함이 보장된다.
 
 
 ### 결론
