@@ -37,14 +37,14 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta property="og:locale" content="ko_KR, en_US" />
 <meta name="description" content="IceChoco의 DevLog" />
 <meta property="og:description" content="IceChoco의 DevLog" />
-<link rel="canonical" href="https://icechoco.github.io/" />
-<meta property="og:url" content="https://icechoco.github.io/" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="IceChoco" />
-<link rel="next" href="https://icechoco.github.io/page-2/" />
+<link rel="next" href="http://localhost:4000/page-2/" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="welcome to IceChoco’s devLog" />
 <script type="application/ld+json">
-{"headline":"welcome to IceChoco’s devLog","dateModified":"2021-10-16T23:35:53+09:00","@type":"WebSite","url":"https://icechoco.github.io/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"name":"IceChoco","description":"IceChoco의 DevLog","@context":"https://schema.org"}</script>
+{"headline":"welcome to IceChoco’s devLog","dateModified":"2021-10-16T23:35:53+09:00","@type":"WebSite","url":"http://localhost:4000/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"name":"IceChoco","description":"IceChoco의 DevLog","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -71,9 +71,9 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="https://icechoco.github.io/" hreflang="ko-kr, en-us">
+<link rel="alternate" href="http://localhost:4000/" hreflang="ko-kr, en-us">
 
-<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="IceChoco" />
 
 
 <link rel="shortcut icon"    href="/assets/icons/favicon.ico">
@@ -106,7 +106,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-07T01:32:55+09:00',
+    INDEX_KEY: 'index--2021-12-08T00:54:13+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -572,6 +572,138 @@ Left here for reference, feel free to delete.
 
 
 
+<article id="post-java-Java-reference-and-GC" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/java/2021-12-07-Java-reference-and-GC/" class="flip-title">
+        [Java] Java Reference(참조)와 GC(Garbage Collector)
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-07T00:00:00+09:00">07 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-08">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-08T00:54:13+09:00">2021-12-08</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p><strong>이 글의 목적</strong></p>
+<ul>
+  <li>Java Reference의 종류인 Soft, Weak, Phanthom, Strong Refrenece에 대해서 이해하고 설명할 수 있다.</li>
+  <li><span style="color:grey"><em>네이버 NBP 웹플랫폼개발랩의 박세훈님이 올려주신 <a href="https://d2.naver.com/helloworld/329631">Java Reference와 GC</a>를 보고 정리한 글입니다.</em> </span></li>
+</ul>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/java/2021-12-07-Java-reference-and-GC/">[Java] Java Reference(참조)와 GC(Garbage Collector)</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-java-Effective-java-Day11-item6" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/java/2021-12-06-Effective-java-Day11-item6/" class="flip-title">
+        [Effective Java] Day 11 - Item 6 :: 불필요한 객체 생성을 피하라 (2)
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-06T00:00:00+09:00">06 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-07">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-07T21:43:06+09:00">2021-12-07</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day 11 기록 시작!</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/java/2021-12-06-Effective-java-Day11-item6/">[Effective Java] Day 11 - Item 6 :: 불필요한 객체 생성을 피하라 (2)</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
 <article id="post-java-Effective-java-Day10-item5" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
@@ -595,7 +727,7 @@ Left here for reference, feel free to delete.
             <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-07">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-07T00:59:11+09:00">2021-12-07</time>
+              <time datetime="2021-12-07T10:53:48+09:00">2021-12-07</time>
             </span>
           
         
@@ -891,10 +1023,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-05">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-07">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-05T20:42:50+09:00">2021-12-05</time>
+              <time datetime="2021-12-07T20:29:31+09:00">2021-12-07</time>
             </span>
           
         
@@ -1054,134 +1186,6 @@ Day 7 기록 시작!</p>
     <footer>
       <p class="read-more">
         Continue reading <a class="heading flip-title" href="/java/2021-12-01-Effective-java-Day5-item2-and-item3/">[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-java-Effective-java-Day4-item1-and-item2" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/java/2021-11-30-Effective-java-Day4-item1-and-item2/" class="flip-title">
-        [Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-11-30T00:00:00+09:00">30 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-05">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-12-05T20:42:50+09:00">2021-12-05</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>Day 4 기록 시작!</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/java/2021-11-30-Effective-java-Day4-item1-and-item2/">[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-java-Effective-java-Day3-item1" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/java/2021-11-29-Effective-java-Day3-item1/" class="flip-title">
-        [Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-11-29T00:00:00+09:00">29 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-05">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-12-05T20:42:51+09:00">2021-12-05</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>어제인 Day 2에서는 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, 그리고 ‘Item 1 - 생성자 대신 정적 팩터리 메서드를 고려하라’의 앞부분에 대해서 공부했다. 확실히 평일에 늦게 퇴근하는 날은 시간적인 여유가 좀 적은 것 같다. 아무리 늦퇴하는 날이라고 하더라도 기록은 멈추지 말아야지. 그 어떤 사정도 결국은 핑계고 내 미래를 책임져주지 않으니T_T 그럼 Day 3 기록 시작!</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/java/2021-11-29-Effective-java-Day3-item1/">[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라</a>
 
       </p>
     </footer>

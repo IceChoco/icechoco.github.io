@@ -37,15 +37,15 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta property="og:locale" content="ko_KR, en_US" />
 <meta name="description" content="IceChoco의 DevLog" />
 <meta property="og:description" content="IceChoco의 DevLog" />
-<link rel="canonical" href="https://icechoco.github.io/page-3/" />
-<meta property="og:url" content="https://icechoco.github.io/page-3/" />
+<link rel="canonical" href="http://localhost:4000/page-3/" />
+<meta property="og:url" content="http://localhost:4000/page-3/" />
 <meta property="og:site_name" content="IceChoco" />
-<link rel="prev" href="https://icechoco.github.io/page-2/" />
-<link rel="next" href="https://icechoco.github.io/page-4/" />
+<link rel="prev" href="http://localhost:4000/page-2/" />
+<link rel="next" href="http://localhost:4000/page-4/" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="welcome to IceChoco’s devLog" />
 <script type="application/ld+json">
-{"headline":"welcome to IceChoco’s devLog","dateModified":"2021-10-16T23:35:53+09:00","@type":"WebPage","url":"https://icechoco.github.io/page-3/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"IceChoco의 DevLog","@context":"https://schema.org"}</script>
+{"headline":"welcome to IceChoco’s devLog","dateModified":"2021-10-16T23:35:53+09:00","@type":"WebPage","url":"http://localhost:4000/page-3/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"IceChoco의 DevLog","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,9 +72,9 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="https://icechoco.github.io/page-3/" hreflang="ko-kr, en-us">
+<link rel="alternate" href="http://localhost:4000/page-3/" hreflang="ko-kr, en-us">
 
-<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="IceChoco" />
 
 
 <link rel="shortcut icon"    href="/assets/icons/favicon.ico">
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-07T01:32:55+09:00',
+    INDEX_KEY: 'index--2021-12-08T00:54:13+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -576,6 +576,144 @@ Left here for reference, feel free to delete.
 
 
   
+
+  
+
+
+
+
+
+<article id="post-frontend-Attempted-import-error" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/frontend/2021-10-12-Attempted-import-error/" class="flip-title">
+        [React] Attempted import error
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-11-27T21:57:11+09:00">2021-11-27</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>client 폴더 내 index.js 파일에서 하위폴더인 <code class="language-plaintext highlighter-rouge">_reducers</code>에서 데이터를 가져올려고 하자 Attempted import error가 발생했다.
+<img src="/assets\img/attempt-import-error.PNG" alt="attempt-import-error" /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./src/index.js
+Attempted import error: 'Reducer' is not exported from './_reducers'.
+</code></pre></div></div>
+<p>프론트엔드 서버의 index.js 파일에서 ‘./_reducers’ 경로에 있는 index.js 파일을 import 하는데에 실패했다는 내용의 에러이다. 에러 발생 원인은 reducers 폴더 내 index.js 파일에서 export 시 default를 붙였기 때문이다.</p>
+<ul>
+  <li>reducers 폴더 내 index.js파일
+  ```
+  import { combineReducers } from “redux”;</li>
+</ul>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/frontend/2021-10-12-Attempted-import-error/">[React] Attempted import error</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-server-node-js-기초" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/" class="flip-title">
+        node.js 기초
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/server/" class="flip-title">Server</a> on <span>Server</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-16">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-10-16T23:35:53+09:00">2021-10-16</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>node.js를 활용한 서버 구축에 있어 필요한 기본 지식들을 기록해보겠습니다.</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/">node.js 기초</a>
+
+      </p>
+    </footer>
+  
+</article>
+
 
   
 
@@ -1111,134 +1249,6 @@ Left here for reference, feel free to delete.
     <footer>
       <p class="read-more">
         Continue reading <a class="heading flip-title" href="/git/2021-09-21-Solve-git-bash-problem-when-running-ssh-agent-in-windows/">window 환경에서 ssh-agent 실행 시 git bash 무반응 문제</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-database-What-is-Mongo-db" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/database/2021-09-20-What-is-Mongo-db/" class="flip-title">
-        Mongo DB란?
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time> in <a href="/database/" class="flip-title">Database</a> on <span>Database</span>, <span>React</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-16">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-10-16T23:35:53+09:00">2021-10-16</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>회사에서는 주로 oracle을 많이 사용하고, 다른 SQL을 사용할 기회가 오면 PostgreSQL를 잠깐 사용하고 있습니다. 그런데 RDBMS의 경우 저장할 데이터가 정형화되어있어 많은 양, 다양한 종류의 데이터를 저장하기에는 적합하지 않습니다. 그러다보니 네이버와 카카오, NHN 등 국내 140여 기업이 몽고DB 데이터베이스관리시스템(DBMS)을 사용하고 있습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/database/2021-09-20-What-is-Mongo-db/">Mongo DB란?</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-frontend-React-개요" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/frontend/2021-09-20-React-%EA%B0%9C%EC%9A%94/" class="flip-title">
-        React 개요
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-11-27T21:53:23+09:00">2021-11-27</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p align="center"><img src="/assets\img/react-logo.PNG" /></p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/frontend/2021-09-20-React-%EA%B0%9C%EC%9A%94/">React 개요</a>
 
       </p>
     </footer>

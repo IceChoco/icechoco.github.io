@@ -30,22 +30,22 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   
     
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>CSS Framework, Ant Design을 활용한 효율적인 화면개발하기 | IceChoco</title>
+<title>[Java] Java Reference(참조)와 GC(Garbage Collector) | IceChoco</title>
 <meta name="generator" content="Jekyll v4.2.1" />
-<meta property="og:title" content="CSS Framework, Ant Design을 활용한 효율적인 화면개발하기" />
+<meta property="og:title" content="[Java] Java Reference(참조)와 GC(Garbage Collector)" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="ko_KR, en_US" />
-<meta name="description" content="원래는 모든 것을 CSS를 활용해서 하나하나 만들 수 있지만, 그렇게 되면 기능을 신경 쓰는 것 이외에 너무 많은 시간을 CSS에 투자해야합니다. 그래서 기능 개발에 초점을 맞추기 위해 CSS 프레임 워크를 사용해보도록 하겠습니다. 요즘 많은 기업들이 실무에서도 CSS 프레임워크가 잘 되어 있어 많이 사용하고 있습니다." />
-<meta property="og:description" content="원래는 모든 것을 CSS를 활용해서 하나하나 만들 수 있지만, 그렇게 되면 기능을 신경 쓰는 것 이외에 너무 많은 시간을 CSS에 투자해야합니다. 그래서 기능 개발에 초점을 맞추기 위해 CSS 프레임 워크를 사용해보도록 하겠습니다. 요즘 많은 기업들이 실무에서도 CSS 프레임워크가 잘 되어 있어 많이 사용하고 있습니다." />
-<link rel="canonical" href="http://localhost:4000/frontend/2021-10-11-Screen-development-using-ant-design/" />
-<meta property="og:url" content="http://localhost:4000/frontend/2021-10-11-Screen-development-using-ant-design/" />
+<meta name="description" content="이 글의 목적 Java Reference의 종류인 Soft, Weak, Phanthom, Strong Refrenece에 대해서 이해하고 설명할 수 있다. 네이버 NBP 웹플랫폼개발랩의 박세훈님이 올려주신 Java Reference와 GC를 보고 정리한 글입니다." />
+<meta property="og:description" content="이 글의 목적 Java Reference의 종류인 Soft, Weak, Phanthom, Strong Refrenece에 대해서 이해하고 설명할 수 있다. 네이버 NBP 웹플랫폼개발랩의 박세훈님이 올려주신 Java Reference와 GC를 보고 정리한 글입니다." />
+<link rel="canonical" href="http://localhost:4000/java/2021-12-07-Java-reference-and-GC/" />
+<meta property="og:url" content="http://localhost:4000/java/2021-12-07-Java-reference-and-GC/" />
 <meta property="og:site_name" content="IceChoco" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-10-11T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-12-07T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="CSS Framework, Ant Design을 활용한 효율적인 화면개발하기" />
+<meta property="twitter:title" content="[Java] Java Reference(참조)와 GC(Garbage Collector)" />
 <script type="application/ld+json">
-{"headline":"CSS Framework, Ant Design을 활용한 효율적인 화면개발하기","dateModified":"2021-11-27T21:55:45+09:00","datePublished":"2021-10-11T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/frontend/2021-10-11-Screen-development-using-ant-design/"},"url":"http://localhost:4000/frontend/2021-10-11-Screen-development-using-ant-design/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"원래는 모든 것을 CSS를 활용해서 하나하나 만들 수 있지만, 그렇게 되면 기능을 신경 쓰는 것 이외에 너무 많은 시간을 CSS에 투자해야합니다. 그래서 기능 개발에 초점을 맞추기 위해 CSS 프레임 워크를 사용해보도록 하겠습니다. 요즘 많은 기업들이 실무에서도 CSS 프레임워크가 잘 되어 있어 많이 사용하고 있습니다.","@context":"https://schema.org"}</script>
+{"headline":"[Java] Java Reference(참조)와 GC(Garbage Collector)","dateModified":"2021-12-08T00:54:13+09:00","datePublished":"2021-12-07T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/java/2021-12-07-Java-reference-and-GC/"},"url":"http://localhost:4000/java/2021-12-07-Java-reference-and-GC/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"이 글의 목적 Java Reference의 종류인 Soft, Weak, Phanthom, Strong Refrenece에 대해서 이해하고 설명할 수 있다. 네이버 NBP 웹플랫폼개발랩의 박세훈님이 올려주신 Java Reference와 GC를 보고 정리한 글입니다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,7 +72,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="http://localhost:4000/frontend/2021-10-11-Screen-development-using-ant-design/" hreflang="ko-kr, en-us">
+<link rel="alternate" href="http://localhost:4000/java/2021-12-07-Java-reference-and-GC/" hreflang="ko-kr, en-us">
 
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="IceChoco" />
 
@@ -262,14 +262,14 @@ Left here for reference, feel free to delete.
         <span>/</span>
         
         
-        <a href="/frontend/">frontend</a>
+        <a href="/java/">java</a>
       
       </li>
     
       <li>
       
         <span>/</span>
-        <span>2021-10-11-Screen-development-using-ant-design</span>
+        <span>2021-12-07-Java-reference-and-GC</span>
       
       </li>
     
@@ -286,18 +286,18 @@ Left here for reference, feel free to delete.
 
 
 
-<article id="post-frontend-Screen-development-using-ant-design" class="page post mb6" role="article">
+<article id="post-java-Java-reference-and-GC" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
       
-        CSS Framework, Ant Design을 활용한 효율적인 화면개발하기
+        [Java] Java Reference(참조)와 GC(Garbage Collector)
       
     </h1>
 
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+        <time datetime="2021-12-07T00:00:00+09:00">07 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
       </span>
       
         
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-08">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-11-27T21:55:45+09:00">2021-11-27</time>
+              <time datetime="2021-12-08T00:54:13+09:00">2021-12-08</time>
             </span>
           
         
@@ -329,21 +329,101 @@ Left here for reference, feel free to delete.
   </header>
 
   
-    <p>원래는 모든 것을 CSS를 활용해서 하나하나 만들 수 있지만, 그렇게 되면 기능을 신경 쓰는 것 이외에 너무 많은 시간을 CSS에 투자해야합니다. 그래서 기능 개발에 초점을 맞추기 위해 CSS 프레임 워크를 사용해보도록 하겠습니다. 요즘 많은 기업들이 실무에서도 CSS 프레임워크가 잘 되어 있어 많이 사용하고 있습니다.</p>
+    <p><strong>이 글의 목적</strong></p>
+<ul>
+  <li>Java Reference의 종류인 Soft, Weak, Phanthom, Strong Refrenece에 대해서 이해하고 설명할 수 있다.</li>
+  <li><span style="color:grey"><em>네이버 NBP 웹플랫폼개발랩의 박세훈님이 올려주신 <a href="https://d2.naver.com/helloworld/329631">Java Reference와 GC</a>를 보고 정리한 글입니다.</em> </span></li>
+</ul>
 
-<p>가장 유명한 프레임워크는 Mateiral UI, React Bootstrap, Semantic UI, Ant Design, Materialize가 있습니다. 저는 그 중 Ant Design을 활용해서 개발해보도록 하겠습니다. Ant Design은 중국에서 개발되었으며 많은 기능들이 들어있기 때문에 사이즈가 큰 편입니다. 하지만 스타일이 굉장히 깔끔하고 엔터프라이즈 환경에서도 어울리는 디자인 생성이 가능합니다. 가장 큰 장점은 사용하기가 굉장히 편합니다. Material UI도 좋은 프레임워크지만 처음 사용할 때 어려움이 있습니다.</p>
+<h2 id="gcgarbage-collector-가비지-컬렉터">GC(Garbage Collector, 가비지 컬렉터)</h2>
+<p>Java의 GC는 동작 방식에 따라 매우 다양한 종류가 있으나 공통적으로 크게 다음 2가지 작업을 수행한다.</p>
+<ol>
+  <li>힙(heap) 내의 객체 중에서 가비지(garbage)를 찾아낸다.</li>
+  <li>찾아낸 가비지를 처리해서 힙의 메모리를 회수한다.</li>
+</ol>
 
-<p>가장먼저 npm을 사용하여 Ant Design을 설치합니다.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install antd --save
-</code></pre></div></div>
-<p>그 다음 사용할 곳에 아래 import문을 추가하면 ant Design을 사용할 수 있습니다.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
-</code></pre></div></div>
+<p>최초의 Java에서는 이들 GC 작업에 애플리케이션의 사용자 코드가 관여하지 않도록 구현되어 있었다. 그러나 위 2가지 작업에서 좀 더 다양한 방법으로 객체를 처리하려는 요구가 있었다. 이에 따라 <strong>JDK 1.2부터는</strong> java.lang.ref 패키지가 추가되어 제한적이나마 <strong>사용자의 코드와 GC가 상호작용할 수 있게</strong> 하고 있다.</p>
+
+<p>Java의 java.lang.ref 패키지는 전형적인 객체 참조인 Strong reference 외에도 <strong>Soft, weak, phantom 3가지의 새로운 참조 방식</strong>을 각각의 Reference 클래스로 제공한다. 이 3가지 Reference 클래스를 어플리케이션에 사용하면 GC에 일정 부분 관여할 수 있고, LRU(Least Recently Used) 캐시 같이 특별한 작업을 하는 애플리케이션을 더 쉽게 작성할 수 있다. 이를 위해서는 GC에 대해서도 잘 이해해야하고, 이들 참조방식의 동작도 잘 이해해야 한다.</p>
+<ul>
+  <li><strong>LRU 캐시</strong><br />
+캐시는 빠르고 작은 단기기억 공간이며 Key-Value 관계를 가지고 있다. 캐시 오버플로우가 났을 때 데이터를 지워주는 규칙을 LRU라고한다. LRU는 Least Recently Used의 약어이며 가장 과거에 사용된 데이터를 삭제해주는 것 이다.</li>
+</ul>
+
+<h2 id="gc와-reachability">GC와 Reachability</h2>
+<p>Java GC는 객체가 가비지인지 판별하기 위해서 <strong>reachability</strong>라는 개념을 사용한다. 어떤 객체에 유효한 참조가 있으면 <code class="language-plaintext highlighter-rouge">reachable</code>로 없으면 <code class="language-plaintext highlighter-rouge">unreachable</code>로 구별하고, <code class="language-plaintext highlighter-rouge">unreachable</code> 객체를 가비지로 간주해 GC를 수행한다.</p>
+
+<p>한 객체는 여러 다른 객체를 참조하고, 참조 된 다른 객체들도 마찬가지로 또 다른 객체들을 참조할 수 있으므로 객체들은 참조 사슬을 이루게 된다. 이런 상황에서 유효한 참조 여부를 파악하려면 항상 <strong>유효한 최초의 참조</strong>가 있어야 하는데 이를 객체 참조의 <strong>root set</strong>이라고 한다.</p>
+
+<h3 id="jvm에서-런타임-영역runtime-data-area의-구조">JVM에서 런타임 영역(runtime data area)의 구조</h3>
+<ul>
+  <li>런타임 영역은 JVM이 Java Bytecode를 실행하기 위해 사용하는 메모리 영역
+<img src="/assets\img/runtime-data-area.PNG" alt="runtime-data-area" /></li>
+</ul>
+<center>그림 1 런타임 데이터 영역(Oracle HotSpot VM 기준)</center>
+<p><br /></p>
+
+<p>런타임 데이터 영역 크게 세 부분으로 나눌 수 있다. 위 그림에서 객체에 대한 참조는 화살표로 표시되어 있다.</p>
+<ol>
+  <li><strong>스레드</strong>가 차지하는 영역 - 각 스레드 마다 존재
+    <ul>
+      <li><strong>Java Stack</strong>  <br />
+1) 스레드 마다 1개만 존재하고, 스택 프레임은 메서드가 호출될 때 마다 생성된다. 메서드 실행이 끝나면 스택 프레임은 pop되어 스택에서 제거된다.<br />
+2) Stack Frame은 Local Variables Array, Operand stack, Frame Data를 갖는다.<br />
+3) Frame Data는 Constant Pool에 대한 참조, 이전 스택프레임에 대한 정보, 현재 메서드가 속한 클래스/객체에 대한 참조 등의 정보를 갖는다.</li>
+      <li><strong>PC Register(Program Counter)</strong>: 각 스레드는 어떤 메서드를 항상 실행하고 있고, 그 때 PC는 그 메서드 안에서 Byte Code 몇 번째 줄을 실행하고 있는지를 나타내는 역할</li>
+      <li>
+        <p><strong>Native Stack</strong><br />
+1) 성능향상을 위해 자바의 ByteCode가 아닌 C/C++로 작성된 코드를 컴파일해서 사용하는 경우가 있다. 그때 사용되는 메서드를 Natvie (method) Stack이라고 한다.<br />
+2) <strong>JNI(Java Native Interface)</strong><br />
+자바는 특정 운영체제에 종속되지 않도록, JVM이라는 가상 머신 위에서 실행되게 끔 만들어진 언어이다.<br />
+운영체제에 맞는 JVM이 각기 존재하기 때문에, Java 개발자는 하나의 Java 파일만 만들면 운영체제와 상관없이 원하는 결과물을 쉽게 얻을 수 있다.</p>
+
+        <p>하지만 단점도 있다. 그 중 하나의 단점은 운영체제의 모든 기능을 JVM이 담지 못한다는 것이다. 따라서 구현하고 싶은 몇몇 기능들은 Java 언어 자체로도 해결 안되는 경우가 존재한다.<br />
+JNI는 <strong>Java 언어 자체로 해결이 안되는 경우 대처할 수 있는 방법 중 하나</strong>이다. 운영체제의 고유기능(Native)을 Java로 해결하는 것이 아닌 운영체제가 구현된 언어(보통 C, C++)로 운영체제의 고유 기능을 만든다.</p>
+      </li>
+    </ul>
+  </li>
+  <li><strong>힙</strong>: 프로그램을 실행하면서 생성한 모든 객체의 인스턴스 저장</li>
+  <li>클래스 정보가 차지하는 영역인 <strong>메서드 영역</strong>
+    <ul>
+      <li>클래스 로더가 클래스 파일을 읽어오면, 클래스 정보를 파싱해서 메서드 영역에 저장.</li>
+      <li>ex) 변수, 메서드, 정적 변수, 바이트 코드는 어떤게 있는가 등을 저장</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="힙에-있는-객체들에-대한-참조">힙에 있는 객체들에 대한 참조</h3>
+<ol>
+  <li>힙 내의 다른 객체에 의한 참조</li>
+  <li>Java 스택, 즉 Java 메서드 실행 시에 사용하는 지역 변수와 파라미터들에 의한 참조</li>
+  <li>네이티브 스택, 즉 JNI(Java Native Interface)에 의해 생성된 객체에 대한 참조</li>
+  <li>메서드 영역의 정적 변수에 의한 참조</li>
+</ol>
+
+<p>이들 중 힙 내의 다른 객체에 의한 참조(1)를 제외한 나머지 3개는 유효한 최초의 참조(root set)이다. 그리고 이들은 객체에 유효한 참조가 있는지(reachability)를 판가름하는 기준이 된다.
+reachability를 더 자세히 보기위해 root set과 힙 내의 객체를 중심으로 다시보면 다음과 같다.</p>
+
+<p><img src="/assets\img/rootSet-Objects-and-unreachable-objects.PNG" alt="rootSet-Objects-and-unreachable-objects" /></p>
+<center>그림 2 Reachable 객체와 Unreachable 객체</center>
+<p><br /></p>
+
+<p>위 그림에서 보듯, root set으로 부터 시작한 참조 사슬에 속한 객체들은 <strong>reachable 객체</strong>이고, 이 참조 사슬과 무관한 객체들이 <strong>unreachable 객체</strong>로 GC 대상이다. 오른쪽 아래처럼 reachable 객체를 참조하더라고, 다른 reachable 객체가 이 객체를 참조하지 않는다면 이 객체는 unreachable 객체이다.</p>
+
+<p>이 그림에서 참조는 모두 <strong>java.lang.ref 패키지를 사용하지 않은 일반적인 참조</strong>이며, 이를 흔히 strong reference라 부른다.</p>
+
+<h2 id="soft-weak-phantom-reference">Soft, Weak, Phantom Reference</h2>
+<p><img src="/assets\img/java-lang-references.PNG" alt="java-lang-references" /></p>
+
+<p>java.lang.ref는 soft reference, weak reference, phantom reference를 클래스 형태로 제공한다. 예를 들면, java.lang.WeakReference 클래스는 참조 대상인 객체를 캡슐화한 WeakReference객체를 생성한다. 이렇게 생성된 WeakReference객체는 다른 객체와 달리 Java GV가 특별하게 취급한다. 캡슐화된 내부 객체는 weak reference에 의해 참조된다.</p>
 
 <h3 id="참고">참고</h3>
-<p><a href="https://ant.design/">Ant Design 공식 홈페이지</a></p>
-
-<!--author-->
+<ul>
+  <li><a href="https://d2.naver.com/helloworld/329631">Java Reference와 GC</a></li>
+  <li><a href="https://www.youtube.com/watch?v=HpuIrGiHwTo">코딩 테스트, 중급, LRU cache</a></li>
+  <li><a href="https://www.youtube.com/watch?v=UzaGOXKVhwU">[10분 테코톡] 🎅무민의 JVM Stack &amp; Heap</a></li>
+  <li><a href="https://mommoo.tistory.com/71">JAVA - JNI 사용하기</a></li>
+</ul>
 
   
 </article>
@@ -524,7 +604,7 @@ Left here for reference, feel free to delete.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-07-Java-reference-and-GC/" class="flip-title"><span>[Java] Java Reference(참조)와 GC(Garbage Collector)</span></a>  <time class="faded fine" datetime="2021-12-07T00:00:00+09:00">07 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-06-Effective-java-Day11-item6/" class="flip-title"><span>[Effective Java] Day 11 - Item 6 :: 불필요한 객체 생성을 피하라 (2)</span></a>  <time class="faded fine" datetime="2021-12-06T00:00:00+09:00">06 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-06-Effective-java-Day10-item5/" class="flip-title"><span>[Effective Java] Day 10 - Item 5 :: 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라 (2)</span></a>  <time class="faded fine" datetime="2021-12-06T00:00:00+09:00">06 Dec 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-06-Effective-java-Day11-item6/" class="flip-title"><span>[Effective Java] Day 11 - Item 6 :: 불필요한 객체 생성을 피하라 (2)</span></a>  <time class="faded fine" datetime="2021-12-06T00:00:00+09:00">06 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-06-Effective-java-Day10-item5/" class="flip-title"><span>[Effective Java] Day 10 - Item 5 :: 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라 (2)</span></a>  <time class="faded fine" datetime="2021-12-06T00:00:00+09:00">06 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-05-Effective-java-Day9-item3-part2-item4-item5/" class="flip-title"><span>[Effective Java] Day 9 - Item 3, 4, 5 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(3), 인스턴스화를 막으려거든 private 생성자를 사용하라, 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라</span></a>  <time class="faded fine" datetime="2021-12-05T00:00:00+09:00">05 Dec 2021</time></li>            </ul></aside>
 
   
 
