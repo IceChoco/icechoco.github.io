@@ -26,6 +26,10 @@ comments: true
 ### 현재 파일 실행
 - Win/Linux: ctrl + Shift + F10
 
+## Tab 관련 단축키
+### 탭이동 - 오른쪽
+- Win/Linux: Alt + ⭢
+
 ## 검색
 ### 검색기타
 - 파일 검색 (Navigate -> File)
