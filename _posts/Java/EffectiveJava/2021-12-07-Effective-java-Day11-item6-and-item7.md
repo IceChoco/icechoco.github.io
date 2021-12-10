@@ -32,7 +32,45 @@ static boolean isRomanNumeralSlow(String s) {
 ```
 
 `String.matches`는 정규식을 받아 `Pattern`이라는 객체로 컴파일하는데 이 과정이 약간 오래 걸린다.  
-위 코드를 반복적으로 사용하면 `Pattern`이라는 객체를 반복적으로 만들게 되는 것이다. 하지만 정규식이 변하지 않는 이상 `Pattern` 객체를 여러번 만들 필요가 없다. 한번만 만들어서 재사용하는 것이 좋다.
+실제로 `Pattern` 클래스 내 compile 소스를 보자. 그럼 아래와 같이 전체 정규 표현식을 for문으로 돌면서 char 갯수만큼 반복하는 것을 볼 수 있다.
+```java
+//정규표현식을 int 배열에 복사하고 object 트리를 생성할 표현식의 파싱을 호출
+private void compile() {
+    // canonical equivalences(문자의미 및 비주얼이 정확히 일치하는 두 다른 문자열(의 연속) 처리
+    if (has(CANON_EQ) && !has(LITERAL)) {
+        normalizedPattern = normalize(pattern);
+    } else {
+        normalizedPattern = pattern;
+    }
+    patternLength = normalizedPattern.length();
+
+    // 편의를 위해 패턴을 int 배열에 복사
+    temp = new int[patternLength + 2];
+
+    hasSupplementary = false;
+    // 패턴을 종료하기 위해 double zero를 사용함
+    int c, count = 0;
+    // 모든 문자를 코드 포인트로 변환
+    for (int x = 0; x < patternLength; x += Character.charCount(c)) {
+        c = normalizedPattern.codePointAt(x);
+        if (isSupplementary(c)) {
+            hasSupplementary = true;
+        }
+        temp[count++] = c;
+    }
+    //...
+}
+```
+- **Code points**: 문자에 부여한 고유한 숫자값. 유니코드는 원래 문자 하나 당 고유한 숫자를 부여한 일종의 표이다. 이 때 문자마다 고유한 숫자를 코드포인트라고 정의한다. 우리가 흔히 말하는 코드 값이라던가 숫자값 같은 표현이 바로 ‘코드포인트’이다.
+
+isRomanNumeralSlow 메서드를 반복적으로 사용하면 `Pattern`이라는 객체를 반복적으로 만들면서 compile 메서드도 그 수 만큼 수행 되는 것이다. 즉 10번 `return s.matches(regex)`를 사용하면 compile 메서드도 10번 수행된다.
+하지만 정규식이 변하지 않는 이상 `Pattern` 객체를 여러번 만들 필요가 없다. 한번만 만들어서 재사용하는 것이 좋다.  
+
+`Pattern`은 입력받은 정규표현식에 해당하는 **유한상태머신(Finite state machine)**을 만들기 때문에 인스턴스 생성 비용이 높다.  
+
+  
+아래 java docs에 따르면, str.matches(regex) 는 Pattern.matches(regex, str) 와 정확하게 동일한 결과가 나온다고 한다.  
+![string_matches](/assets\img/string_matches.PNG)
 
 ```java
 // 코드 6-2 값비싼 객체를 재사용해 성능을 개선한다.
@@ -44,6 +82,8 @@ static boolean isRomanNumeralFast(String s) {
     return ROMAN.matcher(s).matches();
 }
 ```
+
+위 코드는 Pattern 인스턴스 ROMAN을 재사용하면서, **정적 팩터리 메서드인 Pattern.compile()**를 활용한 좋은 예이다.  
 
 하지만 위 코드도 문제가 있다. isRomanNumeralFast 메서드를 한 번도 호출하지 않는다면 ROMAN 필드는 쓸데없이 만든셈이 된다. 지연 초기화(lazy initialization)(아이템83)을 사용하여 불필요한 초기화를 없앨 수는 있지만 권하지 않는다. 보통 지연 초기화는 큰 성능 개선 없이 코드를 복잡하게 만든다(아이템67)
 
