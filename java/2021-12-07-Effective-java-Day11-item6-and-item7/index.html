@@ -30,22 +30,22 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   
     
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>[Effective Java] Day 11 - Item 6 :: 불필요한 객체 생성을 피하라 (2) | IceChoco</title>
+<title>[Effective Java] Day 11 - Item 6, 7 :: 불필요한 객체 생성을 피하라 (2), 다 쓴 객체 참조를 해제하라 | IceChoco</title>
 <meta name="generator" content="Jekyll v4.2.1" />
-<meta property="og:title" content="[Effective Java] Day 11 - Item 6 :: 불필요한 객체 생성을 피하라 (2)" />
+<meta property="og:title" content="[Effective Java] Day 11 - Item 6, 7 :: 불필요한 객체 생성을 피하라 (2), 다 쓴 객체 참조를 해제하라" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="ko_KR, en_US" />
 <meta name="description" content="Day 11 기록 시작!" />
 <meta property="og:description" content="Day 11 기록 시작!" />
-<link rel="canonical" href="http://localhost:4000/java/2021-12-06-Effective-java-Day11-item6/" />
-<meta property="og:url" content="http://localhost:4000/java/2021-12-06-Effective-java-Day11-item6/" />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-07-Effective-java-Day11-item6-and-item7/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-07-Effective-java-Day11-item6-and-item7/" />
 <meta property="og:site_name" content="IceChoco" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-12-06T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-12-07T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="[Effective Java] Day 11 - Item 6 :: 불필요한 객체 생성을 피하라 (2)" />
+<meta property="twitter:title" content="[Effective Java] Day 11 - Item 6, 7 :: 불필요한 객체 생성을 피하라 (2), 다 쓴 객체 참조를 해제하라" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 11 - Item 6 :: 불필요한 객체 생성을 피하라 (2)","dateModified":"2021-12-07T21:43:06+09:00","datePublished":"2021-12-06T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/java/2021-12-06-Effective-java-Day11-item6/"},"url":"http://localhost:4000/java/2021-12-06-Effective-java-Day11-item6/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day 11 기록 시작!","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 11 - Item 6, 7 :: 불필요한 객체 생성을 피하라 (2), 다 쓴 객체 참조를 해제하라","dateModified":"2021-12-12T02:20:43+09:00","datePublished":"2021-12-07T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-07-Effective-java-Day11-item6-and-item7/"},"url":"https://icechoco.github.io/java/2021-12-07-Effective-java-Day11-item6-and-item7/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day 11 기록 시작!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,9 +72,9 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="http://localhost:4000/java/2021-12-06-Effective-java-Day11-item6/" hreflang="ko-kr, en-us">
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-07-Effective-java-Day11-item6-and-item7/" hreflang="ko-kr, en-us">
 
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="IceChoco" />
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
 
 
 <link rel="shortcut icon"    href="/assets/icons/favicon.ico">
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-08T00:54:13+09:00',
+    INDEX_KEY: 'index--2021-12-13T00:36:07+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -269,7 +269,7 @@ Left here for reference, feel free to delete.
       <li>
       
         <span>/</span>
-        <span>2021-12-06-Effective-java-Day11-item6</span>
+        <span>2021-12-07-Effective-java-Day11-item6-and-item7</span>
       
       </li>
     
@@ -286,18 +286,18 @@ Left here for reference, feel free to delete.
 
 
 
-<article id="post-java-Effective-java-Day11-item6" class="page post mb6" role="article">
+<article id="post-java-Effective-java-Day11-item6-and-item7" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
       
-        [Effective Java] Day 11 - Item 6 :: 불필요한 객체 생성을 피하라 (2)
+        [Effective Java] Day 11 - Item 6, 7 :: 불필요한 객체 생성을 피하라 (2), 다 쓴 객체 참조를 해제하라
       
     </h1>
 
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-12-06T00:00:00+09:00">06 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+        <time datetime="2021-12-07T00:00:00+09:00">07 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
       </span>
       
         
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-07">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-12">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-07T21:43:06+09:00">2021-12-07</time>
+              <time datetime="2021-12-12T02:20:43+09:00">2021-12-12</time>
             </span>
           
         
@@ -353,7 +353,45 @@ Left here for reference, feel free to delete.
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">String.matches</code>는 정규식을 받아 <code class="language-plaintext highlighter-rouge">Pattern</code>이라는 객체로 컴파일하는데 이 과정이 약간 오래 걸린다.<br />
-위 코드를 반복적으로 사용하면 <code class="language-plaintext highlighter-rouge">Pattern</code>이라는 객체를 반복적으로 만들게 되는 것이다. 하지만 정규식이 변하지 않는 이상 <code class="language-plaintext highlighter-rouge">Pattern</code> 객체를 여러번 만들 필요가 없다. 한번만 만들어서 재사용하는 것이 좋다.</p>
+실제로 <code class="language-plaintext highlighter-rouge">Pattern</code> 클래스 내 compile 소스를 보자. 그럼 아래와 같이 전체 정규 표현식을 for문으로 돌면서 char 갯수만큼 반복하는 것을 볼 수 있다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//정규표현식을 int 배열에 복사하고 object 트리를 생성할 표현식의 파싱을 호출</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">compile</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// canonical equivalences(문자의미 및 비주얼이 정확히 일치하는 두 다른 문자열(의 연속) 처리</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">has</span><span class="o">(</span><span class="no">CANON_EQ</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">has</span><span class="o">(</span><span class="no">LITERAL</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">normalizedPattern</span> <span class="o">=</span> <span class="n">normalize</span><span class="o">(</span><span class="n">pattern</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">normalizedPattern</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">patternLength</span> <span class="o">=</span> <span class="n">normalizedPattern</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+
+    <span class="c1">// 편의를 위해 패턴을 int 배열에 복사</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">patternLength</span> <span class="o">+</span> <span class="mi">2</span><span class="o">];</span>
+
+    <span class="n">hasSupplementary</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="c1">// 패턴을 종료하기 위해 double zero를 사용함</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="o">,</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="c1">// 모든 문자를 코드 포인트로 변환</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">patternLength</span><span class="o">;</span> <span class="n">x</span> <span class="o">+=</span> <span class="nc">Character</span><span class="o">.</span><span class="na">charCount</span><span class="o">(</span><span class="n">c</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">normalizedPattern</span><span class="o">.</span><span class="na">codePointAt</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">isSupplementary</span><span class="o">(</span><span class="n">c</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">hasSupplementary</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">temp</span><span class="o">[</span><span class="n">count</span><span class="o">++]</span> <span class="o">=</span> <span class="n">c</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">//...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>Code points</strong>: 문자에 부여한 고유한 숫자값. 유니코드는 원래 문자 하나 당 고유한 숫자를 부여한 일종의 표이다. 이 때 문자마다 고유한 숫자를 코드포인트라고 정의한다. 우리가 흔히 말하는 코드 값이라던가 숫자값 같은 표현이 바로 ‘코드포인트’이다.</li>
+</ul>
+
+<p>isRomanNumeralSlow 메서드를 반복적으로 사용하면 <code class="language-plaintext highlighter-rouge">Pattern</code>이라는 객체를 반복적으로 만들면서 compile 메서드도 그 수 만큼 수행 되는 것이다. 즉 10번 <code class="language-plaintext highlighter-rouge">return s.matches(regex)</code>를 사용하면 compile 메서드도 10번 수행된다.
+하지만 정규식이 변하지 않는 이상 <code class="language-plaintext highlighter-rouge">Pattern</code> 객체를 여러번 만들 필요가 없다. 한번만 만들어서 재사용하는 것이 좋다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Pattern</code>은 입력받은 정규표현식에 해당하는 <strong>유한상태머신(Finite state machine)</strong>을 만들기 때문에 인스턴스 생성 비용이 높다.</p>
+
+<p>아래 java docs에 따르면, str.matches(regex) 는 Pattern.matches(regex, str) 와 정확하게 동일한 결과가 나온다고 한다.<br />
+<img src="/assets\img/string_matches.PNG" alt="string_matches" /></p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 코드 6-2 값비싼 객체를 재사용해 성능을 개선한다.</span>
 <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Pattern</span> <span class="no">ROMAN</span> <span class="o">=</span> <span class="nc">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span>
@@ -364,6 +402,8 @@ Left here for reference, feel free to delete.
     <span class="k">return</span> <span class="no">ROMAN</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">s</span><span class="o">).</span><span class="na">matches</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<p>위 코드는 Pattern 인스턴스 ROMAN을 재사용하면서, <strong>정적 팩터리 메서드인 Pattern.compile()</strong>를 활용한 좋은 예이다.</p>
 
 <p>하지만 위 코드도 문제가 있다. isRomanNumeralFast 메서드를 한 번도 호출하지 않는다면 ROMAN 필드는 쓸데없이 만든셈이 된다. 지연 초기화(lazy initialization)(아이템83)을 사용하여 불필요한 초기화를 없앨 수는 있지만 권하지 않는다. 보통 지연 초기화는 큰 성능 개선 없이 코드를 복잡하게 만든다(아이템67)</p>
 
@@ -510,11 +550,33 @@ Left here for reference, feel free to delete.
 <p>그런데 이런 경우가 있을 수 있다. cache 안에다가 데이터를 쌓아놨는데 이 cache를 비워야하는 시기를 놓치는 경우가 있다. <strong>캐시의 키</strong>인 key1이 없어지면 value1 값은 무의미해지는데 그런 경우 자동으로 해당 엔트리를 비워주는 <code class="language-plaintext highlighter-rouge">weakHashMap</code>이라는게 있다.</p>
 <ul>
   <li><strong>매핑(mapping)</strong> 또는 <strong>엔트리(entry)</strong>: 키와 값으로 구성되는 데이터 (from 자바 공식 문서)
-    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// key1에 대한 참조가 사라졌을 경우에 GC 대상이 된다.</span>
-<span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">cache2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WeakHashMap</span><span class="o">&lt;&gt;();</span>
-<span class="n">cache</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key1</span><span class="o">,</span> <span class="n">value1</span><span class="o">);</span>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Item7App</span> <span class="o">{</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">WeakHashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WeakHashMap</span><span class="o">&lt;&gt;();</span>
+
+      <span class="nc">String</span> <span class="n">key1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"key1"</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">key2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"key2"</span><span class="o">);</span>
+
+      <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key1</span><span class="o">,</span> <span class="s">"test 1"</span><span class="o">);</span>
+      <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key2</span><span class="o">,</span> <span class="s">"test 2"</span><span class="o">);</span>
+
+      <span class="n">key1</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// key1에 대한 참조가 사라졌을 경우에 GC 대상이 된다.</span>
+
+      <span class="nc">System</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>
+      <span class="n">map</span><span class="o">.</span><span class="na">entrySet</span><span class="o">()</span>
+          <span class="o">.</span><span class="na">stream</span><span class="o">()</span>
+          <span class="o">.</span><span class="na">forEach</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">::</span><span class="n">println</span><span class="o">);</span><span class="c1">//출력: key2=test 2</span>
+  <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>    </div>
   </li>
+</ul>
+
+<p>WeakHashMap 주의사항</p>
+<ul>
+  <li>String을 literal 방식으로 할당할 경우 gc의 대상이 되지 않는다.<br />
+(참조 : <a href="http://blog.breakingthat.com/2018/08/26/java-collection-map-weakhashmap/">Java - Collection - Map - WeakHashMap (약한 참조 해시맵) - 조금 늦은, IT 관습 넘기 (JS.Kim)</a>)</li>
 </ul>
 
 <p>또는 특정 시간이 지나면 캐시값이 의미가 없어지는 경우에 아래 2가지 방법을 통해 캐시를 비우는 작업을 해줘야 한다.</p>
@@ -717,7 +779,7 @@ Left here for reference, feel free to delete.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-07-Java-reference-and-GC/" class="flip-title"><span>[Java] Java Reference(참조)와 GC(Garbage Collector)</span></a>  <time class="faded fine" datetime="2021-12-07T00:00:00+09:00">07 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-06-Effective-java-Day10-item5/" class="flip-title"><span>[Effective Java] Day 10 - Item 5 :: 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라 (2)</span></a>  <time class="faded fine" datetime="2021-12-06T00:00:00+09:00">06 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-05-Effective-java-Day9-item3-part2-item4-item5/" class="flip-title"><span>[Effective Java] Day 9 - Item 3, 4, 5 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(3), 인스턴스화를 막으려거든 private 생성자를 사용하라, 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라</span></a>  <time class="faded fine" datetime="2021-12-05T00:00:00+09:00">05 Dec 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-12-Effective-java-Day13-item24/" class="flip-title"><span>[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라</span></a>  <time class="faded fine" datetime="2021-12-12T00:00:00+09:00">12 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-09-Finite-state-machine-for-pattern-matching/" class="flip-title"><span>[Java] 패턴 매칭을 위한 유한 상태 머신(Finite state machine) 사용</span></a>  <time class="faded fine" datetime="2021-12-09T00:00:00+09:00">09 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-08-Effective-java-Day12-item8/" class="flip-title"><span>[Effective Java] Day 12 - Item 8 :: finalizer와 cleaner 사용을 피하라</span></a>  <time class="faded fine" datetime="2021-12-08T00:00:00+09:00">08 Dec 2021</time></li>            </ul></aside>
 
   
 

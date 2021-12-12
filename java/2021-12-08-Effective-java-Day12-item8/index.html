@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Effective Java] Day 12 - Item 8 :: finalizer와 cleaner 사용을 피하라 | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Effective Java] Day 12 - Item 8 :: finalizer와 cleaner 사용을 피하라" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="Day 12 기록 시작! finalizer는 예측할 수 없고, 상황에 따라 위험할 수 있어 일반적으로 불필요하다. 오동작, 낮은 성능, 이식성 문제의 원인이 되기도 한다. Finalizer를 유용하게 쓸 수 있는 경우는 극히 드물다." />
+<meta property="og:description" content="Day 12 기록 시작! finalizer는 예측할 수 없고, 상황에 따라 위험할 수 있어 일반적으로 불필요하다. 오동작, 낮은 성능, 이식성 문제의 원인이 되기도 한다. Finalizer를 유용하게 쓸 수 있는 경우는 극히 드물다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-08-Effective-java-Day12-item8/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-08-Effective-java-Day12-item8/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-08T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Effective Java] Day 12 - Item 8 :: finalizer와 cleaner 사용을 피하라" />
+<script type="application/ld+json">
+{"headline":"[Effective Java] Day 12 - Item 8 :: finalizer와 cleaner 사용을 피하라","dateModified":"2021-12-12T03:41:53+09:00","datePublished":"2021-12-08T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-08-Effective-java-Day12-item8/"},"url":"https://icechoco.github.io/java/2021-12-08-Effective-java-Day12-item8/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day 12 기록 시작! finalizer는 예측할 수 없고, 상황에 따라 위험할 수 있어 일반적으로 불필요하다. 오동작, 낮은 성능, 이식성 문제의 원인이 되기도 한다. Finalizer를 유용하게 쓸 수 있는 경우는 극히 드물다.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-08-Effective-java-Day12-item8/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2021-12-13T00:36:07+09:00',
+  };
+  w._clapButton = true;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2021-12-08-Effective-java-Day12-item8</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day12-item8" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 12 - Item 8 :: finalizer와 cleaner 사용을 피하라
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-08T00:00:00+09:00">08 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-12">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-12T03:41:53+09:00">2021-12-12</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day 12 기록 시작!</p>
+<hr />
+<p><strong>finalizer는 예측할 수 없고, 상황에 따라 위험할 수 있어 일반적으로 불필요하다.</strong> 오동작, 낮은 성능, 이식성 문제의 원인이 되기도 한다. Finalizer를 유용하게 쓸 수 있는 경우는 극히 드물다.</p>
+
+<p>딱 두가지의 경우</p>
+<ul>
+  <li>자원의 소유자가 Close 메서드를 호출하지 않는 것에 대한 안전망 역할로 자원을 반납하고자 하는 경우</li>
+  <li>네이티브 리소스를 정리해야 하는 경우</li>
+</ul>
+
+<p>자바 9에서는 Finalizer를 사용자제(deprecated) API로 정하고 <code class="language-plaintext highlighter-rouge">Cleaner</code>를 그 대안으로 소개했다. 별도의 스레드를 사용하므로 finalizer보다는 덜 위험하지만, 여전히 예측할 수 없고, 느리고, 일반적으로 불필요하다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item08</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.lang.ref.Cleaner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Room</span> <span class="kd">implements</span> <span class="nc">AutoCloseable</span> <span class="o">{</span> <span class="c1">//Room 클래스는 AutoCloseable을 구현한다.</span>
+    <span class="c1">// finalizer와 달리 cleaner는 클래스에 public api로 노출되지 않는다.</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Cleaner</span> <span class="n">cleaner</span> <span class="o">=</span> <span class="nc">Cleaner</span><span class="o">.</span><span class="na">create</span><span class="o">();</span> <span class="c1">// parameter로 threadfactory 선택 가능.</span>
+
+    <span class="c1">// 청소가 필요한 자원. 절대 Room을 참조해서는 안된다!</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">State</span> <span class="kd">implements</span> <span class="nc">Runnable</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">numJunkPiles</span><span class="o">;</span> <span class="c1">// 방(Room) 안의 쓰레기 수</span>
+
+        <span class="kd">public</span> <span class="nf">State</span><span class="o">(</span><span class="kt">int</span> <span class="n">numJunkPiles</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">numJunkPiles</span> <span class="o">=</span> <span class="n">numJunkPiles</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// room의 close 메서드 호출 시, 또는 gc가 room을 회수할 때. 호출 된다.</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"방 청소(junk) : "</span> <span class="o">+</span> <span class="n">numJunkPiles</span><span class="o">);</span>
+            <span class="n">numJunkPiles</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="c1">//방의 상태. Cleanable과 공유한다.</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">State</span> <span class="n">state</span><span class="o">;</span>
+
+    <span class="c1">//Cleanable 객체. 수거 대상이 되면 방을 청소한다.</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Cleaner</span><span class="o">.</span><span class="na">Cleanable</span> <span class="n">cleanable</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Room</span><span class="o">(</span><span class="kt">int</span> <span class="n">numJunkPiles</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">State</span><span class="o">(</span><span class="n">numJunkPiles</span><span class="o">);</span><span class="c1">//Room → State 호출</span>
+        <span class="n">cleanable</span> <span class="o">=</span> <span class="n">cleaner</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">state</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">close</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">cleanable</span><span class="o">.</span><span class="na">clean</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>C++에서의 파괴자(destructor)와는 다른 개념이다. C++의 destructor은 특정 객체와 관련된 자원을 회수할 때도 사용하지만, 자바에서는 <code class="language-plaintext highlighter-rouge">try-with-resources</code>와 <code class="language-plaintext highlighter-rouge">try-finally</code>가 그 역할을 한다.</p>
+
+<h2 id="단점-1-언제-실행될지-알-수-없다">단점 1. 언제 실행될지 알 수 없다.</h2>
+<p>finalizer와 cleaner는 즉시 수행된다는 보장이 없고 언제 실행될지 알 수 없다. 어떤 객체가 더이상 필요 없어진 시점에 그 즉시 finalizer 또는 cleaner가 제때 실행되지 않을 수 있다. 실행되기까지 시간이 얼마나 걸릴지는 아무도 모른다. 따라서 <strong>제때 실행되어야 하는 중요한 작업을 절대로 finalizer와 cleaner에서 하면 안된다.</strong> 예를 들어, 파일 리소스를 반납하는 작업을 finalizer 안에서 처리한다면, 실제로 그 파일 리소스 반납이 언제 될지 알 수 없고, 자원 반납이 되지 않아 더이상 새로운 파일을 열지 못하는 상황이 발생할 수도 있다.</p>
+
+<p>아래 소스를 보자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FinalizerExample</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">finalize</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Throwable</span> <span class="o">{</span><span class="c1">//가비지 컬렉션이 될때 호출됨</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Clean up"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"hi"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleRunner</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">InterruptedException</span> <span class="o">{</span>
+        <span class="nc">SampleRunner</span> <span class="n">runner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SampleRunner</span><span class="o">();</span>
+        <span class="n">runner</span><span class="o">.</span><span class="na">run</span><span class="o">();</span>
+        <span class="c1">//run 메서드가 끝남과 동시에 finalizerExample의 유효성이 끝나면서 GC의 대상이 됨</span>
+        <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="n">l</span><span class="o">);</span><span class="c1">//1초</span>
+        <span class="c1">//종료</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
+        <span class="nc">FinalizerExample</span> <span class="n">finalizerExample</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FinalizerExample</span><span class="o">();</span>
+        <span class="n">finalizerExample</span><span class="o">.</span><span class="na">hello</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>SampleRunner.run이라는 메서드에서 FinalizerExample이라는 객체의 인스턴스를 생성하고, hello라는 메서드를 호출했다. 이 finalizerExample는 <code class="language-plaintext highlighter-rouge">finalize</code>가 선언되어있다. run 메서드가 끝남과 동시에 finalizerExample의 유효성이 끝나면서 GC의 대상이 된다.</p>
+<ul>
+  <li>출력
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hi</span>
+</code></pre></div>    </div>
+    <p>run 메서드 호출 완료 후 1초가 지난 후에도 finalizerExample가 GC의 대상이 됐다고 해서, 바로 GC가 되지 않았다. 이렇게 finalize라는 메서드가 호출이 안될 수도 있고, 언제 호출이 될지 아무도 모른다.</p>
+  </li>
+</ul>
+
+<h2 id="단점-2-finalizer는-인스턴스의-자원-회수를-지연시킬-수-있다">단점 2. finalizer는 인스턴스의 자원 회수를 지연시킬 수 있다.</h2>
+<p>Finalizer 쓰레드는 우선순위가 낮아서 언제 실행될지 모른다. 따라서, Finalizer 안에 어떤 작업이 있고, 그 작업을 쓰레드가 처리하지 못해서 대기하고 있는 경우, 해당 인스턴스는 GC가 되지 않고 계속 쌓이다가 OutOfMemory가 발생할 수도 있다.</p>
+
+<p>Cleaner는 별도의 스레드로 동작하며 자신을 수행할 스레드를 제어할 수 있다. 그래서 자원 회수 지연이라는 부분에 있어 해당 스레드의 우선순위를 높게 줌으로써 조금 나을 수도 있다. 하지만 여전히 쓰레드는 백그라운드에서 수행되며 언제 처리될 지 알 수 없다.</p>
+
+<h2 id="단점-3-finalizer나-cleaner를-아예-실행하지-않을-수도-있다">단점 3. finalizer나 Cleaner를 아예 실행하지 않을 수도 있다.</h2>
+<p>자바 언어 명세는 finalizer나 cleaner의 수행 시점 뿐만 아니라 수행여부조차 보장하지 않는다. 따라서 <strong>Finalizer나 Cleaner로 저장소 상태를 변경하는 일을 하지 말라.</strong> DB같은 공유 자원의 영구 락 해제를 finalizer나 cleaner로 반환하는 작업을 한다면 분산 시스템 전체가 멈춰 버릴 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">System.gc</code>나 <code class="language-plaintext highlighter-rouge">System.runFinalization</code>에 속지말라. 그걸 실행해도 finalizer나 cleaner를 실행한다고 보장할 수 없다. 그걸 보장해주겠다고 만든</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">System.runFinalizersOnExit</code>와</li>
+  <li>그 쌍둥이인 <code class="language-plaintext highlighter-rouge">Runtime.runFinalizersOnExit</code></li>
+</ul>
+
+<p>는 심각한 결함때문에 망했고 수십년간 사용자제(deprecated) 상태다. 자바 10까지만 있고 11부터는 사라졌다.</p>
+
+<h2 id="단점-4-심각한-성능문제를-동반한다">단점 4. 심각한 성능문제를 동반한다.</h2>
+<p><code class="language-plaintext highlighter-rouge">AutoCloseable</code> 객체를 만들고 <code class="language-plaintext highlighter-rouge">try-with-resourecs</code>로 자원 반납을 하는데 걸리는 시간은 12ns 인데 반해, Finalizer를 사용한 경우에 550ns로 약 50배가 걸렸다. Cleaner를 사용한 경우에는 66ns로 약 5배가 걸렸다.</p>
+
+<h2 id="단점-5-finalizer-공격에-노출되어-심각한-보안-문제를-일으킬-수도-있다">단점 5. finalizer 공격에 노출되어 심각한 보안 문제를 일으킬 수도 있다.</h2>
+<p>Finalizers는 객체를 생성할 때 취약점이 존재한다. finalizer의 개념은 java 메서드가 os로 리턴해야하는 자원을 해제 할 수 있게 하는 것인데 finalizer에서 자바 코드가 실행될 수 있다. finalizer 공격 원리를 알아보자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">item08.FinalizerAttack</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Vulnerable</span> <span class="o">{</span>
+    <span class="nc">Integer</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+    <span class="nc">Vulnerable</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">"FinalizerExample value must be positive"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">value</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AttackVulnerable</span> <span class="kd">extends</span> <span class="nc">Vulnerable</span><span class="o">{</span>
+    <span class="kd">static</span> <span class="nc">Vulnerable</span> <span class="n">vulnerable</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">AttackVulnerable</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">finalize</span><span class="o">(){</span><span class="c1">//실행이 될지 안될지 알 수 없음</span>
+        <span class="n">vulnerable</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="k">new</span> <span class="nf">AttackVulnerable</span><span class="o">(-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">gc</span><span class="o">();</span>             <span class="c1">//테스트를 위한 gc 실행 및</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">runFinalization</span><span class="o">();</span><span class="c1">//finalizer 실행 권장</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">vulnerable</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Vulnerable object "</span> <span class="o">+</span> <span class="n">vulnerable</span> <span class="o">+</span> <span class="s">" created!"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>어떤 <strong>Vulnerable</strong>라는 클래스와, 그 Vulnerable라는 클래스를 상속받은 <strong>AttackVulnerable</strong>라는 클래스가 있다.<br />
+이 AttackVulnerable 클래스는 finalize가 호출됐을 때 vulnerable static 변수에 this가 저장된다. 객체는 다시 접근할 수 있게 됐고 gc되지 않는다.</p>
+
+<p>AttackVulnerable 클래스의 메인 메서드에서 새로운 AttackVulnerable 객체 생성을 시도한다. vlaue가 -1이기 때문에 Exception이 발생하고 catch 블록으로 온다. 그럼 이 객체가 아예 만들어지지 않고 죽어야지 정상인데 <strong>죽으면서 finalize가 실행</strong>이 된다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">System.gc()</code>와 <code class="language-plaintext highlighter-rouge">System.runFinalization()</code>는 gc를 실행하고 모든 finalizer를 실행하도록 권장한다. 테스트를 위해 강제로 실행될 수 있도록 추가해주었다(앞에서 본 것 처럼 이 2개가 finalizer가 실행되는 것을 보장해주진 않는다)</p>
+
+<p>이 finalize라는 메서드 안에서 이 <strong>인스턴스는 static 필드에 접근</strong>할 수 있다. 그래서 vulnerable가 GC가 되지 못하게 할 수 있다. 결국에는 원래 vulnerable는 죽어야 하는 인스턴스인데 finalize 때문에 좀비처럼 살아있게 되는 것이다. 그리고 노출이 되지 않아야 하고 사용을 못해야 하는 인스턴스의 메서드도 접근이 가능하게 된다.</p>
+
+<p>그 다음 출력을 통해 값이 잘못된 vulnerable 객체가 만들어졌음을 알 수 있다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">IllegalArgumentException</span><span class="o">:</span> <span class="nc">FinalizerExample</span> <span class="n">value</span> <span class="n">must</span> <span class="n">be</span> <span class="n">positive</span>
+<span class="nc">Vulnerable</span> <span class="n">object</span> <span class="mi">0</span> <span class="n">created</span><span class="o">!</span>
+</code></pre></div></div>
+
+<p>실행하면 위와 같은 결과가 나온다. 왜 Vulnerable value가 -1이 아니라 0일까? Vulnerable 생성자에서 인자 검사 전까지는 value 할당(<code class="language-plaintext highlighter-rouge">this.value = value;</code>)을 하지 않았기 때문이다. 그래서 value는 초기값 0이다.</p>
+
+<p>이런 경우를 막기위해서는 A라는 클래스를 상속 자체를 막을 수 있는 <strong>final 클래스</strong>로 만들거나,</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Vulnerable</span> <span class="o">{</span>
+    <span class="c1">//...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p><strong>finalize라는 메서드 자체를 final로</strong> 만들어주면 finalize를 더이상 상속하지 못하게 된다. 그러니 이 클래스 자체가 조금 더 보안에 안전하게 된다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Vulnerable</span> <span class="o">{</span>
+    <span class="c1">//...</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">finalize</span><span class="o">(){</span><span class="c1">//finalier attack 공격 방지</span>
+    <span class="o">}</span>
+    <span class="c1">//...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="자원-반납-하는-방법">자원 반납 하는 방법</h2>
+<p>자원반납이 필요한 클래스가 <code class="language-plaintext highlighter-rouge">AutoCloseable</code> 인터페이스를 구현하고, 그 클래스의 객체를 생성하는 쪽은 <code class="language-plaintext highlighter-rouge">try-with-resource</code>를 사용하거나 <code class="language-plaintext highlighter-rouge">close()</code> 메소드를 명시적으로 호출하면 된다. <code class="language-plaintext highlighter-rouge">try-with-resource</code>를 사용하면 명시적으로 close()를 호출하지 않아도 try 블럭이 끝날 때 AutoCloseable 인터페이스에 있는 close를 호출하여 closing 해준다.</p>
+
+<p>호출된 <code class="language-plaintext highlighter-rouge">close</code>메서드는 이 객체가 더이상 유효하지 않음을 필드에 기록하고, 다른 메서드는 이 필드를 검사하여 객체가 닫힌 후에 불렀다면 <code class="language-plaintext highlighter-rouge">IllgegalStateException</code>을 던져야 한다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleResource</span> <span class="kd">implements</span> <span class="nc">AutoCloseable</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">close</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">RuntimeException</span><span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"close"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleRunner</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">InterruptedException</span> <span class="o">{</span>
+        <span class="k">try</span><span class="o">(</span><span class="nc">SampleResource</span> <span class="n">sampleResource</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SampleResource</span><span class="o">()){</span>
+            <span class="n">sampleResource</span><span class="o">.</span><span class="na">hello</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="왜-finalizer와-cleaner가-필요할까">왜 finalizer와 cleaner가 필요할까?</h2>
+<h3 id="1자원의-소유자가-close-메서드를-호출하지-않는-것에-대한-안전망safety-net-역할">1.자원의 소유자가 Close 메서드를 호출하지 않는 것에 대한 안전망(Safety-net) 역할</h3>
+<p>cleaner나 finalizer가 즉시 또는 끝나기 전까지 호출되리라는 보장은 없지만, 클라이언트가 하지 않은 자원 회수를 늦게라도 해주는 것이 아예 안하는 것보다는 나으니 말이다.<br />
+실제로 자바에서 제공하는 <code class="language-plaintext highlighter-rouge">FileInputStream</code>,<code class="language-plaintext highlighter-rouge">FileOutputStream</code>,<code class="language-plaintext highlighter-rouge">ThreadPoolExecutor</code>가 대표적이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleResource</span> <span class="kd">implements</span> <span class="nc">AutoCloseable</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="n">close</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">close</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">RuntimeException</span><span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">close</span><span class="o">){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalStateException</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="n">close</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"close"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hello</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">finalize</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Throwable</span><span class="o">{</span>
+        <span class="k">if</span><span class="o">(!</span><span class="k">this</span><span class="o">.</span><span class="na">close</span><span class="o">)</span> <span class="n">close</span><span class="o">();</span> <span class="c1">//finalizer 안에서 자기 자신의 자원을 반납하도록!</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="2-네이티브-피어와-연결된-객체-회수-역할">2. 네이티브 피어와 연결된 객체 회수 역할</h3>
+<ul>
+  <li><strong>네이티브 피어</strong>: 일반 자바 객체가 네이티브 메서드를 통해 기능을 위임한 네이티브 객체</li>
+  <li>gc가 회수할 수 있는 대상이 아닌 네이티브 객체를 회수하기 위해서는, cleaner나 finalizer에서 회수할 수 있도록 처리</li>
+  <li>단, 성능 저하를 감당할 수 있고 네이티브 피어가 심각한 자원을 가지고 있지 않을 때만 해당</li>
+</ul>
+
+<h3 id="참고">참고</h3>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=0yUxPUXS1pM&amp;t=115s">[이팩티브 자바] #6 불필요한 객체를 만들지 말자</a></li>
+  <li><a href="https://yangbongsoo.tistory.com/8?category=919799">Finalizer attack</a></li>
+</ul>
+
+  
+</article>
+
+
+
+  <clap-button class="mb6" ></clap-button>
+  
+  
+    <p class="message centered border-radius" >
+      <span style="display:block;margin-bottom:.5rem;">This is a preview of <a href="https://getclaps.app">Clap Button</a>, a new feedback and analytics tools for Hydejack, built by yours truly.</span>
+      <span style="display:block;margin-bottom:.5rem;">You can try it out on <code>localhost</code> for free, but it will be removed (together with this message) when building with <code>JEKYLL_ENV=production</code>.</span>
+      <span style="display:block;margin-bottom:.5rem;">To use Clap Button on your site, get a <a href="https://getclaps.app#pricing">subscription</a><br/>and set <code>clap_button: true</code> in your config file.</span>
+    </p>
+  
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-12-Effective-java-Day13-item24/" class="flip-title"><span>[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라</span></a>  <time class="faded fine" datetime="2021-12-12T00:00:00+09:00">12 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-09-Finite-state-machine-for-pattern-matching/" class="flip-title"><span>[Java] 패턴 매칭을 위한 유한 상태 머신(Finite state machine) 사용</span></a>  <time class="faded fine" datetime="2021-12-09T00:00:00+09:00">09 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-07-Effective-java-Day11-item6-and-item7/" class="flip-title"><span>[Effective Java] Day 11 - Item 6, 7 :: 불필요한 객체 생성을 피하라 (2), 다 쓴 객체 참조를 해제하라</span></a>  <time class="faded fine" datetime="2021-12-07T00:00:00+09:00">07 Dec 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

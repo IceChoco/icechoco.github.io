@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라 | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="이 아이템에서는 각각의 중첩 클래스를 언제, 왜 사용해야하는지 얘기하고 있다." />
+<meta property="og:description" content="이 아이템에서는 각각의 중첩 클래스를 언제, 왜 사용해야하는지 얘기하고 있다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-12-Effective-java-Day13-item24/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-12-Effective-java-Day13-item24/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-12T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라" />
+<script type="application/ld+json">
+{"headline":"[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라","dateModified":"2021-12-12T23:23:11+09:00","datePublished":"2021-12-12T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-12-Effective-java-Day13-item24/"},"url":"https://icechoco.github.io/java/2021-12-12-Effective-java-Day13-item24/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"이 아이템에서는 각각의 중첩 클래스를 언제, 왜 사용해야하는지 얘기하고 있다.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-12-Effective-java-Day13-item24/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2021-12-13T00:36:07+09:00',
+  };
+  w._clapButton = true;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2021-12-12-Effective-java-Day13-item24</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day13-item24" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-12T00:00:00+09:00">12 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>, <span>이펙티브자바</span>, <span>Effectivejava</span>
+      </span>
+      
+        
+          
+          
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>이 아이템에서는 각각의 중첩 클래스를 언제, 왜 사용해야하는지 얘기하고 있다.</p>
+
+<h2 id="중첩클래스란">중첩클래스란?</h2>
+<p><strong>중첩 클래스(nested class)</strong>: 다른 클래스 안에 정의된 클래스</p>
+<ul>
+  <li>정적 멤버 클래스</li>
+  <li>(비정적) 멤버 클래스</li>
+  <li>익명 클래스</li>
+  <li>지역 클래스</li>
+</ul>
+
+<p>정적 멤버 클래스를 제외한 나머지는 내부 클래스(inner class)이다.</p>
+
+<h2 id="1-정적-멤버-클래스">1. 정적 멤버 클래스</h2>
+<h3 id="일반-클래스와의-차이">일반 클래스와의 차이</h3>
+<ul>
+  <li>다른 클래스 안에 선언됨</li>
+  <li>바깥 클래스의 private 멤버에도 접근 가능</li>
+</ul>
+
+<p>다른 정적 멤버와 <strong>똑같은 접근 규칙</strong>을 적용 받는다.</p>
+<ul>
+  <li>private으로 선언하면 바깥 클래스에서만 접근 가능</li>
+  <li>흔히 바깥 클래스와 함께 쓰이는 public 도우미 클래스로 쓰임
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculator</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Operation</span><span class="o">{</span><span class="c1">// 열거타입도 정적 멤버 클래스이다</span>
+      <span class="no">PLUS</span><span class="o">,</span> <span class="no">MINUS</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">Calculator</span><span class="o">.</span><span class="na">Operation</span> <span class="n">test</span> <span class="o">=</span> <span class="nc">Calculator</span><span class="o">.</span><span class="na">Operation</span><span class="o">.</span><span class="na">PLUS</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="정적-멤버-클래스와-접근제어자">정적 멤버 클래스와 접근제어자</h3>
+<p>private 정적 멤버 클래스는 바깥 클래스가 표현하는 객체의 한 부분(구성요소, *멤버변수를 의미하는 듯)을 나타날 때 쓴다.</p>
+
+<p>public이나 protected 멤버라면 정적으로 만들지, 안 만들지에 대해서 신중해야 한다. 이미 릴리즈 된 비정적 클래스를 추후 버전에서 정적으로 바꾼다면 하위 호환성이 깨지게 된다.</p>
+
+<h2 id="2-비정적-멤버-클래스">2. 비정적 멤버 클래스</h2>
+<h3 id="정적-멤버-클래스와의-차이">정적 멤버 클래스와의 차이</h3>
+<ul>
+  <li>구문상 차이: static의 유무</li>
+  <li>의미상 차이: 비정적 멤버 클래스의 인스턴스는 바깥 클래스의 인스턴스와 암묵적으로 연결된다.</li>
+  <li>비정적 멤버 클래스의 인스턴스 메서드에서 정규화된 this를 사용하여 바깥의 인스턴스 메서드 호출 또는 바깥 인스턴스의 참조를 가져올 수 있다.
+    <ul>
+      <li>정규화된 this: <code class="language-plaintext highlighter-rouge">클래스명.this</code> 형태로 바깥 클래스의 이름을 명시하는 용법</li>
+    </ul>
+  </li>
+</ul>
+
+<p>개념상 중첩 클래스의 인스턴스가 바깥 인스턴스와 <strong>독립적으로 존재</strong>할 수 있다면 정적 멤버 클래스로 만들어야 한다.<br />
+비정적 멤버 클래스는 바깥 인스턴스 없이는 생성할 수 없다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NonStaticExample</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">NonStaticExample</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">NonStaticClass</span> <span class="n">nonStaticClass</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NonStaticClass</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">nonStaticClass</span><span class="o">.</span><span class="na">getNameWithOuter</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">NonStaticClass</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getNameWithOuter</span><span class="o">()</span> <span class="o">{</span>
+            <span class="c1">// 정규화된 this 를 이용해서 바깥 클래스의 인스턴스 메서드를 사용할 수 있다.</span>
+            <span class="k">return</span> <span class="nc">NonStaticExample</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">name</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>비정적 멤버 클래스의 인스턴스와 바깥 인스턴스 사이의 관계는 멤버클래스가 인스턴스화 될 때 확인되며, 더 이상 변경할 수 없다.</p>
+
+<p>드물게 직접 <code class="language-plaintext highlighter-rouge">바깥 인스턴스의 클래스.new Member Class(args)</code>를 호출해 수동으로 만든다. 비정적 내부 클래스는 NonStaticExample 객체를 생성 후 NonStaticExample 객체를 이용하여 NonStaticClass 객체를 생성해야한다. 즉, 비정적 내부 클래스는 바깥 클래스에 대한 참조가 필요한 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">NonStaticExample</span> <span class="n">nonStaticExample</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NonStaticExample</span><span class="o">(</span><span class="s">"NonStatic"</span><span class="o">);</span>
+<span class="nc">NonStaticExample</span><span class="o">.</span><span class="na">NonStaticClass</span> <span class="n">nonStaticClass</span> <span class="o">=</span> <span class="n">nonStaticExample</span><span class="o">.</span><span class="na">new</span> <span class="nf">NonStaticClass</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>하지만 이 관계 정보는 비정적 멤버 클래스의 인스턴스 안에 만들어져 메모리 공간을 차지하며, 생성시간도 더 걸린다.<br />
+비정적 내부 클래스의 경우 바깥 인스턴스로의 숨은 외부 참조 정보를 가지고 있기 때문에 메모리 누수가 발생할 여지가 있다. 바깥 클래스는 더 이상 사용되지 않지만 <strong>내부 클래스의 참조로 인해 GC가 수거하지 못해서 바깥 클래스의 메모리 해제를 하지 못하는 경우가 발생</strong>할 수 있다.</p>
+
+<p><img src="/assets\img/item24-nonStatic.PNG" alt="item24-nonStatic" /></p>
+
+<p>정적 내부 클래스의 경우 바깥 클래스에 대한 참조 값을 가지고 있지 않기 때문에 메모리 누수가 발생하지 않는다. 메모리 누수가 발생할 수 있는 문제점이 있기 때문에 만약 <strong>내부 클래스가 독립적으로 사용되어 바깥 인스턴스에 접근할 일이 없다면 무조건 static 클래스로 선언</strong>하여 사용하는 것이 좋다! 바깥 클래스에 대한 참조를 가지지 않아 메모리 누수가 발생하지 않기 때문이다.</p>
+
+<h3 id="비정적-멤버-클래스의-쓰임새-어댑터의-역할">비정적 멤버 클래스의 쓰임새: 어댑터의 역할</h3>
+<ul>
+  <li>비정적 클래스를 어댑터 패턴을 이용하여 바깥 클래스를 다른 클래스로 제공 할 때 사용하면 좋다.</li>
+  <li>Map 인터페이스의 구현체: 자신의 컬렉션 뷰를 구현할 때 비정적 멤버 클래스를 사용
+    <ul>
+      <li>ex) <strong>HashMap의 <code class="language-plaintext highlighter-rouge">keySet()</code></strong><br />
+   <code class="language-plaintext highlighter-rouge">keySet()</code>을 사용하면 <code class="language-plaintext highlighter-rouge">Map</code>의 key에 해당하는 값들을 <code class="language-plaintext highlighter-rouge">Set</code>으로 반환해 주는 데 어댑터 패턴을 이용해서 <code class="language-plaintext highlighter-rouge">Map</code>을 <code class="language-plaintext highlighter-rouge">Set</code>으로 제공한다.
+   <img src="/assets\img/keySet-of-HashMap.png" alt="keySet-of-HashMap" /></li>
+    </ul>
+  </li>
+  <li>Collection 인터페이스의 구현체: 자신의 반복자 구현</li>
+</ul>
+
+<h2 id="3-익명-클래스anonymous-class">3. 익명 클래스(anonymous class)</h2>
+<ul>
+  <li>이름이 없는 일회용 클래스.</li>
+  <li>바깥 클래스의 멤버도 아니다.</li>
+  <li><strong>정의와 생성을 동시에:</strong> 쓰이는 시점에 선언과 동시에 인스턴스가 만들어진다.</li>
+  <li>비정적인 문맥에서 사용될 때만 바깥 클래스의 인스턴스를 만들 수 있다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AnonymousExample2</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">x</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">y</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">operate</span><span class="o">()</span> <span class="o">{</span><span class="c1">//비정적 문맥</span>
+        <span class="nc">Operator2</span> <span class="n">operator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Operator2</span><span class="o">()</span> <span class="o">{</span><span class="c1">//구현 인터페이스 이름</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">double</span> <span class="nf">plus</span><span class="o">()</span> <span class="o">{</span>
+                <span class="c1">//바깥 인스턴스 x, y 참조</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%f + %f = %f\n"</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>
+                <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="k">return</span> <span class="n">operator</span><span class="o">.</span><span class="na">plus</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">Operator2</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="nf">plus</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>정적 문맥에서라도 상수 정적 변수(static final) 이외의 정적 멤버는 가질 수 없다. 즉, 상수 표현을 위해 초기화된 final 기본 타입과 문자열 필드만 가질 수 있다.
+    <ul>
+      <li>자바 8에서 람다의 도입과 함께 조금 완화되어 final이 아니더라도 참조 가능하나 참조되는 값은 의미적으로는 여전히 상수여야만 함</li>
+      <li>따라서 final로 선언하지 않더라도 값을 변경할 순 없음</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AnonymousExample3</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">x</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">y</span><span class="o">;</span>
+
+    <span class="kd">static</span> <span class="kt">double</span> <span class="nf">operate</span><span class="o">()</span> <span class="o">{</span><span class="c1">//정적 문맥</span>
+        <span class="nc">Operator3</span> <span class="n">operator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Operator3</span><span class="o">()</span> <span class="o">{</span><span class="c1">//구현 인터페이스 이름</span>
+            <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">A</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="c1">// 자바 8부터는 정적멤버가 static이 아니여도 컴파일에러 발생 X</span>
+            <span class="kd">static</span> <span class="kt">double</span> <span class="no">B</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">double</span> <span class="nf">plus</span><span class="o">()</span> <span class="o">{</span>
+                <span class="c1">//바깥 인스턴스 x, y 참조 불가</span>
+                <span class="k">return</span> <span class="no">A</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="k">return</span> <span class="n">operator</span><span class="o">.</span><span class="na">plus</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">Operator3</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="nf">plus</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>이전에는 즉석에서 작은 함수 객체나 처리 객체를 만드는데 익명 클래스를 사용했지만 이제 람다에게 물려주었다.</li>
+</ul>
+
+<h3 id="익명-클래스-예시">익명 클래스 예시</h3>
+<ol>
+  <li>Comparator 구현 - 람다가 나오고 나서는 자주 사용하지 않는 방식
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">);</span>
+<span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Comparator</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
+ <span class="nd">@Override</span>
+ <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">o1</span><span class="o">,</span> <span class="nc">Integer</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+     <span class="k">return</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">o1</span><span class="o">,</span> <span class="n">o2</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">});</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
+</code></pre></div>    </div>
+    <p>Java 8 람다가 나오고 나서는 주로 아래와 같이 사용한다.</p>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="o">(</span><span class="n">o1</span><span class="o">,</span> <span class="n">o2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">o1</span><span class="o">,</span> <span class="n">o2</span><span class="o">));</span>
+</code></pre></div>    </div>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="nc">Comparator</span><span class="o">.</span><span class="na">comparingInt</span><span class="o">(</span><span class="n">o</span> <span class="o">-&gt;</span> <span class="n">o</span><span class="o">));</span>
+</code></pre></div>    </div>
+  </li>
+  <li>정적 팩터리 메서드 구현 시 자주 사용됨
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IntListHelper</span> <span class="o">{</span>
+      
+ <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">intArrayAsList</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+     <span class="k">return</span> <span class="k">new</span> <span class="nc">AbstractList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
+         <span class="nd">@Override</span>
+         <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+             <span class="k">return</span> <span class="n">a</span><span class="o">[</span><span class="n">index</span><span class="o">];</span>
+         <span class="o">}</span>
+  
+         <span class="nd">@Override</span>
+         <span class="kd">public</span> <span class="kt">int</span> <span class="nf">size</span><span class="o">()</span> <span class="o">{</span>
+             <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+         <span class="o">}</span>
+     <span class="o">};</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="익명-클래스의-제약사항">익명 클래스의 제약사항</h3>
+<ul>
+  <li>선언한 지점에서만 인스턴스 생성가능하다.</li>
+  <li>instanceof 검사나 클래스의 이름이 필요한 작업은 수행할 수 없다.</li>
+  <li>여러 인터페이스 구현이 불가능하고, 구현과 동시에 다른 클래스를 상속할 수도 없다.</li>
+  <li>익명 클래스를 사용하는 클라이언트는 그 익명 클래스가 상위 타입에서 상속한 멤버 외에는 호출할 수 없다.</li>
+  <li>표현식 중간에 등장해 10줄이 넘어가면 가독성이 좋지 않다.</li>
+</ul>
+
+<h2 id="4-지역-클래스">4. 지역 클래스</h2>
+<ul>
+  <li>가장 자주 쓴다.</li>
+  <li>지역변수를 선언할 수 있는 곳이면 어디서든 선언 가능하고, 유효 범위도 지역변수와 같다.</li>
+  <li>멤버클래스처럼 이름이 있고 반복적해서 사용 가능하다.</li>
+  <li>익명 클래스처럼 비정적 문맥에서 사용될 때만 바깥 인스턴스를 참조할 수 있다.</li>
+  <li>정적 멤버는 가질 수 없고, 가독성을 위해 짧게 작성해야 한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocalExam</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">x</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">class</span> <span class="nc">LocalClass</span> <span class="o">{</span>
+            <span class="kt">void</span> <span class="nf">doPrint</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"LocalClass"</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="nc">LocalClass</span> <span class="n">local</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LocalClass</span><span class="o">();</span>
+        <span class="n">local</span><span class="o">.</span><span class="na">doPrint</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">LocalExam</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LocalExam</span><span class="o">();</span>
+        <span class="n">a</span><span class="o">.</span><span class="na">x</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="결론">결론</h2>
+<ul>
+  <li>메서드 밖에서도 사용해야 함 or 메서드 안에 정의하기엔 너무 길다 → <strong>멤버 클래스</strong>
+    <ul>
+      <li>멤버 클래스의 인스턴스가 바깥 인스턴스를 참조하면 → <strong>비정적 멤버 클래스</strong></li>
+      <li>멤버 클래스의 인스턴스가 바깥 인스턴스를 참조하지 않으면 → <strong>정적 멤버 클래스</strong></li>
+    </ul>
+  </li>
+  <li>중첩클래스가 한 메서드 안에 쓰임<br />
+and 그 인스턴스를 생성하는 지점이 단 한 곳<br />
+and 해당 타입으로 쓰기에 적합한 클래스나 인터페이스가 이미 있음 → <strong>익명 클래스</strong>
+    <ul>
+      <li>그렇지 않다면? → <strong>지역 클래스</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="참고">참고</h3>
+<ul>
+  <li><a href="https://tecoble.techcourse.co.kr/post/2020-11-05-nested-class/">정적, 비정적 내부 클래스 알고 사용하기</a></li>
+</ul>
+
+  
+</article>
+
+
+
+  <clap-button class="mb6" ></clap-button>
+  
+  
+    <p class="message centered border-radius" >
+      <span style="display:block;margin-bottom:.5rem;">This is a preview of <a href="https://getclaps.app">Clap Button</a>, a new feedback and analytics tools for Hydejack, built by yours truly.</span>
+      <span style="display:block;margin-bottom:.5rem;">You can try it out on <code>localhost</code> for free, but it will be removed (together with this message) when building with <code>JEKYLL_ENV=production</code>.</span>
+      <span style="display:block;margin-bottom:.5rem;">To use Clap Button on your site, get a <a href="https://getclaps.app#pricing">subscription</a><br/>and set <code>clap_button: true</code> in your config file.</span>
+    </p>
+  
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-09-Finite-state-machine-for-pattern-matching/" class="flip-title"><span>[Java] 패턴 매칭을 위한 유한 상태 머신(Finite state machine) 사용</span></a>  <time class="faded fine" datetime="2021-12-09T00:00:00+09:00">09 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-08-Effective-java-Day12-item8/" class="flip-title"><span>[Effective Java] Day 12 - Item 8 :: finalizer와 cleaner 사용을 피하라</span></a>  <time class="faded fine" datetime="2021-12-08T00:00:00+09:00">08 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-07-Effective-java-Day11-item6-and-item7/" class="flip-title"><span>[Effective Java] Day 11 - Item 6, 7 :: 불필요한 객체 생성을 피하라 (2), 다 쓴 객체 참조를 해제하라</span></a>  <time class="faded fine" datetime="2021-12-07T00:00:00+09:00">07 Dec 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

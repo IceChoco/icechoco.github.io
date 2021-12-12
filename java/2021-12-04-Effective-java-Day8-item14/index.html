@@ -37,15 +37,15 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta property="og:locale" content="ko_KR, en_US" />
 <meta name="description" content="CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다." />
 <meta property="og:description" content="CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다." />
-<link rel="canonical" href="http://localhost:4000/java/2021-12-04-Effective-java-Day8-item14/" />
-<meta property="og:url" content="http://localhost:4000/java/2021-12-04-Effective-java-Day8-item14/" />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/" />
 <meta property="og:site_name" content="IceChoco" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-12-04T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라","dateModified":"2021-12-05T20:42:50+09:00","datePublished":"2021-12-04T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/java/2021-12-04-Effective-java-Day8-item14/"},"url":"http://localhost:4000/java/2021-12-04-Effective-java-Day8-item14/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다.","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라","dateModified":"2021-12-12T00:22:27+09:00","datePublished":"2021-12-04T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/"},"url":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,9 +72,9 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="http://localhost:4000/java/2021-12-04-Effective-java-Day8-item14/" hreflang="ko-kr, en-us">
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/" hreflang="ko-kr, en-us">
 
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="IceChoco" />
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
 
 
 <link rel="shortcut icon"    href="/assets/icons/favicon.ico">
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-08T00:54:13+09:00',
+    INDEX_KEY: 'index--2021-12-13T00:36:07+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-05">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-12">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-05T20:42:50+09:00">2021-12-05</time>
+              <time datetime="2021-12-12T00:22:27+09:00">2021-12-12</time>
             </span>
           
         
@@ -399,7 +399,7 @@ Left here for reference, feel free to delete.
 <p>사실상 자바 플랫폼 라이브러리의 모든 값 클래스와 열거타입이 Comparable을 구현했다.<br />
 알파벳, 숫자, 연대 같이 순서가 명확한 클래스를 작성하는 경우 반드시 Comparable을 구현하자.</p>
 
-<p>compareTo는 타입이 다른 객체 간의 비교도 허용한다. 그러나 대부분 비교할 객체들이 구현한 공통 인터페이스를 매개로 비교가 이루어지며, 타입이 다른 객체가 주어지면 간단히 ClassCastException을 던진다.</p>
+<p>CompareTo는 Object로 인수를 받을 경우에 한해 타입이 다른 객체 간의 비교도 허용한다. 그러나 대부분 비교할 객체들이 구현한 공통 인터페이스를 매개로 비교가 이루어지며, 타입이 다른 객체가 주어지면 간단히 ClassCastException을 던진다.</p>
 
 <h3 id="compareto-메서드의-일반-규약">compareTo 메서드의 일반 규약</h3>
 <p>compareTo 규약을 지키지못하면 비교를 활용하는 클래스와 어울리지 못한다.<br />
@@ -409,7 +409,7 @@ Left here for reference, feel free to delete.
   <li>Collecions, Arrays: 검색과 정렬알고리즘을 활용하는 유틸리티 클래스</li>
 </ul>
 
-<p><strong>참고</strong>: a.compareTo(b)에서 a &gt; b 는 1, a == b는 0, a &lt; b는 -1</p>
+<p><strong>참고</strong>: a.compareTo(b)에서 a &gt; b 는 positive, a == b는 0, a &lt; b는 negative</p>
 <h4 id="1-대칭성---두-객체-참조의-순서를-바꿔-비교해도-예상한-결과가-나와야-한다">1. 대칭성 - 두 객체 참조의 순서를 바꿔 비교해도 예상한 결과가 나와야 한다.</h4>
 <p>1) a가 b보다 작으면 b는 a보다 커야한다. → a.compareTo(b)가 -1 이면 b.compareTo(a)는 1이어야 한다.<br />
   2) Aa b와 같으면 b는 a와 같아야한다. → a.compareTo(b)가 0이면 b.compareTo(a)는 0이어야 한다.<br />
@@ -906,7 +906,7 @@ CaseInsensitiveString의 참조는 CaseInsensitiveString 참조와만 비교할 
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-07-Java-reference-and-GC/" class="flip-title"><span>[Java] Java Reference(참조)와 GC(Garbage Collector)</span></a>  <time class="faded fine" datetime="2021-12-07T00:00:00+09:00">07 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-06-Effective-java-Day11-item6/" class="flip-title"><span>[Effective Java] Day 11 - Item 6 :: 불필요한 객체 생성을 피하라 (2)</span></a>  <time class="faded fine" datetime="2021-12-06T00:00:00+09:00">06 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-06-Effective-java-Day10-item5/" class="flip-title"><span>[Effective Java] Day 10 - Item 5 :: 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라 (2)</span></a>  <time class="faded fine" datetime="2021-12-06T00:00:00+09:00">06 Dec 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-12-Effective-java-Day13-item24/" class="flip-title"><span>[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라</span></a>  <time class="faded fine" datetime="2021-12-12T00:00:00+09:00">12 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-09-Finite-state-machine-for-pattern-matching/" class="flip-title"><span>[Java] 패턴 매칭을 위한 유한 상태 머신(Finite state machine) 사용</span></a>  <time class="faded fine" datetime="2021-12-09T00:00:00+09:00">09 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-08-Effective-java-Day12-item8/" class="flip-title"><span>[Effective Java] Day 12 - Item 8 :: finalizer와 cleaner 사용을 피하라</span></a>  <time class="faded fine" datetime="2021-12-08T00:00:00+09:00">08 Dec 2021</time></li>            </ul></aside>
 
   
 
