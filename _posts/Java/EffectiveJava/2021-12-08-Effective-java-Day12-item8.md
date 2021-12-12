@@ -16,6 +16,49 @@ Day 12 기록 시작!
 
 자바 9에서는 Finalizer를 사용자제(deprecated) API로 정하고 `Cleaner`를 그 대안으로 소개했다. 별도의 스레드를 사용하므로 finalizer보다는 덜 위험하지만, 여전히 예측할 수 없고, 느리고, 일반적으로 불필요하다.  
 
+```java
+package item08;
+
+import java.lang.ref.Cleaner;
+
+public class Room implements AutoCloseable { //Room 클래스는 AutoCloseable을 구현한다.
+    // finalizer와 달리 cleaner는 클래스에 public api로 노출되지 않는다.
+    private static final Cleaner cleaner = Cleaner.create(); // parameter로 threadfactory 선택 가능.
+
+    // 청소가 필요한 자원. 절대 Room을 참조해서는 안된다!
+    private static class State implements Runnable {
+        int numJunkPiles; // 방(Room) 안의 쓰레기 수
+
+        public State(int numJunkPiles) {
+            this.numJunkPiles = numJunkPiles;
+        }
+
+        // room의 close 메서드 호출 시, 또는 gc가 room을 회수할 때. 호출 된다.
+        @Override
+        public void run() {
+            System.out.println("방 청소(junk) : " + numJunkPiles);
+            numJunkPiles = 0;
+        }
+    }
+
+    //방의 상태. Cleanable과 공유한다.
+    private final State state;
+
+    //Cleanable 객체. 수거 대상이 되면 방을 청소한다.
+    private final Cleaner.Cleanable cleanable;
+
+    public Room(int numJunkPiles) {
+        state = new State(numJunkPiles);//Room → State 호출
+        cleanable = cleaner.register(this, state);
+    }
+
+    @Override
+    public void close() {
+        cleanable.clean();
+    }
+}
+```
+
 C++에서의 파괴자(destructor)와는 다른 개념이다. C++의 destructor은 특정 객체와 관련된 자원을 회수할 때도 사용하지만, 자바에서는 `try-with-resources`와 `try-finally`가 그 역할을 한다.
 
 ## 단점 1. 언제 실행될지 알 수 없다.
@@ -68,13 +111,17 @@ Cleaner는 별도의 스레드로 동작하며 자신을 수행할 스레드를 
 ## 단점 3. finalizer나 Cleaner를 아예 실행하지 않을 수도 있다.
 자바 언어 명세는 finalizer나 cleaner의 수행 시점 뿐만 아니라 수행여부조차 보장하지 않는다. 따라서 **Finalizer나 Cleaner로 저장소 상태를 변경하는 일을 하지 말라.** DB같은 공유 자원의 영구 락 해제를 finalizer나 cleaner로 반환하는 작업을 한다면 분산 시스템 전체가 멈춰 버릴 수 있다.
 
-`System.gc`나 `System.runFinalization`에 속지말라. 그걸 실행해도 finalizer나 cleaner를 실행한다고 보장할 수 없다. 그걸 보장해주겠다고 만든 `System.runFinalizersOnExit`와 그 쌍둥이인 `Runtime.runFinalizersOnExit`는 심각한 결함때문에 망했고 수십년간 사용자제(deprecated) 상태다.
+`System.gc`나 `System.runFinalization`에 속지말라. 그걸 실행해도 finalizer나 cleaner를 실행한다고 보장할 수 없다. 그걸 보장해주겠다고 만든 
+- `System.runFinalizersOnExit`와 
+- 그 쌍둥이인 `Runtime.runFinalizersOnExit`  
+
+는 심각한 결함때문에 망했고 수십년간 사용자제(deprecated) 상태다. 자바 10까지만 있고 11부터는 사라졌다.
 
 ## 단점 4. 심각한 성능문제를 동반한다.
 `AutoCloseable` 객체를 만들고 `try-with-resourecs`로 자원 반납을 하는데 걸리는 시간은 12ns 인데 반해, Finalizer를 사용한 경우에 550ns로 약 50배가 걸렸다. Cleaner를 사용한 경우에는 66ns로 약 5배가 걸렸다.
 
 ## 단점 5. finalizer 공격에 노출되어 심각한 보안 문제를 일으킬 수도 있다.
-Finalizers는 객체를 생성할 때 취약점이 존재한다. finalizer의 개념은 java 메서드가 os로 리턴해야하는 자원을 해제 할 수 있게 하는 것인데 finalizer에서 자바 코드가 실행될 수 있다. finalizer 공격 원리를 알아보자. 
+Finalizers는 객체를 생성할 때 취약점이 존재한다. finalizer의 개념은 java 메서드가 os로 리턴해야하는 자원을 해제 할 수 있게 하는 것인데 finalizer에서 자바 코드가 실행될 수 있다. finalizer 공격 원리를 알아보자.
 ```java
 package item08.FinalizerAttack;
 
@@ -138,7 +185,7 @@ Vulnerable object 0 created!
 
 실행하면 위와 같은 결과가 나온다. 왜 Vulnerable value가 -1이 아니라 0일까? Vulnerable 생성자에서 인자 검사 전까지는 value 할당(`this.value = value;`)을 하지 않았기 때문이다. 그래서 value는 초기값 0이다.  
 
-이런 경우를 막기위해서는 A라는 클래스를 상속 자체를 막을 수 있는 **final 클래스**로 만들거나, 
+이런 경우를 막기위해서는 A라는 클래스를 상속 자체를 막을 수 있는 **final 클래스**로 만들거나,
 ```java
 public final class Vulnerable {
     //...
@@ -182,8 +229,8 @@ public class SampleRunner {
 }
 ```
 
-## 자원의 소유자가 Close 메서드를 호출하지 않는 것에 대한 안전망 역할
-그럼 도대체 Finalizer와 cleaner를 언제 쓰는걸까? 크게 두 가지가 있는데 하나는 첫번째가 자원의 소유자가 Close 메서드를 호출하지 않는 것에 대한 안전망 역할이다.  
+## 왜 finalizer와 cleaner가 필요할까?
+### 1.자원의 소유자가 Close 메서드를 호출하지 않는 것에 대한 안전망(Safety-net) 역할
 cleaner나 finalizer가 즉시 또는 끝나기 전까지 호출되리라는 보장은 없지만, 클라이언트가 하지 않은 자원 회수를 늦게라도 해주는 것이 아예 안하는 것보다는 나으니 말이다.  
 실제로 자바에서 제공하는 `FileInputStream`,`FileOutputStream`,`ThreadPoolExecutor`가 대표적이다.
 
@@ -211,6 +258,10 @@ public class SampleResource implements AutoCloseable {
 }
 ```
 
+### 2. 네이티브 피어와 연결된 객체 회수 역할
+- **네이티브 피어**: 일반 자바 객체가 네이티브 메서드를 통해 기능을 위임한 네이티브 객체
+- gc가 회수할 수 있는 대상이 아닌 네이티브 객체를 회수하기 위해서는, cleaner나 finalizer에서 회수할 수 있도록 처리
+- 단, 성능 저하를 감당할 수 있고 네이티브 피어가 심각한 자원을 가지고 있지 않을 때만 해당
 
 ### 참고
 - [[이팩티브 자바] #6 불필요한 객체를 만들지 말자](https://www.youtube.com/watch?v=0yUxPUXS1pM&t=115s)

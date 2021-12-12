@@ -68,7 +68,7 @@ isRomanNumeralSlow 메서드를 반복적으로 사용하면 `Pattern`이라는 
 
 `Pattern`은 입력받은 정규표현식에 해당하는 **유한상태머신(Finite state machine)**을 만들기 때문에 인스턴스 생성 비용이 높다.  
 
-  
+ 
 아래 java docs에 따르면, str.matches(regex) 는 Pattern.matches(regex, str) 와 정확하게 동일한 결과가 나온다고 한다.  
 ![string_matches](/assets\img/string_matches.PNG)
 
@@ -230,10 +230,30 @@ cache.put(key1, value1);
 그런데 이런 경우가 있을 수 있다. cache 안에다가 데이터를 쌓아놨는데 이 cache를 비워야하는 시기를 놓치는 경우가 있다. **캐시의 키**인 key1이 없어지면 value1 값은 무의미해지는데 그런 경우 자동으로 해당 엔트리를 비워주는 `weakHashMap`이라는게 있다.  
 - **매핑(mapping)** 또는 **엔트리(entry)**: 키와 값으로 구성되는 데이터 (from 자바 공식 문서)  
 ```java
-// key1에 대한 참조가 사라졌을 경우에 GC 대상이 된다.
-Map<Object, Object> cache2 = new WeakHashMap<>();
-cache.put(key1, value1);
+public class Item7App {
+
+    public static void main(String[] args) {
+        WeakHashMap<String, Object> map = new WeakHashMap<>();
+
+        String key1 = new String("key1");
+        String key2 = new String("key2");
+
+        map.put(key1, "test 1");
+        map.put(key2, "test 2");
+
+        key1 = null; // key1에 대한 참조가 사라졌을 경우에 GC 대상이 된다.
+
+        System.gc();
+        map.entrySet()
+            .stream()
+            .forEach(System.out::println);//출력: key2=test 2
+    }
+}
 ```
+
+WeakHashMap 주의사항
+* String을 literal 방식으로 할당할 경우 gc의 대상이 되지 않는다.  
+(참조 : [Java - Collection - Map - WeakHashMap (약한 참조 해시맵) - 조금 늦은, IT 관습 넘기 (JS.Kim)](http://blog.breakingthat.com/2018/08/26/java-collection-map-weakhashmap/))
 
 또는 특정 시간이 지나면 캐시값이 의미가 없어지는 경우에 아래 2가지 방법을 통해 캐시를 비우는 작업을 해줘야 한다.
 1. `Scheduled ThreadPoolExcutor` 백그라운드 스레드를 활용하거나
