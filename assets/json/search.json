@@ -1,6 +1,15 @@
 [
   
     {
+      "title"      : "[Effective Java] Day 15 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라",
+      "categories" : "java",
+      "tags"       : "java, 이펙티브자바, effectiveJava",
+      "date"       : "2021.12.12",
+      "urlString"  : "/java/2021-12-12-Effective-java-Day14-item09-item10/",
+      "url"        : "/java/2021-12-12-Effective-java-Day14-item09-item10/"
+    },
+  
+    {
       "title"      : "[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라",
       "categories" : "java",
       "tags"       : "java, 이펙티브자바, effectiveJava",

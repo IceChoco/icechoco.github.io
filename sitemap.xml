@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://icechoco.github.io/java/2021-12-12-Effective-java-Day14-item09-item10/</loc>
+        
+        <lastmod>2021-12-12T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://icechoco.github.io/java/2021-12-12-Effective-java-Day13-item24/</loc>
         
         <lastmod>2021-12-12T00:00:00+09:00</lastmod>

@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Effective Java] Day 15 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라 | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Effective Java] Day 15 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="Day15에서는 item 9, 10에 대한 내용을 다룬다." />
+<meta property="og:description" content="Day15에서는 item 9, 10에 대한 내용을 다룬다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-12-Effective-java-Day14-item09-item10/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-12-Effective-java-Day14-item09-item10/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-12T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Effective Java] Day 15 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라" />
+<script type="application/ld+json">
+{"headline":"[Effective Java] Day 15 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라","dateModified":"2021-12-16T22:36:43+09:00","datePublished":"2021-12-12T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-12-Effective-java-Day14-item09-item10/"},"url":"https://icechoco.github.io/java/2021-12-12-Effective-java-Day14-item09-item10/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day15에서는 item 9, 10에 대한 내용을 다룬다.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-12-Effective-java-Day14-item09-item10/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2021-12-16T22:41:15+09:00',
+  };
+  w._clapButton = true;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2021-12-12-Effective-java-Day14-item09-item10</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day14-item09-item10" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 15 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-12T00:00:00+09:00">12 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>, <span>이펙티브자바</span>, <span>Effectivejava</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-16">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-16T22:36:43+09:00">2021-12-16</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day15에서는 item 9, 10에 대한 내용을 다룬다.</p>
+
+<h2 id="item-9--try-finally-보다는-try-with-resources를-사용하라">Item 9 :: try-finally 보다는 try-with-resources를 사용하라</h2>
+
+<p>File Reader / DB Connection 등의 자원을 사용할 때, 사용이 끝나면 반드시 해당 자원을 닫아주어야한다.
+왜냐하면 적절히 닫지 않을 경우 다양한 이슈가 발생할 수 있기 때문이다.</p>
+
+<p>자원을 닫아줄 수 있는 방법은 try-finally와 try-with-resources가 있다. 권장되는 방법은 <strong>try-with-resources</strong> 이다.<br />
+try-with-resources 방식의 장점을 통해 살펴보도록 하자.</p>
+
+<h3 id="장점-1-코드가-간결하다">장점 1. 코드가 간결하다.</h3>
+<h4 id="try-finally-사용">Try-Finally 사용</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kt">void</span> <span class="nf">copy</span><span class="o">(</span><span class="nc">String</span> <span class="n">src</span><span class="o">,</span> <span class="nc">String</span> <span class="n">dst</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+    <span class="nc">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="n">src</span><span class="o">);</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="nc">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileOutputStream</span><span class="o">(</span><span class="n">dst</span><span class="o">);</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">buf</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="no">BUFFER_SIZE</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">((</span><span class="n">n</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buf</span><span class="o">))</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span>
+                <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buf</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="try-with-resources-사용">Try-with-Resources 사용</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">static</span> <span class="kt">void</span> <span class="nf">copy</span><span class="o">(</span><span class="nc">String</span> <span class="n">src</span><span class="o">,</span> <span class="nc">String</span> <span class="n">dst</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">(</span><span class="nc">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="n">src</span><span class="o">);</span>
+            <span class="nc">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileOutputStream</span><span class="o">(</span><span class="n">dst</span><span class="o">))</span> <span class="o">{</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">buf</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="no">BUFFER_SIZE</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">((</span><span class="n">n</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buf</span><span class="o">))</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">buf</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">n</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Try-Finally와 비교 했을 때</p>
+<ul>
+  <li>짧고 읽기 수월하다</li>
+  <li>어떤 자원을 사용하고 있는지 명시적으로 알기가 쉬워졌다.</li>
+  <li>자원을 회수하는 코드가 없다.
+    <ul>
+      <li><strong>try-with-resources</strong>를 사용하기 위해서는 쓰려는 자원이 AutoCloseable 인터페이스를 구현해야 한다.
+        <ul>
+          <li>위 예제소스코드에서도 InputStream과 OutputStream이 둘 다 AutoCloseable을 구현하고 있다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="autocloseable을-이용한-자원-회수">AutoCloseable을 이용한 자원 회수</h4>
+<p>AutoCloseable 인터페이스의 close() 메서드를 구현하면, try문이 끝날 때 각 자원의 close 메서드를 호출하여 자원을 회수한다.<br />
+FileInputStream의 소스를 따라가보면 최종적으로 Autoclosable을 implements함을 알 수 있다.
+<img src="/assets\img/autoclosable.png" alt="autoclosable" /></p>
+
+<ul>
+  <li>FileInputStream에 구현된 close 메서드<br />
+<img src="/assets\img/FileInputStream-close.png" alt="FileInputStream-close" /></li>
+</ul>
+
+<h3 id="장점-2-예외-상황에서-문제-파악이-쉽다">장점 2. 예외 상황에서 문제 파악이 쉽다.</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ResourceTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tryFinally</span><span class="o">(){</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"### Try Finally 테스트 시작 ###"</span><span class="o">);</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="nc">MyCustomResource</span> <span class="n">resource</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyCustomResource</span><span class="o">();</span>
+            <span class="n">resource</span><span class="o">.</span><span class="na">dosomething</span><span class="o">();</span> <span class="c1">//statctrace에서 지목한 line</span>
+        <span class="o">}</span><span class="k">finally</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Finally 안에 들어왔습니다."</span><span class="o">);</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tryWithResource</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"### Try Finally 테스트 시작 ###"</span><span class="o">);</span>
+        <span class="k">try</span><span class="o">(</span><span class="nc">MyCustomResource</span> <span class="n">resource</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyCustomResource</span><span class="o">()){</span>
+            <span class="n">resource</span><span class="o">.</span><span class="na">dosomething</span><span class="o">();</span> <span class="c1">//statctrace에서 지목한 line</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">MyCustomResource</span> <span class="kd">implements</span> <span class="nc">AutoCloseable</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">close</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"close 메서드에 들어옴"</span><span class="o">);</span>
+            <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="o">;</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"close 메서드가 끝까지 실행됨"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dosomething</span><span class="o">(){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위의 예시 코드에서 아래와 같이 tryFinally()를 실행해보자</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ResourceTest</span> <span class="n">rs</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ResourceTest</span><span class="o">();</span>
+        <span class="n">rs</span><span class="o">.</span><span class="na">tryFinally</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>tryFinally 실행결과</strong><br />
+<img src="/assets\img/tryfinally.PNG" alt="tryfinally" /></li>
+</ul>
+
+<p>try안에서 발생한 resource.dosomething()의 Exception은 무시되고 finally에 있는 RuntimeException에 대한 내용만 나온다.
+그럼 tryWithResource()를 실행하면 어떻게 될까?</p>
+
+<ul>
+  <li><strong>tryWithResource 실행결과</strong><br />
+<img src="/assets\img/tryWithResource.PNG" alt="tryWithResource" /></li>
+</ul>
+
+<p>try안에서 발생한 resource.dosomething()의 Exception이 정상 출력되어 문제파악이 쉽다.
+또한 자원을 회수하면서 close()메서드 수행 중 발생한 suppressed도 같이 출력된다.<br />
+    - <strong>suprressed</strong><br />
+    프로그래머에게 보여줄 예외 하나만 보존되고 여러 개의 다른 예외가 숨겨질 수도 있다. 이렇게 숨겨진 예외들도 그냥 버려지지는 않고, 스택 추적 내역에 <strong>숨겨졌다(suppressed)</strong>라는 꼬리표를 달고 출력된다.</p>
+
+<h3 id="장점-3-문제-발생-소지가-적다">장점 3. 문제 발생 소지가 적다</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">jdbcTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">JDBCExam</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">Connection</span> <span class="n">conn</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="nc">String</span> <span class="n">driverName</span> <span class="o">=</span> <span class="s">"oracle.jdbc.driver.OracleDriver"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"oracle:thin:localhost:1521:ORCL"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">user</span> <span class="o">=</span> <span class="s">"scott"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"tiger"</span><span class="o">;</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">driverName</span><span class="o">);</span>
+            <span class="n">conn</span> <span class="o">=</span> <span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">user</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
+            <span class="n">pstmt</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="s">"select ...."</span><span class="o">);</span>
+            <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">();</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">()){}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[로드 오류]\n"</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getStackTrace</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[연결 오류]\n"</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getStackTrace</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">conn</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">conn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">pstmt</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">pstmt</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="o">}</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">rs</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">rs</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[닫기 오류]\n"</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getStackTrace</span><span class="o">());</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>conn, pstmt, conn을 역순으로 빠짐없이 close하고 각각의 자원을 닫을 때 Exception catch해야한다.
+만약, close를 깜빡하거나 Exception처리를 하지 않으면</p>
+<ul>
+  <li>connection 자원이 반환되지 않고</li>
+  <li>리소스 풀이 바닥나고</li>
+  <li>새로운 요청 시 줄 수 있는 connection이 없다.</li>
+</ul>
+
+<p>이런 경우 아래와 같이 Try-with-Resource를 사용한다면</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">jdbcTest2</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">JDBCExam</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">driverName</span> <span class="o">=</span> <span class="s">"oracle.jdbc.driver.OracleDriver"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"oracle:thin:localhost:1521:ORCL"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">user</span> <span class="o">=</span> <span class="s">"scott"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"tiger"</span><span class="o">;</span>
+
+        <span class="k">try</span><span class="o">(</span><span class="nc">Connection</span> <span class="n">conn</span><span class="o">=</span><span class="nc">DriverManager</span><span class="o">.</span><span class="na">getConnection</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">user</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
+            <span class="nc">PreparedStatement</span> <span class="n">pstmt</span> <span class="o">=</span><span class="n">conn</span><span class="o">.</span><span class="na">prepareStatement</span><span class="o">(</span><span class="s">"select ...."</span><span class="o">);</span>
+            <span class="nc">ResultSet</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">pstmt</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">()</span>
+            <span class="o">){</span>
+            <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">driverName</span><span class="o">);</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">next</span><span class="o">()){}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[로드 오류]\n"</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getStackTrace</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">SQLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"[연결 오류]\n"</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getStackTrace</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>try() 안에 선언한 자원을 자동 역순으로 모두 close 한다.</li>
+  <li>앞서 close 되고 있는 자원으로 인하여 Exception이 발생해도, 다음 자원의 close method는 정상적으로 실행된다.</li>
+</ul>
+
+<p>따라서 try-finally 대신 try-with-resources를 사용하면 <u>실수 할 수 없는 코드</u>가 된다.</p>
+
+<h2 id="item-10--equals는-일반-규약을-지켜-재정의하라">Item 10 :: equals는 일반 규약을 지켜 재정의하라</h2>
+<h3 id="다음-중-하나에-해당한다면-equals를-재정의하지-않는-것이-최선이다">다음 중 하나에 해당한다면 equals를 재정의하지 않는 것이 최선이다.</h3>
+
+<ul>
+  <li>각 인스턴스가 본질적으로 고유하다.
+    <ul>
+      <li>Ex) <a href="https://stackoverflow.com/questions/26382093/questions-from-effective-java-bookjoshua-bloch">Thread</a></li>
+    </ul>
+  </li>
+  <li>인스턴스의 ‘논리적 동치성(logical equality)’을 검사할 일은 없다.
+    <ul>
+      <li>Ex) Pattern<br />
+    equals를 재정의하여 두 Pattern의 인스턴스가 같은 정규 표현식을 나타내는지 논리적 동치성에 대해 검사하는 방법이 있긴하다.<br />
+    하지만 필요하지 않다고 판단된다면 object의 기본 equals만으로도 해결된다. 실제로도 Pattern은 equals를 재정의하지 않았다.
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RegexExample</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>  <span class="o">{</span>
+    
+        <span class="nc">String</span> <span class="n">pattern</span> <span class="o">=</span> <span class="s">"^[0-9]*$"</span><span class="o">;</span> <span class="c1">//숫자만</span>
+        <span class="nc">String</span> <span class="n">val</span> <span class="o">=</span> <span class="s">"123456789"</span><span class="o">;</span> <span class="c1">//대상문자열</span>
+        
+        <span class="kt">boolean</span> <span class="n">regex</span> <span class="o">=</span> <span class="nc">Pattern</span><span class="o">.</span><span class="na">matches</span><span class="o">(</span><span class="n">pattern</span><span class="o">,</span> <span class="n">val</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">regex</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>상위 클래스에서 재정의한 equals가 하위 클래스에도 딱 들어맞는다.
+    <ul>
+      <li>List, Set, Map - AbstractList, AbstractSet, AbstractMap의 equals 상속받아 사용한다.</li>
+    </ul>
+  </li>
+  <li>클래스가 private이거나 package-private이고 equals 메서드를 호출할 일이 없다.</li>
+</ul>
+
+<h3 id="재정의를-해야-될때는-언제일까">재정의를 해야 될때는 언제일까?</h3>
+
+<p>객체 식별성이 아니라 (object identity 두 객체가 물리적으로 같은가) 논리적 동치성을 확인해야 하는데, 상위 클래스의equals가 논리적 동치성을 비교하도록 재정의되지 않았을 때다. 주로 값클래스들이 (Integer, String) 해당된다. 객체가 같은 지가 아니라 값이 같은지가 궁금할 것이다. 논리적 동치성을 판단하도록 재정의하면, 인스턴스 값을 비교도 할 뿐만 아니라 Map의 키와 Set의 원소로 쓸 수 있다.</p>
+
+<h2 id="equals-메서드-재정의시-지켜야할-규약">equals 메서드 재정의시 지켜야할 규약</h2>
+
+<ul>
+  <li>반사성 reflexibility</li>
+  <li>대칭성 symmetry</li>
+  <li>추이성 transitivity</li>
+  <li>일관성 consistency</li>
+  <li>null-아님</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+<span class="n">x</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> <span class="n">y</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+<span class="n">x</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> <span class="n">y</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">z</span><span class="o">)</span> <span class="n">x</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">z</span><span class="o">)</span> 
+<span class="n">x</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> <span class="n">반복호출</span>
+<span class="n">x</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="kc">null</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>세상에 홀로 존재하는 클래스는 없다. 한 클래스의 인스턴스는 다른 곳으로 빈번히 전달된다. 그리고 컬렉션 클래스들을 포함해 수많은 클래스는 <strong>전달받은 객체가 equals 규약을 지킨다고 가정하고 동작</strong>한다.</p>
+
+<p>동치관계를 만족시키기 위한 다섯 요건을 하나씩 살펴보자.</p>
+<blockquote>
+  <p>동치관계 = 집합을 서로같은원소들로 이뤄진 부분집합(<strong>동치류, equivalence class</strong>)으로 나누는 연산. equals 메서드가 쓸모 있으려면 모든 원소가 <strong>같은 동치류에 속한 어떤 원소와도 서로 교환할 수 있어야 한다.</strong></p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">address</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Member</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">address</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">address</span> <span class="o">=</span> <span class="n">address</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 동치 비교(equivalence) vs 동일성 비교(identity)</span>
+        <span class="nc">Member</span> <span class="n">member1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="s">"ko"</span><span class="o">,</span> <span class="s">"seoul"</span><span class="o">);</span>
+        <span class="nc">Member</span> <span class="n">member2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="s">"ko"</span><span class="o">,</span> <span class="s">"seoul"</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member1</span> <span class="o">==</span> <span class="n">member2</span><span class="o">);</span> <span class="c1">//동치비교 - false</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">member2</span><span class="o">));</span> <span class="c1">//동일성 비교 - false. equals 재 정의하여 true로 만들어야 함.</span>
+
+<span class="c1">//1 reflexibility</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">member1</span><span class="o">));</span>
+
+<span class="c1">//2 symmetry</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">member2</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member2</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">member1</span><span class="o">));</span>
+
+<span class="c1">//3 transitivity</span>
+        <span class="nc">Member</span> <span class="n">member3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">(</span><span class="s">"ko"</span><span class="o">,</span><span class="s">"seoul"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">member2</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member2</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">member3</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">member3</span><span class="o">));</span>
+
+<span class="c1">//4 consistency</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">member3</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">member3</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">member1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">member3</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="반사성-reflexibility">반사성 reflexibility</h3>
+<p>객체는 자기 자신과 같아야 함. 이 요건은 일부러 어기는 경우가 아니라면 만족시키지 못하기 더 어렵다.</p>
+
+<h3 id="대칭성-symmetry">대칭성 symmetry</h3>
+
+<p>위배 사례를 보자.</p>
+<ul>
+  <li>대소문자를 구별하지 않는 문자열을 구현한 클래스
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 코드 10-1 잘못된 코드 - 대칭성 위배! (54-55쪽)</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">CaseInsensitiveString</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">s</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="nf">CaseInsensitiveString</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">s</span> <span class="o">=</span> <span class="nc">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="c1">// 대칭성 위배!</span>
+  <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">CaseInsensitiveString</span><span class="o">)</span>
+          <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span>
+                  <span class="o">((</span><span class="nc">CaseInsensitiveString</span><span class="o">)</span> <span class="n">o</span><span class="o">).</span><span class="na">s</span><span class="o">);</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">String</span><span class="o">)</span>  <span class="c1">// 한 방향으로만 작동한다!</span>
+          <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">((</span><span class="nc">String</span><span class="o">)</span> <span class="n">o</span><span class="o">);</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="c1">// 문제 시연 (55쪽)</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">CaseInsensitiveString</span> <span class="n">cis</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CaseInsensitiveString</span><span class="o">(</span><span class="s">"Polish"</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">"polish"</span><span class="o">;</span>
+
+      <span class="nc">List</span><span class="o">&lt;</span><span class="nc">CaseInsensitiveString</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+      <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cis</span><span class="o">);</span>
+
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cis</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s</span><span class="o">));</span>      <span class="c1">//true</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">cis</span><span class="o">));</span>      <span class="c1">//false</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">s</span><span class="o">));</span>   <span class="c1">//false</span>
+  <span class="o">}</span>
+
+  <span class="c1">// 수정한 equals 메서드 (56쪽)</span>
+<span class="c1">//    @Override public boolean equals(Object o) {</span>
+<span class="c1">//        return o instanceof CaseInsensitiveString &amp;&amp;</span>
+<span class="c1">//                ((CaseInsensitiveString) o).s.equalsIgnoreCase(s);</span>
+<span class="c1">//    }</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">String</code>의 equals는 CaseInsentiveString의 존재를 모른다. 따라서 <code class="language-plaintext highlighter-rouge">s.equals(cis)</code>는 false를 반환하여 대칭성을 명백히 위반한다.</p>
+
+<p>또, cis를 arraylist에 넣어 객체를 생성한다. 그 다음 <code class="language-plaintext highlighter-rouge">list.contatins(s)를</code>를 수행하면 false를 반환하기는 한다. 하지만 jdk버전이 바뀌거나 다른 JDK에서 수행하는 경우 true를 반환할 수 있다.<br />
+<strong>equals 규악을 어기면 그 객체를 사용하는 다른 객체들이 어떻게 반응할지 알 수 없다.</strong><br />
+즉 CaseInsensitiveString의 equals는 String과 연동이 불가하다.</p>
+
+<h3 id="추이성-transitivity">추이성 transitivity</h3>
+
+<p>Color enum 생성 -&gt; Point 부모 -&gt; ColorPoint 자식</p>
+
+<ul>
+  <li>1.대칭성 위배 예시</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="nc">Color</span> <span class="o">{</span>
+    <span class="no">RED</span><span class="o">,</span> <span class="no">GREEN</span><span class="o">,</span> <span class="no">BLACK</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Point</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">y</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Point</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">Point</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">//상속관계에서 instanceof 비교 사용</span>
+        <span class="nc">Point</span> <span class="n">point</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Point</span><span class="o">)</span> <span class="n">o</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">==</span> <span class="n">point</span><span class="o">.</span><span class="na">x</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">==</span> <span class="n">point</span><span class="o">.</span><span class="na">y</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ColorPoint</span> <span class="kd">extends</span> <span class="nc">Point</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Color</span> <span class="n">color</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">ColorPoint</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="nc">Color</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">ColorPoint</span><span class="o">))</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">o</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">((</span><span class="nc">ColorPoint</span><span class="o">)</span> <span class="n">o</span><span class="o">).</span><span class="na">color</span> <span class="o">==</span> <span class="n">color</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 첫 번째 equals 메서드(코드 10-2)는 대칭성을 위배한다. (57쪽)</span>
+        <span class="nc">Point</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="nc">ColorPoint</span> <span class="n">cp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">cp</span><span class="o">)</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">cp</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">p</span><span class="o">));</span> <span class="c1">// true  false</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>2.대칭성은 맞지만, 추이성 위배 예시</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Point</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">y</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Point</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">Point</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">//상속관계에서 instanceof 비교 사용</span>
+        <span class="nc">Point</span> <span class="n">point</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Point</span><span class="o">)</span> <span class="n">o</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">==</span> <span class="n">point</span><span class="o">.</span><span class="na">x</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">==</span> <span class="n">point</span><span class="o">.</span><span class="na">y</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ColorPoint</span> <span class="kd">extends</span> <span class="nc">Point</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Color</span> <span class="n">color</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">ColorPoint</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="nc">Color</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="n">color</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 코드 10-3 잘못된 코드 - 추이성 위배! (57쪽)</span>
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">Point</span><span class="o">))</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+
+        <span class="c1">// o가 일반 Point면 색상을 무시하고 비교한다.</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">ColorPoint</span><span class="o">))</span>
+            <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>  <span class="c1">// 대칭성 만족</span>
+
+        <span class="c1">// o가 ColorPoint면 색상까지 비교한다.</span>
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">o</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">((</span><span class="nc">ColorPoint</span><span class="o">)</span> <span class="n">o</span><span class="o">).</span><span class="na">color</span> <span class="o">==</span> <span class="n">color</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 두 번째 equals 메서드(코드 10-3)는 추이성을 위배한다. (57쪽)</span>
+        <span class="nc">ColorPoint</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+        <span class="nc">Point</span> <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="nc">ColorPoint</span> <span class="n">p3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s %s %s%n"</span><span class="o">,</span>
+                <span class="n">p1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">p2</span><span class="o">),</span> <span class="n">p2</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">p3</span><span class="o">),</span> <span class="n">p1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">p3</span><span class="o">));</span> <span class="c1">//true true false</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>또다른 하위클래스 있을시, 재귀 위험도 있을 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SmellPoint</span> <span class="kd">extends</span> <span class="nc">Point</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">SmellPoint</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">Point</span><span class="o">))</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">SmellPoint</span><span class="o">))</span>
+            <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">o</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">((</span><span class="nc">SmellPoint</span><span class="o">)</span> <span class="n">o</span><span class="o">).</span><span class="na">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">Point</span> <span class="n">point</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+    <span class="nc">Point</span> <span class="n">colorPoint</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">GREEN</span><span class="o">);</span>
+    <span class="nc">Point</span> <span class="n">smellPoint</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SmellPoint</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="s">"Larry"</span><span class="o">);</span>
+
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">point</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">colorPoint</span><span class="o">));</span> <span class="c1">//true</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">point</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">smellPoint</span><span class="o">));</span> <span class="c1">//true</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">colorPoint</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">smellPoint</span><span class="o">));</span> <span class="c1">//무한재귀 StackOverflowError</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h5 id="해결-방법은-무엇일까">해결 방법은 무엇일까?</h5>
+
+<p><strong>구체 클래스를 확장해 새로운 값을 추가하면서 equals 규약을 만족시킬 방법은 존재하지 않는다.</strong> 객체 지향적 추상화의 이점을 포기하지 않는 한은 말이다. 이 말은 얼핏, equals 안의 instanceof 검사를 getClass 검사로 바꾸면 규약도 지키고 값도 추가하면서 구체 클래스를 상속할 수 있다는 뜻으로 들린다. (아래)</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 잘못된 코드 - 리스코프 치환 원칙 위배! (59쪽)</span>
+<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">o</span><span class="o">.</span><span class="na">getClass</span><span class="o">()</span> <span class="o">!=</span> <span class="n">getClass</span><span class="o">())</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="nc">Point</span> <span class="n">p</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Point</span><span class="o">)</span> <span class="n">o</span><span class="o">;</span>
+    <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="na">x</span> <span class="o">==</span> <span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">.</span><span class="na">y</span> <span class="o">==</span> <span class="n">y</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>하지만 실제 활용할 수는 없다. 예를 들어 Point의 equals를 위와 같이 getClass기반으로 구현한 상태일 때, 주어진 점이 (반지름이 1인) 단위 원 안에 있는지를 판별하는 메서드가 필요하다고 해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 단위 원의 모든 점을 포함하도록 unitCircle을 초기화</span>
+<span class="c1">// CounterPointTest 클래스</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CounterPointTest</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Point</span><span class="o">&gt;</span> <span class="n">unitCircle</span> <span class="o">=</span>
+            <span class="nc">Set</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">),</span><span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">),</span><span class="k">new</span> <span class="nc">Point</span><span class="o">(-</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">),</span><span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">0</span><span class="o">,-</span><span class="mi">1</span><span class="o">));</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">onUnitCircle</span><span class="o">(</span><span class="nc">Point</span> <span class="n">p</span><span class="o">){</span>
+        <span class="k">return</span> <span class="n">unitCircle</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">p</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">CounterPoint</span> <span class="n">counterPoint</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CounterPoint</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">onUnitCircle</span><span class="o">(</span><span class="n">counterPoint</span><span class="o">));</span> <span class="c1">//false</span>
+        <span class="c1">//Set을 포함하여 대부분의 컬렉션은 contains 작업에 equals 메서드를 이용하는데,</span>
+        <span class="c1">// CounterPoint의 인스턴스는 어떤 Point와도 같을 수 없기 때문이다.</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CounterPoint</span> <span class="kd">extends</span> <span class="nc">Point</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">AtomicInteger</span> <span class="n">counter</span> <span class="o">=</span>
+            <span class="k">new</span> <span class="nf">AtomicInteger</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="nf">CounterPoint</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+        <span class="n">counter</span><span class="o">.</span><span class="na">incrementAndGet</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">numberCreated</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">counter</span><span class="o">.</span><span class="na">get</span><span class="o">();</span> <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>리스코프 치환 원칙에 따르면, Point의 하위 클래스는 정의상 여전히 Point이므로 어디서든 Point로써 활용될 수 있어야 한다. 그러나  CounterPoint의 인스턴스를 onUnitCircle 메서드에 넘기면 어떻게 될까? false를 반환한다.</p>
+
+<p>Set을 포함하여 대부분의 컬렉션은 contains 작업에 equals 메서드를 이용하는데, CounterPoint의 인스턴스는 어떤 Point와도 같을 수 없기 때문이다.</p>
+
+<p>구체 클래스의 하위 클래스에서 값을 추가할 방법은 없지만 괜찮은 우회 방법으로 <strong>equals 규약 위배없이 합성</strong>을 사용하는 방법이 있다.
+Point를 상속하는 대신 Point를 Color Point의 private 필드로, ColorPoint와 같은 위치의 일반 Point를 반환하는 뷰(view) 메서드를 public으로 추가하면 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 코드 10-5 equals 규약을 지키면서 값 추가하기 (60쪽)</span>
+<span class="c1">// equals 규약 위배 없이 합성 사용</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ColorPoint</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Point</span> <span class="n">point</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Color</span> <span class="n">color</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">ColorPoint</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="nc">Color</span> <span class="n">color</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">point</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">color</span> <span class="o">=</span> <span class="nc">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">color</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">//이 ColorPoint의 Point 뷰를 반환한다.</span>
+    <span class="kd">public</span> <span class="nc">Point</span> <span class="nf">asPoint</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">point</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">ColorPoint</span><span class="o">))</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="nc">ColorPoint</span> <span class="n">cp</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ColorPoint</span><span class="o">)</span> <span class="n">o</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">cp</span><span class="o">.</span><span class="na">point</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">point</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">cp</span><span class="o">.</span><span class="na">color</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">color</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">point</span><span class="o">.</span><span class="na">hashCode</span><span class="o">()</span> <span class="o">+</span> <span class="n">color</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 첫 번째 equals 메서드(코드 10-2)는 대칭성을 위배한다. (57쪽) - 해결</span>
+        <span class="nc">Point</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="nc">ColorPoint</span> <span class="n">cp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">cp</span><span class="o">)</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">cp</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">p</span><span class="o">));</span> <span class="c1">// false false</span>
+
+        <span class="c1">// 두 번째 equals 메서드(코드 10-3)는 추이성을 위배한다. (57쪽) - 해결</span>
+        <span class="nc">ColorPoint</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">RED</span><span class="o">);</span>
+        <span class="nc">Point</span> <span class="n">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="nc">ColorPoint</span> <span class="n">p3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ColorPoint</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s %s %s%n"</span><span class="o">,</span>
+                <span class="n">p1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">p2</span><span class="o">),</span> <span class="n">p2</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">p3</span><span class="o">),</span> <span class="n">p1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">p3</span><span class="o">));</span> <span class="c1">// false false false</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>자바 라이브러리에도 구체 클래스를 확장해 값을 추가한 클래스가 종종 있다. Timestamp는 Date를 확장한 후 nanoseconds 필드를 추가했다. 그 결과로 Timestamp의 equals는 대칭성을 위배하며, Date 객체와 한 컬렉션에 넣거나 서로 섞어 사용하면 엉뚱하게 동작할 수 있다. Timestamp를 이렇게 설계한 것은 실수니 절대 따라 해서는 안된다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Timestamp</span> <span class="n">stamp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Timestamp</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">());</span>
+<span class="nc">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">(</span><span class="n">stamp</span><span class="o">.</span><span class="na">getTime</span><span class="o">());</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stamp</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">date</span><span class="o">));</span><span class="c1">//false</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">date</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">stamp</span><span class="o">));</span><span class="c1">//true</span>
+</code></pre></div></div>
+
+<h3 id="일관성-consistency">일관성 consistency</h3>
+<p>두 객체가 같다면 (어느 하나 혹은 두 객체 모두가 수정되지 않는 한) 앞으로도 영원히 같아야 한다는 뜻이다.</p>
+
+<p>클래스가 불변이든 가변이든 equals의 판단에 신뢰할 수 없는 <strong>자원이 끼어들게 해서는 안 된다.</strong> 이 제약을 어기면 일관성 조건을 만족시키기가 아주 어렵다. 예컨대 java.net.URL의 equals는 URL과 IP 주소를 이용해 비교한다</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">URL</span> <span class="n">url1</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"www.naver.com"</span><span class="o">);</span>
+<span class="no">URL</span> <span class="n">url2</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"www.naver.com"</span><span class="o">);</span>
+<span class="n">url1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">url2</span><span class="o">);</span> <span class="c1">//true</span>
+
+<span class="c1">//비즈니스 로직 수행 후 다시 같은 주소로 url 객체를 생성하여 비교하면 다른 결과가 나올 수 있다.</span>
+
+<span class="n">url2</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="s">"www.naver.com"</span><span class="o">);</span>
+<span class="n">url1</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">url2</span><span class="o">);</span> <span class="c1">//false</span>
+</code></pre></div></div>
+
+<p>URL을 저렇게 만든건 실수였으니 절대 따라 해서는 안 된다. 이런 문제를 피하려면 equals는 항시 메모리에 존재하는 객체만을 사용한 결정적(deterministic) 계산만 수행해야 한다.</p>
+
+<h3 id="null-아님">null-아님</h3>
+
+<p>모든 객체가 null과 같지 않아야 한다는 뜻이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 명시적 널 검사 - 필요없다!</span>
+<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+
+<span class="c1">// 묵시적 널 검사 - 이게 낫다.</span>
+<span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">MyType</span><span class="o">))</span> <span class="c1">// 널이면 false 반환</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="nc">MyType</span> <span class="n">mt</span> <span class="o">=</span> <span class="o">(</span><span class="nc">MyType</span><span class="o">)</span> <span class="n">o</span><span class="o">;</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>묵시적 null 검사의 경우 입력이 null이면 타입 확인 단계에서 false를 반환하기 때문에 null 검사를 명시적으로 하지 않아도 된다.</p>
+
+<h3 id="결론-양질의-equals-메서드-구현방법">결론: 양질의 equals 메서드 구현방법</h3>
+
+<ol>
+  <li>== 연산자를 사용해 입력이 자기 자신의 참조인지 확인한다.</li>
+  <li>instanceof 연산자로 입력이 올바른 타입인지 확인한다.</li>
+  <li>입력을 올바른 타입으로 형변환한다.</li>
+  <li>입력 객체와 자기 자신의 대응되는 ‘핵심 ‘필드들이 모두 일치하는지 하나씩 검사한다.</li>
+  <li>구글에서 만든 @AutoValue을 이용해서 equals와 hashcode를 자동으로 재정의해보자 (Lombok의 @EqualsAndHashCode도 있다.)</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">PhoneNumber</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">short</span> <span class="n">areaCode</span><span class="o">,</span> <span class="n">prefix</span><span class="o">,</span> <span class="n">lineNum</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">PhoneNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">areaCode</span><span class="o">,</span> <span class="kt">int</span> <span class="n">prefix</span><span class="o">,</span> <span class="kt">int</span> <span class="n">lineNum</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">areaCode</span> <span class="o">=</span> <span class="n">rangeCheck</span><span class="o">(</span><span class="n">areaCode</span><span class="o">,</span> <span class="mi">999</span><span class="o">,</span> <span class="s">"area code"</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">prefix</span> <span class="o">=</span> <span class="n">rangeCheck</span><span class="o">(</span><span class="n">prefix</span><span class="o">,</span> <span class="mi">999</span><span class="o">,</span> <span class="s">"prefix"</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lineNum</span> <span class="o">=</span> <span class="n">rangeCheck</span><span class="o">(</span><span class="n">lineNum</span><span class="o">,</span> <span class="mi">9999</span><span class="o">,</span> <span class="s">"line num"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">short</span> <span class="nf">rangeCheck</span><span class="o">(</span><span class="kt">int</span> <span class="n">val</span><span class="o">,</span> <span class="kt">int</span> <span class="n">max</span><span class="o">,</span> <span class="nc">String</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">val</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">val</span> <span class="o">&gt;</span> <span class="n">max</span><span class="o">)</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="n">arg</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">val</span><span class="o">);</span>
+        <span class="k">return</span> <span class="o">(</span><span class="kt">short</span><span class="o">)</span> <span class="n">val</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="o">==</span> <span class="k">this</span><span class="o">)</span> <span class="c1">// 1 자기 자신의 참조인지 확인</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">PhoneNumber</span><span class="o">))</span> <span class="c1">// 2 올바른 타입인지 확인</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="nc">PhoneNumber</span> <span class="n">pn</span> <span class="o">=</span> <span class="o">(</span><span class="nc">PhoneNumber</span><span class="o">)</span><span class="n">o</span><span class="o">;</span> <span class="c1">// 3 올바른 타입으로 형변환, instanceof가 성공했으면 이것은 100퍼센트!</span>
+        <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="na">lineNum</span> <span class="o">==</span> <span class="n">lineNum</span> <span class="o">&amp;&amp;</span> <span class="n">pn</span><span class="o">.</span><span class="na">prefix</span> <span class="o">==</span> <span class="n">prefix</span>
+            <span class="o">&amp;&amp;</span> <span class="n">pn</span><span class="o">.</span><span class="na">areaCode</span> <span class="o">==</span> <span class="n">areaCode</span><span class="o">;</span> <span class="c1">// 4 핵심 필드들이 일치하는지 검사</span>
+    <span class="o">}</span>
+    <span class="o">...</span> <span class="c1">// Remainder omitted</span>
+<span class="o">}</span>
+
+
+</code></pre></div></div>
+
+  
+</article>
+
+
+
+  <clap-button class="mb6" ></clap-button>
+  
+  
+    <p class="message centered border-radius" >
+      <span style="display:block;margin-bottom:.5rem;">This is a preview of <a href="https://getclaps.app">Clap Button</a>, a new feedback and analytics tools for Hydejack, built by yours truly.</span>
+      <span style="display:block;margin-bottom:.5rem;">You can try it out on <code>localhost</code> for free, but it will be removed (together with this message) when building with <code>JEKYLL_ENV=production</code>.</span>
+      <span style="display:block;margin-bottom:.5rem;">To use Clap Button on your site, get a <a href="https://getclaps.app#pricing">subscription</a><br/>and set <code>clap_button: true</code> in your config file.</span>
+    </p>
+  
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-12-Effective-java-Day13-item24/" class="flip-title"><span>[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라</span></a>  <time class="faded fine" datetime="2021-12-12T00:00:00+09:00">12 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-09-Finite-state-machine-for-pattern-matching/" class="flip-title"><span>[Java] 패턴 매칭을 위한 유한 상태 머신(Finite state machine) 사용</span></a>  <time class="faded fine" datetime="2021-12-09T00:00:00+09:00">09 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-08-Effective-java-Day12-item8/" class="flip-title"><span>[Effective Java] Day 12 - Item 8 :: finalizer와 cleaner 사용을 피하라</span></a>  <time class="faded fine" datetime="2021-12-08T00:00:00+09:00">08 Dec 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

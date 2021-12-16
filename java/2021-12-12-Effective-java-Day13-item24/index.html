@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라","dateModified":"2021-12-12T23:23:11+09:00","datePublished":"2021-12-12T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-12-Effective-java-Day13-item24/"},"url":"https://icechoco.github.io/java/2021-12-12-Effective-java-Day13-item24/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"이 아이템에서는 각각의 중첩 클래스를 언제, 왜 사용해야하는지 얘기하고 있다.","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라","dateModified":"2021-12-15T18:29:30+09:00","datePublished":"2021-12-12T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-12-Effective-java-Day13-item24/"},"url":"https://icechoco.github.io/java/2021-12-12-Effective-java-Day13-item24/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"이 아이템에서는 각각의 중첩 클래스를 언제, 왜 사용해야하는지 얘기하고 있다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-13T00:36:07+09:00',
+    INDEX_KEY: 'index--2021-12-16T22:41:15+09:00',
   };
   w._clapButton = true;
 }(window);</script>
@@ -304,6 +304,14 @@ Left here for reference, feel free to delete.
           
           
           
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-15">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-15T18:29:30+09:00">2021-12-15</time>
+            </span>
+          
         
       
     </div>
@@ -434,7 +442,7 @@ Left here for reference, feel free to delete.
   <li>이름이 없는 일회용 클래스.</li>
   <li>바깥 클래스의 멤버도 아니다.</li>
   <li><strong>정의와 생성을 동시에:</strong> 쓰이는 시점에 선언과 동시에 인스턴스가 만들어진다.</li>
-  <li>비정적인 문맥에서 사용될 때만 바깥 클래스의 인스턴스를 만들 수 있다.</li>
+  <li>비정적인 문맥에서 사용될 때만 바깥 클래스의 멤버 접근이 가능하다.</li>
 </ul>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AnonymousExample2</span> <span class="o">{</span>
@@ -473,13 +481,12 @@ Left here for reference, feel free to delete.
 
     <span class="kd">static</span> <span class="kt">double</span> <span class="nf">operate</span><span class="o">()</span> <span class="o">{</span><span class="c1">//정적 문맥</span>
         <span class="nc">Operator3</span> <span class="n">operator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Operator3</span><span class="o">()</span> <span class="o">{</span><span class="c1">//구현 인터페이스 이름</span>
-            <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">A</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="c1">// 자바 8부터는 정적멤버가 static이 아니여도 컴파일에러 발생 X</span>
-            <span class="kd">static</span> <span class="kt">double</span> <span class="no">B</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="kd">static</span> <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">//컴파일에러 발생. 자바 16부터는 에러 발생 X</span>
             <span class="nd">@Override</span>
             <span class="kd">public</span> <span class="kt">double</span> <span class="nf">plus</span><span class="o">()</span> <span class="o">{</span>
-                <span class="c1">//바깥 인스턴스 x, y 참조 불가</span>
-                <span class="k">return</span> <span class="no">A</span><span class="o">;</span>
+              <span class="c1">//return x; //바깥 인스턴스 x, y 참조 불가</span>
+                <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
             <span class="o">}</span>
         <span class="o">};</span>
         <span class="k">return</span> <span class="n">operator</span><span class="o">.</span><span class="na">plus</span><span class="o">();</span>
@@ -770,7 +777,7 @@ and 해당 타입으로 쓰기에 적합한 클래스나 인터페이스가 이�
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-09-Finite-state-machine-for-pattern-matching/" class="flip-title"><span>[Java] 패턴 매칭을 위한 유한 상태 머신(Finite state machine) 사용</span></a>  <time class="faded fine" datetime="2021-12-09T00:00:00+09:00">09 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-08-Effective-java-Day12-item8/" class="flip-title"><span>[Effective Java] Day 12 - Item 8 :: finalizer와 cleaner 사용을 피하라</span></a>  <time class="faded fine" datetime="2021-12-08T00:00:00+09:00">08 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-07-Effective-java-Day11-item6-and-item7/" class="flip-title"><span>[Effective Java] Day 11 - Item 6, 7 :: 불필요한 객체 생성을 피하라 (2), 다 쓴 객체 참조를 해제하라</span></a>  <time class="faded fine" datetime="2021-12-07T00:00:00+09:00">07 Dec 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-12-Effective-java-Day14-item09-item10/" class="flip-title"><span>[Effective Java] Day 15 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라</span></a>  <time class="faded fine" datetime="2021-12-12T00:00:00+09:00">12 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-09-Finite-state-machine-for-pattern-matching/" class="flip-title"><span>[Java] 패턴 매칭을 위한 유한 상태 머신(Finite state machine) 사용</span></a>  <time class="faded fine" datetime="2021-12-09T00:00:00+09:00">09 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-08-Effective-java-Day12-item8/" class="flip-title"><span>[Effective Java] Day 12 - Item 8 :: finalizer와 cleaner 사용을 피하라</span></a>  <time class="faded fine" datetime="2021-12-08T00:00:00+09:00">08 Dec 2021</time></li>            </ul></aside>
 
   
 
