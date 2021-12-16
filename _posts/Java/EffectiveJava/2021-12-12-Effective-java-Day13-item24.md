@@ -106,7 +106,7 @@ NonStaticExample.NonStaticClass nonStaticClass = nonStaticExample.new NonStaticC
 - 이름이 없는 일회용 클래스.
 - 바깥 클래스의 멤버도 아니다.
 - **정의와 생성을 동시에:** 쓰이는 시점에 선언과 동시에 인스턴스가 만들어진다.
-- 비정적인 문맥에서 사용될 때만 바깥 클래스의 인스턴스를 만들 수 있다.
+- 비정적인 문맥에서 사용될 때만 바깥 클래스의 멤버 접근이 가능하다.
 
 ```java
 public class AnonymousExample2 {
@@ -141,13 +141,12 @@ public class AnonymousExample3 {
 
     static double operate() {//정적 문맥
         Operator3 operator = new Operator3() {//구현 인터페이스 이름
-            static final double A = 0;
-            // 자바 8부터는 정적멤버가 static이 아니여도 컴파일에러 발생 X
-            static double B = 0;
+            static final double a = 0;
+            static double b = 0; //컴파일에러 발생. 자바 16부터는 에러 발생 X
             @Override
             public double plus() {
-                //바깥 인스턴스 x, y 참조 불가
-                return A;
+              //return x; //바깥 인스턴스 x, y 참조 불가
+                return a;
             }
         };
         return operator.plus();

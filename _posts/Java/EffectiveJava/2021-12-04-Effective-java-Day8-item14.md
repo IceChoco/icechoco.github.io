@@ -364,7 +364,25 @@ static Comparator<Object> hashCodeOrder = new Comparator<>() {
 }
 ```
 
-위 방식은 첫 번째가 두 번째보다 크고, 두 번째가 세번째보다 크면 첫 번째는 세번째보다 커야하는 추이성을 위배한다. 이 방식은 사용하면 안되는 이유는 2가지 이다.
+위 방식은 첫 번째가 두 번째보다 크고, 두 번째가 세번째보다 크면 첫 번째는 세번째보다 커야하는 추이성을 위배한다.  
+값의 차를 이용한 방식을 이용하여 추이성을 위배하는 사례는 아래와 같다.
+```java
+int a = Integer.MAX_VALUE;
+int b = 0;
+int c = Integer.MIN_VALUE;
+
+// expected a > b > c
+System.out.println(a-b);
+System.out.println(b-c);
+System.out.println(a-c);
+
+//출력
+2147483647
+-2147483648
+-1
+```
+
+이 방식은 사용하면 안되는 이유는 2가지 이다.
 1. 정수 overflow 가능성
 2. IEEE 754 부동소수점 계산 방식에 따른 오류 가능성  
 
