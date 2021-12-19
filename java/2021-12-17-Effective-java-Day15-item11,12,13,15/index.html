@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Effective Java] Day 15 - Item 11, 12, 13, 15 :: equals를 재정의하려거든 hashcode도 재정의하라, toString을 항상 재정의하라, clone 재정의는 주의해서 진행하라, 클래스와 멤버의 접근 권한을 최소화하라(1) | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Effective Java] Day 15 - Item 11, 12, 13, 15 :: equals를 재정의하려거든 hashcode도 재정의하라, toString을 항상 재정의하라, clone 재정의는 주의해서 진행하라, 클래스와 멤버의 접근 권한을 최소화하라(1)" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="Day15에서는 item 11, 12, 13, 15에 대한 내용을 다룬다." />
+<meta property="og:description" content="Day15에서는 item 11, 12, 13, 15에 대한 내용을 다룬다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-17-Effective-java-Day15-item11,12,13,15/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-17-Effective-java-Day15-item11,12,13,15/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-17T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Effective Java] Day 15 - Item 11, 12, 13, 15 :: equals를 재정의하려거든 hashcode도 재정의하라, toString을 항상 재정의하라, clone 재정의는 주의해서 진행하라, 클래스와 멤버의 접근 권한을 최소화하라(1)" />
+<script type="application/ld+json">
+{"headline":"[Effective Java] Day 15 - Item 11, 12, 13, 15 :: equals를 재정의하려거든 hashcode도 재정의하라, toString을 항상 재정의하라, clone 재정의는 주의해서 진행하라, 클래스와 멤버의 접근 권한을 최소화하라(1)","dateModified":"2021-12-20T00:33:35+09:00","datePublished":"2021-12-17T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-17-Effective-java-Day15-item11,12,13,15/"},"url":"https://icechoco.github.io/java/2021-12-17-Effective-java-Day15-item11,12,13,15/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day15에서는 item 11, 12, 13, 15에 대한 내용을 다룬다.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-17-Effective-java-Day15-item11,12,13,15/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2021-12-20T00:38:09+09:00',
+  };
+  w._clapButton = false;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2021-12-17-Effective-java-Day15-item11,12,13,15</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day15-item11,12,13,15" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 15 - Item 11, 12, 13, 15 :: equals를 재정의하려거든 hashcode도 재정의하라, toString을 항상 재정의하라, clone 재정의는 주의해서 진행하라, 클래스와 멤버의 접근 권한을 최소화하라(1)
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-17T00:00:00+09:00">17 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>, <span>이펙티브자바</span>, <span>Effectivejava</span>, <span>Hashcode</span>, <span>Hashtable</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-20">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-20T00:33:35+09:00">2021-12-20</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day15에서는 item 11, 12, 13, 15에 대한 내용을 다룬다.</p>
+
+<h2 id="item-11--equals를-재정의하려거든-hashcode도-재정의하라">Item 11 :: equals를 재정의하려거든 hashcode도 재정의하라.</h2>
+
+<p>그렇지 않으면 hash를 사용하는 HashMap, HashSet과 같은 컬렉션의 원소로 사용할 때 문제를 일으킬 것이다.</p>
+
+<h3 id="hashcode의-규약">hashcode의 규약</h3>
+<ul>
+  <li>equals 비교에 사용되는 정보가 변경되지 않았다면, 객체의 hashcode 메소드는 몇 번을 호출해도 일관되게 항상 같은 값을 반환해야 한다. (단, Application을 다시 실행한다면 값이 달라져도 상관없다.)</li>
+  <li>equals(Object)가 두 객체를 같다고 판단했다면, 두 객체는 똑같은 hashCode를 반환한다.</li>
+  <li>equals(Object)가 두 객체를 다르다고 판단했더라도, 두 객체의 hashCode가 서로 다른 값을 반환할 필요는 없다. 단, 다른 객체에 대해서는 다른 값을 반환해야 해시테이블의 성능이 좋아진다.</li>
+</ul>
+
+<p>hashCode 재정의를 잘못했을 때 문제가 되는 부분은 두 번째 조항이다. 즉, 논리적으로 같은 객체는 같은 해시코드를 반환해야한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PhoneNumber</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">firstNumber</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">secondNumber</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">thirdNumber</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">PhoneNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">firstNumber</span><span class="o">,</span> <span class="kt">int</span> <span class="n">secondNumber</span><span class="o">,</span> <span class="kt">int</span> <span class="n">thirdNumber</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">firstNumber</span> <span class="o">=</span> <span class="n">firstNumber</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">secondNumber</span> <span class="o">=</span> <span class="n">secondNumber</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">thirdNumber</span> <span class="o">=</span> <span class="n">thirdNumber</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">PhoneNumber</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="nc">PhoneNumber</span> <span class="n">p</span> <span class="o">=</span> <span class="o">(</span><span class="nc">PhoneNumber</span><span class="o">)</span> <span class="n">o</span><span class="o">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">firstNumber</span> <span class="o">==</span> <span class="n">p</span><span class="o">.</span><span class="na">firstNumber</span> <span class="o">&amp;&amp;</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">secondNumber</span> <span class="o">==</span> <span class="n">p</span><span class="o">.</span><span class="na">secondNumber</span> <span class="o">&amp;&amp;</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">thirdNumber</span> <span class="o">==</span> <span class="n">p</span><span class="o">.</span><span class="na">thirdNumber</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Instance 1 hashcode : "</span> <span class="o">+</span> <span class="k">new</span> <span class="nc">PhoneNumber</span><span class="o">(</span><span class="mi">707</span><span class="o">,</span> <span class="mi">867</span><span class="o">,</span> <span class="mi">5307</span><span class="o">).</span><span class="na">hashCode</span><span class="o">());</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Instance 2 hashcode : "</span> <span class="o">+</span> <span class="k">new</span> <span class="nc">PhoneNumber</span><span class="o">(</span><span class="mi">707</span><span class="o">,</span> <span class="mi">867</span><span class="o">,</span> <span class="mi">5307</span><span class="o">).</span><span class="na">hashCode</span><span class="o">());</span>
+
+        <span class="c1">// Instance 1 hashcode : 1028214719</span>
+        <span class="c1">// Instance 2 hashcode : 1706234378</span>
+
+        <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">PhoneNumber</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="k">new</span> <span class="nc">PhoneNumber</span><span class="o">(</span><span class="mi">707</span><span class="o">,</span> <span class="mi">867</span><span class="o">,</span> <span class="mi">5307</span><span class="o">),</span> <span class="s">"제니"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="k">new</span> <span class="nc">PhoneNumber</span><span class="o">(</span><span class="mi">707</span><span class="o">,</span> <span class="mi">867</span><span class="o">,</span> <span class="mi">5307</span><span class="o">)));</span> <span class="c1">// null 반환</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>put할 때의 인스턴스와 get할 때의 두 가지 인스턴스를 같은 버킷에 담았다 하더라도 get 메서드는 여전히 null을 반환한다. 그 이유는 HashMap의 경우 해시코드가 다른 엔트리끼리는 동치성 비교를 시도조차 하지 않도록 최적화되어 있기 때문이다.</p>
+
+<p>위와 같은 문제는 적절한 hashCode 메소드를 작성하는 것만으로 해결이 가능하다.</p>
+
+<h2 id="최악의-hashcode-구현">최악의 hashCode 구현</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="mi">42</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>동치인 모든 객체에서 똑같은 해시코드를 반환하니 적법하다.<br />
+하지만 끔찍하게도 모든 객체에게 똑같은 값을 반환한다. 따라서 모든 객체가 같은 해시테이블 버킷에 담겨 연결리스트처럼 동작한다.<br />
+평균 수행시간이 O(1)인 해시테이블이 O(n)으로 느려져서 성능이 낮아진다.</p>
+
+<p>hashCode가 같다면 HashMap에서는 어떻게 동작할까?</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">PhoneNumber</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="k">new</span> <span class="nc">PhoneNumber</span><span class="o">(</span><span class="mi">707</span><span class="o">,</span> <span class="mi">867</span><span class="o">,</span> <span class="mi">5307</span><span class="o">),</span> <span class="s">"제니"</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="k">new</span> <span class="nc">PhoneNumber</span><span class="o">(</span><span class="mi">707</span><span class="o">,</span> <span class="mi">867</span><span class="o">,</span> <span class="mi">5307</span><span class="o">)));</span> <span class="c1">// 제니</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="k">new</span> <span class="nc">PhoneNumber</span><span class="o">(</span><span class="mi">707</span><span class="o">,</span> <span class="mi">867</span><span class="o">,</span> <span class="mi">5301</span><span class="o">)));</span> <span class="c1">// null</span>
+</code></pre></div></div>
+
+<p>hashcode가 같더라도 동치성비교(equals)를 실행하여 객체에 대한 값(value)를 조회한다.</p>
+
+<p><img src="/assets\img/item11_HashMap_getNode.PNG" alt="item11_HashMap_getNode" /></p>
+
+<h2 id="좋은-해시-함수-만들기">좋은 해시 함수 만들기</h2>
+<p>(세 번째 규약) 서로 다른 인스턴스에 대해 다른 해시코드를 반환한다.<br />
+이상적인 해시 함수는 주어진 인스턴스들을 32비트 정수 범위에 균일하게 분배하는 것이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// 1. int 변수 result 선언 후 값을 핵심 필드에 대한 hashcode로 초기화한다.</span>
+
+    <span class="c1">// 2. 기본 타입 필드라면 Type.hashCode()를 사용한다.</span>
+    <span class="c1">// Type은 기본타입의 Boxing 클래스이다.</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(</span><span class="n">firstNumber</span><span class="o">);</span>
+
+    <span class="c1">// 3. 참조 타입이라면 참조타입에 대한 hashCode 함수를 호출한다.</span>
+    <span class="c1">// 4. 값이 null이면 0으로 사용한다.</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="nc">Address</span><span class="o">.</span><span class="na">hashCode</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="nc">Address</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+
+    <span class="c1">// 5. 필드가 배열이라면 핵심 원소를 각각 필드처럼 다룬다.</span>
+    <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">arg</span> <span class="o">:</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="n">arg</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="n">arg</span><span class="o">.</span><span class="na">hashCode</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 6. 배열의 모든 원소가 핵심 필드라면 Arrays.hashCode를 이용한다.</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>파생 필드는 hashCode 계산에서 제외해도 된다.<br />
+equals 비교에 사용되지 않는 필드는 반드시 제외해야한다.<br />
+31 * result를 곱하는 순서에 따라 result 값이 달라진다.</p>
+<ul>
+  <li>String의 hashCode를 31을 곱하지 않고 구현한다면 모든 아나그램(anagram, 구성하는 철자가 같고 그 순서만 다른 문자열)의 해시코드가 같아지기 때문</li>
+</ul>
+
+<p>곱할 순서를 31로 지정하는 이유는 31이 홀수이면서 소수(prime) 이기 때문이다. 2를 곱하는 것은 shift 연산과 같은 결과라서 추천하지 않는다.<br />
+31 * i는  (i « 5) - i와 같다.</p>
+<ul>
+  <li>31 * 1은 31 == 100000(2) - 1은 32 - 1 = 31</li>
+  <li>31 * 2는 62 == 1000000(2) - 2은 64 - 2 = 62</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(</span><span class="n">firstNumber</span><span class="o">);</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(</span><span class="n">secondNumber</span><span class="o">);</span>
+    <span class="k">return</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(</span><span class="n">thirdNumber</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="hashcode를-만들어주는-모듈">hashCode를 만들어주는 모듈</h2>
+<ul>
+  <li>Objects.hash
+    <ul>
+      <li>내부적으로 AutoBoxing이 일어나 성능이 떨어짐.</li>
+    </ul>
+  </li>
+  <li>Lombok @EqulasAndHashCode</li>
+  <li>Google @AutoValue</li>
+</ul>
+
+<h2 id="hashcode-재정의-할-때-주의-할점">hashCode 재정의 할 때 주의 할점</h2>
+<ul>
+  <li>불변 객체에 대해서는 hashCode 생성 비용이 많이 든다면, hashCode를 캐싱하는 것도 고려하자.
+    <ul>
+      <li>스레드 안전성까지 고려해야한다.</li>
+    </ul>
+  </li>
+  <li>성능을 높인답시고 hashCode를 계산할 때 핵심필드를 생략해서는 안된다.
+    <ul>
+      <li>속도는 빨라지지만 해시 품질이 나빠져 해시테이블의 성능을 심각하게 떨어뜨릴 수 있다.</li>
+    </ul>
+  </li>
+  <li>hashCode 생성규칙을 사용자에게 자세히 공표하지 말자.
+    <ul>
+      <li>클라이언트가 이 값에 의지하지 않게 되고 추후에 계산 방식을 바꿀 수도 있다.</li>
+      <li>자세한 규칙을 공표하지 않는다면 해시 기능에서 결함을 발견했거나 더 나은 해시 방식을 알아낸 경우 다음 릴리즈에 수정이 가능하다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="item-12--tostring을-항상-재정의하라">Item 12 :: toString을 항상 재정의하라</h2>
+<h3 id="tostring을-잘-구현한-클래스는-사용하기에-훨씬-즐겁고-그-클래스를-사용한-시스템은-디버깅하기-쉽다">toString을 잘 구현한 클래스는 사용하기에 훨씬 즐겁고, 그 클래스를 사용한 시스템은 디버깅하기 쉽다.</h3>
+<p>Object의 기본 toString 메서드가 우리가 작성한 클래스에 적합한 문자열을 반환하는 경우는 거의 없다. <br />
+실전에서 toString은 그 객체가 가진 주요 정보 모두를 반환하는게 좋다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PhoneNumber</span> <span class="o">{</span>
+
+	<span class="kt">int</span> <span class="n">areaCode</span><span class="o">,</span> <span class="n">prefix</span><span class="o">,</span> <span class="n">lineNum</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nf">PhoneNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">areaCode</span><span class="o">,</span> <span class="kt">int</span> <span class="n">prefix</span><span class="o">,</span> <span class="kt">int</span> <span class="n">lineNum</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">areaCode</span> <span class="o">=</span> <span class="n">areaCode</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">prefix</span> <span class="o">=</span> <span class="n">prefix</span><span class="o">;</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">lineNum</span> <span class="o">=</span> <span class="n">lineNum</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="cm">/* @Override
+	public String toString() {
+		return String.format("%03d-%03d-%04d", areaCode, prefix, lineNum);
+	} */</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>주석 처리 후 실행 시 결과</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">PhoneNumber</span> <span class="n">pn</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PhoneNumber</span><span class="o">(</span><span class="mi">123</span><span class="o">,</span> <span class="mi">456</span><span class="o">,</span> <span class="mi">7890</span><span class="o">);</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">pn</span> <span class="o">+</span> <span class="s">"에서 오류가 발생했습니다."</span><span class="o">);</span>
+	<span class="o">}</span>
+</code></pre></div></div>
+<p>toString을 재정의하지 않는다면 <code class="language-plaintext highlighter-rouge">item12.PhoneNumber@7cd84586에서 오류가 발생했습니다.</code><br />
+(클래스_이름@16진수로_표시한_해시코드)</p>
+
+<p>하지만, 주석을 해제하면 <code class="language-plaintext highlighter-rouge">123-456-7890에서 오류가 발생했습니다.</code></p>
+
+<h3 id="tostring을-구현할-때면-반환값의-포맷을-문서화할지-정해야-한다">toString을 구현할 때면 반환값의 포맷을 문서화할지 정해야 한다.</h3>
+<p>단점: 포맷을 명시하면 좋으나 포맷을 명시하면 평생 포맷에 얽매이게 된다. <br />
+포맷 명시와는 관계없이 의도는 명확히 밝혀야 한다. <br />
+<strong>포맷 명시와는 관계없이 toString이 반환한 값에 포함된 정보를 얻어올 수 있는 API 를 제공하자.</strong> <br />
+그렇지 않으면 정보가 필요한 경우 toString 반환값을 파싱할 수 밖에 없다.</p>
+
+<h4 id="포맷-명시-예제-코드">포맷 명시 예제 코드</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+  * 이 전화번호의 문자열 표현을 반환한다.
+  * 이 문자열은 "XXX-YYY-ZZZZ" 형태의 12글자로 구성된다. 
+  * XXX는 지역 코드, YYY는 프리픽스, ZZZZ는 가입자 번호다.
+  * ...
+  * (생략)
+  * ...
+  */</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%03d-%03d-%04d"</span><span class="o">,</span> <span class="n">areaCode</span><span class="o">,</span> <span class="n">prefix</span><span class="o">,</span> <span class="n">lineNum</span><span class="o">);</span>
+  <span class="o">}</span>
+
+</code></pre></div></div>
+
+<h3 id="포맷-명시하지-않는-예제-코드">포맷 명시하지 않는 예제 코드</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+  * 상세 형식은 정해지지 않았으며, 향후 변경될 수 있다.
+  * "[약물 #9: 유형=사랑, 겉모습=먹물]"
+  * ...
+  * (생략)
+  * ...
+  */</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+
+</code></pre></div></div>
+<h3 id="결론">결론</h3>
+<p><strong>모든 구체 클래스에서 Object의 toString을 재정의하자.</strong></p>
+<blockquote>
+  <p>상위 클래스에서 이미 알맞게 재정의한 경우는 예외다. <br />
+toString을 재정의한 클래스는 사용하기도 즐겁고 그 클래스를 사용한 시스템을 디버깅하기 쉽게 해준다. <br />
+toString은 해당 객체에 관한 명확하고 유용한 정보를 읽기 좋은 형태로 반환해야 한다.</p>
+</blockquote>
+
+<h2 id="item-13--clone-재정의는-주의해서-진행하라">Item 13 :: clone 재정의는 주의해서 진행하라</h2>
+<p>객체를 복사할 수 있는 방법으로 Object클래스는 clone 메소드를 제공하고 있다. 이 메소드를 사용하기 위해서 주의해야할 부분들에 대해서 살펴보려고 한다. 또한, 객체를 복사할때 clone보다 더 좋은 방법에 대해서도 알아보도록 하자.</p>
+
+<h3 id="cloneable-인터페이스와-clone-메소드의-관계">Cloneable 인터페이스와 clone 메소드의 관계</h3>
+<ul>
+  <li>Cloneable은 복제할 수 있는 클래스임을 명시하는 <strong>믹스인 인터페이스</strong> 이다. 하지만 복제를 위한 어떤 메소드도 정의하고 있지 않다. (* 믹스인 인터페이스는 기존 클래스의 주된 기능에 새로운 선택적 기능을 부여)</li>
+  <li>복제를 위한 clone 메소드는 <strong>Object에 protected로 선언</strong>되어 있다. 이 clone 메소드는 Coneable의 구현 유무에 따라서 동작이 바뀐다. Cloneable을 구현하면 복사한 객체를 반환하며 그렇지 않으면 CloneNotSupportedException을 던진다.<br />
+<img src="/assets\img/item13-object-clone.png" alt="item13-object-clone" /></li>
+  <li>외부에서 clone 메소드를 접근하기 위해서는 public으로 오버라이딩해야 한다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Cloneable 인터페이스를 구현</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PhoneNumber</span> <span class="kd">implements</span> <span class="nc">Cloneable</span><span class="o">{</span>
+   <span class="c1">// Object의 Clone메소드를 public으로 오버라이딩</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">PhoneNumber</span> <span class="nf">clone</span><span class="o">()</span> <span class="o">{</span>
+   		<span class="k">try</span> <span class="o">{</span>
+      	    <span class="k">return</span> <span class="o">(</span><span class="nc">PhoneNumber</span><span class="o">)</span><span class="kd">super</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+     	<span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="nc">CloneNotSupportedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+     	    <span class="k">throw</span> <span class="k">new</span> <span class="nf">AssertionError</span><span class="o">();</span>  <span class="c1">// 일어날 수 없는 일이다.</span>
+     	<span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Cloneable을 구현한 클래스에서 clone 메소드를 사용하기 위해서는 이런 이례적이며 일반적이지 않은 방법을 준수해야 한다.</p>
+
+<h3 id="clone의-명세는-강제력이-없다">clone의 명세는 강제력이 없다</h3>
+<h4 id="clone-명세">clone 명세</h4>
+<blockquote>
+  <p>x.clone() != x // 서로 다른 객체</p>
+
+  <p>x.clone().getClass() == x.getClass() // 동일한 클래스를 참조</p>
+
+  <p>x.clone().equals(x) // 동치 관계</p>
+</blockquote>
+
+<ul>
+  <li>일반적으로 위 식들에 대해서 결과는 참(True)이다. 하지만 반드시 만족해야하는 것은 아니다.</li>
+  <li>관례상 clone으로 반환되는 객체는 super.clone을 호출해서 얻음. x클래스와 x클래스의 모든 상위 클래스(Object제외)에서 이 관례를 따른다면 x.clone.getClass() == x.getClone()은 참.</li>
+  <li>관례상 반환된 객체와 원본 객체는 독립적이어야 한다. 이를 만족하기 위해서 super.clone으로 얻은 객체의 필드 중 하나를 수정해야할 수도 있다. ex) 가변 필드</li>
+</ul>
+
+<h4 id="상속시-발생할-수-있는-문제-상황">상속시 발생할 수 있는 문제 상황</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="no">A</span> <span class="nf">clone</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">A</span><span class="o">();</span> <span class="c1">// 컴파일러는 경고를 하지 않는다!!</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">B</span> <span class="kd">extends</span> <span class="no">A</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="no">B</span> <span class="nf">clone</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="no">B</span><span class="o">)</span><span class="kd">super</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span> <span class="c1">// A가 생성되었다.</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Class B가 클래스 A를 상속할 때, 하위 클래스인 B의 clone은 B타입 객체를 반환해야한다. 그런데 A의 clone 메소드가 super.clone이 아닌 생성자를 통한 객체를 반환하면 하위 클래스에서 문제가 될 수 있다 (다운캐스팅으로 인한 런타임 에러) 달리 말해 super.clone을 연쇄적으로 호출하도록 구현해놓으면 clone이 처음 호출된 상위 클래스의 객체가 만들어진다.</p>
+
+<h3 id="제대로-동작하는-clone-메소드">제대로 동작하는 clone 메소드</h3>
+
+<ul>
+  <li>
+    <p>모든 필드가 기본 타입 or 불변 객체를 참조하면 super.clone을 통해서 객체의 복제본을 얻을 수 있다.</p>
+
+    <blockquote>
+      <p>쓸데없는 복사를 지양하기 위해 불변 클래스는 clone 메소드를 제공하지 않는게 좋다.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Super.clone에서 얻은 객체를 반환하기 전에 자신의 클래스로 형변환한다. 이렇게 함으로 클라이언트가 형변환하지 않아도 된다.</p>
+
+    <blockquote>
+      <p>자바는 공변 반환 타이핑을 지원한다(since java 1.5). 메소드 오버라이딩시 리턴타입을 원본 메소드 리턴타입의 Subclass로 오버라이딩 가능</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>검사 예외인 CloneNotSupportedException에 대해서 처리한다. 자세한 내용은 Item 71에서 … (사실은 비검사 예외였어야 했다.)</p>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="nc">PhoneNumber</span> <span class="nf">clone</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="nc">PhoneNumber</span><span class="o">)</span><span class="kd">super</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span><span class="o">(</span><span class="nc">CloneNotSupportedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">AssertionError</span><span class="o">();</span>  <span class="c1">// 일어날 수 없는 일이다.</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<blockquote>
+  <p>가변 상태를 참조하지 않는 클래스용 clone 메소드</p>
+</blockquote>
+
+<h3 id="가변-필드를-가지고-있다면">가변 필드를 가지고 있다면…</h3>
+<h4 id="클래스의-필드에-배열이-있을-경우">클래스의 필드에 배열이 있을 경우</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Stack</span> <span class="kd">implements</span> <span class="nc">Cloneable</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">Object</span><span class="o">[]</span> <span class="n">elements</span><span class="o">;</span> <span class="c1">// 가변 필드</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">DEFAULT_INITIAL_CAPACITY</span> <span class="o">=</span> <span class="mi">16</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="nf">Stack</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">elements</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Object</span><span class="o">[</span><span class="no">DEFAULT_INITIAL_CAPACITY</span><span class="o">];</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="nc">Object</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">ensureCapacity</span><span class="o">();</span>
+      <span class="n">elements</span><span class="o">[</span><span class="n">size</span><span class="o">++]</span> <span class="o">=</span> <span class="n">e</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">pop</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+         <span class="k">throw</span> <span class="k">new</span> <span class="nf">EmptyStackException</span><span class="o">();</span>
+      <span class="nc">Object</span> <span class="n">result</span> <span class="o">=</span> <span class="n">elements</span><span class="o">[--</span><span class="n">size</span><span class="o">];</span>
+      <span class="n">elements</span><span class="o">[</span><span class="n">size</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// Eliminate obsolete reference</span>
+      <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isEmpty</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="nc">Stack</span> <span class="nf">clone</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">try</span> <span class="o">{</span>
+         <span class="nc">Stack</span> <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Stack</span><span class="o">)</span><span class="kd">super</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+         <span class="n">result</span><span class="o">.</span><span class="na">elements</span> <span class="o">=</span> <span class="n">elements</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span> <span class="c1">// 새로운 배열 생성</span>
+         <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+      <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">CloneNotSupportedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+         <span class="k">throw</span> <span class="k">new</span> <span class="nf">AssertionError</span><span class="o">();</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+
+   <span class="kd">private</span> <span class="kt">void</span> <span class="nf">ensureCapacity</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">elements</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="n">size</span><span class="o">)</span>
+         <span class="n">elements</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">elements</span><span class="o">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>elements 배열의 clone 메소드를 재귀적으로 호출해서 각각 다른 배열을 가질 수 있다. 이를 통해 elements 공유로 불변식을 해칠 수 있는 문제가 해결한다.
+    <blockquote>
+      <p>배열은 clone 기능을 제대로 사용한 유일한 예</p>
+    </blockquote>
+  </li>
+  <li>super.clone을 통해 복제본이 생성된 후 elemnts 배열의 clone 호출로 새로운 값을 할당하기 위해서 final 한정자를 제거해야 한다.</li>
+</ul>
+
+<h4 id="재귀적으로-clone을-호출해도-해결하지-못하는-경우">재귀적으로 clone을 호출해도 해결하지 못하는 경우</h4>
+<p>링크드리스트의 집합인 buckets는 clone을 통해서 각 링크드리스트들의 복사본을 만들 수 없다. 직접 deepCopy가 가능한 메소드를 만들어줘야하는데 재귀를 이용할 경우 리스트의 길이에 따라서 스택 오버플로가 발생할 수 있다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashTable</span> <span class="kd">implements</span> <span class="nc">Cloneable</span> <span class="o">{</span>    <span class="kd">private</span> <span class="nc">Entry</span><span class="o">[]</span> <span class="n">buckets</span><span class="o">;</span> <span class="c1">// 복잡한 가변 필드</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Entry</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="nc">Object</span> <span class="n">key</span><span class="o">;</span>
+        <span class="nc">Object</span> <span class="n">value</span><span class="o">;</span>
+        <span class="nc">Entry</span> <span class="n">next</span><span class="o">;</span>
+
+        <span class="nc">Entry</span><span class="o">(</span><span class="nc">Object</span> <span class="n">key</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">value</span><span class="o">,</span> <span class="nc">Entry</span> <span class="n">next</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span>     <span class="c1">//지금 키</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span> <span class="c1">// 지금 값</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>   <span class="c1">// 다음 원소</span>
+        <span class="o">}</span>
+
+        <span class="c1">//재귀 - 비권장</span>
+        <span class="nc">Entry</span> <span class="nf">deepCopy</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">Entry</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">,</span> <span class="n">next</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">next</span><span class="o">.</span><span class="na">deepCopy</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">HashTable</span> <span class="nf">clone</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">CloneNotSupportedException</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+
+            <span class="nc">HashTable</span> <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HashTable</span><span class="o">)</span><span class="kd">super</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+            <span class="c1">// 2. buckets 필드를 새로운 buckets 배열로 초기화</span>
+            <span class="n">result</span><span class="o">.</span><span class="na">buckets</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Entry</span><span class="o">[</span><span class="n">buckets</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+            <span class="c1">// 3.원본 테이블에 담긴 모든 버킷을 순회</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">buckets</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="c1">//버킷이 비어있지 않으면, 그 인덱스의 버킷을 deepCopy함</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">buckets</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">result</span><span class="o">.</span><span class="na">buckets</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">buckets</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">deepCopy</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span> <span class="nc">CloneNotSupportedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">AssertionError</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이를 방지하기 위해서는 반복문을 통해서 링크드리스트 전체 노드를 복사해주는 것이 좋다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//반복문 - 권장</span>
+<span class="nc">Entry</span> <span class="nf">deepCopy</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// 첫번째 인덱스의 deepCopy가 호출되면,</span>
+    <span class="c1">// Entry 값이 똑같은 result라는 Entry 생성</span>
+    <span class="nc">Entry</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Entry</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">,</span> <span class="n">next</span><span class="o">);</span>
+    <span class="c1">// p는 result와 같은 주소값을 참조. 즉, p.next로 값을 수정하면 result.next도 바뀜</span>
+    <span class="k">for</span><span class="o">(</span><span class="nc">Entry</span> <span class="n">p</span> <span class="o">=</span> <span class="n">result</span><span class="o">;</span> <span class="n">p</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="na">next</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Entry</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">key</span><span class="o">,</span> <span class="n">p</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">value</span><span class="o">,</span> <span class="n">p</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="고수준-api-사용해서-복사">고수준 api 사용해서 복사</h4>
+<p>새로운 bukets 배열을 생성하고 원본 bukets의 모든 데이터를 put(key, value) 메소드를 통해서 동일하게 만들 수 있다.</p>
+
+<p>하지만 필드 단위 객체 복사를 우회하기 때문에 Cloneable 아키텍처와 어울리지 않고 저수준에서 처리할 때보다 느릴 수 있다.</p>
+
+<h3 id="기타-고려사항">기타 고려사항</h3>
+<h4 id="재정의될-수-있는-메서드를-호출하면-안됨">재정의될 수 있는 메서드를 호출하면 안됨</h4>
+<ul>
+  <li>clone 메소드에서 하위 클래스에서 재정의 할 수 있는 메소드를 호출하면 안된다. 하위 클래스의 복제 과정에서 자신의 상태를 교정할 기회를 읽고 원본과 복제본의 상태가 달리질 수 있다. (의도되지 않은 상태, 오작동)</li>
+</ul>
+
+<h4 id="clonenotsupprotedexception-처리">CloneNotSupprotedException 처리</h4>
+<ul>
+  <li>Clone을 재정의한 메서드에서는 사용하는 쪽의 편의를 위해서 CloneNotSupprotedException를 던지지 않아야된다.</li>
+</ul>
+
+<h4 id="상속해서-쓰기-위한-클래스에서-clone">상속해서 쓰기 위한 클래스에서 clone</h4>
+<ul>
+  <li>상속용 클래스는 Cloneable을 구현해서는 안된다.</li>
+  <li>2가지 구체적 구현 방법
+    <ul>
+      <li>Object와 같이 제대로 동작하는 clone 메소드를 구현하고 protected로 두고 CloneNotSupportedException도 던질 수 있도록 구현. 하위 클래스에서 선택할 수 있도록 한다.
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kd">final</span> <span class="nc">Object</span> <span class="nf">clone</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">CloneNotSuppotedException</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>clone 메소드를 동작하지 않게 구현하고 하위 클래스에서 재정의하지 못하도록 한다.
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kd">final</span> <span class="nc">Object</span> <span class="nf">clone</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">CloneNotSuppotedException</span> <span class="o">{</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nf">CloneNotSuppotedException</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="쓰레드-동기화">쓰레드 동기화</h4>
+<ul>
+  <li>Object의 clone 메소드는 동기화를 신경 쓰지 않았다. clone 메소드를 오버라이딩 할 때 동기화에 대해서도 고려해야 한다.</li>
+</ul>
+
+<h3 id="더-좋은-방법">더 좋은 방법</h3>
+<p>이미 클론 사용중인게 아니라면 복사생성자와 복사팩토리를 사용하자</p>
+<ul>
+  <li>Cloneable을 이미 구현한 클래스를 확장하는게 아니라면 복사 생성자와 복사 팩토리가 더 나은 객체 복사 방식을 제공한다.</li>
+</ul>
+
+<h4 id="복사-생성자">복사 생성자</h4>
+<p>자신과 같은 클래스의 인스턴스를 인수로 받는 생성자</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">Yum</span><span class="o">(</span><span class="nc">Yum</span> <span class="n">yum</span><span class="o">){...};</span>
+</code></pre></div></div>
+
+<h4 id="복사-팩터리">복사 팩터리</h4>
+<p>복사 생성자를 모방한 정적 팩터리</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="nc">Yum</span> <span class="nf">newInstance</span><span class="o">(</span><span class="nc">Yum</span> <span class="n">yum</span><span class="o">){...};</span>
+</code></pre></div></div>
+
+<p>위 2가지 방식은 생성자를 통해서 객체를 생성하며 클래스의 필드에 final을 사용하는데 제약이 없고 불필요한 CloneNotSupportedException 예외를 처리하지 않아도 된다.</p>
+
+<p>인터페이스 타입의 인스턴스를 인수로 받아서 객체를 생성할 수 있다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">HashSet</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="o">...;</span>
+<span class="nc">TreeSet</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeSet</span><span class="o">&lt;&gt;(</span><span class="n">s</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="item-15--클래스와-멤버의-접근-권한을-최소화하라1">Item 15 :: 클래스와 멤버의 접근 권한을 최소화하라(1)</h2>
+<p><strong>내부 구현을 외부 컴포넌트로부터 잘 숨겼다면</strong> 잘 설계된 컴포넌트라고 할 수 있다. 오직 <strong>API를 통해서만 다른 컴포넌트와 소통하며 서로의 내부 동작 방식에는 전혀 개의치 않는 것이다</strong> → <code class="language-plaintext highlighter-rouge">정보 은닉</code> 혹은 <code class="language-plaintext highlighter-rouge">캡슐화</code>라는 개념으로 부른다.</p>
+
+<p>정보 은닉은 다음과 같은 장점을 가진다.</p>
+
+<ul>
+  <li>API를 통해서 다른 컴포넌트와 소통하기 때문에 API를 먼저 설계하고 나면 여러 컴포넌트를 병렬로 개발할 수 있어 <strong>시스템 개발 속도를 높인다.</strong></li>
+  <li>각 컴포넌트를 더 빨리 파악하여 디버깅할 수 있고, 다른 컴포넌트로 교체하는 부담도 적어 <strong>시스템 관리 비용을 낮춘다.</strong></li>
+  <li>정보 은닉 자체가 성능을 높여주지는 않지만, 다른 컴포넌트에 영향을 주지 않고 해당 컴포넌트만 최적화 할 수 있기 때문에 <strong>성능 최적화에 도움을 준다.</strong></li>
+  <li>외부에 거의 의존하지 않는 컴포넌트라면 <strong>소프트웨어 재사용성을 높인다.</strong></li>
+  <li>시스템 전체가 아직 완성되지 않은 상태에서도 개별 컴포넌트의 동작을 검증할 수 있기 때문에 <strong>큰 시스템을 제작하는 난이도를 낮춰준다.</strong></li>
+</ul>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-19-Synchronization-of-threads/" class="flip-title"><span>[Java] 쓰레드의 동기화(Synchronization of threads)</span></a>  <time class="faded fine" datetime="2021-12-19T00:00:00+09:00">19 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-18-Hash-Code-and-Hash-Table/" class="flip-title"><span>[Java] Hash Code & Hash Table</span></a>  <time class="faded fine" datetime="2021-12-18T00:00:00+09:00">18 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-16-Effective-java-Day14-item09-item10/" class="flip-title"><span>[Effective Java] Day 14 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라</span></a>  <time class="faded fine" datetime="2021-12-16T00:00:00+09:00">16 Dec 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

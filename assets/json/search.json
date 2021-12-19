@@ -1,12 +1,39 @@
 [
   
     {
-      "title"      : "[Effective Java] Day 15 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라",
+      "title"      : "[Java] 쓰레드의 동기화(Synchronization of threads)",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2021.12.19",
+      "urlString"  : "/java/2021-12-19-Synchronization-of-threads/",
+      "url"        : "/java/2021-12-19-Synchronization-of-threads/"
+    },
+  
+    {
+      "title"      : "[Java] Hash Code & Hash Table",
+      "categories" : "java",
+      "tags"       : "java, hashCode, hashTable",
+      "date"       : "2021.12.18",
+      "urlString"  : "/java/2021-12-18-Hash-Code-and-Hash-Table/",
+      "url"        : "/java/2021-12-18-Hash-Code-and-Hash-Table/"
+    },
+  
+    {
+      "title"      : "[Effective Java] Day 15 - Item 11, 12, 13, 15 :: equals를 재정의하려거든 hashcode도 재정의하라, toString을 항상 재정의하라, clone 재정의는 주의해서 진행하라, 클래스와 멤버의 접근 권한을 최소화하라(1)",
+      "categories" : "java",
+      "tags"       : "java, 이펙티브자바, effectiveJava, hashCode, hashTable",
+      "date"       : "2021.12.17",
+      "urlString"  : "/java/2021-12-17-Effective-java-Day15-item11,12,13,15/",
+      "url"        : "/java/2021-12-17-Effective-java-Day15-item11,12,13,15/"
+    },
+  
+    {
+      "title"      : "[Effective Java] Day 14 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라",
       "categories" : "java",
       "tags"       : "java, 이펙티브자바, effectiveJava",
-      "date"       : "2021.12.12",
-      "urlString"  : "/java/2021-12-12-Effective-java-Day14-item09-item10/",
-      "url"        : "/java/2021-12-12-Effective-java-Day14-item09-item10/"
+      "date"       : "2021.12.16",
+      "urlString"  : "/java/2021-12-16-Effective-java-Day14-item09-item10/",
+      "url"        : "/java/2021-12-16-Effective-java-Day14-item09-item10/"
     },
   
     {

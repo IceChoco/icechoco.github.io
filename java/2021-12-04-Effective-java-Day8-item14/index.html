@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라","dateModified":"2021-12-15T23:12:51+09:00","datePublished":"2021-12-04T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/"},"url":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다.","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 8 - Item 14 :: Comparable을 구현할지 고려하라","dateModified":"2021-12-20T00:21:34+09:00","datePublished":"2021-12-04T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/"},"url":"https://icechoco.github.io/java/2021-12-04-Effective-java-Day8-item14/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"CompareTo는 Comparable 인터페이스의 유일무이한 메서드이다. 두 가지 성격만 빼면 Object의 equals와 같다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,9 +107,9 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-16T22:41:15+09:00',
+    INDEX_KEY: 'index--2021-12-20T00:38:09+09:00',
   };
-  w._clapButton = true;
+  w._clapButton = false;
 }(window);</script>
 
 
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-15">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-20">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-15T23:12:51+09:00">2021-12-15</time>
+              <time datetime="2021-12-20T00:21:34+09:00">2021-12-20</time>
             </span>
           
         
@@ -706,9 +706,9 @@ CaseInsensitiveString의 참조는 CaseInsensitiveString 참조와만 비교할 
 <span class="o">-</span><span class="mi">1</span>
 </code></pre></div></div>
 
-<p>이 방식은 사용하면 안되는 이유는 2가지 이다.</p>
+<p>값의 차를 이용하는 방식을 사용하면 안되는 이유는 크게 2가지 인데, 이 중 가장 핵심적인 이유는 <code class="language-plaintext highlighter-rouge">Integer overflow 가능성</code> 때문이다.</p>
 <ol>
-  <li>정수 overflow 가능성</li>
+  <li>Integer overflow 가능성</li>
   <li>IEEE 754 부동소수점 계산 방식에 따른 오류 가능성</li>
 </ol>
 
@@ -749,15 +749,7 @@ CaseInsensitiveString의 참조는 CaseInsensitiveString 참조와만 비교할 
 
 
 
-  <clap-button class="mb6" ></clap-button>
-  
-  
-    <p class="message centered border-radius" >
-      <span style="display:block;margin-bottom:.5rem;">This is a preview of <a href="https://getclaps.app">Clap Button</a>, a new feedback and analytics tools for Hydejack, built by yours truly.</span>
-      <span style="display:block;margin-bottom:.5rem;">You can try it out on <code>localhost</code> for free, but it will be removed (together with this message) when building with <code>JEKYLL_ENV=production</code>.</span>
-      <span style="display:block;margin-bottom:.5rem;">To use Clap Button on your site, get a <a href="https://getclaps.app#pricing">subscription</a><br/>and set <code>clap_button: true</code> in your config file.</span>
-    </p>
-  
+  <hr class="dingbat related mb6" />
 
 
 
@@ -923,7 +915,7 @@ CaseInsensitiveString의 참조는 CaseInsensitiveString 참조와만 비교할 
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-12-Effective-java-Day14-item09-item10/" class="flip-title"><span>[Effective Java] Day 15 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라</span></a>  <time class="faded fine" datetime="2021-12-12T00:00:00+09:00">12 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-12-Effective-java-Day13-item24/" class="flip-title"><span>[Effective Java] Day 13 - Item 24 :: 멤버 클래스는 되도록 static으로 만들라</span></a>  <time class="faded fine" datetime="2021-12-12T00:00:00+09:00">12 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-09-Finite-state-machine-for-pattern-matching/" class="flip-title"><span>[Java] 패턴 매칭을 위한 유한 상태 머신(Finite state machine) 사용</span></a>  <time class="faded fine" datetime="2021-12-09T00:00:00+09:00">09 Dec 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-19-Synchronization-of-threads/" class="flip-title"><span>[Java] 쓰레드의 동기화(Synchronization of threads)</span></a>  <time class="faded fine" datetime="2021-12-19T00:00:00+09:00">19 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-18-Hash-Code-and-Hash-Table/" class="flip-title"><span>[Java] Hash Code & Hash Table</span></a>  <time class="faded fine" datetime="2021-12-18T00:00:00+09:00">18 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-17-Effective-java-Day15-item11,12,13,15/" class="flip-title"><span>[Effective Java] Day 15 - Item 11, 12, 13, 15 :: equals를 재정의하려거든 hashcode도 재정의하라, toString을 항상 재정의하라, clone 재정의는 주의해서 진행하라, 클래스와 멤버의 접근 권한을 최소화하라(1)</span></a>  <time class="faded fine" datetime="2021-12-17T00:00:00+09:00">17 Dec 2021</time></li>            </ul></aside>
 
   
 

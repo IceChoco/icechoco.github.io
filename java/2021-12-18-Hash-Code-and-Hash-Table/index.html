@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Java] Hash Code &amp; Hash Table | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Java] Hash Code &amp; Hash Table" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="만약 Youtube에서 이미 업로드 되어있는 동영상을 다운 받아서 올릴 경우 에러가 발생한다. 전세계에 유투브 동영상 갯수도 정말 많고, 한 동영상 당 용량도 큰데 어떻게 바로 알고 이미 동영상이 있다는 메시지를 건네주는 걸까? 바로 해쉬테이블을 이용하기 때문이다." />
+<meta property="og:description" content="만약 Youtube에서 이미 업로드 되어있는 동영상을 다운 받아서 올릴 경우 에러가 발생한다. 전세계에 유투브 동영상 갯수도 정말 많고, 한 동영상 당 용량도 큰데 어떻게 바로 알고 이미 동영상이 있다는 메시지를 건네주는 걸까? 바로 해쉬테이블을 이용하기 때문이다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-18-Hash-Code-and-Hash-Table/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-18-Hash-Code-and-Hash-Table/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-18T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Java] Hash Code &amp; Hash Table" />
+<script type="application/ld+json">
+{"headline":"[Java] Hash Code &amp; Hash Table","dateModified":"2021-12-19T22:45:58+09:00","datePublished":"2021-12-18T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-18-Hash-Code-and-Hash-Table/"},"url":"https://icechoco.github.io/java/2021-12-18-Hash-Code-and-Hash-Table/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"만약 Youtube에서 이미 업로드 되어있는 동영상을 다운 받아서 올릴 경우 에러가 발생한다. 전세계에 유투브 동영상 갯수도 정말 많고, 한 동영상 당 용량도 큰데 어떻게 바로 알고 이미 동영상이 있다는 메시지를 건네주는 걸까? 바로 해쉬테이블을 이용하기 때문이다.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-18-Hash-Code-and-Hash-Table/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2021-12-20T00:38:09+09:00',
+  };
+  w._clapButton = false;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2021-12-18-Hash-Code-and-Hash-Table</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Hash-Code-and-Hash-Table" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Java] Hash Code & Hash Table
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-18T00:00:00+09:00">18 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>, <span>Hashcode</span>, <span>Hashtable</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-19">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-19T22:45:58+09:00">2021-12-19</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>만약 Youtube에서 이미 업로드 되어있는 동영상을 다운 받아서 올릴 경우 에러가 발생한다.
+전세계에 유투브 동영상 갯수도 정말 많고, 한 동영상 당 용량도 큰데 어떻게 바로 알고 이미 동영상이 있다는 메시지를 건네주는 걸까? 바로 해쉬테이블을 이용하기 때문이다.</p>
+
+<h2 id="hash-table이란">Hash Table이란?</h2>
+<blockquote>
+  <p>Key, Value로 데이터를 저장하는 자료구조 중 하나로 평균 시간 복잡도는 O(1)</p>
+</blockquote>
+
+<p><img src="/assets\img/item11_hashtable.png" alt="hashTable" /></p>
+
+<p><strong>F(key) → HashCode → Index → Value</strong></p>
+<ul>
+  <li>F(key): 검색하고자 하는 키값을 입력받아서  ex) 문자열, 숫자, 파일데이터
+    <ul>
+      <li>해시함수: 어떤 특정한 규칙을 이용하여 입력받은 key 값으로, 그 key 값이 얼마나 큰지에 상관없이 동일한 Hash코드를 만들어준다.</li>
+    </ul>
+  </li>
+  <li>HashCode: 해쉬 함수를 입력받은 해쉬코드를</li>
+  <li>Index: 배열의 인덱스로 환산하여</li>
+  <li>Value: 데이터를 접근하는 방식의 자료구조 이다.</li>
+</ul>
+
+<h2 id="hashcode의-활용-예">HashCode의 활용 예</h2>
+<p>암호화폐의 핵심기술인 블록체인에서도 각 사용자들의 공공장부를 비교할 때 해시코드를 이용한다.</p>
+<ul>
+  <li><strong>블록체인</strong>: 10분 간격으로 성사된 거래 기록을 블록체인 창고에 저장하고, 지금까지 일어난 모든 거래기록을 그 서비스를 이용하는 모든 사용자들이 전자지갑을 갖고있게 하는 방식</li>
+</ul>
+
+<p>즉 어떤 회사가 창립한 뒤 모든 거래장부를 모든 사람들이 갖게 되는 것인데, 이때 원본을 가지고 비교하게 되면 시간이 너무 오래걸리게 된다. 
+그래서 그 정보를 HashCode로 배포하고, 사람들은 거래장부를 HashCode로 비교하게 되는 것이다.</p>
+
+<h2 id="장점">장점</h2>
+
+<p>Hash Table의 가장 큰 장점은 <strong>검색 속도가 빠르다</strong>는 것이다.<br />
+<img src="/assets\img/hashTable.PNG" alt="hashTable" />
+Hash 함수를 이용해서 만든 Hash Code는 정수이다. 그래서 배열 공간을 고정된 크기만큼 만들어놓고 해시코드를 배열의 개수로 나머지 연산을 하여 배열에 나눠담는다.<br />
+즉 코드 자체가 배열의 인덱스로 사용되기 때문에 검색 자체를 할 필요가 없고, 해쉬코드로 바로 인덱스를 찾아갈 수 있어 속도가 빠르다.</p>
+<ul>
+  <li>검색시간: O(1)</li>
+</ul>
+
+<h2 id="collision충돌이-발생하는-경우">Collision(충돌)이 발생하는 경우</h2>
+
+<p>그런데 이때 한 인덱스에 많은 데이터가 몰려서 생성되는 경우 공간효율이 떨어지게 된다. 그래서 그 방을 나누는 규칙인 해쉬함수의 알고리즘이 너무 중요하다. 알고리즘이 좋지 않을 때 한 인덱스에 데이터가 여러개 들어가다가 충돌현상이 생기는 것을 <strong>Collison</strong>이 일어난다고 한다.</p>
+
+<p>시간 복잡도</p>
+<blockquote>
+  <p>각각의 Key값은 해시함수에 의해 고유한 index를 가지게 되어 바로 접근할 수 있으므로 <code class="language-plaintext highlighter-rouge">평균 O(1)</code>의 시간복잡도로 데이터를 조회할 수 있다. 하지만 <code class="language-plaintext highlighter-rouge">데이터의 충돌이 발생한 경우 Chaining에 연결된 리스트들까지 검색을 해야 하므로 최대 O(N)</code>까지 걸릴 수 있다.</p>
+</blockquote>
+
+<p>해시 함수는 때로 서로 다른 Key값으로 동일한 해시코드를 만들어내기도 한다.</p>
+<ol>
+  <li><strong>different keys → Same Code</strong>
+    <ul>
+      <li>key 값은 문자열이고 그 가지수가 무한한데에 반해 해시코드는 정수 가짓수 만큼 밖에 제공을 하지 못하기 때문이다. 따라서 알고리즘이 아무리 좋아도 어떤 키들은 중복되는 해시코드를 가질 수 밖에 없다.</li>
+    </ul>
+  </li>
+  <li><strong>different code → Same index</strong>
+    <ul>
+      <li>때로는 해쉬 알고리즘이 서로 다른 해쉬코드를 만들어 냈으나, 배열 방이 한정되어 있으므로 같은 인덱스에 배정이 되는 경우도 있다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>위 두 가지 경우를 모두 <strong>Collision(충돌)</strong> 이라고 한다.</p>
+
+<h3 id="분리-연결법separate-chaining">분리 연결법(Separate Chaining)</h3>
+<p><img src="/assets\img/item11_hashtable_separate_chaining.png" alt="hashTable" /></p>
+
+<ul>
+  <li>동일한 버킷의 데이터에 대해 자료구조를 활용해 추가 메모리를 사용하여 다음 데이터의 주소를 저장</li>
+  <li>Java의 LinkedList를 활용하며 해시 테이블에 연결리스트에서 사용하는 Node의 객체를 저장하는 방식으로 구현 가능</li>
+  <li>즉, Hash Table의 셀마다 연결리스트 하나 씩 저장하도록 하고 충돌이 발생하는 데이터는 연결리스트의 다음 노드로 계속 추가해 가는 것.</li>
+  <li>이후에 데이터를 검색할 때에는 hash table의 인덱스를 찾은 후 셀에 연결된 리스트를 순차적으로 탐색하며 찾으려는 해쉬코드와 저장된 노드의 hashCode를 비교하는 것</li>
+</ul>
+
+<h4 id="구현-방법">구현 방법</h4>
+<ol>
+  <li>고정된 크기의 해쉬 테이블을 선언한다 (필수조건)</li>
+  <li>Collision이 생기는 경우를 대비하여 각 index에 데이터를 바로 저장하는 것이 아니라, 그 index 안에 Linked List를 선언한다. 그리고 데이터가 index에 할당될 때 마다 Linked List에 데이터를 추가한다.</li>
+  <li>검색요청이 들어온 경우, 해쉬함수를 통해 해쉬코드를 만든다.</li>
+  <li>해쉬코드를 인덱스로 환산하여 해당 index의 리스트를 반복하여 내가 찾는 데이터를 가져온다.</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">HashTable</span><span class="o">{</span>
+    <span class="kd">class</span> <span class="nc">Node</span><span class="o">{</span>
+        <span class="nc">String</span> <span class="n">key</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">value</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="nc">String</span> <span class="n">key</span><span class="o">,</span> <span class="nc">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getValue</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">value</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setValue</span><span class="o">(</span><span class="nc">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Node</span><span class="o">&gt;[]</span> <span class="n">data</span><span class="o">;</span>
+    <span class="nc">HashTable</span><span class="o">(</span><span class="kt">int</span> <span class="n">size</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">[</span><span class="n">size</span><span class="o">];</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span> <span class="nf">getHashCode</span><span class="o">(</span><span class="nc">String</span> <span class="n">key</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">hashcode</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">key</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">()){</span> <span class="c1">//각 문자의 아스키코드 값을 가져옴</span>
+            <span class="n">hashcode</span> <span class="o">+=</span> <span class="n">c</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">hashcode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span> <span class="nf">convertToIndex</span><span class="o">(</span><span class="kt">int</span> <span class="n">hashcode</span><span class="o">){</span>
+        <span class="k">return</span> <span class="n">hashcode</span> <span class="o">%</span> <span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="c1">//해시코드 % 배열의 사이즈</span>
+    <span class="o">}</span>
+
+    <span class="nc">Node</span> <span class="nf">searchKey</span><span class="o">(</span><span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Node</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">,</span> <span class="nc">String</span> <span class="n">key</span><span class="o">){</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">list</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="nc">Node</span> <span class="n">node</span> <span class="o">:</span> <span class="n">list</span><span class="o">){</span> <span class="c1">//배열 방에 있는 링크드 리스트를 돈다.</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">key</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">key</span><span class="o">)){</span> <span class="c1">//노드의 키가 검색하는 키와 같은지를 확인</span>
+                <span class="k">return</span> <span class="n">node</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">put</span><span class="o">(</span><span class="nc">String</span> <span class="n">key</span><span class="o">,</span> <span class="nc">String</span> <span class="n">value</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">hashcode</span> <span class="o">=</span> <span class="n">getHashCode</span><span class="o">(</span><span class="n">key</span><span class="o">);</span><span class="c1">//key를 통해 해쉬코드를 받아온다.</span>
+        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">convertToIndex</span><span class="o">(</span><span class="n">hashcode</span><span class="o">);</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">", hashcode("</span><span class="o">+</span><span class="n">hashcode</span><span class="o">+</span><span class="s">"), index("</span> <span class="o">+</span> <span class="n">index</span><span class="o">+</span> <span class="s">")"</span><span class="o">);</span>
+
+        <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Node</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">index</span><span class="o">];</span> <span class="c1">// 배열방에 있는 번호를 이용하여 기존 배열방에 있던 데이터를 가져옴</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">list</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span><span class="c1">//배열방이 null이면</span>
+            <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Node</span><span class="o">&gt;();</span> <span class="c1">//Linked List를 생성한다.</span>
+            <span class="n">data</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">=</span> <span class="n">list</span><span class="o">;</span> <span class="c1">//그리고 생성한 list를 배열방에 넣어준다.</span>
+        <span class="o">}</span>
+        <span class="nc">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="n">searchKey</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="n">key</span><span class="o">);</span><span class="c1">//그리고 배열방에 혹시 기존에 해당키로 데이터를 가지고 있는지 노드를 받아온다.</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">node</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="k">new</span> <span class="nc">Node</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">));</span>
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+            <span class="c1">//동일한 데이터가 있는 경우 데이터를 대치해줌으로써 중복키 처리</span>
+            <span class="n">node</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nc">String</span> <span class="nf">get</span><span class="o">(</span><span class="nc">String</span> <span class="n">key</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">hashcode</span> <span class="o">=</span> <span class="n">getHashCode</span><span class="o">(</span><span class="n">key</span><span class="o">);</span><span class="c1">//키로 해쉬코드를 구함</span>
+        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">convertToIndex</span><span class="o">(</span><span class="n">hashcode</span><span class="o">);</span><span class="c1">//해쉬코드로 인덱스를 구함</span>
+        <span class="nc">LinkedList</span><span class="o">&lt;</span><span class="nc">Node</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">index</span><span class="o">];</span><span class="c1">//인덱스에서 Linked List를 가져온다.</span>
+        <span class="nc">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="n">searchKey</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="n">key</span><span class="o">);</span><span class="c1">// 링크드 리스트 안에 해당 키를 가지는 노드를 검색한다.</span>
+        <span class="k">return</span> <span class="n">node</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="s">"Not found"</span> <span class="o">:</span> <span class="n">node</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">HashTable</span> <span class="n">h</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashTable</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span><span class="c1">//고정된 배열방 생성</span>
+        <span class="n">h</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"sung"</span><span class="o">,</span> <span class="s">"She is pretty"</span><span class="o">);</span>
+        <span class="n">h</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"jin"</span><span class="o">,</span> <span class="s">"She is a model"</span><span class="o">);</span>
+        <span class="n">h</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"hee"</span><span class="o">,</span> <span class="s">"She is an angel"</span><span class="o">);</span>
+        <span class="n">h</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"min"</span><span class="o">,</span> <span class="s">"She is cute"</span><span class="o">);</span>
+        <span class="n">h</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"sung"</span><span class="o">,</span> <span class="s">"She is beautiful"</span><span class="o">);</span><span class="c1">//엎어치기</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">h</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"sung"</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">h</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"jin"</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">h</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"hee"</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">h</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"min"</span><span class="o">));</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">h</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"jae"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="개방-주소법open-addressing">개방 주소법(Open Addressing)</h3>
+<ul>
+  <li>Open Addressing이란 추가적인 메모리를 사용하는 Chaining 방식과 다르게 비어있는 해시 테이블의 공간을 활용하는 방법. 따라서 개방주소법의 해시테이블은 hash와 value가 1:1 관계를 유지한다.</li>
+  <li>개방 주소법은 chaining 처럼 추가적인 메모리가 필요 없다.</li>
+  <li>데이터를 직접 모두 읽어오기 때문에, 포인터를 쓸 일이 없어 포인터를 사용함으로써 나타나는 오버헤드 방지 가능</li>
+</ul>
+
+<p><img src="/assets\img/item11_hashtable_open_addressing.png" alt="hashTable_open_addressing" /></p>
+
+<p>위의 그림에서 John과 Sandra의 hashCode가 동일해 충돌이 일어난다. 이때 sandra는 바로 그 다음 이어있던 153 hash에 값을 저장한다. 그 다음 ted가 테이블에 저장을 하려 했으나 이미 본인의 해쉬인 153이 sandra로 채워져있음을 발견한다. 그럼 ted도 sandra처럼 바로 다음 비어있던 154 hash에 값을 저장한다.</p>
+
+<p>이런식으로 충돌이 발생할 경우 비어있는 hash를 찾아 저장하는 방법이 <strong>개방주소법</strong>이다. 이때, 비어있는 hash를 찾아가는 방법은 여러가지가 있으며 대표적인 3가지를 소개하겠다.</p>
+
+<h4 id="개방-주소법의-규칙">개방 주소법의 규칙</h4>
+<p><strong>1.선형탐색(Linear Probing)</strong></p>
+<ul>
+  <li>해쉬 충돌 발생 시 다음 bucket 이나 몇 개의 bucket을 건너 뛰어 데이터를 삽입하는 방식</li>
+  <li>해당 해시 값에서 고정폭(+n)을 건너 뛰어 비어있는 해시에 저장</li>
+  <li>특정 해시 값 주변 버킷이 모두 채워져 있는 primary clustring 문제에 취약함</li>
+</ul>
+
+<p><img src="/assets\img/item11_linear_probing.png" alt="item11_linear_probing" /></p>
+
+<p>최초 해쉬코드가 52이고 고정폭이 1일 경우 4번 탐색 과정을 거쳐야한다.</p>
+
+<ul>
+  <li>분리 연결법은 해시 테이블의 크기를 유연하게 만들고, 개방 주소법은 해시 테이블의 크기는 고정시키되 저장해 둘 위치를 잘 찾는데 관심을 둔 구조</li>
+</ul>
+
+<p><strong>2.제곱탐색(Quadratic Probing)</strong></p>
+<ul>
+  <li>해쉬 충돌 발생 시 제곱만큼 건너 뛰어 데이터를 삽이하는 방식.</li>
+  <li>충돌이 일어난 해시의 제곱을 한 해쉬에 데이터 저장(1^2칸, 2^2칸, 3^2칸….)</li>
+  <li>여러개의 서로 다른 키들이 동일한 초기 해쉬갑(아래 예시에서 initial probe)를 갖는 secondary clustering에 취약</li>
+</ul>
+
+<p><img src="/assets\img/item11_Quadratic Probing.PNG" alt="item11_Quadratic_Probing" /></p>
+
+<p><strong>3.이중해싱(Double Hasing)</strong></p>
+<ul>
+  <li>해시 충돌 시 다른 해시 함수를 한번 더 적용시킴</li>
+  <li>다른 해시함수를 한번 더 적용하여 나온 해시에 데이터를 저장</li>
+  <li>이중 해싱을 하면 최초 해시값이 달라지므로 탐사 이동폭이 달라지고, 탐사 이동폭이 같더라도 최초 해시 값이 달라져 primary, secondary clustering을 완화할 수 있음</li>
+  <li>장점: 또 다른 저장공간 없이 해시 테이블 내에서 데이터의 저장 및 처리가 가능</li>
+  <li>단점:
+    <ul>
+      <li>해시함수의 성능에 따라서 해시 테이블의 성능이 좌우됨.</li>
+      <li>데이터의 길이가 늘어나면 그에 해당하는 저장소를 마련해 두어야 함</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="결론">결론</h3>
+<ul>
+  <li>Hash는 탐색이 빠른 배영의 장점과 삽입/삭제 시 데이터의 밀어내기 이동이 필요없는 장점을 이용해 성능을 향상시킨 데이터 저장방법이다.</li>
+  <li><strong>분리 연결법(Separate Chaining)</strong>: 배열과 단순 연결 리스트를 혼합하여 데이터의 삽입/삭제/탐색의 성능을 높임</li>
+  <li><strong>개방 주소법(Open Addressing)</strong>: 배열만을 사용하며, 저장 인덱스가 겹칠 경우 인덱스의 옆 인덱스에 저장하는 방식. 이때 옆 인덱스와의 충돌이 또 다시 일어나면 다시 옆 인덱스로 저장한다. 따라서 충돌 데이터가 많이 발생하면 성능에 심각한 문제가 발생한다는 단점이 있다.</li>
+</ul>
+
+<h3 id="참고">참고</h3>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=Vi0hauJemxA">[자료구조 알고리즘] 해쉬테이블(Hash Table)에 대해 알아보고 구현하기</a></li>
+  <li><a href="https://ejyoo.tistory.com/72">해시(Hash) 알고리즘</a></li>
+</ul>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-19-Synchronization-of-threads/" class="flip-title"><span>[Java] 쓰레드의 동기화(Synchronization of threads)</span></a>  <time class="faded fine" datetime="2021-12-19T00:00:00+09:00">19 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-17-Effective-java-Day15-item11,12,13,15/" class="flip-title"><span>[Effective Java] Day 15 - Item 11, 12, 13, 15 :: equals를 재정의하려거든 hashcode도 재정의하라, toString을 항상 재정의하라, clone 재정의는 주의해서 진행하라, 클래스와 멤버의 접근 권한을 최소화하라(1)</span></a>  <time class="faded fine" datetime="2021-12-17T00:00:00+09:00">17 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-16-Effective-java-Day14-item09-item10/" class="flip-title"><span>[Effective Java] Day 14 - Item 9, 10 :: try-finally 보다는 try-with-resources를 사용하라, equals는 일반 규약을 지켜 재정의하라</span></a>  <time class="faded fine" datetime="2021-12-16T00:00:00+09:00">16 Dec 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>
