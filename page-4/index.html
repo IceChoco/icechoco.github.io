@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-20T00:38:09+09:00',
+    INDEX_KEY: 'index--2021-12-20T23:47:56+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -576,6 +576,74 @@ Left here for reference, feel free to delete.
 
 
   
+
+  
+
+
+
+
+
+<article id="post-frontend-Settint-Up-Redux" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/frontend/2021-10-11-Settint-Up-Redux/" class="flip-title">
+        Redux 설치하기
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>, <span>Redux</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-11-27T21:56:21+09:00">2021-11-27</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Redux를 자신이 개발할 어플리케이션에 설치하고 설정하는 방법을 기록하겠습니다. 우선 다운 받아야 할 dependency들이 redux, react-redux, redux-promise, redux-thunk까지 총 4개가 있습니다. 이 중에서 redux-promis, redux-thunk는 redux의 미들웨어입니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install redux react-redux redux-promise redux-thunk --save
+</code></pre></div></div>
+<h2 id="redux-promise-redux-thunk가-필요한-이유">redux-promise, redux-thunk가 필요한 이유</h2>
+<p>redux-promise, redux-thunk는 redux를 잘 쓸 수 있게 도와주는 역할을 하는 미들웨어입니다. redux는 redux store 안에 모든 state를 관리하고 있습니다. 이 store 안에 있는 state를 변경하기 위해서는 dispatch를 이용해서 action을 통해 변경시킬 수 있습니다. 이렇게 store가 데이터를 받을 때 항상 객체 형식으로 데이터를 받는 것이 아니라 때에 따라 promise, functions 형식으로 받기도 합니다. 그런데, redux 기초편에서 봤듯 우리는 reudx store는 객체 형식으로만 데이터를 받을 수 있다고 배웠습니다.</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/frontend/2021-10-11-Settint-Up-Redux/">Redux 설치하기</a>
+
+      </p>
+    </footer>
+  
+</article>
+
 
   
 
@@ -1171,70 +1239,6 @@ Left here for reference, feel free to delete.
     <footer>
       <p class="read-more">
         Continue reading <a class="heading flip-title" href="/frontend/2021-09-20-React-%EA%B0%9C%EC%9A%94/">React 개요</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-database-Mongo-DB-related-errors" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/database/2021-09-20-Mongo-DB-related-errors/" class="flip-title">
-        Mongo DB 관련 오류
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time> in <a href="/database/" class="flip-title">Database</a> on <span>Database</span>, <span>React</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-16">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-10-16T23:35:53+09:00">2021-10-16</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>MongoDB 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/database/2021-09-20-Mongo-DB-related-errors/">Mongo DB 관련 오류</a>
 
       </p>
     </footer>
