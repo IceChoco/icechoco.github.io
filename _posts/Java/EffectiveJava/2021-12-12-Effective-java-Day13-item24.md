@@ -207,7 +207,7 @@ public interface IntListHelper {
 - 표현식 중간에 등장해 10줄이 넘어가면 가독성이 좋지 않다.
 
 ## 4. 지역 클래스
-- 가장 자주 쓴다.
+- 가장 잘 안쓰인다.
 - 지역변수를 선언할 수 있는 곳이면 어디서든 선언 가능하고, 유효 범위도 지역변수와 같다.
 - 멤버클래스처럼 이름이 있고 반복적해서 사용 가능하다.
 - 익명 클래스처럼 비정적 문맥에서 사용될 때만 바깥 인스턴스를 참조할 수 있다.
@@ -231,6 +231,47 @@ public class LocalExam {
     }
 }
 ```
+### Q. 지역클래스 내 메소드에서 지역 클래스 밖 surrounding scope의 변수를 사용하는 구조의 소스가 있다. 이때 매번 지역클래스를 호출할 때 마다 객체를 새로 생성하는걸까?
+아니다. 지역클래스를 선언하면 컴파일 타임에서 객체가 선언이 되고, 그 후 사용할 때 마다 선언된 객체를 호출하는 구조이다.
+즉, 매번 사용할 때 마다 새로운 객체를 생성하는 것이 아니라 기생성된 객체를 인스턴스화 한다.
+
+```java
+public class A {
+    private int i = 10, j = 20;
+    void x(int a){
+        class B {
+            private int b;
+            B(int b){ this.b = b;}
+            void y() {
+                System.out.println(a + b);
+            }
+        }
+        B bb = new B(a/10);
+        bb.y();
+    }
+    void y(){x(200);}
+    void z(){x(300);}
+
+    public static void main(String[] args) {
+        A a = new A();
+        a.x(100);
+    }
+}
+```
+
+위 소스코드에 대한 [컴파일 결과](https://godbolt.org/z/d6o9jYz8E)를 보면
+
+```java
+class A$1B {
+  private int b;
+  final int val$a; //System.out.println(a + b);에서 사용하면서 생김
+  final A this$0;  //B는 A의 지역 클래스이기 때문에, B를 빈 깡통으로 선언해도 생김
+  A$1B(int);
+  void y();
+}
+```
+
+지역 클래스인 class B, 즉 `A$1B`가 위와 같이 한 번만 생성된다. surrounding scope의 변수인 a, 바깥쪽 클래스 A의 객체 this가 마치 멤버변수처럼 B 지역 클래스 안에 생성된 것을 볼 수 있다. 즉, closure처럼 capture됐다.
 
 ## 결론
 - 메서드 밖에서도 사용해야 함 or 메서드 안에 정의하기엔 너무 길다 → **멤버 클래스**

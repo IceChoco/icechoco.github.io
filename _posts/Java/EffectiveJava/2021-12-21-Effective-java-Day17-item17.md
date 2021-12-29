@@ -242,9 +242,10 @@ BigInteger toBigInteger(int sign) {    // <-- 접근제한자 package-private �
 그리고 그 결과를 다시 `BigIntger`로 캐스팅한 후 반환하는 방식으로 구현되어있다.
 
 ### 불변 클래스를 만드는 몇 가지 설계 방법들
-클래스를 final로 만들지 마라. 생성자를 `private`또는 `package-private`으로 만들고 public static factory를 제공하라(item 1)
+가장 쉽게 자신을 상속하지 못하게 하는 방법은 final 클래스로 선언하는 것이지만 더 유연한 방법이 있다.  
+생성자를 `private`또는 `package-private`으로 만들고 public static factory를 제공하라(item 1)
 ```java
-public final class Complex { // final 클래스
+public class Complex {
     private final double re; // private final 변수 re, im
     private final double im;
 
