@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Effective Java] Day 17 - Item 17 :: 변경가능성을 최소화 하라(2) | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Effective Java] Day 17 - Item 17 :: 변경가능성을 최소화 하라(2)" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="Day17에서는 item 17에 대한 내용을 다룬다." />
+<meta property="og:description" content="Day17에서는 item 17에 대한 내용을 다룬다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-21-Effective-java-Day17-item17/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-21-Effective-java-Day17-item17/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-21T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Effective Java] Day 17 - Item 17 :: 변경가능성을 최소화 하라(2)" />
+<script type="application/ld+json">
+{"headline":"[Effective Java] Day 17 - Item 17 :: 변경가능성을 최소화 하라(2)","dateModified":"2021-12-28T13:46:11+09:00","datePublished":"2021-12-21T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-21-Effective-java-Day17-item17/"},"url":"https://icechoco.github.io/java/2021-12-21-Effective-java-Day17-item17/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day17에서는 item 17에 대한 내용을 다룬다.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-21-Effective-java-Day17-item17/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2021-12-30T00:27:29+09:00',
+  };
+  w._clapButton = false;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2021-12-21-Effective-java-Day17-item17</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day17-item17" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 17 - Item 17 :: 변경가능성을 최소화 하라(2)
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-21T00:00:00+09:00">21 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>, <span>이펙티브자바</span>, <span>Effectivejava</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-28">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-28T13:46:11+09:00">2021-12-28</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day17에서는 item 17에 대한 내용을 다룬다.</p>
+
+<h2 id="item-17--클래스의-mutability상태-변경-가능성을-최소화하라minimize-mutability">Item 17 :: 클래스의 mutability(상태 변경 가능성)을 최소화하라(Minimize mutability)</h2>
+<h3 id="ex-불변-복소수-클래스immutable-complex-number-class">EX: 불변 복소수 클래스(Immutable complex number class)</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 코드 17-1 불변 복소수 클래스 (106-107쪽)</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Complex</span> <span class="o">{</span> <span class="c1">// final 클래스</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">re</span><span class="o">;</span> <span class="c1">// private final 변수 re, im</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">im</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Complex</span> <span class="no">ZERO</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Complex</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Complex</span> <span class="no">ONE</span>  <span class="o">=</span> <span class="k">new</span> <span class="nc">Complex</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Complex</span> <span class="no">I</span>    <span class="o">=</span> <span class="k">new</span> <span class="nc">Complex</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+
+    <span class="kd">public</span> <span class="nf">Complex</span><span class="o">(</span><span class="kt">double</span> <span class="n">re</span><span class="o">,</span> <span class="kt">double</span> <span class="n">im</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">re</span> <span class="o">=</span> <span class="n">re</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">im</span> <span class="o">=</span> <span class="n">im</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">realPart</span><span class="o">()</span>      <span class="o">{</span> <span class="k">return</span> <span class="n">re</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">imaginaryPart</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">im</span><span class="o">;</span> <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Complex</span> <span class="nf">plus</span><span class="o">(</span><span class="nc">Complex</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Complex</span><span class="o">(</span><span class="n">re</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="na">re</span><span class="o">,</span> <span class="n">im</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="na">im</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 코드 17-2 정적 팩터리(private 생성자와 함께 사용해야 한다.) (110-111쪽)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Complex</span> <span class="nf">valueOf</span><span class="o">(</span><span class="kt">double</span> <span class="n">re</span><span class="o">,</span> <span class="kt">double</span> <span class="n">im</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Complex</span><span class="o">(</span><span class="n">re</span><span class="o">,</span> <span class="n">im</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Complex</span> <span class="nf">minus</span><span class="o">(</span><span class="nc">Complex</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Complex</span><span class="o">(</span><span class="n">re</span> <span class="o">-</span> <span class="n">c</span><span class="o">.</span><span class="na">re</span><span class="o">,</span> <span class="n">im</span> <span class="o">-</span> <span class="n">c</span><span class="o">.</span><span class="na">im</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Complex</span> <span class="nf">times</span><span class="o">(</span><span class="nc">Complex</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Complex</span><span class="o">(</span><span class="n">re</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">re</span> <span class="o">-</span> <span class="n">im</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">im</span><span class="o">,</span>
+                <span class="n">re</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">im</span> <span class="o">+</span> <span class="n">im</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">re</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Complex</span> <span class="nf">dividedBy</span><span class="o">(</span><span class="nc">Complex</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">double</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="na">re</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">re</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="na">im</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">im</span><span class="o">;</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Complex</span><span class="o">((</span><span class="n">re</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">re</span> <span class="o">+</span> <span class="n">im</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">im</span><span class="o">)</span> <span class="o">/</span> <span class="n">tmp</span><span class="o">,</span>
+                <span class="o">(</span><span class="n">im</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">re</span> <span class="o">-</span> <span class="n">re</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">im</span><span class="o">)</span> <span class="o">/</span> <span class="n">tmp</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">o</span> <span class="o">==</span> <span class="k">this</span><span class="o">)</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">o</span> <span class="k">instanceof</span> <span class="nc">Complex</span><span class="o">))</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="nc">Complex</span> <span class="n">c</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Complex</span><span class="o">)</span> <span class="n">o</span><span class="o">;</span>
+
+        <span class="c1">// == 대신 compare를 사용하는 이유는 63쪽을 확인하라.</span>
+        <span class="k">return</span> <span class="nc">Double</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">re</span><span class="o">,</span> <span class="n">re</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span>
+                <span class="o">&amp;&amp;</span> <span class="nc">Double</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">c</span><span class="o">.</span><span class="na">im</span><span class="o">,</span> <span class="n">im</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="mi">31</span> <span class="o">*</span> <span class="nc">Double</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(</span><span class="n">re</span><span class="o">)</span> <span class="o">+</span> <span class="nc">Double</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(</span><span class="n">im</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span> <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"("</span> <span class="o">+</span> <span class="n">re</span> <span class="o">+</span> <span class="s">" + "</span> <span class="o">+</span> <span class="n">im</span> <span class="o">+</span> <span class="s">"i)"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="함수형-방식functional-approach">함수형 방식(functional approach)</h3>
+<ul>
+  <li>사칙연산 메소드(plus, minus, times, divideBy)들을 보면 <u>절차적</u> 혹은 <u>명령형 방식</u>을 이용하여 인스턴스 자신은 수정하지 않고 새로운 Complex 인스턴스를 생성하여 반환함</li>
+  <li><strong>절차적(procedural) 방식</strong>
+    <ul>
+      <li>함수 내부에서 새로운 객체를 만들어 반환하는 방법 ex) return new Complex(re + c.re, im + c.im);</li>
+      <li>변하지 않는 값과 함수로 이루어져 있음(변수 선언 금지)</li>
+      <li>입력되는 파라미터로만 동작</li>
+      <li>함수 외부의 값 사용 금지. 함수 내부에서 <strong>임의의</strong> 타 객체 생성 금지</li>
+    </ul>
+  </li>
+  <li><strong>명령형(imperative) 방식</strong>
+    <ul>
+      <li>명령형 프로그래밍은 무엇을 어떻게 할 것인가에 가까운 방식. 선언형(Declarative)과 대조됨</li>
+    </ul>
+  </li>
+  <li>메서드 이름도 add와 같은 동사가 아닌 <strong>plus와 같은 전치사</strong>를 사용</li>
+  <li>객체의 값을 변경하지 않는다는 사실을 강조하려는 의도</li>
+  <li>BigInteger와 BigDecimal 클래스는 이러한 명명규칙을 따르지 않아 잘못된 사용을 유발함</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">Complex</span> <span class="nf">plus</span><span class="o">(</span><span class="nc">Complex</span> <span class="n">c</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">Complex</span><span class="o">(</span><span class="n">re</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="na">re</span><span class="o">,</span> <span class="n">im</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="na">im</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="불변immutable-객체의-장점">불변(immutable) 객체의 장점</h3>
+<ol>
+  <li>쓰기 쉽고 단순하다.
+    <ul>
+      <li>생성자에서 불변식(invariants)을 성립시켜 놓으면 그 불변식들이 계속 보장된다.</li>
+      <li>만들어질 때의 상태(state) 그대로, 오직 한 상태만을 가진다.</li>
+      <li>가변객체라면 복잡한 상태공간(state space)를 가질 수 있다.
+        <ul>
+          <li>각 setter 메소드가 유발하는 상태 전이(state transition)가 잘 문서화되지 않으면, 사용하기 어려울 수 있다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>스레드 안전(Thread safe)하다.
+    <ul>
+      <li>동기화(Synchronized)가 불필요하다.</li>
+    </ul>
+  </li>
+  <li>자유롭게 공유될 수 있다.
+    <ul>
+      <li>다른 스레드에 영향 받을 일이 없으므로</li>
+    </ul>
+  </li>
+  <li>따라서 불변 클래스라면 사용자가 이미 존재하는 인스턴스를 재사용하도록 권장해라
+    <ul>
+      <li>자주 쓰이는 값들을 상수(public static final)로 제공하라
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Complex</span> <span class="no">ZERO</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Complex</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Complex</span> <span class="no">ONE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Complex</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+ <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Complex</span> <span class="no">I</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Complex</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+</code></pre></div>        </div>
+      </li>
+      <li>정적 팩터리(Static factory, item 1)에서 자주 사용되는 인스턴스를 캐싱하라
+        <ul>
+          <li>박싱된 기본 타입(Boxed primitive) 클래스 전부와 BigInteger가 이렇게 한다.</li>
+          <li>메모리 사용량과 가비지 컬렉션 비용이 줄어든다.</li>
+          <li>public 생성자 대신 static factory를 제공하면, 나중에 클라이언트 측 변경 없이 캐시 기능을 나중에 덧붙일 수 있다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>방어적 복사(defensive copy)가 불필요하다(item 50)
+    <ul>
+      <li>원본과 똑같으니 복사 자체가 의미가 없다.</li>
+      <li><u>clone 메서드</u>나 <u>복사 생성자(copy constructor)</u>도 필요없다.</li>
+      <li>String의 copy constructor는 되도록 사용하지 말아라(item 6)
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Ara"</span><span class="o">);</span> <span class="c1">//따라하지 마세요!</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>내부 자료구조를 공유할 수 있다.
+    <ul>
+      <li>ex) BigInteger는 내부적으로 부호를 int 변수 하나에, 값을 int 배열에 저장</li>
+      <li>negate 메서드는 크기가 같고 부호만 반대인 새로운 BigInteger 객체를 생성한다. 이 객체는 값이 저장된 int 배열을 복사하지 않고 원본 인스턴스와 공유해도 괜찮다.
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nc">BigInteger</span> <span class="n">howMuch</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="s">"5500"</span><span class="o">);</span>
+ <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">howMuch</span><span class="o">.</span><span class="na">negate</span><span class="o">());</span> <span class="c1">//result: -5500</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>다른 객체를 만드는 좋은 빌딩 블록이 된다.
+    <ul>
+      <li>복잡한 객체를 만들 때, 몇몇 구성요소들의 값이 바뀌지 않는다면 불변식을 유지하기 좋다.</li>
+      <li>ex) Map의 key들, set의 element들
+        <ul>
+          <li>안에 담긴 값이 바뀌면 불변식이 허물어지는데, 불변 객체를 사용하면 그런 걱정을 하지 않아도 됨.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>실패 원자성(Failure atomicity)이 보장된다(item 76)
+    <ul>
+      <li>실패 원자성: method가 Exception을 던지거나 실패한다 해도, 그 객체는 호출 전 상태를 유지하고 있어야 한다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="불변immutable-객체의-단점">불변(immutable) 객체의 단점</h3>
+<h4 id="다른-값이-필요할-때마다-항상-별도의-객체를-만든다">다른 값이 필요할 때마다 항상 별도의 객체를 만든다.</h4>
+<ul>
+  <li>값의 가짓수가 많다면 이들을 모두 만드는데 비용이 클 수 있다.</li>
+  <li>ex) 백만 비트짜리 BigInteger에서 비트 하나를 바꾸는 경우<br />
+불변 객체이기 때문에 flipBit 메서드를 통해 원본과 단지 한 비트만 다른 백만 비트짜리 새로운 BigInteger 인스턴스를 생성한다.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">BigInteger</span> <span class="n">moby</span> <span class="o">=</span> <span class="o">...;</span> <span class="c1">//수백만 비트짜리</span>
+<span class="n">moby</span> <span class="o">=</span> <span class="n">moby</span><span class="o">.</span><span class="na">flipBit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</code></pre></div>    </div>
+    <p>반대로 BigSet은 <strong>가변</strong>객체이므로 flip 메서드를 통해 원하는 비트 하나만 상수 시간안에 바꿔준다. BigInteger와 달리 매우 가벼운 연산이다.</p>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">BigSet</span> <span class="n">moby</span> <span class="o">=</span> <span class="o">...;</span>
+<span class="n">moby</span><span class="o">.</span><span class="na">flip</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>여러 단계의 오퍼레이션에서 매 단계마다 새로운 객체가 생성된다면 문제가 더 심각해진다.
+    <ul>
+      <li>ex
+        <ul>
+          <li>여러 단계를 거치는 수학 계산</li>
+          <li>문자열에 여러 개의 문자열을 덧붙이기</li>
+        </ul>
+      </li>
+      <li><strong>해결책</strong>
+        <ol>
+          <li>자주 있을법한 연산을 기본 기능(primitive)로 제공
+            <ul>
+              <li>불변 객체는 내부적으로 스마트하게 만들 수 있다.</li>
+              <li>ex) BigInteger는 package-private한 가변 동반 클래스(companion class)를 내부적으로 사용하여 모듈러 지수 같은 복잡한 다단계 계산을 수행한다.</li>
+            </ul>
+          </li>
+          <li>어떤 복잡한 다단계 연산이 필요할 지 미리 알 수 없다면, public 가변 동반 클래스를 제공한다.
+            <ul>
+              <li>ex) String class는 가변 동반 클래스로 StringBuilder를 제공한다.</li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="가변-동반-클래스-동작사용-방법-예시">가변 동반 클래스 동작(사용) 방법 예시</h4>
+<p><code class="language-plaintext highlighter-rouge">BigInteger</code>는 package-private한 <strong>가변 동반 클래스(companion class)</strong>를 내부적으로 사용하여 모듈러 지수 같은 복잡한 다단계 계산을 수행한다고 하였는데 어떻게 동작하는 것일까?</p>
+
+<p>우선 간단한 예시로, 우리가 <code class="language-plaintext highlighter-rouge">StringBuilder</code> 클래스를 사용할 때 순서를 살펴보면 아래와 같다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// StringBuilder.java</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="nc">StringBuilder</span> <span class="nf">append</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nf">append</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">obj</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="nd">@Override</span>
+<span class="nd">@HotSpotIntrinsicCandidate</span>
+<span class="kd">public</span> <span class="nc">StringBuilder</span> <span class="nf">append</span><span class="o">(</span><span class="nc">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">super</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+    <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="nd">@Override</span>
+<span class="nd">@HotSpotIntrinsicCandidate</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">// Create a copy, don't share the array</span>
+    <span class="k">return</span> <span class="nf">isLatin1</span><span class="o">()</span> <span class="o">?</span> <span class="nc">StringLatin1</span><span class="o">.</span><span class="na">newString</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">count</span><span class="o">)</span>
+                      <span class="o">:</span> <span class="nc">StringUTF16</span><span class="o">.</span><span class="na">newString</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">count</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">StringBuilder</code> 객체 인스턴스를 생성한다
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+</code></pre></div>    </div>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">String</code>을 하나씩 <code class="language-plaintext highlighter-rouge">append</code> 메서드를 통해 추가한다.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"DdangGeulEe "</span><span class="o">);</span>
+<span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"GomGomEe"</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">toString</code> 메서드를 통해 <code class="language-plaintext highlighter-rouge">String</code> 결과를 얻는다.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>위 StringBuilder의 예처럼 <code class="language-plaintext highlighter-rouge">BigInteger</code> 클래스 또한 <code class="language-plaintext highlighter-rouge">BigInteger</code> 클래스의 가변 동반 클래스인<br />
+<code class="language-plaintext highlighter-rouge">BitSieve, SignedMutableBigInteger, MutableBigInteger</code>를 이용하여 클라이언트 코드에서 결과를 직접 만들고<br />
+그 결과를 <code class="language-plaintext highlighter-rouge">BigInteger</code>로 캐스팅하는 방식을 이용할거라고 생각했다면 큰 오산이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">BitSieve, SignedMutableBigInteger, MutableBigInteger</code>와 같은 BigeInteger의 가변 동반 클래스들은 모두
+<code class="language-plaintext highlighter-rouge">package-private</code> 접근제한을 이용하고 있다.<br />
+이 때문에 클라이언트가 직접적으로 저 클래스들을 조작할 수 있는 방법이 없다.<br />
+그럼 도대체 어떻게 사용할 수 있는 걸까? 방법은 간단하다.<br />
+클라이언트 코드에서는 이 가변 동반 클래스들을 직접 사용할 수 없다. 대신 <code class="language-plaintext highlighter-rouge">BigInteger</code> 클래스의 메서드 안에서 이 가변 동반 클래스들을 사용한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 1. BigInteger 클래스의 gcd 메서드</span>
+<span class="kd">public</span> <span class="nc">BigInteger</span> <span class="nf">gcd</span><span class="o">(</span><span class="nc">BigInteger</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">val</span><span class="o">.</span><span class="na">signum</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">abs</span><span class="o">();</span>
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">signum</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="k">return</span> <span class="n">val</span><span class="o">.</span><span class="na">abs</span><span class="o">();</span>
+
+    <span class="nc">MutableBigInteger</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MutableBigInteger</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+    <span class="nc">MutableBigInteger</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MutableBigInteger</span><span class="o">(</span><span class="n">val</span><span class="o">);</span>
+
+    <span class="nc">MutableBigInteger</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">hybridGCD</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="na">toBigInteger</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="cm">/*
+ * 2. MutableBigInteger 클래스의 toBigInteger 메서드
+ * Convert this MutableBigInteger to a BigInteger object.
+ */</span>
+<span class="nc">BigInteger</span> <span class="nf">toBigInteger</span><span class="o">(</span><span class="kt">int</span> <span class="n">sign</span><span class="o">)</span> <span class="o">{</span>    <span class="c1">// &lt;-- 접근제한자 package-private 에 주목</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">intLen</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">sign</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="k">return</span> <span class="nc">BigInteger</span><span class="o">.</span><span class="na">ZERO</span><span class="o">;</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">BigInteger</span><span class="o">(</span><span class="n">getMagnitudeArray</span><span class="o">(),</span> <span class="n">sign</span><span class="o">);</span>
+    <span class="c1">// 이마저도 불변을 지키기 위해서 방어적 복사를 진행함</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>클라이언트 코드에서 <code class="language-plaintext highlighter-rouge">BigInteger</code>의 메서드를 사용하면, 그 내부에서 가변 동반 클래스들을 사용하고 있다.<br />
+그리고 그 결과를 다시 <code class="language-plaintext highlighter-rouge">BigIntger</code>로 캐스팅한 후 반환하는 방식으로 구현되어있다.</p>
+
+<h3 id="불변-클래스를-만드는-몇-가지-설계-방법들">불변 클래스를 만드는 몇 가지 설계 방법들</h3>
+<p>가장 쉽게 자신을 상속하지 못하게 하는 방법은 final 클래스로 선언하는 것이지만 더 유연한 방법이 있다.<br />
+생성자를 <code class="language-plaintext highlighter-rouge">private</code>또는 <code class="language-plaintext highlighter-rouge">package-private</code>으로 만들고 public static factory를 제공하라(item 1)</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Complex</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">re</span><span class="o">;</span> <span class="c1">// private final 변수 re, im</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">im</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nf">Complex</span><span class="o">(</span><span class="kt">double</span> <span class="n">re</span><span class="o">,</span> <span class="kt">double</span> <span class="n">im</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">re</span> <span class="o">=</span> <span class="n">re</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">im</span> <span class="o">=</span> <span class="n">im</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 코드 17-2 정적 팩터리(private 생성자와 함께 사용해야 한다.) (110-111쪽)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Complex</span> <span class="nf">valueOf</span><span class="o">(</span><span class="kt">double</span> <span class="n">re</span><span class="o">,</span> <span class="kt">double</span> <span class="n">im</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Complex</span><span class="o">(</span><span class="n">re</span><span class="o">,</span> <span class="n">im</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">//... </span>
+<span class="o">}</span>    
+</code></pre></div></div>
+<ul>
+  <li>생성자가 protected나 public이 아니므로 사용자는 상속을 할 수 없다. 이는 클래스를 final로 하는 것과 같은 효과를 낸다.</li>
+  <li>하지만 <code class="language-plaintext highlighter-rouge">package-private</code>으로 생성자를 만드는 경우 패키지 내에서는 여러가지 구현을 사용할 수 있다.</li>
+  <li>또한 static factory method 내에서 object caghing 등이 가능하다.</li>
+  <li><code class="language-plaintext highlighter-rouge">BigInteger</code>나 <code class="language-plaintext highlighter-rouge">BigDecimal</code>을 설계할 당시에는 불변 클래스를 final로 만들거나 또는 그와 같은 효력이 있도록 만들어야 한다는 사실을 몰랐다.</li>
+  <li>하위호환성(backward compatibility)이 발목을 잡아 이제와서 고칠수도 없다.</li>
+  <li><code class="language-plaintext highlighter-rouge">BigInteger</code>나 <code class="language-plaintext highlighter-rouge">BigDecimal</code>의 인스턴스들이 불변이어야 클래스의 보안을 지킬 수 있다면, 이들을 방어적 복사(defensive copy)하는 것을 고려해라.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="nc">BigInteger</span> <span class="nf">safaInstance</span><span class="o">(</span><span class="nc">BigInteger</span> <span class="n">val</span><span class="o">){</span>
+  <span class="k">return</span> <span class="n">val</span><span class="o">.</span><span class="na">getClass</span><span class="o">()</span> <span class="o">==</span> <span class="nc">BigInteger</span><span class="o">.</span><span class="na">class</span> <span class="o">?</span>
+          <span class="n">val</span> <span class="o">:</span> <span class="k">new</span> <span class="nc">BigInteger</span><span class="o">(</span><span class="n">val</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>“어떤 메서드도 객체의 상태(state) 중 외부에 비치는 값을 변경할 수 없다”와 같이 규칙을 조금 완화할 수 있다.</p>
+<ul>
+  <li>예를 들어 계산 비용이 큰 값을 <strong>non-final 필드에 캐시</strong>해 놓을 수 있다. 이 방법은 불변 클래스이므로 가능하다.</li>
+  <li>ex) <strong>lazy initialization</strong>: 지연 초기화
+    <ul>
+      <li>PhoneNumber의 hashCode(Item 11 p.71), String의 hashCode
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kt">int</span> <span class="n">hashCode</span><span class="o">;</span> <span class="c1">//자동으로 0으로 초기화된다.</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">hashCode</span><span class="o">;</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(</span><span class="n">firstNumber</span><span class="o">);</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(</span><span class="n">secondNumber</span><span class="o">);</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mi">31</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">hashCode</span><span class="o">(</span><span class="n">thirdNumber</span><span class="o">);</span>
+        <span class="n">hashCode</span> <span class="o">=</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>단 직렬화(Serializable)할려면 readObject나 readResolve를 따로 만들어주거나, ObjectOutputStream의 writeUnshared 및 readUnshared를 사용해야한다(Item 88). 기본 직렬화 방법(Default serialized form)이면 충분하더라도 꼭 그렇게 해야한다.</li>
+</ul>
+
+<h3 id="결론">결론</h3>
+<ul>
+  <li>클래스는 꼭 필요한 경우가 아니라면 불변이어야 한다.</li>
+  <li>단순한 값 객체는 항상 불변으로 만들자
+    <ul>
+      <li>ex) PhoneNumber, Complex</li>
+      <li>java.util.Date나 java.awt.Point도 불변이어야 했지만 그렇지 않게 만들어졌다.</li>
+    </ul>
+  </li>
+  <li>무거운 값 객체도 불변으로 만들 수 있는지 고심하자
+    <ul>
+      <li>ex) String, BigInteger</li>
+    </ul>
+  </li>
+  <li>성능때문에 꼭 필요하다면 public 가변 동반 클래스(mutable companion class)를 제공하자(item 67)
+    <ul>
+      <li>ex) StringBuilder</li>
+    </ul>
+  </li>
+  <li>불변으로 만들 수 없고 가변으로 만들어야 할 때에도, 변경할 수 있는 부분(state 변화)을 최소화해라.
+    <ul>
+      <li>다른 합당한 이유가 없다면 모든 필드는 <code class="language-plaintext highlighter-rouge">private final</code>이어야 한다.(item15 + item 17)</li>
+    </ul>
+  </li>
+  <li>생성자 안에서 객체의 초기화를 완벽히 끝내고 모든 불변식을 성립시켜야 한다.
+    <ul>
+      <li>생성자나 static factory 이외의 public 초기화 메소드가 있어선 안된다.</li>
+      <li>객체를 재사용할 수 있게 초기화하는 메소드도 제공하면 안된다. 성능향상은 미미하나 복잡하다.</li>
+      <li>ex) <strong>CountDownLatch</strong>
+        <ul>
+          <li>가변 클래스지만 가질 수 있는 상태의 크기(state space)를 매우 작게 만들었음</li>
+          <li>카운트가 0에 도달하면 더는 재사용할 수 없음
+            <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountDownLatch</span> <span class="o">{</span>
+  <span class="nc">Sync</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">setState</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="cm">/**
+  * Constructs a {@code CountDownLatch} initialized with the given count.
+  *
+  * @param count the number of times {@link #countDown} must be invoked
+  *        before threads can pass through {@link #await}
+  * @throws IllegalArgumentException if {@code count} is negative
+  */</span>
+  <span class="kd">public</span> <span class="nf">CountDownLatch</span><span class="o">(</span><span class="kt">int</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">(</span><span class="s">"count &lt; 0"</span><span class="o">);</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">sync</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Sync</span><span class="o">(</span><span class="n">count</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>    
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>책의 예제인 Complex 클래스는 그대로 사용하지 말라.
+    <ul>
+      <li>실무에서 쓸만한 수준이 아니다.</li>
+      <li>곱셉과 나눗셈에서 반올림이 되지 않고, 복소수 NaN과 무한대(infinity)도 올바르게 지원하지 않는다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="참조">참조</h3>
+<ul>
+  <li><a href="https://github.com/HomoEfficio/dev-tips/blob/master/Java%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20C%2B%2B%20-%2003%20-%20const%EC%99%80%20final.md">Java 개발자가 배우는 C++ - 03 - const와 final</a></li>
+  <li><a href="https://github.com/JunHyeok96/effective-java/issues/15">[아이템 17] 가변 동반 클래스 동작(사용) 예시 #15</a></li>
+</ul>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-29-Effective-java-Day22-item21,22,23/" class="flip-title"><span>[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라</span></a>  <time class="faded fine" datetime="2021-12-29T00:00:00+09:00">29 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-28-Effective-java-Day21-item20/" class="flip-title"><span>[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라</span></a>  <time class="faded fine" datetime="2021-12-28T00:00:00+09:00">28 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-27-Effective-java-Day20-item19/" class="flip-title"><span>[Effective Java] Day 20 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (2)</span></a>  <time class="faded fine" datetime="2021-12-27T00:00:00+09:00">27 Dec 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

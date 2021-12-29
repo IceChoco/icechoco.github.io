@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라 | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="Day21에서는 item 20에 대한 내용을 다룬다." />
+<meta property="og:description" content="Day21에서는 item 20에 대한 내용을 다룬다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-28-Effective-java-Day21-item20/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-28-Effective-java-Day21-item20/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-12-28T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라" />
+<script type="application/ld+json">
+{"headline":"[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라","dateModified":"2021-12-29T14:46:59+09:00","datePublished":"2021-12-28T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-28-Effective-java-Day21-item20/"},"url":"https://icechoco.github.io/java/2021-12-28-Effective-java-Day21-item20/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day21에서는 item 20에 대한 내용을 다룬다.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-28-Effective-java-Day21-item20/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2021-12-30T00:27:29+09:00',
+  };
+  w._clapButton = false;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2021-12-28-Effective-java-Day21-item20</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day21-item20" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-28T00:00:00+09:00">28 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>, <span>이펙티브자바</span>, <span>Effectivejava</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-29">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-29T14:46:59+09:00">2021-12-29</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day21에서는 item 20에 대한 내용을 다룬다.</p>
+
+<h2 id="item-20--추상-클래스보다는-인터페이스를-우선하라">Item 20 :: 추상 클래스보다는 인터페이스를 우선하라</h2>
+
+<p>자바는 단일 상속만 지원하니, 추상 클래스 방식은 새로운 타입을 정의하는 데 커다란 제약을 안고 있다.<br />
+반면 인터페이스는 여러개를 구현(implement) 할 수 있으며 어떤 클래스를 상속했든 같은 타입으로 취급된다.<br />
+따라서 추상클래스 보다는 인터페이스를 우선으로 하여 구현하는것을 권장한다.</p>
+
+<h3 id="인터페이스의-장점">인터페이스의 장점</h3>
+<h4 id="기존-클래스에도-손쉽게-새로운-인터페이스를-구현해넣을-수-있다">기존 클래스에도 손쉽게 새로운 인터페이스를 구현해넣을 수 있다.</h4>
+<p>한가지만 상속할 수 있는 추상클래스와 달리 인터페이스는 제한이 없기 때문에 언제든지 기존에 작성된 클래스에 새로운 인터페이스를 추가할 수 있다.</p>
+<ul>
+  <li><strong>추상 클래스는 기존 클래스 위에 새로 끼워 넣기가 어렵다.</strong><br />
+A, B 클래스가 같은 추상 클래스인 Abstract1을 확장하는 경우, Abstract1 클래스의 기존 자손이던 B, C, D, E까지 같이 묶여버린다.
+C와 A의 공통조상이 Abstract1이 되는 것이 의미상 적절하지 않다면 클래스 계층구조에 큰 혼선을 유발한다.</li>
+</ul>
+
+<h4 id="믹스인mixin정의에-안성맞춤이다">믹스인(mixin)정의에 안성맞춤이다.</h4>
+<p>믹스인이란, <strong>상속관계를 만들지 않고 원하는 기능을 하위 클래스로 만드는 것</strong>을 의미한다.<br />
+즉, 주된 타입 외에도 특정 기능을 제공하는것을 믹스인이라 한다.<br />
+java 에서는 <code class="language-plaintext highlighter-rouge">Comparable</code>을 예로 들 수 있는데, 인터페이스를 구현한 인터페이스는 인스턴스끼리 순서를 정할 수 있는 기능을 갖게 된다.<br />
+예를들어 우리가 잘 아는 <code class="language-plaintext highlighter-rouge">Integer</code> 클래스를 보면 <code class="language-plaintext highlighter-rouge">Number</code> 인 동시에 다른 인스턴스들과 순서를 비교할 수 있는 <code class="language-plaintext highlighter-rouge">Comparable</code> 을 구현한 클래스이다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Integer</span> <span class="kd">extends</span> <span class="nc">Number</span>
+        <span class="kd">implements</span> <span class="nc">Comparable</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;,</span> <span class="nc">Constable</span><span class="o">,</span> <span class="nc">ConstantDesc</span> <span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">}</span>            
+</code></pre></div></div>
+
+<h4 id="인터페이스로는-계층구조가-없는-타입-프레임워크를-만들-수-있다">인터페이스로는 계층구조가 없는 타입 프레임워크를 만들 수 있다.</h4>
+<p>타입을 계층적으로 표현하면 구조적으로 잘 표현할 수 있지만 현실에서는 계층을 엄격히 구분하기가 어려울때도 있다. 가수겸 작곡가인 singer-songwriter를 예를 들어보자. singer-songwriter를 계층적으로 표현하면 다음과 같아진다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Singer</span> <span class="o">{</span>
+    <span class="kd">abstract</span> <span class="nc">AudioClip</span> <span class="nf">sing</span><span class="o">(</span><span class="nc">Song</span> <span class="n">s</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">SongWriter</span> <span class="o">{</span>
+    <span class="kd">abstract</span> <span class="nc">Song</span> <span class="nf">compose</span><span class="o">(</span><span class="kt">int</span> <span class="n">chartPosition</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">SingerSongWriter</span> <span class="o">{</span>
+    <span class="kd">abstract</span> <span class="nc">AudioClip</span> <span class="nf">sing</span><span class="o">(</span><span class="nc">Song</span> <span class="n">s</span><span class="o">);</span>
+    <span class="kd">abstract</span> <span class="nc">Song</span> <span class="nf">compose</span><span class="o">(</span><span class="kt">int</span> <span class="n">chartPosition</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>다중 상속이 불가능하기 때문에 Singer 와 Songwriter를 조합한 클래스를 별도로 만들어야 한다.</p>
+
+<p>예제에서는 조합이 두개뿐이지만 만약 조합이 여러개라면 모든 조합별로 클래스를 지원해야 하므로 많은 클래스가 만들어지게 된다. 이를 <strong>조합 폭발(combinatorial explosion)</strong> 이라 한다.</p>
+<h5 id="조합폭팔">조합폭팔</h5>
+<p>Logger를 만들때는 FileLogger, ConsoleLogger, DBLogger 와 같은 종류가 있을 수 있다. 그리고 이 로거들을 이용해 Plain, JSON, CSV 등의 포맷으로 로그를 저장할 수도 있다. 만약 추상 클래스로 이 모든 조합을 추상클래스로 구현하여 상속받게 한다면 총 9가지의 클래스가 만들어진다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. FileLoggerPlain
+2. FileLoggerJSON
+3. FileLoggerCSV
+4. ConsoleLoggerPlain
+5. ConsoleLoggerJSON
+6. ConsoleLoggerCSV
+7. DBLoggerPlain
+8. DBLoggerJSON
+9. DBLoggerCSV
+</code></pre></div></div>
+
+<p>여기서 지원해야하는 logger 종류나 포맷이 늘어난다면 지원해야할 조합의 수는 기하급수적으로 늘어난다. 흔히 조합 폭발(combinatorial explosion) 이라 부르는 현상이다.
+인터페이스로 정의하면 <code class="language-plaintext highlighter-rouge">Singer</code>와 <code class="language-plaintext highlighter-rouge">Songwriter</code> 를 모두 구현해도 문제가 되지 않는다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Singer</span> <span class="o">{</span>
+    <span class="nc">AudioClip</span> <span class="nf">sing</span><span class="o">(</span><span class="nc">Song</span> <span class="n">s</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Songwriter</span> <span class="o">{</span>
+    <span class="nc">Song</span> <span class="nf">compose</span><span class="o">(</span><span class="kt">int</span> <span class="n">chartPosition</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">SingerSongwriter</span> <span class="kd">extends</span> <span class="nc">Singer</span><span class="o">,</span> <span class="nc">Songwriter</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="default-method를-제공해-일감을-덜어줄-수-있다">default method를 제공해 일감을 덜어줄 수 있다.</h4>
+<p>인터페이스의 메서드 중 구현 방법이 명백한 것이 있다면, 그 구현을 default method로 제공해줄 수 있다.</p>
+
+<p>단, 몇가지 규칙을 지켜야 한다.</p>
+
+<ol>
+  <li>상속하려는 사람을 위한 <code class="language-plaintext highlighter-rouge">@implSpec</code> 자바독 태그를 붙여 문서화해야 한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">equals</code> 와 <code class="language-plaintext highlighter-rouge">hashCode</code> 같은 Object의 메서드를 default method로 제공해서는 안된다.</li>
+</ol>
+
+<h3 id="인터페이스의-단점">인터페이스의 단점</h3>
+<p>java 8 부터 default method 가 제공되어 interface도 구현된 method를 가질 수 있게 되었지만 여전히 제약사항이 존재한다.</p>
+<h4 id="인스턴스-필드를-가질-수-없다">인스턴스 필드를 가질 수 없다.</h4>
+<p>인터페이스에 정의되는 모든 필드는 public 이고 static 이며 final이다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Parent</span> <span class="o">{</span>
+   <span class="nc">Integer</span> <span class="n">field</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// 암묵적으로 `public static final`이 붙는다.</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<h4 id="public-이-아닌-정적-멤버는-가질-수-없다">public 이 아닌 정적 멤버는 가질 수 없다.</h4>
+<p>단, private 정적 메서드는 예외이다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Parent</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="nc">Integer</span> <span class="n">field</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">// error: 제어자 'private'은(는) 허용되지 않습니다</span>
+
+   <span class="kd">private</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="nf">intArrayAsList</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">return</span> <span class="k">new</span> <span class="nc">AbstractList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;()</span> <span class="o">{</span>
+       <span class="nd">@Override</span>
+       <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+           <span class="k">return</span> <span class="n">a</span><span class="o">[</span><span class="n">index</span><span class="o">];</span>
+       <span class="o">}</span>
+
+       <span class="nd">@Override</span>
+       <span class="kd">public</span> <span class="kt">int</span> <span class="nf">size</span><span class="o">()</span> <span class="o">{</span>
+           <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+       <span class="o">}</span>
+   <span class="o">};</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<h4 id="직접-만들지-않은-인터페이스에는-디폴트-메서드를-추가할-수-없다">직접 만들지 않은 인터페이스에는 디폴트 메서드를 추가할 수 없다.</h4>
+<p>클래스와 달리 인터페이스는 메소드가 추가된다면, 기존에 그 인터페이스를 구현하고 있던 다른 클래스들이 영향을 받을 것이기 때문이다.</p>
+
+<h3 id="단점-보완">단점 보완</h3>
+<h4 id="추상-골격-구현skeletal-implementation-클래스를-함께-제공">추상 골격 구현(skeletal implementation) 클래스를 함께 제공</h4>
+<p>인터페이스와 추상 골격 구현(skeletal implementation) 클래스를 함께 제공하는 식으로 인터페이스와 추상 클래스의 장점을 모두 취하는 방법도 있다.
+인터페이스에서 제공하지 못한 기능을 추상 클래스에서 구현하여 제공할 수 있다.</p>
+
+<p><strong>추상 골격 구현(skeletal implementation) 클래스 만들기</strong></p>
+<ul>
+  <li>인터페이스로는 타입을 정의하고, 필요하면 디폴트 메서드 몇 개도 함께 제공한다.</li>
+  <li>인터페이스로 구현하지 못한 클래스들은 골격 구현 클래스에서 구현한다.</li>
+  <li>
+    <p>클래스의 이름은 관례상 <code class="language-plaintext highlighter-rouge">Abstract~</code> 로 짓는다.</p>
+
+    <p>ex) AbstractSet, AbstractMap, AbstractList …</p>
+  </li>
+</ul>
+
+<p><strong>장점</strong></p>
+<ul>
+  <li>추상 클래스처럼 구현을 도와주는 동시에, 추상클래스로 타입을 정의할 때 따라오는 제약에서 자유롭다.
+여러 인터페이스를 구현하여 추상 골격 구현 클래스를 만들 수 있으므로 계층구조가 없는 타입을 만들 수 있으며 기존의 추상 골격 구현 클래스에 새로운 인터페이스를 쉽게 추가할수도 있다.</li>
+</ul>
+
+<p><strong>Q. 왜 또 추상클래스지? 똑같이 단일상속에 제약을 받지 않을까?</strong></p>
+<ol>
+  <li>추상 골격 구현(skeletal implementation)을 구현한 클래스는 type으로서 interface 를 사용하게 된다.
+ <code class="language-plaintext highlighter-rouge">AbstractMap</code>과 <code class="language-plaintext highlighter-rouge">HashMap</code> 구현
+    <ul>
+      <li>추상 골격 구현 클래스인 AbstractMap은 Map interface 타입을 사용함.
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractMap</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="o">{}</span> <span class="c1">//추상 골격 구현 클래스</span>
+ <span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nc">AbstractMap</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="o">{}</span> <span class="c1">//구체 클래스</span>
+</code></pre></div>        </div>
+        <p><code class="language-plaintext highlighter-rouge">HashMap</code>의 사용</p>
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nc">AbstractMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;();</span> <span class="c1">// X</span>
+ <span class="nc">Map</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;();</span> <span class="c1">// O</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">HashMap</code> 이 <code class="language-plaintext highlighter-rouge">AbstractMap</code>을 상속하지 않고 다른 클래스를 사용하게 되더라도 사용하는 클래스에서는 문제가 없다.</p>
+
+    <p>왜냐하면 <code class="language-plaintext highlighter-rouge">HashMap</code>의 Type은 <code class="language-plaintext highlighter-rouge">AbstractMap</code> 이 아니라 <code class="language-plaintext highlighter-rouge">Map</code>이고, <code class="language-plaintext highlighter-rouge">AbstractMap</code>은 그저 구현에 도움을 주는것 뿐이기 때문이다.
+<code class="language-plaintext highlighter-rouge">AbstractMap</code>을 상속하였다고 해서 <code class="language-plaintext highlighter-rouge">HashMap</code>과 <code class="language-plaintext highlighter-rouge">AbstractMap</code>이 <code class="language-plaintext highlighter-rouge">is-a</code> 관계를 가지지는 않는다.
+ 그러니, 사용하는 측에서 <code class="language-plaintext highlighter-rouge">~Abstract~</code> 가 붙은 클래스가 부모라면 <code class="language-plaintext highlighter-rouge">is-a</code>관계가 아니라는 생각을 가져야겠다.
+ 반대로 <code class="language-plaintext highlighter-rouge">is-a</code> 관계인 추상 클래스에 <code class="language-plaintext highlighter-rouge">~Abstract~</code> 를 붙여 이름을 지으면 안되겠다.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">AbstractMap</code>을 상속하지 못한다면 nested class로도 활용할 수 있다. (시뮬레이트한 다중상속, simulated multiple inheritance)
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span><span class="no">V</span><span class="o">&gt;</span> <span class="o">{</span>
+     <span class="kd">private</span> <span class="kd">final</span> <span class="nc">DefaultMap</span> <span class="n">defaultMap</span><span class="o">;</span>
+     <span class="kd">public</span> <span class="nf">HashMap</span><span class="o">()</span> <span class="o">{</span>
+         <span class="k">this</span><span class="o">.</span><span class="na">defaultMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultMap</span><span class="o">();</span>
+     <span class="o">}</span>
+     <span class="nd">@Override</span>
+     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">size</span><span class="o">()</span> <span class="o">{</span>
+         <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">defaultMap</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+     <span class="o">}</span>
+     <span class="o">...</span>
+     <span class="kd">private</span> <span class="kd">class</span> <span class="nc">DefaultMap</span> <span class="kd">extends</span> <span class="nc">AbstractMap</span><span class="o">&lt;</span><span class="no">K</span><span class="o">,</span> <span class="no">V</span><span class="o">&gt;</span> <span class="o">{</span>
+         <span class="o">...</span>
+     <span class="o">}</span>
+ <span class="o">}</span>
+</code></pre></div>    </div>
+    <p>인터페이스를 구현한 HashMap 클래스에서<br />
+ AbstractMap 골격 구현을 확장한 private 내부 클래스를 정의하고,<br />
+ 각 메서드 호출을 내부 클래스의 인스턴스인 this.defaultMap에 전달하는 것이다.</p>
+  </li>
+</ol>
+
+<p><strong>주의사항</strong></p>
+<ul>
+  <li>인터페이스에서 <code class="language-plaintext highlighter-rouge">equals</code>와 <code class="language-plaintext highlighter-rouge">hashCode</code> 같은 Object의 메서드는 디폴드로 제공하면 안된다.
+    <ul>
+      <li>해당 메서드들은 모두 골격 구현 클래스에 구현하자</li>
+    </ul>
+  </li>
+  <li>인터페이스의 메서드 모두가 기반 메서드와 default method가 된다면 골격 구현 클래스를 별도로 만들 이유는 없다.</li>
+  <li>상속해서 사용하는것을 가정하므로 아이템 19 에서 이야기한 설계 및 문서화 지침을 모두 따라야 한다.</li>
+</ul>
+
+<h3 id="결론">결론</h3>
+<ul>
+  <li>상속을 하는 것보다 인터페이스를 사용하는 것이 더 안전하다.</li>
+  <li>일반적으로 다중 구현용 타입으로는 인터페이스가 가장 적합하다.</li>
+  <li>복잡한 인터페이스라면 구현하는 수고를 덜어주는 골격 구현(skeletal implementation) 클래스을 함께 제공하는 방법을 꼭 고려해보자.</li>
+  <li>골격 구현은 ‘가능한 한’ 인터페이스의 디폴트 메서드로 제공하여 그 인터페이스를 구현한 모든 곳에서 활용하도록 하는 것이 좋다. ‘가능한 한’이라고 한 이유는, 인터페이스에 걸려 있는 구현상의 제약 때문에 골격 구현을 추상 클래스로 제공하는 경우가 더 흔하기 때문이다.</li>
+</ul>
+
+<h2 id="참조">참조</h2>
+<ul>
+  <li><a href="https://stackoverflow.com/a/59241553">combinatorial explosion</a></li>
+  <li><a href="https://stackoverflow.com/a/13437007">skeletal implementation</a></li>
+  <li><a href="https://ko.wikipedia.org/wiki/%EB%AF%B9%EC%8A%A4%EC%9D%B8">mixin</a></li>
+</ul>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-29-Effective-java-Day22-item21,22,23/" class="flip-title"><span>[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라</span></a>  <time class="faded fine" datetime="2021-12-29T00:00:00+09:00">29 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-27-Effective-java-Day20-item19/" class="flip-title"><span>[Effective Java] Day 20 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (2)</span></a>  <time class="faded fine" datetime="2021-12-27T00:00:00+09:00">27 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-26-Effective-java-Day19-item19/" class="flip-title"><span>[Effective Java] Day 19 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (1)</span></a>  <time class="faded fine" datetime="2021-12-26T00:00:00+09:00">26 Dec 2021</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>
