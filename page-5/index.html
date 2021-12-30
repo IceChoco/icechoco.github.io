@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-30T00:27:29+09:00',
+    INDEX_KEY: 'index--2021-12-30T22:18:23+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -576,6 +576,85 @@ Left here for reference, feel free to delete.
 
 
   
+
+  
+
+
+
+
+
+<article id="post-frontend-Redux-Basics" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/frontend/2021-10-11-Redux-Basics/" class="flip-title">
+        Redux 기초
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>, <span>Redux</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-11-27T21:55:15+09:00">2021-11-27</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Redux는 상태관리 라이브러리(predictable state container) 입니다. 그렇다면 여기서 말하는 state가 뭘까요? React에서는 Props와 State가 있습니다. 이 두가지를 비교하면서 state에 대해 알아보겠습니다.</p>
+<h2 id="props-vs-state">Props VS State</h2>
+<h3 id="props">Props</h3>
+<ul>
+  <li>Props는 Properties의 줄임말입니다.</li>
+  <li>부모 컴포넌트와 자식 컴포넌트가 있는 경우 데이터를 서로 주고 받아야겠죠? 두 컴포넌트간의 데이터를 주고 받을 때는 Props를 이용해야 합니다.</li>
+  <li><strong>단방향 데이터 흐름</strong>: child component에 전달되는 값 또는 method. 부모 컴포넌트에서 자식 컴포넌트로 즉 위에서 아래로만 데이터 전달이 가능합니다. 반대로 child component에서 parent component로 전달은 불가능합니다.</li>
+  <li><strong>read donly</strong>: child component로 전달받은 props 값은 변하지 않습니다다. 만약 부모로부터 받은 값을 수정하고 싶다면 수정된 값으로 부모 컴포넌트에게서 다시 받아야 합니다.</li>
+  <li>
+    <p><strong>소스코드 예시</strong></p>
+
+    <ul>
+      <li>parent component</li>
+    </ul>
+  </li>
+</ul>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/frontend/2021-10-11-Redux-Basics/">Redux 기초</a>
+
+      </p>
+    </footer>
+  
+</article>
+
 
   
 
@@ -1164,78 +1243,6 @@ const { createProxyMiddleware } = require(‘http-proxy-middleware’);</p>
     <footer>
       <p class="read-more">
         Continue reading <a class="heading flip-title" href="/frontend/2021-09-19-cors-errors/">CORS(Cross-Origin Resource Sharing) 에러</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-frontend-React-related-errors" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/frontend/2021-09-19-React-related-errors/" class="flip-title">
-        React 스크립트 실행 오류
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-19T00:00:00+09:00">19 Sep 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-11-27T21:51:48+09:00">2021-11-27</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>create-react-app : 이 시스템에서 스크립트를 실행할 수 없으므로 ~\AppData\Roaming\npm\creat
-e-react-app.ps1 파일을 로드할 수 없습니다. 자세한 내용은 about_Execution_Policies(https://go.microsoft.
-com/fwlink/?LinkID=135170)를 참조하십시오.
-위치 줄:1 문자:1
-+ create-react-app my-app
-+ ~~~~~~~~~~~~~~~~
-    + CategoryInfo          : 보안 오류: (:) [], PSSecurityException
-    + FullyQualifiedErrorId : UnauthorizedAccess
-</code></pre></div></div>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/frontend/2021-09-19-React-related-errors/">React 스크립트 실행 오류</a>
 
       </p>
     </footer>

@@ -30,22 +30,22 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   
     
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>[Effective Java] Day 10 - Item 5 :: 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라 (2) | IceChoco</title>
+<title>[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라 | IceChoco</title>
 <meta name="generator" content="Jekyll v4.2.1" />
-<meta property="og:title" content="[Effective Java] Day 10 - Item 5 :: 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라 (2)" />
+<meta property="og:title" content="[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="ko_KR, en_US" />
-<meta name="description" content="Day 10 기록 시작!" />
-<meta property="og:description" content="Day 10 기록 시작!" />
-<link rel="canonical" href="https://icechoco.github.io/java/2021-12-06-Effective-java-Day10-item5/" />
-<meta property="og:url" content="https://icechoco.github.io/java/2021-12-06-Effective-java-Day10-item5/" />
+<meta name="description" content="Day23에서는 item 25, 26에 대한 내용을 다룬다." />
+<meta property="og:description" content="Day23에서는 item 25, 26에 대한 내용을 다룬다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/" />
 <meta property="og:site_name" content="IceChoco" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-12-06T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-12-30T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="[Effective Java] Day 10 - Item 5 :: 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라 (2)" />
+<meta property="twitter:title" content="[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 10 - Item 5 :: 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라 (2)","dateModified":"2021-12-07T10:53:48+09:00","datePublished":"2021-12-06T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-06-Effective-java-Day10-item5/"},"url":"https://icechoco.github.io/java/2021-12-06-Effective-java-Day10-item5/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day 10 기록 시작!","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라","dateModified":"2021-12-30T22:07:12+09:00","datePublished":"2021-12-30T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/"},"url":"https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day23에서는 item 25, 26에 대한 내용을 다룬다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,7 +72,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="https://icechoco.github.io/java/2021-12-06-Effective-java-Day10-item5/" hreflang="ko-kr, en-us">
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/" hreflang="ko-kr, en-us">
 
 <link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
 
@@ -269,7 +269,7 @@ Left here for reference, feel free to delete.
       <li>
       
         <span>/</span>
-        <span>2021-12-06-Effective-java-Day10-item5</span>
+        <span>2021-12-30-Effective-java-Day23-item25,26</span>
       
       </li>
     
@@ -286,31 +286,23 @@ Left here for reference, feel free to delete.
 
 
 
-<article id="post-java-Effective-java-Day10-item5" class="page post mb6" role="article">
+<article id="post-java-Effective-java-Day23-item25,26" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
       
-        [Effective Java] Day 10 - Item 5 :: 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라 (2)
+        [Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라
       
     </h1>
 
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-12-06T00:00:00+09:00">06 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+        <time datetime="2021-12-30T00:00:00+09:00">30 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>, <span>이펙티브자바</span>, <span>Effectivejava</span>
       </span>
       
         
           
           
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-07">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-12-07T10:53:48+09:00">2021-12-07</time>
-            </span>
           
         
       
@@ -329,114 +321,219 @@ Left here for reference, feel free to delete.
   </header>
 
   
-    <p>Day 10 기록 시작!</p>
+    <p>Day23에서는 item 25, 26에 대한 내용을 다룬다.</p>
 
-<h2 id="item-5--자원을-직접-명시하지-말고-의존-객체-주입을-사용하라-2">Item 5 :: 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라 (2)</h2>
-<p>많은 클래스는 하나 이상의 자원에 의존한다. 이 책에서는 맞춤법 검사기인 <code class="language-plaintext highlighter-rouge">SpellChecker</code>와 <code class="language-plaintext highlighter-rouge">dictionary</code>를 예로 들고있다. 즉, <code class="language-plaintext highlighter-rouge">SpellChecker</code>가 <code class="language-plaintext highlighter-rouge">dictionary</code>를 사용하고, 이를 의존 하는 리소스 또는 의존성이라고 부른다.<br />
-이런 경우 인스턴스를 생성할 때 생성자에 필요한 자원을 넘겨주는 방식이 낫다. 이는 의존 객체 주입의 한 형태로, 맞춤법 검사기를 생성할 때 의존객체인 사전을 주입해주면 된다.</p>
+<h2 id="item-21--톱레벨-클래스는-한-파일에-하나만-담으라">Item 21 :: 톱레벨 클래스는 한 파일에 하나만 담으라</h2>
+<blockquote>
+  <p>A top level class is a class that is not a nested class.</p>
 
-<h4 id="적절한-구현">적절한 구현</h4>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpellChecker</span> <span class="o">{</span>
+  <p>A nested class is any class whose declaration occurs within the body of another class or interface.</p>
 
-    <span class="kd">private</span> <span class="nc">Lexicon</span> <span class="n">dictionary</span><span class="o">;</span>
+  <p>출처 : <a href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html">Oracle docs Chapter 8.Classes </a></p>
+</blockquote>
 
-    <span class="c1">//생성자에 의존객체인 사전을 주입</span>
-    <span class="kd">public</span> <span class="nf">SpellChecker</span><span class="o">(</span><span class="nc">Lexicon</span> <span class="n">dictionary</span><span class="o">){</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">dictionary</span> <span class="o">=</span> <span class="nc">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">dictionary</span><span class="o">);</span>
-    <span class="o">};</span>
+<p>톱레벨 클래스란 <strong>중첩 클래스가 아닌 클래스</strong>이다. 보통 우리가 사용하는 파일 내에 하나만 존재하는 클래스를 톱레벨 클래스라고 한다.<br />
+중첩클래스는 <strong>다른 클래스 안에 정의된 클래스</strong>이다.</p>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isValid</span><span class="o">(</span><span class="nc">String</span> <span class="n">word</span><span class="o">){</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">suggestions</span><span class="o">(</span><span class="nc">String</span> <span class="n">typo</span><span class="o">){</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-
-    <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="kd">interface</span> <span class="nc">Lexicon</span><span class="o">{}</span>
-
-<span class="kd">class</span> <span class="nc">KoreanDictionary</span> <span class="kd">implements</span> <span class="nc">Lexicon</span><span class="o">{}</span>
-</code></pre></div></div>
-
-<p><strong>의존객체 주입</strong>은 유연성과 테스트 용이성을 높여준다. 또한 private을 통해 불변을 보장하여 여러 클라이언트가 의존 객체들을 안심하고 공유할 수 있다.<br />
-또 생성자, 정적 팩터리(아이템 1), 빌더(아이템 2) 모두에 똑같이 응용할 수 있다.</p>
-
-<p><strong>팩터리 메서드 패턴</strong>은 의존객체 주입의 변형으로, 생성자의 자원 팩터리를 넘겨주는 방식이다.</p>
+<h3 id="왜-톱레벨-클래스는-한-파일에-하나만-담아야-할까">왜 톱레벨 클래스는 한 파일에 하나만 담아야 할까?</h3>
 <ul>
-  <li><strong>팩터리</strong>: 호출할 떄 마다 특정 타입의 인스턴스를 반복해서 만들어주는 객체</li>
-  <li>대표적인 예: Suppleir<T> 인터페이스</T></li>
+  <li>자바 컴파일러는 소스 파일 하나에 톱레벨 클래스를 여러개 선언하는 것을 막지 않는다.(하지만 심각한 위험 감수 필요)</li>
+  <li>부득이하게 꼭 그래야 하는 상황이 있다면, static member class를 사용하는 것을 고려해야한다.</li>
 </ul>
 
-<p>Supplier<T>를 입력으로 받는 메서드는 보통 한정적 와일드 카드 타입(bounded wildcard type)으로 입력을 제한해야한다.
-이 방식을 사용해 클라이언트는 자신이 명시한 타입의 하위 타입이라면 무엇이든 생성할 수 있는 팩터리를 넘길 수 있다.</T></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Song.java</span>
+<span class="kd">class</span> <span class="nc">Song</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">NAME</span> <span class="o">=</span> <span class="s">"Dance"</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Music</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">NAME</span> <span class="o">=</span> <span class="s">"Rap"</span><span class="o">;</span>
+<span class="o">}</span>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpellChecker</span> <span class="o">{</span>
+<span class="c1">// Music.java</span>
+<span class="kd">class</span> <span class="nc">Song</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">NAME</span> <span class="o">=</span> <span class="s">"Rock"</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Music</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">NAME</span> <span class="o">=</span> <span class="s">"Hip-hop"</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Song</span><span class="o">.</span><span class="na">NAME</span> <span class="o">+</span> <span class="nc">Music</span><span class="o">.</span><span class="na">NAME</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-    <span class="kd">private</span> <span class="nc">Lexicon</span> <span class="n">dictionary</span><span class="o">;</span>
+<p>이 코드를 실행하면 IDE(여기서는 intellij) 자체적으로 에러를 발생한다.</p>
 
-    <span class="c1">//생성자에 의존객체인 사전을 주입</span>
-    <span class="kd">public</span> <span class="nf">SpellChecker</span><span class="o">(</span><span class="nc">Supplier</span><span class="o">&lt;</span><span class="nc">Lexicon</span><span class="o">&gt;</span> <span class="n">dictionary</span><span class="o">){</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">dictionary</span> <span class="o">=</span> <span class="nc">Objects</span><span class="o">.</span><span class="na">requireNonNull</span><span class="o">(</span><span class="n">dictionary</span><span class="o">.</span><span class="na">get</span><span class="o">());</span>
-    <span class="o">};</span>
+<p><img src="/assets\img/item25_intellij_error.PNG" alt="item25_intellij_error" /></p>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isValid</span><span class="o">(</span><span class="nc">String</span> <span class="n">word</span><span class="o">){</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>
+<p>IDE에서 잡아준 에러를 무시하고 강제로 Main class를 실행하면 아래와 같은 결과가 발생한다.</p>
+
+<p><img src="/assets\img/item25_build_result.PNG" alt="item25_build_result" /></p>
+
+<p>위 처럼 순서를 정해주지 않고 실행하면 에러가 발생하지만, javac 명령어를 통해서 컴파일 순서를 정해주면 동작이 될 수 있다. ex) javac Main.java Song.java</p>
+
+<p>하지만 이는 컴파일러에 어느 파일을 순서에 따라서 동작이 달라질 수 있기 때문에 절대로 이렇게 개발해서는 안된다.</p>
+
+<p>위의 예제를 <strong>static member class</strong>로 바꾸면 아래와 같다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Song</span><span class="o">{</span>
+        <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">NAME</span> <span class="o">=</span> <span class="s">"Dance"</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">suggestions</span><span class="o">(</span><span class="nc">String</span> <span class="n">typo</span><span class="o">){</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Music</span><span class="o">{</span>
+        <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">NAME</span> <span class="o">=</span> <span class="s">"Rap"</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Lexicon</span> <span class="n">lexicon</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">KoreanDictionary</span><span class="o">();</span>
-
-<span class="c1">//        SpellChecker spellChecker = new SpellChecker(new Supplier&lt;Lexicon&gt;() {</span>
-<span class="c1">//            @Override</span>
-<span class="c1">//            public Lexicon get() {</span>
-<span class="c1">//                return lexicon;</span>
-<span class="c1">//            }</span>
-<span class="c1">//        });</span>
-        <span class="nc">SpellChecker</span> <span class="n">spellChecker</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SpellChecker</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">lexicon</span><span class="o">);</span> <span class="c1">//위 소스를 이와 같은 람다식으로 수정</span>
-        <span class="n">spellChecker</span><span class="o">.</span><span class="na">isValid</span><span class="o">(</span><span class="s">"hello"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Song</span><span class="o">.</span><span class="na">NAME</span> <span class="o">+</span> <span class="nc">Music</span><span class="o">.</span><span class="na">NAME</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
-
-<span class="kd">interface</span> <span class="nc">Lexicon</span><span class="o">{}</span>
-
-<span class="kd">class</span> <span class="nc">KoreanDictionary</span> <span class="kd">implements</span> <span class="nc">Lexicon</span><span class="o">{}</span>
-
-<span class="kd">class</span> <span class="nc">testDictionary</span> <span class="kd">implements</span> <span class="nc">Lexicon</span><span class="o">{}</span>
 </code></pre></div></div>
-<p>의존 객체 주입이 유연성, 테스트 용이성을 개선해주긴하나 의존성이 수천 개나 되는 큰 프로젝트에서는 코드를 어지럽게 만들 수 있다. 그 점은 대거, 주스, 스프링 같은 의존 객체 주입 프레임워크를 사용해서 해결할 수 있다.</p>
-
-<h2 id="item-6--불필요한-객체-생성을-피하라">Item 6 :: 불필요한 객체 생성을 피하라</h2>
-<p>똑같은 기능의 객체를 매번 생성하기보다는 객체 하나를 재사용하는 편이 나을 때가 많다. 재사용은 빠르고 세련됐다. 특히 불변 객체(아이템 17)는 언제든 재사용할 수 있다.</p>
-<h3 id="문자열-객체-생성">문자열 객체 생성</h3>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Ara"</span><span class="o">);</span> <span class="c1">//따라하지 마세요!</span>
-<span class="nc">String</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Ara"</span><span class="o">);</span> <span class="c1">//따라하지 마세요!</span>
-
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span> <span class="o">==</span> <span class="n">d</span><span class="o">);</span><span class="c1">//false</span>
-</code></pre></div></div>
-<p>자바의 문자열인 String을 new로 생성하면 항상 새로운 객체를 만들게 된다. 다음과 같이 String 객체를 생성하는 것이 좋다.</p>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Ara"</span><span class="o">;</span>
-<span class="nc">String</span> <span class="n">name2</span> <span class="o">=</span> <span class="s">"Ara"</span><span class="o">;</span>
-
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">==</span> <span class="n">name2</span><span class="o">);</span><span class="c1">//true</span>
-</code></pre></div></div>
-<p>문자열 리터럴을 재사용하기 때문에 같은 자바 가상 머신 안에서 이와 똑같은 문자열 리터럴이 존재한다면 같은 객체를 재사용함이 보장된다.</p>
 
 <h3 id="결론">결론</h3>
-<p>의존하는 리소스에 따라 클래스 동작을 달리 하는 클래스를 만들 때는 싱글턴과 정적 유틸리티 클래스를 사용하지말자. 그런 경우에는 리소스를 생성자나 정적 팩토리로 전달하는 의존성 객체 주입을 사용하여 유연함, 재사용성, 테스트 용이성을 향상시키자.</p>
-
-<h3 id="참고">참고</h3>
 <ul>
-  <li><a href="https://www.youtube.com/watch?v=24scqT2_m4U&amp;t=907s">[이팩티브 자바] #5 의존성 주입</a></li>
+  <li>하나의 소스 파일에는 하나의 톱레벨 클래스(혹은 톱레벨 인터페이스)만 두자</li>
+  <li>static member class를 사용하자</li>
 </ul>
+
+<h2 id="item-26--로-타입은-사용하지-말라">Item 26 :: 로 타입은 사용하지 말라</h2>
+<h3 id="1-제너릭이란-generic-type">1. 제너릭이란? (Generic type)</h3>
+<p>클래스 내부에서 사용할 데이터 타입을 나중에 인스턴스를 생성할 때 확정하는 것.<br />
+클래스와 인터페이스 선언에 타입 매개변수가 쓰이면 이를 <strong>제너릭 클래스</strong> 혹은 <strong>제너릭 인터페이스</strong>라 한다.</p>
+
+<p>ex) List 인터페이스</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">List</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nc">Collection</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">}</span>    
+</code></pre></div></div>
+<p>원소의 타입을 나타내는 타입 매개변수 E를 받는다. 따라서 이 인터페이스의 완전한 이름은 <code class="language-plaintext highlighter-rouge">List&lt;E&gt;</code>지만 짧게 그냥 List라고 자주 쓴다.
+제너릭 클래스 + 제너릭 인터페이스를 통틀어 <strong>제너릭 타입</strong>이라 한다.</p>
+
+<h4 id="제너릭-타입은-매개변수화-타입을-정의한다">제너릭 타입은 <strong>매개변수화 타입</strong>을 정의한다.</h4>
+<p><code class="language-plaintext highlighter-rouge">클래스 이름(혹은 인터페이스)&lt;실제 타입 매개변수들 나열&gt;</code></p>
+<ul>
+  <li>List<String>
+</String>    <ul>
+      <li>원소의 타입이 String인 List를 뜻하는 매개변수화 타입</li>
+      <li>String: 정규 타입 매개변수 E에 해당하는 실제 타입 매개변수</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="제너릭-타입을-하나-정의하면-그에-딸린-로-타입raw-type도-함께-정의된다">제너릭 타입을 하나 정의하면 그에 딸린 <strong>로 타입(raw type)</strong>도 함께 정의된다.</h4>
+<p><strong>로타입</strong>: 제너릭 타입에서 타입 매개변수를 전혀 사용하지 않을 때<br />
+ex) <code class="language-plaintext highlighter-rouge">List&lt;E&gt;</code>의 로타입은 List</p>
+
+<ul>
+  <li>로타입은 타입선언에서 제너릭 타입 정보가 전부 지워진 것 처럼 동작한다.</li>
+  <li>제너릭이 도래하기 전 코드와 호환되도록 하기 위해 생겼다.</li>
+</ul>
+
+<p><strong>제너릭을 지원하기 전 raw type의 사용</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//Stamp 인스턴스만 취급하는 Collection 로타입 선언</span>
+<span class="kd">private</span> <span class="kd">final</span> <span class="nc">Collection</span> <span class="n">stamps</span> <span class="o">=</span> <span class="o">...;</span>
+
+<span class="c1">//실수로 동전을 넣은 경우 "Unchecked call" 경고만 내뱉고 오류없이 컴파일된다.</span>
+<span class="n">stamps</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Coin</span><span class="o">(...));</span>
+
+<span class="c1">//이렇게 동전을 꺼내기 전에는 오류를 알아채지 못한다.</span>
+<span class="k">for</span><span class="o">(</span><span class="nc">Iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="n">stamps</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">i</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();){</span>
+    <span class="nc">Stamp</span> <span class="n">stamp</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Stamp</span><span class="o">)</span><span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span> <span class="c1">//ClassCastException을 던진다.</span>
+    <span class="n">stamp</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>단점</strong>
+    <ul>
+      <li>오류가 런타임시에 발견된다. 좋은 코드는 오류가 발생하기 전 컴파일 즉시 발견할 수 있는 코드다.
+        <ul>
+          <li>런타임에 문제를 겪는 코드와 원인을 제공한 코드가 물리적으로 떨어져있을 가능성이 커진다.</li>
+        </ul>
+      </li>
+      <li>로타입을 쓰면 제너릭이 안겨주는 안전성과 표현력을 모두 잃는다. 절대로 써서는 안된다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>잘못된 예</strong></p>
+<ul>
+  <li>모르는 타입의 원소도 받는 로타입 사용
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//2개의 집합(Set)을 받아 공통 원소의 수를 반환하는 메서드</span>
+<span class="kd">static</span> <span class="kt">int</span> <span class="nf">numElementsInCommon</span><span class="o">(</span><span class="nc">Set</span> <span class="n">s1</span><span class="o">,</span><span class="nc">Set</span> <span class="n">s2</span><span class="o">){</span>
+  <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="k">for</span> <span class="o">(</span><span class="nc">Object</span> <span class="n">o1</span> <span class="o">:</span> <span class="n">s1</span><span class="o">)</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">s2</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">o1</span><span class="o">))</span>
+          <span class="n">result</span><span class="o">++;</span>
+  <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+    <p>위 소스는 정상 작동하나 로 타입을 사용해 안전하지 않다.<br />
+→ <strong>비한정적 와일드카드 타입(unbounded wildcard type)</strong>을 사용하자!</p>
+  </li>
+</ul>
+
+<h4 id="제너릭을-활용하면-매개변수화-타입을-주석이-아닌-타입-선언-자체에-담을-수-있다">제너릭을 활용하면 매개변수화 타입을 주석이 아닌 타입 선언 자체에 담을 수 있다.</h4>
+<blockquote>
+  <p>매개변수화 타입: stamps에는 Stamp만 들어간다는 정보</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//매개변수화된 컬렉션 타입 - 타입 안전성 확보!</span>
+<span class="kd">private</span> <span class="kd">final</span> <span class="nc">Collection</span><span class="o">&lt;</span><span class="nc">Stamp</span><span class="o">&gt;</span> <span class="n">stamps</span> <span class="o">=</span> <span class="o">...;</span>
+
+<span class="c1">//컴파일 오류 발생!</span>
+<span class="n">stampsC</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Coin</span><span class="o">(...));</span>
+
+<span class="k">for</span><span class="o">(</span><span class="nc">Iterator</span> <span class="n">i</span> <span class="o">=</span> <span class="n">stamps</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span> <span class="n">i</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();){</span>
+    <span class="nc">Stamp</span> <span class="n">stamp</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Stamp</span><span class="o">)</span><span class="n">i</span><span class="o">.</span><span class="na">next</span><span class="o">();</span> <span class="c1">//여기서 에러나지 않음을 컴파일러가 보장한다.</span>
+    <span class="n">stamp</span><span class="o">.</span><span class="na">cancel</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>List 같은 로타입은 사용하면 안되지만 <code class="language-plaintext highlighter-rouge">List&lt;Object&gt;</code>사용은 된다.</p>
+<ul>
+  <li>차이점
+    <ul>
+      <li>List
+        <ul>
+          <li>제너릭 타입에서 완전히 발을 뺀 것</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">List&lt;Object&gt;</code>
+        <ul>
+          <li>모든 타입의 객체를 허용한다는 의사를 컴파일러에 전달</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="제너릭의-하위-타입-규칙">제너릭의 하위 타입 규칙</h4>
+<p>매개변수 List를 받는 메서드에 <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code>을 넘길 수 있다.<br />
+그러나 <code class="language-plaintext highlighter-rouge">List&lt;Object&gt;</code>를 받는 메서드에 <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code>를 넘길 수 없다. <br />
+→ <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code>: <strong>로타입 List의 하위타입, <code class="language-plaintext highlighter-rouge">List&lt;Object&gt;</code>의 하위타입은 아님</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">strings</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+    <span class="n">addList</span><span class="o">(</span><span class="n">strings</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">42</span><span class="o">));</span> <span class="c1">//매개변수 List를 받는 메서드에 `List&lt;String&gt;`을 넘길 수 있다.</span>
+    <span class="n">safeAddList</span><span class="o">(</span><span class="n">strings</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">42</span><span class="o">));</span> <span class="c1">//컴파일 에러! List&lt;String&gt;은 List&lt;Object&gt;의 하위타입이 아니다.</span>
+
+    <span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">strings</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span><span class="c1">//class java.lang.Integer cannot be cast to class java.lang.String</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addList</span><span class="o">(</span><span class="nc">List</span> <span class="n">list</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">o</span><span class="o">){</span>
+    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">o</span><span class="o">);</span><span class="c1">//컴파일러 경고 발생: 매개변수화된 클래스 List의 raw type 사용</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">safeAddList</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">o</span><span class="o">){</span>
+    <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">o</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="2-비한정적-와일드카드-타입unbounded-wildcard-type">2. 비한정적 와일드카드 타입(unbounded wildcard type)</h3>
+<p>제너릭 타입을 쓰고 싶지만 실제 타입 매개변수가 무엇인지 신경쓰고 싶지 않을 때 물음표(?)를 사용하자.</p>
 
   
 </article>
@@ -609,7 +706,7 @@ Left here for reference, feel free to delete.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-30-Effective-java-Day23-item25,26/" class="flip-title"><span>[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라</span></a>  <time class="faded fine" datetime="2021-12-30T00:00:00+09:00">30 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-29-Effective-java-Day22-item21,22,23/" class="flip-title"><span>[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라</span></a>  <time class="faded fine" datetime="2021-12-29T00:00:00+09:00">29 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-28-Effective-java-Day21-item20/" class="flip-title"><span>[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라</span></a>  <time class="faded fine" datetime="2021-12-28T00:00:00+09:00">28 Dec 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-29-Effective-java-Day22-item21,22,23/" class="flip-title"><span>[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라</span></a>  <time class="faded fine" datetime="2021-12-29T00:00:00+09:00">29 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-28-Effective-java-Day21-item20/" class="flip-title"><span>[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라</span></a>  <time class="faded fine" datetime="2021-12-28T00:00:00+09:00">28 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-27-Effective-java-Day20-item19/" class="flip-title"><span>[Effective Java] Day 20 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (2)</span></a>  <time class="faded fine" datetime="2021-12-27T00:00:00+09:00">27 Dec 2021</time></li>            </ul></aside>
 
   
 
