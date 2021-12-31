@@ -8,7 +8,7 @@ comments: true
 
 Day23에서는 item 25, 26에 대한 내용을 다룬다.
 
-## Item 21 :: 톱레벨 클래스는 한 파일에 하나만 담으라
+## Item 25 :: 톱레벨 클래스는 한 파일에 하나만 담으라
 >A top level class is a class that is not a nested class.
 >
 >A nested class is any class whose declaration occurs within the body of another class or interface.
