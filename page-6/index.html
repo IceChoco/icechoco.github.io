@@ -44,7 +44,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="welcome to IceChoco’s devLog" />
 <script type="application/ld+json">
-{"headline":"welcome to IceChoco’s devLog","dateModified":"2021-10-16T23:35:53+09:00","@type":"WebPage","url":"https://icechoco.github.io/page-6/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"IceChoco의 DevLog","@context":"https://schema.org"}</script>
+{"@type":"WebPage","headline":"welcome to IceChoco’s devLog","dateModified":"2021-09-23T00:02:45+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/page-6/","description":"IceChoco의 DevLog","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -106,7 +106,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-30T22:18:23+09:00',
+    INDEX_KEY: 'index--2022-01-01T01:59:40+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -259,20 +259,24 @@ Left here for reference, feel free to delete.
   
     
       
-    
-  
-    
-      
         
         
         <li>
           
           <div class="list-wrapper">
-            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            <a id="_navigation" href="/about/" class="sidebar-nav-item"  >About</a>
             
           </div>
           
         </li>
+      
+    
+  
+    
+      
+    
+  
+    
       
     
   
@@ -307,10 +311,6 @@ Left here for reference, feel free to delete.
           </div>
           
         </li>
-      
-    
-  
-    
       
     
   
@@ -582,6 +582,83 @@ Left here for reference, feel free to delete.
 
 
 
+<article id="post-frontend-cors-errors" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/frontend/2021-09-19-cors-errors/" class="flip-title">
+        CORS(Cross-Origin Resource Sharing) 에러
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-09-19T00:00:00+09:00">19 Sep 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-17">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2021-12-17T21:19:31+09:00">2021-12-17</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Access to XMLHttpRequest at 'http://localhost:5000/api/hello' from origin 'http://localhost:3000' has been blocked
+by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+</code></pre></div></div>
+<p>제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다.</p>
+<ul>
+  <li>임의로 proxy 설정하기<br />
+첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install http-proxy-middleware --save
+</code></pre></div>    </div>
+    <p>그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다.
+```
+const { createProxyMiddleware } = require(‘http-proxy-middleware’);</p>
+  </li>
+</ul>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/frontend/2021-09-19-cors-errors/">CORS(Cross-Origin Resource Sharing) 에러</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
 <article id="post-frontend-React-related-errors" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
@@ -602,10 +679,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-17">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-11-27T21:51:48+09:00">2021-11-27</time>
+              <time datetime="2021-12-17T21:19:31+09:00">2021-12-17</time>
             </span>
           
         
@@ -674,10 +751,10 @@ com/fwlink/?LinkID=135170)를 참조하십시오.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-11-27">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-17">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-11-27T21:47:48+09:00">2021-11-27</time>
+              <time datetime="2021-12-17T21:19:31+09:00">2021-12-17</time>
             </span>
           
         
@@ -739,10 +816,10 @@ com/fwlink/?LinkID=135170)를 참조하십시오.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-16">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-23">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-10-16T23:35:53+09:00">2021-10-16</time>
+              <time datetime="2021-09-23T00:02:45+09:00">2021-09-23</time>
             </span>
           
         
@@ -805,10 +882,10 @@ com/fwlink/?LinkID=135170)를 참조하십시오.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-10-16">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-23">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-10-16T23:35:53+09:00">2021-10-16</time>
+              <time datetime="2021-09-23T00:02:45+09:00">2021-09-23</time>
             </span>
           
         

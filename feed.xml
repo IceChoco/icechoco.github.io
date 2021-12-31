@@ -1,7 +1,159 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2021-12-30T22:18:23+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
-</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라</title><link href="https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/" rel="alternate" type="text/html" title="[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라" /><published>2021-12-30T00:00:00+09:00</published><updated>2021-12-30T22:07:12+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day23-item25,26</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/">&lt;p&gt;Day23에서는 item 25, 26에 대한 내용을 다룬다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2022-01-01T01:59:40+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[Effective Java] Day 24 - Item 26 :: 로 타입은 사용하지 말라(2)</title><link href="https://icechoco.github.io/java/2021-12-31-Effective-java-Day24-item26(2)/" rel="alternate" type="text/html" title="[Effective Java] Day 24 - Item 26 :: 로 타입은 사용하지 말라(2)" /><published>2021-12-31T00:00:00+09:00</published><updated>2022-01-01T01:57:45+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day24-item26(2)</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-31-Effective-java-Day24-item26(2)/">&lt;p&gt;Day24에서는 item 26에 대한 내용을 다룬다.&lt;/p&gt;
 
-&lt;h2 id=&quot;item-21--톱레벨-클래스는-한-파일에-하나만-담으라&quot;&gt;Item 21 :: 톱레벨 클래스는 한 파일에 하나만 담으라&lt;/h2&gt;
+&lt;h2 id=&quot;item-26--로-타입은-사용하지-말라2&quot;&gt;Item 26 :: 로 타입은 사용하지 말라(2)&lt;/h2&gt;
+&lt;h3 id=&quot;2-비한정적-와일드카드-타입unbounded-wildcard-type&quot;&gt;2. 비한정적 와일드카드 타입(unbounded wildcard type)&lt;/h3&gt;
+&lt;p&gt;제너릭 타입을 쓰고 싶지만 실제 타입 매개변수가 무엇인지 신경쓰고 싶지 않을 때 로타입이 아닌 물음표(?)를 사용하자.
+?는 어떤 타입이라도 담을 수 있는 가장 범용적인 매개변수화 Set타입이다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//좋은 예: 비한정적 와일드 타입 사용&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;numElementsInCommon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Set VS &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&amp;lt;?&amp;gt;&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;로 타입 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;불안전함 - 아무 원소나 넣을 수 있어 타입 불변식을 훼손하기 쉽다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;비한정적 와일드카드 타입(Unbounded wildcard type) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&amp;lt;?&amp;gt;&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&amp;lt;E&amp;gt;&lt;/code&gt;의 비한정적 와일드카드 타입은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&amp;lt;?&amp;gt;&lt;/code&gt;이다.&lt;/li&gt;
+      &lt;li&gt;안전함 - Collection&amp;lt;?&amp;gt;에는 null제외 어떤 원소도 넣을 수 없다.
+        &lt;ul&gt;
+          &lt;li&gt;다른 원소를 add하려 하면 컴파일타임에 오류메시지를 볼 수 있다.&lt;/li&gt;
+          &lt;li&gt;컬렉션의 타입 불변식을 훼손하지 못하게 막고, 컬렉션에서 꺼낼 수 있는 객체의 타입도 알 수 없게 한다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-로타입-규칙-예외&quot;&gt;3. 로타입 규칙 예외&lt;/h3&gt;
+&lt;h4 id=&quot;1-class-리터럴에는-로타입을-사용한다&quot;&gt;1) class 리터럴에는 로타입을 사용한다.&lt;/h4&gt;
+&lt;p&gt;자바 명세가 class 리터럴에 매개변수화 타입을 사용하지 못하게 했다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;허용: List.class, String[].class, int.class&lt;/li&gt;
+  &lt;li&gt;불가: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;String&amp;gt;.class&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;?&amp;gt;.class&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;클래스 리터럴(class literal)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;클래스 리터럴(Class Literal)은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String.class&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Integer.class&lt;/code&gt; 등을 말하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String.class&lt;/code&gt;의 타입은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Class&amp;lt;String&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Integer.class&lt;/code&gt;의 타입은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Class&amp;lt;Integer&amp;gt;&lt;/code&gt;다.&lt;/li&gt;
+      &lt;li&gt;타입 토큰(Type Token)은 쉽게 말해 타입을 나타내는 토큰이며, 클래스 리터럴이 타입 토큰으로서 사용된다.&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;myMethod(Class&amp;lt;?&amp;gt; clazz)&lt;/code&gt;와 같은 메서드는 타입 토큰을 인자로 받는 메서드이며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;method(String.class)&lt;/code&gt;로 호출하면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String.class&lt;/code&gt;라는 클래스 리터럴을 타입 토큰 파라미터로 myMethod에 전달한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h4 id=&quot;2-instance-of-연산자는-로타입을-사용한다&quot;&gt;2) instance of 연산자는 로타입을 사용한다.&lt;/h4&gt;
+&lt;p&gt;런타임에는 제너릭 타입 정보가 지워진다.&lt;br /&gt;
+instance of 연산자는 비한정적 와일드카드 타입(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&amp;lt;?&amp;gt;&lt;/code&gt;) 이외의 매개변수화 타입(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&amp;lt;String&amp;gt;&lt;/code&gt;)에는 적용할 수 없다.&lt;br /&gt;
+로타입과 비한정적 와일드 카드 타입의 instance of는 완전히 똑같이 동작한다. &amp;lt;?&amp;gt;는 코드만 지저분해지므로 차라리 로타입을 쓰자.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//로 타입&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&amp;gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//와일드카드 타입&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;o의 타입이 Set임을 확인한 다음 와일드 카드인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&amp;lt;?&amp;gt;&lt;/code&gt;로 형변환 해야 한다.&lt;br /&gt;
+이는 검사형변환(checked cast)이므로 컴파일러 경고가 뜨지 않는다.&lt;/p&gt;
+
+&lt;h3 id=&quot;결론&quot;&gt;결론&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;로 타입을 사용하면 런타임에 예외가 일어날 수 있으므로 사용하지 마라
+    &lt;ul&gt;
+      &lt;li&gt;로 타입은 제너릭이 도입되기 이전 코드와의 호환성을 위해 제공된 것이다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&amp;lt;Obejct&amp;gt;&lt;/code&gt;: 어떤 타입의 객체도 저장할 수 있는 매개변수화 타입. 안전함.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&amp;lt;?&amp;gt;&lt;/code&gt;: 어떤 종류의 타입 객체만 저장할 수 있는 와일드카드 타입. 안전함.&lt;/li&gt;
+  &lt;li&gt;Set: 로타입. 제너릭 타입 시스템에 속하지 않음. 안전하지 않음.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;제너릭-관련-용어정리&quot;&gt;제너릭 관련 용어정리&lt;/h3&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;한글용어(영문용어)&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+      &lt;th&gt;예&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;매개변수화 타입(parameterized type)&lt;/td&gt;
+      &lt;td&gt;각각의 제네릭 타입은 parameterizedType을 선언함&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;String&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;실제 타입 매개변수(actual type parameter)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;제네릭 타입(Generic Type)&lt;/td&gt;
+      &lt;td&gt;제네릭 클래스와 제네릭 인터페이스를 통틀어 이르는 말&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;E&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;정규 타입 매개변수(formal Type parameter)&lt;/td&gt;
+      &lt;td&gt;제네릭 선언에 사용된 매개변수&lt;/td&gt;
+      &lt;td&gt;E&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;비한정적 와일드카드 타입(unbounded wildcard type)&lt;/td&gt;
+      &lt;td&gt;어떤 종류의 타입 객체만 저장할 수 있는 와일드카드 타입&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;?&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;로타입(raw type)&lt;/td&gt;
+      &lt;td&gt;제네릭 타입에서 타입 매개변수를 전혀 사용하지 않았을 때&lt;/td&gt;
+      &lt;td&gt;List&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;한정적 타입 매개변수(bounded Type parameter)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;E extends Number&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;재귀적 타입 한정(recursive Type parameter)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;T extends Comparable&amp;lt;T&amp;gt;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;한정적 와일드카드 타입(bounded wildcard type)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;? extends Number&amp;gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;제너릭 메서드(generic method)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;static &amp;lt;E&amp;gt; List&amp;lt;E&amp;gt; asList(E[] a)&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;타입 토큰(type token)&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;String.class&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;참고&quot;&gt;참고&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/2160788/what-is-a-class-literal-in-java&quot;&gt;What is a class literal in Java?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://homoefficio.github.io/2016/11/30/%ED%81%B4%EB%9E%98%EC%8A%A4-%EB%A6%AC%ED%84%B0%EB%9F%B4-%ED%83%80%EC%9E%85-%ED%86%A0%ED%81%B0-%EC%88%98%ED%8D%BC-%ED%83%80%EC%9E%85-%ED%86%A0%ED%81%B0/&quot;&gt;클래스 리터럴, 타입 토큰, 수퍼 타입 토큰&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day24에서는 item 26에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라</title><link href="https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/" rel="alternate" type="text/html" title="[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라" /><published>2021-12-30T00:00:00+09:00</published><updated>2021-12-31T20:54:56+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day23-item25,26</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/">&lt;p&gt;Day23에서는 item 25, 26에 대한 내용을 다룬다.&lt;/p&gt;
+
+&lt;h2 id=&quot;item-25--톱레벨-클래스는-한-파일에-하나만-담으라&quot;&gt;Item 25 :: 톱레벨 클래스는 한 파일에 하나만 담으라&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;A top level class is a class that is not a nested class.&lt;/p&gt;
 
@@ -211,7 +363,7 @@ ex) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;2-비한정적-와일드카드-타입unbounded-wildcard-type&quot;&gt;2. 비한정적 와일드카드 타입(unbounded wildcard type)&lt;/h3&gt;
-&lt;p&gt;제너릭 타입을 쓰고 싶지만 실제 타입 매개변수가 무엇인지 신경쓰고 싶지 않을 때 물음표(?)를 사용하자.&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day23에서는 item 25, 26에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라</title><link href="https://icechoco.github.io/java/2021-12-29-Effective-java-Day22-item21,22,23/" rel="alternate" type="text/html" title="[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라" /><published>2021-12-29T00:00:00+09:00</published><updated>2021-12-30T00:22:50+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day22-item21,22,23</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-29-Effective-java-Day22-item21,22,23/">&lt;p&gt;Day22에서는 item 21, 22, 23에 대한 내용을 다룬다.&lt;/p&gt;
+&lt;p&gt;제너릭 타입을 쓰고 싶지만 실제 타입 매개변수가 무엇인지 신경쓰고 싶지 않을 때 물음표(?)를 사용하자.&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day23에서는 item 25, 26에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라</title><link href="https://icechoco.github.io/java/2021-12-29-Effective-java-Day22-item21,22,23/" rel="alternate" type="text/html" title="[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라" /><published>2021-12-29T00:00:00+09:00</published><updated>2021-12-31T20:35:40+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day22-item21,22,23</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-29-Effective-java-Day22-item21,22,23/">&lt;p&gt;Day22에서는 item 21, 22, 23에 대한 내용을 다룬다.&lt;/p&gt;
 
 &lt;h2 id=&quot;item-21--인터페이스는-구현하는-쪽을-생각해-설계하라&quot;&gt;Item 21 :: 인터페이스는 구현하는 쪽을 생각해 설계하라&lt;/h2&gt;
 &lt;p&gt;인터페이스에서 새로운 메소드를 추가하면 기존의 구현체들에 영향이 가게 된다.
@@ -580,7 +732,7 @@ ex) Integer와 Double에 선언된 MIN_VALUE와 MAX_VALUE 상수&lt;/p&gt;
   &lt;li&gt;태그 달리 클래스를 써야 하는 상황은 거의 없다&lt;/li&gt;
   &lt;li&gt;새로운 클래스가 태그가 필요하다면 계층구조를 고려해보자&lt;/li&gt;
   &lt;li&gt;기존 클래스가 태그를 사용하고 있다면 계층 구조로 리팩토링을 고민해보자&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day22에서는 item 21, 22, 23에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라</title><link href="https://icechoco.github.io/java/2021-12-28-Effective-java-Day21-item20/" rel="alternate" type="text/html" title="[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라" /><published>2021-12-28T00:00:00+09:00</published><updated>2021-12-29T14:46:59+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day21-item20</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-28-Effective-java-Day21-item20/">&lt;p&gt;Day21에서는 item 20에 대한 내용을 다룬다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day22에서는 item 21, 22, 23에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라</title><link href="https://icechoco.github.io/java/2021-12-28-Effective-java-Day21-item20/" rel="alternate" type="text/html" title="[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라" /><published>2021-12-28T00:00:00+09:00</published><updated>2021-12-31T20:35:40+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day21-item20</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-28-Effective-java-Day21-item20/">&lt;p&gt;Day21에서는 item 20에 대한 내용을 다룬다.&lt;/p&gt;
 
 &lt;h2 id=&quot;item-20--추상-클래스보다는-인터페이스를-우선하라&quot;&gt;Item 20 :: 추상 클래스보다는 인터페이스를 우선하라&lt;/h2&gt;
 
@@ -783,7 +935,7 @@ java 에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&g
   &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/a/59241553&quot;&gt;combinatorial explosion&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/a/13437007&quot;&gt;skeletal implementation&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/%EB%AF%B9%EC%8A%A4%EC%9D%B8&quot;&gt;mixin&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day21에서는 item 20에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 20 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (2)</title><link href="https://icechoco.github.io/java/2021-12-27-Effective-java-Day20-item19/" rel="alternate" type="text/html" title="[Effective Java] Day 20 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (2)" /><published>2021-12-27T00:00:00+09:00</published><updated>2021-12-29T14:28:48+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day20-item19</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-27-Effective-java-Day20-item19/">&lt;p&gt;Day20에서는 item 19에 대한 내용을 다룬다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day21에서는 item 20에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 20 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (2)</title><link href="https://icechoco.github.io/java/2021-12-27-Effective-java-Day20-item19/" rel="alternate" type="text/html" title="[Effective Java] Day 20 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (2)" /><published>2021-12-27T00:00:00+09:00</published><updated>2021-12-31T20:35:40+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day20-item19</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-27-Effective-java-Day20-item19/">&lt;p&gt;Day20에서는 item 19에 대한 내용을 다룬다.&lt;/p&gt;
 
 &lt;h2 id=&quot;item-19--상속을-고려한-설계-주의-사항과-문서화&quot;&gt;Item 19 :: 상속을 고려한 설계 주의 사항과 문서화&lt;/h2&gt;
 &lt;h3 id=&quot;결론&quot;&gt;결론&lt;/h3&gt;
@@ -851,7 +1003,7 @@ method를 override 하더라도 다른 메소드 동작에 영향을 주지 않�
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day20에서는 item 19에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 19 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (1)</title><link href="https://icechoco.github.io/java/2021-12-26-Effective-java-Day19-item19/" rel="alternate" type="text/html" title="[Effective Java] Day 19 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (1)" /><published>2021-12-26T00:00:00+09:00</published><updated>2021-12-29T12:04:11+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day19-item19</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-26-Effective-java-Day19-item19/">&lt;p&gt;Day19에서는 item 19에 대한 내용을 다룬다.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day20에서는 item 19에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 19 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (1)</title><link href="https://icechoco.github.io/java/2021-12-26-Effective-java-Day19-item19/" rel="alternate" type="text/html" title="[Effective Java] Day 19 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (1)" /><published>2021-12-26T00:00:00+09:00</published><updated>2021-12-31T20:35:40+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day19-item19</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-26-Effective-java-Day19-item19/">&lt;p&gt;Day19에서는 item 19에 대한 내용을 다룬다.&lt;/p&gt;
 
 &lt;h2 id=&quot;item-19--상속을-고려한-설계-주의-사항과-문서화&quot;&gt;Item 19 :: 상속을 고려한 설계 주의 사항과 문서화&lt;/h2&gt;
 &lt;p&gt;언제 상속을 사용해야 하는가에 관하여….
@@ -1081,7 +1233,7 @@ Head first, Design Patterns (오라일리) 책에는 후크에 대해서 이렇�
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://mrtint.tistory.com/358&quot;&gt;후크 메소드 (Hook Method)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=q3_WXP9pPUQ&amp;amp;t=541s&quot;&gt;객체지향 디자인패턴 2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day19에서는 item 19에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 18 - Item 18 :: 상속보다는 컴포지션을 사용하라</title><link href="https://icechoco.github.io/java/2021-12-22-Effective-java-Day18-item18/" rel="alternate" type="text/html" title="[Effective Java] Day 18 - Item 18 :: 상속보다는 컴포지션을 사용하라" /><published>2021-12-22T00:00:00+09:00</published><updated>2021-12-28T15:46:47+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day18-item18</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-22-Effective-java-Day18-item18/">&lt;p&gt;Day18에서는 item 18에 대한 내용을 다룬다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day19에서는 item 19에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 18 - Item 18 :: 상속보다는 컴포지션을 사용하라</title><link href="https://icechoco.github.io/java/2021-12-22-Effective-java-Day18-item18/" rel="alternate" type="text/html" title="[Effective Java] Day 18 - Item 18 :: 상속보다는 컴포지션을 사용하라" /><published>2021-12-22T00:00:00+09:00</published><updated>2021-12-31T20:35:40+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day18-item18</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-22-Effective-java-Day18-item18/">&lt;p&gt;Day18에서는 item 18에 대한 내용을 다룬다.&lt;/p&gt;
 
 &lt;h2 id=&quot;item-18--상속보다는-컴포지션을-사용하라&quot;&gt;Item 18 :: 상속보다는 컴포지션을 사용하라&lt;/h2&gt;
 &lt;p&gt;일반적인 구체 클래스를 패키지 경계를 넘어, 즉 다른 패키지의 구체 클래스를 상속하는 일은 위험하다.&lt;br /&gt;
@@ -1521,7 +1673,7 @@ Head first, Design Patterns (오라일리) 책에는 후크에 대해서 이렇�
   &lt;li&gt;&lt;a href=&quot;https://github.com/HomoEfficio/dev-tips/blob/master/Java%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20C%2B%2B%20-%2003%20-%20const%EC%99%80%20final.md&quot;&gt;Java 개발자가 배우는 C++ - 03 - const와 final&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/JunHyeok96/effective-java/issues/15&quot;&gt;[아이템 17] 가변 동반 클래스 동작(사용) 예시 #15&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/28254116/wrapper-classes-are-not-suited-for-callback-frameworks&quot;&gt;Wrapper Classes are not suited for callback frameworks&lt;/a&gt;exi&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day18에서는 item 18에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 17 - Item 17 :: 변경가능성을 최소화 하라(2)</title><link href="https://icechoco.github.io/java/2021-12-21-Effective-java-Day17-item17/" rel="alternate" type="text/html" title="[Effective Java] Day 17 - Item 17 :: 변경가능성을 최소화 하라(2)" /><published>2021-12-21T00:00:00+09:00</published><updated>2021-12-28T13:46:11+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day17-item17</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-21-Effective-java-Day17-item17/">&lt;p&gt;Day17에서는 item 17에 대한 내용을 다룬다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day18에서는 item 18에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 17 - Item 17 :: 변경가능성을 최소화 하라(2)</title><link href="https://icechoco.github.io/java/2021-12-21-Effective-java-Day17-item17/" rel="alternate" type="text/html" title="[Effective Java] Day 17 - Item 17 :: 변경가능성을 최소화 하라(2)" /><published>2021-12-21T00:00:00+09:00</published><updated>2021-12-31T20:35:40+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day17-item17</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-21-Effective-java-Day17-item17/">&lt;p&gt;Day17에서는 item 17에 대한 내용을 다룬다.&lt;/p&gt;
 
 &lt;h2 id=&quot;item-17--클래스의-mutability상태-변경-가능성을-최소화하라minimize-mutability&quot;&gt;Item 17 :: 클래스의 mutability(상태 변경 가능성)을 최소화하라(Minimize mutability)&lt;/h2&gt;
 &lt;h3 id=&quot;ex-불변-복소수-클래스immutable-complex-number-class&quot;&gt;EX: 불변 복소수 클래스(Immutable complex number class)&lt;/h3&gt;
@@ -1939,7 +2091,7 @@ Head first, Design Patterns (오라일리) 책에는 후크에 대해서 이렇�
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/HomoEfficio/dev-tips/blob/master/Java%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20C%2B%2B%20-%2003%20-%20const%EC%99%80%20final.md&quot;&gt;Java 개발자가 배우는 C++ - 03 - const와 final&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/JunHyeok96/effective-java/issues/15&quot;&gt;[아이템 17] 가변 동반 클래스 동작(사용) 예시 #15&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day17에서는 item 17에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 16 - Item 15, 16, 17 :: 클래스와 멤버의 접근 권한을 최소화하라(2), Public 클래스에서는 Public 필드가 아닌 접근자 메서드를사용하라, 변경가능성을 최소화 하라</title><link href="https://icechoco.github.io/java/2021-12-20-Effective-java-Day16-item15,16,17/" rel="alternate" type="text/html" title="[Effective Java] Day 16 - Item 15, 16, 17 :: 클래스와 멤버의 접근 권한을 최소화하라(2), Public 클래스에서는 Public 필드가 아닌 접근자 메서드를사용하라, 변경가능성을 최소화 하라" /><published>2021-12-20T00:00:00+09:00</published><updated>2021-12-20T23:45:39+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day16-item15,16,17</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-20-Effective-java-Day16-item15,16,17/">&lt;p&gt;Day16에서는 item 15, 16, 17에 대한 내용을 다룬다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day17에서는 item 17에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 16 - Item 15, 16, 17 :: 클래스와 멤버의 접근 권한을 최소화하라(2), Public 클래스에서는 Public 필드가 아닌 접근자 메서드를사용하라, 변경가능성을 최소화 하라</title><link href="https://icechoco.github.io/java/2021-12-20-Effective-java-Day16-item15,16,17/" rel="alternate" type="text/html" title="[Effective Java] Day 16 - Item 15, 16, 17 :: 클래스와 멤버의 접근 권한을 최소화하라(2), Public 클래스에서는 Public 필드가 아닌 접근자 메서드를사용하라, 변경가능성을 최소화 하라" /><published>2021-12-20T00:00:00+09:00</published><updated>2021-12-31T20:35:40+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day16-item15,16,17</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-20-Effective-java-Day16-item15,16,17/">&lt;p&gt;Day16에서는 item 15, 16, 17에 대한 내용을 다룬다.&lt;/p&gt;
 
 &lt;h2 id=&quot;item-15--클래스와-멤버의-접근-권한을-최소화하라2&quot;&gt;Item 15 :: 클래스와 멤버의 접근 권한을 최소화하라(2)&lt;/h2&gt;
 &lt;p&gt;자바는 정보 은닉을 위한 다양한 도구를 제공한다. 그 중 접근 제한자(private, protected, public)를 이용해 클래스, 인터페이스, 멤버에 대한 접근성(접근 허용 범위)을 명시한다.&lt;/p&gt;
@@ -2296,7 +2448,7 @@ Head first, Design Patterns (오라일리) 책에는 후크에 대해서 이렇�
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;참조&quot;&gt;참조&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/HomoEfficio/dev-tips/blob/master/Java%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20C%2B%2B%20-%2003%20-%20const%EC%99%80%20final.md&quot;&gt;Java 개발자가 배우는 C++ - 03 - const와 final&lt;/a&gt;&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day16에서는 item 15, 16, 17에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Java] 쓰레드의 동기화(Synchronization of threads)</title><link href="https://icechoco.github.io/java/2021-12-19-Synchronization-of-threads/" rel="alternate" type="text/html" title="[Java] 쓰레드의 동기화(Synchronization of threads)" /><published>2021-12-19T00:00:00+09:00</published><updated>2021-12-20T00:06:39+09:00</updated><id>https://icechoco.github.io/java/Synchronization-of-threads</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-19-Synchronization-of-threads/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/HomoEfficio/dev-tips/blob/master/Java%20%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80%20%EB%B0%B0%EC%9A%B0%EB%8A%94%20C%2B%2B%20-%2003%20-%20const%EC%99%80%20final.md&quot;&gt;Java 개발자가 배우는 C++ - 03 - const와 final&lt;/a&gt;&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day16에서는 item 15, 16, 17에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Java] 쓰레드의 동기화(Synchronization of threads)</title><link href="https://icechoco.github.io/java/2021-12-19-Synchronization-of-threads/" rel="alternate" type="text/html" title="[Java] 쓰레드의 동기화(Synchronization of threads)" /><published>2021-12-19T00:00:00+09:00</published><updated>2021-12-31T20:35:40+09:00</updated><id>https://icechoco.github.io/java/Synchronization-of-threads</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-19-Synchronization-of-threads/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;쓰레드 동기화(Synchronization of threads)에 대한 개념을 잡을 수 있다.&lt;/li&gt;
 &lt;/ul&gt;
@@ -2414,243 +2566,4 @@ Head first, Design Patterns (오라일리) 책에는 후크에 대해서 이렇�
 &lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=g4vP5wuAoPI&amp;amp;t=294s&quot;&gt;[자바의 정석 - 기초편] ch13-30~33 쓰레드의 동기화&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">이 글의 목적 쓰레드 동기화(Synchronization of threads)에 대한 개념을 잡을 수 있다.</summary></entry><entry><title type="html">[Java] Hash Code &amp;amp; Hash Table</title><link href="https://icechoco.github.io/java/2021-12-18-Hash-Code-and-Hash-Table/" rel="alternate" type="text/html" title="[Java] Hash Code &amp;amp; Hash Table" /><published>2021-12-18T00:00:00+09:00</published><updated>2021-12-19T22:45:58+09:00</updated><id>https://icechoco.github.io/java/Hash-Code-and-Hash-Table</id><content type="html" xml:base="https://icechoco.github.io/java/2021-12-18-Hash-Code-and-Hash-Table/">&lt;p&gt;만약 Youtube에서 이미 업로드 되어있는 동영상을 다운 받아서 올릴 경우 에러가 발생한다.
-전세계에 유투브 동영상 갯수도 정말 많고, 한 동영상 당 용량도 큰데 어떻게 바로 알고 이미 동영상이 있다는 메시지를 건네주는 걸까? 바로 해쉬테이블을 이용하기 때문이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;hash-table이란&quot;&gt;Hash Table이란?&lt;/h2&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Key, Value로 데이터를 저장하는 자료구조 중 하나로 평균 시간 복잡도는 O(1)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets\img/item11_hashtable.png&quot; alt=&quot;hashTable&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;F(key) → HashCode → Index → Value&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;F(key): 검색하고자 하는 키값을 입력받아서  ex) 문자열, 숫자, 파일데이터
-    &lt;ul&gt;
-      &lt;li&gt;해시함수: 어떤 특정한 규칙을 이용하여 입력받은 key 값으로, 그 key 값이 얼마나 큰지에 상관없이 동일한 Hash코드를 만들어준다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;HashCode: 해쉬 함수를 입력받은 해쉬코드를&lt;/li&gt;
-  &lt;li&gt;Index: 배열의 인덱스로 환산하여&lt;/li&gt;
-  &lt;li&gt;Value: 데이터를 접근하는 방식의 자료구조 이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;hashcode의-활용-예&quot;&gt;HashCode의 활용 예&lt;/h2&gt;
-&lt;p&gt;암호화폐의 핵심기술인 블록체인에서도 각 사용자들의 공공장부를 비교할 때 해시코드를 이용한다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;블록체인&lt;/strong&gt;: 10분 간격으로 성사된 거래 기록을 블록체인 창고에 저장하고, 지금까지 일어난 모든 거래기록을 그 서비스를 이용하는 모든 사용자들이 전자지갑을 갖고있게 하는 방식&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;즉 어떤 회사가 창립한 뒤 모든 거래장부를 모든 사람들이 갖게 되는 것인데, 이때 원본을 가지고 비교하게 되면 시간이 너무 오래걸리게 된다. 
-그래서 그 정보를 HashCode로 배포하고, 사람들은 거래장부를 HashCode로 비교하게 되는 것이다.&lt;/p&gt;
-
-&lt;h2 id=&quot;장점&quot;&gt;장점&lt;/h2&gt;
-
-&lt;p&gt;Hash Table의 가장 큰 장점은 &lt;strong&gt;검색 속도가 빠르다&lt;/strong&gt;는 것이다.&lt;br /&gt;
-&lt;img src=&quot;/assets\img/hashTable.PNG&quot; alt=&quot;hashTable&quot; /&gt;
-Hash 함수를 이용해서 만든 Hash Code는 정수이다. 그래서 배열 공간을 고정된 크기만큼 만들어놓고 해시코드를 배열의 개수로 나머지 연산을 하여 배열에 나눠담는다.&lt;br /&gt;
-즉 코드 자체가 배열의 인덱스로 사용되기 때문에 검색 자체를 할 필요가 없고, 해쉬코드로 바로 인덱스를 찾아갈 수 있어 속도가 빠르다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;검색시간: O(1)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;collision충돌이-발생하는-경우&quot;&gt;Collision(충돌)이 발생하는 경우&lt;/h2&gt;
-
-&lt;p&gt;그런데 이때 한 인덱스에 많은 데이터가 몰려서 생성되는 경우 공간효율이 떨어지게 된다. 그래서 그 방을 나누는 규칙인 해쉬함수의 알고리즘이 너무 중요하다. 알고리즘이 좋지 않을 때 한 인덱스에 데이터가 여러개 들어가다가 충돌현상이 생기는 것을 &lt;strong&gt;Collison&lt;/strong&gt;이 일어난다고 한다.&lt;/p&gt;
-
-&lt;p&gt;시간 복잡도&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;각각의 Key값은 해시함수에 의해 고유한 index를 가지게 되어 바로 접근할 수 있으므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;평균 O(1)&lt;/code&gt;의 시간복잡도로 데이터를 조회할 수 있다. 하지만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터의 충돌이 발생한 경우 Chaining에 연결된 리스트들까지 검색을 해야 하므로 최대 O(N)&lt;/code&gt;까지 걸릴 수 있다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;해시 함수는 때로 서로 다른 Key값으로 동일한 해시코드를 만들어내기도 한다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;different keys → Same Code&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;key 값은 문자열이고 그 가지수가 무한한데에 반해 해시코드는 정수 가짓수 만큼 밖에 제공을 하지 못하기 때문이다. 따라서 알고리즘이 아무리 좋아도 어떤 키들은 중복되는 해시코드를 가질 수 밖에 없다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;different code → Same index&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;때로는 해쉬 알고리즘이 서로 다른 해쉬코드를 만들어 냈으나, 배열 방이 한정되어 있으므로 같은 인덱스에 배정이 되는 경우도 있다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;위 두 가지 경우를 모두 &lt;strong&gt;Collision(충돌)&lt;/strong&gt; 이라고 한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;분리-연결법separate-chaining&quot;&gt;분리 연결법(Separate Chaining)&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;/assets\img/item11_hashtable_separate_chaining.png&quot; alt=&quot;hashTable&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;동일한 버킷의 데이터에 대해 자료구조를 활용해 추가 메모리를 사용하여 다음 데이터의 주소를 저장&lt;/li&gt;
-  &lt;li&gt;Java의 LinkedList를 활용하며 해시 테이블에 연결리스트에서 사용하는 Node의 객체를 저장하는 방식으로 구현 가능&lt;/li&gt;
-  &lt;li&gt;즉, Hash Table의 셀마다 연결리스트 하나 씩 저장하도록 하고 충돌이 발생하는 데이터는 연결리스트의 다음 노드로 계속 추가해 가는 것.&lt;/li&gt;
-  &lt;li&gt;이후에 데이터를 검색할 때에는 hash table의 인덱스를 찾은 후 셀에 연결된 리스트를 순차적으로 탐색하며 찾으려는 해쉬코드와 저장된 노드의 hashCode를 비교하는 것&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;구현-방법&quot;&gt;구현 방법&lt;/h4&gt;
-&lt;ol&gt;
-  &lt;li&gt;고정된 크기의 해쉬 테이블을 선언한다 (필수조건)&lt;/li&gt;
-  &lt;li&gt;Collision이 생기는 경우를 대비하여 각 index에 데이터를 바로 저장하는 것이 아니라, 그 index 안에 Linked List를 선언한다. 그리고 데이터가 index에 할당될 때 마다 Linked List에 데이터를 추가한다.&lt;/li&gt;
-  &lt;li&gt;검색요청이 들어온 경우, 해쉬함수를 통해 해쉬코드를 만든다.&lt;/li&gt;
-  &lt;li&gt;해쉬코드를 인덱스로 환산하여 해당 index의 리스트를 반복하여 내가 찾는 데이터를 가져온다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HashTable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;HashTable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getHashCode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashcode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toCharArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()){&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//각 문자의 아스키코드 값을 가져옴&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;hashcode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashcode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;convertToIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashcode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashcode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//해시코드 % 배열의 사이즈&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;searchKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//배열 방에 있는 링크드 리스트를 돈다.&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)){&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//노드의 키가 검색하는 키와 같은지를 확인&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashcode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getHashCode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//key를 통해 해쉬코드를 받아온다.&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;convertToIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hashcode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;, hashcode(&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hashcode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;), index(&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;)&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-        &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 배열방에 있는 번호를 이용하여 기존 배열방에 있던 데이터를 가져옴&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//배열방이 null이면&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//Linked List를 생성한다.&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//그리고 생성한 list를 배열방에 넣어준다.&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;searchKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//그리고 배열방에 혹시 기존에 해당키로 데이터를 가지고 있는지 노드를 받아온다.&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addLast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;//동일한 데이터가 있는 경우 데이터를 대치해줌으로써 중복키 처리&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashcode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getHashCode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//키로 해쉬코드를 구함&lt;/span&gt;
-        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;convertToIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hashcode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//해쉬코드로 인덱스를 구함&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//인덱스에서 Linked List를 가져온다.&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;searchKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// 링크드 리스트 안에 해당 키를 가지는 노드를 검색한다.&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Not found&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;HashTable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HashTable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//고정된 배열방 생성&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sung&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;She is pretty&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jin&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;She is a model&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hee&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;She is an angel&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;min&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;She is cute&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sung&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;She is beautiful&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//엎어치기&lt;/span&gt;
-
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sung&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jin&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hee&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;min&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jae&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;개방-주소법open-addressing&quot;&gt;개방 주소법(Open Addressing)&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Open Addressing이란 추가적인 메모리를 사용하는 Chaining 방식과 다르게 비어있는 해시 테이블의 공간을 활용하는 방법. 따라서 개방주소법의 해시테이블은 hash와 value가 1:1 관계를 유지한다.&lt;/li&gt;
-  &lt;li&gt;개방 주소법은 chaining 처럼 추가적인 메모리가 필요 없다.&lt;/li&gt;
-  &lt;li&gt;데이터를 직접 모두 읽어오기 때문에, 포인터를 쓸 일이 없어 포인터를 사용함으로써 나타나는 오버헤드 방지 가능&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets\img/item11_hashtable_open_addressing.png&quot; alt=&quot;hashTable_open_addressing&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위의 그림에서 John과 Sandra의 hashCode가 동일해 충돌이 일어난다. 이때 sandra는 바로 그 다음 이어있던 153 hash에 값을 저장한다. 그 다음 ted가 테이블에 저장을 하려 했으나 이미 본인의 해쉬인 153이 sandra로 채워져있음을 발견한다. 그럼 ted도 sandra처럼 바로 다음 비어있던 154 hash에 값을 저장한다.&lt;/p&gt;
-
-&lt;p&gt;이런식으로 충돌이 발생할 경우 비어있는 hash를 찾아 저장하는 방법이 &lt;strong&gt;개방주소법&lt;/strong&gt;이다. 이때, 비어있는 hash를 찾아가는 방법은 여러가지가 있으며 대표적인 3가지를 소개하겠다.&lt;/p&gt;
-
-&lt;h4 id=&quot;개방-주소법의-규칙&quot;&gt;개방 주소법의 규칙&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;1.선형탐색(Linear Probing)&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;해쉬 충돌 발생 시 다음 bucket 이나 몇 개의 bucket을 건너 뛰어 데이터를 삽입하는 방식&lt;/li&gt;
-  &lt;li&gt;해당 해시 값에서 고정폭(+n)을 건너 뛰어 비어있는 해시에 저장&lt;/li&gt;
-  &lt;li&gt;특정 해시 값 주변 버킷이 모두 채워져 있는 primary clustring 문제에 취약함&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets\img/item11_linear_probing.png&quot; alt=&quot;item11_linear_probing&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;최초 해쉬코드가 52이고 고정폭이 1일 경우 4번 탐색 과정을 거쳐야한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;분리 연결법은 해시 테이블의 크기를 유연하게 만들고, 개방 주소법은 해시 테이블의 크기는 고정시키되 저장해 둘 위치를 잘 찾는데 관심을 둔 구조&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;2.제곱탐색(Quadratic Probing)&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;해쉬 충돌 발생 시 제곱만큼 건너 뛰어 데이터를 삽이하는 방식.&lt;/li&gt;
-  &lt;li&gt;충돌이 일어난 해시의 제곱을 한 해쉬에 데이터 저장(1^2칸, 2^2칸, 3^2칸….)&lt;/li&gt;
-  &lt;li&gt;여러개의 서로 다른 키들이 동일한 초기 해쉬갑(아래 예시에서 initial probe)를 갖는 secondary clustering에 취약&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets\img/item11_Quadratic Probing.PNG&quot; alt=&quot;item11_Quadratic_Probing&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;3.이중해싱(Double Hasing)&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;해시 충돌 시 다른 해시 함수를 한번 더 적용시킴&lt;/li&gt;
-  &lt;li&gt;다른 해시함수를 한번 더 적용하여 나온 해시에 데이터를 저장&lt;/li&gt;
-  &lt;li&gt;이중 해싱을 하면 최초 해시값이 달라지므로 탐사 이동폭이 달라지고, 탐사 이동폭이 같더라도 최초 해시 값이 달라져 primary, secondary clustering을 완화할 수 있음&lt;/li&gt;
-  &lt;li&gt;장점: 또 다른 저장공간 없이 해시 테이블 내에서 데이터의 저장 및 처리가 가능&lt;/li&gt;
-  &lt;li&gt;단점:
-    &lt;ul&gt;
-      &lt;li&gt;해시함수의 성능에 따라서 해시 테이블의 성능이 좌우됨.&lt;/li&gt;
-      &lt;li&gt;데이터의 길이가 늘어나면 그에 해당하는 저장소를 마련해 두어야 함&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;결론&quot;&gt;결론&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Hash는 탐색이 빠른 배영의 장점과 삽입/삭제 시 데이터의 밀어내기 이동이 필요없는 장점을 이용해 성능을 향상시킨 데이터 저장방법이다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;분리 연결법(Separate Chaining)&lt;/strong&gt;: 배열과 단순 연결 리스트를 혼합하여 데이터의 삽입/삭제/탐색의 성능을 높임&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;개방 주소법(Open Addressing)&lt;/strong&gt;: 배열만을 사용하며, 저장 인덱스가 겹칠 경우 인덱스의 옆 인덱스에 저장하는 방식. 이때 옆 인덱스와의 충돌이 또 다시 일어나면 다시 옆 인덱스로 저장한다. 따라서 충돌 데이터가 많이 발생하면 성능에 심각한 문제가 발생한다는 단점이 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Vi0hauJemxA&quot;&gt;[자료구조 알고리즘] 해쉬테이블(Hash Table)에 대해 알아보고 구현하기&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ejyoo.tistory.com/72&quot;&gt;해시(Hash) 알고리즘&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="hashCode" /><category term="hashTable" /><summary type="html">만약 Youtube에서 이미 업로드 되어있는 동영상을 다운 받아서 올릴 경우 에러가 발생한다. 전세계에 유투브 동영상 갯수도 정말 많고, 한 동영상 당 용량도 큰데 어떻게 바로 알고 이미 동영상이 있다는 메시지를 건네주는 걸까? 바로 해쉬테이블을 이용하기 때문이다.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">이 글의 목적 쓰레드 동기화(Synchronization of threads)에 대한 개념을 잡을 수 있다.</summary></entry></feed>

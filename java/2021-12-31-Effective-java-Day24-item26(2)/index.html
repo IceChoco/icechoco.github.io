@@ -30,22 +30,22 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   
     
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>CORS(Cross-Origin Resource Sharing) 에러 | IceChoco</title>
+<title>[Effective Java] Day 24 - Item 26 :: 로 타입은 사용하지 말라(2) | IceChoco</title>
 <meta name="generator" content="Jekyll v4.2.1" />
-<meta property="og:title" content="CORS(Cross-Origin Resource Sharing) 에러" />
+<meta property="og:title" content="[Effective Java] Day 24 - Item 26 :: 로 타입은 사용하지 말라(2)" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="ko_KR, en_US" />
-<meta name="description" content="Access to XMLHttpRequest at &#39;http://localhost:5000/api/hello&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. 제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다. 임의로 proxy 설정하기 첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다. npm install http-proxy-middleware --save 그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다. ``` const { createProxyMiddleware } = require(‘http-proxy-middleware’);" />
-<meta property="og:description" content="Access to XMLHttpRequest at &#39;http://localhost:5000/api/hello&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. 제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다. 임의로 proxy 설정하기 첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다. npm install http-proxy-middleware --save 그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다. ``` const { createProxyMiddleware } = require(‘http-proxy-middleware’);" />
-<link rel="canonical" href="https://icechoco.github.io/frontend/2021-09-19-cors-errors/" />
-<meta property="og:url" content="https://icechoco.github.io/frontend/2021-09-19-cors-errors/" />
+<meta name="description" content="Day24에서는 item 26에 대한 내용을 다룬다." />
+<meta property="og:description" content="Day24에서는 item 26에 대한 내용을 다룬다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2021-12-31-Effective-java-Day24-item26(2)/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2021-12-31-Effective-java-Day24-item26(2)/" />
 <meta property="og:site_name" content="IceChoco" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-09-19T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-12-31T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="CORS(Cross-Origin Resource Sharing) 에러" />
+<meta property="twitter:title" content="[Effective Java] Day 24 - Item 26 :: 로 타입은 사용하지 말라(2)" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"CORS(Cross-Origin Resource Sharing) 에러","dateModified":"2021-12-17T21:19:31+09:00","datePublished":"2021-09-19T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/frontend/2021-09-19-cors-errors/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/frontend/2021-09-19-cors-errors/","description":"Access to XMLHttpRequest at &#39;http://localhost:5000/api/hello&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. 제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다. 임의로 proxy 설정하기 첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다. npm install http-proxy-middleware --save 그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다. ``` const { createProxyMiddleware } = require(‘http-proxy-middleware’);","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"[Effective Java] Day 24 - Item 26 :: 로 타입은 사용하지 말라(2)","dateModified":"2022-01-01T01:57:45+09:00","datePublished":"2021-12-31T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-31-Effective-java-Day24-item26(2)/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/java/2021-12-31-Effective-java-Day24-item26(2)/","description":"Day24에서는 item 26에 대한 내용을 다룬다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,7 +72,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="https://icechoco.github.io/frontend/2021-09-19-cors-errors/" hreflang="ko-kr, en-us">
+<link rel="alternate" href="https://icechoco.github.io/java/2021-12-31-Effective-java-Day24-item26(2)/" hreflang="ko-kr, en-us">
 
 <link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
 
@@ -262,14 +262,14 @@ Left here for reference, feel free to delete.
         <span>/</span>
         
         
-        <a href="/frontend/">frontend</a>
+        <a href="/java/">java</a>
       
       </li>
     
       <li>
       
         <span>/</span>
-        <span>2021-09-19-cors-errors</span>
+        <span>2021-12-31-Effective-java-Day24-item26(2)</span>
       
       </li>
     
@@ -286,18 +286,18 @@ Left here for reference, feel free to delete.
 
 
 
-<article id="post-frontend-cors-errors" class="page post mb6" role="article">
+<article id="post-java-Effective-java-Day24-item26(2)" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
       
-        CORS(Cross-Origin Resource Sharing) 에러
+        [Effective Java] Day 24 - Item 26 :: 로 타입은 사용하지 말라(2)
       
     </h1>
 
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-09-19T00:00:00+09:00">19 Sep 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+        <time datetime="2021-12-31T00:00:00+09:00">31 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>, <span>이펙티브자바</span>, <span>Effectivejava</span>
       </span>
       
         
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-17">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-01-01">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-17T21:19:31+09:00">2021-12-17</time>
+              <time datetime="2022-01-01T01:57:45+09:00">2022-01-01</time>
             </span>
           
         
@@ -329,37 +329,159 @@ Left here for reference, feel free to delete.
   </header>
 
   
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Access to XMLHttpRequest at 'http://localhost:5000/api/hello' from origin 'http://localhost:3000' has been blocked
-by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
-</code></pre></div></div>
-<p>제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다.</p>
-<ul>
-  <li>임의로 proxy 설정하기<br />
-첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install http-proxy-middleware --save
-</code></pre></div>    </div>
-    <p>그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다.</p>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const { createProxyMiddleware } = require('http-proxy-middleware');
+    <p>Day24에서는 item 26에 대한 내용을 다룬다.</p>
 
-module.exports = function (app) {
-    app.use(
-        '/api',
-        createProxyMiddleware({
-            target: 'http://localhost:5000', //프론트엔드 3000번에서 줄 때 타겟을 5000번으로 주겠다.
-            changeOrigin: true,
-        })
-    );
-};
-</code></pre></div>    </div>
-    <p>위와같이 프록시를 설정해주면 아까 발생하던 CORS에러가 더이상 발생하지 않고, 제가 서버에서 정상적으로 /api/hello를 통해 수신받았을 때 출력하도록 해놓은 메시지인 ‘안녕하세요 저 프론트엔드인데요’를 정상출력하였습니다.</p>
-    <h3 id="참고">참고</h3>
-    <p><a href="https://create-react-app.dev/docs/proxying-api-requests-in-development">Proxying API Requests in Development | Create React App</a></p>
+<h2 id="item-26--로-타입은-사용하지-말라2">Item 26 :: 로 타입은 사용하지 말라(2)</h2>
+<h3 id="2-비한정적-와일드카드-타입unbounded-wildcard-type">2. 비한정적 와일드카드 타입(unbounded wildcard type)</h3>
+<p>제너릭 타입을 쓰고 싶지만 실제 타입 매개변수가 무엇인지 신경쓰고 싶지 않을 때 로타입이 아닌 물음표(?)를 사용하자.
+?는 어떤 타입이라도 담을 수 있는 가장 범용적인 매개변수화 Set타입이다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//좋은 예: 비한정적 와일드 타입 사용</span>
+<span class="kd">static</span> <span class="kt">int</span> <span class="nf">numElementsInCommon</span><span class="o">(</span><span class="nc">Set</span><span class="o">&lt;?&gt;</span> <span class="n">s1</span><span class="o">,</span><span class="nc">Set</span><span class="o">&lt;?&gt;</span> <span class="n">s2</span><span class="o">){</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>Set VS <code class="language-plaintext highlighter-rouge">Set&lt;?&gt;</code></strong></p>
+<ul>
+  <li>로 타입 <code class="language-plaintext highlighter-rouge">Set</code>
+    <ul>
+      <li>불안전함 - 아무 원소나 넣을 수 있어 타입 불변식을 훼손하기 쉽다.</li>
+    </ul>
+  </li>
+  <li>비한정적 와일드카드 타입(Unbounded wildcard type) <code class="language-plaintext highlighter-rouge">Set&lt;?&gt;</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Set&lt;E&gt;</code>의 비한정적 와일드카드 타입은 <code class="language-plaintext highlighter-rouge">Set&lt;?&gt;</code>이다.</li>
+      <li>안전함 - Collection&lt;?&gt;에는 null제외 어떤 원소도 넣을 수 없다.
+        <ul>
+          <li>다른 원소를 add하려 하면 컴파일타임에 오류메시지를 볼 수 있다.</li>
+          <li>컬렉션의 타입 불변식을 훼손하지 못하게 막고, 컬렉션에서 꺼낼 수 있는 객체의 타입도 알 수 없게 한다.</li>
+        </ul>
+      </li>
+    </ul>
   </li>
 </ul>
 
-<h2 id="3attempted-import-error-reducer-is-not-exported-from-_reducers">3.Attempted import error: ‘Reducer’ is not exported from ‘./_reducers’.</h2>
+<h3 id="3-로타입-규칙-예외">3. 로타입 규칙 예외</h3>
+<h4 id="1-class-리터럴에는-로타입을-사용한다">1) class 리터럴에는 로타입을 사용한다.</h4>
+<p>자바 명세가 class 리터럴에 매개변수화 타입을 사용하지 못하게 했다.</p>
+<ul>
+  <li>허용: List.class, String[].class, int.class</li>
+  <li>불가: <code class="language-plaintext highlighter-rouge">List&lt;String&gt;.class</code>, <code class="language-plaintext highlighter-rouge">List&lt;?&gt;.class</code></li>
+</ul>
 
-<!--author-->
+<hr />
+<ul>
+  <li><strong>클래스 리터럴(class literal)</strong>
+    <ul>
+      <li>클래스 리터럴(Class Literal)은 <code class="language-plaintext highlighter-rouge">String.class</code>, <code class="language-plaintext highlighter-rouge">Integer.class</code> 등을 말하며, <code class="language-plaintext highlighter-rouge">String.class</code>의 타입은 <code class="language-plaintext highlighter-rouge">Class&lt;String&gt;</code>, <code class="language-plaintext highlighter-rouge">Integer.class</code>의 타입은 <code class="language-plaintext highlighter-rouge">Class&lt;Integer&gt;</code>다.</li>
+      <li>타입 토큰(Type Token)은 쉽게 말해 타입을 나타내는 토큰이며, 클래스 리터럴이 타입 토큰으로서 사용된다.</li>
+      <li><code class="language-plaintext highlighter-rouge">myMethod(Class&lt;?&gt; clazz)</code>와 같은 메서드는 타입 토큰을 인자로 받는 메서드이며, <code class="language-plaintext highlighter-rouge">method(String.class)</code>로 호출하면, <code class="language-plaintext highlighter-rouge">String.class</code>라는 클래스 리터럴을 타입 토큰 파라미터로 myMethod에 전달한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<h4 id="2-instance-of-연산자는-로타입을-사용한다">2) instance of 연산자는 로타입을 사용한다.</h4>
+<p>런타임에는 제너릭 타입 정보가 지워진다.<br />
+instance of 연산자는 비한정적 와일드카드 타입(<code class="language-plaintext highlighter-rouge">Set&lt;?&gt;</code>) 이외의 매개변수화 타입(<code class="language-plaintext highlighter-rouge">Set&lt;String&gt;</code>)에는 적용할 수 없다.<br />
+로타입과 비한정적 와일드 카드 타입의 instance of는 완전히 똑같이 동작한다. &lt;?&gt;는 코드만 지저분해지므로 차라리 로타입을 쓰자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="o">(</span><span class="n">o</span> <span class="n">instance</span> <span class="n">of</span> <span class="nc">Set</span><span class="o">){</span>    <span class="c1">//로 타입</span>
+    <span class="nc">Set</span><span class="o">&lt;?&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Set</span><span class="o">&lt;?&gt;)</span><span class="n">o</span><span class="o">;</span> <span class="c1">//와일드카드 타입</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>o의 타입이 Set임을 확인한 다음 와일드 카드인 <code class="language-plaintext highlighter-rouge">Set&lt;?&gt;</code>로 형변환 해야 한다.<br />
+이는 검사형변환(checked cast)이므로 컴파일러 경고가 뜨지 않는다.</p>
+
+<h3 id="결론">결론</h3>
+<ul>
+  <li>로 타입을 사용하면 런타임에 예외가 일어날 수 있으므로 사용하지 마라
+    <ul>
+      <li>로 타입은 제너릭이 도입되기 이전 코드와의 호환성을 위해 제공된 것이다.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Set&lt;Obejct&gt;</code>: 어떤 타입의 객체도 저장할 수 있는 매개변수화 타입. 안전함.</li>
+  <li><code class="language-plaintext highlighter-rouge">Set&lt;?&gt;</code>: 어떤 종류의 타입 객체만 저장할 수 있는 와일드카드 타입. 안전함.</li>
+  <li>Set: 로타입. 제너릭 타입 시스템에 속하지 않음. 안전하지 않음.</li>
+</ul>
+
+<h3 id="제너릭-관련-용어정리">제너릭 관련 용어정리</h3>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">List</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="nc">Collection</span><span class="o">&lt;</span><span class="no">E</span><span class="o">&gt;</span> <span class="o">{</span>
+     <span class="kd">private</span> <span class="no">E</span> <span class="n">member</span><span class="o">;</span> 
+<span class="o">}</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>한글용어(영문용어)</th>
+      <th>설명</th>
+      <th>예</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>매개변수화 타입(parameterized type)</td>
+      <td>각각의 제네릭 타입은 parameterizedType을 선언함</td>
+      <td><code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code></td>
+    </tr>
+    <tr>
+      <td>실제 타입 매개변수(actual type parameter)</td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">String</code></td>
+    </tr>
+    <tr>
+      <td>제네릭 타입(Generic Type)</td>
+      <td>제네릭 클래스와 제네릭 인터페이스를 통틀어 이르는 말</td>
+      <td><code class="language-plaintext highlighter-rouge">List&lt;E&gt;</code></td>
+    </tr>
+    <tr>
+      <td>정규 타입 매개변수(formal Type parameter)</td>
+      <td>제네릭 선언에 사용된 매개변수</td>
+      <td>E</td>
+    </tr>
+    <tr>
+      <td>비한정적 와일드카드 타입(unbounded wildcard type)</td>
+      <td>어떤 종류의 타입 객체만 저장할 수 있는 와일드카드 타입</td>
+      <td><code class="language-plaintext highlighter-rouge">List&lt;?&gt;</code></td>
+    </tr>
+    <tr>
+      <td>로타입(raw type)</td>
+      <td>제네릭 타입에서 타입 매개변수를 전혀 사용하지 않았을 때</td>
+      <td>List</td>
+    </tr>
+    <tr>
+      <td>한정적 타입 매개변수(bounded Type parameter)</td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;E extends Number&gt;</code></td>
+    </tr>
+    <tr>
+      <td>재귀적 타입 한정(recursive Type parameter)</td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;T extends Comparable&lt;T&gt;&gt;</code></td>
+    </tr>
+    <tr>
+      <td>한정적 와일드카드 타입(bounded wildcard type)</td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">List&lt;? extends Number&gt;</code></td>
+    </tr>
+    <tr>
+      <td>제너릭 메서드(generic method)</td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">static &lt;E&gt; List&lt;E&gt; asList(E[] a)</code></td>
+    </tr>
+    <tr>
+      <td>타입 토큰(type token)</td>
+      <td> </td>
+      <td>String.class</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="참고">참고</h2>
+<ul>
+  <li><a href="https://stackoverflow.com/questions/2160788/what-is-a-class-literal-in-java">What is a class literal in Java?</a></li>
+  <li><a href="https://homoefficio.github.io/2016/11/30/%ED%81%B4%EB%9E%98%EC%8A%A4-%EB%A6%AC%ED%84%B0%EB%9F%B4-%ED%83%80%EC%9E%85-%ED%86%A0%ED%81%B0-%EC%88%98%ED%8D%BC-%ED%83%80%EC%9E%85-%ED%86%A0%ED%81%B0/">클래스 리터럴, 타입 토큰, 수퍼 타입 토큰</a></li>
+</ul>
 
   
 </article>
@@ -532,7 +654,7 @@ module.exports = function (app) {
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-31-Effective-java-Day24-item26(2)/" class="flip-title"><span>[Effective Java] Day 24 - Item 26 :: 로 타입은 사용하지 말라(2)</span></a>  <time class="faded fine" datetime="2021-12-31T00:00:00+09:00">31 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-30-Effective-java-Day23-item25,26/" class="flip-title"><span>[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라</span></a>  <time class="faded fine" datetime="2021-12-30T00:00:00+09:00">30 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-29-Effective-java-Day22-item21,22,23/" class="flip-title"><span>[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라</span></a>  <time class="faded fine" datetime="2021-12-29T00:00:00+09:00">29 Dec 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-30-Effective-java-Day23-item25,26/" class="flip-title"><span>[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라</span></a>  <time class="faded fine" datetime="2021-12-30T00:00:00+09:00">30 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-29-Effective-java-Day22-item21,22,23/" class="flip-title"><span>[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라</span></a>  <time class="faded fine" datetime="2021-12-29T00:00:00+09:00">29 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-28-Effective-java-Day21-item20/" class="flip-title"><span>[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라</span></a>  <time class="faded fine" datetime="2021-12-28T00:00:00+09:00">28 Dec 2021</time></li>            </ul></aside>
 
   
 

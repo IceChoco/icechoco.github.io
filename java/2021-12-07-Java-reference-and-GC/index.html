@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Java] Java Reference(참조)와 GC(Garbage Collector), JVM" />
 <script type="application/ld+json">
-{"headline":"[Java] Java Reference(참조)와 GC(Garbage Collector), JVM","dateModified":"2021-12-19T22:45:57+09:00","datePublished":"2021-12-07T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-07-Java-reference-and-GC/"},"url":"https://icechoco.github.io/java/2021-12-07-Java-reference-and-GC/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"이 글의 목적 Java Reference의 종류인 Soft, Weak, Phanthom, Strong Refrenece에 대해서 이해하고 설명할 수 있다. 네이버 NBP 웹플랫폼개발랩의 박세훈님이 올려주신 Java Reference와 GC를 보고 정리한 글입니다.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"[Java] Java Reference(참조)와 GC(Garbage Collector), JVM","dateModified":"2021-12-31T20:35:40+09:00","datePublished":"2021-12-07T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-07-Java-reference-and-GC/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/java/2021-12-07-Java-reference-and-GC/","description":"이 글의 목적 Java Reference의 종류인 Soft, Weak, Phanthom, Strong Refrenece에 대해서 이해하고 설명할 수 있다. 네이버 NBP 웹플랫폼개발랩의 박세훈님이 올려주신 Java Reference와 GC를 보고 정리한 글입니다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-30T22:18:23+09:00',
+    INDEX_KEY: 'index--2022-01-01T01:59:40+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-19">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-31">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-19T22:45:57+09:00">2021-12-19</time>
+              <time datetime="2021-12-31T20:35:40+09:00">2021-12-31</time>
             </span>
           
         
@@ -792,7 +792,7 @@ reachability를 더 자세히 보기위해 root set과 힙 내의 객체를 중�
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-30-Effective-java-Day23-item25,26/" class="flip-title"><span>[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라</span></a>  <time class="faded fine" datetime="2021-12-30T00:00:00+09:00">30 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-29-Effective-java-Day22-item21,22,23/" class="flip-title"><span>[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라</span></a>  <time class="faded fine" datetime="2021-12-29T00:00:00+09:00">29 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-28-Effective-java-Day21-item20/" class="flip-title"><span>[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라</span></a>  <time class="faded fine" datetime="2021-12-28T00:00:00+09:00">28 Dec 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-31-Effective-java-Day24-item26(2)/" class="flip-title"><span>[Effective Java] Day 24 - Item 26 :: 로 타입은 사용하지 말라(2)</span></a>  <time class="faded fine" datetime="2021-12-31T00:00:00+09:00">31 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-30-Effective-java-Day23-item25,26/" class="flip-title"><span>[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라</span></a>  <time class="faded fine" datetime="2021-12-30T00:00:00+09:00">30 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-29-Effective-java-Day22-item21,22,23/" class="flip-title"><span>[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라</span></a>  <time class="faded fine" datetime="2021-12-29T00:00:00+09:00">29 Dec 2021</time></li>            </ul></aside>
 
   
 
@@ -899,20 +899,24 @@ reachability를 더 자세히 보기위해 root set과 힙 내의 객체를 중�
   
     
       
-    
-  
-    
-      
         
         
         <li>
           
           <div class="list-wrapper">
-            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            <a id="_navigation" href="/about/" class="sidebar-nav-item"  >About</a>
             
           </div>
           
         </li>
+      
+    
+  
+    
+      
+    
+  
+    
       
     
   
@@ -947,10 +951,6 @@ reachability를 더 자세히 보기위해 root set과 힙 내의 객체를 중�
           </div>
           
         </li>
-      
-    
-  
-    
       
     
   
