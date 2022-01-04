@@ -4,6 +4,102 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://icechoco.github.io/java/2022-01-04-Effective-java-Day28-item30/</loc>
+        
+        <lastmod>2022-01-04T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>https://icechoco.github.io/java/2022-01-03-Effective-java-Day27-item29/</loc>
+        
+        <lastmod>2022-01-03T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>https://icechoco.github.io/java/2022-01-02-Effective-java-Day26-item40/</loc>
+        
+        <lastmod>2022-01-02T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>https://icechoco.github.io/java/2022-01-01-Effective-java-Day25-item27,28/</loc>
+        
+        <lastmod>2022-01-01T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>https://icechoco.github.io/java/2022-01-01-Java-wildcard-type/</loc>
+        
+        <lastmod>2022-01-01T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>https://icechoco.github.io/java/2021-12-31-Effective-java-Day24-item26(2)/</loc>
+        
+        <lastmod>2021-12-31T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/</loc>
         
         <lastmod>2021-12-30T00:00:00+09:00</lastmod>

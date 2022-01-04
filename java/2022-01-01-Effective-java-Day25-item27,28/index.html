@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Effective Java] Day 25 - Item 27, 28 :: 비검사 경고를 제외하라, 배열보다는 리스트를 사용하라 | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Effective Java] Day 25 - Item 27, 28 :: 비검사 경고를 제외하라, 배열보다는 리스트를 사용하라" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="Day25에서는 item 27,28에 대한 내용을 다룬다." />
+<meta property="og:description" content="Day25에서는 item 27,28에 대한 내용을 다룬다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2022-01-01-Effective-java-Day25-item27,28/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2022-01-01-Effective-java-Day25-item27,28/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-01-01T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Effective Java] Day 25 - Item 27, 28 :: 비검사 경고를 제외하라, 배열보다는 리스트를 사용하라" />
+<script type="application/ld+json">
+{"headline":"[Effective Java] Day 25 - Item 27, 28 :: 비검사 경고를 제외하라, 배열보다는 리스트를 사용하라","dateModified":"2022-01-03T20:38:04+09:00","datePublished":"2022-01-01T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2022-01-01-Effective-java-Day25-item27,28/"},"url":"https://icechoco.github.io/java/2022-01-01-Effective-java-Day25-item27,28/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day25에서는 item 27,28에 대한 내용을 다룬다.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2022-01-01-Effective-java-Day25-item27,28/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2022-01-04T23:08:37+09:00',
+  };
+  w._clapButton = false;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2022-01-01-Effective-java-Day25-item27,28</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day25-item27,28" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 25 - Item 27, 28 :: 비검사 경고를 제외하라, 배열보다는 리스트를 사용하라
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2022-01-01T00:00:00+09:00">01 Jan 2022</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>, <span>이펙티브자바</span>, <span>Effectivejava</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-01-03">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-01-03T20:38:04+09:00">2022-01-03</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day25에서는 item 27,28에 대한 내용을 다룬다.</p>
+
+<h2 id="item-27--비검사-경고를-제외하라">Item 27 :: 비검사 경고를 제외하라</h2>
+<p>제너릭을 활용하면 아래와 같은 컴파일러의 비검사 경고를 볼 수 있다.</p>
+<ul>
+  <li>비검사 형변환 경고(unchecked cast warning)</li>
+  <li>비검사 메서드 호출 경고(unchecked method invocation warning)</li>
+  <li>비검사 매개변수화 가변인수 타입 경고(unchecked parameterized vararg type warning)</li>
+  <li>비검사 변환경고(unchecked conversion warning) 등</li>
+</ul>
+
+<p><strong>비검사 경고 예</strong>
+<img src="/assets\img/item27_unchecked_assignment.PNG" alt="item27_unchecked_assignment" />
+javac 명령줄 인수에 <code class="language-plaintext highlighter-rouge">-Xlint:unchecked</code>를 추가하면 뭐가 잘못됐는지 위와 같이 설명해준다.</p>
+
+<p>인텔리제이에서 명령줄 인수를 추가하기 위해서는 Settings - Build, Execution, Deployment - Compiler - Java Compiler에서 설정할 수 있다.
+<img src="/assets\img/item27_intelliJ_additional_option.png" alt="item27_intelliJ_additional_option" /></p>
+
+<p>위 소스는 아래와 같이 바꾸면 경고가 사라진다. 자바 7부터는 다이아몬드 연산자인 <code class="language-plaintext highlighter-rouge">&lt;&gt;</code>로 타입 매개변수인 <code class="language-plaintext highlighter-rouge">&lt;String&gt;</code>를 대체할 수 있다. 컴파일러는 타입 매개변수를 추론한다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">exaltation</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+</code></pre></div></div>
+
+<h3 id="할-수-있는-한-모든-비검사-경고를-제거하라">할 수 있는 한 모든 비검사 경고를 제거하라.</h3>
+<p>경고를 제거할 수는 없지만 타입이 안전하다고 확신할 수 있다면 @SuppressWarnings(“unchecked”) 애너테이션을 달아 경고를 숨기자.</p>
+
+<h4 id="suppresswarnings">@SuppressWarnings</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+* The string {@code "unchecked"} is used to suppress
+* unchecked warnings. Compiler vendors should document the
+* additional warning names they support in conjunction with this
+* annotation type. They are encouraged to cooperate to ensure
+* that the same names work across multiple compilers.
+* @return the set of warnings to be suppressed
+*/</span>
+<span class="nd">@Target</span><span class="o">({</span><span class="no">TYPE</span><span class="o">,</span> <span class="no">FIELD</span><span class="o">,</span> <span class="no">METHOD</span><span class="o">,</span> <span class="no">PARAMETER</span><span class="o">,</span> <span class="no">CONSTRUCTOR</span><span class="o">,</span> <span class="no">LOCAL_VARIABLE</span><span class="o">,</span> <span class="no">MODULE</span><span class="o">})</span>
+<span class="nd">@Retention</span><span class="o">(</span><span class="nc">RetentionPolicy</span><span class="o">.</span><span class="na">SOURCE</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="nc">SuppressWarnings</span> <span class="o">{</span>
+    <span class="nc">String</span><span class="o">[]</span> <span class="nf">value</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ol>
+  <li>개별 지역변수 ~ 클래스 전체까지 선언할 수 있다.</li>
+  <li>가능한 한 좁은 범위에 적용하자.
+    <ul>
+      <li>ex) 변수 선언, 아주 짧은 메서드, 생성자</li>
+      <li>절대로 클래스 전체에 적용해서는 안된다.</li>
+    </ul>
+  </li>
+  <li>한 줄이 넘는 메서드나 생성자에 달린 @SuppressWarnings 애너테이션을 발견하면 지역변수 선언쪽으로 옮기자.
+    <ul>
+      <li>이를 위해 지역변수를 새로 선언하는 수고를 해야 할 수도 있지만, 그만한 값어치가 있을 것이다!</li>
+      <li>ex) ArrayList의 toArray 메서드
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"unchecked"</span><span class="o">)</span> <span class="c1">//unchecked: 미확인 오퍼레이션과 관련된 경고 억제</span>
+<span class="kd">public</span> <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="no">T</span><span class="o">[]</span> <span class="nf">toArray</span><span class="o">(</span><span class="no">T</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+ <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">)</span>
+  <span class="c1">// Make a new array of a's runtime type, but my contents:</span>
+  <span class="k">return</span> <span class="o">(</span><span class="no">T</span><span class="o">[])</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">elementData</span><span class="o">,</span> <span class="n">size</span><span class="o">,</span> <span class="n">a</span><span class="o">.</span><span class="na">getClass</span><span class="o">());</span>
+ <span class="nc">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">elementData</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">a</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">size</span><span class="o">);</span>
+ <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="n">size</span><span class="o">)</span>
+  <span class="n">a</span><span class="o">[</span><span class="n">size</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+ <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>        </div>
+        <p>실제로는 메서드에 @suppressWarnings가 달려있지만 더 좋은 방법이 있다.<br />
+반환값을 담을 지역변수를 하나 선언하고 그 변수에 애너테이션을 달아주는 방법이다.</p>
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="no">T</span><span class="o">[]</span> <span class="nf">toArray</span><span class="o">(</span><span class="no">T</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+ <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">)</span>
+  <span class="c1">// 생성한 배열인 result와 매개변수로 받은 배열의 타입도 T[]로 형변환 하여 같으므로</span>
+  <span class="c1">// 올바른 형변환이다.</span>
+  <span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"unchecked"</span><span class="o">)</span> <span class="no">T</span><span class="o">[]</span> <span class="n">result</span> <span class="o">=</span> <span class="o">(</span><span class="no">T</span><span class="o">[])</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">copyOf</span><span class="o">(</span><span class="n">elementData</span><span class="o">,</span> <span class="n">size</span><span class="o">,</span> <span class="n">a</span><span class="o">.</span><span class="na">getClass</span><span class="o">());</span>
+  <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+ <span class="nc">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">elementData</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">a</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">size</span><span class="o">);</span>
+ <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="n">size</span><span class="o">)</span>
+  <span class="n">a</span><span class="o">[</span><span class="n">size</span><span class="o">]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+ <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>        </div>
+      </li>
+      <li>장점
+        <ul>
+          <li>컴파일이 깔끔하게 된다.</li>
+          <li>비검사 경고를 숨기는 범위를 최소로 좁힐 수 있다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>@SuppressWarnings(“unchecked”) 애너테이션을 사용할 때면 그 경고를 무시해도 안전한 이유를 항상 주석으로 남기자.
+    <ul>
+      <li>다른 사람이 그 코드를 이해하는데 도움이 된다.</li>
+      <li>다른 사람이 그 코드를 잘못 수정하여 타입 안전성을 잃는 상황을 줄여준다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="결론">결론</h3>
+<ul>
+  <li>최선을 다해 모든 비검사 경고를 제거하라
+    <ul>
+      <li>모두 제거하면 타입 안정성이 증명된다.</li>
+      <li>ClassCastException이 발생할 일이 없다.</li>
+    </ul>
+  </li>
+  <li>경고를 제거할 수 없고 타입이 안전하다고 확신할 수 있다면 <code class="language-plaintext highlighter-rouge">@SuppressWarnings("unchekced")</code>를 달아 경고를 숨겨라
+    <ul>
+      <li>경고를 숨기기로 한 근거를 주석으로 남겨라</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="참고">참고</h3>
+<ul>
+  <li><a href="https://www.baeldung.com/java-suppresswarnings-valid-names">Valid @SuppressWarnings Warning Names</a></li>
+</ul>
+
+<h2 id="item-28--배열보다는-리스트를-사용하라">Item 28 :: 배열보다는 리스트를 사용하라</h2>
+<h3 id="배열과-리스트제너릭-타입의-차이">배열과 리스트(제너릭 타입)의 차이</h3>
+<h4 id="1-배열-array">1. 배열 (Array)</h4>
+<p><strong>1) 배열은 함께 변한다. 즉, 공변(convariant)이다.</strong></p>
+<ul>
+  <li>Sub extends Super인 경우, Sub[] extends Super[]이다.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Sub</span> <span class="kd">extends</span> <span class="nc">Super</span> <span class="o">{</span>
+<span class="o">}</span>
+
+<span class="nc">Super</span><span class="o">[]</span> <span class="n">superman</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Sub</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+</code></pre></div></div>
+<p><strong>2) 배열은 실체화(reify)된다.</strong></p>
+<ul>
+  <li>컴파일타임: 타입 불안전 / 런타임: 타입 안전
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Object</span><span class="o">[]</span> <span class="n">objectArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Long</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+<span class="n">objectArray</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s">"String을 넣어봅시다!"</span><span class="o">;</span>
+</code></pre></div>    </div>
+    <p>Object 배열에 Long용 저장소를 할당했다.<br />
+그러므로 objectArray에는 Long타입만 올 수 있다. String은 못온다.<br />
+그런데 위 코드는 컴파일 에러가 나지 않는다.</p>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Exception</span> <span class="n">in</span> <span class="n">thread</span> <span class="s">"main"</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ArrayStoreException</span><span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">String</span>
+<span class="n">at</span> <span class="n">item28</span><span class="o">.</span><span class="na">BetweenArrayAndList</span><span class="o">.</span><span class="na">main</span><span class="o">(</span><span class="nc">BetweenArrayAndList</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">7</span><span class="o">)</span>
+</code></pre></div>    </div>
+    <p>런타임에서 에러가 난다.<br />
+→ 런타임에도 자신이 담기로 한 원소의 타입을 인지하고 확인하기 때문</p>
+  </li>
+</ul>
+
+<h4 id="2-리스트-list">2. 리스트 (List)</h4>
+<p><strong>1) 리스트는 함께 변하지 않는다. 즉, 불공변(invariant)이다.</strong></p>
+<ul>
+  <li>상위-하위타입 관계가 아니다.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Super</span><span class="o">&gt;</span> <span class="n">superList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Sub</span><span class="o">&gt;();</span><span class="c1">//컴파일 에러!</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><strong>2) List는 실체화(reify)되지 않는다.</strong></p>
+<ul>
+  <li>컴파일타임: 타입 안전 / 런타임: 타입 불안전
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//컴파일 에러</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Object</span><span class="o">&gt;</span> <span class="n">objList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Long</span><span class="o">&gt;();</span>
+<span class="n">objList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"String을 넣어봅시다!"</span><span class="o">);</span>
+</code></pre></div>    </div>
+    <p>리스트는 컴파일할 때 바로 알 수 있다. 단, 런타임 시 타입정보가 소거된다.<br />
+원소 타입을 컴파일 타임에만 검사, 런타임에는 알 수 조차 없다.</p>
+  </li>
+</ul>
+
+<p>→ 소거: 제너릭이 지원되기 전의 레거시 코드와 제너릭 타입을 함께 사용할 수 있게 해주는 메커니즘<br />
+  자바5가 제너릭으로 순조롭게 전환될 수 있도록 해준 일등공신!</p>
+
+<h4 id="실체화reify">실체화(reify)</h4>
+<ul>
+  <li><strong>실체화</strong>: JVM이 type 정보를 완전히 알게 되거나, 알게 하는 것, 또는 알고 체크하는 것</li>
+  <li>실체화 가능 타입(reifiable type)
+    <ul>
+      <li>매개변수화 타입 가운데 실체화 될 수 있는 타입은 비한정적 와일드카드 뿐이다.</li>
+      <li>ex) <code class="language-plaintext highlighter-rouge">List&lt;?&gt;</code>, <code class="language-plaintext highlighter-rouge">Map&lt;?,?&gt;</code></li>
+    </ul>
+  </li>
+  <li>실체화 불가 타입(non-reifiable type)
+    <ul>
+      <li>실체화되지 않아서 런타임에는 컴파일타임보다 타입 정보를 적게 가진다.</li>
+      <li>ex) E, <code class="language-plaintext highlighter-rouge">List&lt;E&gt;</code>, <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="제너릭-배열을-만들지-못하게-막은-이유는">제너릭 배열을 만들지 못하게 막은 이유는?</h3>
+<h4 id="1-배열과-제너릭은-잘-어우러지지-못한다">1. 배열과 제너릭은 잘 어우러지지 못한다.</h4>
+<p><code class="language-plaintext highlighter-rouge">new List&lt;E&gt;[]</code>, <code class="language-plaintext highlighter-rouge">new List&lt;String&gt;[]</code>, new E[] → 컴파일 시 오류 발생!</p>
+<h4 id="2-타입-안전하지-않다">2. 타입 안전하지 않다.</h4>
+<p>위 두가지 이유 때문인데 자세한건 아래 예시를 보고 이해해보자.<br />
+<strong>ex) 제너릭 배열 생성이 허용된다 가정</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;[]</span> <span class="n">stringList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;[</span><span class="mi">1</span><span class="o">];</span> <span class="c1">// (1) 허용된다 가정</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">initList</span> <span class="o">=</span> <span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">42</span><span class="o">);</span>            <span class="c1">// (2) </span>
+<span class="nc">Object</span><span class="o">[]</span> <span class="n">objects</span> <span class="o">=</span> <span class="n">stringList</span><span class="o">;</span>                   <span class="c1">// (3)</span>
+<span class="n">objects</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">initList</span><span class="o">;</span>                           <span class="c1">// (4)</span>
+<span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">stringList</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>                 <span class="c1">// (5)</span>
+</code></pre></div></div>
+<p>(1)처럼 제너릭 배열이 생성이 허용된다고 일단 가정해보자.<br />
+(2)에서 원소가 42 하나인 <code class="language-plaintext highlighter-rouge">List&lt;Integer&gt;</code>를 생성한다.<br />
+(3)은 (1) 에서 생성한 <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code> 배열을 Object 배열에 할당한다. 즉, Object 배열은 <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code> 배열을 참조하게 된다. 배열은 공변이므로 가능하다.<br />
+<img src="/assets\img/item28_If_there_is_generic_array.PNG" alt="item28_If_there_is_generic_array" />
+(4)는 Objects 배열의 첫 원소에 원소가 42 하나인 initList를 저장한다.</p>
+
+<ul>
+  <li>문제점
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code> 인스턴스만 받겠다고 선언한 stringList 배열에 <code class="language-plaintext highlighter-rouge">List&lt;Integer&gt;</code> 인스턴스가 들어가있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>(5)는 이 배열의 첫 리스트에서 원소를 꺼내려 한다. 컴파일러는 꺼낸 원소 42를 자동으로 String으로 형변환한다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">s</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="mi">42</span><span class="o">;</span> <span class="c1">// ClassCastException 발생</span>
+</code></pre></div></div>
+
+<p>이런 일을 방지하기 위해서 제너릭배열이 생성되지 않도록 (1)에서 컴파일 오류를 내야하는 것이다.</p>
+
+<h3 id="배열대신-list처럼-원소를-관리하자">배열대신 List처럼 원소를 관리하자</h3>
+<p>배열로 형변환할 때 제너릭 배열 생성오류 or 비검사 형변환 경고가 뜨는 경우<br />
+→ 배열인 E[] 대신 컬렉션인 <code class="language-plaintext highlighter-rouge">List&lt;E&gt;</code>를 사용하자!</p>
+
+<p><strong>ex) 생성자에서 컬렉션을 받는 Chooser 클래스</strong><br />
+이 클래스는 컬렉션 안의 원소 중 하나를 무작위로 반환하는 choose 메서드를 제공한다.</p>
+<h4 id="제너릭-미사용-버전">제너릭 미사용 버전</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Chooser</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Object</span><span class="o">[]</span> <span class="n">choiceArray</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Chooser</span><span class="o">(</span><span class="nc">Collection</span> <span class="n">choices</span><span class="o">){</span>
+        <span class="n">choiceArray</span> <span class="o">=</span> <span class="n">choices</span><span class="o">.</span><span class="na">toArray</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">choose</span><span class="o">(){</span>
+        <span class="nc">Random</span> <span class="n">rnd</span> <span class="o">=</span> <span class="nc">ThreadLocalRandom</span><span class="o">.</span><span class="na">current</span><span class="o">();</span>
+        <span class="k">return</span>  <span class="n">choiceArray</span><span class="o">[</span><span class="n">rnd</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">choiceArray</span><span class="o">.</span><span class="na">length</span><span class="o">)];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>이 클래스를 사용하려면 choose 메서드 호출 시 마다 반환된 Object를 원하는 타입으로 형변환 해야한다.<br />
+혹시나 원하는 타입과 다른 타입의 원소가 들어있는 경우 런타임 시 형변환 오류가 발생할 것이다.</p>
+<h4 id="제너릭-사용-버전-1">제너릭 사용 버전 1</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Chooser2</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span><span class="c1">//제너릭으로 변환</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="no">T</span><span class="o">[]</span> <span class="n">choiceArray</span><span class="o">;</span>
+
+  <span class="c1">//@SuppressWarnings("unchecked") // 비검사 형변환 경고(unchecked cast경고)</span>
+    <span class="kd">public</span> <span class="nf">Chooser2</span><span class="o">(</span><span class="nc">Collection</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">choices</span><span class="o">){</span>
+        <span class="n">choiceArray</span> <span class="o">=</span> <span class="o">(</span><span class="no">T</span><span class="o">[])</span> <span class="n">choices</span><span class="o">.</span><span class="na">toArray</span><span class="o">();</span> <span class="c1">//unchecked cast: 'java.lang.Object[]' to 'T[]'</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">choose</span><span class="o">(){</span>
+        <span class="nc">Random</span> <span class="n">rnd</span> <span class="o">=</span> <span class="nc">ThreadLocalRandom</span><span class="o">.</span><span class="na">current</span><span class="o">();</span>
+        <span class="k">return</span>  <span class="n">choiceArray</span><span class="o">[</span><span class="n">rnd</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">choiceArray</span><span class="o">.</span><span class="na">length</span><span class="o">)];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">choiceArray = (T[]) choices.toArray();</code>에서 unchecked cast: ‘java.lang.Object[]’ to ‘T[]’ 경고가 발생한다.</p>
+<ul>
+  <li>T[]가 무슨 타입인지 알 수 없으니 컴파일러는 이 형변환이 런타임에도 <strong>안전한지 보장할 수 없다</strong>라는 뜻</li>
+  <li>제너릭에는 원소의 타입 정보가 소거되어 런타임에는 무슨 타입인지 알 수 없다.</li>
+  <li>컴파일러가 안전을 보장하지 못할 뿐 소스코드는 동작하며, List에 비해 <strong>빠르다.</strong></li>
+  <li>코드작성자가 안전하다고 확신한다면 주석을 남기고 애너테이션을 달아 경고를 숨겨도 된다.
+    <ul>
+      <li>단, 경고의 원인을 완전히 제거하는게 훨씬 좋은 방법이다(item 27)</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="제너릭-사용-버전-2">제너릭 사용 버전 2</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Chooser3</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span><span class="c1">//제너릭으로 변환</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">List</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">choiceList</span><span class="o">;</span><span class="c1">//리스트로 변경</span>
+
+    <span class="kd">public</span> <span class="nf">Chooser3</span><span class="o">(</span><span class="nc">Collection</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="n">choices</span><span class="o">){</span>
+        <span class="n">choiceList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">choices</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">choose</span><span class="o">(){</span>
+        <span class="nc">Random</span> <span class="n">rnd</span> <span class="o">=</span> <span class="nc">ThreadLocalRandom</span><span class="o">.</span><span class="na">current</span><span class="o">();</span>
+        <span class="k">return</span>  <span class="n">choiceList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">rnd</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">choiceList</span><span class="o">.</span><span class="na">size</span><span class="o">()));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<ul>
+  <li>장점: 타입 안전성과 상호운용성이 좋아진다. 런타임이 아닌 컴파일시점에 에러를 잡아준다.</li>
+  <li>단점: 코드가 조금 복잡해진다. 성능이 살짝 느려질 수 있다.</li>
+</ul>
+
+<h3 id="결론-1">결론</h3>
+<ul>
+  <li>배열과 리스트를 섞어쓰기란 쉽지 않다.
+    <ul>
+      <li><strong>Array</strong>: 공변. 실체화된다.
+        <ul>
+          <li>컴파일타임: 타입 불안전 / 런타임: 타입 안전</li>
+        </ul>
+      </li>
+      <li><strong>List</strong>: 불공변. 타입정보가 소거된다.
+        <ul>
+          <li>컴파일타임: 타입 안전 / 런타임: 타입 불안전</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>섞어쓰다가 컴파일 오류나 경고를 만나면, 배열을 List로 대체해라.</li>
+</ul>
+
+<h3 id="참고-1">참고</h3>
+<ul>
+  <li><a href="https://junroot.github.io/programming/Java-%EB%B0%B0%EC%97%B4%EA%B3%BC-%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%9D%98-%EA%B3%B5%EB%B3%80%EC%84%B1%EA%B3%BC-%EB%B0%98%EA%B3%B5%EB%B3%80%EC%84%B1,-%EB%AC%B4%EA%B3%B5%EB%B3%80%EC%84%B1/">Java 배열과 리스트의 공변성과 반공변성, 무공변성</a></li>
+</ul>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-01-04-Effective-java-Day28-item30/" class="flip-title"><span>[Effective Java] Day 28 - Item 30 :: 이왕이면 제너릭 메서드로 만들라</span></a>  <time class="faded fine" datetime="2022-01-04T00:00:00+09:00">04 Jan 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-03-Effective-java-Day27-item29/" class="flip-title"><span>[Effective Java] Day 27 - Item 29 :: 이왕이면 제너릭 타입으로 만들라</span></a>  <time class="faded fine" datetime="2022-01-03T00:00:00+09:00">03 Jan 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-02-Effective-java-Day26-item40/" class="flip-title"><span>Item 40 :: @Override 애너테이션을 일관되게 사용하라</span></a>  <time class="faded fine" datetime="2022-01-02T00:00:00+09:00">02 Jan 2022</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

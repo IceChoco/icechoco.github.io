@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라","dateModified":"2021-12-30T22:07:12+09:00","datePublished":"2021-12-30T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/"},"url":"https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day23에서는 item 25, 26에 대한 내용을 다룬다.","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라","dateModified":"2022-01-01T20:47:07+09:00","datePublished":"2021-12-30T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/"},"url":"https://icechoco.github.io/java/2021-12-30-Effective-java-Day23-item25,26/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day23에서는 item 25, 26에 대한 내용을 다룬다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2021-12-30T22:18:23+09:00',
+    INDEX_KEY: 'index--2022-01-04T23:08:37+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -304,6 +304,14 @@ Left here for reference, feel free to delete.
           
           
           
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-01-01">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-01-01T20:47:07+09:00">2022-01-01</time>
+            </span>
+          
         
       
     </div>
@@ -323,7 +331,7 @@ Left here for reference, feel free to delete.
   
     <p>Day23에서는 item 25, 26에 대한 내용을 다룬다.</p>
 
-<h2 id="item-21--톱레벨-클래스는-한-파일에-하나만-담으라">Item 21 :: 톱레벨 클래스는 한 파일에 하나만 담으라</h2>
+<h2 id="item-25--톱레벨-클래스는-한-파일에-하나만-담으라">Item 25 :: 톱레벨 클래스는 한 파일에 하나만 담으라</h2>
 <blockquote>
   <p>A top level class is a class that is not a nested class.</p>
 
@@ -453,7 +461,7 @@ ex) <code class="language-plaintext highlighter-rouge">List&lt;E&gt;</code>의 �
           <li>런타임에 문제를 겪는 코드와 원인을 제공한 코드가 물리적으로 떨어져있을 가능성이 커진다.</li>
         </ul>
       </li>
-      <li>로타입을 쓰면 제너릭이 안겨주는 안전성과 표현력을 모두 잃는다. 절대로 써서는 안된다.</li>
+      <li>로타입을 쓰면 제너릭이 안겨주는 안전성(typesafe)과 표현력을 모두 잃는다. 절대로 써서는 안된다.</li>
     </ul>
   </li>
 </ul>
@@ -706,7 +714,7 @@ ex) <code class="language-plaintext highlighter-rouge">List&lt;E&gt;</code>의 �
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2021-12-29-Effective-java-Day22-item21,22,23/" class="flip-title"><span>[Effective Java] Day 22 - Item 21, 22, 23 :: 인터페이스는 구현하는 쪽을 생각해 설계하라, 인터페이스는 타입을 정의하는 용도로만 사용하라, 태그 달린 클래스보다는 클래스 계층구조를 활용하라</span></a>  <time class="faded fine" datetime="2021-12-29T00:00:00+09:00">29 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-28-Effective-java-Day21-item20/" class="flip-title"><span>[Effective Java] Day 21 - Item 20 :: 추상 클래스보다는 인터페이스를 우선하라</span></a>  <time class="faded fine" datetime="2021-12-28T00:00:00+09:00">28 Dec 2021</time></li>                        <li class="h4">  <a href="/java/2021-12-27-Effective-java-Day20-item19/" class="flip-title"><span>[Effective Java] Day 20 - Item 19 :: 상속을 고려한 설계 주의 사항과 문서화 (2)</span></a>  <time class="faded fine" datetime="2021-12-27T00:00:00+09:00">27 Dec 2021</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-01-04-Effective-java-Day28-item30/" class="flip-title"><span>[Effective Java] Day 28 - Item 30 :: 이왕이면 제너릭 메서드로 만들라</span></a>  <time class="faded fine" datetime="2022-01-04T00:00:00+09:00">04 Jan 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-03-Effective-java-Day27-item29/" class="flip-title"><span>[Effective Java] Day 27 - Item 29 :: 이왕이면 제너릭 타입으로 만들라</span></a>  <time class="faded fine" datetime="2022-01-03T00:00:00+09:00">03 Jan 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-02-Effective-java-Day26-item40/" class="flip-title"><span>Item 40 :: @Override 애너테이션을 일관되게 사용하라</span></a>  <time class="faded fine" datetime="2022-01-02T00:00:00+09:00">02 Jan 2022</time></li>            </ul></aside>
 
   
 

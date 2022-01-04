@@ -1,6 +1,60 @@
 [
   
     {
+      "title"      : "[Effective Java] Day 28 - Item 30 :: 이왕이면 제너릭 메서드로 만들라",
+      "categories" : "java",
+      "tags"       : "java, 이펙티브자바, effectiveJava",
+      "date"       : "2022.01.04",
+      "urlString"  : "/java/2022-01-04-Effective-java-Day28-item30/",
+      "url"        : "/java/2022-01-04-Effective-java-Day28-item30/"
+    },
+  
+    {
+      "title"      : "[Effective Java] Day 27 - Item 29 :: 이왕이면 제너릭 타입으로 만들라",
+      "categories" : "java",
+      "tags"       : "java, 이펙티브자바, effectiveJava",
+      "date"       : "2022.01.03",
+      "urlString"  : "/java/2022-01-03-Effective-java-Day27-item29/",
+      "url"        : "/java/2022-01-03-Effective-java-Day27-item29/"
+    },
+  
+    {
+      "title"      : "Item 40 :: @Override 애너테이션을 일관되게 사용하라",
+      "categories" : "java",
+      "tags"       : "java, 이펙티브자바, effectiveJava",
+      "date"       : "2022.01.02",
+      "urlString"  : "/java/2022-01-02-Effective-java-Day26-item40/",
+      "url"        : "/java/2022-01-02-Effective-java-Day26-item40/"
+    },
+  
+    {
+      "title"      : "[Effective Java] Day 25 - Item 27, 28 :: 비검사 경고를 제외하라, 배열보다는 리스트를 사용하라",
+      "categories" : "java",
+      "tags"       : "java, 이펙티브자바, effectiveJava",
+      "date"       : "2022.01.01",
+      "urlString"  : "/java/2022-01-01-Effective-java-Day25-item27,28/",
+      "url"        : "/java/2022-01-01-Effective-java-Day25-item27,28/"
+    },
+  
+    {
+      "title"      : "[Java] 와일드카드",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2022.01.01",
+      "urlString"  : "/java/2022-01-01-Java-wildcard-type/",
+      "url"        : "/java/2022-01-01-Java-wildcard-type/"
+    },
+  
+    {
+      "title"      : "[Effective Java] Day 24 - Item 26 :: 로 타입은 사용하지 말라(2)",
+      "categories" : "java",
+      "tags"       : "java, 이펙티브자바, effectiveJava",
+      "date"       : "2021.12.31",
+      "urlString"  : "/java/2021-12-31-Effective-java-Day24-item26(2)/",
+      "url"        : "/java/2021-12-31-Effective-java-Day24-item26(2)/"
+    },
+  
+    {
       "title"      : "[Effective Java] Day 23 - Item 25, Item 26 :: 톱레벨 클래스는 한 파일에 하나만 담으라, 로 타입은 사용하지 말라",
       "categories" : "java",
       "tags"       : "java, 이펙티브자바, effectiveJava",
