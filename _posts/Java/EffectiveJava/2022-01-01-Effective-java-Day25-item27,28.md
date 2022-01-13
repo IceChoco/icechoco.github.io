@@ -15,8 +15,8 @@ Day25에서는 item 27,28에 대한 내용을 다룬다.
 - 비검사 매개변수화 가변인수 타입 경고(unchecked parameterized vararg type warning)
 - 비검사 변환경고(unchecked conversion warning) 등
 
-**비검사 경고 예**
-![item27_unchecked_assignment](/assets\img/item27_unchecked_assignment.PNG)
+**비검사 경고 예**  
+![item27_unchecked_assignment](/assets\img/item27_unchecked_assignment.png)
 javac 명령줄 인수에 `-Xlint:unchecked`를 추가하면 뭐가 잘못됐는지 위와 같이 설명해준다.  
   
 인텔리제이에서 명령줄 인수를 추가하기 위해서는 Settings - Build, Execution, Deployment - Compiler - Java Compiler에서 설정할 수 있다.

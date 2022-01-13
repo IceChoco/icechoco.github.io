@@ -1,5 +1,5 @@
 ---
-title: '[Java] 와일드카드'
+title: '[Java] 와일드카드 타입(Wildcard type)'
 layout: post
 categories: java
 tags: java
@@ -38,9 +38,116 @@ static Juice makeJuice(FruitBox<? extends Fruit> box){
 System.out.println(Juicer.makeJuice(new FruitBox<Fruit>()));
 System.out.println(Juicer.makeJuice(new FruitBox<Apple>()));
 ```
-Fruit의 자손인 Apple과 자기 자신이 메서드의 매개변수로 사용될 수 있다.
+Fruit의 자손인 Apple과 자기 자신이 메서드의 매개변수로 사용될 수 있다.  
 
-11:21
+### 와일드카드 타입을 사용한 소스코드 예시
+- Juice.java  
+
+```java
+package chapter5.item28.Juice;
+
+public class Juice {
+    String name;
+
+    Juice(String juice){
+        this.name = juice + "juice";
+    }
+
+    public String toString(){
+        return name;
+    }
+}
+
+class Juicer {
+    //? extends Fruit: Fruit 자기 자신과 그 자손들인 Apple, Grape
+    static Juice makeJuice(FruitBox<? extends Fruit> box){
+        String tmp = "";
+        for (Fruit f : box.getList()) // 향상된 for문
+            tmp += f + " ";
+
+        return new Juice(tmp);
+    }
+}
+
+class Fruit {
+    public String toString(){
+        return "Fruit";
+    }
+}
+
+class Apple extends Fruit {
+    public String toString(){
+        return "Apple";
+    }
+}
+
+class Grape extends Fruit {
+    public String toString(){
+        return "Grape";
+    }
+}
+```
+- FruitBox.java
+
+```java
+package chapter5.item28.Juice;
+
+public class FruitBox<T extends Fruit> extends Box<T> {
+}
+```
+- Box.java
+
+```java
+package chapter5.item28.Juice;
+
+import java.util.ArrayList;
+
+public class Box<T>{
+    private ArrayList<T> list = new ArrayList<T>();
+
+    void add(T item){
+        list.add(item);
+    }
+
+    T get(int i){
+        return list.get(i);
+    }
+
+    ArrayList<T> getList(){
+        return list;
+    }
+
+    int size(){
+        return list.size();
+    }
+
+    public String toString(){
+        return list.toString();
+    }
+}
+```
+- Client.java
+
+```java
+package chapter5.item28.Juice;
+
+public class Client {
+    public static void main(String[] args) {
+        FruitBox<Fruit> fruitBox = new FruitBox<Fruit>();
+        FruitBox<Apple> appleBox = new FruitBox<Apple>();
+        // ? extends Fruit: Fruit과 그 자손들 Apple, Grape
+        //FruitBox<? extends Fruit> appleBox = new FruitBox<Apple>();
+
+        fruitBox.add(new Apple());
+        fruitBox.add(new Grape());
+        appleBox.add(new Apple());
+        appleBox.add(new Apple());
+
+        System.out.println(Juicer.makeJuice(appleBox));
+        System.out.println(Juicer.makeJuice(fruitBox));
+    }
+}
+```
 
 ### 참고
 - [[자바의 정석 - 기초편] ch12-12~14 와일드카드, 지네릭 메서드](https://www.youtube.com/watch?v=LL3PWmGFuQA)
