@@ -1,5 +1,5 @@
 ---
-title: '[Java] IterableRHK Iterator'
+title: '[Java] Iterable과 Iterator'
 layout: post
 categories: java
 tags: java
@@ -10,13 +10,97 @@ comments: true
 
 ## 1. Iterable이란?
 ![iterable_hierarchy](/assets\img/iterable_hierarchy.PNG)
-- Iterable은 Collction의 상위 인터페이스
+- Iterable은 Collection의 상위 인터페이스
   - Collection은 List, Set, Queue 인터페이스의 상위 인터페이스
 
 ![collection](/assets\img/collection.PNG)
 
-흠
+내부 구현코드를 확인해보면 Collection 인터페이스의 상위 인터페이스는 Iterable임을 알 수 있다.
 
+```java
+/**
+ * Implementing this interface allows an object to be the target of the enhanced
+ * {@code for} statement (sometimes called the "for-each loop" statement).
+ *
+ * @param <T> the type of elements returned by the iterator
+ *
+ * @since 1.5
+ * @jls 14.14.2 The enhanced {@code for} statement
+ */
+public interface Iterable<T> {
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    Iterator<T> iterator();
+
+    ...
+}    
+```
+
+Iterable의 내부 구현코드를 보면 이 인터페이스 안에는 iterator 메소드가 추상메소드로 선언되어있다. 그러므로 Collection 인터페이스 계층구조에서 List, Set, Queue를 구현하는 클래스들은 다 iterator 메소드를 가지고 있다. <span style="color:red">따라서 Iterable의 역할은 iterator() 메소드를 하위 클래스에서 무조건 구현을 하게 만들기 위함이다.</span>
+
+## 2. Iterator란?
+![item31_java_collection_frameworks](/assets\img/item31_java_collection_frameworks.PNG)
+
+Iterator 인터페이스는 Collection과는 별개로 존재하는 인터페이스이다.
+
+```java
+public interface Iterator<E> {
+    /**
+     * Returns {@code true} if the iteration has more elements.
+     * (In other words, returns {@code true} if {@link #next} would
+     * return an element rather than throwing an exception.)
+     *
+     * @return {@code true} if the iteration has more elements
+     */
+    boolean hasNext();
+
+    /**
+     * Returns the next element in the iteration.
+     *
+     * @return the next element in the iteration
+     * @throws NoSuchElementException if the iteration has no more elements
+     */
+    E next();
+
+    /**
+     * Removes from the underlying collection the last element returned
+     * by this iterator (optional operation).  This method can be called
+     * only once per call to {@link #next}.
+     * <p>
+     * The behavior of an iterator is unspecified if the underlying collection
+     * is modified while the iteration is in progress in any way other than by
+     * calling this method, unless an overriding class has specified a
+     * concurrent modification policy.
+     * <p>
+     * The behavior of an iterator is unspecified if this method is called
+     * after a call to the {@link #forEachRemaining forEachRemaining} method.
+     *
+     * @implSpec
+     * The default implementation throws an instance of
+     * {@link UnsupportedOperationException} and performs no other action.
+     *
+     * @throws UnsupportedOperationException if the {@code remove}
+     *         operation is not supported by this iterator
+     *
+     * @throws IllegalStateException if the {@code next} method has not
+     *         yet been called, or the {@code remove} method has already
+     *         been called after the last call to the {@code next}
+     *         method
+     */
+    default void remove() {
+        throw new UnsupportedOperationException("remove");
+    }
+    ...
+}    
+```
+
+Iterator 인터페이스의 내부 구현은 위와 같이 되어있다. 따라서 <span style="color:red">hasNext(), next(), remove()</span> 등의 메소드 사용이 가능하다.
+- 용도: 컬렉션 클래스의 데이터를 하나씩 읽어올 때 사용
+  - 표준화가 되어 있지 않다면 컬렉션 클래스의 데이터를 읽어올 때 마다, 해당 클래스의 데이터를 꺼내오는 메서드들을 다 알고 있어야 함. 이름이 다를 수도 있는데 그걸 다 알고 있어야 하는건 비 효율적이다!
+  - 위와 같은 이유로 인해 Iterator가 존재하는 것
 
 ## 참조
 [[Java] Iterable 과 Iterator 이란?](https://devlog-wjdrbs96.tistory.com/84)
