@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Effective Java] Day 15 - Item 11, 12, 13, 15 :: equals를 재정의하려거든 hashcode도 재정의하라, toString을 항상 재정의하라, clone 재정의는 주의해서 진행하라, 클래스와 멤버의 접근 권한을 최소화하라(1)" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 15 - Item 11, 12, 13, 15 :: equals를 재정의하려거든 hashcode도 재정의하라, toString을 항상 재정의하라, clone 재정의는 주의해서 진행하라, 클래스와 멤버의 접근 권한을 최소화하라(1)","dateModified":"2021-12-26T13:12:28+09:00","datePublished":"2021-12-17T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-17-Effective-java-Day15-item11,12,13,15/"},"url":"https://icechoco.github.io/java/2021-12-17-Effective-java-Day15-item11,12,13,15/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day15에서는 item 11, 12, 13, 15에 대한 내용을 다룬다.","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 15 - Item 11, 12, 13, 15 :: equals를 재정의하려거든 hashcode도 재정의하라, toString을 항상 재정의하라, clone 재정의는 주의해서 진행하라, 클래스와 멤버의 접근 권한을 최소화하라(1)","dateModified":"2022-02-17T09:52:32+09:00","datePublished":"2021-12-17T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-17-Effective-java-Day15-item11,12,13,15/"},"url":"https://icechoco.github.io/java/2021-12-17-Effective-java-Day15-item11,12,13,15/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Day15에서는 item 11, 12, 13, 15에 대한 내용을 다룬다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-01-04T23:08:37+09:00',
+    INDEX_KEY: 'index--2022-02-17T09:58:10+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-26">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-02-17">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-26T13:12:28+09:00">2021-12-26</time>
+              <time datetime="2022-02-17T09:52:32+09:00">2022-02-17</time>
             </span>
           
         
@@ -1025,7 +1025,7 @@ toString을 리턴하는 건 로그를 프린트 하거나, 디버깅할 때 쓰
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-01-04-Effective-java-Day28-item30/" class="flip-title"><span>[Effective Java] Day 28 - Item 30 :: 이왕이면 제너릭 메서드로 만들라</span></a>  <time class="faded fine" datetime="2022-01-04T00:00:00+09:00">04 Jan 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-03-Effective-java-Day27-item29/" class="flip-title"><span>[Effective Java] Day 27 - Item 29 :: 이왕이면 제너릭 타입으로 만들라</span></a>  <time class="faded fine" datetime="2022-01-03T00:00:00+09:00">03 Jan 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-02-Effective-java-Day26-item40/" class="flip-title"><span>Item 40 :: @Override 애너테이션을 일관되게 사용하라</span></a>  <time class="faded fine" datetime="2022-01-02T00:00:00+09:00">02 Jan 2022</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-02-17-Codility-Lesson15-Caterpillar-method/" class="flip-title"><span>[Algorithm] Codility Lesson 15 - Caterpillar method</span></a>  <time class="faded fine" datetime="2022-02-17T00:00:00+09:00">17 Feb 2022</time></li>                        <li class="h4">  <a href="/java/2022-02-15-Effective-java-Day31-item72/" class="flip-title"><span>[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라</span></a>  <time class="faded fine" datetime="2022-02-15T00:00:00+09:00">15 Feb 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-16-Effective-java-Day30-item63/" class="flip-title"><span>[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라</span></a>  <time class="faded fine" datetime="2022-01-16T00:00:00+09:00">16 Jan 2022</time></li>            </ul></aside>
 
   
 
@@ -1124,6 +1124,10 @@ toString을 리턴하는 건 로그를 프린트 하거나, 디버깅할 때 쓰
     
   </div>
 
+  <div class="sidebar-hits">
+    <a class="no-mark-external" href="https://hits.sh/icechoco.github.io/"><img src="https://hits.sh/icechoco.github.io.svg?view=today-total"/></a>
+  </div>
+
   <nav class="sidebar-nav heading" role="navigation">
     <!-- file: "/_layouts/tag-list.html" -->
 <ul>
@@ -1132,20 +1136,24 @@ toString을 리턴하는 건 로그를 프린트 하거나, 디버깅할 때 쓰
   
     
       
-    
-  
-    
-      
         
         
         <li>
           
           <div class="list-wrapper">
-            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            <a id="_navigation" href="/about/" class="sidebar-nav-item"  >About</a>
             
           </div>
           
         </li>
+      
+    
+  
+    
+      
+    
+  
+    
       
     
   
@@ -1180,10 +1188,6 @@ toString을 리턴하는 건 로그를 프린트 하거나, 디버깅할 때 쓰
           </div>
           
         </li>
-      
-    
-  
-    
       
     
   

@@ -1,6 +1,51 @@
 [
   
     {
+      "title"      : "[Algorithm] Codility Lesson 15 - Caterpillar method",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2022.02.17",
+      "urlString"  : "/java/2022-02-17-Codility-Lesson15-Caterpillar-method/",
+      "url"        : "/java/2022-02-17-Codility-Lesson15-Caterpillar-method/"
+    },
+  
+    {
+      "title"      : "[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2022.02.15",
+      "urlString"  : "/java/2022-02-15-Effective-java-Day31-item72/",
+      "url"        : "/java/2022-02-15-Effective-java-Day31-item72/"
+    },
+  
+    {
+      "title"      : "[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라",
+      "categories" : "java",
+      "tags"       : "java, 이펙티브자바, effectiveJava",
+      "date"       : "2022.01.16",
+      "urlString"  : "/java/2022-01-16-Effective-java-Day30-item63/",
+      "url"        : "/java/2022-01-16-Effective-java-Day30-item63/"
+    },
+  
+    {
+      "title"      : "[Effective Java] Day 29 - Item 31 :: 한정적 와일드카드를 사용해 API 유연성을 높이라",
+      "categories" : "java",
+      "tags"       : "java, 이펙티브자바, effectiveJava",
+      "date"       : "2022.01.05",
+      "urlString"  : "/java/2022-01-05-Effective-java-Day29-item31/",
+      "url"        : "/java/2022-01-05-Effective-java-Day29-item31/"
+    },
+  
+    {
+      "title"      : "[Java] Iterable과 Iterator",
+      "categories" : "java",
+      "tags"       : "java",
+      "date"       : "2022.01.05",
+      "urlString"  : "/java/2022-01-05-Java-Iterator/",
+      "url"        : "/java/2022-01-05-Java-Iterator/"
+    },
+  
+    {
       "title"      : "[Effective Java] Day 28 - Item 30 :: 이왕이면 제너릭 메서드로 만들라",
       "categories" : "java",
       "tags"       : "java, 이펙티브자바, effectiveJava",
@@ -19,7 +64,7 @@
     },
   
     {
-      "title"      : "Item 40 :: @Override 애너테이션을 일관되게 사용하라",
+      "title"      : "[Effective Java] Day 26 - Item 40 :: @Override 애너테이션을 일관되게 사용하라",
       "categories" : "java",
       "tags"       : "java, 이펙티브자바, effectiveJava",
       "date"       : "2022.01.02",
@@ -37,7 +82,7 @@
     },
   
     {
-      "title"      : "[Java] 와일드카드",
+      "title"      : "[Java] 와일드카드 타입(Wildcard type)",
       "categories" : "java",
       "tags"       : "java",
       "date"       : "2022.01.01",

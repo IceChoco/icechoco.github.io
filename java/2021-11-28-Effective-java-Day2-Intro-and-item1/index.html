@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1" />
 <script type="application/ld+json">
-{"headline":"[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1","dateModified":"2021-12-05T20:42:51+09:00","datePublished":"2021-11-28T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-11-28-Effective-java-Day2-Intro-and-item1/"},"url":"https://icechoco.github.io/java/2021-11-28-Effective-java-Day2-Intro-and-item1/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"어제인 Day 1에서는 프로그래밍의 기본 원칙과 자바가 지원하는 타입에 대해서 공부했다. ‘1장 들어가기’에서는 책에서 사용하는 기술 용어를 명확히 하고 주로 넘어가는데, 그 용어에 대해서 기본적인 개념을 미리 한 번 정리하고 들어가면 좋겠다 싶어 정리하는 시간을 가졌다. 이번 포스팅도 책을 읽으면서 관련된 개념을 정리하는 식으로 기록하려한다. 공부하면서 지금까지 너무 기본기에대해서 간과한 것 같아 좀 앞으로가 두렵기도 하고, 잘 할 수 있을까 걱정되기도 하지만 좋은 스트레스를 받고 있는 것 같아 설레기도 하다. 오늘도 책상에 앉은 나 칭찬해! 그럼 Day 2 기록 시작!","@context":"https://schema.org"}</script>
+{"headline":"[Effective Java] Day 2 - 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, Item 1","dateModified":"2022-02-17T09:52:32+09:00","datePublished":"2021-11-28T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-11-28-Effective-java-Day2-Intro-and-item1/"},"url":"https://icechoco.github.io/java/2021-11-28-Effective-java-Day2-Intro-and-item1/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"어제인 Day 1에서는 프로그래밍의 기본 원칙과 자바가 지원하는 타입에 대해서 공부했다. ‘1장 들어가기’에서는 책에서 사용하는 기술 용어를 명확히 하고 주로 넘어가는데, 그 용어에 대해서 기본적인 개념을 미리 한 번 정리하고 들어가면 좋겠다 싶어 정리하는 시간을 가졌다. 이번 포스팅도 책을 읽으면서 관련된 개념을 정리하는 식으로 기록하려한다. 공부하면서 지금까지 너무 기본기에대해서 간과한 것 같아 좀 앞으로가 두렵기도 하고, 잘 할 수 있을까 걱정되기도 하지만 좋은 스트레스를 받고 있는 것 같아 설레기도 하다. 오늘도 책상에 앉은 나 칭찬해! 그럼 Day 2 기록 시작!","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-01-04T23:08:37+09:00',
+    INDEX_KEY: 'index--2022-02-17T09:58:10+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-05">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-02-17">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-05T20:42:51+09:00">2021-12-05</time>
+              <time datetime="2022-02-17T09:52:32+09:00">2022-02-17</time>
             </span>
           
         
@@ -762,7 +762,7 @@ package-private는 access level을 적어주지않는것을 말한다.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-01-04-Effective-java-Day28-item30/" class="flip-title"><span>[Effective Java] Day 28 - Item 30 :: 이왕이면 제너릭 메서드로 만들라</span></a>  <time class="faded fine" datetime="2022-01-04T00:00:00+09:00">04 Jan 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-03-Effective-java-Day27-item29/" class="flip-title"><span>[Effective Java] Day 27 - Item 29 :: 이왕이면 제너릭 타입으로 만들라</span></a>  <time class="faded fine" datetime="2022-01-03T00:00:00+09:00">03 Jan 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-02-Effective-java-Day26-item40/" class="flip-title"><span>Item 40 :: @Override 애너테이션을 일관되게 사용하라</span></a>  <time class="faded fine" datetime="2022-01-02T00:00:00+09:00">02 Jan 2022</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-02-17-Codility-Lesson15-Caterpillar-method/" class="flip-title"><span>[Algorithm] Codility Lesson 15 - Caterpillar method</span></a>  <time class="faded fine" datetime="2022-02-17T00:00:00+09:00">17 Feb 2022</time></li>                        <li class="h4">  <a href="/java/2022-02-15-Effective-java-Day31-item72/" class="flip-title"><span>[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라</span></a>  <time class="faded fine" datetime="2022-02-15T00:00:00+09:00">15 Feb 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-16-Effective-java-Day30-item63/" class="flip-title"><span>[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라</span></a>  <time class="faded fine" datetime="2022-01-16T00:00:00+09:00">16 Jan 2022</time></li>            </ul></aside>
 
   
 
@@ -861,6 +861,10 @@ package-private는 access level을 적어주지않는것을 말한다.
     
   </div>
 
+  <div class="sidebar-hits">
+    <a class="no-mark-external" href="https://hits.sh/icechoco.github.io/"><img src="https://hits.sh/icechoco.github.io.svg?view=today-total"/></a>
+  </div>
+
   <nav class="sidebar-nav heading" role="navigation">
     <!-- file: "/_layouts/tag-list.html" -->
 <ul>
@@ -869,20 +873,24 @@ package-private는 access level을 적어주지않는것을 말한다.
   
     
       
-    
-  
-    
-      
         
         
         <li>
           
           <div class="list-wrapper">
-            <a  href="/about/" class="sidebar-nav-item"  >About</a>
+            <a id="_navigation" href="/about/" class="sidebar-nav-item"  >About</a>
             
           </div>
           
         </li>
+      
+    
+  
+    
+      
+    
+  
+    
       
     
   
@@ -917,10 +925,6 @@ package-private는 access level을 적어주지않는것을 말한다.
           </div>
           
         </li>
-      
-    
-  
-    
       
     
   
