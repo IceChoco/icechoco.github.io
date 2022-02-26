@@ -9,18 +9,26 @@ comments: true
 **이 글의 목적**
 - 직렬화(Serialization)와 마커 인터페이스(Marker Interface)가 무엇인지 이해하고 직렬화(Serialization)를 사용할 수 있다.
 
-## 직렬화란?
+## 직렬화(Serialization)란?
 - 객체의 상태를 영속화하는 메커니즘
 - 객체를 파일, 메모리, DB와 같은 다른 환경에 저장했다가 나중에 다시 불러와서 재구성 할 수 있게 만드는 일련의 과정
 
 ## 자바 직렬화란?
 - 1997년에 처음 도입되었으며 쉬운 방법으로 분산객체를 생성하기 위해 도입된 기술
-- Byte 배열과 같은 ByteStream을 만드는 것
+- <span style="background-color: #fff5b1">객체의 상태를 Byte 배열과 같은 ByteStream으로</span> 만드는 것
+- **Deserialization**은 반대로 <span style="background-color: #fff5b1">Byte Stream을 객체로</span> 변환하는 것
+
+![serialization](/assets\img/serialization.PNG)
+<div style="text-align: center; color:grey">Serialization</div>  
+<br/>
+![Deserialization](/assets\img/Deserialization.PNG)
+<div style="text-align: center; color:grey">Serialization and Deserialization</div>
 
 ## 언제 쓸 수 있는가?
-- 객체의 상태를 어딘가에 저장하여 영속해야 할 필요가 있을 때
-  - 저장은 파일, DB가 될수도 있고 캐시와 같은 메모리가 될 수 있음
-- 다른 VM에게 객체의 정보를 전송해야 할 때, ByteStream으로 변환해서 전송할 때 사용
+객체의 상태를 어딘가에 저장하여 영속해야 할 필요가 있을 때
+  - 파일 또는 **Database에 저장하거나** 캐시와 같은 메모리의 형태가 될 수 있음
+  - **Network를 통해 전송할 수 있도록** 변환하는 것  
+    - 다른 VM에게 객체의 정보를 전송해야 할 때, ByteStream으로 변환해서 전송할 때 사용
 
 ## 어떻게 쓸 수 있는가?
 - **java.io.Serializable**
@@ -45,7 +53,7 @@ public class Singleton2 implements Serializable {
 
 }
 ```
-Serializable 인터페이스를 클래스에 implements하면 쓸 수 있다. Serializable는 공개API가 없는 단순한 마커인터페이스이다. 
+Serialization 할 수 있는 Class가 되려면 <span style="background-color: #fff5b1">Serializable 인터페이스를 클래스에 implements</span>해야 한다. Serializable는 공개API가 없는 단순한 마커인터페이스이다. 
 ### 마커 인터페이스(Marker Interface)
 - 일반적인 인터페이스와 동일하지만 사실상 아무 메서드도 선언하지 않은 인터페이스  
 예를 들어 아래와 같다.
@@ -169,3 +177,5 @@ final SomeAnnotation someAnnotation = someObject.getClass().getAnnotation(SomeAn
 ### 참고
 - [[10분 테코톡] 🍄비밥의 자바 직렬화](https://www.youtube.com/watch?v=3iypR-1Glm0)
 - [자바의 마커 인터페이스](http://wonwoo.ml/index.php/post/1389)
+- [Serialization](https://developnote-blog.tistory.com/entry/Serialization)
+- [객체 직렬화(Object Serialization)](https://linuxism.ustd.ip.or.kr/1433)
