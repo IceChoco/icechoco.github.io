@@ -97,6 +97,7 @@ Serialize 구현에 따르는 비용이 적지 않으니, 클래스를 설계할
 즉, finalize 메서드를 내가 재정의하고 final로 선언해라. → 이렇게 안하면 finalizer 공격(item 8, p42)을 당할 수 있다.
 
 #### 2. 인스턴스 필드 중 기본값으로 초기화되면 위배가 되는 불변식이 있다면, readObejctNoData 메서드를 반드시 추가해라
+- **슈퍼클래스 = 상속가능 + 직렬화 + 디폴트 값을 가지는 메서드** 인 경우
 - 자바 4에 추가됨. 기존의 직렬화 가능 클래스에 직렬화 가능 상위 클래스를 추가하는 경우를 위한 메서드
 ```java
 private void readObjectNoData() throws InvalidObjectException{
