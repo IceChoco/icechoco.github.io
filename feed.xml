@@ -1,5 +1,394 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2022-02-17T09:58:10+09:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
-</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[Algorithm] Codility Lesson 15 - Caterpillar method</title><link href="https://icechoco.github.io/java/2022-02-17-Codility-Lesson15-Caterpillar-method/" rel="alternate" type="text/html" title="[Algorithm] Codility Lesson 15 - Caterpillar method" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-17T02:01:44+09:00</updated><id>https://icechoco.github.io/java/Codility-Lesson15-Caterpillar-method</id><content type="html" xml:base="https://icechoco.github.io/java/2022-02-17-Codility-Lesson15-Caterpillar-method/">&lt;p&gt;무턱대고 A4용지 이면지에 영어 해석하면서 정리했었는데… 오늘 멘토링을 통해 우연히 알게된 개발자 분의 블로그를 보게 되었다. 블로그에 이것저것 많이 올리시고, git 잔디까지 빼곡한걸 보면서 정말 대단하다 생각했다. 그리고 나도 블로그에 정리한 내용을 올리면 보기 쉽겠다 생각해서 만든 Algorithm 카테고리의 첫 포스팅!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2022-03-23T22:57:28-06:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[CS] 기술면접 예상 질문 - 자바</title><link href="https://icechoco.github.io/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" rel="alternate" type="text/html" title="[CS] 기술면접 예상 질문 - 자바" /><published>2022-03-02T00:00:00-06:00</published><updated>2022-03-01T11:44:23-06:00</updated><id>https://icechoco.github.io/cs/Technical-Interview-Expected-Questions-Java</id><content type="html" xml:base="https://icechoco.github.io/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/">&lt;p&gt;기술면접 단골질문&lt;/p&gt;
+
+&lt;h3 id=&quot;1객체-지향-프로그래밍-oopobject-oriented-programming&quot;&gt;1.객체 지향 프로그래밍 OOP(Object Oriented Programming)?&lt;/h3&gt;
+&lt;p&gt;Object를 기준으로 코드를 나누어 구현하는 프로그래밍(Java는 구분 단위가 class)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;장점: 재사용성이 좋고, 협업하기가 좋다 (캡슐화, 추상화 때문에 쓰기 좋음)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;1) &lt;strong&gt;캡슐화&lt;/strong&gt;: 비슷한 역할을 하는 속성과 메소드들을 하나의 클래스로 모은 것&lt;br /&gt;
+2) &lt;strong&gt;추상화&lt;/strong&gt;: 어떤 실체로부터 공통적인 부분이나 관심있는 특성들만 한곳에 모은 것&lt;br /&gt;
+  ex) 어떤 하위 클래스들에 존재하는 공통적인 메서드를 인터페이스로 정의하는 것&lt;br /&gt;
+3) &lt;strong&gt;상속&lt;/strong&gt;: 클래스를 재사용하는 것, 상속이 있기 때문에 코드를 재활용 할 수 있고 그렇기 때문에 생산성이 높고 유지보수하기 좋음&lt;br /&gt;
+4) &lt;strong&gt;다형성&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2오버로딩과-오버라이딩의-차이&quot;&gt;2.오버로딩과 오버라이딩의 차이&lt;/h3&gt;
+&lt;p&gt;1) 오버라이딩&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;부모 클래스에게 상속받은 메소드를 자식클래스에서 재정의 하는 것&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2) 오버로딩&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;한 클래스내에 이름이 같은 여러개의 메서드를 재정의하는 것&lt;/li&gt;
+  &lt;li&gt;메서드 시그니처가 다름&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="cs" /><category term="cs" /><summary type="html">기술면접 단골질문</summary></entry><entry><title type="html">[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라</title><link href="https://icechoco.github.io/java/2022-03-01-Effective-java-Day33-item66/" rel="alternate" type="text/html" title="[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라" /><published>2022-03-01T00:00:00-06:00</published><updated>2022-03-16T05:02:58-06:00</updated><id>https://icechoco.github.io/java/Effective-java-Day33-item66</id><content type="html" xml:base="https://icechoco.github.io/java/2022-03-01-Effective-java-Day33-item66/">&lt;p&gt;&lt;strong&gt;Java Native Interface(자바 네이티브 인터페이스, JNI)&lt;/strong&gt;: 자바 프로그램이 네이티브 메서드를 호출하는 기술&lt;/p&gt;
+
+&lt;h2 id=&quot;native-method네이티브-메서드&quot;&gt;Native method(네이티브 메서드)&lt;/h2&gt;
+&lt;p&gt;C나 c++같은 네이티브 프로그래밍 언어로 작성한 메서드&lt;/p&gt;
+&lt;h3 id=&quot;주요쓰임&quot;&gt;주요쓰임&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;레지스트리 같은 플랫폼 특화 기능을 사용함&lt;/li&gt;
+  &lt;li&gt;네이티브 코드로 작성된 기존 라이브러리 사용
+    &lt;ul&gt;
+      &lt;li&gt;레거시 데이터를 사용하는 레거시 라이브러리&lt;/li&gt;
+      &lt;li&gt;대체할 만한 Java 라이브러리가 없는 경우 네이티브 라이브러리를 사용함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;성능개선을 목적으로 성능에 결정적인 영향을 주는 영역만 따로 네이티브 언어로 작성&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;성능-개선-목적의-네이티브-메서드-사용은-권장하지-않는다&quot;&gt;성능 개선 목적의 네이티브 메서드 사용은 권장하지 않는다.&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;자바 3 이전의 초기시절이라면 얘기가 다르지만, JVM은 그동안 빠른 속도로 발전해왔다.&lt;/li&gt;
+  &lt;li&gt;대부분 작업에서 지금의 자바는 다른 플랫폼에 견줄만한 성능을 보인다.
+    &lt;ul&gt;
+      &lt;li&gt;ex) BigInteger
+        &lt;ul&gt;
+          &lt;li&gt;Java.math가 추가된 자바 1.1때: C로 작성한 고성능 라이브러리에 의존&lt;/li&gt;
+          &lt;li&gt;Java 3: 순수 자바로 다시 구현되면서 원래의 네이티브 구현보다 더 빨라짐&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;네이티브 라이브러리는 GNU 다중 정밀 연산 라이브러리(GMP)를 필두로 개선작업이 계속돼왔다.
+    &lt;ul&gt;
+      &lt;li&gt;그러므로 고성능의 다중 정밀 연산이 필요하다면 네이티브 메서드를 통해 GMP를 사용하는 것을 고려해보자.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;단점&quot;&gt;단점&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;네이티브 언어가 안전하지 않으므로(item 50) 네이티브 메서드를 사용하는 다른 애플리케이션도 메모리 훼손 오류로 부터 불안전하다.&lt;/li&gt;
+  &lt;li&gt;네이티브 언어는 자바보다 플랫폼을 많이 타 이식성이 낮다.&lt;/li&gt;
+  &lt;li&gt;디버깅이 어렵다&lt;/li&gt;
+  &lt;li&gt;주의하지 않으면 오히려 속도가 더 느려진다&lt;/li&gt;
+  &lt;li&gt;네이티브 메모리는 가비지 컬렉터가 자동 회수하지 못하며, 추적도 불가능하다(ITEM 8)&lt;/li&gt;
+  &lt;li&gt;자바 코드와 네이티브 코드의 경계를 넘나들 때 비용이 발생한다.&lt;/li&gt;
+  &lt;li&gt;네이티브 코드와 자바 코드 사이 접착코드(glue code)를 작성해야하나, 귀찮고 가독성도 떨어진다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;정리&quot;&gt;정리&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;네이티브 메서드를 사용하려거든 한번 더 생각해라&lt;/li&gt;
+  &lt;li&gt;네이티브 메서드가 성능을 개선해주는 일은 많지 않다.&lt;/li&gt;
+  &lt;li&gt;저수준 자원이나 네이티브 라이브러리를 사용해야만 해서 어쩔 수 없다면, 최소한만 사용하고 철저하게 테스트해라&lt;/li&gt;
+  &lt;li&gt;네이티브 코드 안에 숨은 하나의 버그가 어플리케이션 전체에 영향을 줄 수도 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;네이티브 메서드를 작성하여 dll 파일에 접근하는 예
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/native-keyword-java/&quot;&gt;Native Keyword in Java&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;네이티브 메서드를 가져다 쓰는 예
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://blog.silentsoft.org/archives/5&quot;&gt;Java에서 관리자 권한으로 실행하기&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">Java Native Interface(자바 네이티브 인터페이스, JNI): 자바 프로그램이 네이티브 메서드를 호출하는 기술</summary></entry><entry><title type="html">[CS] FTP(File Transfer Protocol) Active와 Passive의 차이</title><link href="https://icechoco.github.io/cs/2022-02-25-File-transfer-protocol/" rel="alternate" type="text/html" title="[CS] FTP(File Transfer Protocol) Active와 Passive의 차이" /><published>2022-02-25T00:00:00-06:00</published><updated>2022-02-25T22:41:16-06:00</updated><id>https://icechoco.github.io/cs/File-transfer-protocol</id><content type="html" xml:base="https://icechoco.github.io/cs/2022-02-25-File-transfer-protocol/">&lt;p&gt;오늘은 FTP Active와 Passive의 차이에 대해서 정리해보려 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;ftpfile-transfer-protocol란&quot;&gt;FTP(File Transfer Protocol)란?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;File Transfer Protocol의 약자로 파일을 전송하는 통신 규약
+    &lt;ul&gt;
+      &lt;li&gt;FTP 서버에 파일들을 업로드, 다운로드 할 수 있도록 해주는 프로콜&lt;/li&gt;
+      &lt;li&gt;FTP 서버와 FTP 클라이언트 간의 통신에서 이루어짐&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;FTP는 Actvie, Passive 2개의 모드가 존재
+    &lt;ul&gt;
+      &lt;li&gt;각각의 모드에서는 2개 또는 2개 이상의 포트가 연결을 맺고 데이터를 전송하는데 사용됨&lt;/li&gt;
+      &lt;li&gt;기본 동작모드로 Active 모드를 사용&lt;/li&gt;
+      &lt;li&gt;사용되는 포트의 종류는 2개가 있음
+        &lt;ul&gt;
+          &lt;li&gt;Command(명령) 포트: 연결 제어하는 역할, 접속 시에 사용됨 ex) 21 port&lt;/li&gt;
+          &lt;li&gt;Data 포트: 데이터를 전송하는 역할 ex) Active:20 port, Passive:1024~65535 port&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;FTP는 TCP 기반으로 만들어져 있음&lt;/li&gt;
+  &lt;li&gt;ack(Acknoledement)
+    &lt;ul&gt;
+      &lt;li&gt;어떠한 컴퓨터가 네트워크를 통해 일련의 자료를 다른 컴퓨터로 성공적으로 전송했을 때, 전송을 받은 컴퓨터가 전송을 해 준 컴퓨터에게 보내는 신호.&lt;/li&gt;
+      &lt;li&gt;이는 수신측 컴퓨터가 “준비 완료”의 뜻을 알리는 신호이기도 함.&lt;/li&gt;
+      &lt;li&gt;긍정 응답 문자라고도 하며, 이와의 반대로는 부정 응답 문자(negative acknowledgement code, NACK)라고 부름&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;active-모드&quot;&gt;Active 모드&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;아래 사용된 명령(Command)포트와 Data 포트는 &lt;strong&gt;서버의 설정에서 임의 수정하여 사용 가능&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Acitve 모드는 클라이언트가 서버에 접속을 하는 것이 아닌 &lt;strong&gt;서버가 클라이언트에 접속하는 것&lt;/strong&gt;
+&lt;img src=&quot;/assets\img/ftp_actvie.PNG&quot; alt=&quot;ftp_actvie.PNG&quot; /&gt;
+    &lt;h3 id=&quot;동작방식&quot;&gt;동작방식&lt;/h3&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Client는 Server의 21번 포트로 접속 → &lt;strong&gt;자신이 사용할 두번째 포트(5151 port)를 서버에 미리&lt;/strong&gt; 알려준다.&lt;/li&gt;
+      &lt;li&gt;서버는 클라이언트의 요청에 응답(acks)&lt;/li&gt;
+      &lt;li&gt;Server의 20번 Data Port는 Client가 알려준 두번째 포트(5151 Port)로의 접속을 시도&lt;/li&gt;
+      &lt;li&gt;Client가 Server의 요청에 응답(acks)&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;주의사항&quot;&gt;주의사항&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;FTP Client에 방화벽이 설치되어 있어 외부에서의 접속을 허용하지 않는다면, FTP 접속이 정상적으로 이루어지지 않음. 접속이 되더라도 데이터 목록을 받아오지 못할 수 있음.
+    &lt;ul&gt;
+      &lt;li&gt;즉, Client 측의 방화벽에 20 port가 차단되어 있는 경우, 데이터 채널 연결 불가능&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Server와 Client에 &lt;strong&gt;방화벽 설정 필요&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Server: 20 Port에 대한 아웃바운드 허용(OutBound, 내 서버→외부서버로 보내는 요청)&lt;/li&gt;
+      &lt;li&gt;Client: 20 Port에 대한 인바운드 허용(InBound, 외부 서버→내서버로 들어오는 요청)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;passive-모드&quot;&gt;Passive 모드&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Active 모드의 단점을 해결하기 위해 등장&lt;/li&gt;
+  &lt;li&gt;아래 사용된 명령(Command)포트와 Data 포트는 &lt;strong&gt;서버의 설정에서 임의 수정하여 사용 가능&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Data Port 번호를 지정하지 않은 경우 1024~65535 Port 중에서 사용 가능한 임의의 포트를 사용함&lt;/li&gt;
+      &lt;li&gt;포트의 번호를 지정할 때는 10001 ~ 10005와 같이 범위 지정도 가능
+&lt;img src=&quot;/assets\img/ftp_passive.PNG&quot; alt=&quot;ftp_passive.PNG&quot; /&gt;
+        &lt;h3 id=&quot;동작방식-1&quot;&gt;동작방식&lt;/h3&gt;
+        &lt;ol&gt;
+          &lt;li&gt;Client가 Command Port(21)로 접속을 시도(Passvie Mode로 연결)&lt;/li&gt;
+          &lt;li&gt;Server에서는 &lt;strong&gt;사용할 두번째 포트(1234 Port)를 Client에게 알려줌&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;Client는 다른 Port(5151)를 열어 서버가 알려준 포트(1234)로 접속 시도&lt;/li&gt;
+          &lt;li&gt;Server가 Client의 요청에 응답(acks)&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Active Mode와의 차이점 - 데이터채널 연결 요청 시 Active Mode에서 사용했던 20번 port가 아닌 1024번 이후의 임의의포트를 데이터 채널 포트로 사용됨(여기서는 5151 Port로 사용)&lt;/p&gt;
+
+&lt;h3 id=&quot;주의사항-1&quot;&gt;주의사항&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Server측의 Data 채널 포트가 막혀있는 경우 데이터 채널 연결 불가
+    &lt;ul&gt;
+      &lt;li&gt;데이터 채널 포트의 범위는 지정할 수 있고, 별도로 지정하지 않은 경우 1024~65535번의 포트를 사용하게 됨&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Server에 INBOUND 모두 허용하는 &lt;strong&gt;방화벽 설정 필요&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Server 측에서 Data 채널 Port 범위를 지정하여 특정 범위의 Port만 허용해주면, 모든 포트를 허용해야하는 문제를 어느정도 해결할 수 있음&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%9D%91%EB%8B%B5_%EB%AC%B8%EC%9E%90&quot;&gt;응답 문자&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://milhouse93.tistory.com/168&quot;&gt;[IT 기초 지식] FTP(File Transfer Protocol) 정리&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://madplay.github.io/post/ftp-active-passive&quot;&gt;FTP Active와 Passive 차이&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="cs" /><category term="cs" /><summary type="html">오늘은 FTP Active와 Passive의 차이에 대해서 정리해보려 한다.</summary></entry><entry><title type="html">[CS] Pub/Sub 구조란 무엇인가?</title><link href="https://icechoco.github.io/cs/2022-02-25-What-is-pubSub-structure/" rel="alternate" type="text/html" title="[CS] Pub/Sub 구조란 무엇인가?" /><published>2022-02-25T00:00:00-06:00</published><updated>2022-02-25T22:41:16-06:00</updated><id>https://icechoco.github.io/cs/What-is-pubSub-structure</id><content type="html" xml:base="https://icechoco.github.io/cs/2022-02-25-What-is-pubSub-structure/">&lt;p&gt;오늘은 Pub&amp;amp;Sub 구조가 무엇인지에 대해서 알아보려 한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;subpub-구조&quot;&gt;Sub/pub 구조&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;발행-구독 모델, pub/sub system라고도 불림&lt;/li&gt;
+  &lt;li&gt;대신 발행된 메시지는 정해진 범주에 따라, 각 범주에 대한 구독을 신청한 수신자에게 전달된다.
+    &lt;ul&gt;
+      &lt;li&gt;수신자는 발행자에 대한 지식이 없어도 원하는 메시지만을 수신할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;이러한 발행자와 구독자의 디커플링은 더 다이나믹한 네트워크 토폴로지와 높은 확장성을 허용한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;1-pubsub-구조에서-수신자는-발행자에-대한-지식-없이-원하는-메세지만을-수신할-수-있다&quot;&gt;1) pub/sub 구조에서 수신자는 발행자에 대한 지식 없이 원하는 메세지만을 수신할 수 있다.&lt;/h3&gt;
+&lt;p&gt;ex) golang 관련 컨퍼런스가 새로 열릴 때마다 해당 컨퍼런스에 대한 정보를 받고싶어하는 수신자가 있다고 가정하자. 이 수신자의 관심사는 “새로운 컨퍼런스에 대한 정보”이다. 오로지 그것만 필요한 것이다. 발행자가 누구인지, 어디에 있는지, 뭘 하는 존재인지 같은 건 관심이 없다. 그저 새로운 컨퍼런스가 열린다고 할 때 그에 대한 정보만 받으면 된다. 수신자는 “golang컨퍼런스 알람” 채널을 구독한다. 이 채널에 누가 어떻게 정보를 넣어주는지는 관심사가 아니다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;발행자와 수신자 사이에는 &lt;span style=&quot;color:red&quot;&gt;브로커 또는 버스&lt;/span&gt;라고 불리는 중간 컴포넌트(앞서 말한 채널에 해당한다)가 있다.&lt;/li&gt;
+  &lt;li&gt;발행자와 수신자는 중간 컴포넌트를 알고있지만, 발행자와 수신자 서로는 모른다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-발신자의-메시지는-특별한-수신자가-정해져-있지-않다&quot;&gt;2) 발신자의 메시지는 특별한 수신자가 정해져 있지 않다&lt;/h3&gt;
+&lt;p&gt;발행자와 구독자는 &lt;span style=&quot;color:red&quot;&gt;디커플링 관계&lt;/span&gt;이다.&lt;br /&gt;
+특별한 수신자가 따로 정해져 있지 않으며, 발신자는 메세지 구독을 신청한 수신자(들)에게 전달할 뿐이다.&lt;br /&gt;
+구독을 했으면 메세지를 보내고, 안 했으면 안 보낸다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-pubsub-구조는-비동기async-메시징-패러다임&quot;&gt;3) pub/sub 구조는 비동기(Async) 메시징 패러다임&lt;/h3&gt;
+&lt;h4 id=&quot;sync--async&quot;&gt;sync &amp;amp; Async&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;동기(sync): 어떤 일의 수행과 동시에 결과가 나오는 것(정확히는 동시에 나오도록 노력하는 것)&lt;/li&gt;
+  &lt;li&gt;비동기(Async): 어떤 일의 수행 즉시 결과가 나온다는 보장이 애초에 없는 것&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;왜-비동기-메세징을-하는지&quot;&gt;“왜” 비동기 메세징을 하는지&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;브로드캐스팅의 관점: 내가 관찰하고 있는 어떤 대상에게 특정 이벤트가 일어나면, 그것을 관련된 다른 대상들에게 효율적으로 알려주고 싶다.&lt;/li&gt;
+  &lt;li&gt;디커플링의 관점: 그런데 이벤트를 통지받아야 하는 대상들을 내가 일일이 관리하지 않고, 종속 관계를 느슨하게 하고 싶다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;=&amp;gt; 1과 2의 관점을 만족시키는 구조가 필요했고, 이에 대한 직관적인 해답으로서 pub-sub 구조가 나온 것이 아닐까&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pub-sub구조는 특성상 일방향으로 수신자가 이벤트에 대한 정보를 얻기만 하면 되는 경우처럼 Active-Passive한 구조로 전달만 하면 되는 경우에 유용&lt;/li&gt;
+  &lt;li&gt;Redis에서도 pub-sub 모델을 지원함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://2kindsofcs.tistory.com/m/6&quot;&gt;pub/sub 구조란 무엇인가&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="cs" /><category term="cs" /><summary type="html">오늘은 Pub&amp;amp;Sub 구조가 무엇인지에 대해서 알아보려 한다.</summary></entry><entry><title type="html">[Effective Java] Day 32 - Item 86 :: Serialize를 구현할지는 신중히 결정하라</title><link href="https://icechoco.github.io/java/2022-02-20-Effective-java-Day32-item86/" rel="alternate" type="text/html" title="[Effective Java] Day 32 - Item 86 :: Serialize를 구현할지는 신중히 결정하라" /><published>2022-02-20T00:00:00-06:00</published><updated>2022-02-28T21:11:27-06:00</updated><id>https://icechoco.github.io/java/Effective-java-Day32-item86</id><content type="html" xml:base="https://icechoco.github.io/java/2022-02-20-Effective-java-Day32-item86/">&lt;p&gt;어떤 클래스의 인스턴스를 직렬화할 수 있게 하려면? → Class 선언에 implements Serializable 추가
+구현한다고 선언하기는 아주 쉽지만, 그렇다고 프로그래머가 따로 신경 쓸 일이 없다고 생각하는 것은 오해이다.&lt;/p&gt;
+
+&lt;h2 id=&quot;serailizable의-문제점&quot;&gt;Serailizable의 문제점&lt;/h2&gt;
+&lt;h3 id=&quot;1-serailizable을-구현하면-릴리스한-뒤에는-수정하기-어렵다&quot;&gt;1. Serailizable을 구현하면 릴리스한 뒤에는 수정하기 어렵다.&lt;/h3&gt;
+&lt;h4 id=&quot;클래스가-serializable을-구현하면-직렬화된-byte-stream-인코딩도-하나의-공개-api가-됨&quot;&gt;클래스가 Serializable을 구현하면 직렬화된 Byte Stream 인코딩도 하나의 공개 API가 됨&lt;/h4&gt;
+&lt;p&gt;따라서 이 클래스가 널리 사용될 경우, 다른 공개 API처럼 직렬화 형태를 영원히 지원해야 함&lt;/p&gt;
+
+&lt;h4 id=&quot;커스텀-직렬화-형태로-설계하지-않고-자바의-기본-방식대로-직렬화한다면-직렬화-형태는-최초-적용-당시-클래스의-내부-구현-방식에-묶임&quot;&gt;커스텀 직렬화 형태로 설계하지 않고 자바의 기본 방식대로 직렬화한다면, 직렬화 형태는 최초 적용 당시 클래스의 내부 구현 방식에 묶임&lt;/h4&gt;
+&lt;p&gt;즉, 기본 직렬화 형태에서는 클래스의 private, package-private 인스턴스 필드마저 API로 공개됨 → &lt;span style=&quot;background-color: #fff5b1&quot;&gt;캡슐화가 깨진다.&lt;/span&gt;
+Item 15에서 필드로의 접근을 최대한 막아 정보를 은닉하라 조언했지만,,,, 무력화된다.&lt;br /&gt;
+※ Item 15: 클래스와 멤버의 접근 권한을 최소화하라&lt;/p&gt;
+
+&lt;p&gt;뒤늦게 클래스 내부 구현을 고치면 원래의 직렬화 형태랑 달라진다.&lt;br /&gt;
+ex) 한 쪽은 구버전 인스턴스를 직렬화하고, 다른 쪽은 신버전 클래스로 역직렬화한다면 실패될 것&lt;/p&gt;
+
+&lt;p&gt;물론 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ObjectOutputStream.PutField&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ObjectInputStream.GetField&lt;/code&gt;를 사용하여 원래의 직렬화 형태를 유지하면서 내부 표현을 바꿀 수 있지만, 소스코드가 지저분하다.
+그러므로 직렬화 가능 클래스를 만들고자 한다면, 좀 더 길게 보고 고품질의 직렬화 형태도 주의해서 함께 설계해야 한다(Item 87,90)&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Serializable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;writeObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ObjectOutputStream&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IOException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;ObjectOutputStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;PutField&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;putField&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;oos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;putFields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;putField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;putField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;age&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;oos&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;writeFields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;readObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ObjectInputStream&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ois&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IOException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClassNotFoundException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;ObjectInputStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;GetField&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;readField&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ois&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;readFields&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;readField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(defaultName)&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//the default value to use if name does not have a value&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;readField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;age&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;직렬화가-클래스-개선을-방해하는-예---serial-version-uid&quot;&gt;직렬화가 클래스 개선을 방해하는 예 - Serial Version UID&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;스트림 고유 식별자, Serail Version ID(직렬 버전 UID)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;JVM&lt;/strong&gt;은 모든 Serializable Class에 각각 serialVersionUID라 불리는 &lt;span style=&quot;background-color: #fff5b1&quot;&gt;&lt;strong&gt;Version Number를 매칭 한다.&lt;/strong&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;static final long filed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;보통 IDE에서는 Class명 기준으로 자동으로 생성해주는 경우가 많다.
+SerialVersionUID를 따로 설정해주지 않더라도 JVM에서 RunTime 시 암호 해시 함수(SHA-1)를 적용해 자동으로 생성해준다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;이 경우는 클래스 이름, 구현한 인터페이스들, 컴파일러가 자동으로 생성해 넣은 것을 포함한 대부분의 클래스 멤버들이 고려된다.&lt;/li&gt;
+  &lt;li&gt;나중에 메서드를 추가하는 식으로 이들 중 하나라도 수정한다면 Serial Version UID 값도 변한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Serialization, Deserialization 할 때 Serial Version UID를 확인한 후 처리하며, 자동 생성되는 값에 의존하면 이 값이 맞지 않아 호환성이 깨져버려 Runtime에 &lt;span style=&quot;background-color: #fff5b1&quot;&gt;&lt;strong&gt;InvalidClassException&lt;/strong&gt;&lt;/span&gt;이 발생한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-버그와-보안-구멍이-생길-위험이-높아진다&quot;&gt;2. 버그와 보안 구멍이 생길 위험이 높아진다.&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;기본 역직렬화를 사용하면 생기는 문제
+    &lt;ul&gt;
+      &lt;li&gt;(1) 불변식 깨짐&lt;/li&gt;
+      &lt;li&gt;(2) 허가되지 않은 접근에 쉽게 노출&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;직렬화는 언어의 기본 메커니즘인 ‘객체는 생성자를 사용하여 만든다’를 우회하는 객체 생성 기법이다.&lt;br /&gt;
+역직렬화는 일반 생성자의 문제가 그대로 적용되는 숨은 생성자다. 하지만 일반 생성자처럼 소스 전면에 드러나지 않는다.&lt;br /&gt;
+그러다보니 ‘생성자에서 구축한 불변식을 모두 보장해야 한다, 생성 도중 공격자가 객체 내부를 들여다 볼 수 없도록 해야한다’는 사실을 떠올리기 어렵다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-해당-클래스의-신버전을-릴리스할-때-테스트할-것이-늘어난다&quot;&gt;3. 해당 클래스의 신버전을 릴리스할 때 테스트할 것이 늘어난다.&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;직렬화 가능 클래스가 수정될 때 검사해야할 것들
+    &lt;ul&gt;
+      &lt;li&gt;양방향 직렬화/역직렬화 모두 성공하는가?
+        &lt;ul&gt;
+          &lt;li&gt;신버전 인스턴스를 직렬화 → 구버전으로 역직렬화&lt;/li&gt;
+          &lt;li&gt;구버전 인스턴스 직렬화 → 신버전으로 역직렬화&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;원래의 객체를 충실히 복원하는가?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;테스트 해야 할 양이 테스트 가능 클래스의 수 &amp;amp; 릴리스 횟수에 비례하여 ↑&lt;/li&gt;
+  &lt;li&gt;클래스를 처음 제작할 떄 커스텀 직렬화 형태를 잘 설계해놨다면 테스트 부담↓ 가능(iTEM 87, 90)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;serialize-구현-여부는-가볍게-결정할-사안이-아니다&quot;&gt;Serialize 구현 여부는 가볍게 결정할 사안이 아니다.&lt;/h2&gt;
+&lt;p&gt;아래와 같은 경우라면 선택의 여지가 없긴하다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;객체를 전송하거나 저장할 때 자바 직렬화를 이용하는 프레임 워크용으로 만든 클래스&lt;/li&gt;
+  &lt;li&gt;Serializable을 반드시 구현해야 하는 다른 클래스의 컴포넌트로 쓰일 클래스&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Serialize 구현에 따르는 비용이 적지 않으니, 클래스를 설계할 때 마다 비용 &amp;amp; 이득을 잘 판단해라.
+대개 아래와 같은 기준으로 구현을 결정한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;BigInteger, Instant와 같은 &lt;strong&gt;값&lt;/strong&gt; 클래스, &lt;strong&gt;Collection&lt;/strong&gt; 클래스
+→ Serailizable을 구현&lt;/li&gt;
+  &lt;li&gt;스레드 풀처럼 &lt;strong&gt;동작&lt;/strong&gt;하는 객체를 표현하는 클래스
+→ Serailizable을 구현하지 않음&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;상속용으로-설계된-클래스item-19는-대부분-serializable을-구현하면-안되며-인터페이스도-대부분-serialize를-확장해서는-안된다&quot;&gt;상속용으로 설계된 클래스(Item 19)는 대부분 Serializable을 구현하면 안되며, 인터페이스도 대부분 Serialize를 확장해서는 안된다.&lt;/h2&gt;
+&lt;p&gt;상속용으로 설계된 클래스 중 Serializable을 구현한 예&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Throwable :서버가 RMI를 통해 클라이언트로 예외를 보내기 위해 Serialzable을 구현
+    &lt;ul&gt;
+      &lt;li&gt;RMI(Remote Method Invocation, 원격 메소드 호출): 분산되어 존재하는 객체간의 메시지 전송(메소드를 호출하는 것을 포함)을 가능하게 하는 프로토콜&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;component: GUI를 전송, 저장, 복원하기 위해 Serializable을 구현했으나 Swing과 AWT가 널리 쓰이던 시절에도 현업에서 이런 용도로 거의 쓰이지 않았음&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;내가-작성하는-클래스의-인스턴스-필드가-직렬화와-확장이-가능할-때-주의해야할-점&quot;&gt;내가 작성하는 클래스의 인스턴스 필드가 직렬화와 확장이 가능할 때, 주의해야할 점&lt;/h3&gt;
+&lt;h4 id=&quot;1-finalize-메서드를-재정의하지-못하게-하라&quot;&gt;1. finalize 메서드를 재정의하지 못하게 하라&lt;/h4&gt;
+&lt;p&gt;인스턴스 필드 값 중 불변식을 보장해야 할 게 있는 경우, 반드시 하위 클래스에서 finalize 메서드를 재정의하지 못하게 해야한다.&lt;br /&gt;
+즉, finalize 메서드를 내가 재정의하고 final로 선언해라. → 이렇게 안하면 finalizer 공격(item 8, p42)을 당할 수 있다.&lt;/p&gt;
+
+&lt;h4 id=&quot;2-인스턴스-필드-중-기본값으로-초기화되면-위배가-되는-불변식이-있다면-readobejctnodata-메서드를-반드시-추가해라&quot;&gt;2. 인스턴스 필드 중 기본값으로 초기화되면 위배가 되는 불변식이 있다면, readObejctNoData 메서드를 반드시 추가해라&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;슈퍼클래스 = 상속가능 + 직렬화 + 디폴트 값을 가지는 메서드&lt;/strong&gt; 인 경우&lt;/li&gt;
+  &lt;li&gt;자바 4에 추가됨. 기존의 직렬화 가능 클래스에 직렬화 가능 상위 클래스를 추가하는 경우를 위한 메서드
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;readObjectNoData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;InvalidObjectException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;InvalidObjectException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;스트림 데이터가 필요합니다.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;serailizable을-구현하지-않기로-할-때-주의해야할-점&quot;&gt;Serailizable을 구현하지 않기로 할 때, 주의해야할 점&lt;/h3&gt;
+&lt;p&gt;상속용 클래스인데 직렬화를 지원하지 않는 경우, 하위 클래스가 직렬화를 지원하려 할 때 부담이 늘어난다.&lt;br /&gt;
+이런 클래스를 역직렬화 하기 위해서는 상위 클래스는 &lt;strong&gt;매개변수가 없는 생성자를 제공&lt;/strong&gt;해야 한다.&lt;br /&gt;
+→ 제공하지 않은 경우, 하위 클래스는 직렬화 프록시 패턴(Item 90)을 사용해야 함&lt;/p&gt;
+
+&lt;h3 id=&quot;내부-클래스item-24는-직렬화를-구현하지-말아야-한다&quot;&gt;내부 클래스(item 24)는 직렬화를 구현하지 말아야 한다.&lt;/h3&gt;
+&lt;p&gt;내부 클래스에는 바깥 인스턴스의 참조, 유효 범위 안의 지역변수 값을 저장하기 위해 컴파일러가 생성한 필드들이 자동으로 추가된다.&lt;br /&gt;
+내부 클래스에 대한 기본 직렬화 형태는 분명하지가 않다.&lt;br /&gt;
+단, static 멤버 클래스는 Serializable을 구현해도 된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;결론&quot;&gt;결론&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Serializable을 구현하기 위해 선언하는 것은 쉽지만, 신경 써줘야할 부분이 많다.&lt;/li&gt;
+  &lt;li&gt;한 클래스의 여러 버전이 상호작용할 일이 없고, 서버가 신뢰할 수 없는 데이터에 노출될 가능성이 없는 등, 보호된 환경에서만 쓰일 클래스가 아니라면 Serializable 구현은 아주 신중하게 해라&lt;/li&gt;
+  &lt;li&gt;직렬화 + 상속 가능 클래스라면 주의사항이 더욱 많아짐을 유의하라.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html&quot;&gt;Interface Serializable docs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://brunch.co.kr/@oemilk/179&quot;&gt;직렬화(Serialization)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">어떤 클래스의 인스턴스를 직렬화할 수 있게 하려면? → Class 선언에 implements Serializable 추가 구현한다고 선언하기는 아주 쉽지만, 그렇다고 프로그래머가 따로 신경 쓸 일이 없다고 생각하는 것은 오해이다.</summary></entry><entry><title type="html">[Algorithm] Codility Lesson 15 - Caterpillar method</title><link href="https://icechoco.github.io/java/2022-02-17-Codility-Lesson15-Caterpillar-method/" rel="alternate" type="text/html" title="[Algorithm] Codility Lesson 15 - Caterpillar method" /><published>2022-02-17T00:00:00-06:00</published><updated>2022-02-20T04:38:39-06:00</updated><id>https://icechoco.github.io/java/Codility-Lesson15-Caterpillar-method</id><content type="html" xml:base="https://icechoco.github.io/java/2022-02-17-Codility-Lesson15-Caterpillar-method/">&lt;p&gt;무턱대고 A4용지 이면지에 영어 해석하면서 정리했었는데… 오늘 멘토링을 통해 우연히 알게된 개발자 분의 블로그를 보게 되었다. 블로그에 이것저것 많이 올리시고, git 잔디까지 빼곡한걸 보면서 정말 대단하다 생각했다. 그리고 나도 블로그에 정리한 내용을 올리면 보기 쉽겠다 생각해서 만든 Algorithm 카테고리의 첫 포스팅!&lt;/p&gt;
 
 &lt;p&gt;알고리즘 소스는 gitHub에 올리지만, Codility 내 각 Lesson마다 있는 교재를 읽고 정리한 내용은 L자 폴더 내 이면지로 쌓여있어 원활히 찾기가 쉽지 않았다…^^
 번역이 올바르지 않을 수 있으므로 양해 부탁드립니다. 틀린 부분 있으면 코멘트 남겨주세요 :D&lt;/p&gt;
@@ -123,7 +512,7 @@ y&amp;lt;k&amp;lt;=z를 만족하는 모든 stick K도 사용할 수 있다. 왜
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;    
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;위 알고리즘의 시간복잡도는 O(n)이다. 이유는 모든 스틱x에 대해 y와 z의 값이 O(n)번 증가하기 때문이다.&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">무턱대고 A4용지 이면지에 영어 해석하면서 정리했었는데… 오늘 멘토링을 통해 우연히 알게된 개발자 분의 블로그를 보게 되었다. 블로그에 이것저것 많이 올리시고, git 잔디까지 빼곡한걸 보면서 정말 대단하다 생각했다. 그리고 나도 블로그에 정리한 내용을 올리면 보기 쉽겠다 생각해서 만든 Algorithm 카테고리의 첫 포스팅!</summary></entry><entry><title type="html">[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라</title><link href="https://icechoco.github.io/java/2022-02-15-Effective-java-Day31-item72/" rel="alternate" type="text/html" title="[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-17T09:52:32+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day31-item72</id><content type="html" xml:base="https://icechoco.github.io/java/2022-02-15-Effective-java-Day31-item72/">&lt;p&gt;Item 72 :: 표준 예외를 사용하라&lt;/p&gt;
+&lt;p&gt;위 알고리즘의 시간복잡도는 O(n)이다. 이유는 모든 스틱x에 대해 y와 z의 값이 O(n)번 증가하기 때문이다.&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">무턱대고 A4용지 이면지에 영어 해석하면서 정리했었는데… 오늘 멘토링을 통해 우연히 알게된 개발자 분의 블로그를 보게 되었다. 블로그에 이것저것 많이 올리시고, git 잔디까지 빼곡한걸 보면서 정말 대단하다 생각했다. 그리고 나도 블로그에 정리한 내용을 올리면 보기 쉽겠다 생각해서 만든 Algorithm 카테고리의 첫 포스팅!</summary></entry><entry><title type="html">[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라</title><link href="https://icechoco.github.io/java/2022-02-15-Effective-java-Day31-item72/" rel="alternate" type="text/html" title="[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라" /><published>2022-02-15T00:00:00-06:00</published><updated>2022-02-16T03:56:38-06:00</updated><id>https://icechoco.github.io/java/Effective-java-Day31-item72</id><content type="html" xml:base="https://icechoco.github.io/java/2022-02-15-Effective-java-Day31-item72/">&lt;p&gt;Item 72 :: 표준 예외를 사용하라&lt;/p&gt;
 
 &lt;h2 id=&quot;exception의-재사용&quot;&gt;Exception의 재사용&lt;/h2&gt;
 &lt;ul&gt;
@@ -404,7 +793,7 @@ y&amp;lt;k&amp;lt;=z를 만족하는 모든 stick K도 사용할 수 있다. 왜
 &lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://velog.io/@youngerjesus/Java-avoid-ConcurrentModificationException&quot;&gt;자바 ConcurrentModificationException&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">Item 72 :: 표준 예외를 사용하라</summary></entry><entry><title type="html">[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라</title><link href="https://icechoco.github.io/java/2022-01-16-Effective-java-Day30-item63/" rel="alternate" type="text/html" title="[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라" /><published>2022-01-16T00:00:00+09:00</published><updated>2022-02-17T09:52:32+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day30-item63</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-16-Effective-java-Day30-item63/">&lt;p&gt;Day30에서는 item 63에 대한 내용을 다룬다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">Item 72 :: 표준 예외를 사용하라</summary></entry><entry><title type="html">[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라</title><link href="https://icechoco.github.io/java/2022-01-16-Effective-java-Day30-item63/" rel="alternate" type="text/html" title="[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라" /><published>2022-01-16T00:00:00-06:00</published><updated>2022-01-17T07:07:02-06:00</updated><id>https://icechoco.github.io/java/Effective-java-Day30-item63</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-16-Effective-java-Day30-item63/">&lt;p&gt;Day30에서는 item 63에 대한 내용을 다룬다.&lt;/p&gt;
 
 &lt;h2 id=&quot;item-63--문자열-연결은-느리니-주의하라&quot;&gt;Item 63 :: 문자열 연결은 느리니 주의하라&lt;/h2&gt;
 &lt;h3 id=&quot;1-문자열-연결-연산자&quot;&gt;1. 문자열 연결 연산자(+)&lt;/h3&gt;
@@ -651,7 +1040,7 @@ append 메서드를 사용하여 A를 100번 연결한다.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;성능에 신경을 써서 &lt;strong&gt;많은 문자열을 연결해야한다면 문자열 연결 연산자(+)를 피해라&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;대신 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StringBuilder&lt;/code&gt;의 append 메서드를 사용해라&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day30에서는 item 63에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Java] Iterable과 Iterator</title><link href="https://icechoco.github.io/java/2022-01-05-Java-Iterator/" rel="alternate" type="text/html" title="[Java] Iterable과 Iterator" /><published>2022-01-05T00:00:00+09:00</published><updated>2022-02-17T09:52:32+09:00</updated><id>https://icechoco.github.io/java/Java-Iterator</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-05-Java-Iterator/">&lt;p&gt;이펙티브 자바 3판을 읽다가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Iterable&amp;lt;E&amp;gt;&lt;/code&gt;를 입력 매개변수 타입으로 받는 소스코드 발견했다. Iterator가 반복자인 것만 알고있었는데 Iterable은 뭐지? 이름만 봐서는 인터페이스 같은데… 궁금해서 찾아보게 되었다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day30에서는 item 63에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Java] Iterable과 Iterator</title><link href="https://icechoco.github.io/java/2022-01-05-Java-Iterator/" rel="alternate" type="text/html" title="[Java] Iterable과 Iterator" /><published>2022-01-05T00:00:00-06:00</published><updated>2022-03-23T21:43:57-06:00</updated><id>https://icechoco.github.io/java/Java-Iterator</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-05-Java-Iterator/">&lt;p&gt;이펙티브 자바 3판을 읽다가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Iterable&amp;lt;E&amp;gt;&lt;/code&gt;를 입력 매개변수 타입으로 받는 소스코드 발견했다. Iterator가 반복자인 것만 알고있었는데 Iterable은 뭐지? 이름만 봐서는 인터페이스 같은데… 궁금해서 찾아보게 되었다.&lt;/p&gt;
 
 &lt;h2 id=&quot;1-iterable이란&quot;&gt;1. Iterable이란?&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;/assets\img/iterable_hierarchy.PNG&quot; alt=&quot;iterable_hierarchy&quot; /&gt;&lt;/p&gt;
@@ -755,902 +1144,41 @@ append 메서드를 사용하여 A를 100번 연결한다.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;위와같은 Iterator 인터페이스는 객체지향 프로그래밍의 중요한 목적 중의 하나임&lt;/p&gt;
+
+&lt;h3 id=&quot;객체지향-프로그래밍의-중요한-목적&quot;&gt;객체지향 프로그래밍의 중요한 목적&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;span style=&quot;color:red&quot;&gt;공통 인터페이스&lt;/span&gt;를 정의하여 표준을 정의&lt;/li&gt;
+  &lt;li&gt;위 인터페이스를 구현하여 표준을 따르도록 하며 &lt;span style=&quot;color:red&quot;&gt;코드의 일관성&lt;/span&gt;을 유지&lt;/li&gt;
+  &lt;li&gt;재사용성을 극대화&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LinkedList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Cho&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ra&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Iterator&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;iterator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hasNext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()){&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()+&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;참조변수 list로 iterator 메소드를 호출&lt;/li&gt;
+  &lt;li&gt;iterator 메소드는 Linkedlist 형태의 Iterator를 반환&lt;/li&gt;
+  &lt;li&gt;반환한 Iterator의 hasNext, next 메소드를 통해 내용을 출력함&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;참조&quot;&gt;참조&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://devlog-wjdrbs96.tistory.com/84&quot;&gt;[Java] Iterable 과 Iterator 이란?&lt;/a&gt;&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">이펙티브 자바 3판을 읽다가 Iterable&amp;lt;E&amp;gt;를 입력 매개변수 타입으로 받는 소스코드 발견했다. Iterator가 반복자인 것만 알고있었는데 Iterable은 뭐지? 이름만 봐서는 인터페이스 같은데… 궁금해서 찾아보게 되었다.</summary></entry><entry><title type="html">[Effective Java] Day 29 - Item 31 :: 한정적 와일드카드를 사용해 API 유연성을 높이라</title><link href="https://icechoco.github.io/java/2022-01-05-Effective-java-Day29-item31/" rel="alternate" type="text/html" title="[Effective Java] Day 29 - Item 31 :: 한정적 와일드카드를 사용해 API 유연성을 높이라" /><published>2022-01-05T00:00:00+09:00</published><updated>2022-02-17T09:52:32+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day29-item31</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-05-Effective-java-Day29-item31/">&lt;p&gt;Day29에서는 item 31에 대한 내용을 다룬다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://devlog-wjdrbs96.tistory.com/84&quot;&gt;[Java] Iterable 과 Iterator 이란?&lt;/a&gt;&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">이펙티브 자바 3판을 읽다가 Iterable&amp;lt;E&amp;gt;를 입력 매개변수 타입으로 받는 소스코드 발견했다. Iterator가 반복자인 것만 알고있었는데 Iterable은 뭐지? 이름만 봐서는 인터페이스 같은데… 궁금해서 찾아보게 되었다.</summary></entry><entry><title type="html">[Effective Java] Day 29 - Item 31 :: 한정적 와일드카드를 사용해 API 유연성을 높이라</title><link href="https://icechoco.github.io/java/2022-01-05-Effective-java-Day29-item31/" rel="alternate" type="text/html" title="[Effective Java] Day 29 - Item 31 :: 한정적 와일드카드를 사용해 API 유연성을 높이라" /><published>2022-01-05T00:00:00-06:00</published><updated>2022-03-23T22:56:47-06:00</updated><id>https://icechoco.github.io/java/Effective-java-Day29-item31</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-05-Effective-java-Day29-item31/">&lt;p&gt;Day29에서는 item 31에 대한 내용을 다룬다.&lt;/p&gt;
 
 &lt;h2 id=&quot;item-31--한정적-와일드카드를-사용해-api-유연성을-높이라&quot;&gt;Item 31 :: 한정적 와일드카드를 사용해 API 유연성을 높이라&lt;/h2&gt;
-&lt;p&gt;작성중…&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day29에서는 item 31에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 28 - Item 30 :: 이왕이면 제너릭 메서드로 만들라</title><link href="https://icechoco.github.io/java/2022-01-04-Effective-java-Day28-item30/" rel="alternate" type="text/html" title="[Effective Java] Day 28 - Item 30 :: 이왕이면 제너릭 메서드로 만들라" /><published>2022-01-04T00:00:00+09:00</published><updated>2022-02-17T09:52:32+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day28-item30</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-04-Effective-java-Day28-item30/">&lt;p&gt;Day28에서는 item 30에 대한 내용을 다룬다.&lt;/p&gt;
-
-&lt;h2 id=&quot;item-30--이왕이면-제너릭-메서드로-만들라&quot;&gt;Item 30 :: 이왕이면 제너릭 메서드로 만들라&lt;/h2&gt;
-&lt;h3 id=&quot;제너릭-메서드&quot;&gt;제너릭 메서드&lt;/h3&gt;
-&lt;p&gt;메서드의 선언부에 제너릭한 타입이 선언된 메서드&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Union&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HashSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addAll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;타입 매개변수 목록: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;E&amp;gt;&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;메서드 내에 지역적으로 사용될 제너릭 타입임을 알려주는 용도&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;반환 타입: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&amp;lt;E&amp;gt;&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;입력 매개변수 타입: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&amp;lt;E&amp;gt;&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;특징&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;타입 안전: 엉뚱한 타입을 넣으려는 시도를 컴파일 과정에서 차단&lt;/li&gt;
-      &lt;li&gt;쓰기 쉬움: 타입 체크 및 형변환을 하지 않아도 되서 코드가 간결함&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;제너릭-싱글턴-팩토리&quot;&gt;제너릭 싱글턴 팩토리&lt;/h3&gt;
-&lt;p&gt;요청한 타입 매개변수에 맞게 매번 그 객체의 타입을 바꿔주는 정적 메서드.&lt;br /&gt;
-제너릭 싱글턴 팩토리로 불변 객체를 여러 타입으로 활용할 수 있다.&lt;/p&gt;
-&lt;h4 id=&quot;unaryoperator&quot;&gt;UnaryOperator&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;자바의 대표적인 함수형 인터페이스&lt;/li&gt;
-  &lt;li&gt;항등함수를 담은 인터페이스(항등함수: 어떤 값을 넣어도 같은 값이 나오는 함수)
-    &lt;ul&gt;
-      &lt;li&gt;인수 1개를 받아 인수와 동일한 타입의 값을 리턴하는 함수를 표현&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Function&amp;lt;T,T&amp;gt;&lt;/code&gt;를 상속했으므로, 부모의 T applty(T t)가 인터페이스의 함수형 메서드&lt;/li&gt;
-  &lt;li&gt;함수형 인터페이스는 람다 표현식으로 인스턴스 생성 가능&lt;/li&gt;
-  &lt;li&gt;예시
-    &lt;ul&gt;
-      &lt;li&gt;UnaryOperator, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Function&amp;lt;T, R&amp;gt;&lt;/code&gt; 인터페이스
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@FunctionalInterface&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UnaryOperator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UnaryOperator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nd&quot;&gt;@FunctionalInterface&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;R&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li&gt;UnaryOperator 활용한 제너릭 싱글턴 팩토리 패턴
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 제네릭 싱글턴 팩터리 패턴 (178쪽)&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GenericSingletonFactory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//f(x) = x 항등함수 객체&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UnaryOperator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IDENTITY_FN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;//입력된 타입 매개변수에 따라 형변환 후 반환하는 제너릭 메서드&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UnaryOperator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identityFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;UnaryOperator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IDENTITY_FN&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 코드 30-5 제네릭 싱글턴을 사용하는 예 (178쪽)&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;물&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;스탠드&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;살찜&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;UnaryOperator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sameString&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identityFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sameString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;재귀적-타입-한정recursive-type-bound&quot;&gt;재귀적 타입 한정(recursive type bound)&lt;/h3&gt;
-&lt;p&gt;자기 자신이 들어간 표현식을 사용하여 타입 매개변수의 허용범위를 한정시키는 것&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//코드 30-6 재귀적 타입 한정을 이용해 상호 비교할 수 있음을 표현했다.&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Comparable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;타입 매개변수 목록: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;E extends Comparable&amp;lt;E&amp;gt;&amp;gt;&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;이 메소드에서 사용되는 타입 E는 Comparable 인터페이스를 구현한 타입으로 제한함&lt;/li&gt;
-      &lt;li&gt;E는 자신과 비교할 수 있다
-        &lt;ul&gt;
-          &lt;li&gt;E타입 원소들은 상호비교 가능하다는 뜻을 표현&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;반환 타입: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;E&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;입력 매개변수 타입: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Collection&amp;lt;E&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;comparable&quot;&gt;Comparable&lt;/h4&gt;
-&lt;p&gt;타입 매개변수 T는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;comparable&amp;lt;T&amp;gt;&lt;/code&gt;를 구현한 타입이 비교할 수 있는 원소의 타입을 정의한다.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Comparable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;compareTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//코드 30-7 컬렉션에서 최댓값을 반환한다. - 재귀적 타입 한정 사용&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Comparable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isEmpty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;IllegalArgumentException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;컬렉션이 비어있습니다!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;e:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;compareTo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;requireNonNull&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;결론&quot;&gt;결론&lt;/h3&gt;
-&lt;p&gt;입력 매개변수와 반환값을 명시적으로 형변환해야 하는 메서드는 제너릭하게 만들자!&lt;br /&gt;
-더 안전하고 사용하기도 쉽다 :D&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day28에서는 item 30에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 27 - Item 29 :: 이왕이면 제너릭 타입으로 만들라</title><link href="https://icechoco.github.io/java/2022-01-03-Effective-java-Day27-item29/" rel="alternate" type="text/html" title="[Effective Java] Day 27 - Item 29 :: 이왕이면 제너릭 타입으로 만들라" /><published>2022-01-03T00:00:00+09:00</published><updated>2022-02-17T09:52:32+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day27-item29</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-03-Effective-java-Day27-item29/">&lt;p&gt;Day27에서는 item 29에 대한 내용을 다룬다.&lt;/p&gt;
-
-&lt;h2 id=&quot;item-29--이왕이면-제너릭-타입으로-만들라&quot;&gt;Item 29 :: 이왕이면 제너릭 타입으로 만들라&lt;/h2&gt;
-&lt;p&gt;기존에 구현되어 있는 Object 기반의 스택 클래스를 보자&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Stack&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DEFAULT_INITIAL_CAPACITY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DEFAULT_INITIAL_CAPACITY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ensureCapacity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;EmptyStackException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//다 쓴 참조 해제&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isEmpty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ensureCapacity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Arrays&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;copyOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이 클래스는 원래 제너릭 타입이어야 마땅하다. 제너릭으로 만들어보자!&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;제너릭으로 바꾼다고 해도 현재 버전을 사용하는 클라이언트는 아무런 해가 없다(로타입을 통한 하위 호환성 지원)&lt;/li&gt;
-  &lt;li&gt;클라이언트가 스택에서 꺼낸 객체를 형변환할 때 런타임 오류가 날 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;object-기반의-스택-클래스--제너릭으로-바꾸는-방법&quot;&gt;Object 기반의 스택 클래스 → 제너릭으로 바꾸는 방법&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;클래스 선언에 타입 매개변수를 추가&lt;/strong&gt;하라
-    &lt;ul&gt;
-      &lt;li&gt;원소의 타입이름은 보통 E를 사용한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DEFAULT_INITIAL_CAPACITY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DEFAULT_INITIAL_CAPACITY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ensureCapacity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;EmptyStackException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//다 쓴 참조 해제&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isEmpty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ensureCapacity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Arrays&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;copyOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;타입 매개변수를 추가하는 경우 컴파일 오류가 발생한다.&lt;br /&gt;
- → E와 같은 실체화 불가 타입으로는 배열을 만들 수 없기 때문&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generic&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;creation&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DEFAULT_INITIAL_CAPACITY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-                   &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;적절한-해결책&quot;&gt;적절한 해결책&lt;/h4&gt;
-&lt;h5 id=&quot;방법-1-object-배열을-생성하기&quot;&gt;방법 1) object 배열을 생성하기&lt;/h5&gt;
-&lt;p&gt;object 배열을 생성한 다음 제너릭 배열로 형변환하자&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DEFAULT_INITIAL_CAPACITY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;컴파일 오류가 사라지고 비검사 형변환 경고를 내보낼 것이다.
-&lt;img src=&quot;/assets\img/item29_unchecked_cast.png&quot; alt=&quot;item29_unchecked_cast&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;스스로 타입 안정성을 해치지 않음을 확인해야한다.
-    &lt;ul&gt;
-      &lt;li&gt;elements 배열은 private 필드에 저장되어 외부로 전달되는 일이 전혀 없다.&lt;/li&gt;
-      &lt;li&gt;push 메서드를 통해 배열에 저장되는 원소의 타입은 항상 E다.&lt;/li&gt;
-      &lt;li&gt;따라서 비검사 형변환은 확실히 안전하다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;비검사 형변환이 안전함을 직접 증명했다면 &lt;strong&gt;@SuppressWarnings 애너테이션으로 해당 경고를 숨긴다.&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 배열 elements는 push(E)로 넘어온 E 인스턴스만 담는다.&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 따라서 타입 안정성을 보장하지만, 이 배열의 런타임 타입은 Eㅊ가 아닌 Obejct[]다.&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@SuppressWarnings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;unchecked&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Stack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DEFAULT_INITIAL_CAPACITY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h5 id=&quot;방법-2-elements-필드의-타입을-e에서-object로-바꾸기&quot;&gt;방법 2) elements 필드의 타입을 E[]에서 Object[]로 바꾸기&lt;/h5&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;EmptyStackException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//다 쓴 참조 해제&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;이렇게하면 첫 번째랑은 다른 컴파일 오류가 나타난다.
-&lt;img src=&quot;/assets\img/item29_incompatiable_types.png&quot; alt=&quot;item29_incompatiable_types&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;배열이 반환한 원소를 E로 형변환 해보자.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;EmptyStackException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//배열이 반환한 원소를 E로 형변환&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그럼 컴파일 오류가 사라지고 비검사 형변환(unchecked cast) 경고가 나타난다.
-&lt;img src=&quot;/assets\img/item29_unchecked_cast2.png&quot; alt=&quot;item29_unchecked_cast2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이번 역시 아까처럼 직접 비검사 형변환이 안전한지 증명하고, @SuppressWarnings 애너테이션으로 경고를 숨기자.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//비검사 경고를 적절히 숨긴다.&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;EmptyStackException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//push에서 E타입만 허용하므로 이 형변환은 안전하다.&lt;/span&gt;
-    &lt;span class=&quot;nd&quot;&gt;@SuppressWarnings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;unchecked&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;elements&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//다 쓴 참조 해제&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;배열을-사용한-코드를-제너릭으로-만드는-위-두가지-방법-비교&quot;&gt;배열을 사용한 코드를 제너릭으로 만드는 위 두가지 방법 비교&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;방법 1&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;가독성이 더 좋다&lt;/li&gt;
-      &lt;li&gt;배열의 타입을 E[]로 선언하여 오직 E타입만 받음을 확실히 어필한다.&lt;/li&gt;
-      &lt;li&gt;코드가 더 짧다.&lt;/li&gt;
-      &lt;li&gt;형변환: 배열 생성 시 단 한번만 해주면 된다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;방법 2&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;형변환: 원소를 읽을 때 마다 해줘야 한다.&lt;/li&gt;
-      &lt;li&gt;E가 Object 타입이 아닌 한 런타임 타입과 컴파일 타임이 달라 &lt;strong&gt;힙오염&lt;/strong&gt;을 일으킨다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;추가내용&quot;&gt;추가내용&lt;/h3&gt;
-&lt;p&gt;아이템 28에서 배열보다는 리스트를 우선하라고 했는데… 약간 모순아닌가? 싶을 수도 있다.&lt;br /&gt;
-제너릭 타입 안에서 리스트를 사용하는게 항상 가능한 것도 아니고, 무조건 좋은 것만은 아니다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;자바가 리스트를 기본 타입으로 제공하지 않았으므로, ArrayList 같은 제너릭 타입도 결국은 배열을 사용해 구현해야 한다.&lt;/li&gt;
-  &lt;li&gt;HashMap 같은 제너릭 타입은 성능을 높일 목적으로 배열을 사용하기도 한다.&lt;/li&gt;
-  &lt;li&gt;타입 매개변수에 int, double과 같은 기본 타입은 올 수 없다.
-    &lt;ul&gt;
-      &lt;li&gt;대신 박싱된 기본타입인 Integer, Double을 사용해 우회 가능하다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;E extends Delayed&amp;gt;&lt;/code&gt;: Delayed 자기 자신과 그 하위타입만 받겠다라는 뜻이다.
-    &lt;ul&gt;
-      &lt;li&gt;이를 &lt;strong&gt;한정적 타입 매개변수(bounded type parameter)&lt;/strong&gt;라고 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;결론&quot;&gt;결론&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;클라이언트에서 직접 형변환해야 하는 타입보다는 제너릭이 더 안전하고 쓰기 편하다.&lt;/li&gt;
-  &lt;li&gt;그러므로 &lt;strong&gt;기존 타입 중 제너릭이었어야 하는 게 있다면 과감히 제너릭 타입으로 변경하자!&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;기존 클라이언트에 영향을 줄까 걱정하지 않아도 된다. 아무런 영향을 주지않고, 오히려 새로운 사용자를 훨씬 편하게 해준다!&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day27에서는 item 29에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Effective Java] Day 26 - Item 40 :: @Override 애너테이션을 일관되게 사용하라</title><link href="https://icechoco.github.io/java/2022-01-02-Effective-java-Day26-item40/" rel="alternate" type="text/html" title="[Effective Java] Day 26 - Item 40 :: @Override 애너테이션을 일관되게 사용하라" /><published>2022-01-02T00:00:00+09:00</published><updated>2022-02-17T09:52:32+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day26-item40</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-02-Effective-java-Day26-item40/">&lt;p&gt;Day26에서는 item 40에 대한 내용을 다룬다.&lt;/p&gt;
-
-&lt;h2 id=&quot;item-40--override-애너테이션을-일관되게-사용하라&quot;&gt;Item 40 :: @Override 애너테이션을 일관되게 사용하라&lt;/h2&gt;
-&lt;h3 id=&quot;1-재정의하려는-모든-메서드에-override-애너테이션을-사용하자&quot;&gt;1. 재정의하려는 모든 메서드에 @Override 애너테이션을 사용하자&lt;/h3&gt;
-&lt;p&gt;@Override&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;메서드 선언에만 달 수 있다.&lt;/li&gt;
-  &lt;li&gt;상위 클래스나 상위 인터페이스의 메서드를 재정의 했음을 뜻한다.&lt;/li&gt;
-  &lt;li&gt;디폴트 메서드를 지원하기 시작하면서, 인터페이스 메서드를 구현한 메서드에도 @Override를 다는 습관을 들이면 시그니처가 올바른지 재차 확신할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;메서드를 재정의할 때 습관적으로 @Override 애너테이션을 사용하자!&lt;br /&gt;
-컴파일러가 매개변수 타입 오류 또는 오타로 인한 실수를 잡아주면서 버그들을 예방해준다.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bigram&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Bigram&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Bigram&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hashCode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Bigram&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HashSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'z'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++){&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bigram&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;소문자 a부터 z까지 26번 X 10번 반복해 HashSet에 추가 → 그 집합의 크기를 출력&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;260&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;HashSet인데 260이 출력되는 이유?
-    &lt;ul&gt;
-      &lt;li&gt;equals 메서드를 &lt;strong&gt;overriding이 아닌 overloading&lt;/strong&gt;했기 때문&lt;/li&gt;
-      &lt;li&gt;Object의 equals를 재정의하기 위해서는 매개변수 타입을 Object로 해야하나&lt;br /&gt;
-타입을 Bigram으로 만들어 Object의 equals와 별개인 equals를 새로 작성한 꼴이 됨&lt;/li&gt;
-      &lt;li&gt;overriding이 되지 않아 Object의 equals로 객체 식별성을 확인
-        &lt;ul&gt;
-          &lt;li&gt;같은 소문자를 가진 바이그램 10개를 다 다르게 인식&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;@Override 애너테이션을 추가해보자&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Bigram&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/assets\img/item40-override-warning.PNG&quot; alt=&quot;item40-override-warning&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;컴파일러가 잘못된 부분을 알려주므로 실수를 예방할 수 있다.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(!(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Bigram&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;Bigram&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Bigram&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2-예외-구체클래스에서-상위-클래스의-추상메서드를-재정의-한-경우&quot;&gt;2. 예외) 구체클래스에서 상위 클래스의 추상메서드를 재정의 한 경우&lt;/h3&gt;
-&lt;p&gt;구체 클래스에서 @override 애너테이션을 추가하지 않아도 추상메서드를 구현하지 않았다고 컴파일러가 바로 알려준다.
-그러므로 @override 애너테이션을 달지 않아도 된다. 물론 달아도 상관없다.
-&lt;img src=&quot;/assets\img/item40_abstract_warning.PNG&quot; alt=&quot;item40_abstract_warning&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;IDE 활용하기&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;대부분 IDE는 재정의할 메서드 선택하면 @Override를 자동으로 붙여준다.
-&lt;img src=&quot;/assets\img/item40-IntelliJ-select-methods.PNG&quot; alt=&quot;item40-IntelliJ-select-methods&quot; /&gt;&lt;/li&gt;
-  &lt;li&gt;아래 설정을 활성화해놓으면 @Override 달려있지 않은 메서드가 실제로 재정의 할 경우 경고를 준다.
-&lt;img src=&quot;/assets\img/item40-override-inspection.PNG&quot; alt=&quot;item40-override-inspection&quot; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;결론&quot;&gt;결론&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;재정의하려는 모든 메서드에 @Override 애너테이션을 사용하자&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;그럼 실수를 컴파일러가 바로 알려줄 것!&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;예외) 구체클래스에서 상위 클래스의 추상메서드를 재정의 한 경우&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;이 경우는 애너테이션을 달지 않아도 된다. 하지만 헷갈리지 않기 위해서 이 경우에도 @override 애네터이션을 추가해주는 것이 좋다고 생각한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day26에서는 item 40에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Java] 와일드카드 타입(Wildcard type)</title><link href="https://icechoco.github.io/java/2022-01-01-Java-wildcard-type/" rel="alternate" type="text/html" title="[Java] 와일드카드 타입(Wildcard type)" /><published>2022-01-01T00:00:00+09:00</published><updated>2022-02-17T09:52:32+09:00</updated><id>https://icechoco.github.io/java/Java-wildcard-type</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-01-Java-wildcard-type/">&lt;p&gt;&lt;strong&gt;이 글의 목적&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;와일드카드 타입과 로 타입을 어떨 때 주로 사용하는지, 그 차이를 명확히 알 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;와일드카드-&quot;&gt;와일드카드 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;?&amp;gt;&lt;/code&gt;&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;하나의 참조 변수로 대입된 타입이 다른 객체를 참조할 수 있다.
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//OK&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Audio&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//OK&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//에러. 대입된 타입 불일치&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;일반적으로 Generic 클래스는 참조변수와 생성자에 대입된 타입이 일치해야한다.&lt;br /&gt;
-그런데 위 세번째 라인의 경우 참조변수는 Product, 생성자에 대입된 타입은 TV로 일치하지 않아 에러가 발생한다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;그래서 이 답답함을 없애기 위해 등장한 것이 바로 와일드카드이다.&lt;br /&gt;
-와일드카드를 사용하면 참조변수와 생성자에 대입된 타입이 일치하지 않아도 된다.&lt;br /&gt;
-총 3가지 용법이 있으며 주로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;? extends T&amp;gt;&lt;/code&gt;를 많이 쓴다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;? extends T&amp;gt;&lt;/code&gt;: Upper Bounded Wildcards. 상위 클래스 제한. T와 그 자손들만 가능&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;? super T&amp;gt;&lt;/code&gt;: Lower Bounded Wildcards. 하위 클래스 제한. T와 그 조상들만 가능&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;?&amp;gt;&lt;/code&gt;: Unbounded Wildcards, 비한정적 와일드카드 타입. 제한 없음. 모든 타입이 가능. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;? extends Object&amp;gt;&lt;/code&gt;와 동일&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;메서드의 &lt;strong&gt;매개변수&lt;/strong&gt;에도 와일드 카드를 사용한다.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Juice&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;makeJuice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;FruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;box&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;box&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Juice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Juicer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;makeJuice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;()));&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Juicer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;makeJuice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Apple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;()));&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Fruit의 자손인 Apple과 자기 자신이 메서드의 매개변수로 사용될 수 있다.&lt;/p&gt;
-
-&lt;h3 id=&quot;와일드카드-타입을-사용한-소스코드-예시&quot;&gt;와일드카드 타입을 사용한 소스코드 예시&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Juice.java&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;chapter5.item28.Juice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Juice&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;nc&quot;&gt;Juice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;juice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;juice&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;juice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Juicer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//? extends Fruit: Fruit 자기 자신과 그 자손들인 Apple, Grape&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Juice&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;makeJuice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;FruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;box&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;box&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 향상된 for문&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Juice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tmp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Fruit&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Apple&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Apple&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Grape&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Grape&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;FruitBox.java&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;chapter5.item28.Juice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Box&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;Box.java&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;chapter5.item28.Juice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Box&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;Client.java&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;chapter5.item28.Juice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;FruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fruitBox&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Fruit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;FruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Apple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;appleBox&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;FruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Apple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// ? extends Fruit: Fruit과 그 자손들 Apple, Grape&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;//FruitBox&amp;lt;? extends Fruit&amp;gt; appleBox = new FruitBox&amp;lt;Apple&amp;gt;();&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;fruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Apple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;fruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Grape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;appleBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Apple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;appleBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Apple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Juicer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;makeJuice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;appleBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Juicer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;makeJuice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fruitBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=LL3PWmGFuQA&quot;&gt;[자바의 정석 - 기초편] ch12-12~14 와일드카드, 지네릭 메서드&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">이 글의 목적 와일드카드 타입과 로 타입을 어떨 때 주로 사용하는지, 그 차이를 명확히 알 수 있다.</summary></entry><entry><title type="html">[Effective Java] Day 25 - Item 27, 28 :: 비검사 경고를 제외하라, 배열보다는 리스트를 사용하라</title><link href="https://icechoco.github.io/java/2022-01-01-Effective-java-Day25-item27,28/" rel="alternate" type="text/html" title="[Effective Java] Day 25 - Item 27, 28 :: 비검사 경고를 제외하라, 배열보다는 리스트를 사용하라" /><published>2022-01-01T00:00:00+09:00</published><updated>2022-02-17T09:52:32+09:00</updated><id>https://icechoco.github.io/java/Effective-java-Day25-item27,28</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-01-Effective-java-Day25-item27,28/">&lt;p&gt;Day25에서는 item 27,28에 대한 내용을 다룬다.&lt;/p&gt;
-
-&lt;h2 id=&quot;item-27--비검사-경고를-제외하라&quot;&gt;Item 27 :: 비검사 경고를 제외하라&lt;/h2&gt;
-&lt;p&gt;제너릭을 활용하면 아래와 같은 컴파일러의 비검사 경고를 볼 수 있다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;비검사 형변환 경고(unchecked cast warning)&lt;/li&gt;
-  &lt;li&gt;비검사 메서드 호출 경고(unchecked method invocation warning)&lt;/li&gt;
-  &lt;li&gt;비검사 매개변수화 가변인수 타입 경고(unchecked parameterized vararg type warning)&lt;/li&gt;
-  &lt;li&gt;비검사 변환경고(unchecked conversion warning) 등&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;비검사 경고 예&lt;/strong&gt;&lt;br /&gt;
-&lt;img src=&quot;/assets\img/item27_unchecked_assignment.png&quot; alt=&quot;item27_unchecked_assignment&quot; /&gt;
-javac 명령줄 인수에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-Xlint:unchecked&lt;/code&gt;를 추가하면 뭐가 잘못됐는지 위와 같이 설명해준다.&lt;/p&gt;
-
-&lt;p&gt;인텔리제이에서 명령줄 인수를 추가하기 위해서는 Settings - Build, Execution, Deployment - Compiler - Java Compiler에서 설정할 수 있다.
-&lt;img src=&quot;/assets\img/item27_intelliJ_additional_option.png&quot; alt=&quot;item27_intelliJ_additional_option&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 소스는 아래와 같이 바꾸면 경고가 사라진다. 자바 7부터는 다이아몬드 연산자인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&amp;gt;&lt;/code&gt;로 타입 매개변수인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;String&amp;gt;&lt;/code&gt;를 대체할 수 있다. 컴파일러는 타입 매개변수를 추론한다.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exaltation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HashSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;할-수-있는-한-모든-비검사-경고를-제거하라&quot;&gt;할 수 있는 한 모든 비검사 경고를 제거하라.&lt;/h3&gt;
-&lt;p&gt;경고를 제거할 수는 없지만 타입이 안전하다고 확신할 수 있다면 @SuppressWarnings(“unchecked”) 애너테이션을 달아 경고를 숨기자.&lt;/p&gt;
-
-&lt;h4 id=&quot;suppresswarnings&quot;&gt;@SuppressWarnings&lt;/h4&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/*
-* The string {@code &quot;unchecked&quot;} is used to suppress
-* unchecked warnings. Compiler vendors should document the
-* additional warning names they support in conjunction with this
-* annotation type. They are encouraged to cooperate to ensure
-* that the same names work across multiple compilers.
-* @return the set of warnings to be suppressed
-*/&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@Target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TYPE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;FIELD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;METHOD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;PARAMETER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CONSTRUCTOR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;LOCAL_VARIABLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MODULE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@Retention&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;RetentionPolicy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;SOURCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SuppressWarnings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ol&gt;
-  &lt;li&gt;개별 지역변수 ~ 클래스 전체까지 선언할 수 있다.&lt;/li&gt;
-  &lt;li&gt;가능한 한 좁은 범위에 적용하자.
-    &lt;ul&gt;
-      &lt;li&gt;ex) 변수 선언, 아주 짧은 메서드, 생성자&lt;/li&gt;
-      &lt;li&gt;절대로 클래스 전체에 적용해서는 안된다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;한 줄이 넘는 메서드나 생성자에 달린 @SuppressWarnings 애너테이션을 발견하면 지역변수 선언쪽으로 옮기자.
-    &lt;ul&gt;
-      &lt;li&gt;이를 위해 지역변수를 새로 선언하는 수고를 해야 할 수도 있지만, 그만한 값어치가 있을 것이다!&lt;/li&gt;
-      &lt;li&gt;ex) ArrayList의 toArray 메서드
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@SuppressWarnings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;unchecked&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//unchecked: 미확인 오퍼레이션과 관련된 경고 억제&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;toArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// Make a new array of a's runtime type, but my contents:&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Arrays&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;copyOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elementData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
- &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;arraycopy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elementData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
-        &lt;p&gt;실제로는 메서드에 @suppressWarnings가 달려있지만 더 좋은 방법이 있다.&lt;br /&gt;
-반환값을 담을 지역변수를 하나 선언하고 그 변수에 애너테이션을 달아주는 방법이다.&lt;/p&gt;
-        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;toArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 생성한 배열인 result와 매개변수로 받은 배열의 타입도 T[]로 형변환 하여 같으므로&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 올바른 형변환이다.&lt;/span&gt;
-  &lt;span class=&quot;nd&quot;&gt;@SuppressWarnings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;unchecked&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Arrays&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;copyOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elementData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;arraycopy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elementData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li&gt;장점
-        &lt;ul&gt;
-          &lt;li&gt;컴파일이 깔끔하게 된다.&lt;/li&gt;
-          &lt;li&gt;비검사 경고를 숨기는 범위를 최소로 좁힐 수 있다.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;@SuppressWarnings(“unchecked”) 애너테이션을 사용할 때면 그 경고를 무시해도 안전한 이유를 항상 주석으로 남기자.
-    &lt;ul&gt;
-      &lt;li&gt;다른 사람이 그 코드를 이해하는데 도움이 된다.&lt;/li&gt;
-      &lt;li&gt;다른 사람이 그 코드를 잘못 수정하여 타입 안전성을 잃는 상황을 줄여준다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;결론&quot;&gt;결론&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;최선을 다해 모든 비검사 경고를 제거하라
-    &lt;ul&gt;
-      &lt;li&gt;모두 제거하면 타입 안정성이 증명된다.&lt;/li&gt;
-      &lt;li&gt;ClassCastException이 발생할 일이 없다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;경고를 제거할 수 없고 타입이 안전하다고 확신할 수 있다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@SuppressWarnings(&quot;unchekced&quot;)&lt;/code&gt;를 달아 경고를 숨겨라
-    &lt;ul&gt;
-      &lt;li&gt;경고를 숨기기로 한 근거를 주석으로 남겨라&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.baeldung.com/java-suppresswarnings-valid-names&quot;&gt;Valid @SuppressWarnings Warning Names&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;item-28--배열보다는-리스트를-사용하라&quot;&gt;Item 28 :: 배열보다는 리스트를 사용하라&lt;/h2&gt;
-&lt;h3 id=&quot;배열과-리스트제너릭-타입의-차이&quot;&gt;배열과 리스트(제너릭 타입)의 차이&lt;/h3&gt;
-&lt;h4 id=&quot;1-배열-array&quot;&gt;1. 배열 (Array)&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;1) 배열은 함께 변한다. 즉, 공변(convariant)이다.&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Sub extends Super인 경우, Sub[] extends Super[]이다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sub&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Super&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nc&quot;&gt;Super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;superman&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Sub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;2) 배열은 실체화(reify)된다.&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;컴파일타임: 타입 불안전 / 런타임: 타입 안전
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;objectArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;objectArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;String을 넣어봅시다!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;Object 배열에 Long용 저장소를 할당했다.&lt;br /&gt;
-그러므로 objectArray에는 Long타입만 올 수 있다. String은 못온다.&lt;br /&gt;
-그런데 위 코드는 컴파일 에러가 나지 않는다.&lt;/p&gt;
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thread&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;main&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ArrayStoreException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;String&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item28&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;BetweenArrayAndList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;BetweenArrayAndList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;런타임에서 에러가 난다.&lt;br /&gt;
-→ 런타임에도 자신이 담기로 한 원소의 타입을 인지하고 확인하기 때문&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;2-리스트-list&quot;&gt;2. 리스트 (List)&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;1) 리스트는 함께 변하지 않는다. 즉, 불공변(invariant)이다.&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;상위-하위타입 관계가 아니다.
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;superList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Sub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//컴파일 에러!&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;2) List는 실체화(reify)되지 않는다.&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;컴파일타임: 타입 안전 / 런타임: 타입 불안전
-    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//컴파일 에러&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;objList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;objList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;String을 넣어봅시다!&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-    &lt;p&gt;리스트는 컴파일할 때 바로 알 수 있다. 단, 런타임 시 타입정보가 소거된다.&lt;br /&gt;
-원소 타입을 컴파일 타임에만 검사, 런타임에는 알 수 조차 없다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;→ 소거: 제너릭이 지원되기 전의 레거시 코드와 제너릭 타입을 함께 사용할 수 있게 해주는 메커니즘&lt;br /&gt;
-  자바5가 제너릭으로 순조롭게 전환될 수 있도록 해준 일등공신!&lt;/p&gt;
-
-&lt;h4 id=&quot;실체화reify&quot;&gt;실체화(reify)&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;실체화&lt;/strong&gt;: JVM이 type 정보를 완전히 알게 되거나, 알게 하는 것, 또는 알고 체크하는 것&lt;/li&gt;
-  &lt;li&gt;실체화 가능 타입(reifiable type)
-    &lt;ul&gt;
-      &lt;li&gt;매개변수화 타입 가운데 실체화 될 수 있는 타입은 비한정적 와일드카드 뿐이다.&lt;/li&gt;
-      &lt;li&gt;ex) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;?&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Map&amp;lt;?,?&amp;gt;&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;실체화 불가 타입(non-reifiable type)
-    &lt;ul&gt;
-      &lt;li&gt;실체화되지 않아서 런타임에는 컴파일타임보다 타입 정보를 적게 가진다.&lt;/li&gt;
-      &lt;li&gt;ex) E, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;E&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;String&amp;gt;&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;제너릭-배열을-만들지-못하게-막은-이유는&quot;&gt;제너릭 배열을 만들지 못하게 막은 이유는?&lt;/h3&gt;
-&lt;h4 id=&quot;1-배열과-제너릭은-잘-어우러지지-못한다&quot;&gt;1. 배열과 제너릭은 잘 어우러지지 못한다.&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new List&amp;lt;E&amp;gt;[]&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new List&amp;lt;String&amp;gt;[]&lt;/code&gt;, new E[] → 컴파일 시 오류 발생!&lt;/p&gt;
-&lt;h4 id=&quot;2-타입-안전하지-않다&quot;&gt;2. 타입 안전하지 않다.&lt;/h4&gt;
-&lt;p&gt;위 두가지 이유 때문인데 자세한건 아래 예시를 보고 이해해보자.&lt;br /&gt;
-&lt;strong&gt;ex) 제너릭 배열 생성이 허용된다 가정&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stringList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// (1) 허용된다 가정&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;// (2) &lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stringList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;                   &lt;span class=&quot;c1&quot;&gt;// (3)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;                           &lt;span class=&quot;c1&quot;&gt;// (4)&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stringList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;                 &lt;span class=&quot;c1&quot;&gt;// (5)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;(1)처럼 제너릭 배열이 생성이 허용된다고 일단 가정해보자.&lt;br /&gt;
-(2)에서 원소가 42 하나인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;Integer&amp;gt;&lt;/code&gt;를 생성한다.&lt;br /&gt;
-(3)은 (1) 에서 생성한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;String&amp;gt;&lt;/code&gt; 배열을 Object 배열에 할당한다. 즉, Object 배열은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;String&amp;gt;&lt;/code&gt; 배열을 참조하게 된다. 배열은 공변이므로 가능하다.&lt;br /&gt;
-&lt;img src=&quot;/assets\img/item28_If_there_is_generic_array.PNG&quot; alt=&quot;item28_If_there_is_generic_array&quot; /&gt;
-(4)는 Objects 배열의 첫 원소에 원소가 42 하나인 initList를 저장한다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;문제점
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;String&amp;gt;&lt;/code&gt; 인스턴스만 받겠다고 선언한 stringList 배열에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;Integer&amp;gt;&lt;/code&gt; 인스턴스가 들어가있다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;(5)는 이 배열의 첫 리스트에서 원소를 꺼내려 한다. 컴파일러는 꺼낸 원소 42를 자동으로 String으로 형변환한다.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ClassCastException 발생&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이런 일을 방지하기 위해서 제너릭배열이 생성되지 않도록 (1)에서 컴파일 오류를 내야하는 것이다.&lt;/p&gt;
-
-&lt;h3 id=&quot;배열대신-list처럼-원소를-관리하자&quot;&gt;배열대신 List처럼 원소를 관리하자&lt;/h3&gt;
-&lt;p&gt;배열로 형변환할 때 제너릭 배열 생성오류 or 비검사 형변환 경고가 뜨는 경우&lt;br /&gt;
-→ 배열인 E[] 대신 컬렉션인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&amp;lt;E&amp;gt;&lt;/code&gt;를 사용하자!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;ex) 생성자에서 컬렉션을 받는 Chooser 클래스&lt;/strong&gt;&lt;br /&gt;
-이 클래스는 컬렉션 안의 원소 중 하나를 무작위로 반환하는 choose 메서드를 제공한다.&lt;/p&gt;
-&lt;h4 id=&quot;제너릭-미사용-버전&quot;&gt;제너릭 미사용 버전&lt;/h4&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Chooser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choiceArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Chooser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Collection&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;choiceArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;choose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Random&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rnd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadLocalRandom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;choiceArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nextInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;choiceArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)];&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;이 클래스를 사용하려면 choose 메서드 호출 시 마다 반환된 Object를 원하는 타입으로 형변환 해야한다.&lt;br /&gt;
-혹시나 원하는 타입과 다른 타입의 원소가 들어있는 경우 런타임 시 형변환 오류가 발생할 것이다.&lt;/p&gt;
-&lt;h4 id=&quot;제너릭-사용-버전-1&quot;&gt;제너릭 사용 버전 1&lt;/h4&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Chooser2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//제너릭으로 변환&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choiceArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;//@SuppressWarnings(&quot;unchecked&quot;) // 비검사 형변환 경고(unchecked cast경고)&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Chooser2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;choiceArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//unchecked cast: 'java.lang.Object[]' to 'T[]'&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;choose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Random&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rnd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadLocalRandom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;choiceArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nextInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;choiceArray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)];&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choiceArray = (T[]) choices.toArray();&lt;/code&gt;에서 unchecked cast: ‘java.lang.Object[]’ to ‘T[]’ 경고가 발생한다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;T[]가 무슨 타입인지 알 수 없으니 컴파일러는 이 형변환이 런타임에도 &lt;strong&gt;안전한지 보장할 수 없다&lt;/strong&gt;라는 뜻&lt;/li&gt;
-  &lt;li&gt;제너릭에는 원소의 타입 정보가 소거되어 런타임에는 무슨 타입인지 알 수 없다.&lt;/li&gt;
-  &lt;li&gt;컴파일러가 안전을 보장하지 못할 뿐 소스코드는 동작하며, List에 비해 &lt;strong&gt;빠르다.&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;코드작성자가 안전하다고 확신한다면 주석을 남기고 애너테이션을 달아 경고를 숨겨도 된다.
-    &lt;ul&gt;
-      &lt;li&gt;단, 경고의 원인을 완전히 제거하는게 훨씬 좋은 방법이다(item 27)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;제너릭-사용-버전-2&quot;&gt;제너릭 사용 버전 2&lt;/h4&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Chooser3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//제너릭으로 변환&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choiceList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//리스트로 변경&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Chooser3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;choiceList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;choices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;choose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Random&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rnd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadLocalRandom&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;choiceList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nextInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;choiceList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()));&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;장점: 타입 안전성과 상호운용성이 좋아진다. 런타임이 아닌 컴파일시점에 에러를 잡아준다.&lt;/li&gt;
-  &lt;li&gt;단점: 코드가 조금 복잡해진다. 성능이 살짝 느려질 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;결론-1&quot;&gt;결론&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;배열과 리스트를 섞어쓰기란 쉽지 않다.
-    &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;Array&lt;/strong&gt;: 공변. 실체화된다.
-        &lt;ul&gt;
-          &lt;li&gt;컴파일타임: 타입 불안전 / 런타임: 타입 안전&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;List&lt;/strong&gt;: 불공변. 타입정보가 소거된다.
-        &lt;ul&gt;
-          &lt;li&gt;컴파일타임: 타입 안전 / 런타임: 타입 불안전&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;섞어쓰다가 컴파일 오류나 경고를 만나면, 배열을 List로 대체해라.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;참고-1&quot;&gt;참고&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://junroot.github.io/programming/Java-%EB%B0%B0%EC%97%B4%EA%B3%BC-%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%9D%98-%EA%B3%B5%EB%B3%80%EC%84%B1%EA%B3%BC-%EB%B0%98%EA%B3%B5%EB%B3%80%EC%84%B1,-%EB%AC%B4%EA%B3%B5%EB%B3%80%EC%84%B1/&quot;&gt;Java 배열과 리스트의 공변성과 반공변성, 무공변성&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day25에서는 item 27,28에 대한 내용을 다룬다.</summary></entry></feed>
+  &lt;li&gt;&lt;a href=&quot;https://hochoon-dev.tistory.com/entry/Java-Producer-Consumer-%ED%8C%A8%ED%84%B4-%EA%B5%AC%EC%A1%B0&quot;&gt;[Java] Producer - Consumer 패턴 구조&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day29에서는 item 31에 대한 내용을 다룬다.</summary></entry></feed>

@@ -41,11 +41,11 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta property="og:url" content="https://icechoco.github.io/frontend/2021-10-11-Redux-Basics/" />
 <meta property="og:site_name" content="IceChoco" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-10-11T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-10-11T00:00:00-05:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Redux 기초" />
 <script type="application/ld+json">
-{"headline":"Redux 기초","dateModified":"2022-02-17T09:52:32+09:00","datePublished":"2021-10-11T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/frontend/2021-10-11-Redux-Basics/"},"url":"https://icechoco.github.io/frontend/2021-10-11-Redux-Basics/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Redux는 상태관리 라이브러리(predictable state container) 입니다. 그렇다면 여기서 말하는 state가 뭘까요? React에서는 Props와 State가 있습니다. 이 두가지를 비교하면서 state에 대해 알아보겠습니다. Props VS State Props Props는 Properties의 줄임말입니다. 부모 컴포넌트와 자식 컴포넌트가 있는 경우 데이터를 서로 주고 받아야겠죠? 두 컴포넌트간의 데이터를 주고 받을 때는 Props를 이용해야 합니다. 단방향 데이터 흐름: child component에 전달되는 값 또는 method. 부모 컴포넌트에서 자식 컴포넌트로 즉 위에서 아래로만 데이터 전달이 가능합니다. 반대로 child component에서 parent component로 전달은 불가능합니다. read donly: child component로 전달받은 props 값은 변하지 않습니다다. 만약 부모로부터 받은 값을 수정하고 싶다면 수정된 값으로 부모 컴포넌트에게서 다시 받아야 합니다. 소스코드 예시 parent component","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Redux 기초","dateModified":"2021-12-17T06:19:31-06:00","datePublished":"2021-10-11T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/frontend/2021-10-11-Redux-Basics/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/frontend/2021-10-11-Redux-Basics/","description":"Redux는 상태관리 라이브러리(predictable state container) 입니다. 그렇다면 여기서 말하는 state가 뭘까요? React에서는 Props와 State가 있습니다. 이 두가지를 비교하면서 state에 대해 알아보겠습니다. Props VS State Props Props는 Properties의 줄임말입니다. 부모 컴포넌트와 자식 컴포넌트가 있는 경우 데이터를 서로 주고 받아야겠죠? 두 컴포넌트간의 데이터를 주고 받을 때는 Props를 이용해야 합니다. 단방향 데이터 흐름: child component에 전달되는 값 또는 method. 부모 컴포넌트에서 자식 컴포넌트로 즉 위에서 아래로만 데이터 전달이 가능합니다. 반대로 child component에서 parent component로 전달은 불가능합니다. read donly: child component로 전달받은 props 값은 변하지 않습니다다. 만약 부모로부터 받은 값을 수정하고 싶다면 수정된 값으로 부모 컴포넌트에게서 다시 받아야 합니다. 소스코드 예시 parent component","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-02-17T09:58:10+09:00',
+    INDEX_KEY: 'index--2022-03-23T22:57:28-06:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -297,7 +297,7 @@ Left here for reference, feel free to delete.
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>, <span>Redux</span>
+        <time datetime="2021-10-11T00:00:00-05:00">11 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>, <span>Redux</span>
       </span>
       
         
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-02-17">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-17">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2022-02-17T09:52:32+09:00">2022-02-17</time>
+              <time datetime="2021-12-17T06:19:31-06:00">2021-12-17</time>
             </span>
           
         
@@ -606,7 +606,7 @@ class App extends Component{
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-02-17-Codility-Lesson15-Caterpillar-method/" class="flip-title"><span>[Algorithm] Codility Lesson 15 - Caterpillar method</span></a>  <time class="faded fine" datetime="2022-02-17T00:00:00+09:00">17 Feb 2022</time></li>                        <li class="h4">  <a href="/java/2022-02-15-Effective-java-Day31-item72/" class="flip-title"><span>[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라</span></a>  <time class="faded fine" datetime="2022-02-15T00:00:00+09:00">15 Feb 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-16-Effective-java-Day30-item63/" class="flip-title"><span>[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라</span></a>  <time class="faded fine" datetime="2022-01-16T00:00:00+09:00">16 Jan 2022</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" class="flip-title"><span>[CS] 기술면접 예상 질문 - 자바</span></a>  <time class="faded fine" datetime="2022-03-02T00:00:00-06:00">02 Mar 2022</time></li>                        <li class="h4">  <a href="/java/2022-03-01-Effective-java-Day33-item66/" class="flip-title"><span>[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라</span></a>  <time class="faded fine" datetime="2022-03-01T00:00:00-06:00">01 Mar 2022</time></li>                        <li class="h4">  <a href="/cs/2022-02-25-What-is-pubSub-structure/" class="flip-title"><span>[CS] Pub/Sub 구조란 무엇인가?</span></a>  <time class="faded fine" datetime="2022-02-25T00:00:00-06:00">25 Feb 2022</time></li>            </ul></aside>
 
   
 

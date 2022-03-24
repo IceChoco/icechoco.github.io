@@ -41,11 +41,11 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta property="og:url" content="https://icechoco.github.io/frontend/2021-10-11-Settint-Up-Redux/" />
 <meta property="og:site_name" content="IceChoco" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-10-11T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-10-11T00:00:00-05:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Redux 설치하기" />
 <script type="application/ld+json">
-{"headline":"Redux 설치하기","dateModified":"2022-02-17T09:52:32+09:00","datePublished":"2021-10-11T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/frontend/2021-10-11-Settint-Up-Redux/"},"url":"https://icechoco.github.io/frontend/2021-10-11-Settint-Up-Redux/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"Redux를 자신이 개발할 어플리케이션에 설치하고 설정하는 방법을 기록하겠습니다. 우선 다운 받아야 할 dependency들이 redux, react-redux, redux-promise, redux-thunk까지 총 4개가 있습니다. 이 중에서 redux-promis, redux-thunk는 redux의 미들웨어입니다. npm install redux react-redux redux-promise redux-thunk --save redux-promise, redux-thunk가 필요한 이유 redux-promise, redux-thunk는 redux를 잘 쓸 수 있게 도와주는 역할을 하는 미들웨어입니다. redux는 redux store 안에 모든 state를 관리하고 있습니다. 이 store 안에 있는 state를 변경하기 위해서는 dispatch를 이용해서 action을 통해 변경시킬 수 있습니다. 이렇게 store가 데이터를 받을 때 항상 객체 형식으로 데이터를 받는 것이 아니라 때에 따라 promise, functions 형식으로 받기도 합니다. 그런데, redux 기초편에서 봤듯 우리는 reudx store는 객체 형식으로만 데이터를 받을 수 있다고 배웠습니다.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"Redux 설치하기","dateModified":"2021-12-17T06:19:32-06:00","datePublished":"2021-10-11T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/frontend/2021-10-11-Settint-Up-Redux/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/frontend/2021-10-11-Settint-Up-Redux/","description":"Redux를 자신이 개발할 어플리케이션에 설치하고 설정하는 방법을 기록하겠습니다. 우선 다운 받아야 할 dependency들이 redux, react-redux, redux-promise, redux-thunk까지 총 4개가 있습니다. 이 중에서 redux-promis, redux-thunk는 redux의 미들웨어입니다. npm install redux react-redux redux-promise redux-thunk --save redux-promise, redux-thunk가 필요한 이유 redux-promise, redux-thunk는 redux를 잘 쓸 수 있게 도와주는 역할을 하는 미들웨어입니다. redux는 redux store 안에 모든 state를 관리하고 있습니다. 이 store 안에 있는 state를 변경하기 위해서는 dispatch를 이용해서 action을 통해 변경시킬 수 있습니다. 이렇게 store가 데이터를 받을 때 항상 객체 형식으로 데이터를 받는 것이 아니라 때에 따라 promise, functions 형식으로 받기도 합니다. 그런데, redux 기초편에서 봤듯 우리는 reudx store는 객체 형식으로만 데이터를 받을 수 있다고 배웠습니다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-02-17T09:58:10+09:00',
+    INDEX_KEY: 'index--2022-03-23T22:57:28-06:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -297,7 +297,7 @@ Left here for reference, feel free to delete.
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>, <span>Redux</span>
+        <time datetime="2021-10-11T00:00:00-05:00">11 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>, <span>Redux</span>
       </span>
       
         
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-02-17">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-17">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2022-02-17T09:52:32+09:00">2022-02-17</time>
+              <time datetime="2021-12-17T06:19:32-06:00">2021-12-17</time>
             </span>
           
         
@@ -515,7 +515,7 @@ state는 유저, 구독 등 여러가지에 대한 state가 있을 수 있으므
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-02-17-Codility-Lesson15-Caterpillar-method/" class="flip-title"><span>[Algorithm] Codility Lesson 15 - Caterpillar method</span></a>  <time class="faded fine" datetime="2022-02-17T00:00:00+09:00">17 Feb 2022</time></li>                        <li class="h4">  <a href="/java/2022-02-15-Effective-java-Day31-item72/" class="flip-title"><span>[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라</span></a>  <time class="faded fine" datetime="2022-02-15T00:00:00+09:00">15 Feb 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-16-Effective-java-Day30-item63/" class="flip-title"><span>[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라</span></a>  <time class="faded fine" datetime="2022-01-16T00:00:00+09:00">16 Jan 2022</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" class="flip-title"><span>[CS] 기술면접 예상 질문 - 자바</span></a>  <time class="faded fine" datetime="2022-03-02T00:00:00-06:00">02 Mar 2022</time></li>                        <li class="h4">  <a href="/java/2022-03-01-Effective-java-Day33-item66/" class="flip-title"><span>[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라</span></a>  <time class="faded fine" datetime="2022-03-01T00:00:00-06:00">01 Mar 2022</time></li>                        <li class="h4">  <a href="/cs/2022-02-25-What-is-pubSub-structure/" class="flip-title"><span>[CS] Pub/Sub 구조란 무엇인가?</span></a>  <time class="faded fine" datetime="2022-02-25T00:00:00-06:00">25 Feb 2022</time></li>            </ul></aside>
 
   
 

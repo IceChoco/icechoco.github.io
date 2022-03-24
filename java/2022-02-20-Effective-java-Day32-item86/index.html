@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Effective Java] Day 32 - Item 86 :: Serialize를 구현할지는 신중히 결정하라 | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[Effective Java] Day 32 - Item 86 :: Serialize를 구현할지는 신중히 결정하라" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="어떤 클래스의 인스턴스를 직렬화할 수 있게 하려면? → Class 선언에 implements Serializable 추가 구현한다고 선언하기는 아주 쉽지만, 그렇다고 프로그래머가 따로 신경 쓸 일이 없다고 생각하는 것은 오해이다." />
+<meta property="og:description" content="어떤 클래스의 인스턴스를 직렬화할 수 있게 하려면? → Class 선언에 implements Serializable 추가 구현한다고 선언하기는 아주 쉽지만, 그렇다고 프로그래머가 따로 신경 쓸 일이 없다고 생각하는 것은 오해이다." />
+<link rel="canonical" href="https://icechoco.github.io/java/2022-02-20-Effective-java-Day32-item86/" />
+<meta property="og:url" content="https://icechoco.github.io/java/2022-02-20-Effective-java-Day32-item86/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-02-20T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Effective Java] Day 32 - Item 86 :: Serialize를 구현할지는 신중히 결정하라" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"[Effective Java] Day 32 - Item 86 :: Serialize를 구현할지는 신중히 결정하라","dateModified":"2022-02-28T21:11:27-06:00","datePublished":"2022-02-20T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2022-02-20-Effective-java-Day32-item86/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/java/2022-02-20-Effective-java-Day32-item86/","description":"어떤 클래스의 인스턴스를 직렬화할 수 있게 하려면? → Class 선언에 implements Serializable 추가 구현한다고 선언하기는 아주 쉽지만, 그렇다고 프로그래머가 따로 신경 쓸 일이 없다고 생각하는 것은 오해이다.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/java/2022-02-20-Effective-java-Day32-item86/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2022-03-23T22:57:28-06:00',
+  };
+  w._clapButton = false;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2022-02-20-Effective-java-Day32-item86</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Effective-java-Day32-item86" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Effective Java] Day 32 - Item 86 :: Serialize를 구현할지는 신중히 결정하라
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2022-02-20T00:00:00-06:00">20 Feb 2022</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-02-28">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-02-28T21:11:27-06:00">2022-02-28</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>어떤 클래스의 인스턴스를 직렬화할 수 있게 하려면? → Class 선언에 implements Serializable 추가
+구현한다고 선언하기는 아주 쉽지만, 그렇다고 프로그래머가 따로 신경 쓸 일이 없다고 생각하는 것은 오해이다.</p>
+
+<h2 id="serailizable의-문제점">Serailizable의 문제점</h2>
+<h3 id="1-serailizable을-구현하면-릴리스한-뒤에는-수정하기-어렵다">1. Serailizable을 구현하면 릴리스한 뒤에는 수정하기 어렵다.</h3>
+<h4 id="클래스가-serializable을-구현하면-직렬화된-byte-stream-인코딩도-하나의-공개-api가-됨">클래스가 Serializable을 구현하면 직렬화된 Byte Stream 인코딩도 하나의 공개 API가 됨</h4>
+<p>따라서 이 클래스가 널리 사용될 경우, 다른 공개 API처럼 직렬화 형태를 영원히 지원해야 함</p>
+
+<h4 id="커스텀-직렬화-형태로-설계하지-않고-자바의-기본-방식대로-직렬화한다면-직렬화-형태는-최초-적용-당시-클래스의-내부-구현-방식에-묶임">커스텀 직렬화 형태로 설계하지 않고 자바의 기본 방식대로 직렬화한다면, 직렬화 형태는 최초 적용 당시 클래스의 내부 구현 방식에 묶임</h4>
+<p>즉, 기본 직렬화 형태에서는 클래스의 private, package-private 인스턴스 필드마저 API로 공개됨 → <span style="background-color: #fff5b1">캡슐화가 깨진다.</span>
+Item 15에서 필드로의 접근을 최대한 막아 정보를 은닉하라 조언했지만,,,, 무력화된다.<br />
+※ Item 15: 클래스와 멤버의 접근 권한을 최소화하라</p>
+
+<p>뒤늦게 클래스 내부 구현을 고치면 원래의 직렬화 형태랑 달라진다.<br />
+ex) 한 쪽은 구버전 인스턴스를 직렬화하고, 다른 쪽은 신버전 클래스로 역직렬화한다면 실패될 것</p>
+
+<p>물론 <code class="language-plaintext highlighter-rouge">ObjectOutputStream.PutField</code>와 <code class="language-plaintext highlighter-rouge">ObjectInputStream.GetField</code>를 사용하여 원래의 직렬화 형태를 유지하면서 내부 표현을 바꿀 수 있지만, 소스코드가 지저분하다.
+그러므로 직렬화 가능 클래스를 만들고자 한다면, 좀 더 길게 보고 고품질의 직렬화 형태도 주의해서 함께 설계해야 한다(Item 87,90)</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="kd">implements</span> <span class="nc">Serializable</span> <span class="o">{</span>
+  <span class="c1">//...</span>
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">writeObject</span><span class="o">(</span><span class="nc">ObjectOutputStream</span> <span class="n">oos</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">{</span>
+    <span class="nc">ObjectOutputStream</span><span class="o">.</span><span class="na">PutField</span> <span class="n">putField</span> <span class="o">=</span> <span class="n">oos</span><span class="o">.</span><span class="na">putFields</span><span class="o">();</span>
+    <span class="n">putField</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span> <span class="n">name</span><span class="o">);</span>
+    <span class="n">putField</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"age"</span><span class="o">,</span> <span class="n">age</span><span class="o">);</span>
+    <span class="n">oos</span><span class="o">.</span><span class="na">writeFields</span><span class="o">();</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">readObject</span><span class="o">(</span><span class="nc">ObjectInputStream</span> <span class="n">ois</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">,</span> <span class="nc">ClassNotFoundException</span> <span class="o">{</span>
+    <span class="nc">ObjectInputStream</span><span class="o">.</span><span class="na">GetField</span> <span class="n">readField</span> <span class="o">=</span> <span class="n">ois</span><span class="o">.</span><span class="na">readFields</span><span class="o">();</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">readField</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"name"</span><span class="o">,</span><span class="s">"(defaultName)"</span><span class="o">);</span><span class="c1">//the default value to use if name does not have a value</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">readField</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"age"</span><span class="o">,</span><span class="mi">0</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="직렬화가-클래스-개선을-방해하는-예---serial-version-uid">직렬화가 클래스 개선을 방해하는 예 - Serial Version UID</h4>
+<ul>
+  <li>스트림 고유 식별자, Serail Version ID(직렬 버전 UID)</li>
+  <li><strong>JVM</strong>은 모든 Serializable Class에 각각 serialVersionUID라 불리는 <span style="background-color: #fff5b1"><strong>Version Number를 매칭 한다.</strong></span></li>
+  <li>static final long filed</li>
+</ul>
+
+<p>보통 IDE에서는 Class명 기준으로 자동으로 생성해주는 경우가 많다.
+SerialVersionUID를 따로 설정해주지 않더라도 JVM에서 RunTime 시 암호 해시 함수(SHA-1)를 적용해 자동으로 생성해준다.</p>
+
+<ul>
+  <li>이 경우는 클래스 이름, 구현한 인터페이스들, 컴파일러가 자동으로 생성해 넣은 것을 포함한 대부분의 클래스 멤버들이 고려된다.</li>
+  <li>나중에 메서드를 추가하는 식으로 이들 중 하나라도 수정한다면 Serial Version UID 값도 변한다.</li>
+</ul>
+
+<p>Serialization, Deserialization 할 때 Serial Version UID를 확인한 후 처리하며, 자동 생성되는 값에 의존하면 이 값이 맞지 않아 호환성이 깨져버려 Runtime에 <span style="background-color: #fff5b1"><strong>InvalidClassException</strong></span>이 발생한다.</p>
+
+<h3 id="2-버그와-보안-구멍이-생길-위험이-높아진다">2. 버그와 보안 구멍이 생길 위험이 높아진다.</h3>
+<ul>
+  <li>기본 역직렬화를 사용하면 생기는 문제
+    <ul>
+      <li>(1) 불변식 깨짐</li>
+      <li>(2) 허가되지 않은 접근에 쉽게 노출</li>
+    </ul>
+  </li>
+</ul>
+
+<p>직렬화는 언어의 기본 메커니즘인 ‘객체는 생성자를 사용하여 만든다’를 우회하는 객체 생성 기법이다.<br />
+역직렬화는 일반 생성자의 문제가 그대로 적용되는 숨은 생성자다. 하지만 일반 생성자처럼 소스 전면에 드러나지 않는다.<br />
+그러다보니 ‘생성자에서 구축한 불변식을 모두 보장해야 한다, 생성 도중 공격자가 객체 내부를 들여다 볼 수 없도록 해야한다’는 사실을 떠올리기 어렵다.</p>
+
+<h3 id="3-해당-클래스의-신버전을-릴리스할-때-테스트할-것이-늘어난다">3. 해당 클래스의 신버전을 릴리스할 때 테스트할 것이 늘어난다.</h3>
+<ul>
+  <li>직렬화 가능 클래스가 수정될 때 검사해야할 것들
+    <ul>
+      <li>양방향 직렬화/역직렬화 모두 성공하는가?
+        <ul>
+          <li>신버전 인스턴스를 직렬화 → 구버전으로 역직렬화</li>
+          <li>구버전 인스턴스 직렬화 → 신버전으로 역직렬화</li>
+        </ul>
+      </li>
+      <li>원래의 객체를 충실히 복원하는가?</li>
+    </ul>
+  </li>
+  <li>테스트 해야 할 양이 테스트 가능 클래스의 수 &amp; 릴리스 횟수에 비례하여 ↑</li>
+  <li>클래스를 처음 제작할 떄 커스텀 직렬화 형태를 잘 설계해놨다면 테스트 부담↓ 가능(iTEM 87, 90)</li>
+</ul>
+
+<h2 id="serialize-구현-여부는-가볍게-결정할-사안이-아니다">Serialize 구현 여부는 가볍게 결정할 사안이 아니다.</h2>
+<p>아래와 같은 경우라면 선택의 여지가 없긴하다.</p>
+<ul>
+  <li>객체를 전송하거나 저장할 때 자바 직렬화를 이용하는 프레임 워크용으로 만든 클래스</li>
+  <li>Serializable을 반드시 구현해야 하는 다른 클래스의 컴포넌트로 쓰일 클래스</li>
+</ul>
+
+<p>Serialize 구현에 따르는 비용이 적지 않으니, 클래스를 설계할 때 마다 비용 &amp; 이득을 잘 판단해라.
+대개 아래와 같은 기준으로 구현을 결정한다.</p>
+<ul>
+  <li>BigInteger, Instant와 같은 <strong>값</strong> 클래스, <strong>Collection</strong> 클래스
+→ Serailizable을 구현</li>
+  <li>스레드 풀처럼 <strong>동작</strong>하는 객체를 표현하는 클래스
+→ Serailizable을 구현하지 않음</li>
+</ul>
+
+<h2 id="상속용으로-설계된-클래스item-19는-대부분-serializable을-구현하면-안되며-인터페이스도-대부분-serialize를-확장해서는-안된다">상속용으로 설계된 클래스(Item 19)는 대부분 Serializable을 구현하면 안되며, 인터페이스도 대부분 Serialize를 확장해서는 안된다.</h2>
+<p>상속용으로 설계된 클래스 중 Serializable을 구현한 예</p>
+<ol>
+  <li>Throwable :서버가 RMI를 통해 클라이언트로 예외를 보내기 위해 Serialzable을 구현
+    <ul>
+      <li>RMI(Remote Method Invocation, 원격 메소드 호출): 분산되어 존재하는 객체간의 메시지 전송(메소드를 호출하는 것을 포함)을 가능하게 하는 프로토콜</li>
+    </ul>
+  </li>
+  <li>component: GUI를 전송, 저장, 복원하기 위해 Serializable을 구현했으나 Swing과 AWT가 널리 쓰이던 시절에도 현업에서 이런 용도로 거의 쓰이지 않았음</li>
+</ol>
+
+<h3 id="내가-작성하는-클래스의-인스턴스-필드가-직렬화와-확장이-가능할-때-주의해야할-점">내가 작성하는 클래스의 인스턴스 필드가 직렬화와 확장이 가능할 때, 주의해야할 점</h3>
+<h4 id="1-finalize-메서드를-재정의하지-못하게-하라">1. finalize 메서드를 재정의하지 못하게 하라</h4>
+<p>인스턴스 필드 값 중 불변식을 보장해야 할 게 있는 경우, 반드시 하위 클래스에서 finalize 메서드를 재정의하지 못하게 해야한다.<br />
+즉, finalize 메서드를 내가 재정의하고 final로 선언해라. → 이렇게 안하면 finalizer 공격(item 8, p42)을 당할 수 있다.</p>
+
+<h4 id="2-인스턴스-필드-중-기본값으로-초기화되면-위배가-되는-불변식이-있다면-readobejctnodata-메서드를-반드시-추가해라">2. 인스턴스 필드 중 기본값으로 초기화되면 위배가 되는 불변식이 있다면, readObejctNoData 메서드를 반드시 추가해라</h4>
+<ul>
+  <li><strong>슈퍼클래스 = 상속가능 + 직렬화 + 디폴트 값을 가지는 메서드</strong> 인 경우</li>
+  <li>자바 4에 추가됨. 기존의 직렬화 가능 클래스에 직렬화 가능 상위 클래스를 추가하는 경우를 위한 메서드
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kt">void</span> <span class="nf">readObjectNoData</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">InvalidObjectException</span><span class="o">{</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nf">InvalidObjectException</span><span class="o">(</span><span class="s">"스트림 데이터가 필요합니다."</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="serailizable을-구현하지-않기로-할-때-주의해야할-점">Serailizable을 구현하지 않기로 할 때, 주의해야할 점</h3>
+<p>상속용 클래스인데 직렬화를 지원하지 않는 경우, 하위 클래스가 직렬화를 지원하려 할 때 부담이 늘어난다.<br />
+이런 클래스를 역직렬화 하기 위해서는 상위 클래스는 <strong>매개변수가 없는 생성자를 제공</strong>해야 한다.<br />
+→ 제공하지 않은 경우, 하위 클래스는 직렬화 프록시 패턴(Item 90)을 사용해야 함</p>
+
+<h3 id="내부-클래스item-24는-직렬화를-구현하지-말아야-한다">내부 클래스(item 24)는 직렬화를 구현하지 말아야 한다.</h3>
+<p>내부 클래스에는 바깥 인스턴스의 참조, 유효 범위 안의 지역변수 값을 저장하기 위해 컴파일러가 생성한 필드들이 자동으로 추가된다.<br />
+내부 클래스에 대한 기본 직렬화 형태는 분명하지가 않다.<br />
+단, static 멤버 클래스는 Serializable을 구현해도 된다.</p>
+
+<h2 id="결론">결론</h2>
+<ul>
+  <li>Serializable을 구현하기 위해 선언하는 것은 쉽지만, 신경 써줘야할 부분이 많다.</li>
+  <li>한 클래스의 여러 버전이 상호작용할 일이 없고, 서버가 신뢰할 수 없는 데이터에 노출될 가능성이 없는 등, 보호된 환경에서만 쓰일 클래스가 아니라면 Serializable 구현은 아주 신중하게 해라</li>
+  <li>직렬화 + 상속 가능 클래스라면 주의사항이 더욱 많아짐을 유의하라.</li>
+</ul>
+
+<h3 id="참고">참고</h3>
+<ul>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html">Interface Serializable docs</a></li>
+  <li><a href="https://brunch.co.kr/@oemilk/179">직렬화(Serialization)</a></li>
+</ul>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" class="flip-title"><span>[CS] 기술면접 예상 질문 - 자바</span></a>  <time class="faded fine" datetime="2022-03-02T00:00:00-06:00">02 Mar 2022</time></li>                        <li class="h4">  <a href="/java/2022-03-01-Effective-java-Day33-item66/" class="flip-title"><span>[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라</span></a>  <time class="faded fine" datetime="2022-03-01T00:00:00-06:00">01 Mar 2022</time></li>                        <li class="h4">  <a href="/cs/2022-02-25-What-is-pubSub-structure/" class="flip-title"><span>[CS] Pub/Sub 구조란 무엇인가?</span></a>  <time class="faded fine" datetime="2022-02-25T00:00:00-06:00">25 Feb 2022</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <div class="sidebar-hits">
+    <a class="no-mark-external" href="https://hits.sh/icechoco.github.io/"><img src="https://hits.sh/icechoco.github.io.svg?view=today-total"/></a>
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a id="_navigation" href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

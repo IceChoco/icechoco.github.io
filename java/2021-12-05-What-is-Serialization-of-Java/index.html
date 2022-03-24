@@ -41,11 +41,11 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta property="og:url" content="https://icechoco.github.io/java/2021-12-05-What-is-Serialization-of-Java/" />
 <meta property="og:site_name" content="IceChoco" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-12-05T00:00:00+09:00" />
+<meta property="article:published_time" content="2021-12-05T00:00:00-06:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Java] 직렬화(Serialization)와 마커 인터페이스(Marker Interface)" />
 <script type="application/ld+json">
-{"headline":"[Java] 직렬화(Serialization)와 마커 인터페이스(Marker Interface)","dateModified":"2022-02-17T09:52:32+09:00","datePublished":"2021-12-05T00:00:00+09:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-05-What-is-Serialization-of-Java/"},"url":"https://icechoco.github.io/java/2021-12-05-What-is-Serialization-of-Java/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"description":"이 글의 목적 직렬화(Serialization)와 마커 인터페이스(Marker Interface)가 무엇인지 이해하고 직렬화(Serialization)를 사용할 수 있다.","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"[Java] 직렬화(Serialization)와 마커 인터페이스(Marker Interface)","dateModified":"2022-02-20T08:38:36-06:00","datePublished":"2021-12-05T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java/2021-12-05-What-is-Serialization-of-Java/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/java/2021-12-05-What-is-Serialization-of-Java/","description":"이 글의 목적 직렬화(Serialization)와 마커 인터페이스(Marker Interface)가 무엇인지 이해하고 직렬화(Serialization)를 사용할 수 있다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-02-17T09:58:10+09:00',
+    INDEX_KEY: 'index--2022-03-23T22:57:28-06:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -297,7 +297,7 @@ Left here for reference, feel free to delete.
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2021-12-05T00:00:00+09:00">05 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+        <time datetime="2021-12-05T00:00:00-06:00">05 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
       </span>
       
         
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-02-17">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-02-20">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2022-02-17T09:52:32+09:00">2022-02-17</time>
+              <time datetime="2022-02-20T08:38:36-06:00">2022-02-20</time>
             </span>
           
         
@@ -334,7 +334,7 @@ Left here for reference, feel free to delete.
   <li>직렬화(Serialization)와 마커 인터페이스(Marker Interface)가 무엇인지 이해하고 직렬화(Serialization)를 사용할 수 있다.</li>
 </ul>
 
-<h2 id="직렬화란">직렬화란?</h2>
+<h2 id="직렬화serialization란">직렬화(Serialization)란?</h2>
 <ul>
   <li>객체의 상태를 영속화하는 메커니즘</li>
   <li>객체를 파일, 메모리, DB와 같은 다른 환경에 저장했다가 나중에 다시 불러와서 재구성 할 수 있게 만드는 일련의 과정</li>
@@ -343,17 +343,25 @@ Left here for reference, feel free to delete.
 <h2 id="자바-직렬화란">자바 직렬화란?</h2>
 <ul>
   <li>1997년에 처음 도입되었으며 쉬운 방법으로 분산객체를 생성하기 위해 도입된 기술</li>
-  <li>Byte 배열과 같은 ByteStream을 만드는 것</li>
+  <li><span style="background-color: #fff5b1">객체의 상태를 Byte 배열과 같은 ByteStream으로</span> 만드는 것</li>
+  <li><strong>Deserialization</strong>은 반대로 <span style="background-color: #fff5b1">Byte Stream을 객체로</span> 변환하는 것</li>
 </ul>
 
+<p><img src="/assets\img/serialization.PNG" alt="serialization" /></p>
+<div style="text-align: center; color:grey">Serialization</div>
+<p><br />
+<img src="/assets\img/Deserialization.PNG" alt="Deserialization" /></p>
+<div style="text-align: center; color:grey">Serialization and Deserialization</div>
+
 <h2 id="언제-쓸-수-있는가">언제 쓸 수 있는가?</h2>
+<p>객체의 상태를 어딘가에 저장하여 영속해야 할 필요가 있을 때</p>
 <ul>
-  <li>객체의 상태를 어딘가에 저장하여 영속해야 할 필요가 있을 때
+  <li>파일 또는 <strong>Database에 저장하거나</strong> 캐시와 같은 메모리의 형태가 될 수 있음</li>
+  <li><strong>Network를 통해 전송할 수 있도록</strong> 변환하는 것
     <ul>
-      <li>저장은 파일, DB가 될수도 있고 캐시와 같은 메모리가 될 수 있음</li>
+      <li>다른 VM에게 객체의 정보를 전송해야 할 때, ByteStream으로 변환해서 전송할 때 사용</li>
     </ul>
   </li>
-  <li>다른 VM에게 객체의 정보를 전송해야 할 때, ByteStream으로 변환해서 전송할 때 사용</li>
 </ul>
 
 <h2 id="어떻게-쓸-수-있는가">어떻게 쓸 수 있는가?</h2>
@@ -379,7 +387,7 @@ Left here for reference, feel free to delete.
 
 <span class="o">}</span>
 </code></pre></div></div>
-<p>Serializable 인터페이스를 클래스에 implements하면 쓸 수 있다. Serializable는 공개API가 없는 단순한 마커인터페이스이다.</p>
+<p>Serialization 할 수 있는 Class가 되려면 <span style="background-color: #fff5b1">Serializable 인터페이스를 클래스에 implements</span>해야 한다. Serializable는 공개API가 없는 단순한 마커인터페이스이다.</p>
 <h3 id="마커-인터페이스marker-interface">마커 인터페이스(Marker Interface)</h3>
 <ul>
   <li>일반적인 인터페이스와 동일하지만 사실상 아무 메서드도 선언하지 않은 인터페이스<br />
@@ -513,6 +521,8 @@ Left here for reference, feel free to delete.
 <ul>
   <li><a href="https://www.youtube.com/watch?v=3iypR-1Glm0">[10분 테코톡] 🍄비밥의 자바 직렬화</a></li>
   <li><a href="http://wonwoo.ml/index.php/post/1389">자바의 마커 인터페이스</a></li>
+  <li><a href="https://developnote-blog.tistory.com/entry/Serialization">Serialization</a></li>
+  <li><a href="https://linuxism.ustd.ip.or.kr/1433">객체 직렬화(Object Serialization)</a></li>
 </ul>
 
   
@@ -686,7 +696,7 @@ Left here for reference, feel free to delete.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-02-17-Codility-Lesson15-Caterpillar-method/" class="flip-title"><span>[Algorithm] Codility Lesson 15 - Caterpillar method</span></a>  <time class="faded fine" datetime="2022-02-17T00:00:00+09:00">17 Feb 2022</time></li>                        <li class="h4">  <a href="/java/2022-02-15-Effective-java-Day31-item72/" class="flip-title"><span>[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라</span></a>  <time class="faded fine" datetime="2022-02-15T00:00:00+09:00">15 Feb 2022</time></li>                        <li class="h4">  <a href="/java/2022-01-16-Effective-java-Day30-item63/" class="flip-title"><span>[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라</span></a>  <time class="faded fine" datetime="2022-01-16T00:00:00+09:00">16 Jan 2022</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" class="flip-title"><span>[CS] 기술면접 예상 질문 - 자바</span></a>  <time class="faded fine" datetime="2022-03-02T00:00:00-06:00">02 Mar 2022</time></li>                        <li class="h4">  <a href="/java/2022-03-01-Effective-java-Day33-item66/" class="flip-title"><span>[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라</span></a>  <time class="faded fine" datetime="2022-03-01T00:00:00-06:00">01 Mar 2022</time></li>                        <li class="h4">  <a href="/cs/2022-02-25-What-is-pubSub-structure/" class="flip-title"><span>[CS] Pub/Sub 구조란 무엇인가?</span></a>  <time class="faded fine" datetime="2022-02-25T00:00:00-06:00">25 Feb 2022</time></li>            </ul></aside>
 
   
 
