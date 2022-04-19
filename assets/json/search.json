@@ -1,6 +1,15 @@
 [
   
     {
+      "title"      : "[AssertJ] AssertJ란?",
+      "categories" : "java",
+      "tags"       : "java, AssertJ",
+      "date"       : "2022.04.12",
+      "urlString"  : "/java/2022-04-12-Introduction-To-AssertJ/",
+      "url"        : "/java/2022-04-12-Introduction-To-AssertJ/"
+    },
+  
+    {
       "title"      : "[CS] 기술면접 예상 질문 - 자바",
       "categories" : "cs",
       "tags"       : "cs",

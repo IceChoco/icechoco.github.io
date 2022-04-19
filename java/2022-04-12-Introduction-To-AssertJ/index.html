@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[AssertJ] AssertJ란? | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="[AssertJ] AssertJ란?" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기! 새로운걸 배우니 심장이 두근두근하다. 실제 업무에서 Junit을 이용해 테스트 코드를 작성하는 사람도 있을텐데 난 너무 늦은게 아닌가… 싶으면서 조급한 마음도 든다. 쫄리는 마음 드는 시간에 하나라도 더 배우자 :)" />
+<meta property="og:description" content="오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기! 새로운걸 배우니 심장이 두근두근하다. 실제 업무에서 Junit을 이용해 테스트 코드를 작성하는 사람도 있을텐데 난 너무 늦은게 아닌가… 싶으면서 조급한 마음도 든다. 쫄리는 마음 드는 시간에 하나라도 더 배우자 :)" />
+<link rel="canonical" href="http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/" />
+<meta property="og:url" content="http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-12T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[AssertJ] AssertJ란?" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"[AssertJ] AssertJ란?","dateModified":"2022-04-15T15:45:03+09:00","datePublished":"2022-04-12T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/","description":"오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기! 새로운걸 배우니 심장이 두근두근하다. 실제 업무에서 Junit을 이용해 테스트 코드를 작성하는 사람도 있을텐데 난 너무 늦은게 아닌가… 싶으면서 조급한 마음도 든다. 쫄리는 마음 드는 시간에 하나라도 더 배우자 :)","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2022-04-17T17:34:49+09:00',
+  };
+  w._clapButton = false;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2022-04-12-Introduction-To-AssertJ</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-Introduction-To-AssertJ" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [AssertJ] AssertJ란?
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2022-04-12T00:00:00+09:00">12 Apr 2022</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>, <span>Assertj</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-15">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-15T15:45:03+09:00">2022-04-15</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기!</p>
+
+<p>새로운걸 배우니 심장이 두근두근하다. 실제 업무에서 Junit을 이용해 테스트 코드를 작성하는 사람도 있을텐데 난 너무 늦은게 아닌가… 싶으면서 조급한 마음도 든다. 쫄리는 마음 드는 시간에 하나라도 더 배우자 :)</p>
+
+<h2 id="assertj란">AssertJ란?</h2>
+<ul>
+  <li>Java 테스트에서 능숙하고 풍부한 Assertions을 작성하는 데 사용되는 오픈 소스 커뮤니티 기반 라이브러리
+    <ul>
+      <li>Junit과 함께 편리하게 사용하게 해주는 라이브러리로, 테스트코드 작성을 훨씬 편리하게 도와준다.</li>
+    </ul>
+  </li>
+  <li>이 글은 <strong>AssertJ-core</strong>라는 기본 AssertJ 모듈에서 사용할 수 있는 툴에 초점을 맞추고 있다.</li>
+  <li>Assertions
+    <ul>
+      <li>사전적 의미: 사실임을 주장하는 것</li>
+      <li>표명, 가정 설정문, 어서션이라고도 함</li>
+      <li>프로그램 안에 추가하는 <strong>참 거짓을 미리 가정하는 문</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="1-gradle-dependencies">1. Gradle Dependencies</h3>
+<p>assetJ를 사용하기 위해서는 build.gradle 파일에 있는 <code class="language-plaintext highlighter-rouge">dependency</code> 부분에 아래와 같은 코드를 추가해줘야 한다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dependencies {
+    testImplementation "org.assertj:assertj-core:3.20.2"
+}
+</code></pre></div></div>
+<p>위 디펜던시는 오직 기본 Java assertions만 제공한다. 따라서 만약 advanced assertions를 사용하고 싶다면, 추가로 별개의 모듈을 디펜던시에 추가해줘야한다.<br />
+Java 7 이전 버전의 경우 Assertj-core version 2.x.x를 사용해야 한다. 최신 버전은 <a href="https://search.maven.org/search?q=a:assertj-core">여기</a>에서 찾을 수 있다.</p>
+
+<h3 id="2-소개">2. 소개</h3>
+<p>AssertJ는 여러 클래스들의 집합과 풍부하고 아름다운 assertions을 쉽게 작성할 수 있는 유틸리티 메소드를 제공한다.</p>
+<ul>
+  <li>사용 가능한 언어
+    <ul>
+      <li>Standard Java</li>
+      <li>Java 8</li>
+      <li>Guava</li>
+      <li>Joda Time</li>
+      <li>Neo4J and</li>
+      <li>Swing components</li>
+    </ul>
+  </li>
+</ul>
+
+<p>사용 가능한 모든 언어들은 프로젝트 <a href="https://joel-costigliola.github.io/assertj/">웹사이트</a>에서 확인 가능하다.<br />
+몇 개의 예시를 갖고 시작해보자. AssertJ의 문서에서 바로 다음 내용을 확인할 수 있다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assertThat(frodo)
+  .isNotEqualTo(sauron)
+  .isIn(fellowshipOfTheRing);
+
+assertThat(frodo.getName())
+  .startsWith("Fro")
+  .endsWith("do")
+  .isEqualToIgnoringCase("frodo");
+
+assertThat(fellowshipOfTheRing)
+  .hasSize(9)
+  .contains(frodo, sam)
+  .doesNotContain(sauron);
+</code></pre></div></div>
+<p>위의 예들은 빙산의 일각에 불과하지만, 이 라이브러리로 Assertions를 쓰는 것이 어떤식으로 사용되는지에 대한 예시를 보여준다.</p>
+
+<h3 id="3-assertj-실행하기">3. AssertJ 실행하기</h3>
+<p>이 섹션에서는 AssertJ를 설정하고 이를 통해 무엇을 할 수 있는지에 대해 알아본다.</p>
+<h4 id="31-시작하기">3.1 시작하기</h4>
+<p>클래스패스에 있는 라이브러리의 jar을 사용하면, 테스트 클래스에 하나의 static import를 추가하여 쉽게 활성화가 가능하다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import static org.assertj.core.api.Assertions.*;
+</code></pre></div></div>
+<h4 id="32-assertions-작성하기">3.2 Assertions 작성하기</h4>
+<p>asssertion을 작성하기 위해서는, 항상 객체를 <code class="language-plaintext highlighter-rouge">Assertions.assertThat()</code> 메서드에 전달하는 것부터 시작해야한다. 그런 다음 실제로 assertions를 수행한다.<br />
+일부 다른 라이브러리와는 달리 아래 코드는 실제로 아무것도 참이라고 주장하지 않으며, <strong>절대로</strong> 테스트를 실패하지 않습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assertThat(anyRefenceOrValue);
+</code></pre></div></div>
+<p>IDE의 코드완성기능을 사용하면 AssertJ Assertions를 쉽게 작성 가능하다. 인텔리제이 IDEA 2021.3 버전에서는 아래처럼 나온다.
+<img src="/assets\img/assertJ_IntelliJ.PNG" alt="assertJ_IntelliJ" /></p>
+
+<p>위처럼 상황별로 선택할 수 있는 다양한 메소드가 제공되며, 이 메소드들은 String 타입에만 사용이 가능하다.<br />
+이 API에 대해 자세히 살펴보고 특정 Assertion에 대해 알아보자.</p>
+
+<h4 id="33-object-assertions">3.3 Object Assertions</h4>
+<p>Object는 두 객체가 동일한지를 결정하거나 객체의 필드를 조사하기 위해 다양한 방법으로 비교할 수 있다.<br />
+2개의 Object가 동일한지에 대해 비교할 수 있는 두가지 방법을 보자.<br />
+다음은 Dog 타입인 fido, fidosClone 2가지 객체가 있다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Float</span> <span class="n">weight</span><span class="o">;</span>
+
+    <span class="c1">//Getter, Setter, Constructor</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DogTest</span> <span class="o">{</span>
+    <span class="nc">Dog</span> <span class="n">fido</span>       <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">(</span><span class="s">"Fido"</span><span class="o">,</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span> <span class="mf">5.25</span><span class="o">);</span>
+    <span class="nc">Dog</span> <span class="n">fidosClone</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">(</span><span class="s">"Fido"</span><span class="o">,</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span> <span class="mf">5.25</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>아래와 같은 assertion을 통해 쉽게 두 객체를 비교할 수 있다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void isEqualTo(){
+    assertThat(fido).isEqualTo(fidosClone);
+}
+</code></pre></div></div>
+
+<p>위를 실행하면 <code class="language-plaintext highlighter-rouge">isEqualTo</code> 메소드는 두 객체의 참조를 비교하므로 fail을 반환한다.<br />
+그 대신 내용을 자체를 비교하려면 다음과 같이 <code class="language-plaintext highlighter-rouge">isEqualToComparingFieldByFieldRecursively()</code> 메소드를 사용하면 된다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void isEqualToComparingFieldByFieldRecursively(){
+    assertThat(fido).isEqualToComparingFieldByFieldRecursively(fidosClone);
+}
+</code></pre></div></div>
+
+<p>Fido랑 FidosClone 객체는 필드와 필드를 재귀적으로 비교할때 똑같다. 왜냐하면 한 객체의 필드를 다른 객체의 필드와 비교하기 때문이다.<br />
+이 밖에도 객체의 필드들에 대해 비교하고, 축소하고, 조사하는 다양한 assertion 메소드가 있다. 모든 메소드를 확인하려면 공식 <a href="https://joel-costigliola.github.io/assertj/core-8/api/org/assertj/core/api/AbstractObjectAssert.html">AbstractObjectAssert docs</a>를 참조하자.</p>
+
+<h4 id="34-boolean-assertions">3.4 Boolean Assertions</h4>
+<p>참거짓 테스트를 위한 간단한 메소드들이 있다.</p>
+<ul>
+  <li>isTrue()</li>
+  <li>isFalse()
+예시 소스코드를 보자
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void isTrue(){
+  assertThat("".isEmpty()).isTrue();
+}
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="35-iterablearray-assertions">3.5 Iterable/Array Assertions</h4>
+<p>Iterable 또는 Array의 경우 내용이 존재하는지에 대해 asserting 할 수 있는 다양한 방법이 있다. 가장 일반적인 assertions 중 하나는 <code class="language-plaintext highlighter-rouge">Iterable</code> 또는 <code class="language-plaintext highlighter-rouge">Array</code>에 주어진 element가 포함되어 있는지 확인 하는 것이다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void arrayContain() {
+    List&lt;String&gt; list = Arrays.asList("1","2","3");
+    assertThat(list).contains("1");
+}
+</code></pre></div></div>
+<p>List가 비어있지 않은지 검사하기</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void arrayIsNotEmpty() {
+    List&lt;String&gt; list = Arrays.asList("1","2","3");
+    assertThat(list).isNotEmpty();
+}
+</code></pre></div></div>
+
+<p>주어진 문자로 시작하는지 검사하기 ex) “1”</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void arrayStartsWith() {
+    List&lt;String&gt; list = Arrays.asList("1","2","3");
+    assertThat(list).startsWith("1");
+}
+</code></pre></div></div>
+
+<p>동일한 개체에 대해 둘 이상의 Assertion을 작성하려는 경우 체이닝을 통해 쉽게 결합할 수 있다.<br />
+제공된 list가 비어 있지 않은지, “1” 원소를 포함하는지, null을 포함하지 않는지, 원소 “2”, “3”을 순서대로 포함하는지를 확인하는 Assertion의 예는 다음과 같다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void arrayTotalCheck() {
+    List&lt;String&gt; list = Arrays.asList("1","2","3");
+    assertThat(list).isNotEmpty().contains("1").doesNotContainNull().containsSequence("1","2");
+    //containsSequence("1","2"): 원소 "2", "3"을 순서대로 포함하는지
+}
+</code></pre></div></div>
+
+<h4 id="36-character-assertions">3.6 Character Assertions</h4>
+<p>character에 대한 Asssertions는 비교 대상 문자가 유니코드 테이블에 있는지 확인하는 작업을 포함한다.</p>
+<ul>
+  <li>문자가 ‘a’가 아니고 유니코드 테이블에 있는지, ‘b’보가 같거나 크고, 소문자인지 확인하는 assertion
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void characterTest(){
+  char someCharacter = 'b';
+  assertThat(someCharacter)
+          .isNotEqualTo('a')
+          .inUnicode()
+          .isGreaterThanOrEqualTo('b')
+          .isLowerCase();
+}
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="36-class-assertions">3.6 Class Assertions</h4>
+<p>해당 필드, 클래스 유형, annotations의 존재 등을 체크한다.</p>
+<ul>
+  <li>Runnable 클래스가 인터페이스인지 확인
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void chkIsInterface(){
+  assertThat(Runnable.class).isInterface();
+}
+</code></pre></div>    </div>
+  </li>
+  <li>A 클래스에 B 클래스를 할당할 수 있는지 확인
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void IsAssignableFrom(){
+  //assertThat(A.class).isAssignableFrom(B.class);
+  assertThat(Exception.class).isAssignableFrom(NoSuchElementException.class);
+}
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="37-file-assertions">3.7 File Assertions</h4>
+<p>지정된 File 인스턴스가 존재하는지, 디렉토리 또는 파일인지, 특정 콘텐츠가 있는지, 읽을 수 있는지, 확장명이 있는지 등을 확인할 수 있다.</p>
+<ul>
+  <li>파일이 존재하고, 디렉토리가 아닌 파일이며, Read&amp;Write가 가능한지 확인
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void chkFile(){
+  File file = new File("C:\\github\\java-baseball-precourse\\src\\main\\java\\study\\Dog.java");
+  assertThat(file)
+          .exists()
+          .isFile()
+          .canRead()
+          .canWrite();
+}
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="38-double--float--integer-assertions">3.8 Double / Float / Integer Assertions</h4>
+<p>Numeric assertions는 주어진 오프셋을 포함하고 있는지 또는 포함하고 있지 않은지 모든 숫자값에 대해 비교하는 것이다.</p>
+<ul>
+  <li><strong>오프셋(offset)</strong>
+    <ul>
+      <li>컴퓨터 과학에서 배열이나 자료 구조 오브젝트 내의 오프셋(offset)은 일반적으로 동일 오브젝트 안에서 오브젝트 처음부터 주어진 요소나 지점까지의 변위차를 나타내는 정수형</li>
+      <li>이를테면, 문자 A의 배열이 abcdef를 포함한다면 ‘c’ 문자는 A 시작점에서 <strong>2의 오프셋</strong>을 지님.</li>
+      <li>어셈블리어와 같은 저급 프로그래밍 언어에서 오프셋은 상대 주소(relative address)로 부름.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>예를들어, 만약 주어진 Precision에 따라 두 값이 동일한지 체크를 하고 싶다면 아래처럼 하면 된다.</p>
+<ul>
+  <li>Precision: 몇 자리 갭을 허용할거냐로 해석할건지 정확도를 지정하는 것. 0.123 이랑 0.124 같게 보려면 precision에 0.001d를 줘야함.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void chkNumeric(){
+    assertThat(5.123).isEqualTo(5.124, withPrecision(0.001d));//같음
+    //assertThat(5.123).isEqualTo(5.124, withPrecision(0.0001d));//다름
+    //assertThat(6.1).isEqualTo(5, withPrecision(1d));//다름
+}
+</code></pre></div></div>
+
+<h4 id="39-inputstream-assertions">3.9 InputStream Assertions</h4>
+<p>InputStream Assertion은 1가지만 있다.</p>
+<ul>
+  <li>hasSameContentAs(InputStream expected)
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void testHasSomeContentAs(){
+  byte[] bytes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+  InputStream given = new ByteArrayInputStream(bytes);
+
+  byte[] oneBytes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+  InputStream result = new ByteArrayInputStream(oneBytes);
+
+  assertThat(given).hasSameContentAs(result);
+}
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="310-map-assertions">3.10 Map Assertions</h4>
+<p>맵에 특정 항목, entry, key/value 값이 포함되어 있는지 확인한다.</p>
+<ul>
+  <li>맵이 비어있지 않고, Key 2 포함, Key 10 미포함, (2,”a”)를 포함하는지 확인
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void chkMap(){
+  HashMap&lt;Integer, String&gt; map = new HashMap&lt;Integer, String&gt;();
+  map.put(2,"a");
+//  map.put(10,"b");
+
+  assertThat(map).isNotEmpty()
+          .containsKey(2)
+          .doesNotContainKey(10)
+          .contains(entry(2,"a"));
+}
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="311-throwable-assertions">3.11 Throwable Assertions</h4>
+<p>Exception 메시지, stacktraces, 익셉션이 throw 되었는지 원인 확인 또는 검증할 때 사용</p>
+<ul>
+  <li>주어진 예외가 발생했는지 확인하고 “c”로 끝나는 메시지가 있는지 확인
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assertThat(ex).hasNoCause().hasMessageEndingWith("c");
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">assertThatThrownBy</code>와 <code class="language-plaintext highlighter-rouge">assertThatExceptionOfType</code> 두 가지 방법으로 에외를 발생시켰는지 확인이 가능하다.</p>
+<ul>
+  <li>assertThatThrownBy(): Java 8 Exception assertion 표준 스타일</li>
+  <li>assertThatExeptionOfType(): 예외 클래스 넣기</li>
+</ul>
+
+<hr />
+
+<h2 id="학습-테스트">학습 테스트</h2>
+<h3 id="string-클래스에-대한-학습-테스트">String 클래스에 대한 학습 테스트</h3>
+<h4 id="요구사항-1">요구사항 1</h4>
+<ul>
+  <li>“1,2”을 <code class="language-plaintext highlighter-rouge">,</code>로 split 했을 때 1과 2로 잘 분리되는지 확인하는 학습 테스트를 구현한다.</li>
+  <li>“1”을 <code class="language-plaintext highlighter-rouge">,</code>로 split 했을 때 1만을 포함하는 배열이 반환되는지에 대한 학습 테스트를 구현한다.</li>
+</ul>
+
+<h5 id="힌트">힌트</h5>
+<ul>
+  <li>배열로 반환하는 값의 경우 assertj의 contatins()를 활용해 반환 값이 맞는지 검증한다.</li>
+  <li>배열로 반환하는 값의 경우 assertj의 contains Exactly()를 활용해 반환값이 맞는지 검증한다.</li>
+</ul>
+
+<h5 id="테스트">테스트</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void split(){
+    String str1 = "1,2";
+    String str2 = "1";
+
+    String[] strArray1 = str1.split(",");
+    String[] strArray2 = str2.split(",");
+
+    //"1,2"를 ,로 split 했을 때 1과 2로 잘 분리되는지 확인
+    assertThat(strArray1).contains("1","2");
+
+    //"1"을 ,로 split 했을 때 "1만을" 포함하는 배열이 반환되는지 확인
+    assertThat(strArray1).containsExactly("1");
+}
+</code></pre></div></div>
+<ul>
+  <li><strong>assertJ의 contains와 containsExactly의 차이</strong>
+    <ul>
+      <li>contains: 순서와 상관 없이 실제 그룹이 주어진 값들을 포함하고 있는지를 테스트</li>
+      <li>containsExactly: 순서까지 고려해서 실제 그룹이 주어진 값들을 포함하고 있는지를 테스트</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="요구사항-2">요구사항 2</h4>
+<ul>
+  <li>“1,2” 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 “1,2”를 반환하도록 구현한다.</li>
+</ul>
+
+<h5 id="테스트-1">테스트</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+void subString(){
+    String str1 = "(1,2)";
+    String result = str1.substring(1,4);
+    System.out.println(result);
+
+    assertThat(result).isEqualTo("1,2");
+}
+</code></pre></div></div>
+
+<h4 id="요구사항-3">요구사항 3</h4>
+<ul>
+  <li>“abc” 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트를 구현한다.</li>
+  <li>String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져올 때 위치 값을 벗어나면 <code class="language-plaintext highlighter-rouge">StringIndexOutOfBoundException</code>이 발생하는 부분에 대한 학습 테스트를 구현한다.</li>
+  <li>JUnit의 <code class="language-plaintext highlighter-rouge">@DisplayName</code>을 활용해 테스트 메소드의 의도를 드러낸다.</li>
+</ul>
+
+<h5 id="힌트-1">힌트</h5>
+<ul>
+  <li><a href="https://joel-costigliola.github.io/assertj/assertj-core-features-highlight.html#exception-assertion">AssertJ Exception Assertions</a> 문서 참고</li>
+</ul>
+
+<h5 id="테스트-2">테스트</h5>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
+@DisplayName("특정 위치의 문자를 가져온다.")
+void charAt(){
+    String str = "abc";
+    int idx = 2;
+    str.charAt(idx);
+}
+
+@Test
+@DisplayName("charAt - assertThatThrownBy()를 사용하여 Exception 처리")
+void chatAtException(){
+    String str = "abc";
+    int idx = 3;
+
+    assertThatThrownBy(()-&gt;{
+       char c = str.charAt(idx);
+    }).isInstanceOf(StringIndexOutOfBoundsException.class)
+            .hasMessageContaining("%d", idx);
+}
+
+@Test
+@DisplayName("charAt - assertThatExceptionOfType()를 사용하여 Exception 처리")
+void chatAtException2(){
+    String str = "abc";
+    int idx = 3;
+
+    assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+            .isThrownBy(() -&gt; {
+                char c = str.charAt(idx);
+            }).withMessageContaining("%d", idx);
+}
+</code></pre></div></div>
+
+<h2 id="참조">참조</h2>
+<ul>
+  <li><a href="https://www.baeldung.com/introduction-to-assertj">Introduction to AssertJ</a></li>
+  <li><a href="https://blog.naver.com/kunjalan/222622885642">Assertion의 기본 지식</a></li>
+</ul>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" class="flip-title"><span>[CS] 기술면접 예상 질문 - 자바</span></a>  <time class="faded fine" datetime="2022-03-02T00:00:00+09:00">02 Mar 2022</time></li>                        <li class="h4">  <a href="/java/2022-03-01-Effective-java-Day33-item66/" class="flip-title"><span>[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라</span></a>  <time class="faded fine" datetime="2022-03-01T00:00:00+09:00">01 Mar 2022</time></li>                        <li class="h4">  <a href="/cs/2022-02-25-What-is-pubSub-structure/" class="flip-title"><span>[CS] Pub/Sub 구조란 무엇인가?</span></a>  <time class="faded fine" datetime="2022-02-25T00:00:00+09:00">25 Feb 2022</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <div class="sidebar-hits">
+    <a class="no-mark-external" href="https://hits.sh/icechoco.github.io/"><img src="https://hits.sh/icechoco.github.io.svg?view=today-total"/></a>
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a id="_navigation" href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

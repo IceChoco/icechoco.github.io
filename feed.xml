@@ -1,5 +1,405 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://icechoco.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://icechoco.github.io/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2022-03-23T22:57:28-06:00</updated><id>https://icechoco.github.io/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
-</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[CS] 기술면접 예상 질문 - 자바</title><link href="https://icechoco.github.io/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" rel="alternate" type="text/html" title="[CS] 기술면접 예상 질문 - 자바" /><published>2022-03-02T00:00:00-06:00</published><updated>2022-03-01T11:44:23-06:00</updated><id>https://icechoco.github.io/cs/Technical-Interview-Expected-Questions-Java</id><content type="html" xml:base="https://icechoco.github.io/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/">&lt;p&gt;기술면접 단골질문&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2022-04-17T17:34:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+</subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[AssertJ] AssertJ란?</title><link href="http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/" rel="alternate" type="text/html" title="[AssertJ] AssertJ란?" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-15T15:45:03+09:00</updated><id>http://localhost:4000/java/Introduction-To-AssertJ</id><content type="html" xml:base="http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/">&lt;p&gt;오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기!&lt;/p&gt;
+
+&lt;p&gt;새로운걸 배우니 심장이 두근두근하다. 실제 업무에서 Junit을 이용해 테스트 코드를 작성하는 사람도 있을텐데 난 너무 늦은게 아닌가… 싶으면서 조급한 마음도 든다. 쫄리는 마음 드는 시간에 하나라도 더 배우자 :)&lt;/p&gt;
+
+&lt;h2 id=&quot;assertj란&quot;&gt;AssertJ란?&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Java 테스트에서 능숙하고 풍부한 Assertions을 작성하는 데 사용되는 오픈 소스 커뮤니티 기반 라이브러리
+    &lt;ul&gt;
+      &lt;li&gt;Junit과 함께 편리하게 사용하게 해주는 라이브러리로, 테스트코드 작성을 훨씬 편리하게 도와준다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;이 글은 &lt;strong&gt;AssertJ-core&lt;/strong&gt;라는 기본 AssertJ 모듈에서 사용할 수 있는 툴에 초점을 맞추고 있다.&lt;/li&gt;
+  &lt;li&gt;Assertions
+    &lt;ul&gt;
+      &lt;li&gt;사전적 의미: 사실임을 주장하는 것&lt;/li&gt;
+      &lt;li&gt;표명, 가정 설정문, 어서션이라고도 함&lt;/li&gt;
+      &lt;li&gt;프로그램 안에 추가하는 &lt;strong&gt;참 거짓을 미리 가정하는 문&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;1-gradle-dependencies&quot;&gt;1. Gradle Dependencies&lt;/h3&gt;
+&lt;p&gt;assetJ를 사용하기 위해서는 build.gradle 파일에 있는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependency&lt;/code&gt; 부분에 아래와 같은 코드를 추가해줘야 한다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dependencies {
+    testImplementation &quot;org.assertj:assertj-core:3.20.2&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;위 디펜던시는 오직 기본 Java assertions만 제공한다. 따라서 만약 advanced assertions를 사용하고 싶다면, 추가로 별개의 모듈을 디펜던시에 추가해줘야한다.&lt;br /&gt;
+Java 7 이전 버전의 경우 Assertj-core version 2.x.x를 사용해야 한다. 최신 버전은 &lt;a href=&quot;https://search.maven.org/search?q=a:assertj-core&quot;&gt;여기&lt;/a&gt;에서 찾을 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-소개&quot;&gt;2. 소개&lt;/h3&gt;
+&lt;p&gt;AssertJ는 여러 클래스들의 집합과 풍부하고 아름다운 assertions을 쉽게 작성할 수 있는 유틸리티 메소드를 제공한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;사용 가능한 언어
+    &lt;ul&gt;
+      &lt;li&gt;Standard Java&lt;/li&gt;
+      &lt;li&gt;Java 8&lt;/li&gt;
+      &lt;li&gt;Guava&lt;/li&gt;
+      &lt;li&gt;Joda Time&lt;/li&gt;
+      &lt;li&gt;Neo4J and&lt;/li&gt;
+      &lt;li&gt;Swing components&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;사용 가능한 모든 언어들은 프로젝트 &lt;a href=&quot;https://joel-costigliola.github.io/assertj/&quot;&gt;웹사이트&lt;/a&gt;에서 확인 가능하다.&lt;br /&gt;
+몇 개의 예시를 갖고 시작해보자. AssertJ의 문서에서 바로 다음 내용을 확인할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;assertThat(frodo)
+  .isNotEqualTo(sauron)
+  .isIn(fellowshipOfTheRing);
+
+assertThat(frodo.getName())
+  .startsWith(&quot;Fro&quot;)
+  .endsWith(&quot;do&quot;)
+  .isEqualToIgnoringCase(&quot;frodo&quot;);
+
+assertThat(fellowshipOfTheRing)
+  .hasSize(9)
+  .contains(frodo, sam)
+  .doesNotContain(sauron);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;위의 예들은 빙산의 일각에 불과하지만, 이 라이브러리로 Assertions를 쓰는 것이 어떤식으로 사용되는지에 대한 예시를 보여준다.&lt;/p&gt;
+
+&lt;h3 id=&quot;3-assertj-실행하기&quot;&gt;3. AssertJ 실행하기&lt;/h3&gt;
+&lt;p&gt;이 섹션에서는 AssertJ를 설정하고 이를 통해 무엇을 할 수 있는지에 대해 알아본다.&lt;/p&gt;
+&lt;h4 id=&quot;31-시작하기&quot;&gt;3.1 시작하기&lt;/h4&gt;
+&lt;p&gt;클래스패스에 있는 라이브러리의 jar을 사용하면, 테스트 클래스에 하나의 static import를 추가하여 쉽게 활성화가 가능하다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import static org.assertj.core.api.Assertions.*;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;32-assertions-작성하기&quot;&gt;3.2 Assertions 작성하기&lt;/h4&gt;
+&lt;p&gt;asssertion을 작성하기 위해서는, 항상 객체를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Assertions.assertThat()&lt;/code&gt; 메서드에 전달하는 것부터 시작해야한다. 그런 다음 실제로 assertions를 수행한다.&lt;br /&gt;
+일부 다른 라이브러리와는 달리 아래 코드는 실제로 아무것도 참이라고 주장하지 않으며, &lt;strong&gt;절대로&lt;/strong&gt; 테스트를 실패하지 않습니다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;assertThat(anyRefenceOrValue);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;IDE의 코드완성기능을 사용하면 AssertJ Assertions를 쉽게 작성 가능하다. 인텔리제이 IDEA 2021.3 버전에서는 아래처럼 나온다.
+&lt;img src=&quot;/assets\img/assertJ_IntelliJ.PNG&quot; alt=&quot;assertJ_IntelliJ&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위처럼 상황별로 선택할 수 있는 다양한 메소드가 제공되며, 이 메소드들은 String 타입에만 사용이 가능하다.&lt;br /&gt;
+이 API에 대해 자세히 살펴보고 특정 Assertion에 대해 알아보자.&lt;/p&gt;
+
+&lt;h4 id=&quot;33-object-assertions&quot;&gt;3.3 Object Assertions&lt;/h4&gt;
+&lt;p&gt;Object는 두 객체가 동일한지를 결정하거나 객체의 필드를 조사하기 위해 다양한 방법으로 비교할 수 있다.&lt;br /&gt;
+2개의 Object가 동일한지에 대해 비교할 수 있는 두가지 방법을 보자.&lt;br /&gt;
+다음은 Dog 타입인 fido, fidosClone 2가지 객체가 있다.&lt;/p&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Dog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;//Getter, Setter, Constructor&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DogTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Dog&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fido&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Dog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fido&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;5.25&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Dog&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fidosClone&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Dog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fido&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;5.25&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;아래와 같은 assertion을 통해 쉽게 두 객체를 비교할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void isEqualTo(){
+    assertThat(fido).isEqualTo(fidosClone);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위를 실행하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isEqualTo&lt;/code&gt; 메소드는 두 객체의 참조를 비교하므로 fail을 반환한다.&lt;br /&gt;
+그 대신 내용을 자체를 비교하려면 다음과 같이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isEqualToComparingFieldByFieldRecursively()&lt;/code&gt; 메소드를 사용하면 된다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void isEqualToComparingFieldByFieldRecursively(){
+    assertThat(fido).isEqualToComparingFieldByFieldRecursively(fidosClone);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Fido랑 FidosClone 객체는 필드와 필드를 재귀적으로 비교할때 똑같다. 왜냐하면 한 객체의 필드를 다른 객체의 필드와 비교하기 때문이다.&lt;br /&gt;
+이 밖에도 객체의 필드들에 대해 비교하고, 축소하고, 조사하는 다양한 assertion 메소드가 있다. 모든 메소드를 확인하려면 공식 &lt;a href=&quot;https://joel-costigliola.github.io/assertj/core-8/api/org/assertj/core/api/AbstractObjectAssert.html&quot;&gt;AbstractObjectAssert docs&lt;/a&gt;를 참조하자.&lt;/p&gt;
+
+&lt;h4 id=&quot;34-boolean-assertions&quot;&gt;3.4 Boolean Assertions&lt;/h4&gt;
+&lt;p&gt;참거짓 테스트를 위한 간단한 메소드들이 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;isTrue()&lt;/li&gt;
+  &lt;li&gt;isFalse()
+예시 소스코드를 보자
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void isTrue(){
+  assertThat(&quot;&quot;.isEmpty()).isTrue();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;35-iterablearray-assertions&quot;&gt;3.5 Iterable/Array Assertions&lt;/h4&gt;
+&lt;p&gt;Iterable 또는 Array의 경우 내용이 존재하는지에 대해 asserting 할 수 있는 다양한 방법이 있다. 가장 일반적인 assertions 중 하나는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Iterable&lt;/code&gt; 또는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Array&lt;/code&gt;에 주어진 element가 포함되어 있는지 확인 하는 것이다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void arrayContain() {
+    List&amp;lt;String&amp;gt; list = Arrays.asList(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;);
+    assertThat(list).contains(&quot;1&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;List가 비어있지 않은지 검사하기&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void arrayIsNotEmpty() {
+    List&amp;lt;String&amp;gt; list = Arrays.asList(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;);
+    assertThat(list).isNotEmpty();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;주어진 문자로 시작하는지 검사하기 ex) “1”&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void arrayStartsWith() {
+    List&amp;lt;String&amp;gt; list = Arrays.asList(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;);
+    assertThat(list).startsWith(&quot;1&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;동일한 개체에 대해 둘 이상의 Assertion을 작성하려는 경우 체이닝을 통해 쉽게 결합할 수 있다.&lt;br /&gt;
+제공된 list가 비어 있지 않은지, “1” 원소를 포함하는지, null을 포함하지 않는지, 원소 “2”, “3”을 순서대로 포함하는지를 확인하는 Assertion의 예는 다음과 같다.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void arrayTotalCheck() {
+    List&amp;lt;String&amp;gt; list = Arrays.asList(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;);
+    assertThat(list).isNotEmpty().contains(&quot;1&quot;).doesNotContainNull().containsSequence(&quot;1&quot;,&quot;2&quot;);
+    //containsSequence(&quot;1&quot;,&quot;2&quot;): 원소 &quot;2&quot;, &quot;3&quot;을 순서대로 포함하는지
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;36-character-assertions&quot;&gt;3.6 Character Assertions&lt;/h4&gt;
+&lt;p&gt;character에 대한 Asssertions는 비교 대상 문자가 유니코드 테이블에 있는지 확인하는 작업을 포함한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;문자가 ‘a’가 아니고 유니코드 테이블에 있는지, ‘b’보가 같거나 크고, 소문자인지 확인하는 assertion
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void characterTest(){
+  char someCharacter = 'b';
+  assertThat(someCharacter)
+          .isNotEqualTo('a')
+          .inUnicode()
+          .isGreaterThanOrEqualTo('b')
+          .isLowerCase();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;36-class-assertions&quot;&gt;3.6 Class Assertions&lt;/h4&gt;
+&lt;p&gt;해당 필드, 클래스 유형, annotations의 존재 등을 체크한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Runnable 클래스가 인터페이스인지 확인
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void chkIsInterface(){
+  assertThat(Runnable.class).isInterface();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;A 클래스에 B 클래스를 할당할 수 있는지 확인
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void IsAssignableFrom(){
+  //assertThat(A.class).isAssignableFrom(B.class);
+  assertThat(Exception.class).isAssignableFrom(NoSuchElementException.class);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;37-file-assertions&quot;&gt;3.7 File Assertions&lt;/h4&gt;
+&lt;p&gt;지정된 File 인스턴스가 존재하는지, 디렉토리 또는 파일인지, 특정 콘텐츠가 있는지, 읽을 수 있는지, 확장명이 있는지 등을 확인할 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;파일이 존재하고, 디렉토리가 아닌 파일이며, Read&amp;amp;Write가 가능한지 확인
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void chkFile(){
+  File file = new File(&quot;C:\\github\\java-baseball-precourse\\src\\main\\java\\study\\Dog.java&quot;);
+  assertThat(file)
+          .exists()
+          .isFile()
+          .canRead()
+          .canWrite();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;38-double--float--integer-assertions&quot;&gt;3.8 Double / Float / Integer Assertions&lt;/h4&gt;
+&lt;p&gt;Numeric assertions는 주어진 오프셋을 포함하고 있는지 또는 포함하고 있지 않은지 모든 숫자값에 대해 비교하는 것이다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;오프셋(offset)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;컴퓨터 과학에서 배열이나 자료 구조 오브젝트 내의 오프셋(offset)은 일반적으로 동일 오브젝트 안에서 오브젝트 처음부터 주어진 요소나 지점까지의 변위차를 나타내는 정수형&lt;/li&gt;
+      &lt;li&gt;이를테면, 문자 A의 배열이 abcdef를 포함한다면 ‘c’ 문자는 A 시작점에서 &lt;strong&gt;2의 오프셋&lt;/strong&gt;을 지님.&lt;/li&gt;
+      &lt;li&gt;어셈블리어와 같은 저급 프로그래밍 언어에서 오프셋은 상대 주소(relative address)로 부름.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;예를들어, 만약 주어진 Precision에 따라 두 값이 동일한지 체크를 하고 싶다면 아래처럼 하면 된다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Precision: 몇 자리 갭을 허용할거냐로 해석할건지 정확도를 지정하는 것. 0.123 이랑 0.124 같게 보려면 precision에 0.001d를 줘야함.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void chkNumeric(){
+    assertThat(5.123).isEqualTo(5.124, withPrecision(0.001d));//같음
+    //assertThat(5.123).isEqualTo(5.124, withPrecision(0.0001d));//다름
+    //assertThat(6.1).isEqualTo(5, withPrecision(1d));//다름
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;39-inputstream-assertions&quot;&gt;3.9 InputStream Assertions&lt;/h4&gt;
+&lt;p&gt;InputStream Assertion은 1가지만 있다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;hasSameContentAs(InputStream expected)
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void testHasSomeContentAs(){
+  byte[] bytes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+  InputStream given = new ByteArrayInputStream(bytes);
+
+  byte[] oneBytes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+  InputStream result = new ByteArrayInputStream(oneBytes);
+
+  assertThat(given).hasSameContentAs(result);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;310-map-assertions&quot;&gt;3.10 Map Assertions&lt;/h4&gt;
+&lt;p&gt;맵에 특정 항목, entry, key/value 값이 포함되어 있는지 확인한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;맵이 비어있지 않고, Key 2 포함, Key 10 미포함, (2,”a”)를 포함하는지 확인
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void chkMap(){
+  HashMap&amp;lt;Integer, String&amp;gt; map = new HashMap&amp;lt;Integer, String&amp;gt;();
+  map.put(2,&quot;a&quot;);
+//  map.put(10,&quot;b&quot;);
+
+  assertThat(map).isNotEmpty()
+          .containsKey(2)
+          .doesNotContainKey(10)
+          .contains(entry(2,&quot;a&quot;));
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;311-throwable-assertions&quot;&gt;3.11 Throwable Assertions&lt;/h4&gt;
+&lt;p&gt;Exception 메시지, stacktraces, 익셉션이 throw 되었는지 원인 확인 또는 검증할 때 사용&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;주어진 예외가 발생했는지 확인하고 “c”로 끝나는 메시지가 있는지 확인
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;assertThat(ex).hasNoCause().hasMessageEndingWith(&quot;c&quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assertThatThrownBy&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assertThatExceptionOfType&lt;/code&gt; 두 가지 방법으로 에외를 발생시켰는지 확인이 가능하다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;assertThatThrownBy(): Java 8 Exception assertion 표준 스타일&lt;/li&gt;
+  &lt;li&gt;assertThatExeptionOfType(): 예외 클래스 넣기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;학습-테스트&quot;&gt;학습 테스트&lt;/h2&gt;
+&lt;h3 id=&quot;string-클래스에-대한-학습-테스트&quot;&gt;String 클래스에 대한 학습 테스트&lt;/h3&gt;
+&lt;h4 id=&quot;요구사항-1&quot;&gt;요구사항 1&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;“1,2”을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;,&lt;/code&gt;로 split 했을 때 1과 2로 잘 분리되는지 확인하는 학습 테스트를 구현한다.&lt;/li&gt;
+  &lt;li&gt;“1”을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;,&lt;/code&gt;로 split 했을 때 1만을 포함하는 배열이 반환되는지에 대한 학습 테스트를 구현한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;힌트&quot;&gt;힌트&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;배열로 반환하는 값의 경우 assertj의 contatins()를 활용해 반환 값이 맞는지 검증한다.&lt;/li&gt;
+  &lt;li&gt;배열로 반환하는 값의 경우 assertj의 contains Exactly()를 활용해 반환값이 맞는지 검증한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;테스트&quot;&gt;테스트&lt;/h5&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void split(){
+    String str1 = &quot;1,2&quot;;
+    String str2 = &quot;1&quot;;
+
+    String[] strArray1 = str1.split(&quot;,&quot;);
+    String[] strArray2 = str2.split(&quot;,&quot;);
+
+    //&quot;1,2&quot;를 ,로 split 했을 때 1과 2로 잘 분리되는지 확인
+    assertThat(strArray1).contains(&quot;1&quot;,&quot;2&quot;);
+
+    //&quot;1&quot;을 ,로 split 했을 때 &quot;1만을&quot; 포함하는 배열이 반환되는지 확인
+    assertThat(strArray1).containsExactly(&quot;1&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;assertJ의 contains와 containsExactly의 차이&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;contains: 순서와 상관 없이 실제 그룹이 주어진 값들을 포함하고 있는지를 테스트&lt;/li&gt;
+      &lt;li&gt;containsExactly: 순서까지 고려해서 실제 그룹이 주어진 값들을 포함하고 있는지를 테스트&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;요구사항-2&quot;&gt;요구사항 2&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;“1,2” 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 “1,2”를 반환하도록 구현한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;테스트-1&quot;&gt;테스트&lt;/h5&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+void subString(){
+    String str1 = &quot;(1,2)&quot;;
+    String result = str1.substring(1,4);
+    System.out.println(result);
+
+    assertThat(result).isEqualTo(&quot;1,2&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;요구사항-3&quot;&gt;요구사항 3&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;“abc” 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오는 학습 테스트를 구현한다.&lt;/li&gt;
+  &lt;li&gt;String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져올 때 위치 값을 벗어나면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StringIndexOutOfBoundException&lt;/code&gt;이 발생하는 부분에 대한 학습 테스트를 구현한다.&lt;/li&gt;
+  &lt;li&gt;JUnit의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@DisplayName&lt;/code&gt;을 활용해 테스트 메소드의 의도를 드러낸다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;힌트-1&quot;&gt;힌트&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://joel-costigliola.github.io/assertj/assertj-core-features-highlight.html#exception-assertion&quot;&gt;AssertJ Exception Assertions&lt;/a&gt; 문서 참고&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;테스트-2&quot;&gt;테스트&lt;/h5&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Test
+@DisplayName(&quot;특정 위치의 문자를 가져온다.&quot;)
+void charAt(){
+    String str = &quot;abc&quot;;
+    int idx = 2;
+    str.charAt(idx);
+}
+
+@Test
+@DisplayName(&quot;charAt - assertThatThrownBy()를 사용하여 Exception 처리&quot;)
+void chatAtException(){
+    String str = &quot;abc&quot;;
+    int idx = 3;
+
+    assertThatThrownBy(()-&amp;gt;{
+       char c = str.charAt(idx);
+    }).isInstanceOf(StringIndexOutOfBoundsException.class)
+            .hasMessageContaining(&quot;%d&quot;, idx);
+}
+
+@Test
+@DisplayName(&quot;charAt - assertThatExceptionOfType()를 사용하여 Exception 처리&quot;)
+void chatAtException2(){
+    String str = &quot;abc&quot;;
+    int idx = 3;
+
+    assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
+            .isThrownBy(() -&amp;gt; {
+                char c = str.charAt(idx);
+            }).withMessageContaining(&quot;%d&quot;, idx);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;참조&quot;&gt;참조&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.baeldung.com/introduction-to-assertj&quot;&gt;Introduction to AssertJ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.naver.com/kunjalan/222622885642&quot;&gt;Assertion의 기본 지식&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="AssertJ" /><summary type="html">오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기! 새로운걸 배우니 심장이 두근두근하다. 실제 업무에서 Junit을 이용해 테스트 코드를 작성하는 사람도 있을텐데 난 너무 늦은게 아닌가… 싶으면서 조급한 마음도 든다. 쫄리는 마음 드는 시간에 하나라도 더 배우자 :)</summary></entry><entry><title type="html">[CS] 기술면접 예상 질문 - 자바</title><link href="http://localhost:4000/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" rel="alternate" type="text/html" title="[CS] 기술면접 예상 질문 - 자바" /><published>2022-03-02T00:00:00+09:00</published><updated>2022-03-02T02:44:23+09:00</updated><id>http://localhost:4000/cs/Technical-Interview-Expected-Questions-Java</id><content type="html" xml:base="http://localhost:4000/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/">&lt;p&gt;기술면접 단골질문&lt;/p&gt;
 
 &lt;h3 id=&quot;1객체-지향-프로그래밍-oopobject-oriented-programming&quot;&gt;1.객체 지향 프로그래밍 OOP(Object Oriented Programming)?&lt;/h3&gt;
 &lt;p&gt;Object를 기준으로 코드를 나누어 구현하는 프로그래밍(Java는 구분 단위가 class)&lt;/p&gt;
@@ -23,7 +423,7 @@
 &lt;ul&gt;
   &lt;li&gt;한 클래스내에 이름이 같은 여러개의 메서드를 재정의하는 것&lt;/li&gt;
   &lt;li&gt;메서드 시그니처가 다름&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="cs" /><category term="cs" /><summary type="html">기술면접 단골질문</summary></entry><entry><title type="html">[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라</title><link href="https://icechoco.github.io/java/2022-03-01-Effective-java-Day33-item66/" rel="alternate" type="text/html" title="[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라" /><published>2022-03-01T00:00:00-06:00</published><updated>2022-03-16T05:02:58-06:00</updated><id>https://icechoco.github.io/java/Effective-java-Day33-item66</id><content type="html" xml:base="https://icechoco.github.io/java/2022-03-01-Effective-java-Day33-item66/">&lt;p&gt;&lt;strong&gt;Java Native Interface(자바 네이티브 인터페이스, JNI)&lt;/strong&gt;: 자바 프로그램이 네이티브 메서드를 호출하는 기술&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="cs" /><category term="cs" /><summary type="html">기술면접 단골질문</summary></entry><entry><title type="html">[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라</title><link href="http://localhost:4000/java/2022-03-01-Effective-java-Day33-item66/" rel="alternate" type="text/html" title="[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라" /><published>2022-03-01T00:00:00+09:00</published><updated>2022-03-16T20:02:58+09:00</updated><id>http://localhost:4000/java/Effective-java-Day33-item66</id><content type="html" xml:base="http://localhost:4000/java/2022-03-01-Effective-java-Day33-item66/">&lt;p&gt;&lt;strong&gt;Java Native Interface(자바 네이티브 인터페이스, JNI)&lt;/strong&gt;: 자바 프로그램이 네이티브 메서드를 호출하는 기술&lt;/p&gt;
 
 &lt;h2 id=&quot;native-method네이티브-메서드&quot;&gt;Native method(네이티브 메서드)&lt;/h2&gt;
 &lt;p&gt;C나 c++같은 네이티브 프로그래밍 언어로 작성한 메서드&lt;/p&gt;
@@ -90,7 +490,7 @@
       &lt;li&gt;&lt;a href=&quot;https://blog.silentsoft.org/archives/5&quot;&gt;Java에서 관리자 권한으로 실행하기&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">Java Native Interface(자바 네이티브 인터페이스, JNI): 자바 프로그램이 네이티브 메서드를 호출하는 기술</summary></entry><entry><title type="html">[CS] FTP(File Transfer Protocol) Active와 Passive의 차이</title><link href="https://icechoco.github.io/cs/2022-02-25-File-transfer-protocol/" rel="alternate" type="text/html" title="[CS] FTP(File Transfer Protocol) Active와 Passive의 차이" /><published>2022-02-25T00:00:00-06:00</published><updated>2022-02-25T22:41:16-06:00</updated><id>https://icechoco.github.io/cs/File-transfer-protocol</id><content type="html" xml:base="https://icechoco.github.io/cs/2022-02-25-File-transfer-protocol/">&lt;p&gt;오늘은 FTP Active와 Passive의 차이에 대해서 정리해보려 한다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">Java Native Interface(자바 네이티브 인터페이스, JNI): 자바 프로그램이 네이티브 메서드를 호출하는 기술</summary></entry><entry><title type="html">[CS] FTP(File Transfer Protocol) Active와 Passive의 차이</title><link href="http://localhost:4000/cs/2022-02-25-File-transfer-protocol/" rel="alternate" type="text/html" title="[CS] FTP(File Transfer Protocol) Active와 Passive의 차이" /><published>2022-02-25T00:00:00+09:00</published><updated>2022-02-26T13:41:16+09:00</updated><id>http://localhost:4000/cs/File-transfer-protocol</id><content type="html" xml:base="http://localhost:4000/cs/2022-02-25-File-transfer-protocol/">&lt;p&gt;오늘은 FTP Active와 Passive의 차이에 대해서 정리해보려 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;ftpfile-transfer-protocol란&quot;&gt;FTP(File Transfer Protocol)란?&lt;/h2&gt;
 &lt;ul&gt;
@@ -193,7 +593,7 @@
   &lt;li&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/%EC%9D%91%EB%8B%B5_%EB%AC%B8%EC%9E%90&quot;&gt;응답 문자&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://milhouse93.tistory.com/168&quot;&gt;[IT 기초 지식] FTP(File Transfer Protocol) 정리&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://madplay.github.io/post/ftp-active-passive&quot;&gt;FTP Active와 Passive 차이&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="cs" /><category term="cs" /><summary type="html">오늘은 FTP Active와 Passive의 차이에 대해서 정리해보려 한다.</summary></entry><entry><title type="html">[CS] Pub/Sub 구조란 무엇인가?</title><link href="https://icechoco.github.io/cs/2022-02-25-What-is-pubSub-structure/" rel="alternate" type="text/html" title="[CS] Pub/Sub 구조란 무엇인가?" /><published>2022-02-25T00:00:00-06:00</published><updated>2022-02-25T22:41:16-06:00</updated><id>https://icechoco.github.io/cs/What-is-pubSub-structure</id><content type="html" xml:base="https://icechoco.github.io/cs/2022-02-25-What-is-pubSub-structure/">&lt;p&gt;오늘은 Pub&amp;amp;Sub 구조가 무엇인지에 대해서 알아보려 한다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="cs" /><category term="cs" /><summary type="html">오늘은 FTP Active와 Passive의 차이에 대해서 정리해보려 한다.</summary></entry><entry><title type="html">[CS] Pub/Sub 구조란 무엇인가?</title><link href="http://localhost:4000/cs/2022-02-25-What-is-pubSub-structure/" rel="alternate" type="text/html" title="[CS] Pub/Sub 구조란 무엇인가?" /><published>2022-02-25T00:00:00+09:00</published><updated>2022-02-26T13:41:16+09:00</updated><id>http://localhost:4000/cs/What-is-pubSub-structure</id><content type="html" xml:base="http://localhost:4000/cs/2022-02-25-What-is-pubSub-structure/">&lt;p&gt;오늘은 Pub&amp;amp;Sub 구조가 무엇인지에 대해서 알아보려 한다.&lt;/p&gt;
 
 &lt;h2 id=&quot;subpub-구조&quot;&gt;Sub/pub 구조&lt;/h2&gt;
 &lt;ul&gt;
@@ -241,7 +641,7 @@
 &lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://2kindsofcs.tistory.com/m/6&quot;&gt;pub/sub 구조란 무엇인가&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="cs" /><category term="cs" /><summary type="html">오늘은 Pub&amp;amp;Sub 구조가 무엇인지에 대해서 알아보려 한다.</summary></entry><entry><title type="html">[Effective Java] Day 32 - Item 86 :: Serialize를 구현할지는 신중히 결정하라</title><link href="https://icechoco.github.io/java/2022-02-20-Effective-java-Day32-item86/" rel="alternate" type="text/html" title="[Effective Java] Day 32 - Item 86 :: Serialize를 구현할지는 신중히 결정하라" /><published>2022-02-20T00:00:00-06:00</published><updated>2022-02-28T21:11:27-06:00</updated><id>https://icechoco.github.io/java/Effective-java-Day32-item86</id><content type="html" xml:base="https://icechoco.github.io/java/2022-02-20-Effective-java-Day32-item86/">&lt;p&gt;어떤 클래스의 인스턴스를 직렬화할 수 있게 하려면? → Class 선언에 implements Serializable 추가
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="cs" /><category term="cs" /><summary type="html">오늘은 Pub&amp;amp;Sub 구조가 무엇인지에 대해서 알아보려 한다.</summary></entry><entry><title type="html">[Effective Java] Day 32 - Item 86 :: Serialize를 구현할지는 신중히 결정하라</title><link href="http://localhost:4000/java/2022-02-20-Effective-java-Day32-item86/" rel="alternate" type="text/html" title="[Effective Java] Day 32 - Item 86 :: Serialize를 구현할지는 신중히 결정하라" /><published>2022-02-20T00:00:00+09:00</published><updated>2022-03-01T12:11:27+09:00</updated><id>http://localhost:4000/java/Effective-java-Day32-item86</id><content type="html" xml:base="http://localhost:4000/java/2022-02-20-Effective-java-Day32-item86/">&lt;p&gt;어떤 클래스의 인스턴스를 직렬화할 수 있게 하려면? → Class 선언에 implements Serializable 추가
 구현한다고 선언하기는 아주 쉽지만, 그렇다고 프로그래머가 따로 신경 쓸 일이 없다고 생각하는 것은 오해이다.&lt;/p&gt;
 
 &lt;h2 id=&quot;serailizable의-문제점&quot;&gt;Serailizable의 문제점&lt;/h2&gt;
@@ -388,7 +788,7 @@ SerialVersionUID를 따로 설정해주지 않더라도 JVM에서 RunTime 시 �
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html&quot;&gt;Interface Serializable docs&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://brunch.co.kr/@oemilk/179&quot;&gt;직렬화(Serialization)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">어떤 클래스의 인스턴스를 직렬화할 수 있게 하려면? → Class 선언에 implements Serializable 추가 구현한다고 선언하기는 아주 쉽지만, 그렇다고 프로그래머가 따로 신경 쓸 일이 없다고 생각하는 것은 오해이다.</summary></entry><entry><title type="html">[Algorithm] Codility Lesson 15 - Caterpillar method</title><link href="https://icechoco.github.io/java/2022-02-17-Codility-Lesson15-Caterpillar-method/" rel="alternate" type="text/html" title="[Algorithm] Codility Lesson 15 - Caterpillar method" /><published>2022-02-17T00:00:00-06:00</published><updated>2022-02-20T04:38:39-06:00</updated><id>https://icechoco.github.io/java/Codility-Lesson15-Caterpillar-method</id><content type="html" xml:base="https://icechoco.github.io/java/2022-02-17-Codility-Lesson15-Caterpillar-method/">&lt;p&gt;무턱대고 A4용지 이면지에 영어 해석하면서 정리했었는데… 오늘 멘토링을 통해 우연히 알게된 개발자 분의 블로그를 보게 되었다. 블로그에 이것저것 많이 올리시고, git 잔디까지 빼곡한걸 보면서 정말 대단하다 생각했다. 그리고 나도 블로그에 정리한 내용을 올리면 보기 쉽겠다 생각해서 만든 Algorithm 카테고리의 첫 포스팅!&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">어떤 클래스의 인스턴스를 직렬화할 수 있게 하려면? → Class 선언에 implements Serializable 추가 구현한다고 선언하기는 아주 쉽지만, 그렇다고 프로그래머가 따로 신경 쓸 일이 없다고 생각하는 것은 오해이다.</summary></entry><entry><title type="html">[Algorithm] Codility Lesson 15 - Caterpillar method</title><link href="http://localhost:4000/java/2022-02-17-Codility-Lesson15-Caterpillar-method/" rel="alternate" type="text/html" title="[Algorithm] Codility Lesson 15 - Caterpillar method" /><published>2022-02-17T00:00:00+09:00</published><updated>2022-02-20T19:38:39+09:00</updated><id>http://localhost:4000/java/Codility-Lesson15-Caterpillar-method</id><content type="html" xml:base="http://localhost:4000/java/2022-02-17-Codility-Lesson15-Caterpillar-method/">&lt;p&gt;무턱대고 A4용지 이면지에 영어 해석하면서 정리했었는데… 오늘 멘토링을 통해 우연히 알게된 개발자 분의 블로그를 보게 되었다. 블로그에 이것저것 많이 올리시고, git 잔디까지 빼곡한걸 보면서 정말 대단하다 생각했다. 그리고 나도 블로그에 정리한 내용을 올리면 보기 쉽겠다 생각해서 만든 Algorithm 카테고리의 첫 포스팅!&lt;/p&gt;
 
 &lt;p&gt;알고리즘 소스는 gitHub에 올리지만, Codility 내 각 Lesson마다 있는 교재를 읽고 정리한 내용은 L자 폴더 내 이면지로 쌓여있어 원활히 찾기가 쉽지 않았다…^^
 번역이 올바르지 않을 수 있으므로 양해 부탁드립니다. 틀린 부분 있으면 코멘트 남겨주세요 :D&lt;/p&gt;
@@ -512,7 +912,7 @@ y&amp;lt;k&amp;lt;=z를 만족하는 모든 stick K도 사용할 수 있다. 왜
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;    
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;위 알고리즘의 시간복잡도는 O(n)이다. 이유는 모든 스틱x에 대해 y와 z의 값이 O(n)번 증가하기 때문이다.&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">무턱대고 A4용지 이면지에 영어 해석하면서 정리했었는데… 오늘 멘토링을 통해 우연히 알게된 개발자 분의 블로그를 보게 되었다. 블로그에 이것저것 많이 올리시고, git 잔디까지 빼곡한걸 보면서 정말 대단하다 생각했다. 그리고 나도 블로그에 정리한 내용을 올리면 보기 쉽겠다 생각해서 만든 Algorithm 카테고리의 첫 포스팅!</summary></entry><entry><title type="html">[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라</title><link href="https://icechoco.github.io/java/2022-02-15-Effective-java-Day31-item72/" rel="alternate" type="text/html" title="[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라" /><published>2022-02-15T00:00:00-06:00</published><updated>2022-02-16T03:56:38-06:00</updated><id>https://icechoco.github.io/java/Effective-java-Day31-item72</id><content type="html" xml:base="https://icechoco.github.io/java/2022-02-15-Effective-java-Day31-item72/">&lt;p&gt;Item 72 :: 표준 예외를 사용하라&lt;/p&gt;
+&lt;p&gt;위 알고리즘의 시간복잡도는 O(n)이다. 이유는 모든 스틱x에 대해 y와 z의 값이 O(n)번 증가하기 때문이다.&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">무턱대고 A4용지 이면지에 영어 해석하면서 정리했었는데… 오늘 멘토링을 통해 우연히 알게된 개발자 분의 블로그를 보게 되었다. 블로그에 이것저것 많이 올리시고, git 잔디까지 빼곡한걸 보면서 정말 대단하다 생각했다. 그리고 나도 블로그에 정리한 내용을 올리면 보기 쉽겠다 생각해서 만든 Algorithm 카테고리의 첫 포스팅!</summary></entry><entry><title type="html">[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라</title><link href="http://localhost:4000/java/2022-02-15-Effective-java-Day31-item72/" rel="alternate" type="text/html" title="[Effective Java] Day 31 - Item 72 :: 표준 예외를 사용하라" /><published>2022-02-15T00:00:00+09:00</published><updated>2022-02-16T18:56:38+09:00</updated><id>http://localhost:4000/java/Effective-java-Day31-item72</id><content type="html" xml:base="http://localhost:4000/java/2022-02-15-Effective-java-Day31-item72/">&lt;p&gt;Item 72 :: 표준 예외를 사용하라&lt;/p&gt;
 
 &lt;h2 id=&quot;exception의-재사용&quot;&gt;Exception의 재사용&lt;/h2&gt;
 &lt;ul&gt;
@@ -793,7 +1193,7 @@ y&amp;lt;k&amp;lt;=z를 만족하는 모든 stick K도 사용할 수 있다. 왜
 &lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://velog.io/@youngerjesus/Java-avoid-ConcurrentModificationException&quot;&gt;자바 ConcurrentModificationException&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">Item 72 :: 표준 예외를 사용하라</summary></entry><entry><title type="html">[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라</title><link href="https://icechoco.github.io/java/2022-01-16-Effective-java-Day30-item63/" rel="alternate" type="text/html" title="[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라" /><published>2022-01-16T00:00:00-06:00</published><updated>2022-01-17T07:07:02-06:00</updated><id>https://icechoco.github.io/java/Effective-java-Day30-item63</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-16-Effective-java-Day30-item63/">&lt;p&gt;Day30에서는 item 63에 대한 내용을 다룬다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">Item 72 :: 표준 예외를 사용하라</summary></entry><entry><title type="html">[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라</title><link href="http://localhost:4000/java/2022-01-16-Effective-java-Day30-item63/" rel="alternate" type="text/html" title="[Effective Java] Day 30 - Item 63 :: 문자열 연결은 느리니 주의하라" /><published>2022-01-16T00:00:00+09:00</published><updated>2022-01-17T22:07:02+09:00</updated><id>http://localhost:4000/java/Effective-java-Day30-item63</id><content type="html" xml:base="http://localhost:4000/java/2022-01-16-Effective-java-Day30-item63/">&lt;p&gt;Day30에서는 item 63에 대한 내용을 다룬다.&lt;/p&gt;
 
 &lt;h2 id=&quot;item-63--문자열-연결은-느리니-주의하라&quot;&gt;Item 63 :: 문자열 연결은 느리니 주의하라&lt;/h2&gt;
 &lt;h3 id=&quot;1-문자열-연결-연산자&quot;&gt;1. 문자열 연결 연산자(+)&lt;/h3&gt;
@@ -1040,7 +1440,7 @@ append 메서드를 사용하여 A를 100번 연결한다.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;성능에 신경을 써서 &lt;strong&gt;많은 문자열을 연결해야한다면 문자열 연결 연산자(+)를 피해라&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;대신 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StringBuilder&lt;/code&gt;의 append 메서드를 사용해라&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day30에서는 item 63에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Java] Iterable과 Iterator</title><link href="https://icechoco.github.io/java/2022-01-05-Java-Iterator/" rel="alternate" type="text/html" title="[Java] Iterable과 Iterator" /><published>2022-01-05T00:00:00-06:00</published><updated>2022-03-23T21:43:57-06:00</updated><id>https://icechoco.github.io/java/Java-Iterator</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-05-Java-Iterator/">&lt;p&gt;이펙티브 자바 3판을 읽다가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Iterable&amp;lt;E&amp;gt;&lt;/code&gt;를 입력 매개변수 타입으로 받는 소스코드 발견했다. Iterator가 반복자인 것만 알고있었는데 Iterable은 뭐지? 이름만 봐서는 인터페이스 같은데… 궁금해서 찾아보게 되었다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day30에서는 item 63에 대한 내용을 다룬다.</summary></entry><entry><title type="html">[Java] Iterable과 Iterator</title><link href="http://localhost:4000/java/2022-01-05-Java-Iterator/" rel="alternate" type="text/html" title="[Java] Iterable과 Iterator" /><published>2022-01-05T00:00:00+09:00</published><updated>2022-03-24T12:43:57+09:00</updated><id>http://localhost:4000/java/Java-Iterator</id><content type="html" xml:base="http://localhost:4000/java/2022-01-05-Java-Iterator/">&lt;p&gt;이펙티브 자바 3판을 읽다가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Iterable&amp;lt;E&amp;gt;&lt;/code&gt;를 입력 매개변수 타입으로 받는 소스코드 발견했다. Iterator가 반복자인 것만 알고있었는데 Iterable은 뭐지? 이름만 봐서는 인터페이스 같은데… 궁금해서 찾아보게 되었다.&lt;/p&gt;
 
 &lt;h2 id=&quot;1-iterable이란&quot;&gt;1. Iterable이란?&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;/assets\img/iterable_hierarchy.PNG&quot; alt=&quot;iterable_hierarchy&quot; /&gt;&lt;/p&gt;
@@ -1174,11 +1574,4 @@ append 메서드를 사용하여 A를 100번 연결한다.&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;참조&quot;&gt;참조&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://devlog-wjdrbs96.tistory.com/84&quot;&gt;[Java] Iterable 과 Iterator 이란?&lt;/a&gt;&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">이펙티브 자바 3판을 읽다가 Iterable&amp;lt;E&amp;gt;를 입력 매개변수 타입으로 받는 소스코드 발견했다. Iterator가 반복자인 것만 알고있었는데 Iterable은 뭐지? 이름만 봐서는 인터페이스 같은데… 궁금해서 찾아보게 되었다.</summary></entry><entry><title type="html">[Effective Java] Day 29 - Item 31 :: 한정적 와일드카드를 사용해 API 유연성을 높이라</title><link href="https://icechoco.github.io/java/2022-01-05-Effective-java-Day29-item31/" rel="alternate" type="text/html" title="[Effective Java] Day 29 - Item 31 :: 한정적 와일드카드를 사용해 API 유연성을 높이라" /><published>2022-01-05T00:00:00-06:00</published><updated>2022-03-23T22:56:47-06:00</updated><id>https://icechoco.github.io/java/Effective-java-Day29-item31</id><content type="html" xml:base="https://icechoco.github.io/java/2022-01-05-Effective-java-Day29-item31/">&lt;p&gt;Day29에서는 item 31에 대한 내용을 다룬다.&lt;/p&gt;
-
-&lt;h2 id=&quot;item-31--한정적-와일드카드를-사용해-api-유연성을-높이라&quot;&gt;Item 31 :: 한정적 와일드카드를 사용해 API 유연성을 높이라&lt;/h2&gt;
-
-&lt;h3 id=&quot;참고&quot;&gt;참고&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://hochoon-dev.tistory.com/entry/Java-Producer-Consumer-%ED%8C%A8%ED%84%B4-%EA%B5%AC%EC%A1%B0&quot;&gt;[Java] Producer - Consumer 패턴 구조&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="이펙티브자바" /><category term="effectiveJava" /><summary type="html">Day29에서는 item 31에 대한 내용을 다룬다.</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://devlog-wjdrbs96.tistory.com/84&quot;&gt;[Java] Iterable 과 Iterator 이란?&lt;/a&gt;&lt;/p&gt;</content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html">이펙티브 자바 3판을 읽다가 Iterable&amp;lt;E&amp;gt;를 입력 매개변수 타입으로 받는 소스코드 발견했다. Iterator가 반복자인 것만 알고있었는데 Iterable은 뭐지? 이름만 봐서는 인터페이스 같은데… 궁금해서 찾아보게 되었다.</summary></entry></feed>
