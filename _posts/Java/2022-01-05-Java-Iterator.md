@@ -102,6 +102,32 @@ Iterator 인터페이스의 내부 구현은 위와 같이 되어있다. 따라�
   - 표준화가 되어 있지 않다면 컬렉션 클래스의 데이터를 읽어올 때 마다, 해당 클래스의 데이터를 꺼내오는 메서드들을 다 알고 있어야 함. 이름이 다를 수도 있는데 그걸 다 알고 있어야 하는건 비 효율적이다!
   - 위와 같은 이유로 인해 Iterator가 존재하는 것
 
+위와같은 Iterator 인터페이스는 객체지향 프로그래밍의 중요한 목적 중의 하나임
+
+### 객체지향 프로그래밍의 중요한 목적
+- <span style="color:red">공통 인터페이스</span>를 정의하여 표준을 정의
+- 위 인터페이스를 구현하여 표준을 따르도록 하며 <span style="color:red">코드의 일관성</span>을 유지
+- 재사용성을 극대화
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        LinkedList<String> list = new LinkedList<>();
+        list.add("Cho");
+        list.add("a");
+        list.add("ra");
+        Iterator it = list.iterator();
+
+        while(it.hasNext()){
+            System.out.println(it.next()+" ");
+        }
+    }
+}
+```
+- 참조변수 list로 iterator 메소드를 호출
+- iterator 메소드는 Linkedlist 형태의 Iterator를 반환
+- 반환한 Iterator의 hasNext, next 메소드를 통해 내용을 출력함
+
 ## 참조
 [[Java] Iterable 과 Iterator 이란?](https://devlog-wjdrbs96.tistory.com/84)
 
