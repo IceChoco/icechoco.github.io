@@ -33,5 +33,11 @@ comments: true
 ## 검색
 ### 검색기타
 - 파일 검색 (Navigate -> File)
-  - Win/Linux: Ctrl + Shift + n
+  - Win/Linux: Ctrl + Shift + N
   - MacOS: Cmd + Shift + o
+
+## 코드
+### 상수변환
+- Win/Linux: Ctrl+Alt+C
+- MacOS: ⌥⌘C
+

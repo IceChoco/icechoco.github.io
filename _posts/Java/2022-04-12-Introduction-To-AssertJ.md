@@ -72,7 +72,7 @@ asssertion을 작성하기 위해서는, 항상 객체를 `Assertions.assertThat
 assertThat(anyRefenceOrValue);
 ```
 IDE의 코드완성기능을 사용하면 AssertJ Assertions를 쉽게 작성 가능하다. 인텔리제이 IDEA 2021.3 버전에서는 아래처럼 나온다.
-![assertJ_IntelliJ](/assets\img/assertJ_IntelliJ.PNG)
+![assertJ_IntelliJ](/assets\img/assertJ_IntelliJ.png)
 
 위처럼 상황별로 선택할 수 있는 다양한 메소드가 제공되며, 이 메소드들은 String 타입에만 사용이 가능하다.  
 이 API에 대해 자세히 살펴보고 특정 Assertion에 대해 알아보자.
