@@ -1,5 +1,5 @@
 ---
-title: '[우아한 테크캠프 Pro] 우아한 테크캠프 Pro 프리코스 1주차 - TDD로 숫자 야구게임 구현 1'
+title: '[우아한 테크캠프 Pro] 우아한 테크캠프 Pro 프리코스 1주차 - TDD로 숫자 야구게임 구현'
 layout: post
 categories: java
 tags: java
@@ -99,6 +99,7 @@ public class VlidationUtils {
 ```
 3.Refactoring: Production Code와 Test Code를 리팩토링 한다.
 - 1차 리펙토링
+
 ```java
 public class ValidationUtilsTest {
     @Test
@@ -118,6 +119,7 @@ public class VlidationUtils {
 }
 ```
 - 2차 리펙토링
+
 ```java
 public class ValidationUtilsTest {
     @Test
@@ -145,4 +147,32 @@ public class VlidationUtils {
 - 볼: 같은 수가 다른 자리에 있는 경우
 - 낫싱: 같은 수가 전혀 없음
 
-28:31부터 수강 후 정리 필요
+테스팅이 가능한 부분 → 랜덤, UI, 날짜 데이터가 있으면 Test가 하기 힘든데 그런것들이 없는 것을 말함.
+
+#### 첫번쨰 방법
+---
+com / user  
+123, 456 → nothing  
+123, 245 → 1 ball  
+123, 145 → 1 strike  
+
+PlayResult result = play(Arrays.asList(1,2,3), Arrays.asList(4,5,6))
+
+---
+위치값을 모르고 각 수만 아는 경우 ball인지 strike인지 알 수가 없다. 따라서 위치값을 넣어줘야한다.
+아래에서는 '위치값, 숫자'와 같은 형태로 표현했다. TDD를 할 때는 위와 같은 형태보다 작은 형태로 쪼갠 아래와 같은 형태가 더 쉽다.
+
+com / user  
+1 1 , 1 1 → 1 strike  
+1 4 , 2 4 → 1 ball  
+1 4 , 2 5 → nothing  
+
+<span style="color:red">문제를 작은 단위로 쪼갠 뒤 TDD 구현을 도전하라</span>
+
+#### 난이도를 높여서, 두 번쨰 방법
+com / user  
+123 / 1 4 → nothing  
+123 / 1 2 → ball  
+123 / 1 1 → strike  
+
+도메인 로직에서 객체에 접근해 Getter를 이용하여 데이터를 가져와 비교하지 말고, <span style="color:red">객체 내에 판단 로직을 만들어 객체가 일하게 만들어라.</span>

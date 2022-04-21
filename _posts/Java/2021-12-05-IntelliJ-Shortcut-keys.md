@@ -17,7 +17,7 @@ comments: true
 - MacOS: ⌘1
 - Win/Linux: Alt+1
 
-### 파일, 패키지 등 이름변경
+### 파일, 패키지, 변수명 등 이름변경
 - Win/Linux: Shift + F6 
 
 ### 실행
@@ -36,8 +36,12 @@ comments: true
   - Win/Linux: Ctrl + Shift + N
   - MacOS: Cmd + Shift + o
 
-## 코드
+## 리팩토링
 ### 상수변환
 - Win/Linux: Ctrl+Alt+C
 - MacOS: ⌥⌘C
+
+### 상수변환
+메소드 추출 리팩토링은 메소드를 더 짧고 읽기 쉽게 만들 수 있습니다.
+- Win/Linux: Ctrl+Alt+M
 
