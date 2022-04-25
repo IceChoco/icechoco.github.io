@@ -29,9 +29,9 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 
   
     
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[IntelliJ] 단축키 정리 | IceChoco</title>
-<meta name="generator" content="Jekyll v4.2.1" />
+<meta name="generator" content="Jekyll v4.2.2" />
 <meta property="og:title" content="[IntelliJ] 단축키 정리" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="ko_KR, en_US" />
@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[IntelliJ] 단축키 정리" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"[IntelliJ] 단축키 정리","dateModified":"2021-12-31T20:35:40+09:00","datePublished":"2021-12-05T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/java/2021-12-05-IntelliJ-Shortcut-keys/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"http://localhost:4000/java/2021-12-05-IntelliJ-Shortcut-keys/","description":"최근에 IDE를 이클립스에서 IntelliJ로 바꿨다. 그래서 아직 잘 모르는 단축키들이 많다…ㅎㅎ 매번 검색하는 것도 좀 그렇고 블로그에 정리해뒀다가 한번에 확인하려고한다. 내용은 계속해서 생각나는대로 업데이트 예정이다!","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-04-23T23:51:33+09:00","datePublished":"2021-12-05T00:00:00+09:00","description":"최근에 IDE를 이클립스에서 IntelliJ로 바꿨다. 그래서 아직 잘 모르는 단축키들이 많다…ㅎㅎ 매번 검색하는 것도 좀 그렇고 블로그에 정리해뒀다가 한번에 확인하려고한다. 내용은 계속해서 생각나는대로 업데이트 예정이다!","headline":"[IntelliJ] 단축키 정리","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/java/2021-12-05-IntelliJ-Shortcut-keys/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"http://localhost:4000/java/2021-12-05-IntelliJ-Shortcut-keys/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-04-17T17:34:49+09:00',
+    INDEX_KEY: 'index--2022-04-25T13:48:12+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-31">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-23">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-31T20:35:40+09:00">2021-12-31</time>
+              <time datetime="2022-04-23T23:51:33+09:00">2022-04-23</time>
             </span>
           
         
@@ -344,7 +344,7 @@ Left here for reference, feel free to delete.
   <li>Win/Linux: Alt+1</li>
 </ul>
 
-<h3 id="파일-패키지-등-이름변경">파일, 패키지 등 이름변경</h3>
+<h3 id="파일-패키지-변수명-등-이름변경">파일, 패키지, 변수명 등 이름변경</h3>
 <ul>
   <li>Win/Linux: Shift + F6</li>
 </ul>
@@ -370,10 +370,23 @@ Left here for reference, feel free to delete.
 <ul>
   <li>파일 검색 (Navigate -&gt; File)
     <ul>
-      <li>Win/Linux: Ctrl + Shift + n</li>
+      <li>Win/Linux: Ctrl + Shift + N</li>
       <li>MacOS: Cmd + Shift + o</li>
     </ul>
   </li>
+</ul>
+
+<h2 id="리팩토링">리팩토링</h2>
+<h3 id="상수변환">상수변환</h3>
+<ul>
+  <li>Win/Linux: Ctrl+Alt+C</li>
+  <li>MacOS: ⌥⌘C</li>
+</ul>
+
+<h3 id="메소드변환">메소드변환</h3>
+<p>메소드 추출 리팩토링은 메소드를 더 짧고 읽기 쉽게 만들 수 있습니다.</p>
+<ul>
+  <li>Win/Linux: Ctrl+Alt+M</li>
 </ul>
 
   
@@ -547,7 +560,7 @@ Left here for reference, feel free to delete.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-04-12-Introduction-To-AssertJ/" class="flip-title"><span>[AssertJ] AssertJ란?</span></a>  <time class="faded fine" datetime="2022-04-12T00:00:00+09:00">12 Apr 2022</time></li>                        <li class="h4">  <a href="/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" class="flip-title"><span>[CS] 기술면접 예상 질문 - 자바</span></a>  <time class="faded fine" datetime="2022-03-02T00:00:00+09:00">02 Mar 2022</time></li>                        <li class="h4">  <a href="/java/2022-03-01-Effective-java-Day33-item66/" class="flip-title"><span>[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라</span></a>  <time class="faded fine" datetime="2022-03-01T00:00:00+09:00">01 Mar 2022</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-04-22-wrap-primitive-type/" class="flip-title"><span>[Java] 원시값과 문자열의 포장</span></a>  <time class="faded fine" datetime="2022-04-22T00:00:00+09:00">22 Apr 2022</time></li>                        <li class="h4">  <a href="/java/2022-04-22-lambda-expression-syntax/" class="flip-title"><span>[Java] 람다식 문법</span></a>  <time class="faded fine" datetime="2022-04-22T00:00:00+09:00">22 Apr 2022</time></li>                        <li class="h4">  <a href="/java/2022-04-22-First-Class-Collection/" class="flip-title"><span>[Java] 일급 컬렉션 (First Class Collection)이란?</span></a>  <time class="faded fine" datetime="2022-04-22T00:00:00+09:00">22 Apr 2022</time></li>            </ul></aside>
 
   
 

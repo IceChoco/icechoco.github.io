@@ -29,9 +29,9 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 
   
     
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Page 7 of 8 for welcome to IceChoco’s devLog | IceChoco</title>
-<meta name="generator" content="Jekyll v4.2.1" />
+<meta name="generator" content="Jekyll v4.2.2" />
 <meta property="og:title" content="welcome to IceChoco’s devLog" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="ko_KR, en_US" />
@@ -40,12 +40,13 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <link rel="canonical" href="http://localhost:4000/page-7/" />
 <meta property="og:url" content="http://localhost:4000/page-7/" />
 <meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="website" />
 <link rel="prev" href="http://localhost:4000/page-6/" />
 <link rel="next" href="http://localhost:4000/page-8/" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="welcome to IceChoco’s devLog" />
 <script type="application/ld+json">
-{"@type":"WebPage","headline":"welcome to IceChoco’s devLog","dateModified":"2021-09-23T00:02:45+09:00","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"http://localhost:4000/page-7/","description":"IceChoco의 DevLog","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-04-22T21:38:18+09:00","description":"IceChoco의 DevLog","headline":"welcome to IceChoco’s devLog","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"http://localhost:4000/page-7/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +108,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-04-17T17:34:49+09:00',
+    INDEX_KEY: 'index--2022-04-25T13:48:12+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -587,6 +588,419 @@ Left here for reference, feel free to delete.
 
 
 
+<article id="post-frontend-Settint-Up-Redux" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/frontend/2021-10-11-Settint-Up-Redux/" class="flip-title">
+        Redux 설치하기
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>, <span>Redux</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Redux를 자신이 개발할 어플리케이션에 설치하고 설정하는 방법을 기록하겠습니다. 우선 다운 받아야 할 dependency들이 redux, react-redux, redux-promise, redux-thunk까지 총 4개가 있습니다. 이 중에서 redux-promis, redux-thunk는 redux의 미들웨어입니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install redux react-redux redux-promise redux-thunk --save
+</code></pre></div></div>
+<h2 id="redux-promise-redux-thunk가-필요한-이유">redux-promise, redux-thunk가 필요한 이유</h2>
+<p>redux-promise, redux-thunk는 redux를 잘 쓸 수 있게 도와주는 역할을 하는 미들웨어입니다. redux는 redux store 안에 모든 state를 관리하고 있습니다. 이 store 안에 있는 state를 변경하기 위해서는 dispatch를 이용해서 action을 통해 변경시킬 수 있습니다. 이렇게 store가 데이터를 받을 때 항상 객체 형식으로 데이터를 받는 것이 아니라 때에 따라 promise, functions 형식으로 받기도 합니다. 그런데, redux 기초편에서 봤듯 우리는 reudx store는 객체 형식으로만 데이터를 받을 수 있다고 배웠습니다.</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/frontend/2021-10-11-Settint-Up-Redux/">Redux 설치하기</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-frontend-Screen-development-using-ant-design" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/frontend/2021-10-11-Screen-development-using-ant-design/" class="flip-title">
+        CSS Framework, Ant Design을 활용한 효율적인 화면개발하기
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>원래는 모든 것을 CSS를 활용해서 하나하나 만들 수 있지만, 그렇게 되면 기능을 신경 쓰는 것 이외에 너무 많은 시간을 CSS에 투자해야합니다. 그래서 기능 개발에 초점을 맞추기 위해 CSS 프레임 워크를 사용해보도록 하겠습니다. 요즘 많은 기업들이 실무에서도 CSS 프레임워크가 잘 되어 있어 많이 사용하고 있습니다.</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/frontend/2021-10-11-Screen-development-using-ant-design/">CSS Framework, Ant Design을 활용한 효율적인 화면개발하기</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-server-Running-server-and-client-at-the-same-time" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/server/2021-10-11-Running-server-and-client-at-the-same-time/" class="flip-title">
+        Concurrently를 이용한 백서버와 클라이언트서버 동시 실행시키기
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/server/" class="flip-title">Server</a> on <span>Server</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>개발하면서 매번 터미널 두개 켜서 하나는 server run 시키고, 다른 하나는 react run 시키고 두 번 해줘야 하는게 정말 불편했습니다. 그러던 와중에 알게된 것은 바로 <strong>Concurrently</strong>를 이용해서 백서버와 클라이언트서버를 동시에 실행시키는 것! 그래서 이번 글에서는 어떻게 Concurrently를 활용해서 동시에 실행시킬 수 있는지 알려드리겠습니다. 우선 사용을 위해서는 Concurrently 라이브러리를 다운받으셔야합니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install concurrently --save
+</code></pre></div></div>
+<p>설치 후 사용방법은 package.json 파일 내 “scripts” 부분에 실행할 명령어를 넣고 concurrenlty를 적은 뒤 켜고 싶은 것들을 차례대로 적어주시면 됩니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"dev": "concurrently   \"npm run backend\" \"npm run start --prefix client\""
+</code></pre></div></div>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/server/2021-10-11-Running-server-and-client-at-the-same-time/">Concurrently를 이용한 백서버와 클라이언트서버 동시 실행시키기</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-frontend-Redux-Basics" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/frontend/2021-10-11-Redux-Basics/" class="flip-title">
+        Redux 기초
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>, <span>Redux</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Redux는 상태관리 라이브러리(predictable state container) 입니다. 그렇다면 여기서 말하는 state가 뭘까요? React에서는 Props와 State가 있습니다. 이 두가지를 비교하면서 state에 대해 알아보겠습니다.</p>
+<h2 id="props-vs-state">Props VS State</h2>
+<h3 id="props">Props</h3>
+<ul>
+  <li>Props는 Properties의 줄임말입니다.</li>
+  <li>부모 컴포넌트와 자식 컴포넌트가 있는 경우 데이터를 서로 주고 받아야겠죠? 두 컴포넌트간의 데이터를 주고 받을 때는 Props를 이용해야 합니다.</li>
+  <li><strong>단방향 데이터 흐름</strong>: child component에 전달되는 값 또는 method. 부모 컴포넌트에서 자식 컴포넌트로 즉 위에서 아래로만 데이터 전달이 가능합니다. 반대로 child component에서 parent component로 전달은 불가능합니다.</li>
+  <li><strong>read donly</strong>: child component로 전달받은 props 값은 변하지 않습니다다. 만약 부모로부터 받은 값을 수정하고 싶다면 수정된 값으로 부모 컴포넌트에게서 다시 받아야 합니다.</li>
+  <li>
+    <p><strong>소스코드 예시</strong></p>
+
+    <ul>
+      <li>parent component</li>
+    </ul>
+  </li>
+</ul>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/frontend/2021-10-11-Redux-Basics/">Redux 기초</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-frontend-Class-Component-vs-Functional-Component" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/frontend/2021-10-11-Class-Component-vs-Functional-Component/" class="flip-title">
+        함수형 컴포넌트 vs 클래스 컴포넌트
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>안녕하세요. 오늘은 React Component의 두 종류인 함수형 컴포넌트와 클래스 컴포넌트에 대해서 포스팅하겠습니다.</p>
+<h2 id="class-component">Class Component</h2>
+<p><img src="/assets\img/class-component.PNG" alt="class-component" /></p>
+<ul>
+  <li>state와 Lifecyle method와 같은 더 많은 기능들을 사용 할 수 있습니다. 다만 코드가 좀 더 길어지고, 복잡해지며, 성능적인 면에서 느립니다.</li>
+</ul>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/frontend/2021-10-11-Class-Component-vs-Functional-Component/">함수형 컴포넌트 vs 클래스 컴포넌트</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-frontend-Starting-with-Create-React-App" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/frontend/2021-09-28-Starting-with-Create-React-App/" class="flip-title">
+        Create-React-App으로 React 시작하기
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-09-28T00:00:00+09:00">28 Sep 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>기존에는 리액트 앱을 처음 실행하기 위해서는 webpack이나 babel 같은 것들을 설정하기 위해서 굉장히 많은 시간이 소요되었습니다. 하지만 지금은 따로 설정하지 않아도 Create-React-App이라는 Command를 이용하여 react, webpack 등을 바로 설정할 수 있습니다.</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/frontend/2021-09-28-Starting-with-Create-React-App/">Create-React-App으로 React 시작하기</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
 <article id="post-frontend-Create-member-registration-function" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
@@ -607,10 +1021,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-17">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-17T21:19:31+09:00">2021-12-17</time>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
             </span>
           
         
@@ -671,10 +1085,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-23">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-09-23T00:02:45+09:00">2021-09-23</time>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
             </span>
           
         
@@ -735,10 +1149,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-23">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-09-23T00:02:45+09:00">2021-09-23</time>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
             </span>
           
         
@@ -799,10 +1213,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-17">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2021-12-17T21:19:31+09:00">2021-12-17</time>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
             </span>
           
         
@@ -830,414 +1244,6 @@ Left here for reference, feel free to delete.
     <footer>
       <p class="read-more">
         Continue reading <a class="heading flip-title" href="/frontend/2021-09-20-React-%EA%B0%9C%EC%9A%94/">React 개요</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-database-Mongo-DB-related-errors" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/database/2021-09-20-Mongo-DB-related-errors/" class="flip-title">
-        Mongo DB 관련 오류
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time> in <a href="/database/" class="flip-title">Database</a> on <span>Database</span>, <span>React</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-27">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-09-27T11:14:17+09:00">2021-09-27</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>MongoDB 관련하여 발생할 수 있는 오류 List 및 해결방법 입니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/database/2021-09-20-Mongo-DB-related-errors/">Mongo DB 관련 오류</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-frontend-Hydejack-theme-Custmomization" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/frontend/2021-09-20-Hydejack-theme-Custmomization/" class="flip-title">
-        Hydejack 테마 Custmomization
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-20T00:00:00+09:00">20 Sep 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-jekyll/" class="flip-title">Jekyll</a>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-17">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-12-17T21:19:31+09:00">2021-12-17</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>Hydejack 테마 Custmomization에 관한 내용입니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/frontend/2021-09-20-Hydejack-theme-Custmomization/">Hydejack 테마 Custmomization</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-frontend-cors-errors" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/frontend/2021-09-19-cors-errors/" class="flip-title">
-        CORS(Cross-Origin Resource Sharing) 에러
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-19T00:00:00+09:00">19 Sep 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-17">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-12-17T21:19:31+09:00">2021-12-17</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Access to XMLHttpRequest at 'http://localhost:5000/api/hello' from origin 'http://localhost:3000' has been blocked
-by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
-</code></pre></div></div>
-<p>제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다.</p>
-<ul>
-  <li>임의로 proxy 설정하기<br />
-첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다.
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install http-proxy-middleware --save
-</code></pre></div>    </div>
-    <p>그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다.
-```
-const { createProxyMiddleware } = require(‘http-proxy-middleware’);</p>
-  </li>
-</ul>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/frontend/2021-09-19-cors-errors/">CORS(Cross-Origin Resource Sharing) 에러</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-frontend-React-related-errors" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/frontend/2021-09-19-React-related-errors/" class="flip-title">
-        React 스크립트 실행 오류
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-19T00:00:00+09:00">19 Sep 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-12-17">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-12-17T21:19:31+09:00">2021-12-17</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>create-react-app : 이 시스템에서 스크립트를 실행할 수 없으므로 ~\AppData\Roaming\npm\creat
-e-react-app.ps1 파일을 로드할 수 없습니다. 자세한 내용은 about_Execution_Policies(https://go.microsoft.
-com/fwlink/?LinkID=135170)를 참조하십시오.
-위치 줄:1 문자:1
-+ create-react-app my-app
-+ ~~~~~~~~~~~~~~~~
-    + CategoryInfo          : 보안 오류: (:) [], PSSecurityException
-    + FullyQualifiedErrorId : UnauthorizedAccess
-</code></pre></div></div>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/frontend/2021-09-19-React-related-errors/">React 스크립트 실행 오류</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-frontend-Markdown-문법" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/frontend/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/" class="flip-title">
-        Markdown 문법
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Blog</span>, <a href="/tag-jekyll/" class="flip-title">Jekyll</a>, <span>Web</span>, <span>Markdown</span>, <span>Html</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-02-26">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2022-02-26T13:41:16+09:00">2022-02-26</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <!-- 여기에 목차넣으면 좋을듯,,,, -->
-<p>🔔 Github 블로그를 만들기 위해 꼭 필요한 Markdown 문법에 대해 소개해드리겠습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/frontend/2021-09-15-Markdown-%EB%AC%B8%EB%B2%95/">Markdown 문법</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-git-How-to-use-git" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/git/2021-09-15-How-to-use-git/" class="flip-title">
-        Git 사용법
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-09-15T00:00:00+09:00">15 Sep 2021</time> in <a href="/git/" class="flip-title">GIT</a> on <span>Git</span>, <span>Web</span>, <span>Jekyll</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2021-09-23">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2021-09-23T00:02:45+09:00">2021-09-23</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>안녕하세요. 아이스초코입니다. 오늘은 Github 블로그 만들기에 필요한 Git 사용법에 대해 소개해드리겠습니다.</p>
-
-<p>git이 이미 설치되어있는지 확인하기 위해서는 터미널에서 <code class="language-plaintext highlighter-rouge">git --version</code>을 치면됩니다. 버전이 나오는 경우 이미 설치되어있는 것이고, 안나오는 경우 설치되어 있지 않은 것 입니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/git/2021-09-15-How-to-use-git/">Git 사용법</a>
 
       </p>
     </footer>

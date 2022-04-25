@@ -29,9 +29,9 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 
   
     
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[AssertJ] AssertJ란? | IceChoco</title>
-<meta name="generator" content="Jekyll v4.2.1" />
+<meta name="generator" content="Jekyll v4.2.2" />
 <meta property="og:title" content="[AssertJ] AssertJ란?" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="ko_KR, en_US" />
@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[AssertJ] AssertJ란?" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","headline":"[AssertJ] AssertJ란?","dateModified":"2022-04-15T15:45:03+09:00","datePublished":"2022-04-12T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"author":{"@type":"Person","name":"Ara cho(IceChoco)"},"url":"http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/","description":"오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기! 새로운걸 배우니 심장이 두근두근하다. 실제 업무에서 Junit을 이용해 테스트 코드를 작성하는 사람도 있을텐데 난 너무 늦은게 아닌가… 싶으면서 조급한 마음도 든다. 쫄리는 마음 드는 시간에 하나라도 더 배우자 :)","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-04-23T03:18:22+09:00","datePublished":"2022-04-12T00:00:00+09:00","description":"오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기! 새로운걸 배우니 심장이 두근두근하다. 실제 업무에서 Junit을 이용해 테스트 코드를 작성하는 사람도 있을텐데 난 너무 늦은게 아닌가… 싶으면서 조급한 마음도 든다. 쫄리는 마음 드는 시간에 하나라도 더 배우자 :)","headline":"[AssertJ] AssertJ란?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-04-17T17:34:49+09:00',
+    INDEX_KEY: 'index--2022-04-25T13:48:12+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-15">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-23">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2022-04-15T15:45:03+09:00">2022-04-15</time>
+              <time datetime="2022-04-23T03:18:22+09:00">2022-04-23</time>
             </span>
           
         
@@ -404,7 +404,7 @@ assertThat(fellowshipOfTheRing)
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assertThat(anyRefenceOrValue);
 </code></pre></div></div>
 <p>IDE의 코드완성기능을 사용하면 AssertJ Assertions를 쉽게 작성 가능하다. 인텔리제이 IDEA 2021.3 버전에서는 아래처럼 나온다.
-<img src="/assets\img/assertJ_IntelliJ.PNG" alt="assertJ_IntelliJ" /></p>
+<img src="/assets\img/assertJ_IntelliJ.png" alt="assertJ_IntelliJ" /></p>
 
 <p>위처럼 상황별로 선택할 수 있는 다양한 메소드가 제공되며, 이 메소드들은 String 타입에만 사용이 가능하다.<br />
 이 API에 대해 자세히 살펴보고 특정 Assertion에 대해 알아보자.</p>
@@ -426,18 +426,18 @@ assertThat(fellowshipOfTheRing)
 <span class="o">}</span>
 </code></pre></div></div>
 <p>아래와 같은 assertion을 통해 쉽게 두 객체를 비교할 수 있다.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void isEqualTo(){
-    assertThat(fido).isEqualTo(fidosClone);
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">isEqualTo</span><span class="o">(){</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">fido</span><span class="o">).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">fidosClone</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <p>위를 실행하면 <code class="language-plaintext highlighter-rouge">isEqualTo</code> 메소드는 두 객체의 참조를 비교하므로 fail을 반환한다.<br />
 그 대신 내용을 자체를 비교하려면 다음과 같이 <code class="language-plaintext highlighter-rouge">isEqualToComparingFieldByFieldRecursively()</code> 메소드를 사용하면 된다.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void isEqualToComparingFieldByFieldRecursively(){
-    assertThat(fido).isEqualToComparingFieldByFieldRecursively(fidosClone);
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">isEqualToComparingFieldByFieldRecursively</span><span class="o">(){</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">fido</span><span class="o">).</span><span class="na">isEqualToComparingFieldByFieldRecursively</span><span class="o">(</span><span class="n">fidosClone</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <p>Fido랑 FidosClone 객체는 필드와 필드를 재귀적으로 비교할때 똑같다. 왜냐하면 한 객체의 필드를 다른 객체의 필드와 비교하기 때문이다.<br />
@@ -449,61 +449,61 @@ void isEqualToComparingFieldByFieldRecursively(){
   <li>isTrue()</li>
   <li>isFalse()
 예시 소스코드를 보자
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void isTrue(){
-  assertThat("".isEmpty()).isTrue();
-}
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">isTrue</span><span class="o">(){</span>
+  <span class="n">assertThat</span><span class="o">(</span><span class="s">""</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()).</span><span class="na">isTrue</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre></div>    </div>
   </li>
 </ul>
 
 <h4 id="35-iterablearray-assertions">3.5 Iterable/Array Assertions</h4>
 <p>Iterable 또는 Array의 경우 내용이 존재하는지에 대해 asserting 할 수 있는 다양한 방법이 있다. 가장 일반적인 assertions 중 하나는 <code class="language-plaintext highlighter-rouge">Iterable</code> 또는 <code class="language-plaintext highlighter-rouge">Array</code>에 주어진 element가 포함되어 있는지 확인 하는 것이다.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void arrayContain() {
-    List&lt;String&gt; list = Arrays.asList("1","2","3");
-    assertThat(list).contains("1");
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">arrayContain</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"1"</span><span class="o">,</span><span class="s">"2"</span><span class="o">,</span><span class="s">"3"</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">list</span><span class="o">).</span><span class="na">contains</span><span class="o">(</span><span class="s">"1"</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></div></div>
 <p>List가 비어있지 않은지 검사하기</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void arrayIsNotEmpty() {
-    List&lt;String&gt; list = Arrays.asList("1","2","3");
-    assertThat(list).isNotEmpty();
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">arrayIsNotEmpty</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"1"</span><span class="o">,</span><span class="s">"2"</span><span class="o">,</span><span class="s">"3"</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">list</span><span class="o">).</span><span class="na">isNotEmpty</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <p>주어진 문자로 시작하는지 검사하기 ex) “1”</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void arrayStartsWith() {
-    List&lt;String&gt; list = Arrays.asList("1","2","3");
-    assertThat(list).startsWith("1");
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">arrayStartsWith</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"1"</span><span class="o">,</span><span class="s">"2"</span><span class="o">,</span><span class="s">"3"</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">list</span><span class="o">).</span><span class="na">startsWith</span><span class="o">(</span><span class="s">"1"</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <p>동일한 개체에 대해 둘 이상의 Assertion을 작성하려는 경우 체이닝을 통해 쉽게 결합할 수 있다.<br />
 제공된 list가 비어 있지 않은지, “1” 원소를 포함하는지, null을 포함하지 않는지, 원소 “2”, “3”을 순서대로 포함하는지를 확인하는 Assertion의 예는 다음과 같다.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void arrayTotalCheck() {
-    List&lt;String&gt; list = Arrays.asList("1","2","3");
-    assertThat(list).isNotEmpty().contains("1").doesNotContainNull().containsSequence("1","2");
-    //containsSequence("1","2"): 원소 "2", "3"을 순서대로 포함하는지
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">arrayTotalCheck</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"1"</span><span class="o">,</span><span class="s">"2"</span><span class="o">,</span><span class="s">"3"</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">list</span><span class="o">).</span><span class="na">isNotEmpty</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"1"</span><span class="o">).</span><span class="na">doesNotContainNull</span><span class="o">().</span><span class="na">containsSequence</span><span class="o">(</span><span class="s">"1"</span><span class="o">,</span><span class="s">"2"</span><span class="o">);</span>
+    <span class="c1">//containsSequence("1","2"): 원소 "2", "3"을 순서대로 포함하는지</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <h4 id="36-character-assertions">3.6 Character Assertions</h4>
 <p>character에 대한 Asssertions는 비교 대상 문자가 유니코드 테이블에 있는지 확인하는 작업을 포함한다.</p>
 <ul>
   <li>문자가 ‘a’가 아니고 유니코드 테이블에 있는지, ‘b’보가 같거나 크고, 소문자인지 확인하는 assertion
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void characterTest(){
-  char someCharacter = 'b';
-  assertThat(someCharacter)
-          .isNotEqualTo('a')
-          .inUnicode()
-          .isGreaterThanOrEqualTo('b')
-          .isLowerCase();
-}
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">characterTest</span><span class="o">(){</span>
+  <span class="kt">char</span> <span class="n">someCharacter</span> <span class="o">=</span> <span class="sc">'b'</span><span class="o">;</span>
+  <span class="n">assertThat</span><span class="o">(</span><span class="n">someCharacter</span><span class="o">)</span>
+          <span class="o">.</span><span class="na">isNotEqualTo</span><span class="o">(</span><span class="sc">'a'</span><span class="o">)</span>
+          <span class="o">.</span><span class="na">inUnicode</span><span class="o">()</span>
+          <span class="o">.</span><span class="na">isGreaterThanOrEqualTo</span><span class="o">(</span><span class="sc">'b'</span><span class="o">)</span>
+          <span class="o">.</span><span class="na">isLowerCase</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -512,18 +512,18 @@ void characterTest(){
 <p>해당 필드, 클래스 유형, annotations의 존재 등을 체크한다.</p>
 <ul>
   <li>Runnable 클래스가 인터페이스인지 확인
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void chkIsInterface(){
-  assertThat(Runnable.class).isInterface();
-}
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">chkIsInterface</span><span class="o">(){</span>
+  <span class="n">assertThat</span><span class="o">(</span><span class="nc">Runnable</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">isInterface</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre></div>    </div>
   </li>
   <li>A 클래스에 B 클래스를 할당할 수 있는지 확인
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void IsAssignableFrom(){
-  //assertThat(A.class).isAssignableFrom(B.class);
-  assertThat(Exception.class).isAssignableFrom(NoSuchElementException.class);
-}
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">IsAssignableFrom</span><span class="o">(){</span>
+  <span class="c1">//assertThat(A.class).isAssignableFrom(B.class);</span>
+  <span class="n">assertThat</span><span class="o">(</span><span class="nc">Exception</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">isAssignableFrom</span><span class="o">(</span><span class="nc">NoSuchElementException</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -532,15 +532,15 @@ void IsAssignableFrom(){
 <p>지정된 File 인스턴스가 존재하는지, 디렉토리 또는 파일인지, 특정 콘텐츠가 있는지, 읽을 수 있는지, 확장명이 있는지 등을 확인할 수 있다.</p>
 <ul>
   <li>파일이 존재하고, 디렉토리가 아닌 파일이며, Read&amp;Write가 가능한지 확인
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void chkFile(){
-  File file = new File("C:\\github\\java-baseball-precourse\\src\\main\\java\\study\\Dog.java");
-  assertThat(file)
-          .exists()
-          .isFile()
-          .canRead()
-          .canWrite();
-}
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">chkFile</span><span class="o">(){</span>
+  <span class="nc">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"C:\\github\\java-baseball-precourse\\src\\main\\java\\study\\Dog.java"</span><span class="o">);</span>
+  <span class="n">assertThat</span><span class="o">(</span><span class="n">file</span><span class="o">)</span>
+          <span class="o">.</span><span class="na">exists</span><span class="o">()</span>
+          <span class="o">.</span><span class="na">isFile</span><span class="o">()</span>
+          <span class="o">.</span><span class="na">canRead</span><span class="o">()</span>
+          <span class="o">.</span><span class="na">canWrite</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -562,28 +562,28 @@ void chkFile(){
   <li>Precision: 몇 자리 갭을 허용할거냐로 해석할건지 정확도를 지정하는 것. 0.123 이랑 0.124 같게 보려면 precision에 0.001d를 줘야함.</li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void chkNumeric(){
-    assertThat(5.123).isEqualTo(5.124, withPrecision(0.001d));//같음
-    //assertThat(5.123).isEqualTo(5.124, withPrecision(0.0001d));//다름
-    //assertThat(6.1).isEqualTo(5, withPrecision(1d));//다름
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">chkNumeric</span><span class="o">(){</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="mf">5.123</span><span class="o">).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mf">5.124</span><span class="o">,</span> <span class="n">withPrecision</span><span class="o">(</span><span class="mf">0.001d</span><span class="o">));</span><span class="c1">//같음</span>
+    <span class="c1">//assertThat(5.123).isEqualTo(5.124, withPrecision(0.0001d));//다름</span>
+    <span class="c1">//assertThat(6.1).isEqualTo(5, withPrecision(1d));//다름</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <h4 id="39-inputstream-assertions">3.9 InputStream Assertions</h4>
 <p>InputStream Assertion은 1가지만 있다.</p>
 <ul>
   <li>hasSameContentAs(InputStream expected)
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void testHasSomeContentAs(){
-  byte[] bytes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-  InputStream given = new ByteArrayInputStream(bytes);
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">testHasSomeContentAs</span><span class="o">(){</span>
+  <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">11</span><span class="o">};</span>
+  <span class="nc">InputStream</span> <span class="n">given</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ByteArrayInputStream</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>
 
-  byte[] oneBytes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-  InputStream result = new ByteArrayInputStream(oneBytes);
+  <span class="kt">byte</span><span class="o">[]</span> <span class="n">oneBytes</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">11</span><span class="o">};</span>
+  <span class="nc">InputStream</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ByteArrayInputStream</span><span class="o">(</span><span class="n">oneBytes</span><span class="o">);</span>
 
-  assertThat(given).hasSameContentAs(result);
-}
+  <span class="n">assertThat</span><span class="o">(</span><span class="n">given</span><span class="o">).</span><span class="na">hasSameContentAs</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -592,17 +592,17 @@ void testHasSomeContentAs(){
 <p>맵에 특정 항목, entry, key/value 값이 포함되어 있는지 확인한다.</p>
 <ul>
   <li>맵이 비어있지 않고, Key 2 포함, Key 10 미포함, (2,”a”)를 포함하는지 확인
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void chkMap(){
-  HashMap&lt;Integer, String&gt; map = new HashMap&lt;Integer, String&gt;();
-  map.put(2,"a");
-//  map.put(10,"b");
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">chkMap</span><span class="o">(){</span>
+  <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;();</span>
+  <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="s">"a"</span><span class="o">);</span>
+<span class="c1">//  map.put(10,"b");</span>
 
-  assertThat(map).isNotEmpty()
-          .containsKey(2)
-          .doesNotContainKey(10)
-          .contains(entry(2,"a"));
-}
+  <span class="n">assertThat</span><span class="o">(</span><span class="n">map</span><span class="o">).</span><span class="na">isNotEmpty</span><span class="o">()</span>
+          <span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+          <span class="o">.</span><span class="na">doesNotContainKey</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+          <span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">entry</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="s">"a"</span><span class="o">));</span>
+<span class="o">}</span>
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -611,7 +611,7 @@ void chkMap(){
 <p>Exception 메시지, stacktraces, 익셉션이 throw 되었는지 원인 확인 또는 검증할 때 사용</p>
 <ul>
   <li>주어진 예외가 발생했는지 확인하고 “c”로 끝나는 메시지가 있는지 확인
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assertThat(ex).hasNoCause().hasMessageEndingWith("c");
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assertThat</span><span class="o">(</span><span class="n">ex</span><span class="o">).</span><span class="na">hasNoCause</span><span class="o">().</span><span class="na">hasMessageEndingWith</span><span class="o">(</span><span class="s">"c"</span><span class="o">);</span>
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -639,20 +639,20 @@ void chkMap(){
 </ul>
 
 <h5 id="테스트">테스트</h5>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void split(){
-    String str1 = "1,2";
-    String str2 = "1";
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">split</span><span class="o">(){</span>
+    <span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">"1,2"</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">str2</span> <span class="o">=</span> <span class="s">"1"</span><span class="o">;</span>
 
-    String[] strArray1 = str1.split(",");
-    String[] strArray2 = str2.split(",");
+    <span class="nc">String</span><span class="o">[]</span> <span class="n">strArray1</span> <span class="o">=</span> <span class="n">str1</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">);</span>
+    <span class="nc">String</span><span class="o">[]</span> <span class="n">strArray2</span> <span class="o">=</span> <span class="n">str2</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">);</span>
 
-    //"1,2"를 ,로 split 했을 때 1과 2로 잘 분리되는지 확인
-    assertThat(strArray1).contains("1","2");
+    <span class="c1">//"1,2"를 ,로 split 했을 때 1과 2로 잘 분리되는지 확인</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">strArray1</span><span class="o">).</span><span class="na">contains</span><span class="o">(</span><span class="s">"1"</span><span class="o">,</span><span class="s">"2"</span><span class="o">);</span>
 
-    //"1"을 ,로 split 했을 때 "1만을" 포함하는 배열이 반환되는지 확인
-    assertThat(strArray1).containsExactly("1");
-}
+    <span class="c1">//"1"을 ,로 split 했을 때 "1만을" 포함하는 배열이 반환되는지 확인</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">strArray1</span><span class="o">).</span><span class="na">containsExactly</span><span class="o">(</span><span class="s">"1"</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></div></div>
 <ul>
   <li><strong>assertJ의 contains와 containsExactly의 차이</strong>
@@ -669,14 +669,14 @@ void split(){
 </ul>
 
 <h5 id="테스트-1">테스트</h5>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-void subString(){
-    String str1 = "(1,2)";
-    String result = str1.substring(1,4);
-    System.out.println(result);
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">subString</span><span class="o">(){</span>
+    <span class="nc">String</span> <span class="n">str1</span> <span class="o">=</span> <span class="s">"(1,2)"</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">str1</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">4</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
 
-    assertThat(result).isEqualTo("1,2");
-}
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="s">"1,2"</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <h4 id="요구사항-3">요구사항 3</h4>
@@ -692,37 +692,37 @@ void subString(){
 </ul>
 
 <h5 id="테스트-2">테스트</h5>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Test
-@DisplayName("특정 위치의 문자를 가져온다.")
-void charAt(){
-    String str = "abc";
-    int idx = 2;
-    str.charAt(idx);
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="nd">@DisplayName</span><span class="o">(</span><span class="s">"특정 위치의 문자를 가져온다."</span><span class="o">)</span>
+<span class="kt">void</span> <span class="nf">charAt</span><span class="o">(){</span>
+    <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"abc"</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">idx</span><span class="o">);</span>
+<span class="o">}</span>
 
-@Test
-@DisplayName("charAt - assertThatThrownBy()를 사용하여 Exception 처리")
-void chatAtException(){
-    String str = "abc";
-    int idx = 3;
+<span class="nd">@Test</span>
+<span class="nd">@DisplayName</span><span class="o">(</span><span class="s">"charAt - assertThatThrownBy()를 사용하여 Exception 처리"</span><span class="o">)</span>
+<span class="kt">void</span> <span class="nf">chatAtException</span><span class="o">(){</span>
+    <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"abc"</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
 
-    assertThatThrownBy(()-&gt;{
-       char c = str.charAt(idx);
-    }).isInstanceOf(StringIndexOutOfBoundsException.class)
-            .hasMessageContaining("%d", idx);
-}
+    <span class="n">assertThatThrownBy</span><span class="o">(()-&gt;{</span>
+       <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">idx</span><span class="o">);</span>
+    <span class="o">}).</span><span class="na">isInstanceOf</span><span class="o">(</span><span class="nc">StringIndexOutOfBoundsException</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">hasMessageContaining</span><span class="o">(</span><span class="s">"%d"</span><span class="o">,</span> <span class="n">idx</span><span class="o">);</span>
+<span class="o">}</span>
 
-@Test
-@DisplayName("charAt - assertThatExceptionOfType()를 사용하여 Exception 처리")
-void chatAtException2(){
-    String str = "abc";
-    int idx = 3;
+<span class="nd">@Test</span>
+<span class="nd">@DisplayName</span><span class="o">(</span><span class="s">"charAt - assertThatExceptionOfType()를 사용하여 Exception 처리"</span><span class="o">)</span>
+<span class="kt">void</span> <span class="nf">chatAtException2</span><span class="o">(){</span>
+    <span class="nc">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"abc"</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
 
-    assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-            .isThrownBy(() -&gt; {
-                char c = str.charAt(idx);
-            }).withMessageContaining("%d", idx);
-}
+    <span class="n">assertThatExceptionOfType</span><span class="o">(</span><span class="nc">StringIndexOutOfBoundsException</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">isThrownBy</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+                <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">idx</span><span class="o">);</span>
+            <span class="o">}).</span><span class="na">withMessageContaining</span><span class="o">(</span><span class="s">"%d"</span><span class="o">,</span> <span class="n">idx</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
 <h2 id="참조">참조</h2>
@@ -902,7 +902,7 @@ void chatAtException2(){
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" class="flip-title"><span>[CS] 기술면접 예상 질문 - 자바</span></a>  <time class="faded fine" datetime="2022-03-02T00:00:00+09:00">02 Mar 2022</time></li>                        <li class="h4">  <a href="/java/2022-03-01-Effective-java-Day33-item66/" class="flip-title"><span>[Effective Java] Day 33 - Item 66 :: 네이티브 메서드는 신중히 사용하라</span></a>  <time class="faded fine" datetime="2022-03-01T00:00:00+09:00">01 Mar 2022</time></li>                        <li class="h4">  <a href="/cs/2022-02-25-What-is-pubSub-structure/" class="flip-title"><span>[CS] Pub/Sub 구조란 무엇인가?</span></a>  <time class="faded fine" datetime="2022-02-25T00:00:00+09:00">25 Feb 2022</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-04-22-wrap-primitive-type/" class="flip-title"><span>[Java] 원시값과 문자열의 포장</span></a>  <time class="faded fine" datetime="2022-04-22T00:00:00+09:00">22 Apr 2022</time></li>                        <li class="h4">  <a href="/java/2022-04-22-lambda-expression-syntax/" class="flip-title"><span>[Java] 람다식 문법</span></a>  <time class="faded fine" datetime="2022-04-22T00:00:00+09:00">22 Apr 2022</time></li>                        <li class="h4">  <a href="/java/2022-04-22-First-Class-Collection/" class="flip-title"><span>[Java] 일급 컬렉션 (First Class Collection)이란?</span></a>  <time class="faded fine" datetime="2022-04-22T00:00:00+09:00">22 Apr 2022</time></li>            </ul></aside>
 
   
 

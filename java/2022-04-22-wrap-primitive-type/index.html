@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>[Java] 원시값과 문자열의 포장 | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="[Java] 원시값과 문자열의 포장" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="우아한 테크캠프 Pro 프리코스 2주차 과제에서는 1주차 과제에서 추가로 모든 원시값과 문자열을 포장하라라는 프로그래밍 요구사항이 추가되었다. 2기_오렌지님이 올려주신 원시 타입을 포장해야 하는 이유를 보고 정리한 글입니다." />
+<meta property="og:description" content="우아한 테크캠프 Pro 프리코스 2주차 과제에서는 1주차 과제에서 추가로 모든 원시값과 문자열을 포장하라라는 프로그래밍 요구사항이 추가되었다. 2기_오렌지님이 올려주신 원시 타입을 포장해야 하는 이유를 보고 정리한 글입니다." />
+<link rel="canonical" href="http://localhost:4000/java/2022-04-22-wrap-primitive-type/" />
+<meta property="og:url" content="http://localhost:4000/java/2022-04-22-wrap-primitive-type/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-22T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Java] 원시값과 문자열의 포장" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-04-22T23:39:54+09:00","datePublished":"2022-04-22T00:00:00+09:00","description":"우아한 테크캠프 Pro 프리코스 2주차 과제에서는 1주차 과제에서 추가로 모든 원시값과 문자열을 포장하라라는 프로그래밍 요구사항이 추가되었다. 2기_오렌지님이 올려주신 원시 타입을 포장해야 하는 이유를 보고 정리한 글입니다.","headline":"[Java] 원시값과 문자열의 포장","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/java/2022-04-22-wrap-primitive-type/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"http://localhost:4000/java/2022-04-22-wrap-primitive-type/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="http://localhost:4000/java/2022-04-22-wrap-primitive-type/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2022-04-25T13:48:12+09:00',
+  };
+  w._clapButton = false;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/java/">java</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2022-04-22-wrap-primitive-type</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-java-wrap-primitive-type" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        [Java] 원시값과 문자열의 포장
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2022-04-22T00:00:00+09:00">22 Apr 2022</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>, <span>Oop</span>, <span>Object-calisthenic</span>
+      </span>
+      
+        
+          
+          
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>우아한 테크캠프 Pro 프리코스 2주차 과제에서는 1주차 과제에서 추가로 <strong>모든 원시값과 문자열을 포장하라</strong>라는 프로그래밍 요구사항이 추가되었다.</p>
+<ul>
+  <li><span style="color:grey"><em>2기_오렌지님이 올려주신 <a href="https://tecoble.techcourse.co.kr/post/2020-05-29-wrap-primitive-type/">원시 타입을 포장해야 하는 이유</a>를 보고 정리한 글입니다.</em> </span></li>
+</ul>
+
+<p>우선 소트웍스 앤솔로지의 객체지향 생활체조 파트에서 언급된 내용은 아래와 같다.</p>
+<blockquote>
+  <p>규칙 3: 원시값과 문자열의 포장
+int 값 하나 자체는 그냥 아무 의미 없는 스칼라 값일 뿐이다.<br />
+어떤 메서드가 int 값을 매개변수로 받는다면 그 메서드 이름은 해당 매개변수의 의도를 나타내기 위해 모든 수단과 방법을 가리지 않아야 한다.
+만약 똑같은 메서드가 시간을 매개변수로 받을 경우, 무슨 일이 생기는지는 훨씬 자명하다.<br />
+이런 작은 객체가 프로그램의 유지보수성을 높일 수 있는 것은 시간 값을 매개변수로 받는 메서드에게 연도 값을 넘길 수는 없기 때문이다.<br />
+원시형 변수로는 컴파일러가 의미적으로 맞는 프로그램 작성을 안내할 수 없다.<br />
+객체로라면 아주 사소하더라도 컴파일러와 프로그래머에게 그 값이 어떤 값이며, 왜 쓰고 있는지에 대한 정보를 전하는 셈이다.</p>
+
+  <p>또한 시간이나 돈과 같은 작은 객체는 행위를 놓을 분명한 곳을 마련해 줘서, 그렇지 않았다면 다른 클래스의 주위를 겉돌았을지도 모르는 사태를 방지한다.
+이는 특히 게터와 세터에 관련된 규칙을 적용하고 그런 작은 객체만이 값에 접근할 수 있을 때 그렇다.</p>
+</blockquote>
+
+<p>변수를 선언하는 방법에는 두 가지가 있다.</p>
+<ul>
+  <li>원시타입의 변수를 선언하는 방법</li>
+  <li>원시 타입의 변수를 객체로 포장한 변수를 선언하는 방법
+(Collection으로 선언한 변수도 포장한다. 이를 일급 컬렉션이라 하며 본 블로그의 <code class="language-plaintext highlighter-rouge">[Java] 일급 컬렉션 (First Class Collection)이란?</code>글을 참고하길 바란다.)
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+<span class="nc">Age</span> <span class="n">age</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Age</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>이번 글에서는 객체지향 생활 체조에서도 언급된 <strong>원시 타입의 값을 객체로 포장하면 얻을 수 있는 이점</strong>들에 대해 보겠다.</p>
+
+<h2 id="자신의-상태-객체를-스스로-관리할-수-있다">자신의 상태 객체를 스스로 관리할 수 있다.</h2>
+<p>User라는 클래스에서, 사용자의 나이를 가지고 있다고 가정해보자.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">User</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위의 형태처럼 원시타입인 int로 나이를 가지고 있으면 어떻게 될까? 쉽게 생각해보면 우선, 아래의 소스코드 처럼 나이에 관한 유효성 검사를 User 클래스에서 하게 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">User</span><span class="o">(</span><span class="nc">String</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">input</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">age</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"나이는 0살부터 시작합니다."</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 예시는 User 클래스의 멤버변수가 나이밖에 없어 문제를 크게 못느낄 수도 있다. 사용자의 이름, 이메일 등 추가적인 값들을 관리하게 된다면 문제가 생길 수 밖에 없다.<br />
+두 글자 이상의 이름만을 지원한다고 가정하고, 이름 변수를 추가해보자 !</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">User</span><span class="o">(</span><span class="nc">String</span> <span class="n">nameValue</span><span class="o">,</span> <span class="nc">String</span> <span class="n">ageValue</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">ageValue</span><span class="o">);</span>
+        <span class="n">validateAge</span><span class="o">(</span><span class="n">age</span><span class="o">);</span>
+        <span class="n">validateName</span><span class="o">(</span><span class="n">nameValue</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">nameValue</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">validateName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">length</span><span class="o">()&lt;</span><span class="mi">2</span><span class="o">){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"이름은 두 글자 이상이어야 합니다."</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">validateAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">age</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"나이는 0살부터 시작합니다."</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>두개의 멤버변수를 선언했을 뿐인데 User 클래스가 할 일이 늘어나 버렸다. <strong>이름</strong> 값에 대한 상태 관리, <strong>나이</strong> 값에 대한 상태 관리를 모두 해야한다.<br />
+User 클래스는 분명히</p>
+<blockquote>
+  <p>아, 나는 사용자 그 자체 상태만 관리하고 싶은데 왜 자잘 자잘 한 것 까지 내가 관리해야돼? 이건 불합리해!</p>
+</blockquote>
+
+<p>라고 생가하지 않을까?<br />
+그럼, 원시타입 변수를 포장해보자</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">Name</span> <span class="n">name</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="nc">Age</span> <span class="n">age</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="nf">User</span><span class="o">(</span><span class="nc">String</span> <span class="n">nameValue</span><span class="o">,</span> <span class="nc">String</span> <span class="n">ageValue</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Name</span><span class="o">(</span><span class="n">nameValue</span><span class="o">);</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Age</span><span class="o">(</span><span class="n">ageValue</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Name</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="nf">Name</span><span class="o">(</span><span class="nc">String</span> <span class="n">nameValue</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">length</span><span class="o">()&lt;</span><span class="mi">2</span><span class="o">){</span>
+         <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"이름은 두 글자 이상이어야 합니다."</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Age</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Age</span><span class="o">(</span><span class="nc">String</span> <span class="n">ageValue</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">ageValue</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">age</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"나이는 0살부터 시작합니다."</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>User 클래스가 해방됐다.</p>
+<blockquote>
+  <p>와! 나 이제 예외 처리 안 해도 돼!</p>
+</blockquote>
+
+<p>이름과 나이 값이 각각의 Name, Age가 담당하도록 바뀌었다.<br />
+유효성 검증을 비롯한 이름, 나이 값에 대한 상태값을 User에 넘기지 않고 스스로 관리할 수 있게 되었다. 책임이 명확해졌다.</p>
+
+<h2 id="코드의-유지보수에-도움이-된다">코드의 유지보수에 도움이 된다.</h2>
+<p>이번엔 다른 예시이다. 다음은 로또 미션의 LottoNumber, Lotto, WinningLotto 클래스의 일부이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LottoNumber</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="no">MIN_LOTTO_NUMBER</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="no">MAX_LOTTO_NUMBER</span> <span class="o">=</span> <span class="mi">45</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">OUT_OF_RANGE</span> <span class="o">=</span> <span class="s">"로또번호는 1~45의 범위입니다."</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">,</span> <span class="nc">LottoNumber</span><span class="o">&gt;</span> <span class="no">NUMBERS</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">lottoNumber</span><span class="o">;</span>
+
+    <span class="kd">static</span> <span class="o">{</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="no">MIN_LOTTO_NUMBER</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="no">MIN_LOTTO_NUMBER</span> <span class="o">+</span><span class="mi">1</span><span class="o">;</span><span class="n">i</span><span class="o">++){</span>
+            <span class="no">NUMBERS</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="k">new</span> <span class="nc">LottoNumber</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">LottoNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">lottoNumber</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lottoNumber</span> <span class="o">=</span> <span class="n">lottoNumber</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">LottoNumber</span> <span class="nf">of</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">){</span>
+        <span class="nc">LottoNumber</span> <span class="n">lottoNumber</span> <span class="o">=</span> <span class="no">NUMBERS</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">number</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">lottoNumber</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="no">OUT_OF_RANGE</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">lottoNumber</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">//...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Lotto</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">LottoNumber</span><span class="o">&gt;</span> <span class="n">lottoNumbers</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Lotto</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">LottoNumber</span><span class="o">&gt;</span> <span class="n">lottoNumbers</span><span class="o">){</span>
+        <span class="n">validateDuplication</span><span class="o">(</span><span class="n">lottoNumbers</span><span class="o">);</span>
+        <span class="n">validateAmountOfNumbers</span><span class="o">(</span><span class="n">lottoNumbers</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lottoNumbers</span> <span class="o">=</span> <span class="n">lottoNumbers</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">validateAmountOfNumbers</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">LottoNumber</span><span class="o">&gt;</span> <span class="n">lottoNumbers</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">validateDuplication</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">LottoNumber</span><span class="o">&gt;</span> <span class="n">lottoNumbers</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WinnigLotto</span> <span class="o">{</span>
+    <span class="c1">//...</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">BONUS_CANNOT_BE_DUPLICATE_WITH_WINNING_NUMBER</span> <span class="o">=</span>
+            <span class="s">"보너스 넘버는 위닝 넘버와 중복될 수 없습니다."</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">Lotto</span> <span class="n">winningLottoNumbers</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">bonusNumbers</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">WinnigLotto</span><span class="o">(</span><span class="nc">Lotto</span> <span class="n">winningLottoNumbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">bonusNumbers</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">winningLottoNumbers</span> <span class="o">=</span> <span class="n">winningLottoNumbers</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">isBonusNumberDuplicatedWithWinningNumber</span><span class="o">(</span><span class="n">winningLottoNumbers</span><span class="o">,</span> <span class="n">bonusNumbers</span><span class="o">)){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="no">BONUS_CANNOT_BE_DUPLICATE_WITH_WINNING_NUMBER</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">bonusNumbers</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">bonusNumbers</span> <span class="o">&gt;</span> <span class="mi">45</span><span class="o">){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">bonusNumbers</span> <span class="o">=</span> <span class="n">bonusNumbers</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isBonusNumberDuplicatedWithWinningNumber</span><span class="o">(</span><span class="nc">Lotto</span> <span class="n">winningLottoNumbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">bonusNumbers</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">//...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위의 코드를 살펴보면 Lotto 클래스에서는 int 값인 로또 숫자 하나하나를 <code class="language-plaintext highlighter-rouge">LottoNumber</code>로 포장해서 사용하고 있는 것을 볼 수 있다.<br />
+(<code class="language-plaintext highlighter-rouge">List&lt;int&gt;</code>가 아닌 <code class="language-plaintext highlighter-rouge">List&lt;LottoNumber&gt;</code> 사용)</p>
+
+<p>물론 LottoNumber 대신에 Integer, int와 같은 자료형을 사용할 수도 있다.(아마 캐싱은 하지 않았거나, Lotto 클래스 내부에서 이루어졌을 것이다.)<br />
+그렇게 되면 위에서 다루었듯이 <strong>개별 로또 숫자</strong>에 관한 관리가 <strong>로또</strong>에서 이루어져 로또가 수행하는 일이 늘어날 수 밖에 없어진다.<br />
+자연히 Lotto 클래스의 크기도 커지게 될 것이다. 객체지향과도 작별 인사를 할 수 밖에 없어진다.</p>
+
+<p>또 다른 문제도 있다. 현재는 로또 숫자의 범위가 1~45인데 혹여나 많은 사람들이 당첨되면 좋겠다는 생각을 하는 사람이 나타나서 나는 로또 숫자의 범위를<br />
+1-10으로 할거야!라며 <strong>조건을 변경시키고, 추가시킨다면?</strong> 만약 Winning의 예시처럼 로또 숫자가 원시값이라면 같은 조건의 로또 숫자가 사용되는<br />
+WinningLotto 클래스의 Lotto 클래스를 모두 고칠 수 밖에 없어진다.</p>
+<blockquote>
+  <p>정말 비효율적이다.</p>
+</blockquote>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WinnigLotto</span> <span class="o">{</span>
+    <span class="c1">//...</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">BONUS_CANNOT_BE_DUPLICATE_WITH_WINNING_NUMBER</span> <span class="o">=</span>
+            <span class="s">"보너스 넘버는 위닝 넘버와 중복될 수 없습니다."</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">Lotto</span> <span class="n">winningLottoNumbers</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LottoNumber</span> <span class="n">bonusNumbers</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">WinnigLotto</span><span class="o">(</span><span class="nc">Lotto</span> <span class="n">winningLottoNumbers</span><span class="o">,</span> <span class="nc">LottoNumber</span> <span class="n">bonusNumbers</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">winningLottoNumbers</span> <span class="o">=</span> <span class="n">winningLottoNumbers</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">isBonusNumberDuplicatedWithWinningNumber</span><span class="o">(</span><span class="n">winningLottoNumbers</span><span class="o">,</span> <span class="n">bonusNumbers</span><span class="o">)){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="no">BONUS_CANNOT_BE_DUPLICATE_WITH_WINNING_NUMBER</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">bonusNumbers</span> <span class="o">=</span> <span class="n">bonusNumbers</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isBonusNumberDuplicatedWithWinningNumber</span><span class="o">(</span><span class="nc">Lotto</span> <span class="n">winningLottoNumbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">bonusNumbers</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">//...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>비효율성을 제거하기 위해 위처럼 원시값인 개별 로또 숫자를 LottoNumber로 포장만해 주면 로또 숫자의 확장, 변경에 대해 유연해진다.<br />
+Lotto와 WinningLotto는 전혀 바꿀 필요가 없다. 로또 숫자를 포장한 LottoNumver만 수정해주면 되기 때문이다.</p>
+
+<h2 id="자료형에-구애받지-않는다여러-타입의-지원이-가능하다">자료형에 구애받지 않는다.(여러 타입의 지원이 가능하다.)</h2>
+<p>점수라는 값을 포장한 Score 클래스가 있다. 현재 점수는 int 값이다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Scroe</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">score</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Scroe</span><span class="o">(</span><span class="kt">int</span> <span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">validateScore</span><span class="o">(</span><span class="n">score</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">score</span> <span class="o">=</span> <span class="n">score</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">validateScore</span><span class="o">(</span><span class="kt">int</span> <span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//...</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>점수를 보여주는 역할만 했던 Score 객체에 연산 등의 기능이 추가되어 새로운 자료형의 지원이 필요해졌다면?<br />
+기존의 Score 변수를 없앨 필요가 없다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Scroe</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">score</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kt">double</span> <span class="n">doubleScore</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="nf">Scroe</span><span class="o">(</span><span class="kt">int</span> <span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">validateScore</span><span class="o">(</span><span class="n">score</span><span class="o">);</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">score</span> <span class="o">=</span> <span class="n">score</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">public</span> <span class="nf">Scroe</span><span class="o">(</span><span class="kt">double</span> <span class="n">doubleScore</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">validateDobuleScore</span><span class="o">(</span><span class="n">doubleScore</span><span class="o">);</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">doubleScore</span> <span class="o">=</span> <span class="n">doubleScore</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="kd">private</span> <span class="kt">void</span> <span class="nf">validateScore</span><span class="o">(</span><span class="kt">int</span> <span class="n">score</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">//...</span>
+   <span class="o">}</span>
+
+   <span class="kd">private</span> <span class="kt">void</span> <span class="nf">validateDobuleScore</span><span class="o">(</span><span class="kt">double</span> <span class="n">doubleScore</span><span class="o">)</span> <span class="o">{</span>
+      <span class="c1">//...</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>앞서 말했듯이 유지, 보수에 도움이 되는 점을 이요하면 된다. 기존 Score 클래스를 활용하면 된다.<br />
+doubleScore라는 멤버변수를 추가하고, 생성자 오버로딩을 통해 간단히 해결할 수 있다. String 값이 필요하다 해도 마찬가지로 해결이 가능하다.</p>
+
+<h2 id="마무리">마무리</h2>
+<p>원시 타입을 포장하게 되면, 그 변수가 의미하는 바를 정확하게 나타낼 수 있다.<br />
+책임 관계 또한 명확해지고 코드의 유지, 보수에도 많은 도움이 된다.<br />
+실제 프리코스 2주차 자동차 경주게임을 구현해보면서 그 장점을 느껴보고 싶다 !</p>
+
+<h3 id="참고">참고</h3>
+<ul>
+  <li><a href="https://tecoble.techcourse.co.kr/post/2020-05-29-wrap-primitive-type/">유원시 타입을 포장해야 하는 이유</a></li>
+  <li><a href="https://developerfarm.wordpress.com/2012/01/27/object_calisthenics_4/">소트웍스 앤솔러지 - 규칙 3: 원시값과 문자열의 포장</a></li>
+</ul>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java/2022-04-22-lambda-expression-syntax/" class="flip-title"><span>[Java] 람다식 문법</span></a>  <time class="faded fine" datetime="2022-04-22T00:00:00+09:00">22 Apr 2022</time></li>                        <li class="h4">  <a href="/java/2022-04-22-First-Class-Collection/" class="flip-title"><span>[Java] 일급 컬렉션 (First Class Collection)이란?</span></a>  <time class="faded fine" datetime="2022-04-22T00:00:00+09:00">22 Apr 2022</time></li>                        <li class="h4">  <a href="/frontend/2022-04-21-jekyll-error-webrick/" class="flip-title"><span>[jekyll] jekyll 실행 시 cannot load such file -- webrick (LoadError) 에러 조치 방법</span></a>  <time class="faded fine" datetime="2022-04-21T00:00:00+09:00">21 Apr 2022</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <div class="sidebar-hits">
+    <a class="no-mark-external" href="https://hits.sh/icechoco.github.io/"><img src="https://hits.sh/icechoco.github.io.svg?view=today-total"/></a>
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a id="_navigation" href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-13" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-13">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>
