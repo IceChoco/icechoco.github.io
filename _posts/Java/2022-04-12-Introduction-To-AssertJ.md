@@ -95,7 +95,7 @@ public class DogTest {
 }
 ```
 아래와 같은 assertion을 통해 쉽게 두 객체를 비교할 수 있다.
-```
+```java
 @Test
 void isEqualTo(){
     assertThat(fido).isEqualTo(fidosClone);
@@ -104,7 +104,7 @@ void isEqualTo(){
 
 위를 실행하면 `isEqualTo` 메소드는 두 객체의 참조를 비교하므로 fail을 반환한다.  
 그 대신 내용을 자체를 비교하려면 다음과 같이 `isEqualToComparingFieldByFieldRecursively()` 메소드를 사용하면 된다.
-```
+```java
 @Test
 void isEqualToComparingFieldByFieldRecursively(){
     assertThat(fido).isEqualToComparingFieldByFieldRecursively(fidosClone);
@@ -119,7 +119,7 @@ Fido랑 FidosClone 객체는 필드와 필드를 재귀적으로 비교할때 �
 - isTrue()
 - isFalse()
 예시 소스코드를 보자
-```
+```java
 @Test
 void isTrue(){
     assertThat("".isEmpty()).isTrue();
@@ -128,7 +128,7 @@ void isTrue(){
 
 #### 3.5 Iterable/Array Assertions
 Iterable 또는 Array의 경우 내용이 존재하는지에 대해 asserting 할 수 있는 다양한 방법이 있다. 가장 일반적인 assertions 중 하나는 `Iterable` 또는 `Array`에 주어진 element가 포함되어 있는지 확인 하는 것이다.
-```
+```java
 @Test
 void arrayContain() {
     List<String> list = Arrays.asList("1","2","3");
@@ -136,7 +136,7 @@ void arrayContain() {
 }
 ```
 List가 비어있지 않은지 검사하기
-```
+```java
 @Test
 void arrayIsNotEmpty() {
     List<String> list = Arrays.asList("1","2","3");
@@ -145,7 +145,7 @@ void arrayIsNotEmpty() {
 ```
 
 주어진 문자로 시작하는지 검사하기 ex) "1"
-```
+```java
 @Test
 void arrayStartsWith() {
     List<String> list = Arrays.asList("1","2","3");
@@ -155,7 +155,7 @@ void arrayStartsWith() {
 
 동일한 개체에 대해 둘 이상의 Assertion을 작성하려는 경우 체이닝을 통해 쉽게 결합할 수 있다.  
 제공된 list가 비어 있지 않은지, "1" 원소를 포함하는지, null을 포함하지 않는지, 원소 "2", "3"을 순서대로 포함하는지를 확인하는 Assertion의 예는 다음과 같다.
-```
+```java
 @Test
 void arrayTotalCheck() {
     List<String> list = Arrays.asList("1","2","3");
@@ -167,7 +167,7 @@ void arrayTotalCheck() {
 #### 3.6 Character Assertions
 character에 대한 Asssertions는 비교 대상 문자가 유니코드 테이블에 있는지 확인하는 작업을 포함한다.  
 - 문자가 'a'가 아니고 유니코드 테이블에 있는지, 'b'보가 같거나 크고, 소문자인지 확인하는 assertion
-```
+```java
 @Test
 void characterTest(){
     char someCharacter = 'b';
@@ -182,14 +182,14 @@ void characterTest(){
 #### 3.6 Class Assertions
 해당 필드, 클래스 유형, annotations의 존재 등을 체크한다.
 - Runnable 클래스가 인터페이스인지 확인
-```
+```java
 @Test
 void chkIsInterface(){
     assertThat(Runnable.class).isInterface();
 }
 ```
 - A 클래스에 B 클래스를 할당할 수 있는지 확인
-```
+```java
 @Test
 void IsAssignableFrom(){
     //assertThat(A.class).isAssignableFrom(B.class);
@@ -200,7 +200,7 @@ void IsAssignableFrom(){
 #### 3.7 File Assertions
 지정된 File 인스턴스가 존재하는지, 디렉토리 또는 파일인지, 특정 콘텐츠가 있는지, 읽을 수 있는지, 확장명이 있는지 등을 확인할 수 있다.
 - 파일이 존재하고, 디렉토리가 아닌 파일이며, Read&Write가 가능한지 확인
-```
+```java
 @Test
 void chkFile(){
     File file = new File("C:\\github\\java-baseball-precourse\\src\\main\\java\\study\\Dog.java");
@@ -222,7 +222,7 @@ Numeric assertions는 주어진 오프셋을 포함하고 있는지 또는 포�
 예를들어, 만약 주어진 Precision에 따라 두 값이 동일한지 체크를 하고 싶다면 아래처럼 하면 된다.
 - Precision: 몇 자리 갭을 허용할거냐로 해석할건지 정확도를 지정하는 것. 0.123 이랑 0.124 같게 보려면 precision에 0.001d를 줘야함.
 
-```
+```java
 @Test
 void chkNumeric(){
     assertThat(5.123).isEqualTo(5.124, withPrecision(0.001d));//같음
@@ -234,7 +234,7 @@ void chkNumeric(){
 #### 3.9 InputStream Assertions
 InputStream Assertion은 1가지만 있다.
 - hasSameContentAs(InputStream expected)
-```
+```java
 @Test
 void testHasSomeContentAs(){
     byte[] bytes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
@@ -250,7 +250,7 @@ void testHasSomeContentAs(){
 #### 3.10 Map Assertions
 맵에 특정 항목, entry, key/value 값이 포함되어 있는지 확인한다.
 - 맵이 비어있지 않고, Key 2 포함, Key 10 미포함, (2,"a")를 포함하는지 확인
-```
+```java
 @Test
 void chkMap(){
     HashMap<Integer, String> map = new HashMap<Integer, String>();
@@ -267,7 +267,7 @@ void chkMap(){
 #### 3.11 Throwable Assertions
 Exception 메시지, stacktraces, 익셉션이 throw 되었는지 원인 확인 또는 검증할 때 사용
 - 주어진 예외가 발생했는지 확인하고 "c"로 끝나는 메시지가 있는지 확인
-```
+```java
 assertThat(ex).hasNoCause().hasMessageEndingWith("c");
 ```
 
@@ -288,7 +288,7 @@ assertThat(ex).hasNoCause().hasMessageEndingWith("c");
 - 배열로 반환하는 값의 경우 assertj의 contains Exactly()를 활용해 반환값이 맞는지 검증한다.
 
 ##### 테스트
-```
+```java
 @Test
 void split(){
     String str1 = "1,2";
@@ -312,7 +312,7 @@ void split(){
 - "1,2" 값이 주어졌을 때 String의 substring() 메소드를 활용해 ()을 제거하고 "1,2"를 반환하도록 구현한다.
 
 ##### 테스트
-```
+```java
 @Test
 void subString(){
     String str1 = "(1,2)";
@@ -332,7 +332,7 @@ void subString(){
 - [AssertJ Exception Assertions](https://joel-costigliola.github.io/assertj/assertj-core-features-highlight.html#exception-assertion) 문서 참고
 
 ##### 테스트
-```
+```java
 @Test
 @DisplayName("특정 위치의 문자를 가져온다.")
 void charAt(){

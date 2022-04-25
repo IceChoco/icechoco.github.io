@@ -202,7 +202,6 @@ toStirng 값에 의존하지 않도록 필요한 정보들은 액세스 메서�
   public String toString() {
       return String.format("%03d-%03d-%04d", areaCode, prefix, lineNum);
   }
-
 ```
 
 ### 포맷 명시하지 않는 예제 코드
