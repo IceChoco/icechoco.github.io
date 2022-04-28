@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2022-04-25T13:48:12+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko-KR, en-US"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="ko-KR, en-US" /><updated>2022-04-28T12:23:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">IceChoco</title><subtitle>Hydejack is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress.
 </subtitle><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><entry><title type="html">[Java] 일급 컬렉션 (First Class Collection)이란?</title><link href="http://localhost:4000/java/2022-04-22-First-Class-Collection/" rel="alternate" type="text/html" title="[Java] 일급 컬렉션 (First Class Collection)이란?" /><published>2022-04-22T00:00:00+09:00</published><updated>2022-04-22T22:37:07+09:00</updated><id>http://localhost:4000/java/First-Class-Collection</id><content type="html" xml:base="http://localhost:4000/java/2022-04-22-First-Class-Collection/"><![CDATA[<p>우아한 테크캠프 Pro 프리코스 2주차 과제에서는 1주차 과제에서 추가로 <strong>일급 콜렉션</strong>을 사용하라는 프로그래밍 요구사항이 추가되었다.
 일급 컬렉션이란 무엇인지, 어떤 장점들이 있기에 객체지향적이고 리팩토링하기 쉬운 코드를 짜기위해 필요한지 알아보려한다.</p>
 
@@ -1023,9 +1023,11 @@ doubleScore라는 멤버변수를 추가하고, 생성자 오버로딩을 통해
 
 <h2 id="readmemd를-상세히-작성">README.md를 상세히 작성</h2>
 <p>미션 저장소의 README.md는 소스코드에 앞서 해당 프로젝트가 어떠한 프로젝트인지 <strong>마크다운</strong>으로 작성하여 소개하는 문서이다.
-해당 프로젝트가 어떠한 프로젝트이며, 어떤 기능을 담고 있는지 기술하기 위해서 마크다운 문법을 검색해서 학습해보고 적용해본다.</p>]]></content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[우아한 테크캠프 Pro 프리코스 1주차 과제를 진행하면서 받은 공통 피드백을 정리해보겠다.]]></summary></entry><entry><title type="html">[AssertJ] AssertJ란?</title><link href="http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/" rel="alternate" type="text/html" title="[AssertJ] AssertJ란?" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-23T03:18:22+09:00</updated><id>http://localhost:4000/java/Introduction-To-AssertJ</id><content type="html" xml:base="http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/"><![CDATA[<p>오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기!</p>
+해당 프로젝트가 어떠한 프로젝트이며, 어떤 기능을 담고 있는지 기술하기 위해서 마크다운 문법을 검색해서 학습해보고 적용해본다.</p>]]></content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><summary type="html"><![CDATA[우아한 테크캠프 Pro 프리코스 1주차 과제를 진행하면서 받은 공통 피드백을 정리해보겠다.]]></summary></entry><entry><title type="html">[AssertJ] AssertJ란?</title><link href="http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/" rel="alternate" type="text/html" title="[AssertJ] AssertJ란?" /><published>2022-04-12T00:00:00+09:00</published><updated>2022-04-28T12:23:23+09:00</updated><id>http://localhost:4000/java/Introduction-To-AssertJ</id><content type="html" xml:base="http://localhost:4000/java/2022-04-12-Introduction-To-AssertJ/"><![CDATA[<p>오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기!</p>
 
-<p>새로운걸 배우니 심장이 두근두근하다. 실제 업무에서 Junit을 이용해 테스트 코드를 작성하는 사람도 있을텐데 난 너무 늦은게 아닌가… 싶으면서 조급한 마음도 든다. 쫄리는 마음 드는 시간에 하나라도 더 배우자 :)</p>
+<p>우아한 테크캠프 프리코스 과정에서는 AssertJ와 Junit을 사용하여 단위테스트를 구현하라는 미션이 주어졌다. 평소에 나는 업무를 진행할 때 배치 프로그램을 로컬에서 수행하기 위해 Junit을 사용하고, 단위 테스트를 구현해본적이 없었다. 따라서 AssertJ와 Junit을 공식 문서를 통해 배우고, 프리코스 과제 구현을 통해 다양하게 사용하며 다양한 기능을 익히고자 이 포스팅을 작성하게 되었다.</p>
+
+<p>참고로 아래 글은 자바에서 AssertJ를 이용해 테스트를 작성하기 위한 여러 사용법에 대해 간단하게 소개하는 내용이다. 따라서 assertJ가 뭔지 잘 모르거나 단위 테스트를 막 시작하시는 분들이 가볍게 봐주시면 좋을 것 같다.</p>
 
 <h2 id="assertj란">AssertJ란?</h2>
 <ul>
@@ -1043,6 +1045,8 @@ doubleScore라는 멤버변수를 추가하고, 생성자 오버로딩을 통해
     </ul>
   </li>
 </ul>
+
+<p>그런데 Junit에서 기본 제공되는 assertion이 이미 있는데 왜 assertJ를 사용해야할까?</p>
 
 <h3 id="1-gradle-dependencies">1. Gradle Dependencies</h3>
 <p>assetJ를 사용하기 위해서는 build.gradle 파일에 있는 <code class="language-plaintext highlighter-rouge">dependency</code> 부분에 아래와 같은 코드를 추가해줘야 한다.</p>
@@ -1094,7 +1098,7 @@ assertThat(fellowshipOfTheRing)
 </code></pre></div></div>
 <h4 id="32-assertions-작성하기">3.2 Assertions 작성하기</h4>
 <p>asssertion을 작성하기 위해서는, 항상 객체를 <code class="language-plaintext highlighter-rouge">Assertions.assertThat()</code> 메서드에 전달하는 것부터 시작해야한다. 그런 다음 실제로 assertions를 수행한다.<br />
-일부 다른 라이브러리와는 달리 아래 코드는 실제로 아무것도 참이라고 주장하지 않으며, <strong>절대로</strong> 테스트를 실패하지 않습니다.</p>
+일부 다른 라이브러리와는 달리 아래 코드는 실제로 아무것도 참이라고 주장하지 않으며, <strong>절대로</strong> 테스트에 실패하지 않는다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>assertThat(anyRefenceOrValue);
 </code></pre></div></div>
 <p>IDE의 코드완성기능을 사용하면 AssertJ Assertions를 쉽게 작성 가능하다. 인텔리제이 IDEA 2021.3 버전에서는 아래처럼 나온다.
@@ -1104,9 +1108,9 @@ assertThat(fellowshipOfTheRing)
 이 API에 대해 자세히 살펴보고 특정 Assertion에 대해 알아보자.</p>
 
 <h4 id="33-object-assertions">3.3 Object Assertions</h4>
-<p>Object는 두 객체가 동일한지를 결정하거나 객체의 필드를 조사하기 위해 다양한 방법으로 비교할 수 있다.<br />
+<p>두 객체가 동일한지를 동일성을 비교하거나, 객체의 내부값이 같은지 동등성을 비교하기 위해 다양한 방법을 사용할 수 있다.<br />
 2개의 Object가 동일한지에 대해 비교할 수 있는 두가지 방법을 보자.<br />
-다음은 Dog 타입인 fido, fidosClone 2가지 객체가 있다.</p>
+다음은 Dog 타입인 fido, fidosClone를 포함한 총 7가지의 객체가 있다.</p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
     <span class="kd">private</span> <span class="nc">Float</span> <span class="n">weight</span><span class="o">;</span>
@@ -1115,10 +1119,30 @@ assertThat(fellowshipOfTheRing)
 <span class="o">}</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">DogTest</span> <span class="o">{</span>
-    <span class="nc">Dog</span> <span class="n">fido</span>       <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">(</span><span class="s">"Fido"</span><span class="o">,</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span> <span class="mf">5.25</span><span class="o">);</span>
-    <span class="nc">Dog</span> <span class="n">fidosClone</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">(</span><span class="s">"Fido"</span><span class="o">,</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span> <span class="mf">5.25</span><span class="o">);</span>
+  <span class="nc">Dog</span> <span class="n">fido</span><span class="o">;</span>
+  <span class="nc">Dog</span> <span class="n">fidosClone</span><span class="o">;</span>
+  <span class="nc">HungryDog</span> <span class="n">hyngryDog</span><span class="o">;</span>
+  <span class="nc">HungryDog</span> <span class="n">hyngryDogClone</span><span class="o">;</span>
+  <span class="nc">HungryDogs</span> <span class="n">hyngryDogs</span><span class="o">;</span>
+  <span class="nc">HungryDogs</span> <span class="n">hyngryDogsClone</span><span class="o">;</span>
+  <span class="nc">List</span><span class="o">&lt;</span><span class="nc">DogName</span><span class="o">&gt;</span> <span class="n">dogNameList</span><span class="o">;</span>
+
+  <span class="nd">@BeforeEach</span>
+  <span class="kt">void</span> <span class="nf">setting</span><span class="o">(){</span>
+    <span class="n">fido</span>       <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">(</span><span class="s">"Fido"</span><span class="o">,</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span> <span class="mf">5.25</span><span class="o">);</span>
+    <span class="n">fidosClone</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Dog</span><span class="o">(</span><span class="s">"Fido"</span><span class="o">,</span> <span class="o">(</span><span class="kt">float</span><span class="o">)</span> <span class="mf">5.25</span><span class="o">);</span>
+
+    <span class="n">hyngryDog</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HungryDog</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWow"</span><span class="o">),</span> <span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">1000L</span><span class="o">));</span>
+    <span class="n">hyngryDogClone</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HungryDog</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWow"</span><span class="o">),</span> <span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">1000L</span><span class="o">));</span>
+    <span class="n">hyngryDogs</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HungryDogs</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span> <span class="n">dogNameList</span><span class="o">,</span> <span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">1000L</span><span class="o">));</span>
+    <span class="n">hyngryDogsClone</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HungryDogs</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span> <span class="n">dogNameList</span><span class="o">,</span> <span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">1000L</span><span class="o">));</span>
+
+
+    <span class="n">dogNameList</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWow"</span><span class="o">),</span><span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWow"</span><span class="o">),</span><span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWow"</span><span class="o">),</span><span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWow"</span><span class="o">));</span>
+  <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
+<h5 id="동일성-검증">동일성 검증</h5>
 <p>아래와 같은 assertion을 통해 쉽게 두 객체를 비교할 수 있다.</p>
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
 <span class="kt">void</span> <span class="nf">isEqualTo</span><span class="o">(){</span>
@@ -1127,15 +1151,114 @@ assertThat(fellowshipOfTheRing)
 </code></pre></div></div>
 
 <p>위를 실행하면 <code class="language-plaintext highlighter-rouge">isEqualTo</code> 메소드는 두 객체의 참조를 비교하므로 fail을 반환한다.<br />
-그 대신 내용을 자체를 비교하려면 다음과 같이 <code class="language-plaintext highlighter-rouge">isEqualToComparingFieldByFieldRecursively()</code> 메소드를 사용하면 된다.</p>
+그 대신 필드값을 비교하려면 다음과 같이 <del><code class="language-plaintext highlighter-rouge">isEqualToComparingFieldByFieldRecursively()</code>(AsserJ 3.12.0 버전 이전 사용 방식)</del> <code class="language-plaintext highlighter-rouge">usingRecursiveComparison()</code> 메소드를 사용하면 된다.<br />
+클래스 멤버도 내부 필드값으로 비교하며, 리스트도 내부 컬렉션 값의 필드를 비교한다.
+이 메서드를 활용한 다양한 사용법은 <a href="https://javadoc.io/doc/org.assertj/assertj-core/3.13.0/org/assertj/core/api/RecursiveComparisonAssert.html">여기</a>에서 볼 수 있다.</p>
+
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
 <span class="kt">void</span> <span class="nf">isEqualToComparingFieldByFieldRecursively</span><span class="o">(){</span>
-    <span class="n">assertThat</span><span class="o">(</span><span class="n">fido</span><span class="o">).</span><span class="na">isEqualToComparingFieldByFieldRecursively</span><span class="o">(</span><span class="n">fidosClone</span><span class="o">);</span>
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">fido</span><span class="o">).</span><span class="na">usingRecursiveComparison</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">fidosClone</span><span class="o">);</span>
+
+    <span class="c1">//AssertJ 3.12.0 버전 이전 사용 방식</span>
+    <span class="c1">//.isEqualToComparingFieldByFieldRecursively(fidosClone);</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
 <p>Fido랑 FidosClone 객체는 필드와 필드를 재귀적으로 비교할때 똑같다. 왜냐하면 한 객체의 필드를 다른 객체의 필드와 비교하기 때문이다.<br />
 이 밖에도 객체의 필드들에 대해 비교하고, 축소하고, 조사하는 다양한 assertion 메소드가 있다. 모든 메소드를 확인하려면 공식 <a href="https://joel-costigliola.github.io/assertj/core-8/api/org/assertj/core/api/AbstractObjectAssert.html">AbstractObjectAssert docs</a>를 참조하자.</p>
+
+<p><code class="language-plaintext highlighter-rouge">using</code>이라는 키워드로 접근하면 아래와 같이 사용할 수 있는 Comparator가 조회된다.
+<img src="/assets\img/assertj_using.PNG" alt="assertj_using" /></p>
+
+<p>아래는 알아두면 좋은 몇가지 키워드들이다.</p>
+
+<ul>
+  <li>usingComparator(): 자신이 직접 정의한 Custom Comparator를 통해 비교하고 싶은 경우</li>
+  <li>ignoring: 특정 값이나, 타입 등을 제외하고 비교하고 싶은 경우
+    <ul>
+      <li>ignoringFields(): 특정 필드 값을 제외하고 비교하고 싶은 경우
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assertThat</span><span class="o">(</span><span class="n">fido</span><span class="o">).</span><span class="na">usingRecursiveComparison</span><span class="o">()</span>
+<span class="o">.</span><span class="na">ignoringFields</span><span class="o">(</span><span class="s">"weight"</span><span class="o">)</span>
+<span class="o">.</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">fidosClone</span><span class="o">);</span>
+</code></pre></div>        </div>
+      </li>
+      <li>ignoringFields(): 특정 필드 값을 제외하고 비교하고 싶은 경우
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">assertThat</span><span class="o">(</span><span class="n">fido</span><span class="o">).</span><span class="na">usingRecursiveComparison</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">ignoringActualNullFields</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">fidosClone</span><span class="o">);</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="c1">//그냥 객체 vs 객체</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">fido</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">usingRecursiveComparison</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">fidosClone</span><span class="o">);</span>
+
+        <span class="c1">//클래스 필드가 있는 객체</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">hyngryDog</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">usingRecursiveComparison</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">hyngryDogClone</span><span class="o">);</span>
+
+        <span class="c1">//리스트 필드가 있는 객체</span>
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">hyngryDogs</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">usingRecursiveComparison</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">hyngryDogsClone</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h5 id="중첩된-값을-꺼내서-검증하기">중첩된 값을 꺼내서 검증하기</h5>
+<p>전체를 검증하는 것이 아니라 특정 객체에 속해있는 것만 비교하고 싶다면 <code class="language-plaintext highlighter-rouge">extracting()</code>을 쓰면 된다.<br />
+매개변수는 Lamda를 받으며 특정 값을 꺼내서 사용할 수 있도록 한다.</p>
+<ul>
+  <li>만약 비교하고자하는 필드가 리스트라면?
+    <ul>
+      <li>usingRecursiveFieldByFieldElementComparatorOnFields()</li>
+      <li>usingComparatorForElementFieldsWithType()</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@Test</span>
+  <span class="kt">void</span> <span class="nf">extracting</span><span class="o">(){</span>
+          <span class="c1">//hungryDog의 이름을 가져와서 hungryDogClone의 이름과 필드 비교</span>
+          <span class="n">assertThat</span><span class="o">(</span><span class="n">hungryDog</span><span class="o">)</span>
+          <span class="o">.</span><span class="na">extracting</span><span class="o">(</span><span class="nl">HungryDog:</span><span class="o">:</span><span class="n">getName</span><span class="o">)</span>
+          <span class="o">.</span><span class="na">usingRecursiveComparison</span><span class="o">()</span>
+          <span class="o">.</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">hungryDogClone</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+
+          <span class="nc">List</span><span class="o">&lt;</span><span class="nc">HungryDog</span><span class="o">&gt;</span> <span class="n">dogNames</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">hungryDog</span><span class="o">,</span><span class="n">hungryDog</span><span class="o">,</span><span class="n">hungryDog</span><span class="o">,</span><span class="n">hungryDog</span><span class="o">);</span>
+
+        <span class="n">assertThat</span><span class="o">(</span><span class="n">dogNames</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">extracting</span><span class="o">(</span><span class="nl">HungryDog:</span><span class="o">:</span><span class="n">getName</span><span class="o">)</span>       <span class="c1">//개 4마리의 이름을</span>
+        <span class="o">.</span><span class="na">usingRecursiveFieldByFieldElementComparatorOnFields</span><span class="o">()</span> <span class="c1">//setting에서 이름만 담아놨던 리스트의 원소랑 하나씩 필드를 비교한다.</span>
+        <span class="o">.</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">dogNameList</span><span class="o">);</span>
+
+        <span class="c1">//AssertJ 3.12.0 버전 이전 사용 방식</span>
+        <span class="c1">//.usingFieldByFieldElementComparator() //setting에서 이름만 담아놨던 리스트의 원소랑 하나씩 필드를 비교한다.</span>
+  <span class="o">}</span>
+</code></pre></div></div>
+
+<h5 id="filtering-하고-검증하기">Filtering 하고 검증하기</h5>
+<p><code class="language-plaintext highlighter-rouge">FilterOn</code>이라는 키워드를 사용하여 특정 Collection에 필터링을 먼저 한 뒤에 값을 검증할 수 있다.<br />
+메서드 체이닝을 통해 <code class="language-plaintext highlighter-rouge">Stream</code>을 사용하는 것처럼 <code class="language-plaintext highlighter-rouge">fileredOn</code>도 다양한 필터링 조건을 추가할 수 있다. 매개변수는 Lamda를 받는다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">filterOn</span><span class="o">(){</span>
+    <span class="nc">HungryDog</span> <span class="n">americanDog</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HungryDog</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWow"</span><span class="o">),</span> <span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">1000L</span><span class="o">));</span>
+    <span class="nc">HungryDog</span> <span class="n">koreanDog</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HungryDog</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"meongmeong"</span><span class="o">),</span> <span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">1000L</span><span class="o">));</span>
+    <span class="nc">HungryDog</span> <span class="n">gaeNyangI</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HungryDog</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"nyaong"</span><span class="o">),</span> <span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">1000L</span><span class="o">));</span>
+    <span class="nc">HungryDog</span> <span class="n">multinationalDog</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HungryDog</span><span class="o">(</span><span class="mi">1L</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWowMeong"</span><span class="o">),</span> <span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">1000L</span><span class="o">));</span>
+
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">DogName</span><span class="o">&gt;</span> <span class="n">dogNameList</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWow"</span><span class="o">),</span><span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"meongmeong"</span><span class="o">),</span><span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"nyaong"</span><span class="o">),</span><span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWowMeong"</span><span class="o">));</span>
+
+    <span class="n">assertThat</span><span class="o">(</span><span class="n">dogNameList</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">filteredOn</span><span class="o">((</span><span class="n">dogName</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">dogName</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">contains</span><span class="o">(</span><span class="s">"bowWow"</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">usingRecursiveComparison</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">isEqualTo</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWow"</span><span class="o">),</span><span class="k">new</span> <span class="nc">DogName</span><span class="o">(</span><span class="s">"bowWowMeong"</span><span class="o">)));</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
 <h4 id="34-boolean-assertions">3.4 Boolean Assertions</h4>
 <p>참거짓 테스트를 위한 간단한 메소드들이 있다.</p>
@@ -1240,7 +1363,7 @@ assertThat(fellowshipOfTheRing)
 </ul>
 
 <h4 id="38-double--float--integer-assertions">3.8 Double / Float / Integer Assertions</h4>
-<p>Numeric assertions는 주어진 오프셋을 포함하고 있는지 또는 포함하고 있지 않은지 모든 숫자값에 대해 비교하는 것이다.</p>
+<p>Numeric assertions는 주어진 오프셋을 포함하고 있는지 또는 포함하고 있지 않은지 모든 숫자값에 대해 비교하는 다양한 연산자들을 제공한다.</p>
 <ul>
   <li><strong>오프셋(offset)</strong>
     <ul>
@@ -1263,6 +1386,22 @@ assertThat(fellowshipOfTheRing)
     <span class="c1">//assertThat(6.1).isEqualTo(5, withPrecision(1d));//다름</span>
 <span class="o">}</span>
 </code></pre></div></div>
+
+<ul>
+  <li>isCloseTo: 그 숫자가 주어진 오프셋 값 내에서 인자로 주어진 값에 가까운지 확인한다.
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">percentage</span><span class="o">(){</span>
+  <span class="n">assertThat</span><span class="o">(</span><span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">10000L</span><span class="o">))</span>
+          <span class="o">.</span><span class="na">isCloseTo</span><span class="o">(</span><span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">9999L</span><span class="o">),</span> <span class="nc">Percentage</span><span class="o">.</span><span class="na">withPercentage</span><span class="o">(</span><span class="mi">90</span><span class="o">));</span>
+
+  <span class="n">assertThat</span><span class="o">(</span><span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">10000L</span><span class="o">))</span>
+          <span class="o">.</span><span class="na">isNotCloseTo</span><span class="o">(</span><span class="nc">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">5200L</span><span class="o">),</span> <span class="nc">Percentage</span><span class="o">.</span><span class="na">withPercentage</span><span class="o">(</span><span class="mi">90</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>이 밖에도 isBeetween(), isNegative() 등이 있다.</p>
 
 <h4 id="39-inputstream-assertions">3.9 InputStream Assertions</h4>
 <p>InputStream Assertion은 1가지만 있다.</p>
@@ -1419,11 +1558,16 @@ assertThat(fellowshipOfTheRing)
 <span class="o">}</span>
 </code></pre></div></div>
 
+<h3 id="결론">결론</h3>
+<p>단위 테스트 코드 작성시 다양한 Assertions를 활용하여 작성하자. 실제로 과제 테스트 코드를 구현하면서 이거 있을 것 같은데? 하고 구글에 쳐보니까 적절한 메서드가 있는 경우가 굉장히 많았다.<br />
+많이 사용해보면서 단위 테스트 코드 작성에 익숙해지자!</p>
+
 <h2 id="참조">참조</h2>
 <ul>
   <li><a href="https://www.baeldung.com/introduction-to-assertj">Introduction to AssertJ</a></li>
   <li><a href="https://blog.naver.com/kunjalan/222622885642">Assertion의 기본 지식</a></li>
-</ul>]]></content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="AssertJ" /><summary type="html"><![CDATA[오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기! 새로운걸 배우니 심장이 두근두근하다. 실제 업무에서 Junit을 이용해 테스트 코드를 작성하는 사람도 있을텐데 난 너무 늦은게 아닌가… 싶으면서 조급한 마음도 든다. 쫄리는 마음 드는 시간에 하나라도 더 배우자 :)]]></summary></entry><entry><title type="html">[CS] 기술면접 예상 질문 - 자바</title><link href="http://localhost:4000/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" rel="alternate" type="text/html" title="[CS] 기술면접 예상 질문 - 자바" /><published>2022-03-02T00:00:00+09:00</published><updated>2022-04-22T21:38:17+09:00</updated><id>http://localhost:4000/cs/Technical-Interview-Expected-Questions-Java</id><content type="html" xml:base="http://localhost:4000/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/"><![CDATA[<p>기술면접 단골질문</p>
+  <li><a href="https://tecoble.techcourse.co.kr/post/2020-11-03-assertJ_methods/">AssertJ의 다양한 메소드 활용해보기</a></li>
+</ul>]]></content><author><name>Ara cho(IceChoco)</name><email>dkfk2685@naver.com</email></author><category term="java" /><category term="java" /><category term="AssertJ" /><summary type="html"><![CDATA[오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기! 우아한 테크캠프 프리코스 과정에서는 AssertJ와 Junit을 사용하여 단위테스트를 구현하라는 미션이 주어졌다. 평소에 나는 업무를 진행할 때 배치 프로그램을 로컬에서 수행하기 위해 Junit을 사용하고, 단위 테스트를 구현해본적이 없었다. 따라서 AssertJ와 Junit을 공식 문서를 통해 배우고, 프리코스 과제 구현을 통해 다양하게 사용하며 다양한 기능을 익히고자 이 포스팅을 작성하게 되었다.]]></summary></entry><entry><title type="html">[CS] 기술면접 예상 질문 - 자바</title><link href="http://localhost:4000/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/" rel="alternate" type="text/html" title="[CS] 기술면접 예상 질문 - 자바" /><published>2022-03-02T00:00:00+09:00</published><updated>2022-04-22T21:38:17+09:00</updated><id>http://localhost:4000/cs/Technical-Interview-Expected-Questions-Java</id><content type="html" xml:base="http://localhost:4000/cs/2022-03-02-Technical-Interview-Expected-Questions-Java/"><![CDATA[<p>기술면접 단골질문</p>
 
 <h3 id="1객체-지향-프로그래밍-oopobject-oriented-programming">1.객체 지향 프로그래밍 OOP(Object Oriented Programming)?</h3>
 <p>Object를 기준으로 코드를 나누어 구현하는 프로그래밍(Java는 구분 단위가 class)</p>
