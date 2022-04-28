@@ -8,7 +8,9 @@ comments: true
 
 오늘의 목표: 공식문서를 보고 Junit과 AssertJ를 직접 사용하며 사용법 익히기!  
   
-새로운걸 배우니 심장이 두근두근하다. 실제 업무에서 Junit을 이용해 테스트 코드를 작성하는 사람도 있을텐데 난 너무 늦은게 아닌가... 싶으면서 조급한 마음도 든다. 쫄리는 마음 드는 시간에 하나라도 더 배우자 :)
+우아한 테크캠프 프리코스 과정에서는 AssertJ와 Junit을 사용하여 단위테스트를 구현하라는 미션이 주어졌다. 평소에 나는 업무를 진행할 때 배치 프로그램을 로컬에서 수행하기 위해 Junit을 사용하고, 단위 테스트를 구현해본적이 없었다. 따라서 AssertJ와 Junit을 공식 문서를 통해 배우고, 프리코스 과제 구현을 통해 다양하게 사용하며 다양한 기능을 익히고자 이 포스팅을 작성하게 되었다.
+
+참고로 아래 글은 자바에서 AssertJ를 이용해 테스트를 작성하기 위한 여러 사용법에 대해 간단하게 소개하는 내용이다. 따라서 assertJ가 뭔지 잘 모르거나 단위 테스트를 막 시작하시는 분들이 가볍게 봐주시면 좋을 것 같다.
 
 ## AssertJ란?
 - Java 테스트에서 능숙하고 풍부한 Assertions을 작성하는 데 사용되는 오픈 소스 커뮤니티 기반 라이브러리
@@ -18,6 +20,8 @@ comments: true
   - 사전적 의미: 사실임을 주장하는 것
   - 표명, 가정 설정문, 어서션이라고도 함
   - 프로그램 안에 추가하는 **참 거짓을 미리 가정하는 문**
+
+그런데 Junit에서 기본 제공되는 assertion이 이미 있는데 왜 assertJ를 사용해야할까?
 
 ### 1. Gradle Dependencies
 assetJ를 사용하기 위해서는 build.gradle 파일에 있는 `dependency` 부분에 아래와 같은 코드를 추가해줘야 한다.
@@ -67,7 +71,7 @@ import static org.assertj.core.api.Assertions.*;
 ```
 #### 3.2 Assertions 작성하기
 asssertion을 작성하기 위해서는, 항상 객체를 `Assertions.assertThat()` 메서드에 전달하는 것부터 시작해야한다. 그런 다음 실제로 assertions를 수행한다.  
-일부 다른 라이브러리와는 달리 아래 코드는 실제로 아무것도 참이라고 주장하지 않으며, **절대로** 테스트를 실패하지 않습니다.  
+일부 다른 라이브러리와는 달리 아래 코드는 실제로 아무것도 참이라고 주장하지 않으며, **절대로** 테스트에 실패하지 않는다.  
 ```
 assertThat(anyRefenceOrValue);
 ```
@@ -78,9 +82,9 @@ IDE의 코드완성기능을 사용하면 AssertJ Assertions를 쉽게 작성 �
 이 API에 대해 자세히 살펴보고 특정 Assertion에 대해 알아보자.
 
 #### 3.3 Object Assertions
-Object는 두 객체가 동일한지를 결정하거나 객체의 필드를 조사하기 위해 다양한 방법으로 비교할 수 있다.  
+두 객체가 동일한지를 동일성을 비교하거나, 객체의 내부값이 같은지 동등성을 비교하기 위해 다양한 방법을 사용할 수 있다.  
 2개의 Object가 동일한지에 대해 비교할 수 있는 두가지 방법을 보자.  
-다음은 Dog 타입인 fido, fidosClone 2가지 객체가 있다.
+다음은 Dog 타입인 fido, fidosClone를 포함한 총 7가지의 객체가 있다.
 ```java
 public class Dog {
     private String name;
@@ -90,10 +94,30 @@ public class Dog {
 }
 
 public class DogTest {
-    Dog fido       = new Dog("Fido", (float) 5.25);
-    Dog fidosClone = new Dog("Fido", (float) 5.25);
+  Dog fido;
+  Dog fidosClone;
+  HungryDog hyngryDog;
+  HungryDog hyngryDogClone;
+  HungryDogs hyngryDogs;
+  HungryDogs hyngryDogsClone;
+  List<DogName> dogNameList;
+
+  @BeforeEach
+  void setting(){
+    fido       = new Dog("Fido", (float) 5.25);
+    fidosClone = new Dog("Fido", (float) 5.25);
+
+    hyngryDog = new HungryDog(1L, new DogName("bowWow"), BigDecimal.valueOf(1000L));
+    hyngryDogClone = new HungryDog(1L, new DogName("bowWow"), BigDecimal.valueOf(1000L));
+    hyngryDogs = new HungryDogs(1L, dogNameList, BigDecimal.valueOf(1000L));
+    hyngryDogsClone = new HungryDogs(1L, dogNameList, BigDecimal.valueOf(1000L));
+
+
+    dogNameList = Arrays.asList(new DogName("bowWow"),new DogName("bowWow"),new DogName("bowWow"),new DogName("bowWow"));
+  }
 }
 ```
+##### 동일성 검증
 아래와 같은 assertion을 통해 쉽게 두 객체를 비교할 수 있다.
 ```java
 @Test
@@ -103,16 +127,108 @@ void isEqualTo(){
 ```
 
 위를 실행하면 `isEqualTo` 메소드는 두 객체의 참조를 비교하므로 fail을 반환한다.  
-그 대신 내용을 자체를 비교하려면 다음과 같이 `isEqualToComparingFieldByFieldRecursively()` 메소드를 사용하면 된다.
+그 대신 필드값을 비교하려면 다음과 같이 ~~`isEqualToComparingFieldByFieldRecursively()`(AsserJ 3.12.0 버전 이전 사용 방식)~~ `usingRecursiveComparison()` 메소드를 사용하면 된다.  
+클래스 멤버도 내부 필드값으로 비교하며, 리스트도 내부 컬렉션 값의 필드를 비교한다.
+이 메서드를 활용한 다양한 사용법은 [여기](https://javadoc.io/doc/org.assertj/assertj-core/3.13.0/org/assertj/core/api/RecursiveComparisonAssert.html)에서 볼 수 있다.
+
 ```java
 @Test
 void isEqualToComparingFieldByFieldRecursively(){
-    assertThat(fido).isEqualToComparingFieldByFieldRecursively(fidosClone);
+    assertThat(fido).usingRecursiveComparison()
+                    .isEqualTo(fidosClone);
+
+    //AssertJ 3.12.0 버전 이전 사용 방식
+    //.isEqualToComparingFieldByFieldRecursively(fidosClone);
 }
 ```
 
 Fido랑 FidosClone 객체는 필드와 필드를 재귀적으로 비교할때 똑같다. 왜냐하면 한 객체의 필드를 다른 객체의 필드와 비교하기 때문이다.  
 이 밖에도 객체의 필드들에 대해 비교하고, 축소하고, 조사하는 다양한 assertion 메소드가 있다. 모든 메소드를 확인하려면 공식 [AbstractObjectAssert docs](https://joel-costigliola.github.io/assertj/core-8/api/org/assertj/core/api/AbstractObjectAssert.html)를 참조하자.
+
+`using`이라는 키워드로 접근하면 아래와 같이 사용할 수 있는 Comparator가 조회된다.
+![assertj_using](/assets\img/assertj_using.PNG)
+
+아래는 알아두면 좋은 몇가지 키워드들이다.
+
+- usingComparator(): 자신이 직접 정의한 Custom Comparator를 통해 비교하고 싶은 경우
+- ignoring: 특정 값이나, 타입 등을 제외하고 비교하고 싶은 경우
+  - ignoringFields(): 특정 필드 값을 제외하고 비교하고 싶은 경우
+  ```java
+  assertThat(fido).usingRecursiveComparison()
+    .ignoringFields("weight")
+    .isEqualTo(fidosClone);
+  ```
+  - ignoringFields(): 특정 필드 값을 제외하고 비교하고 싶은 경우
+  ```java
+  assertThat(fido).usingRecursiveComparison()
+                .ignoringActualNullFields()
+                .isEqualTo(fidosClone);
+  ```
+
+```java
+        //그냥 객체 vs 객체
+        assertThat(fido)
+                .usingRecursiveComparison()
+                .isEqualTo(fidosClone);
+
+        //클래스 필드가 있는 객체
+        assertThat(hyngryDog)
+                .usingRecursiveComparison()
+                .isEqualTo(hyngryDogClone);
+
+        //리스트 필드가 있는 객체
+        assertThat(hyngryDogs)
+                .usingRecursiveComparison()
+                .isEqualTo(hyngryDogsClone);
+```
+
+##### 중첩된 값을 꺼내서 검증하기
+전체를 검증하는 것이 아니라 특정 객체에 속해있는 것만 비교하고 싶다면 `extracting()`을 쓰면 된다.  
+매개변수는 Lamda를 받으며 특정 값을 꺼내서 사용할 수 있도록 한다.  
+- 만약 비교하고자하는 필드가 리스트라면?
+  - usingRecursiveFieldByFieldElementComparatorOnFields()
+  - usingComparatorForElementFieldsWithType()
+
+```java
+  @Test
+  void extracting(){
+          //hungryDog의 이름을 가져와서 hungryDogClone의 이름과 필드 비교
+          assertThat(hungryDog)
+          .extracting(HungryDog::getName)
+          .usingRecursiveComparison()
+          .isEqualTo(hungryDogClone.getName());
+
+          List<HungryDog> dogNames = Arrays.asList(hungryDog,hungryDog,hungryDog,hungryDog);
+
+        assertThat(dogNames)
+        .extracting(HungryDog::getName)       //개 4마리의 이름을
+        .usingRecursiveFieldByFieldElementComparatorOnFields() //setting에서 이름만 담아놨던 리스트의 원소랑 하나씩 필드를 비교한다.
+        .isEqualTo(dogNameList);
+
+        //AssertJ 3.12.0 버전 이전 사용 방식
+        //.usingFieldByFieldElementComparator() //setting에서 이름만 담아놨던 리스트의 원소랑 하나씩 필드를 비교한다.
+  }
+```
+
+##### Filtering 하고 검증하기
+`FilterOn`이라는 키워드를 사용하여 특정 Collection에 필터링을 먼저 한 뒤에 값을 검증할 수 있다.  
+메서드 체이닝을 통해 `Stream`을 사용하는 것처럼 `fileredOn`도 다양한 필터링 조건을 추가할 수 있다. 매개변수는 Lamda를 받는다.
+```java
+@Test
+void filterOn(){
+    HungryDog americanDog = new HungryDog(1L, new DogName("bowWow"), BigDecimal.valueOf(1000L));
+    HungryDog koreanDog = new HungryDog(1L, new DogName("meongmeong"), BigDecimal.valueOf(1000L));
+    HungryDog gaeNyangI = new HungryDog(1L, new DogName("nyaong"), BigDecimal.valueOf(1000L));
+    HungryDog multinationalDog = new HungryDog(1L, new DogName("bowWowMeong"), BigDecimal.valueOf(1000L));
+
+    List<DogName> dogNameList = Arrays.asList(new DogName("bowWow"),new DogName("meongmeong"),new DogName("nyaong"),new DogName("bowWowMeong"));
+
+    assertThat(dogNameList)
+            .filteredOn((dogName) -> dogName.getName().contains("bowWow"))
+            .usingRecursiveComparison()
+            .isEqualTo(Arrays.asList(new DogName("bowWow"),new DogName("bowWowMeong")));
+}
+```
 
 #### 3.4 Boolean Assertions
 참거짓 테스트를 위한 간단한 메소드들이 있다.
@@ -213,7 +329,7 @@ void chkFile(){
 ```
 
 #### 3.8 Double / Float / Integer Assertions
-Numeric assertions는 주어진 오프셋을 포함하고 있는지 또는 포함하고 있지 않은지 모든 숫자값에 대해 비교하는 것이다.
+Numeric assertions는 주어진 오프셋을 포함하고 있는지 또는 포함하고 있지 않은지 모든 숫자값에 대해 비교하는 다양한 연산자들을 제공한다.
 - **오프셋(offset)**
   - 컴퓨터 과학에서 배열이나 자료 구조 오브젝트 내의 오프셋(offset)은 일반적으로 동일 오브젝트 안에서 오브젝트 처음부터 주어진 요소나 지점까지의 변위차를 나타내는 정수형
   - 이를테면, 문자 A의 배열이 abcdef를 포함한다면 'c' 문자는 A 시작점에서 **2의 오프셋**을 지님.
@@ -230,6 +346,20 @@ void chkNumeric(){
     //assertThat(6.1).isEqualTo(5, withPrecision(1d));//다름
 }
 ```
+
+- isCloseTo: 그 숫자가 주어진 오프셋 값 내에서 인자로 주어진 값에 가까운지 확인한다.
+```java
+@Test
+void percentage(){
+    assertThat(BigDecimal.valueOf(10000L))
+            .isCloseTo(BigDecimal.valueOf(9999L), Percentage.withPercentage(90));
+
+    assertThat(BigDecimal.valueOf(10000L))
+            .isNotCloseTo(BigDecimal.valueOf(5200L), Percentage.withPercentage(90));
+}
+```
+
+이 밖에도 isBeetween(), isNegative() 등이 있다.
 
 #### 3.9 InputStream Assertions
 InputStream Assertion은 1가지만 있다.
@@ -366,8 +496,12 @@ void chatAtException2(){
 }
 ```
 
+### 결론
+단위 테스트 코드 작성시 다양한 Assertions를 활용하여 작성하자. 실제로 과제 테스트 코드를 구현하면서 이거 있을 것 같은데? 하고 구글에 쳐보니까 적절한 메서드가 있는 경우가 굉장히 많았다.  
+많이 사용해보면서 단위 테스트 코드 작성에 익숙해지자!
+
 ## 참조
 - [Introduction to AssertJ](https://www.baeldung.com/introduction-to-assertj)
 - [Assertion의 기본 지식](https://blog.naver.com/kunjalan/222622885642)
-
+- [AssertJ의 다양한 메소드 활용해보기](https://tecoble.techcourse.co.kr/post/2020-11-03-assertJ_methods/)
 
