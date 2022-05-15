@@ -4,6 +4,86 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>http://localhost:4000/java,/spring/2022-05-12-make-rest-api-with-springBoot/</loc>
+        
+        <lastmod>2022-05-12T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/java,/spring/2022-05-10-social-login/</loc>
+        
+        <lastmod>2022-05-10T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/java,/spring/2022-05-09-SOLID/</loc>
+        
+        <lastmod>2022-05-09T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/spring/2022-05-07-Spring-AOP-trouble-shooting/</loc>
+        
+        <lastmod>2022-05-07T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
+        <loc>http://localhost:4000/spring/2022-04-29-Spring-introduction/</loc>
+        
+        <lastmod>2022-04-29T00:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/java/2022-04-22-wrap-primitive-type/</loc>
         
         <lastmod>2022-04-22T00:00:00+09:00</lastmod>

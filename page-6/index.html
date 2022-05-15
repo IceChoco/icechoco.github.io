@@ -30,7 +30,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   
     
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Page 6 of 8 for welcome to IceChoco’s devLog | IceChoco</title>
+<title>Page 6 of 9 for welcome to IceChoco’s devLog | IceChoco</title>
 <meta name="generator" content="Jekyll v4.2.2" />
 <meta property="og:title" content="welcome to IceChoco’s devLog" />
 <meta name="author" content="Ara cho(IceChoco)" />
@@ -108,7 +108,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-04-28T12:23:23+09:00',
+    INDEX_KEY: 'index--2022-05-14T02:54:53+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -293,15 +293,11 @@ Left here for reference, feel free to delete.
         <li>
           
           <div class="list-wrapper">
-            <a  href="/resume/" class="sidebar-nav-item"  >Resume</a>
+            <a  href="/spring/" class="sidebar-nav-item"  >Spring</a>
             
           </div>
           
         </li>
-      
-    
-  
-    
       
     
   
@@ -322,17 +318,6 @@ Left here for reference, feel free to delete.
   
     
       
-        
-        
-        <li>
-          
-          <div class="list-wrapper">
-            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
-            
-          </div>
-          
-        </li>
-      
     
   
     
@@ -341,32 +326,10 @@ Left here for reference, feel free to delete.
         
         <li>
           
-            <input type="checkbox" id="list-item-13" />
-          
           <div class="list-wrapper">
-            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
-            
-              <label class="folder" for="list-item-13">▾</label>
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
             
           </div>
-          
-            <ul class="list-body">
-                <li>
-                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
-                </li>
-            
-          
-            
-                <li>
-                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
-                </li>
-            
-          
-            
-                <li>
-                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
-                </li>
-            </ul>
           
         </li>
       
@@ -412,6 +375,43 @@ Left here for reference, feel free to delete.
             <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
             
           </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-16" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-16">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
           
         </li>
       
@@ -581,6 +581,330 @@ Left here for reference, feel free to delete.
 
 
   
+
+  
+
+
+
+
+
+<article id="post-java-Effective-java-Day7-item3" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/java/2021-12-03-Effective-java-Day7-item3/" class="flip-title">
+        [Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day 6에서는 플라이웨이트 패턴(Flyweight pattern), Java의 String Pool, 예제 소스를 참조한 장점3,4,5 이해를 통해 내용을 보완하며 item1,2를 복습하였다 (게시글 수정으로 진행함).
+Day 7 기록 시작!</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/java/2021-12-03-Effective-java-Day7-item3/">[Effective Java] Day 7 - Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라(2)</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-java-Java-Generic" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/java/2021-12-03-Java-Generic/" class="flip-title">
+        [Java] 제너릭(Generic)의 사용 및 이해
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-03T00:00:00+09:00">03 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p><strong>이 글의 목적</strong></p>
+<ul>
+  <li>제너릭(Generic)이 무엇인지 이해하고 왜 사용하는지 알 수 있다.</li>
+</ul>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/java/2021-12-03-Java-Generic/">[Java] 제너릭(Generic)의 사용 및 이해</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-java-Effective-java-Day5-item2-and-item3" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/java/2021-12-01-Effective-java-Day5-item2-and-item3/" class="flip-title">
+        [Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-12-01T00:00:00+09:00">01 Dec 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day 5 기록 시작!</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/java/2021-12-01-Effective-java-Day5-item2-and-item3/">[Effective Java] Day 5 - Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라 (2), Item 3 :: Private 생성자나 열거 타입으로 싱글턴임을 보증하라</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-java-Effective-java-Day4-item1-and-item2" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/java/2021-11-30-Effective-java-Day4-item1-and-item2/" class="flip-title">
+        [Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-11-30T00:00:00+09:00">30 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>Day 4 기록 시작!</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/java/2021-11-30-Effective-java-Day4-item1-and-item2/">[Effective Java] Day 4 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라(2), Item 2 :: 생성자에 매개변수가 많다면 빌더를 고려하라</a>
+
+      </p>
+    </footer>
+  
+</article>
+
+
+  
+
+
+
+
+
+<article id="post-java-Effective-java-Day3-item1" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      <a href="/java/2021-11-29-Effective-java-Day3-item1/" class="flip-title">
+        [Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라
+      </a>
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2021-11-29T00:00:00+09:00">29 Nov 2021</time> in <a href="/java/" class="flip-title">Java</a> on <span>Java</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p>어제인 Day 2에서는 클래스의 멤버(Member), 메서드 시그니처, 서브클래싱과 서브타이핑, 그리고 ‘Item 1 - 생성자 대신 정적 팩터리 메서드를 고려하라’의 앞부분에 대해서 공부했다. 확실히 평일에 늦게 퇴근하는 날은 시간적인 여유가 좀 적은 것 같다. 아무리 늦퇴하는 날이라고 하더라도 기록은 멈추지 말아야지. 그 어떤 사정도 결국은 핑계고 내 미래를 책임져주지 않으니T_T 그럼 Day 3 기록 시작!</p>
+
+
+    
+    
+    <footer>
+      <p class="read-more">
+        Continue reading <a class="heading flip-title" href="/java/2021-11-29-Effective-java-Day3-item1/">[Effective Java] Day 3 - Item 1 :: 생성자 대신 정적 팩터리 메서드를 고려하라</a>
+
+      </p>
+    </footer>
+  
+</article>
+
 
   
 
@@ -908,343 +1232,6 @@ Left here for reference, feel free to delete.
     <footer>
       <p class="read-more">
         Continue reading <a class="heading flip-title" href="/frontend/2021-11-12-Why-should-we-study-Javascript/">[JavaScript] 우리는 왜 JavaScript를 공부해야 하는가?</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-frontend-Creat-a-serach-bar" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/frontend/2021-10-23-Creat-a-serach-bar/" class="flip-title">
-        [Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-10-23T00:00:00+09:00">23 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Blog</span>, <a href="/tag-jekyll/" class="flip-title">Jekyll</a>, <span>Web</span>, <span>Markdown</span>, <span>Html</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p><strong>이 글의 목적</strong></p>
-<ul>
-  <li>Hydejack 테마를 사용한 블로그 환경에서 Jekyll SimpleJekyllSearch를 사용하여 서치바(Search Bar)를 구현할 수 있다.</li>
-</ul>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/frontend/2021-10-23-Creat-a-serach-bar/">[Jekyll] SimpleJekyllSearch를 사용하여 서치바(Search Bar) 구현하기</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-frontend-About-useSelector-and-useDispatch" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/frontend/2021-10-17-About-useSelector-and-useDispatch/" class="flip-title">
-        [React] useSelector, useDispatch를 사용하여 state에 접근하기
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-10-17T00:00:00+09:00">17 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p><strong>이 글의 목적</strong></p>
-<ul>
-  <li>useSelector, useDispatch를 사용하여 state에 접근할 수 있다.</li>
-</ul>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/frontend/2021-10-17-About-useSelector-and-useDispatch/">[React] useSelector, useDispatch를 사용하여 state에 접근하기</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-frontend-cannot-read-properties-of-undefined-error" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/frontend/2021-10-12-cannot-read-properties-of-undefined-error/" class="flip-title">
-        [React] TypeError: Cannot read properties of undefined (reading getState)
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>리액트 프론트엔드 서버의 index.js 파일에서 Redux 확장 프로그램인 DevTools extension을 연결하고, 리액트 앱에 store를 연동해주기위해 provider 컴포넌트를 사용하여 설정해줬다. 그랬더니 <code class="language-plaintext highlighter-rouge">TypeError: Cannot read properties of undefined (reading 'getState')</code>에러가 발생했다.
-<img src="/assets\img/typeerror.PNG" alt="typeerror" /></p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/frontend/2021-10-12-cannot-read-properties-of-undefined-error/">[React] TypeError: Cannot read properties of undefined (reading getState)</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-frontend-Attempted-import-error" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/frontend/2021-10-12-Attempted-import-error/" class="flip-title">
-        [React] Attempted import error
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-10-12T00:00:00+09:00">12 Oct 2021</time> in <a href="/frontend/" class="flip-title">Front-end</a> on <span>Web</span>, <a href="/tag-react/" class="flip-title">React</a>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>client 폴더 내 index.js 파일에서 하위폴더인 <code class="language-plaintext highlighter-rouge">_reducers</code>에서 데이터를 가져올려고 하자 Attempted import error가 발생했다.
-<img src="/assets\img/attempt-import-error.PNG" alt="attempt-import-error" /></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./src/index.js
-Attempted import error: 'Reducer' is not exported from './_reducers'.
-</code></pre></div></div>
-<p>프론트엔드 서버의 index.js 파일에서 ‘./_reducers’ 경로에 있는 index.js 파일을 import 하는데에 실패했다는 내용의 에러이다. 에러 발생 원인은 reducers 폴더 내 index.js 파일에서 export 시 default를 붙였기 때문이다.</p>
-<ul>
-  <li>reducers 폴더 내 index.js파일
-  ```
-  import { combineReducers } from “redux”;</li>
-</ul>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/frontend/2021-10-12-Attempted-import-error/">[React] Attempted import error</a>
-
-      </p>
-    </footer>
-  
-</article>
-
-
-  
-
-
-
-
-
-<article id="post-server-node-js-기초" class="page post mb6" role="article">
-  <header>
-    <h1 class="post-title flip-project-title">
-      <a href="/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/" class="flip-title">
-        node.js 기초
-      </a>
-    </h1>
-
-    <div class="post-date">
-      
-      <span class="ellipsis mr1">
-        <time datetime="2021-10-11T00:00:00+09:00">11 Oct 2021</time> in <a href="/server/" class="flip-title">Server</a> on <span>Server</span>
-      </span>
-      
-        
-          
-          
-          
-            
-            
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-04-22">
-              <span class="sr-only">Last modified at:</span>
-              <span class="icon-history"></span>
-              <time datetime="2022-04-22T21:38:17+09:00">2022-04-22</time>
-            </span>
-          
-        
-      
-    </div>
-
-    
-    
-
-    
-
-
-
-  <div class="hr pb0"></div>
-
-
-  </header>
-
-  
-    <p>node.js를 활용한 서버 구축에 있어 필요한 기본 지식들을 기록해보겠습니다.</p>
-
-
-    
-    
-    <footer>
-      <p class="read-more">
-        Continue reading <a class="heading flip-title" href="/server/2021-10-11-node-js-%EA%B8%B0%EC%B4%88/">node.js 기초</a>
 
       </p>
     </footer>
