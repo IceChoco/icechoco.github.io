@@ -37,15 +37,15 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta property="og:locale" content="ko_KR, en_US" />
 <meta name="description" content="평소에 내가 속한 부서에서는 프론트와 백엔드 개발자가 나뉘어 있지 않고 한 사람이 다 하다보니 API 문서 자동화를 제공해주는 Swagger를 사용하고 있지 않았다. 외부 시스템과 연계해야 할 때는 API 문서를 엑셀 또는 파워포인트로 정리하여 공유가 되었다. 그런데, 최근에 외부 시스템과 원활한 IF를 위해 Swagger를 적용하는 곳이 생기고 있다. 그런데 이번에 YAPP 백엔드 팀원 분이 Swagger를 사용해봤더니 프론트와 백엔드 간의 의사소통이 원활했다라는 말을 듣고 이번 사이드 프로젝트에도 적용하기로 하였다." />
 <meta property="og:description" content="평소에 내가 속한 부서에서는 프론트와 백엔드 개발자가 나뉘어 있지 않고 한 사람이 다 하다보니 API 문서 자동화를 제공해주는 Swagger를 사용하고 있지 않았다. 외부 시스템과 연계해야 할 때는 API 문서를 엑셀 또는 파워포인트로 정리하여 공유가 되었다. 그런데, 최근에 외부 시스템과 원활한 IF를 위해 Swagger를 적용하는 곳이 생기고 있다. 그런데 이번에 YAPP 백엔드 팀원 분이 Swagger를 사용해봤더니 프론트와 백엔드 간의 의사소통이 원활했다라는 말을 듣고 이번 사이드 프로젝트에도 적용하기로 하였다." />
-<link rel="canonical" href="http://localhost:4000/java,/spring/2022-05-12-make-rest-api-with-springBoot/" />
-<meta property="og:url" content="http://localhost:4000/java,/spring/2022-05-12-make-rest-api-with-springBoot/" />
+<link rel="canonical" href="https://icechoco.github.io/java,/spring/2022-05-12-make-rest-api-with-springBoot/" />
+<meta property="og:url" content="https://icechoco.github.io/java,/spring/2022-05-12-make-rest-api-with-springBoot/" />
 <meta property="og:site_name" content="IceChoco" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-05-12T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Spring] SpringBoot로 Rest API 만들기 - Swagger API 문서 자동화" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-05-12T15:26:29+09:00","datePublished":"2022-05-12T00:00:00+09:00","description":"평소에 내가 속한 부서에서는 프론트와 백엔드 개발자가 나뉘어 있지 않고 한 사람이 다 하다보니 API 문서 자동화를 제공해주는 Swagger를 사용하고 있지 않았다. 외부 시스템과 연계해야 할 때는 API 문서를 엑셀 또는 파워포인트로 정리하여 공유가 되었다. 그런데, 최근에 외부 시스템과 원활한 IF를 위해 Swagger를 적용하는 곳이 생기고 있다. 그런데 이번에 YAPP 백엔드 팀원 분이 Swagger를 사용해봤더니 프론트와 백엔드 간의 의사소통이 원활했다라는 말을 듣고 이번 사이드 프로젝트에도 적용하기로 하였다.","headline":"[Spring] SpringBoot로 Rest API 만들기 - Swagger API 문서 자동화","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/java,/spring/2022-05-12-make-rest-api-with-springBoot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"http://localhost:4000/java,/spring/2022-05-12-make-rest-api-with-springBoot/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-05-12T15:26:29+09:00","datePublished":"2022-05-12T00:00:00+09:00","description":"평소에 내가 속한 부서에서는 프론트와 백엔드 개발자가 나뉘어 있지 않고 한 사람이 다 하다보니 API 문서 자동화를 제공해주는 Swagger를 사용하고 있지 않았다. 외부 시스템과 연계해야 할 때는 API 문서를 엑셀 또는 파워포인트로 정리하여 공유가 되었다. 그런데, 최근에 외부 시스템과 원활한 IF를 위해 Swagger를 적용하는 곳이 생기고 있다. 그런데 이번에 YAPP 백엔드 팀원 분이 Swagger를 사용해봤더니 프론트와 백엔드 간의 의사소통이 원활했다라는 말을 듣고 이번 사이드 프로젝트에도 적용하기로 하였다.","headline":"[Spring] SpringBoot로 Rest API 만들기 - Swagger API 문서 자동화","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java,/spring/2022-05-12-make-rest-api-with-springBoot/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/java,/spring/2022-05-12-make-rest-api-with-springBoot/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,9 +72,9 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="http://localhost:4000/java,/spring/2022-05-12-make-rest-api-with-springBoot/" hreflang="ko-kr, en-us">
+<link rel="alternate" href="https://icechoco.github.io/java,/spring/2022-05-12-make-rest-api-with-springBoot/" hreflang="ko-kr, en-us">
 
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="IceChoco" />
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
 
 
 <link rel="shortcut icon"    href="/assets/icons/favicon.ico">
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-05-14T02:54:53+09:00',
+    INDEX_KEY: 'index--2022-05-15T13:08:28+09:00',
   };
   w._clapButton = false;
 }(window);</script>

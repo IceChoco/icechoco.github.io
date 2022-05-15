@@ -37,15 +37,15 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta property="og:locale" content="ko_KR, en_US" />
 <meta name="description" content="오늘의 목표: 김영한님의 스프링 완전 정복 로드맵을 처음부터 끝까지 보고 실무 개발에 꼭 필요한 스프링 학습하기. 코드로 스프링 전반에 대한 이해도를 높이는 것을 목표로 한다." />
 <meta property="og:description" content="오늘의 목표: 김영한님의 스프링 완전 정복 로드맵을 처음부터 끝까지 보고 실무 개발에 꼭 필요한 스프링 학습하기. 코드로 스프링 전반에 대한 이해도를 높이는 것을 목표로 한다." />
-<link rel="canonical" href="http://localhost:4000/spring/2022-04-29-Spring-introduction/" />
-<meta property="og:url" content="http://localhost:4000/spring/2022-04-29-Spring-introduction/" />
+<link rel="canonical" href="https://icechoco.github.io/spring/2022-04-29-Spring-introduction/" />
+<meta property="og:url" content="https://icechoco.github.io/spring/2022-04-29-Spring-introduction/" />
 <meta property="og:site_name" content="IceChoco" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-04-29T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Spring] Spring이란?" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-05-14T01:08:37+09:00","datePublished":"2022-04-29T00:00:00+09:00","description":"오늘의 목표: 김영한님의 스프링 완전 정복 로드맵을 처음부터 끝까지 보고 실무 개발에 꼭 필요한 스프링 학습하기. 코드로 스프링 전반에 대한 이해도를 높이는 것을 목표로 한다.","headline":"[Spring] Spring이란?","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/spring/2022-04-29-Spring-introduction/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"http://localhost:4000/spring/2022-04-29-Spring-introduction/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-05-15T13:07:07+09:00","datePublished":"2022-04-29T00:00:00+09:00","description":"오늘의 목표: 김영한님의 스프링 완전 정복 로드맵을 처음부터 끝까지 보고 실무 개발에 꼭 필요한 스프링 학습하기. 코드로 스프링 전반에 대한 이해도를 높이는 것을 목표로 한다.","headline":"[Spring] Spring이란?","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/spring/2022-04-29-Spring-introduction/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/spring/2022-04-29-Spring-introduction/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,9 +72,9 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="http://localhost:4000/spring/2022-04-29-Spring-introduction/" hreflang="ko-kr, en-us">
+<link rel="alternate" href="https://icechoco.github.io/spring/2022-04-29-Spring-introduction/" hreflang="ko-kr, en-us">
 
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="IceChoco" />
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
 
 
 <link rel="shortcut icon"    href="/assets/icons/favicon.ico">
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-05-14T02:54:53+09:00',
+    INDEX_KEY: 'index--2022-05-15T13:08:28+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -306,10 +306,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-05-14">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-05-15">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2022-05-14T01:08:37+09:00">2022-05-14</time>
+              <time datetime="2022-05-15T13:07:07+09:00">2022-05-15</time>
             </span>
           
         
@@ -602,7 +602,7 @@ html/spring-boot-features.html#boot-features-spring-mvc-template-engines">스프
 <span class="o">}</span>
 </code></pre></div></div>
 <p>웹 어플리케이션에서 <code class="language-plaintext highlighter-rouge">GetMapping</code> 어노테이션을 달면 <code class="language-plaintext highlighter-rouge">서버 URL/hello</code> 수행 시 이 메소드를 수행하겠다는 뜻이다.
-<img src="/assets\img/Spring-operating-environment.PNG" alt="Spring-operating-environment" /></p>
+<img src="/assets\img/Spring-operating-environment.png" alt="Spring-operating-environment" /></p>
 <ul>
   <li>컨트롤러에서 리컨 값으로 문자를 반환하면 뷰 리졸버(<code class="language-plaintext highlighter-rouge">viewResolver</code>)가 화면을 찾아서 처리한다.
     <ul>
@@ -668,7 +668,7 @@ html/spring-boot-features.html#boot-features-spring-mvc-template-engines">스프
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
-<p><img src="/assets\img/spring-static-content-feature.PNG" alt="spring-static-content-feature" /></p>
+<p><img src="/assets\img/spring-static-content-feature.png" alt="spring-static-content-feature" /></p>
 
 <h3 id="mvc와-템플릿-엔진">MVC와 템플릿 엔진</h3>
 <p>과거에는 Controller와 View가 따로 나뉘어 있지않고 View에 모든 것을 다 구현했었는데 이를 <strong>Model 1 방식</strong>
@@ -683,7 +683,7 @@ html/spring-boot-features.html#boot-features-spring-mvc-template-engines">스프
   </li>
 </ul>
 
-<p><img src="/assets\img/spring-MVC-template-engine.PNG" alt="spring-MVC-template-engine" /></p>
+<p><img src="/assets\img/spring-MVC-template-engine.png" alt="spring-MVC-template-engine" /></p>
 
 <h3 id="api">API</h3>
 <p>정적 컨텐츠를 제외하면 HTML로 내리느냐, 아니면 API 방식으로 데이터를 내리느냐를 결정하면 된다.</p>

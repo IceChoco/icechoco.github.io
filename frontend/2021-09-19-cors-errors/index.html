@@ -37,15 +37,15 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta property="og:locale" content="ko_KR, en_US" />
 <meta name="description" content="Access to XMLHttpRequest at &#39;http://localhost:5000/api/hello&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. 제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다. 임의로 proxy 설정하기 첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다. npm install http-proxy-middleware --save 그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다. ``` const { createProxyMiddleware } = require(‘http-proxy-middleware’);" />
 <meta property="og:description" content="Access to XMLHttpRequest at &#39;http://localhost:5000/api/hello&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. 제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다. 임의로 proxy 설정하기 첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다. npm install http-proxy-middleware --save 그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다. ``` const { createProxyMiddleware } = require(‘http-proxy-middleware’);" />
-<link rel="canonical" href="http://localhost:4000/frontend/2021-09-19-cors-errors/" />
-<meta property="og:url" content="http://localhost:4000/frontend/2021-09-19-cors-errors/" />
+<link rel="canonical" href="https://icechoco.github.io/frontend/2021-09-19-cors-errors/" />
+<meta property="og:url" content="https://icechoco.github.io/frontend/2021-09-19-cors-errors/" />
 <meta property="og:site_name" content="IceChoco" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-09-19T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="CORS(Cross-Origin Resource Sharing) 에러" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-04-22T21:38:17+09:00","datePublished":"2021-09-19T00:00:00+09:00","description":"Access to XMLHttpRequest at &#39;http://localhost:5000/api/hello&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. 제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다. 임의로 proxy 설정하기 첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다. npm install http-proxy-middleware --save 그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다. ``` const { createProxyMiddleware } = require(‘http-proxy-middleware’);","headline":"CORS(Cross-Origin Resource Sharing) 에러","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/frontend/2021-09-19-cors-errors/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"http://localhost:4000/frontend/2021-09-19-cors-errors/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-04-22T21:38:17+09:00","datePublished":"2021-09-19T00:00:00+09:00","description":"Access to XMLHttpRequest at &#39;http://localhost:5000/api/hello&#39; from origin &#39;http://localhost:3000&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. 제가 설정한 서버의 포트는 5000번이고, 클라이언트의 포트는 3000번입니다. 이렇게 서버와 클라이언트의 포트가 다를 때 따로 설정을 안해주면 CORS 정책에 의해 막히게 됩니다. CORS 정책이란 오리진(서버, 클라이언트 각각을 말함)이 다른데 리소스를 쉐어링 할 때 적용되는 정책입니다. 임의로 proxy 설정하기 첫번쨰로, npm을 사용하여 http-proxy-middleware 모듈을 설치합니다. npm install http-proxy-middleware --save 그 다음 클라이언트의 src 폴더 아래에 setupProxy.js 파일을 만들어서 아래 내용을 넣어줍니다. ``` const { createProxyMiddleware } = require(‘http-proxy-middleware’);","headline":"CORS(Cross-Origin Resource Sharing) 에러","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/frontend/2021-09-19-cors-errors/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/frontend/2021-09-19-cors-errors/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,9 +72,9 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="generator" content="Hydejack v9.1.4" />
 
 
-<link rel="alternate" href="http://localhost:4000/frontend/2021-09-19-cors-errors/" hreflang="ko-kr, en-us">
+<link rel="alternate" href="https://icechoco.github.io/frontend/2021-09-19-cors-errors/" hreflang="ko-kr, en-us">
 
-<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="IceChoco" />
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
 
 
 <link rel="shortcut icon"    href="/assets/icons/favicon.ico">
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-05-14T02:54:53+09:00',
+    INDEX_KEY: 'index--2022-05-15T13:08:28+09:00',
   };
   w._clapButton = false;
 }(window);</script>
