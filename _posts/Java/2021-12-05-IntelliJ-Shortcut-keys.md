@@ -18,13 +18,29 @@ comments: true
 - Win/Linux: Alt+1
 
 ### 파일, 패키지, 변수명 등 이름변경
-- Win/Linux: Shift + F6 
+- Win/Linux: Shift + F6
+
+### 변수 추출하기
+- MacOS    : cmd + option + v
+- Win/Linux: ctrl + alt + v
+
+### 테스트 클래스 생성하기
+- Win/Linux : Ctrl + Shift + T
 
 ### 실행
 - Win/Linux: Shift + F10
 
 ### 현재 파일 실행
 - Win/Linux: ctrl + Shift + F10
+
+### 메소드 주석 달기
+- Win/Linux: Alt + Shift + J
+
+## 커서 위치한 line 복제
+- Win/Linux: Ctrl + D
+
+### 최근 연 파일 목록 검색
+- Win/Linux: Ctrl + E
 
 ## Tab 관련 단축키
 ### 탭이동 - 오른쪽
@@ -45,3 +61,16 @@ comments: true
 메소드 추출 리팩토링은 메소드를 더 짧고 읽기 쉽게 만들 수 있습니다.
 - Win/Linux: Ctrl+Alt+M
 
+## 코드 즉시 보기
+### Parameter Info(인자값 즉시 보기)
+- Win/Linux: Ctrl + p
+- MacOS: Cmd + p
+
+## 자동완성
+### 괄호안에서 ;로 코드완성하기
+- Win/Linux : Ctrl + Shift + Enter
+
+## Git
+### 깃허브 푸쉬
+- Win/Linux : Ctrl + Shift + K
+- MacOS: Cmd + Shift + K

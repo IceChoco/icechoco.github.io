@@ -30,9 +30,6 @@ by CORS policy: No 'Access-Control-Allow-Origin' header is present on the reques
   };
   ```
   위와같이 프록시를 설정해주면 아까 발생하던 CORS에러가 더이상 발생하지 않고, 제가 서버에서 정상적으로 /api/hello를 통해 수신받았을 때 출력하도록 해놓은 메시지인 '안녕하세요 저 프론트엔드인데요'를 정상출력하였습니다.
-  ### 참고
-  [Proxying API Requests in Development | Create React App](https://create-react-app.dev/docs/proxying-api-requests-in-development) 
 
-## 3.Attempted import error: 'Reducer' is not exported from './_reducers'.
-
-<!--author-->
+### 참고
+[Proxying API Requests in Development | Create React App](https://create-react-app.dev/docs/proxying-api-requests-in-development)

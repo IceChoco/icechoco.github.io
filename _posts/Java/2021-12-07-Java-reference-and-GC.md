@@ -20,7 +20,7 @@ comments: true
 객체가 접근 불가능한 상태(Unreachable)가 되었을 때, 메모리가 누적되므로 이를 수거하는 작업  
 GC를 실행하는 쓰레드를 제외한 나머지 쓰레드는 모두 작업을 멈춘다 = stop the world
  
-그래서 대게 우리가 알고 있는 GC 튜닝이란, 이 <span style="color:red">stop the world</span> 시간을 줄이는 것 이다.
+그래서 대개 우리가 알고 있는 GC 튜닝이란, 이 <span style="color:red">stop the world</span> 시간을 줄이는 것 이다.
 
 ## Garbage Collector (가비지 컬렉터)
 Java의 Garbage Collector는 동작 방식에 따라 매우 다양한 종류가 있으나 공통적으로 크게 다음 2가지 작업을 수행한다.
@@ -130,7 +130,7 @@ G1GC에 새롭게 추가된 Heap영역이 있다.
 
 - **Initial Mark**: Old Region에 존재하는 객체들이 참조하는 Survivor Region을 찾는다(STW)
 - **Root Region Scan**: 위에서 찾은 Survivor 객체들에 대한 스캔 작업을 실시한다.
-- **Concurrent Mark**: 전체 Heap의 scan 작업을 실시하고, GC 대상 객체가 발견되지 않은 Region은 이추 단계를 제외한다.
+- **Concurrent Mark**: 전체 Heap의 scan 작업을 실시하고, GC 대상 객체가 발견되지 않은 Region은 이 단계를 제외한다.
 - **Remark**: 애플리케이션을 멈추고(STW) 최종적으로 GC 대상에서 제외할 객체를 식별한다.
 - **CleanUp**: 애플리케이션을 멈추고(STW) 살아있는 객체가 적은 Region에 대한 미사용 객체를 제거한다.
 - **Copy**: GC대상의 Region이었지만, Cleanup 과정에서 완전히 비워지지 않은 Region의 살아남은 객체들을 새로운 Region(Available/Unused) Region에 복사하여 Compaction을 수행한다.  
@@ -138,6 +138,7 @@ G1GC에 새롭게 추가된 Heap영역이 있다.
 
 ### 튜닝포인트
 그럼 도대체 뭘 바꿔야할까?  
+그럼 도대체 뭘 바꿔야할까? 
 우선은 무엇인가를 바꾸기 전에 항상  
 **성능테스트 + 로그 옵션**을 켜야한다.
 <span style="color:red">-Xlog:gc*:gc.log</span> 옵션으로 로그를 활성화하여 파일로 옮기는 것도 좋다.  

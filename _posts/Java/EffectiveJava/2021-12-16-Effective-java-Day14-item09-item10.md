@@ -56,6 +56,7 @@ Try-Finally와 비교 했을 때
 - 자원을 회수하는 코드가 없다.
    - **try-with-resources**를 사용하기 위해서는 쓰려는 자원이 AutoCloseable 인터페이스를 구현해야 한다.  
       - 위 예제소스코드에서도 InputStream과 OutputStream이 둘 다 AutoCloseable을 구현하고 있다.  
+   - AutoCloseable 인터페이스의 close
 
 #### AutoCloseable을 이용한 자원 회수
 AutoCloseable 인터페이스의 close() 메서드를 구현하면, try문이 끝날 때 각 자원의 close 메서드를 호출하여 자원을 회수한다.  

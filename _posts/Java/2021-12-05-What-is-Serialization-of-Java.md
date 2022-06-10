@@ -18,10 +18,10 @@ comments: true
 - <span style="background-color: #fff5b1">객체의 상태를 Byte 배열과 같은 ByteStream으로</span> 만드는 것
 - **Deserialization**은 반대로 <span style="background-color: #fff5b1">Byte Stream을 객체로</span> 변환하는 것
 
-![serialization](/assets\img/serialization.PNG)
+![serialization](/assets\img/serialization.png)
 <div style="text-align: center; color:grey">Serialization</div>  
 <br/>
-![Deserialization](/assets\img/Deserialization.PNG)
+![Deserialization](/assets\img/Deserialization.png)
 <div style="text-align: center; color:grey">Serialization and Deserialization</div>
 
 ## 언제 쓸 수 있는가?
