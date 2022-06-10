@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Spring] 카카오, 구글 소셜 로그인 구현하기" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-05-13T00:41:45+09:00","datePublished":"2022-05-10T00:00:00+09:00","description":"Spring Boot 구조로 구성된 사이드 프로젝트에 적용 예정인 OAuth2 소셜로그인에 대해 정리하기위해 이 글을 쓰게 되었다.","headline":"[Spring] 카카오, 구글 소셜 로그인 구현하기","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java,/spring/2022-05-10-social-login/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/java,/spring/2022-05-10-social-login/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-05-25T15:45:46+09:00","datePublished":"2022-05-10T00:00:00+09:00","description":"Spring Boot 구조로 구성된 사이드 프로젝트에 적용 예정인 OAuth2 소셜로그인에 대해 정리하기위해 이 글을 쓰게 되었다.","headline":"[Spring] 카카오, 구글 소셜 로그인 구현하기","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java,/spring/2022-05-10-social-login/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/java,/spring/2022-05-10-social-login/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-05-15T13:08:28+09:00',
+    INDEX_KEY: 'index--2022-06-10T16:10:52+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -315,10 +315,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-05-13">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-05-25">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2022-05-13T00:41:45+09:00">2022-05-13</time>
+              <time datetime="2022-05-25T15:45:46+09:00">2022-05-25</time>
             </span>
           
         
@@ -339,6 +339,115 @@ Left here for reference, feel free to delete.
 
   
     <p>Spring Boot 구조로 구성된 사이드 프로젝트에 적용 예정인 OAuth2 소셜로그인에 대해 정리하기위해 이 글을 쓰게 되었다.</p>
+
+<h2 id="사전-지식">사전 지식</h2>
+<h3 id="oauth2">OAuth2</h3>
+<p>OAuth란 <strong>인터넷 사용자들이 비밀번호를 제공하지 않고 다른 웹사이트 상의 정보들에 대해 접근 권한을 부여할 수 있는 수단을 제공하는 것</strong>이다.
+예를 들어 구글에 저장되어 있는 사진을 가지고 어떤 서비스를 만들고자 할 때 사용된다.</p>
+
+<p><strong>OpenID connect</strong></p>
+<ul>
+  <li>권한관리를 위한 OAuth 2.0 위에 인증 관리를 올린 것</li>
+</ul>
+
+<p><strong>Spring Security(스프링 세큐리티)</strong></p>
+<ul>
+  <li>자바 어플리케이션에 권한(Authorization)과 인증(Authentication)을 구현하는데 필요한 기능을 제공하는 프레임 워크</li>
+</ul>
+
+<h3 id="json-web-token">JSON Web Token</h3>
+<p>JSON Web Token(JWT)은 참여자 간에 안전하게 정보를 주고 받기 위해 JSON 객체에 정보를 내장하는 방법을 정의하는 개방형 표준(RFC7519)이다.</p>
+
+<p>토큰의 종류</p>
+<ul>
+  <li>access_token: 리소스 서버에 실제로 접근하기 위한 권한을 갖고 있음
+    <ul>
+      <li>중요한 정보이기 때문에 토큰의 보호기능으로서 만료시간이 있으나 짧음(대개 몇 분 정도로 유지)</li>
+    </ul>
+  </li>
+  <li>Refresh Token: 새로운 access_token 토큰을 발급 받기 위해 요청</li>
+  <li>ID Token: 굳이 서버에 가지 않아도 사용자의 정보를 바로 받아서 쓸 수 있음</li>
+</ul>
+
+<h4 id="토큰의-구조">토큰의 구조</h4>
+<ul>
+  <li>Header: 토큰의 Type, <strong>서명에 대한 알고리즘</strong>, BASE64로 인코딩됨</li>
+  <li>★ Payload: 데이터, valims(key-value 형태의 데이터), BASE64로 인코딩됨</li>
+  <li>signature: 헤더와 payload의 내용이 임의로 조작되었는지를 검증해줌</li>
+</ul>
+
+<h5 id="1-header">1. Header</h5>
+<p>토큰의 서명을 생성하기 위해 어떤 알고리즘을 사용하였는지를 나타냄</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "alg": "ES256",
+    "type": "JWT",
+    "kid": "Key ID"
+}
+</code></pre></div></div>
+<ul>
+  <li>alg</li>
+  <li>type</li>
+  <li>kid: Key ID Header Parameter, JWS(Json web Signature)를 암호화하기 위해 사용된 키를 가리킴</li>
+</ul>
+
+<h3 id="2-payloaddata">2. Payload(Data)</h3>
+<p>Payload는 실제 JWT의 컨텐츠이다.</p>
+
+<h3 id="3-signature">3. signature</h3>
+<p>보통 RS256 방법을 많이 쓴다.</p>
+<ul>
+  <li><strong>HS256</strong>
+    <ul>
+      <li>Secret key가 있으며 로그인과 validation이 둘다 이루어짐</li>
+    </ul>
+  </li>
+  <li><strong>RS256</strong>
+    <ul>
+      <li>private key로만 사이닝을 하고, 다른 서비스들은 public key를 가지고 Validation하는 것</li>
+    </ul>
+  </li>
+</ul>
+
+<p>그럼 keycloak는 이 public key를 언제 다운받을까? public key를 안갖고 있는 최초 1회에 다운로드 받는다.</p>
+
+<h3 id="statefule--stateless">Statefule &amp; Stateless</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Stateful(Session)</th>
+      <th>Stateless(Token)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>세션 정보 저장</td>
+      <td>In-Memory, Database와 같은 원격 저장소를 사용함</td>
+      <td>X</td>
+    </tr>
+    <tr>
+      <td>세션 회수(취소)</td>
+      <td>가능</td>
+      <td>X (토큰 만료 시간으로 보완)</td>
+    </tr>
+    <tr>
+      <td>정보 노출</td>
+      <td>X(중요한 정보들을 client에 노출없이 서버에 저장해 쓸 수 있음, 세션 ID만 노출)</td>
+      <td>JWT는 위조는 불가하지만 내용은 공개됨</td>
+    </tr>
+    <tr>
+      <td>확장성</td>
+      <td>또 다른 메모리가 있으면 replication을 해야하기 때문에 확장성이 좋지 않음</td>
+      <td>아주 높음</td>
+    </tr>
+    <tr>
+      <td>예시</td>
+      <td>JSession</td>
+      <td>JWT</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="전체-시퀀스-다이어그램">전체 시퀀스 다이어그램</h2>
 
@@ -370,7 +479,9 @@ redirect_uri=http://localhost:3000/oauth/redirect”으로 OAuth 인가 요청</
 
 <h3 id="참고">참고</h3>
 <ul>
+  <li><a href="https://meetup.toast.com/posts/239">JWT를 소개합니다</a></li>
   <li><a href="https://deeplify.dev/back-end/spring/oauth2-social-login#%EC%B9%B4%EC%B9%B4%EC%98%A4-oauth-%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%93%B1%EB%A1%9D">스프링부트 소셜 로그인</a></li>
+  <li><a href="https://devansvd.com/oauth/">Demystifying OAuth 2.0 - A Tutorial &amp; Primer</a></li>
 </ul>
 
   
@@ -544,7 +655,7 @@ redirect_uri=http://localhost:3000/oauth/redirect”으로 OAuth 인가 요청</
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java,/spring/2022-05-12-make-rest-api-with-springBoot/" class="flip-title"><span>[Spring] SpringBoot로 Rest API 만들기 - Swagger API 문서 자동화</span></a>  <time class="faded fine" datetime="2022-05-12T00:00:00+09:00">12 May 2022</time></li>                        <li class="h4">  <a href="/java,/spring/2022-05-09-SOLID/" class="flip-title"><span>[Spring] 좋은 객체 지향 설계의 5가지 원칙(SOLID)대로 개발하기</span></a>  <time class="faded fine" datetime="2022-05-09T00:00:00+09:00">09 May 2022</time></li>                        <li class="h4">  <a href="/spring/2022-05-07-Spring-AOP-trouble-shooting/" class="flip-title"><span>[Spring] AOP를 SpringConfig에 @Bean으로 등록 했을 때 순환 참조 발생</span></a>  <time class="faded fine" datetime="2022-05-07T00:00:00+09:00">07 May 2022</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java,/spring/2022-05-25-spring-security/" class="flip-title"><span>[Spring] Spring Security란?</span></a>  <time class="faded fine" datetime="2022-05-25T00:00:00+09:00">25 May 2022</time></li>                        <li class="h4">  <a href="/server/2022-05-24-MSA/" class="flip-title"><span>[MSA] Netflix 스택 & K8s 스택</span></a>  <time class="faded fine" datetime="2022-05-24T00:00:00+09:00">24 May 2022</time></li>                        <li class="h4">  <a href="/cs/2022-05-24-Technical-Interview-Expected-Questions-spring/" class="flip-title"><span>[CS] 기술면접 예상 질문 - Spring</span></a>  <time class="faded fine" datetime="2022-05-24T00:00:00+09:00">24 May 2022</time></li>            </ul></aside>
 
   
 

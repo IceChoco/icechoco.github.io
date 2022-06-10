@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="ko"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.1.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>데이터를 말아올리는 대표적인 방법 - Message Queue | IceChoco</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="데이터를 말아올리는 대표적인 방법 - Message Queue" />
+<meta name="author" content="Ara cho(IceChoco)" />
+<meta property="og:locale" content="ko_KR, en_US" />
+<meta name="description" content="이 글을 쓰는 이유" />
+<meta property="og:description" content="이 글을 쓰는 이유" />
+<link rel="canonical" href="https://icechoco.github.io/server/2022-05-20-Message-Queue/" />
+<meta property="og:url" content="https://icechoco.github.io/server/2022-05-20-Message-Queue/" />
+<meta property="og:site_name" content="IceChoco" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-20T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="데이터를 말아올리는 대표적인 방법 - Message Queue" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-06-10T16:03:39+09:00","datePublished":"2022-05-20T00:00:00+09:00","description":"이 글을 쓰는 이유","headline":"데이터를 말아올리는 대표적인 방법 - Message Queue","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/server/2022-05-20-Message-Queue/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/server/2022-05-20-Message-Queue/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IceChoco">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IceChoco">
+
+
+  <meta name="theme-color" content="rgb(8,46,57)">
+
+
+<meta name="generator" content="Hydejack v9.1.4" />
+
+
+<link rel="alternate" href="https://icechoco.github.io/server/2022-05-20-Message-Queue/" hreflang="ko-kr, en-us">
+
+<link type="application/atom+xml" rel="alternate" href="https://icechoco.github.io/feed.xml" title="IceChoco" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script");n.src=e,t&&a(n,"load",t,{once:!0});t=c.scripts[0];return t.parentNode.insertBefore(n,t),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2022-06-10T16:10:52+09:00',
+  };
+  w._clapButton = false;
+}(window);</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(79,177,186);--accent-color-faded: rgba(79,177,186,0.5);--accent-color-highlight: rgba(79,177,186,0.1);--accent-color-darkened: #409ba3;--theme-color: rgb(8,46,57)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script>window.GET_CLAPS_API = 'https://worker.getclaps.dev'</script>
+<script type="module">
+  const ppiData = window._ppiData = fetch('https://hydejack-ppi.qwtel.workers.dev', { mode: 'cors'}).then(res => res.json()).catch(() => ({}));
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          document.querySelectorAll('.gumroad-product-embed').forEach(el => { 
+            if (!el.dataset.gumroadParams) {
+              el.dataset.gumroadParams = 'offer_code=' + (code || 'qr0tw8m');
+            }
+          });
+          if (!window.GumroadEmbed) {
+            await new Promise(function check1(res) {
+              if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+              else setTimeout(() => check1(res), 200);
+            });
+          }
+          await new Promise(function check2(res) {
+            if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+            else setTimeout(() => check2(res), 200);
+          });
+        }
+      }, { rootMargin: '1440px' });
+      document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+    });
+  }
+  {
+    let p;
+    document.querySelector('hy-push-state').addEventListener('load', () => {
+      const io = new IntersectionObserver(async (entries) => {
+        if (entries.some(x => x.isIntersecting)) {
+          p = p || loadJS('https://gumroad.com/js/gumroad.js');
+          const [{ code }] = await Promise.all([ppiData, p]);
+          if (code) {
+            document.querySelectorAll('.gumroad-button').forEach(el => { 
+              if (!el.href.endsWith(code)) {
+                el.href = el.href + '/' + (code || 'qr0tw8m');
+              }
+            });
+          }
+          if (!window.GumroadOverlay) {
+            await new Promise(function check(res) {
+              if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+              else setTimeout(() => check(res), 200);
+            });
+          }
+        }
+      }, { rootMargin: '300px' });
+      document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+    });
+  }
+</script>
+
+
+</head>
+
+<body>
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  
+  
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" />
+
+<!--상단메뉴바-->
+<div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+
+      <!--상단메뉴 카테고리들 -->
+    <div class="top-menu">
+      <a href="/search" class="nav-btn top-menu"> 
+        <i class="fas fa-fw fa-search"></i>
+        <span>Search</span>
+      </a>
+    </div>
+  </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+      
+        <span>/</span>
+        
+        
+        <a href="/server/">server</a>
+      
+      </li>
+    
+      <li>
+      
+        <span>/</span>
+        <span>2022-05-20-Message-Queue</span>
+      
+      </li>
+    
+  
+</ul></nav>
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-server-Message-Queue" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        데이터를 말아올리는 대표적인 방법 - Message Queue
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2022-05-20T00:00:00+09:00">20 May 2022</time> in <a href="/server/" class="flip-title">Server</a> on <span>Server</span>
+      </span>
+      
+        
+          
+          
+          
+            
+            
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-06-10">
+              <span class="sr-only">Last modified at:</span>
+              <span class="icon-history"></span>
+              <time datetime="2022-06-10T16:03:39+09:00">2022-06-10</time>
+            </span>
+          
+        
+      
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <p><strong>이 글을 쓰는 이유</strong></p>
+
+<blockquote>
+  <p>크게 두 가지 목적에 의해 이 글을 작성하게 되었다.<br />
+1) 데이터를 말아 올리는 대표적인 방법 4가지 중에서 많이 사용되는 MQ에 대해서 개념, 솔루션 종류를 알아본다.<br />
+2) 요즘 클라우드 환경으로 전환됨에 따라 많이 사용되며 개인적으로도 관심이 있는 카프카에 대해 개념을 알아본다.</p>
+</blockquote>
+
+<hr />
+<p>한 번에 처리해야할 데이터가 굉장히 많거나, 어떤 두 프로그램 간에 커뮤니케이션이 원활하지 않거나와 같은 여러 이유로 실시간 통신이 제대로 작동하지 않는 경우 우리는 <strong>비동기식 통신(Asynchronous Communication)</strong>을 고려할 수 있다. 그 방법에는 크게 MQ, Jenkins, Lambda, Spring Batch까지 총 4가지가 있다.</p>
+
+<h2 id="1-mq-message-queue">1. MQ (Message Queue)</h2>
+<p>애플리케이션을 비동기식 통신으로 분리해야할 경우 사용하는 메시지 기반의 미들웨어로 여러 시스템, 서비스 간의 연결도 지원하는 솔루션이다.<br />
+MOM(Message Oriented Middleware)를 구현한 솔루션으로 비동기 메시지를 사용하는 서비스들 사이에서 데이터를 교환해주는 역할을 한다.<br />
+Producer(sender)가 메시지를 큐에 전송하면 Consumer(receiver)는 큐에서 메시지를 가져오면서 처리한다.<br />
+MQ는 producer와 consumer에 message 프로세스가 추가되는 것이 특징이다.<br />
+MQ를 사용하여 비동기로 요청하고, 처리하고자 하는 서비스들을 분리하여 사용할 수 있다.</p>
+
+<h3 id="1-1-관련개념">1-1. 관련개념</h3>
+<h4 id="message">Message</h4>
+<p>전송되어야 할 데이터를 우리는 메시지라고 부르며 데이터 포맷의 유형이기도 하다.</p>
+
+<h4 id="queue">Queue</h4>
+<p>가장 간단한 형태의 큐는 <strong>순차적으로 처리되는 일련의 요청들</strong>을 가리킨다.
+이런 일련의 요청들에 대한 처리를 위해서는 무엇을 알아야 할지 생각해보면 가장 먼저 요청받은 메시지를 알고, 대기열이 어느 정도있는지도 알고 있어야 하고, 전체적으로도 알고 있어야 한다.</p>
+
+<ul>
+  <li>모든 사람들이 매일 사용하는 도구, <strong>이메일</strong>
+    <ul>
+      <li>이메일은 비동기 통신이 어떻게 동작하는지 알 수 있는 완벽한 예다.</li>
+      <li>큐에 대한 이론을 실제 우리의 생활에 적용해볼 수 있다.</li>
+      <li>A가 네이버 메일에서 메시지를 보내면, B는 받은 편지함에 들어오는 답장을 기다릴 수 있다.
+        <ul>
+          <li>발신자: A / 수신자 : B</li>
+          <li>여기서 B의 이메일의 받은 편지함을 거기에 보관되어 있는 메시지의 대기열이라고 생각해보자.</li>
+          <li>그리고 어떤 시점에 A가 보낸 메일을 B는 받을 것이고, 그가 원할 떄 언제든지 메일을 읽을 수 있다.</li>
+          <li>시간이 더 오래 지날 경우, B가 읽어야 하는 메시지의 목록은 더 많아져 있을 것이다</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>나의 네이버 메일도 잠깐 확인 안하면 메일들이 엄청 쌓여있다. 근데 약간 비동기의 예시라고 하기에 조금 현실과 동떨어지는 부분이 있는데,
+그건 바로 일반적으로 이메일을 다 확인하지 않고 일부만 열어본다는 것이다.</p>
+
+<p>예를 들어서 내가 메일을 쓰고 그에 대한 답장을 기다리는 경우에 대해서만 메일함을 계속 들여다보거나 관련 없는 메일도 읽어보는 것 같다.
+다른 사람들도 이런 경우가 아니면 대개 받은 메일함을 대충 한 번 보고 넘기지 않나…?
+물론 이메일 하나하나 다 열어보고 확인하는 사람도 있겠지만 나처럼 내가 이메일을 쓰고 답장이 오기를 기다릴 때만 다 읽어보는 사람이 대부분 일 것이다.
+그래서 위와 같은 이유로 큐의 개념인</p>
+
+<blockquote>
+  <p>들어오는 요청을 순차적으로 다 처리한다</p>
+</blockquote>
+
+<p>라는 개념과 이메일의 현실에서는 조금 차이가 있긴 하지만…! 그래도 이메일은 비동기를 현실 세계에 비유할 수 있는 가장 적절한 예시다. 그 이유는</p>
+
+<ul>
+  <li>이메일을 아무때나 작성하고 보낼 수 있다. 수신자가 내 메일을 받았는지, 언제 대답할 예정인지에 대해서 따로 걱정하고 계획하지 않아도 된다.</li>
+</ul>
+
+<p>그럼 이제 큐가 뭔지 알겠다. 그럼 실제로 큐가 어떤식으로 사용되는지 사용사례를 알고, 그 사용 사례를 통해 Message의 유형에 대해서도 알고 싶다.
+큐는 메시지의 줄, 즉 대기열이다. 여기서 메시지를 보내는 사람을 Producer이라하고, 받는 사람을 Consumer라 한다.</p>
+
+<h5 id="메시지-큐의-장점">메시지 큐의 장점</h5>
+<ul>
+  <li>비동기(Asynchronous): 큐에 넣기 때문에 나중에 처리할 수 있다.</li>
+  <li>비동조(Decoupling): 애플리케이션과 분리 가능하다</li>
+  <li>탄력성(Resilience): 일부가 실패해도 전체에 영향을 받지 않는다.</li>
+  <li>과잉(Redundancy): 실패할 경우 재실행이 가능하다</li>
+  <li>보증(Guarantees): 작업이 처리된 것을 확인할 수 있다.</li>
+  <li>확증성(Scalable): 다수의 프로세스들이 큐에 메시지를 보낼 수 있다.</li>
+</ul>
+
+<p>큐는 위와 같은 장점으로 인해 대용량 데이터를 처리하기 위한 배치 작업이나, 채팅 서비스, 비동기 데이터를 처리할 때 사용한다.</p>
+
+<h4 id="mommessage-oriented-middleware-메시지-지향-미들웨어">MOM(Message Oriented Middleware): 메시지 지향 미들웨어</h4>
+<ul>
+  <li>분산 시스템 간 메시지를 주고 받는 기능을 지원하는 소프트웨어나 하드웨어 인프라</li>
+</ul>
+
+<h4 id="프로토콜">프로토콜</h4>
+<p><strong>AMQP(Advanced Message Queuing Protocol)</strong><br />
+이기종 플랫폼 간의 상호 메시지 교환 가능하며, 특히 클라우드 컴퓨팅 환경에 매우 적합하다.<br />
+AMQP는 금융계의 이기종 플랫폼 간의 메시지 상호 정보 교환을 위해서 JPMorgan의 John O’Hara에 의해 개발되었으며 2006년도에 최초 사용되었다고 한다.<br />
+AMQP working Node group에 의해 개발된 오픈 스펙이다.</p>
+
+<p>구현 소프트웨어 예시 : RabbitMQ</p>
+<ul>
+  <li>Subscribe to have messages delivered to them (“Push API”): this is the recommended option.</li>
+  <li>Polling(“Pull API”): 이 방법은 <strong>매우 비효율적</strong>이고 대부분의 경우에서 <strong>피해야 할</strong> 방법이다.</li>
+</ul>
+
+<p>즉, Push와 Pull 방식 모두 가능하나 push를 권장하고 있다.</p>
+<ul>
+  <li><a href="https://www.rabbitmq.com/tutorials/amqp-concepts.html">RabbitMQ 공홈 - AMQP 0-9-1 Model Explained</a></li>
+</ul>
+
+<p>이 외에도 StormMQ, Apache Qpid와 같은 오픈 소스 구현 브로커가 있다.</p>
+
+<p><br /></p>
+
+<p><strong>JMS(Java Messaging System)</strong>
+자바 플랫폼 간의 상호 메시지 교환이 가능하다. 단, 이기종 플랫폼 간은 제한적이다.<br />
+RabbitMQ 문서를 보면 클라우딩 컴퓨팅 또는 Social Service 환경에서 처럼 대용량 메시지 처리는 AMQP가 적합하다.</p>
+
+<p>구현 소프트웨어 예시 : Active MQ</p>
+<ul>
+  <li>ActiveMq does not support the AMQP protocol. and it does not select the consumer. because JMS is basically a pull system from 
+receiver perspective. the broker does not push (Consumer에서 pull하는 방식으로 처리한다)</li>
+</ul>
+
+<p>메시징 모델</p>
+<ul>
+  <li>JMS는 publish-subscriber, point-to-point 메시징 모델을 제공한다.</li>
+</ul>
+
+<hr />
+
+<h3 id="1-2-메시지-플랫폼">1-2. 메시지 플랫폼</h3>
+<p>메시지 플랫폼은 크게 두가지 종류로 나뉘어진다. 첫 번째는 메시지 브로커, 두번째는 이벤트 브로커이다.<br />
+메시지 브로커는 이벤트 브로커로 역할을 할 수 없지만, 이벤트 브로커는 메시지 브로커 역할을 할 수 있다.</p>
+
+<p><strong>메시지 브로커(Message Broker)</strong></p>
+<ul>
+  <li>메시지 브로커는 많은 기업들의 대규모 미들웨어 아키텍처에서 사용되어 왔다.
+    <ul>
+      <li>미들웨어: 서비스하는 애플리케이션들을 보다 효율적으로 아키텍처들을 연결하는 요소로 작동하는 SW
+        <ul>
+          <li>ex) 메시징 플랫폼, 인증 플랫폼, DB</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Producer(송신자)와 Consumer(수신자)를 통해 메시지를 통신하고 네트워크를 맺는 용도로 사용해왔다.</li>
+  <li>특징
+    <ul>
+      <li>데이터를 보내고 처리하고 삭제함</li>
+      <li>메시지를 받아서 적절히 처리하고 나면 즉시 또는 짧은 시간 내에 삭제되는 구조</li>
+    </ul>
+  </li>
+  <li>EX) Redis Queue, Rabbit MQ, Apache Kafka, ZeroMQ, AWS SQS, Azure Service Bus, Apache ActiveMQ, IBM MQ</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>보내는 쪽</th>
+      <th>Sender</th>
+      <th>Producer</th>
+      <th>publisher</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>받는 쪽</td>
+      <td>Receiver</td>
+      <td>Consumer</td>
+      <td>subscriber</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>이벤트 브로커</strong></p>
+<ul>
+  <li>이벤트 또는 메시지라고 불리는 레코드를 딱 하나만 보관하고 인덱스를 통해 개별 액세스를 관리함</li>
+  <li>업무상 필요한 시간 동안 이벤트를 보존 가능</li>
+  <li>메시지 브로커와 달리 데이터를 삭제하지 않음</li>
+  <li>서비스에서 나오는 이벤트를 마치 DB에 저장하듯이 이벤트 브로커의 큐에 저장함
+    <ul>
+      <li>딱 한번 일어난 이벤트 데이터를 브로커에 저장함으로써 단일 진실 공급원으로 사용 가능</li>
+      <li>장애가 발생했을 때 장애가 일어난 지점부터 재처리 가능</li>
+      <li>많은 양의 실시간 스트림 데이터를 효과적으로 처리 가능</li>
+      <li>이 외에도 다양한 이벤트 기반 MSA에서 중요한 역할을 처리함</li>
+    </ul>
+  </li>
+  <li>이벤트 브로커로 클러스터를 구축하면 이벤트 기반 MSA로 발전하는데에 중요한 역할을 하며, 메시지 브로커로도 사용할 수 있음</li>
+  <li>EX) Kafka, AWS의 키네시스</li>
+</ul>
+
+<h2 id="2-mq-대표-솔루션">2. MQ 대표 솔루션</h2>
+<h3 id="21-대표적인-이벤트-브로커-kafka">2.1 대표적인 이벤트 브로커, kafka</h3>
+<p><img src="/assets\img/Server/server_kafka.png" alt="server_kafka" /></p>
+
+<h4 id="카프카란">카프카란?</h4>
+<ul>
+  <li>분산 이벤트 스트리밍 플랫폼</li>
+  <li>프로듀서/컨슈머 분리</li>
+  <li>메시지 데이터를 여러 컨슈머에게 허용</li>
+  <li>대용량, 대규모 메시지 데이터를 빠르게 처리할 수 있는 메시징 시스템</li>
+  <li>고성능 : 높은 처리량을 위한 메시지 최적화</li>
+  <li>무중단 스케일 아웃 가능 → 카프카의 클러스터를 만든 뒤에 데이터가 많아지면 스케일 아웃해야하는데, 이때 무중단으로 가능</li>
+  <li>관련 생태계 제공</li>
+  <li>포춘 100개 기업 대상으로 80프로 이상이 kafka를 사용하고 있음</li>
+  <li>국내에서도 우리가 아는 큰 회사들은 kafka를 많이 사용하고 있음</li>
+  <li>대용량, 대규모 메시지 데이터를 빠르게 처리할 수 있는 메시징 시스템</li>
+  <li>링크드인에서 시작했으나 → 현재는 아파치 공식 오픈소스</li>
+  <li>데이터 처리를 여러 어플리케이션에서 하는 것이 아니라 중앙의 한 곳에서 처리할 수 있도록 중앙 집중화되었음</li>
+  <li>애플리케이션, 웹사이트, 센서 등에서 취합한 데이터 스트림을 한 곳에서 실시간으로 관리할 수 있게 됨</li>
+  <li>기업의 대용량 데이터를 수집하고 이를 사용자들이 실시간 스트림으로 소비할 수 있게 만들어줌</li>
+</ul>
+
+<h4 id="mq-미사용사용-웹-서비스-구조의-예시">MQ 미사용/사용 웹 서비스 구조의 예시</h4>
+<ul>
+  <li><strong>어플리케이션과 데이터 베이스의 동기적 직접 통신 구조</strong></li>
+</ul>
+
+<p><img src="/assets\img/Server/server_sync_comm.png" alt="" /></p>
+
+<p>어플리케이션과 DB가 강하게 결합되어 있어 어플리케이션의 요청&amp;응답 과정에서 DB 서버로의 요청&amp;응답 모두 완료되어야 응답이 가능하다.<br />
+따라서 다음과 같은 문제가 발생 가능하다.</p>
+
+<ol>
+  <li>DB의 응답 시간이 길어진다면 어플리케이션 또한 그만큼 응답시간이 길어진다.</li>
+  <li>DB 장애시 어플리케이션이 동작하지 못한다.</li>
+  <li>어플리케이션 입장에서 감당할 수 있는 요청의 수가 DB에서는 감당이 불가능하다면, 성능저하 또는 장애가 발생할 수 있다.</li>
+</ol>
+
+<ul>
+  <li><strong>MQ를 통한 어플리케이션과 DB의 통신</strong></li>
+</ul>
+
+<p><img src="/assets\img/Server/server_async_comm.png" alt="" /></p>
+
+<ol>
+  <li>어플리케이션이 요청을 보내고, DB의 응답을 기다리지 않고 응답을 보낼 수 있다.</li>
+  <li>DB는 큐의 요청을 꺼내 처리한다.</li>
+  <li>DB 장애가 발생해도 어플리케이션은 독립적으로 동작 가능하다.</li>
+  <li>어플리케이션과 DB 사이의 통신을 처리량에 따라 제어 가능하다.</li>
+</ol>
+
+<hr />
+
+<h4 id="카프카는-왜-많이-사용되고-있을까">카프카는 왜 많이 사용되고 있을까?</h4>
+<h5 id="1-high-throughput-message-capacity">1) High throughput message capacity</h5>
+<p>짧은 시간내에 엄청난 양의 데이터를 컨슈머까지 전달할 수 있다. 파티션을 통한 분산처리가 가능하기 때문에 데이터의 양이 많아질수록 Consumer 갯수를 늘려서 병렬처리가 가능하다.
+이를 통해 데이터 처리를 더욱 빠르게 할 수 있다.</p>
+
+<h5 id="2-scalability와-fault-tolerant">2) Scalability와 fault tolerant</h5>
+<p>확장성이 뛰어나다. 이미 사용되고 있는 카프카 브로커가 있다 하더라도 신규 브로커 서버를 추가해 수평확장이 가능하다. 
+그리고 브로커 중 몇대가 죽는다 하더라도 이미 replica로 복제된 데이터는 안전하게 보관되어있어 복구가 가능하다.</p>
+
+<h5 id="3-undeleted-log">3) Undeleted log</h5>
+<p>다른 플랫폼과 달리 카프카 토픽에 들어간 데이터는 컨슈머가 데이터를 가져간다 하더라도 사라지지 않는다. 
+만약 다른 플랫폼에서 이러한 처리를 하려고 했다면 복잡한 방식을 썼어야 했겠지만, 카프카에서는 컨슈머의 그룹id만 다르면 동일한 데이터도 각각 다르게 처리가 가능하다.</p>
+
+<p>그럼 카프카는 대규모 데이터 처리가 발생하는 곳에서만 쓰는 것이 좋을까? 아니다. 스타트업도 사용하면 좋다. 스타트업의 경우는 빠른 확장성과 안정성을 중요시 하는데, 카프카를 이용하면 빠른 Scale out이 가능하다.<br />
+카프카 클러스터 내부의 브로커 개수를 늘려서 원활하게 데이터 처리가 가능하다. 즉 어떤 형태의 기업에서도 적용이 가능하다.</p>
+
+<h4 id="탄생-배경">탄생 배경</h4>
+<p>2009년 당시 링크드인에는 두 가지 이슈가 있었다고 한다. 첫 번째 이슈는 ‘데이터 중앙 저장소가 무엇인가?’였다.<br />
+현재는 DW를 사용하는 것이 익숙하지만 그때까지만 하더라도 Hadoop도 없었고, 빠르게 대응할 수 있는 SQL DB도 없었다. 때문에 그들은 모든 데이터에 빠르게 접근하기 위한 방법을 찾아야 했다.</p>
+
+<p>그와 동시에 두 번째 이슈는 다양한 데이터 소스가 존재한다는 것이다. 사용할 데이터로 이루어진 DB 뿐만 아니라 Application, 이벤트, 네트워크 핑까지 수집했다. 이런 다양한 데이터들을 수집하다보니 어떻게 이 통합해야 하는지에 대한 고민에 직면했다.</p>
+
+<p>그래서 그들은 데이터와 애플리케이션을 전체적으로 보는 데에 집중했다. Application은 DB나 Queue를 사용했었고, 데이터는 ETL 툴이나 Analytics툴을 사용했다. 즉, 애플리케이션과 데이터간에 시각화의 차이가 있었다.</p>
+
+<p>하지만 그들은 새로운 것을 만들어내고 싶진 않았고, 이미 있는 것들을 조합하여 돌아가게 만들어보고 싶었다. 그래서 rabbitMQ, retrofit, ETL툴을 조합하여 사용했다. 그런데 사용하면 할수록 문제의 핵심을 해결하지 못한다는 느낌이 들었다고 한다. 그래서 만들게 된 것이 바로 <strong>카프카</strong>이며 2011년 초에 오픈소스화 되었다.</p>
+
+<h4 id="기본구조">기본구조</h4>
+<p>카프카는 4개의 구성요소로 이루어져 있다.
+<img src="/assets\img/Server/basic_structure.jpg" alt="" /></p>
+<ol>
+  <li>카프카 클러스터
+    <ul>
+      <li>메시지를 저장하는 저장소</li>
+      <li>하나의 카프카 클러스터는 여러개의 브로커로 구성되어 있음(보통 3대 이상의 브로커로 클러스터를 구성)</li>
+      <li>브로커는 각각의 서버라도 보면됨</li>
+      <li>브로커들이 메시지를 나눠서 저장하고, 이중화 처리하고, 장애 발생 시 대체도 함</li>
+      <li>데이터를 이동하는데에 핵심 역할을 맡음</li>
+      <li>1.1 <strong>Kafka broker</strong>
+        <ul>
+          <li>주로 실행된 카프카 애플리케이션 서버 중 1대를 운영함</li>
+          <li>주키퍼와 연동을 해야함( ~2.5.0버전 )
+            <ul>
+              <li>주키퍼의 역할: 메타데이터(브로커 id, 컨트롤 id 등) 저장</li>
+              <li>추후 주키퍼를 걷어낼 예정이라고 함</li>
+            </ul>
+          </li>
+          <li>n개 브로커 중 1대는 컨트롤러(Controller) 기능 수행
+            <ul>
+              <li>컨트롤러: 각 브로커에게 담당 파티션 할당 수행</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>주키퍼 클러스터
+    <ul>
+      <li>카프카 클러스터에 대한 정보를 기록 및 관리하는 용도</li>
+    </ul>
+  </li>
+  <li>프로듀서: 카프카 클러스터에 메세지를 보내는 것</li>
+  <li>컨슈머: 메시지를 카프카에서 읽어옴</li>
+</ol>
+
+<h5 id="토픽과-파티션">토픽과 파티션</h5>
+<p><img src="/assets\img/Server/server_kafka_partition.png" alt="" /></p>
+<ul>
+  <li>메시지를 구분하는 단위</li>
+  <li>뉴스용 토픽, 주문용 토픽
+    <ul>
+      <li>파일시스템의 폴더와 메일함과 유사</li>
+      <li>토픽은 1개 이상의 파티션으로 구성</li>
+      <li>파티션: 메시지를 저장하는 물리적인 파일</li>
+      <li>프로듀서와 컨슈머가 토픽을 기준으로 메시지를 받게됨</li>
+      <li>파티션에는 프로듀서가 보낸 데이터들이 들어가 저장되는데 이 데이터를 <strong>레코드</strong>라고 한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="파티션과-오프셋-메시지-순서">파티션과 오프셋, 메시지 순서</h5>
+<ul>
+  <li>파티션은 추가만 가능한(append-only) 파일</li>
+  <li>오프셋: 각각의 메시지가 저장되는 위치</li>
+  <li>프로듀서가 넣은 메시지는 파티션의 맨 뒤에 추가</li>
+  <li>컨슈머는 오프셋 기준으로 메시지를 순서대로 읽음</li>
+  <li>파티션에 저장된 메시지는 컨슈머가 읽었는지와는 상관없이 삭제되지 않음</li>
+  <li><strong>여러 파티션과 프로듀서</strong>
+    <ul>
+      <li>라운드로빈 또는 키로 파티션을 선택함</li>
+      <li>프로듀서가 카프카에 메시지를 전달할때 선택 가능</li>
+      <li>같은 키는 메시지 순서가 유지됨</li>
+    </ul>
+  </li>
+  <li><strong>여러 파티션과 컨슈머</strong>
+    <ul>
+      <li>컨슈머가 카프카 브로커에 연결할 때 나는 어떤 그룹에 속한다라고 지정하게 되어있음</li>
+      <li>⭐ 한 개의 파티션은 그룹의 한 개 컨슈머에만 연결 가능</li>
+      <li>컨슈머그룹 기준으로 파티션의 메시지가 순서대로 처리됨을 보장함</li>
+    </ul>
+  </li>
+  <li><strong>성능이 왜 좋을까?</strong>
+    <ul>
+      <li>파티션 파일에 대해 OS가 제공하는 페이지캐시를 사용</li>
+      <li>Zero copy를 사용</li>
+      <li>브로커가 컨슈머에 대해 하는 일이 없음</li>
+    </ul>
+  </li>
+  <li><strong>메시지 필터, 메시지 재전송과 같은 일을 브로커가 하지 않음</strong>
+    <ul>
+      <li>묶어서 보내기, 묶어서 받기(batch)</li>
+    </ul>
+  </li>
+  <li><strong>프로듀서: 일정 크기만큼 메시지를 모아서 전송 가능</strong>
+    <ul>
+      <li>처리량 확장이 쉬움</li>
+      <li>1개 장비의 용량이 한계가 있는 경우 브로커와 파티션을 추가하면 됨</li>
+    </ul>
+  </li>
+  <li><strong>리플리카 - 복제</strong>
+    <ul>
+      <li>장애가 났을 때 이를 대처하기위해 리플리카를 사용</li>
+      <li>리플리카 : 파티션의 복제본</li>
+      <li>복제수만큼 파티션의 복제본이 각 브로커에 생김
+        <ul>
+          <li>리더가 속한 브로커에 장애 발생 시 다른 팔로워가 리더가 됨</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>프로듀서의 기본 흐름</strong>
+<img src="/assets\img/Server/Basic_flow_of_producer.jpg" alt="" />
+    <ul>
+      <li>프로듀서가 Serializer를 이용해 바이트 배열로 변환하고, Partitioner를 통해 파티션을 결정함</li>
+      <li>그때 배치로 메시리지를 묶어서 저장함</li>
+      <li>센더가 배치들을 차례대로 가져와서 저장함</li>
+    </ul>
+  </li>
+  <li><strong>센더의 기본 동작</strong>
+<img src="/assets\img/Server/senders_basic_behavior.jpg" alt="" />
+    <ul>
+      <li>센더는 별도 스레드로 동작</li>
+      <li>배치를 차례대로 하나씩 꺼내서 카프카 브로커로 보냄</li>
+      <li>센더는 센더대로 배치를 꺼내서 브로커에 보내고, 센더 메소드는 계속해서 배치에 누적시킴</li>
+      <li>센더는 배치가 다 차지 않아도 바로 보냄</li>
+    </ul>
+  </li>
+  <li><strong>처리량 관련 주요 속성</strong>
+<img src="/assets\img/Server/key_attributes_related_to_throughput.jpg" alt="" /></li>
+  <li>lingers.ms : 전송 대기 시간 ( 기본값 0 )
+    <ul>
+      <li>대기시간이 없으면 바로 전송</li>
+      <li>대기 시간을 주면 시간만큼 기다렸다가 배치를 전송</li>
+      <li>10, 100과 같이 값을 줄 수 있음</li>
+    </ul>
+  </li>
+  <li>전송결과 확인 안하는 경우
+    <ul>
+      <li>전송 실패를 알 수 없게 구현 가능</li>
+    </ul>
+  </li>
+  <li>전송 결과를 확인해야하는 경우
+    <ul>
+      <li>sender 메시지의 Future 사용</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="22-ibm-mq">2.2 IBM MQ</h3>
+<ul>
+  <li>가장 많이 사용되는 상용 MQ 제품으로 표준 JMS 메시징 기반으로 MQTT 프로토콜을 지원한다.</li>
+</ul>
+
+<p>현재 내가 속한 부서에서도 DB간 동기화 시 IBM MQ를 사용하고 있다.</p>
+
+<h3 id="23-apache-activemq">2.3 Apache ActiveMQ</h3>
+<ul>
+  <li>JAVA 기반의 JMS Queue를 지원하는 오픈소스로 MQTT, AMQP, OpenWire, STOMP 등의 프로토콜을 지원한다.</li>
+  <li>다양한 언어를 지원하며 클러스터링이 가능하다.</li>
+  <li>모니터링 도구가 없다.</li>
+  <li>REST API를 통해 웹기반 메시징 API를 지원한다.</li>
+  <li>Ajax를 통해 순수한 DHTML을 사용한 웹스트리밍 지원을 한다.</li>
+</ul>
+
+<h3 id="24-rabbitmq">2.4 RabbitMQ</h3>
+<ul>
+  <li>고성능을 목표로 AMQP 프로토콜을 사용하여 개발된 MQ로 Eralang OTP 기반으로 개발되었다.</li>
+  <li>실시간 모니터링이 용이하다</li>
+  <li>다양한 언어 및 OS를 지원한다</li>
+  <li>RabbitMQ 서버 간 클러스터링이 가능하다.</li>
+</ul>
+
+<h2 id="참고">참고</h2>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=xErwDaOc-Gs">What is a Message Queue?</a></li>
+  <li><a href="https://youtu.be/H_DaPyUOeTo">카프카, 레빗엠큐, 레디스 큐의 큰 차이점! 이벤트 브로커와 메시지 브로커에 대해 알아봅시다.</a></li>
+  <li><a href="https://youtu.be/0Ssx7jJJADI">kafka 조금 아는 척하기 1</a></li>
+  <li><a href="https://velog.io/@ehdrms2034/Kafka-3%EC%9E%A5-%EC%B9%B4%ED%94%84%EC%B9%B4-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90-%EC%84%A4%EB%AA%85-1">[Kafka] 3장 카프카 기본 개념 설명 (1)</a></li>
+  <li><a href="https://sarc.io/index.php/miscellaneous/1615-message-queue-mq">Message Queue (MQ) 란 무엇일까</a></li>
+  <li><a href="https://m.blog.naver.com/PostView.nhn?blogId=willygwu2003&amp;logNo=130171452288&amp;proxyReferer=https:%2F%2Fwww.google.com%2F">JMS vs AMQP</a></li>
+</ul>
+
+  
+</article>
+
+
+
+  <hr class="dingbat related mb6" />
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Ara cho(IceChoco)"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>궁금한 걸 참지 않는 개발자</p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java,/spring/2022-05-25-spring-security/" class="flip-title"><span>[Spring] Spring Security란?</span></a>  <time class="faded fine" datetime="2022-05-25T00:00:00+09:00">25 May 2022</time></li>                        <li class="h4">  <a href="/server/2022-05-24-MSA/" class="flip-title"><span>[MSA] Netflix 스택 & K8s 스택</span></a>  <time class="faded fine" datetime="2022-05-24T00:00:00+09:00">24 May 2022</time></li>                        <li class="h4">  <a href="/cs/2022-05-24-Technical-Interview-Expected-Questions-spring/" class="flip-title"><span>[CS] 기술면접 예상 질문 - Spring</span></a>  <time class="faded fine" datetime="2022-05-24T00:00:00+09:00">24 May 2022</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <script src="https://giscus.app/client.js"
+            data-repo=IceChoco/icechoco.github.io
+            data-repo-id=R_kgDOGGPhNA
+            data-category=Comments
+            data-category-id=DIC_kwDOGGPhNM4CAC4O
+            data-mapping=pathname
+            data-reactions-enabled=1
+            data-theme=light
+            crossorigin=anonymous
+            async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2021. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/LICENSE/">LICENSE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/NOTICE/">NOTICE</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/CHANGELOG/">CHANGELOG</a>
+      
+    
+    </small></nav>
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.1.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(8,46,57);background-image:url(/assets/img/sidebar-bg2.png)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/developing-frog.png" class="avatar" alt="IceChoco" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IceChoco</h2></a>
+    
+    
+      <p class="">
+        IceChoco의 DevLog
+
+      </p>
+    
+  </div>
+
+  <div class="sidebar-hits">
+    <a class="no-mark-external" href="https://hits.sh/icechoco.github.io/"><img src="https://hits.sh/icechoco.github.io.svg?view=today-total"/></a>
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <!-- file: "/_layouts/tag-list.html" -->
+<ul>
+  
+  
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a id="_navigation" href="/about/" class="sidebar-nav-item"  >About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/spring/" class="sidebar-nav-item"  >Spring</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/git/" class="sidebar-nav-item"  >GIT</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/java/" class="sidebar-nav-item"  >Java</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/database/" class="sidebar-nav-item"  >Database</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/server/" class="sidebar-nav-item"  >Server</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a  href="/cs/" class="sidebar-nav-item"  >CS</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="list-item-16" />
+          
+          <div class="list-wrapper">
+            <a  href="/frontend/" class="sidebar-nav-item"  >Front-end</a>
+            
+              <label class="folder" for="list-item-16">▾</label>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-javascript/">Javascript</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-jekyll/">Jekyll</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-react/">React</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+</ul>
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/IceChoco" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:dkfk2685@naver.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://instagram.com/arajjyeoing" title="Instagram" class="no-mark-external">
+      <span class="icon-instagram"></span>
+      <span class="sr-only">Instagram</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://blog.naver.com/dkfk2685" title="Blogger" class="no-mark-external">
+      <span class="icon-blogger"></span>
+      <span class="sr-only">Blogger</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+  <script src="/assets/js/hydejack-9.1.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.1.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!-- <script>
+  document.querySelector('hy-push-state').setAttribute('prefetch', '');
+
+  document.querySelectorAll('.sidebar a[href^="/"]').forEach(function (el) { 
+    el.addEventListener('click', function (e) {
+      if (el.pathname === window.location.pathname) {
+        e.preventDefault();
+        e.stopPropagation();
+        document.querySelector('hy-drawer').close();
+      }
+    });
+  });
+</script> -->
+
+<!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <clap-config>
+    <clap-text at="1">Keep going!</clap-text>
+    <clap-text at="2">Keep going ×2!</clap-text>
+    <clap-text at="3">Give me more!</clap-text>
+    <clap-text at="5">Thank you, thank you</clap-text>
+    <clap-text at="7">Far too kind!</clap-text>
+    <clap-text at="10">Never gonna give me up?</clap-text>
+    <clap-text at="14">Never gonna let me down?</clap-text>
+    <clap-text at="20">Turn around and desert me!</clap-text>
+    <clap-text at="30">You're an addict!</clap-text>
+    <clap-text at="40">Son of a clapper!</clap-text>
+    <clap-text at="50">No way</clap-text>
+    <clap-text at="60">Go back to work!</clap-text>
+    <clap-text at="70">This is getting out of <em>hand</em></clap-text>
+    <clap-text at="80">Unbelievable</clap-text>
+    <clap-text at="90">PREPOSTEROUS</clap-text>
+    <clap-text at="100">I N S A N I T Y</clap-text>
+    <clap-text at="185"><span style="font-family:monospace">FEED ME A STRAY CAT</span></clap-text>
+  </clap-config>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+  
+<hr class="sr-only"/>
+<h2 class="sr-only">Templates (for web app):</h2>
+
+<template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+<template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+<template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+<template id="_back-template">
+    <a id="_back" class="back nav-btn no-hover">
+      <span class="sr-only">Back</span>
+      <span class="icon-arrow-left2"></span>
+    </a>
+  </template>
+<template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+
+</body>
+</html>

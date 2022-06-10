@@ -35,8 +35,8 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta property="og:title" content="[Spring] 좋은 객체 지향 설계의 5가지 원칙(SOLID)대로 개발하기" />
 <meta name="author" content="Ara cho(IceChoco)" />
 <meta property="og:locale" content="ko_KR, en_US" />
-<meta name="description" content="사이드 프로젝트 개발을 본격적으로 들어가기 전, 객체 지향 설계를 위해서는 고려해야하는 SOLID 중 가장 중요한 DIP에 대해서 정리한다. 그리고 정리한 개념을 기억하며 순수 Java로 Spring의 dependency 설정 도움 없이 구현을 해보고자 한다. 이 과정을 통해 왜 Spring을 사용해야 하는지 알게 되는 것이 목적이다." />
-<meta property="og:description" content="사이드 프로젝트 개발을 본격적으로 들어가기 전, 객체 지향 설계를 위해서는 고려해야하는 SOLID 중 가장 중요한 DIP에 대해서 정리한다. 그리고 정리한 개념을 기억하며 순수 Java로 Spring의 dependency 설정 도움 없이 구현을 해보고자 한다. 이 과정을 통해 왜 Spring을 사용해야 하는지 알게 되는 것이 목적이다." />
+<meta name="description" content="사이드 프로젝트 개발을 본격적으로 들어가기 전, 객체 지향 설계를 위해서는 고려해야하는 SOLID 중 가장 중요한 DIP에 대해서 정리한다. 그리고 정리한 개념을 기억하며 순수 Java로 Spring의 dependency 설정 도움 없이 구현을 해보고자 한다. 이 과정을 통해 왜 Spring을 사용해야 하는지 알게 된 상태에서 Spring Boot 사용을 통해 개발하고자 함이 목적이다." />
+<meta property="og:description" content="사이드 프로젝트 개발을 본격적으로 들어가기 전, 객체 지향 설계를 위해서는 고려해야하는 SOLID 중 가장 중요한 DIP에 대해서 정리한다. 그리고 정리한 개념을 기억하며 순수 Java로 Spring의 dependency 설정 도움 없이 구현을 해보고자 한다. 이 과정을 통해 왜 Spring을 사용해야 하는지 알게 된 상태에서 Spring Boot 사용을 통해 개발하고자 함이 목적이다." />
 <link rel="canonical" href="https://icechoco.github.io/java,/spring/2022-05-09-SOLID/" />
 <meta property="og:url" content="https://icechoco.github.io/java,/spring/2022-05-09-SOLID/" />
 <meta property="og:site_name" content="IceChoco" />
@@ -45,7 +45,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Spring] 좋은 객체 지향 설계의 5가지 원칙(SOLID)대로 개발하기" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-05-12T14:55:18+09:00","datePublished":"2022-05-09T00:00:00+09:00","description":"사이드 프로젝트 개발을 본격적으로 들어가기 전, 객체 지향 설계를 위해서는 고려해야하는 SOLID 중 가장 중요한 DIP에 대해서 정리한다. 그리고 정리한 개념을 기억하며 순수 Java로 Spring의 dependency 설정 도움 없이 구현을 해보고자 한다. 이 과정을 통해 왜 Spring을 사용해야 하는지 알게 되는 것이 목적이다.","headline":"[Spring] 좋은 객체 지향 설계의 5가지 원칙(SOLID)대로 개발하기","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java,/spring/2022-05-09-SOLID/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/java,/spring/2022-05-09-SOLID/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Ara cho(IceChoco)"},"dateModified":"2022-05-19T15:07:18+09:00","datePublished":"2022-05-09T00:00:00+09:00","description":"사이드 프로젝트 개발을 본격적으로 들어가기 전, 객체 지향 설계를 위해서는 고려해야하는 SOLID 중 가장 중요한 DIP에 대해서 정리한다. 그리고 정리한 개념을 기억하며 순수 Java로 Spring의 dependency 설정 도움 없이 구현을 해보고자 한다. 이 과정을 통해 왜 Spring을 사용해야 하는지 알게 된 상태에서 Spring Boot 사용을 통해 개발하고자 함이 목적이다.","headline":"[Spring] 좋은 객체 지향 설계의 5가지 원칙(SOLID)대로 개발하기","mainEntityOfPage":{"@type":"WebPage","@id":"https://icechoco.github.io/java,/spring/2022-05-09-SOLID/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://icechoco.github.io/assets/img/developing-frog.png"},"name":"Ara cho(IceChoco)"},"url":"https://icechoco.github.io/java,/spring/2022-05-09-SOLID/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -107,7 +107,7 @@ Powered by Hydejack v9.1.4 <https://hydejack.com/>
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2022-05-15T13:08:28+09:00',
+    INDEX_KEY: 'index--2022-06-10T16:10:52+09:00',
   };
   w._clapButton = false;
 }(window);</script>
@@ -315,10 +315,10 @@ Left here for reference, feel free to delete.
           
             
             
-            <span class="ellipsis" data-tippy-content="Last modified at: 2022-05-12">
+            <span class="ellipsis" data-tippy-content="Last modified at: 2022-05-19">
               <span class="sr-only">Last modified at:</span>
               <span class="icon-history"></span>
-              <time datetime="2022-05-12T14:55:18+09:00">2022-05-12</time>
+              <time datetime="2022-05-19T15:07:18+09:00">2022-05-19</time>
             </span>
           
         
@@ -340,7 +340,7 @@ Left here for reference, feel free to delete.
   
     <p>사이드 프로젝트 개발을 본격적으로 들어가기 전, 객체 지향 설계를 위해서는 고려해야하는 SOLID 중 가장 중요한 DIP에 대해서 정리한다.<br />
 그리고 정리한 개념을 기억하며 순수 Java로 Spring의 dependency 설정 도움 없이 구현을 해보고자 한다.<br />
-이 과정을 통해 왜 Spring을 사용해야 하는지 알게 되는 것이 목적이다.</p>
+이 과정을 통해 왜 Spring을 사용해야 하는지 알게 된 상태에서 Spring Boot 사용을 통해 개발하고자 함이 목적이다.</p>
 
 <h2 id="좋은-객체-지향-설계의-5가지-원칙solid">좋은 객체 지향 설계의 5가지 원칙(SOLID)</h2>
 <h3 id="dip-의존-관계-역전-원칙dependency-inversion-principle">DIP 의존 관계 역전 원칙(Dependency Inversion Principle)</h3>
@@ -388,7 +388,7 @@ Left here for reference, feel free to delete.
   <li>그러므로 기능을 확장할 가능성이 없다면 처음에는 구현체로 하는 것도 좋다.</li>
 </ul>
 
-<h2 id="스프링의-핵심원리-이해-1---예제-만들기">스프링의 핵심원리 이해 1 - 예제 만들기</h2>
+<h2 id="스프링의-핵심원리-이해----예제-만들기">스프링의 핵심원리 이해  - 예제 만들기</h2>
 <h3 id="프로젝트-생성">프로젝트 생성</h3>
 <ol>
   <li><a href="https://start.spring.io/">start.spring.io</a>에 접속한다</li>
@@ -405,9 +405,125 @@ Left here for reference, feel free to delete.
           <li>Java : 11</li>
         </ul>
       </li>
+      <li>Dependencies
+        <ul>
+          <li>Add Dependencies 클릭</li>
+          <li><code class="language-plaintext highlighter-rouge">Spring Web</code>을 입력 한 후, <code class="language-plaintext highlighter-rouge">Spring Web</code>을 클릭해서 추가</li>
+          <li>그 외 사이드 프로젝트에서 자신이 사용할 의존성 추가</li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ol>
+
+<h3 id="core-프로젝트-살펴보기">core 프로젝트 살펴보기</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>📂 hello-spring // 루트 폴더
+├─ gradle
+│ ├── wrapper // Gralde을 쓰는 폴더
+├─── 📂 src // java 소스 상위 폴더  
+│ ├── 📂 main 
+│ │ ├─── java      // 실제 패키지와 java 소스 파일들이 위치한 곳
+│ │ ├─── resources // 실제 자바코드 파일을 제외한 어떤 xml이나 properties, HTML, application 설정파일 등의 리소스    
+│ ├── test         // TestCode와 관련된 소스들이 위치한 곳
+│ │ ├─── java      
+│ │   ├─── hello.hellospring
+│ ├── build.gradle // 버전 설정 및 라이브러리 가져오는 역할
+├─ JRE System Library // 사용하는 Jaba Library
+├─ Project and External Dependencies // Project에서 사용하는 외부 라이브러리
+├─ 📂 bin // 빌드 후 실행 파일 등이 생성
+├─ 📂 gralde // graldew가 사용하는 실행 파일
+├─ build.gradle
+├─ graldew // Gradle Wrapper 쉘 스크립트로 로컬에 따로 프로젝트에 선언된 Gradle 버전 설치 필요 없이 
+│             자동으로 해당 OS 및 버전과 호환되는 Gradle 실행 파일을 다운받아서 프로젝트를 빌드할 수 있게 하는 일종의 유틸리티 도구
+├─ gralde.bat // gradlew의 Windows 용 스크립트
+├─ HELP.md // Gradle 도움말
+├─ settings.gradle : 프로젝트의 Gradle 설정 파일
+</code></pre></div></div>
+
+<h3 id="gradlew를-이용한-빌드-및-실행">Gradlew를 이용한 빌드 및 실행</h3>
+<ul>
+  <li>파일 탐색기를 실행한다 (단축키 : <code class="language-plaintext highlighter-rouge">Windows+E</code>)</li>
+  <li>내 프로젝트 경로로 이동한다. (나의 경우는 <code class="language-plaintext highlighter-rouge">C:\Ara\공부\YAPP\20th-Android-Team-2-BE-Personal-dev</code>로 이동)</li>
+  <li>폴더 경로를 선택 후 <code class="language-plaintext highlighter-rouge">cmd</code>를 입력한 뒤 엔터키를 누른다.</li>
+  <li>cmd 창에서 아래 명령을 실행한다.
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gradlew tasks
+</code></pre></div>    </div>
+    <p>그럼 아래와 같은 결과가 출력된다. 중요한 것들은 ⭐ 표시한 아래 3가지이다.</p>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Starting a Gradle Daemon (subsequent builds will be faster)
+
+&gt; Task :tasks
+
+------------------------------------------------------------
+Tasks runnable from root project 'bestFriend'
+------------------------------------------------------------
+
+Application tasks
+-----------------
+⭐ bootRun - Runs this project as a Spring Boot application.
+
+Build tasks
+-----------
+assemble - Assembles the outputs of this project.
+bootBuildImage - Builds an OCI image of the application using the output of the bootJar task
+bootJar - Assembles an executable jar archive containing the main classes and their dependencies.
+bootJarMainClassName - Resolves the name of the application's main class for the bootJar task.
+bootRunMainClassName - Resolves the name of the application's main class for the bootRun task.
+⭐ build - Assembles and tests this project.
+buildDependents - Assembles and tests this project and all projects that depend on it.
+buildNeeded - Assembles and tests this project and all projects it depends on.
+classes - Assembles main classes.
+clean - Deletes the build directory.
+jar - Assembles a jar archive containing the main classes.
+testClasses - Assembles test classes.
+
+Build Setup tasks
+-----------------
+init - Initializes a new Gradle build.
+wrapper - Generates Gradle wrapper files.
+
+Documentation tasks
+-------------------
+javadoc - Generates Javadoc API documentation for the main source code.
+
+Help tasks
+----------
+buildEnvironment - Displays all buildscript dependencies declared in root project 'bestFriend'.
+dependencies - Displays all dependencies declared in root project 'bestFriend'.
+dependencyInsight - Displays the insight into a specific dependency in root project 'bestFriend'.
+dependencyManagement - Displays the dependency management declared in root project 'bestFriend'.
+help - Displays a help message.
+javaToolchains - Displays the detected java toolchains.
+outgoingVariants - Displays the outgoing variants of root project 'bestFriend'.
+projects - Displays the sub-projects of root project 'bestFriend'.
+properties - Displays the properties of root project 'bestFriend'.
+tasks - Displays the tasks runnable from root project 'bestFriend'.
+
+Verification tasks
+------------------
+check - Runs all checks.
+⭐ test - Runs the test suite.
+
+Rules
+-----
+Pattern: clean&lt;TaskName&gt;: Cleans the output files of a task.
+Pattern: build&lt;ConfigurationName&gt;: Assembles the artifacts of a configuration.
+
+To see all tasks and more detail, run gradlew tasks --all
+
+To see more detail about a task, run gradlew help --task &lt;task&gt;
+
+BUILD SUCCESSFUL in 8s
+1 actionable task: 1 executed
+</code></pre></div></div>
+
+<p>그럼 여기서 빌드를 수행해보자</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gradlew build
+</code></pre></div></div>
+
+<p>빙드가 성공했으면 <code class="language-plaintext highlighter-rouge">./build/libs</code> 아래에 jar 파일이 생성된다. 나중에 배포할 때 이 jar 파일을 서버에서 실행하면 웹서버까지 같이 띄워지기 떄문에 Tomcat을 따로 설정할 필요도 없으니 얼마나 간편한가!</p>
 
 <h3 id="참고">참고</h3>
 <ul>
@@ -585,7 +701,7 @@ Left here for reference, feel free to delete.
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java,/spring/2022-05-12-make-rest-api-with-springBoot/" class="flip-title"><span>[Spring] SpringBoot로 Rest API 만들기 - Swagger API 문서 자동화</span></a>  <time class="faded fine" datetime="2022-05-12T00:00:00+09:00">12 May 2022</time></li>                        <li class="h4">  <a href="/java,/spring/2022-05-10-social-login/" class="flip-title"><span>[Spring] 카카오, 구글 소셜 로그인 구현하기</span></a>  <time class="faded fine" datetime="2022-05-10T00:00:00+09:00">10 May 2022</time></li>                        <li class="h4">  <a href="/spring/2022-05-07-Spring-AOP-trouble-shooting/" class="flip-title"><span>[Spring] AOP를 SpringConfig에 @Bean으로 등록 했을 때 순환 참조 발생</span></a>  <time class="faded fine" datetime="2022-05-07T00:00:00+09:00">07 May 2022</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/java,/spring/2022-05-25-spring-security/" class="flip-title"><span>[Spring] Spring Security란?</span></a>  <time class="faded fine" datetime="2022-05-25T00:00:00+09:00">25 May 2022</time></li>                        <li class="h4">  <a href="/server/2022-05-24-MSA/" class="flip-title"><span>[MSA] Netflix 스택 & K8s 스택</span></a>  <time class="faded fine" datetime="2022-05-24T00:00:00+09:00">24 May 2022</time></li>                        <li class="h4">  <a href="/cs/2022-05-24-Technical-Interview-Expected-Questions-spring/" class="flip-title"><span>[CS] 기술면접 예상 질문 - Spring</span></a>  <time class="faded fine" datetime="2022-05-24T00:00:00+09:00">24 May 2022</time></li>            </ul></aside>
 
   
 
